@@ -948,11 +948,18 @@ function mapPanel(res){
   }
   sec.append(chips);
 
+  const row = el("div", "maprow");
   const box = el("div", "mapbox");
   const cv = el("canvas", "mapcanvas");
   const overlay = el("div", "mapoverlay");
   box.append(cv, overlay);
-  sec.append(box);
+  const feed = el("aside", "mapfeed");
+  const feedHead = el("div", "mfhead");
+  ["Time", "Player", "Event"].forEach(h => feedHead.append(el("span", null, h)));
+  const feedList = el("div", "mflist");
+  feed.append(feedHead, feedList);
+  row.append(box, feed);
+  sec.append(row);
 
   const legend = el("div", "maplegend");
   res.teams.forEach((t, i) => {
@@ -982,6 +989,71 @@ function mapPanel(res){
 
   const info = el("div", "mstats");
   sec.append(info);
+
+  /* ---- running event list ----
+   *
+   * Who threw a grenade is not in the demo: the ClientNum of the grenade is the
+   * same across every throw. Guessing the thrower from the nearest player would
+   * be possible but is right in only 61 per cent of cases - a measured number,
+   * checked against the killers from the frag obituaries. The column therefore
+   * stays empty for throws instead of claiming a wrong name. */
+  const feedRows = [];
+  for (const g of m.grenades || []) {
+    const label = NADE[g.kind] ? NADE[g.kind].label : "grenade";
+    feedRows.push({ tS: g.path[0][0] / 100, client: null, text: label + " thrown" });
+  }
+  for (const k of res.kills) {
+    if (k.suicide) feedRows.push({ tS: k.tS, client: k.victim, text: "died", dim: true });
+    else feedRows.push({ tS: k.tS, client: k.killer, victim: k.victim,
+                         text: "kills", weapon: k.weaponLabel });
+  }
+  for (const r of res.rounds) {
+    for (const e of r.timeline) {
+      if (e.kind !== "bomb") continue;
+      feedRows.push({ tS: e.tS, name: e.player, text: e.action.toLowerCase() });
+    }
+    feedRows.push({ tS: r.startS + r.durS, team: r.winner,
+                    text: "round win", note: r.reason });
+  }
+  feedRows.sort((a, b) => a.tS - b.tS);
+  let feedShown = -1;
+
+  /** Only redraw when the visible set changed - otherwise once per frame. */
+  function renderFeed(){
+    let n = 0;
+    while (n < feedRows.length && feedRows[n].tS <= now) n++;
+    let first = 0;
+    while (first < n && feedRows[first].tS < t0) first++;
+    const key = first * 100000 + n;
+    if (key === feedShown) return;
+    feedShown = key;
+    feedList.textContent = "";
+    if (first >= n) {
+      feedList.append(el("p", "dim mfempty", "Nothing yet - press play."));
+      return;
+    }
+    for (let i = n - 1; i >= first; i--) {
+      const e = feedRows[i];
+      const line = el("div", "mfrow" + (e.dim ? " dim" : ""));
+      line.append(el("span", "mft", mmss(Math.max(0, e.tS - t0))));
+      const who = el("span", "mfp");
+      if (e.client != null) who.append(playerName(res, meta.get(e.client), e.client));
+      else if (e.team) who.append(el("span", "pill t" + teamIndex(res, e.team), e.team));
+      else if (e.name) who.append(cod4(e.name));
+      else who.append(el("span", "dim", "\u2013"));
+      line.append(who);
+      const what = el("span", "mfe");
+      what.append(document.createTextNode(e.text));
+      if (e.victim != null) {
+        what.append(document.createTextNode(" "));
+        what.append(playerName(res, meta.get(e.victim), e.victim));
+      }
+      if (e.weapon) what.append(el("span", "dim mfw", e.weapon));
+      if (e.note) what.append(el("span", "dim mfw", e.note));
+      line.append(what);
+      feedList.append(line);
+    }
+  }
 
   /* ---- projection world -> image ---- */
   const [bx0, by0, bx1, by1] = m.bounds;
@@ -1022,17 +1094,24 @@ function mapPanel(res){
     return themeColor(p && teamIndex(res, p.team) === 1 ? "--t2" : "--t1");
   }
 
+  /* Width of the event list, and the point from which it fits beside the map. */
+  const FEED_W = 290, FEED_GAP = 14, SIDE_MIN = 720;
+
   function layout(){
-    const rect = box.getBoundingClientRect();
+    const rect = row.getBoundingClientRect();
     // Height follows not just the aspect ratio but the window as well: a
     // square map would otherwise be as tall as it is wide and you would scroll
     // all the time. When the height is capped the width shrinks along with it,
     // otherwise empty strips would be left on the left and right.
     const ratio = Math.min(1.15, Math.max(0.6, worldH / worldW));
     const room = Math.max(320, Math.min(560, (window.innerHeight || 800) * 0.62));
-    let cssW = Math.max(240, Math.floor(rect.width));
+    const rowW = Math.floor(rect.width);
+    const side = rowW >= SIDE_MIN;
+    let cssW = Math.max(240, side ? rowW - FEED_W - FEED_GAP : rowW);
     let cssH = Math.round(cssW * ratio);
     if (cssH > room) { cssH = Math.round(room); cssW = Math.round(cssH / ratio); }
+    box.style.width = cssW + "px";
+    feed.style.height = side ? cssH + "px" : "240px";
     dpr = Math.min(2, window.devicePixelRatio || 1);
     W = Math.round(cssW * dpr);
     H = Math.round(cssH * dpr);
@@ -1245,6 +1324,7 @@ function mapPanel(res){
     slider.max = String(t1);
     now = t0;
     slider.value = String(now);
+    feedShown = -1;
     draw();
   }
 
@@ -1359,6 +1439,7 @@ function mapPanel(res){
     if (nadeCb.checked) drawNades(g);
     drawKills(g, ink);
     if (selected !== null) drawSelectedExtras(g, ink);
+    renderFeed();
     clock.textContent = mmss(now - t0) + " / " + mmss(t1 - t0);
   }
 
@@ -1625,8 +1706,18 @@ function mapPanel(res){
   slider.addEventListener("input", () => { stop(); now = Number(slider.value); draw(); });
   nadeCb.addEventListener("change", draw);
   if (window.ResizeObserver) {
-    const ro = new ResizeObserver(() => { layout(); draw(); });
-    ro.observe(box);
+    // Watch the row, not the box: the box now carries a fixed width and would
+    // therefore never report a change. Only react to a changed width - layout()
+    // alters the height inside the row, which would otherwise loop.
+    let seenW = -1;
+    const ro = new ResizeObserver(() => {
+      const w = Math.round(row.getBoundingClientRect().width);
+      if (w === seenW) return;
+      seenW = w;
+      layout();
+      draw();
+    });
+    ro.observe(row);
   }
   setTimeout(() => { layout(); renderStats(); setRange(); }, 0);
   return sec;

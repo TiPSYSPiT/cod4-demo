@@ -215,8 +215,22 @@ pre.json{margin:0;padding:14px;background:var(--surface);border:1px solid var(--
 .mchip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .mchip.on span{color:inherit!important}
 
-.mapbox{position:relative;border:1px solid var(--line);border-radius:8px;
+.maprow{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap}
+.mapbox{position:relative;flex:0 0 auto;border:1px solid var(--line);border-radius:8px;
   background:var(--surface);overflow:hidden}
+.mapfeed{flex:1 1 240px;min-width:230px;display:flex;flex-direction:column;
+  border:1px solid var(--line);border-radius:8px;background:var(--surface);overflow:hidden}
+.mfhead,.mfrow{display:grid;grid-template-columns:46px 1fr 1.2fr;gap:8px;
+  padding:5px 10px;align-items:baseline}
+.mfhead{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink2);border-bottom:1px solid var(--line);background:var(--surface2)}
+.mflist{overflow-y:auto;font-size:12px;line-height:1.45}
+.mfrow{border-bottom:1px solid var(--line)}
+.mfrow:last-child{border-bottom:0}
+.mft{font-family:var(--mono);font-size:11px;color:var(--ink2)}
+.mfp,.mfe{min-width:0;overflow-wrap:anywhere}
+.mfw{display:block;font-size:10.5px}
+.mfempty{padding:10px}
 .mapcanvas{display:block;margin:0 auto}
 .mapcanvas.placing{cursor:crosshair}
 .mapoverlay{position:absolute;inset:0;pointer-events:none}

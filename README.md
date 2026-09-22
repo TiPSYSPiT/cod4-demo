@@ -140,8 +140,6 @@ completely different parts of the file.
 
 ## Further reading
 
-Both documents are in German:
-
 * [DATEN.md](DATEN.md) - what can be read out of a demo, what is in there but
   goes unused, and what is not in the file at all
 * [FORMAT.md](FORMAT.md) - container, Huffman, snapshots, and how each of those
