@@ -38,8 +38,13 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14p
 .wrap{max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
 h1{font-family:var(--disp);font-size:clamp(28px,5vw,40px);line-height:1;margin:0;letter-spacing:.01em;text-wrap:balance}
 h2{font-family:var(--disp);font-size:19px;margin:0;letter-spacing:.02em}
+header{position:relative;padding-right:34px}
+.ghlink{position:absolute;top:2px;right:0;display:inline-flex;color:var(--ink2);
+  border-radius:6px;padding:4px;transition:color .15s}
+.ghlink:hover{color:var(--ink);background:var(--surface2)}
+.ghlink svg{display:block}
 .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
-.lede{color:var(--ink2);margin:8px 0 0;max-width:62ch}
+.lede{color:var(--ink2);margin:8px 0 0}
 a{color:var(--accent);text-underline-offset:2px}
 button{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
@@ -179,8 +184,6 @@ pre.json{margin:0;padding:14px;background:var(--surface);border:1px solid var(--
 .sec{display:flex;flex-direction:column;gap:10px}
 .samplebanner{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;background:var(--surface2);
   border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;padding:9px 13px;font-size:12.5px}
-footer{color:var(--ink2);font-size:12px;border-top:1px solid var(--line);padding-top:14px;line-height:1.7}
-footer code{font-family:var(--mono);font-size:11.5px}
 
 @media (max-width:560px){
   .bug{grid-template-columns:1fr}
