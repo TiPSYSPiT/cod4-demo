@@ -188,6 +188,11 @@ const MSG = { snapshot: 0, frame: 1, protocol: 2, reliable: 3 };
 const SVC = { nop:0, gamestate:1, configstring:2, baseline:3, serverCommand:4,
               download:5, snapshot:6, eof:7, configclient:11 };
 const MAX_CONFIGSTRINGS = 2 * 2442;
+/* MSG_FRAME arrives at client frame rate (around 125 Hz). For a map one point
+   every 40 ms is enough - the same density the other players have. */
+const VIEW_STEP_MS = 40;
+/** Float from the file to int - NaN and infinity become 0. */
+function fi(v){ return (v > -1e9 && v < 1e9) ? Math.trunc(v) : 0; }
 
 /**
  * Walk the demo container and collect everything that comes before the
@@ -208,9 +213,10 @@ function* parseDemoSteps(bytes, deep){
     protocol: 0, snapshots: 0, frames: 0, gamestates: 0, cleanEof: false, truncated: false,
     commands: [], configstrings: new Map(), players: new Map(), povClient: null,
     firstTime: null, lastTime: null, sizeBytes: size,
-    events: [], clientTeams: new Map(), baselines: 0, snapshotErrors: 0
+    events: [], clientTeams: new Map(), baselines: 0, snapshotErrors: 0,
+    viewSamples: [], viewFrames: []
   };
-  let p = 0, ft = 0, snaps = null;
+  let p = 0, ft = 0, snaps = null, lastView = -1e9;
 
   while (p < size) {
     const type = bytes[p++];
@@ -221,6 +227,17 @@ function* parseDemoSteps(bytes, deep){
       if (deep) snaps = new SnapshotReader(out.protocol);
     } else if (type === MSG.frame) {
       if (p + 52 > size) break;
+      if (deep) {
+        // Frame layout: seq, origin[3], velocity[3], movementDir, bobCycle,
+        // commandTime, angles[3] - 52 bytes in total.
+        const ct = dv.getInt32(p + 36, true);
+        const fx = fi(dv.getFloat32(p + 4, true)), fy = fi(dv.getFloat32(p + 8, true));
+        if ((fx || fy) && ct - lastView >= VIEW_STEP_MS) {
+          out.viewFrames.push([ct, fx, fy, fi(dv.getFloat32(p + 12, true)),
+                               fi(dv.getFloat32(p + 44, true))]);
+          lastView = ct;
+        }
+      }
       ft = dv.getInt32(p + 36, true);                 // commandTime
       if (out.firstTime === null || ft < out.firstTime) out.firstTime = ft;
       if (out.lastTime === null || ft > out.lastTime) out.lastTime = ft;
@@ -262,6 +279,7 @@ function* parseDemoSteps(bytes, deep){
     out.clientTeams = snaps.clientTeams;
     out.tracks = snaps.tracks;
     out.missiles = snaps.missiles;
+    out.viewSamples = snaps.viewSamples;
     out.baselines = snaps.baselines.size;
     out.snapshotErrors = snaps.errors;
   }
@@ -895,6 +913,26 @@ function analyze(d){
  * and the player state of the player being followed. Both can deliver the same
  * instant, so they are sorted by time and duplicate timestamps per client are
  * merged. */
+/** Track of the player being followed.
+ *
+ * Prefers the MSG_FRAME records: they carry the position of the recording
+ * player at client frame rate. The player state only delivers that same
+ * position as an occasional server correction - across a match it changes
+ * there only about a hundred times, so the track would be a series of jumps.
+ * Which frame belongs to whom is told by the ClientNum of the player state
+ * sample before it (after your own death that is the spectated team mate). */
+function viewTrack(d){
+  const samples = d.viewSamples || [];
+  if (!d.viewFrames || !d.viewFrames.length || !samples.length) return samples;
+  const out = [];
+  let i = 0;
+  for (const [t, x, y, z, yaw] of d.viewFrames) {
+    while (i + 1 < samples.length && samples[i + 1][0] <= t) i++;
+    out.push([t, samples[i][1], x, y, z, yaw, samples[i][6]]);
+  }
+  return out;
+}
+
 function buildMap(d, t0){
   const raw = d.configstrings.get(CS_COMPASS) || "";
   const parts = raw.replace(/"/g, " ").split(/\s+/).filter(Boolean);
@@ -903,10 +941,19 @@ function buildMap(d, t0){
     const b = parts.slice(1, 5).map(Number);
     if (b.every(v => Number.isFinite(v))) bounds = b;
   }
+  // The view of the recording player comes from the frames, not from the player
+  // state - there it is only an occasional correction.
+  const merged = new Map();
+  for (const [c, v] of (d.tracks || new Map())) merged.set(c, v.slice());
+  for (const [t, client, x, y, z, yaw, weapon] of viewTrack(d)) {
+    let tr = merged.get(client);
+    if (!tr) { tr = []; merged.set(client, tr); }
+    tr.push([t, x, y, z, yaw, weapon]);
+  }
   const tracks = {};
-  for (const client of [...(d.tracks ? d.tracks.keys() : [])].sort((a, b) => a - b)) {
+  for (const client of [...merged.keys()].sort((a, b) => a - b)) {
     if (!(client >= 0 && client < 64)) continue;
-    const pts = d.tracks.get(client).slice().sort((a, b) => a[0] - b[0]);
+    const pts = merged.get(client).slice().sort((a, b) => a[0] - b[0]);
     const out = [];
     let lastT = null;
     for (const [t, x, y, z, yaw, weapon] of pts) {

@@ -213,6 +213,12 @@ function SnapshotReader(protocol){
   // "weaponId:launchTime" -> [[serverTime, x, y, z, vx, vy, vz, trTime, ground]]
   // Flight paths of the throws, with the trajectory parameters of the last state.
   this.missiles = new Map();
+  // [[serverTime, clientIndex, x, y, z, yaw, weaponId]] - the player being
+  // followed, from the player state. Deliberately kept apart from tracks: for
+  // your own player the client predicts the movement and the server only
+  // corrects it now and then, so the track would be a series of jumps. The
+  // MSG_FRAME records carry it cleanly; ClientNum here says whose it is.
+  this.viewSamples = [];
   this.errors = 0;
 }
 
@@ -579,10 +585,8 @@ SnapshotReader.prototype.readDeltaPlayerState = function(m, time, frm){
   // team mate currently being spectated).
   const px = u2f(to[PS_POS[0]]) | 0, py = u2f(to[PS_POS[1]]) | 0;
   if (px || py) {
-    const cn = to[PS_CLIENTNUM];
-    let tr = this.tracks.get(cn);
-    if (!tr) { tr = []; this.tracks.set(cn, tr); }
-    tr.push([time, px, py, u2f(to[PS_POS[2]]) | 0, u2f(to[PS_YAW]) | 0, to[PS_WEAPON]]);
+    this.viewSamples.push([time, to[PS_CLIENTNUM], px, py,
+                           u2f(to[PS_POS[2]]) | 0, u2f(to[PS_YAW]) | 0, to[PS_WEAPON]]);
   }
   return to;
 };
