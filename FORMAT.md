@@ -2,7 +2,7 @@
 
 How the container is built, how the snapshots are decoded, and what each of that
 was verified against. For getting started see [README.md](README.md), for the
-data that can be read out see [DATEN.md](DATEN.md).
+data that can be read out see [DATA.md](DATA.md).
 
 ## File format (verified against these demos)
 
@@ -58,14 +58,18 @@ strings with a control character `0x15` - removed before display.
 
 ## Verification
 
-Perl, JavaScript and Python were checked independently against the same demo:
+Python and JavaScript are independent implementations of the same logic and are
+checked against each other:
 
 * Huffman tree: 513 nodes, maximum code length 11 bits, SHA-256 of the structure
-  identical in all three implementations (`920d1ece...`, see `dm1.py --selftest`).
-* `commands.tsv` (1562 commands) and `configstrings.tsv` (595 entries) are byte
-  for byte identical between Perl and Python.
-* Match analysis identical: 10 players, 15 rounds, ALPHA 13:2 RL (11+2 / 1+1),
-  the same K/D/assists/score, the same chat.
+  identical in both (`920d1ece...`, see `dm1.py --selftest`).
+* For the same file both produce the same analysis field for field - teams,
+  players, rounds, kills, chat, events, movement tracks and grenades.
+
+A third implementation in Perl was used early on to arrive at the container
+format and confirmed the same command and config string dumps byte for byte. It
+has served its purpose and is no longer part of the project; the cross-check now
+runs between Python and JavaScript.
 
 ## Kill feed
 
@@ -78,7 +82,7 @@ snapshot by snapshot, or the bit stream goes out of step.
 `eventParm` is the weapon id; the names are in config string 2258 (1-based).
 Values from 128 on are not a weapon but `128 + means-of-death`: `135` = knife,
 `136` = headshot, `139` = fall damage, `140` = suicide or a death caused by the
-world. The full table is derived in [DATEN.md](DATEN.md).
+world. The full table is derived in [DATA.md](DATA.md).
 
 Temp entities can be re-transmitted across several snapshots, so the same pairing
 within 2 seconds is only counted once.
@@ -87,7 +91,7 @@ within 2 seconds is only counted once.
 
 Demos checked: all eleven in `demos/` - Backlot, Strike and Cluster recordings
 between 4 and 23 rounds, including ones with substitutions. All of them run
-through without a sync error, and `tools/py/verify_all.py` reports every one of
+through without a sync error, and `source/py/verify_all.py` reports every one of
 them as complete and consistent.
 
 * **Bit stream:** all 310,896 snapshots run through without a single sync error -
@@ -166,6 +170,6 @@ all eleven.
 
 HUD elements and objectives are decoded because the bit stream requires it, but
 they are not evaluated. The same used to apply to positions - those are now used
-for the map view, see [DATEN.md](DATEN.md).
+for the map view, see [DATA.md](DATA.md).
 
 Format reference: <https://github.com/Iswenzz/CoD4-DM1>

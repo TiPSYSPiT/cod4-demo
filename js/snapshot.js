@@ -7,7 +7,7 @@
  * entity of every snapshot has to be read, or everything after it shifts. The
  * code therefore follows the reference implementation line for line
  * (https://github.com/Iswenzz/CoD4-DM1, Demo.cpp / Msg.cpp) and is checked
- * against the Python version in tools/py/snapshot.py.
+ * against the Python version in source/py/snapshot.py.
  *
  * Values are kept as raw 32-bit patterns - exactly like the original, which
  * reinterprets between float and uint32.

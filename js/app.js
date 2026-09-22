@@ -555,7 +555,7 @@ const FLOOR_NOTE_DERIVED = "No image for this map - the floor plan is built from
 const CELL = 48;
 /** Computed once per map - the floor plan depends only on the positions. */
 const FLOOR_CACHE = new Map();
-/** Drawn floor plans per map under web/maps/. If there is none for a map, the
+/** Drawn floor plans per map under source/maps/. If there is none for a map, the
  *  floor plan is built from the positions as before. */
 const MAP_IMAGE_DIR = "maps/";
 const MAP_IMAGES = new Map();

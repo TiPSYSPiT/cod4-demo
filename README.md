@@ -8,7 +8,7 @@ Two ways in, same analysis:
 
 * **In the browser** - drop a demo onto the page, that is it. The file never
   leaves your machine; everything runs locally.
-* **On the command line** - `py tools/py/dm1.py DEMO` prints a text report,
+* **On the command line** - `py source/py/dm1.py DEMO` prints a text report,
   `--json` writes the full data.
 
 Both are independent implementations of the same logic and are checked against
@@ -49,7 +49,7 @@ not exactly in the data stream are marked.
 ### Map
 
 The map as a floor plan, playable along a timeline. If an image for the map sits
-under `web/maps/`, it is used and placed exactly onto the world rectangle;
+under `source/maps/`, it is used and placed exactly onto the world rectangle;
 otherwise the display builds the floor plan from the positions itself - cells
 nobody ever entered become wall.
 
@@ -99,7 +99,7 @@ plus the analysis as JSON to copy.
 ## Command line
 
 ```bash
-py tools/py/dm1.py demos/example.dm_1
+py source/py/dm1.py demos/example.dm_1
 ```
 
 | Option | Effect |
@@ -110,27 +110,38 @@ py tools/py/dm1.py demos/example.dm_1
 | `--raw DIR` | config strings and commands as TSV |
 | `--selftest` | check the Huffman table against its fingerprint |
 
+## Layout
+
+| Path | Contents |
+|---|---|
+| `source/index.html`, `source/css/`, `source/js/` | the web interface, no third-party libraries |
+| `source/maps/` | floor plan images, one per map |
+| `source/py/` | the Python parser and the tools around it |
+| `demos/` | the demos to look at |
+| `dist/` | the bundled single file |
+| `analysis/` | verification reports |
+
 ## Tools
 
 | File | Purpose |
 |---|---|
-| `tools/py/dm1.py` | parser and command line, standard library only |
-| `tools/py/snapshot.py` | snapshot decoding: delta entities, player state, client state |
-| `tools/py/netfields.py` | field tables, generated from the reference |
-| `tools/py/gen_netfields.py` | generates `netfields.py` and `web/js/netfields.js` |
-| `tools/py/check.py` | check a single demo for consistency |
-| `tools/py/verify_all.py` | check a whole folder |
-| `tools/py/inventory.py` | what is in the data stream, and what of it gets read |
-| `tools/py/build_single.py` | bundle `web/` into one HTML file |
-| `tools/*.pl` | older Perl version, kept as an independent reference |
+| `source/py/dm1.py` | parser and command line, standard library only |
+| `source/py/snapshot.py` | snapshot decoding: delta entities, player state, client state |
+| `source/py/netfields.py` | field tables, generated from the reference |
+| `source/py/gen_netfields.py` | generates `netfields.py` and `source/js/netfields.js` |
+| `source/py/check.py` | check a single demo for consistency |
+| `source/py/verify_all.py` | check a whole folder |
+| `source/py/inventory.py` | what is in the data stream, and what of it gets read |
+| `source/py/build_single.py` | bundle `source/` into one HTML file |
 
-The web interface lives under `web/` and uses no third-party libraries.
-`py tools/py/build_single.py` turns it into a single file under `dist/`.
+`py source/py/build_single.py` bundles the interface into a single file under
+`dist/`. The map images are not included there; put a `maps/` folder next to the
+file if you want them.
 
 ## Checking
 
 ```bash
-py tools/py/verify_all.py demos
+py source/py/verify_all.py demos
 ```
 
 Three levels: does the Huffman stream run cleanly to the end of the file, are
@@ -140,7 +151,7 @@ completely different parts of the file.
 
 ## Further reading
 
-* [DATEN.md](DATEN.md) - what can be read out of a demo, what is in there but
+* [DATA.md](DATA.md) - what can be read out of a demo, what is in there but
   goes unused, and what is not in the file at all
 * [FORMAT.md](FORMAT.md) - container, Huffman, snapshots, and how each of those
   was verified
@@ -151,5 +162,5 @@ GPL-3.0, see [LICENSE](LICENSE). The snapshot decoding follows the reference
 implementation [Iswenzz/CoD4-DM1](https://github.com/Iswenzz/CoD4-DM1), which is
 under the same licence.
 
-The map images under `web/maps/` are not part of this project and remain under
+The map images under `source/maps/` are not part of this project and remain under
 the terms of their respective authors.
