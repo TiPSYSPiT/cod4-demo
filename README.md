@@ -83,6 +83,15 @@ A click on a kill or bomb event in *Round by Round* or *Events* opens the map
 * **Event list** on the right: kills and bomb events of the range; click jumps
   2 s before, the current event is highlighted and followed.
 
+### Download score (JSON)
+
+The button above the scoreboard saves `<demo>.scoreboard.json`: per team the
+clan / team name, `roundsWon`, the players sorted by score (`name`, `score`,
+`kills`, `assists`, `deaths`, `kd`, `tk`, `hsPercent`, `plants`, `defuses`,
+`pov: true` for the recording player) and `teamTotal`. Values as in the
+table; `kd` rounded to 2 decimals, `hsPercent` to whole percent (`null`
+without kills). Spectators are not included.
+
 ### Export JSON
 
 Downloads `DemoData` (everything the UI shows). Tick *with positions* to

@@ -207,17 +207,22 @@
     const checkboxes = new Map();
     const refreshChecks = () => { for (const [cl, cb] of checkboxes) cb.checked = S.selected.has(cl); S.heatKey = null; S.pb.invalidate(); };
     const groups = [...d.teams.map(t => t.key), 'spectator'];
+    // one column per team (side by side, see .player-list in styles.css); spectators span the full width
     for (const key of groups) {
       const ps = d.players.filter(p => p.team === key && d.positions[p.client]);
       if (!ps.length) continue;
-      plist.append(el('div', { class: 'muted', style: { marginTop: '4px', fontSize: '12px' } },
-        el('span', { class: C4.ui.teamClass(key), style: { fontWeight: 700 } }, app.teamName(key)),
-        el('span', { class: 'team-toggle', onclick: () => { const all = ps.every(p => S.selected.has(p.client)); for (const p of ps) { if (all) S.selected.delete(p.client); else S.selected.add(p.client); } refreshChecks(); } }, 'toggle')));
+      const col = el('div', { class: 'player-col' + (key === 'spectator' ? ' spec' : '') },
+        el('div', { class: 'player-col-head' },
+          el('span', { class: 'pname ' + C4.ui.teamClass(key), title: app.teamName(key) }, app.teamName(key)),
+          el('span', { class: 'team-toggle', onclick: () => { const all = ps.every(p => S.selected.has(p.client)); for (const p of ps) { if (all) S.selected.delete(p.client); else S.selected.add(p.client); } refreshChecks(); } }, 'toggle')));
       for (const p of ps) {
         const cb = el('input', { type: 'checkbox', checked: S.selected.has(p.client) || null, onchange: e => { if (e.target.checked) S.selected.add(p.client); else S.selected.delete(p.client); S.heatKey = null; S.pb.invalidate(); } });
         checkboxes.set(p.client, cb);
-        plist.append(el('label', { class: 'player-row' }, cb, el('span', { class: 'swatch', style: { background: S.colors.get(p.client) } }), app.playerNode(p.client)));
+        // long names are cut with an ellipsis; the full name is the tooltip
+        col.append(el('label', { class: 'player-row', title: p.cleanName }, cb, el('span', { class: 'swatch', style: { background: S.colors.get(p.client) } }),
+          el('span', { class: 'pname' }, app.playerNode(p.client))));
       }
+      plist.append(col);
     }
     const playersPanel = el('div', { class: 'map-panel' },
       el('h3', null, 'Players', el('span', null,

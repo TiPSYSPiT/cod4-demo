@@ -33,6 +33,15 @@
       const t = app.team(key);
       return t ? t.name : key;
     },
+    /** demo file name without .dm_1 (for download names) */
+    get fileBase() { return ((state.fileInfo && state.fileInfo.name) || 'demo').replace(/\.dm_1$/i, ''); },
+    /** save text as a file (Blob URL - works from file:// too) */
+    download(fileName, text, type = 'application/json') {
+      const a = el('a', { href: URL.createObjectURL(new Blob([text], { type })), download: fileName });
+      document.body.append(a);
+      a.click();
+      setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+    },
     /** switch to the map tab and jump to 2 s before t */
     gotoMap(t, roundIndex) {
       showTab('map');
@@ -168,11 +177,7 @@
     } else {
       out.positions = '(omitted - tick "with positions" to include them)';
     }
-    const blob = new Blob([JSON.stringify(out, null, withPos ? 0 : 1)], { type: 'application/json' });
-    const a = el('a', { href: URL.createObjectURL(blob), download: (state.fileInfo.name || 'demo').replace(/\.dm_1$/i, '') + (withPos ? '.full' : '') + '.json' });
-    document.body.append(a);
-    a.click();
-    setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+    app.download(app.fileBase + (withPos ? '.full' : '') + '.json', JSON.stringify(out, null, withPos ? 0 : 1));
   }
 
   /* ---- wiring ---- */

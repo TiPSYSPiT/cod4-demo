@@ -126,6 +126,8 @@ table.data tr.team-head.a td { color: var(--team-a); box-shadow: inset 3px 0 0 v
 table.data tr.team-head.b td { color: var(--team-b); box-shadow: inset 3px 0 0 var(--team-b); }
 table.data tr.team-head.spec td { color: var(--spec); }
 table.data tr.total td { font-weight: 700; background: rgba(255,255,255,.02); border-bottom: 2px solid var(--line-2); }
+/* scoreboard: visible gap between the teams (the total row stays above it, with its team) */
+table.data.scoreboard tbody tr.team-head ~ tr.team-head td { border-top: 14px solid var(--bg); }
 table.data tr.pov td:first-child { box-shadow: inset 3px 0 0 var(--accent); }
 table.data tr.clickable { cursor: pointer; }
 
@@ -232,14 +234,22 @@ table.kpr td.multi5 { outline-color: #ff4a4a; }
   font-size: 12px; padding: 4px 8px; border-radius: 6px; pointer-events: none; max-width: 70%; }
 .map-clock { position: absolute; right: 10px; top: 10px; background: rgba(11,14,18,.8); border: 1px solid var(--line); padding: 4px 10px;
   border-radius: 6px; font-family: var(--mono); font-size: 13px; pointer-events: none; }
-.map-side { display: flex; flex-direction: column; gap: 10px; height: calc(100vh - 430px); min-height: 400px; overflow: hidden; }
+.map-side { display: flex; flex-direction: column; gap: 10px; height: calc(100vh - 430px); min-height: 400px; overflow: hidden; container: map-side / inline-size; }
 .map-panel { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 8px 10px; }
 .map-panel h3 { margin: 0 0 6px; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); display: flex; justify-content: space-between; align-items: center; }
-.player-list { max-height: 26vh; overflow: auto; }
-.player-row { display: flex; align-items: center; gap: 7px; padding: 2px 2px; font-size: 13px; cursor: pointer; }
-.player-row input { margin: 0; accent-color: var(--accent); }
+/* player selection: the two teams side by side; one under the other when the sidebar itself is too narrow
+   (container query on .map-side - the page keeps min-width 1280 px, so the window width alone says nothing) */
+.player-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px 12px; max-height: 26vh; overflow-x: hidden; overflow-y: auto; }
+.player-col { min-width: 0; }
+.player-col.spec { grid-column: 1 / -1; }
+.player-col-head { display: flex; align-items: baseline; margin-top: 4px; font-size: 12px; font-weight: 700; min-width: 0; }
+.player-row { display: flex; align-items: center; gap: 7px; padding: 2px 2px; font-size: 13px; cursor: pointer; min-width: 0; }
+.player-row input { margin: 0; accent-color: var(--accent); flex: none; }
+.pname { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.player-row .pname { flex: 1; }
+@container map-side (max-width: 340px) { .player-list { grid-template-columns: minmax(0, 1fr); } }
 .player-row .swatch { width: 10px; height: 10px; border-radius: 50%; flex: none; }
-.team-toggle { font-size: 11.5px; cursor: pointer; color: var(--muted); margin-left: 6px; text-decoration: underline; }
+.team-toggle { font-size: 11.5px; font-weight: 400; cursor: pointer; color: var(--muted); margin-left: 6px; text-decoration: underline; flex: none; }
 .map-events { flex: 1; overflow: auto; min-height: 0; }
 .map-ev { padding: 4px 6px; border-radius: 5px; cursor: pointer; font-size: 12.5px; display: flex; gap: 8px; }
 .map-ev:hover { background: rgba(255,255,255,.04); }
