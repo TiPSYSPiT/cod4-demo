@@ -85,7 +85,15 @@ A click on a kill or bomb event in *Round by Round* or *Events* opens the map
 
 ### Download score (JSON)
 
-The button above the scoreboard saves `<demo>.scoreboard.json`: per team the
+The button above the scoreboard saves `<demo>.scoreboard.json`. Top level:
+`map` (raw name, e.g. `mp_strike`), `recordDate` (`YYYYMMDDHHMMSS`) with
+`recordDateSource` (`g_mapStartTime` = map start on the server, or `file date`
+- the demo stores no recording date), `halves` (per half `half` number,
+`score` "3:9", `rounds` [3, 9] in the order of `teams`, `complete`: false if
+the half started before the recording). A recording that starts mid-match adds
+`recordingStartedAt` ("9:7") and `halfNumberSource`: the half number then comes
+from the ruleset (MR12 = 12 rounds per half, OT3) and the start score (≈).
+Then per team the
 clan / team name, `roundsWon`, the players sorted by score (`name`, `score`,
 `kills`, `assists`, `deaths`, `kd`, `tk`, `hsPercent`, `plants`, `defuses`,
 `pov: true` for the recording player) and `teamTotal`. Values as in the

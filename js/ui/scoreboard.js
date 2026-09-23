@@ -16,8 +16,33 @@
       tk: sum('teamkills'), hsPercent: ownK ? HS / ownK * 100 : null, plants: sum('plants'), defuses: sum('defuses') };
   }
 
-  /** the scoreboard as plain JSON: teams (in table order), players by score, team totals */
+  /** the scoreboard as plain JSON: map, record date, half scores, then teams (in table order),
+   * players by score, team totals */
   function scoreJson(d) {
+    const m = d.meta;
+    const shown = d.teams.filter(t => d.players.some(p => p.team === t.key));
+    // half scores in the order of "teams"; only halves in the recording. complete: false = the half
+    // started before the recording (its earlier rounds are missing); half: null = number unknown
+    const hi = d.halfInfo;
+    const n = Math.max(0, ...shown.map(t => t.halves.length));
+    const halves = [];
+    for (let i = 0; i < n; i++) {
+      if (shown.every(t => t.halves[i] == null)) continue;
+      const rounds = shown.map(t => t.halves[i] || 0);
+      halves.push({ half: hi.unknown ? null : i + 1, score: rounds.join(':'), rounds, complete: !(hi.firstPartial && !halves.length) });
+    }
+    const head = {
+      map: m.map || null,
+      // YYYYMMDDHHMMSS; the demo stores no recording date: map start time on the server, else the file date
+      recordDate: m.recordDate ? m.recordDate.stamp : null,
+      recordDateSource: m.recordDate ? (m.recordDate.fileDate ? 'file date' : 'g_mapStartTime') : null,
+      halves
+    };
+    const initial = d.initialScore.A + d.initialScore.B;
+    if (initial) {
+      head.recordingStartedAt = shown.map(t => d.initialScore[t.key]).join(':');
+      if (hi.heuristic) head.halfNumberSource = 'ruleset (MR/OT) and the score at the start of the recording';
+    }
     const teams = [];
     for (const t of d.teams) {
       const rows = d.players.filter(p => p.team === t.key);
@@ -41,7 +66,7 @@
         teamTotal: Object.assign(tot, { kd: round2(tot.kd), hsPercent: tot.hsPercent == null ? null : Math.round(tot.hsPercent) })
       });
     }
-    return { teams };
+    return Object.assign(head, { teams });
   }
 
   function render(root, app) {

@@ -24,6 +24,20 @@ C4.define('build', function (C4) {
     return i >= 2442 ? 'extended' : 'other';
   }
 
+  const pad2 = n => String(n).padStart(2, '0');
+  /** "Sun Aug 30 18:22:12 2026" (ctime, server local time) -> "20260830182212"; null if not in that form.
+   * Parsed by hand: Date() would apply the browser's time zone. */
+  function ctimeStamp(text) {
+    const MONTHS = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+    const m = /^\s*\w{3}\s+(\w{3})\s+(\d{1,2})\s+(\d{1,2}):(\d{2}):(\d{2})\s+(\d{4})\s*$/.exec(String(text));
+    const mon = m ? MONTHS.indexOf(m[1].toLowerCase()) : -1;
+    return mon < 0 ? null : m[6] + pad2(mon + 1) + pad2(m[2]) + pad2(m[3]) + m[4] + m[5];
+  }
+  /** Date -> "YYYYMMDDHHMMSS" in local time */
+  function localStamp(dt) {
+    return dt.getFullYear() + pad2(dt.getMonth() + 1) + pad2(dt.getDate()) + pad2(dt.getHours()) + pad2(dt.getMinutes()) + pad2(dt.getSeconds());
+  }
+
   function protocolLabel(p) {
     if (p === 1) return 'Stock CoD4';
     if (p <= 17) return 'CoD4X ' + p + ' (legacy position encoding)';
@@ -162,6 +176,29 @@ C4.define('build', function (C4) {
       warnings.push('The recording starts in the middle of the match at ' + R.initialScore.A + ':' + R.initialScore.B +
         ' - the first ' + (R.initialScore.A + R.initialScore.B) + ' rounds are not in the demo.');
     }
+    // Half numbers of a recording that starts mid-match: halftimes before the recording are not in the
+    // demo. Derived from the Promod ruleset ("MR12" = 12 rounds per half, "OT3" = 3 per overtime half)
+    // and the score at the start (heuristic). The half the recording starts in is incomplete unless the
+    // recording starts exactly at a half boundary.
+    const halfInfo = { offset: 0, heuristic: false, firstPartial: false, unknown: false };
+    const playedBefore = R.initialScore.A + R.initialScore.B;
+    const firstMatchRound = rounds.find(r => r.kind === 'round');
+    if (playedBefore > 0 && firstMatchRound) {
+      const mr = Number((/\bMR(\d+)/i.exec(rulesetHud || '') || [])[1]) || 0;
+      const ot = Number((/\bOT(\d+)/i.exec(rulesetHud || '') || [])[1]) || 0;
+      let off = null, boundary = false;
+      if (mr && playedBefore < 2 * mr) { off = Math.floor(playedBefore / mr); boundary = playedBefore % mr === 0; }
+      else if (mr && ot) { off = 2 + Math.floor((playedBefore - 2 * mr) / ot); boundary = (playedBefore - 2 * mr) % ot === 0; }
+      if (off == null) { halfInfo.unknown = true; halfInfo.firstPartial = true; }
+      else {
+        // a halftime already recorded before the first round is counted by the round analysis
+        off -= R.halftimes.filter(h => h < firstMatchRound.segStart + 1).length;
+        halfInfo.offset = Math.max(0, off);
+        halfInfo.heuristic = true;
+        halfInfo.firstPartial = !boundary;
+      }
+      for (const r of rounds) r.half += halfInfo.offset;
+    }
 
     // players: the game's scoreboard (b) first.
     // Scoreboards reset to zero after the last round (map restart after the match) are ignored.
@@ -293,7 +330,7 @@ C4.define('build', function (C4) {
         if (r.kind !== 'round') continue;
         halves[r.half - 1] = (halves[r.half - 1] || 0) + (r.winnerTeam === t.key ? 1 : 0);
       }
-      t.halves = Array.from(halves, v => v || 0);
+      t.halves = Array.from(halves, v => v == null ? null : v);   // null = half not in the recording
     }
 
     // cross-check the final score with the team scores the server sent at the last round win
@@ -350,9 +387,11 @@ C4.define('build', function (C4) {
 
     const mapRaw = serverinfo.mapname || '';
     const recordDate = serverinfo.g_mapStartTime
-      ? { text: serverinfo.g_mapStartTime, source: 'map start time on the server (g_mapStartTime)', heuristic: true }
+      ? { text: serverinfo.g_mapStartTime, source: 'map start time on the server (g_mapStartTime)', heuristic: true,
+          stamp: ctimeStamp(serverinfo.g_mapStartTime) }
       : fileInfo.lastModified
-        ? { text: new Date(fileInfo.lastModified).toLocaleString('en-GB'), source: 'file date', heuristic: true, fileDate: true }
+        ? { text: new Date(fileInfo.lastModified).toLocaleString('en-GB'), source: 'file date', heuristic: true, fileDate: true,
+            stamp: localStamp(new Date(fileInfo.lastModified)) }
         : null;
 
     const meta = {
@@ -380,7 +419,7 @@ C4.define('build', function (C4) {
     return {
       format: 'cod4-demo-viewer/1',
       meta, serverinfo, systeminfo, warnings, diagnostics,
-      teams: teamList, players, rounds, initialScore: R.initialScore, halftimes: R.halftimes, swaps: teams.swaps,
+      teams: teamList, players, rounds, initialScore: R.initialScore, halfInfo, halftimes: R.halftimes, swaps: teams.swaps,
       kills, events, chat, console: consoleLines,
       eventTypes: C4.events.EVENT_TYPES,
       positions, grenades

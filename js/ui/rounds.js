@@ -42,11 +42,12 @@
       el('span', { class: 'spacer' }),
       el('span', { class: 'muted' }, 'Click a kill or bomb event to open it on the map (2 s before).'));
     const list = el('div', { class: 'rounds' });
-    let lastHalf = 1;
+    // a recording that starts mid-match begins in a later half (d.halfInfo.offset halves not recorded)
+    let lastHalf = d.rounds.length ? d.rounds[0].half : 1;
     const halftimes = d.halftimes;
     d.rounds.forEach((r, i) => {
       if (r.half > lastHalf) {
-        const ht = halftimes[r.half - 2];
+        const ht = halftimes[r.half - 2 - d.halfInfo.offset];
         list.append(el('div', { class: 'halftime' }, 'Halftime — teams switch sides' + (ht != null ? '  (' + fmtTime(ht) + ')' : '')));
         lastHalf = r.half;
       }
@@ -59,7 +60,7 @@
     const d = app.data;
     const winner = r.winnerTeam ? app.team(r.winnerTeam) : null;
     const title = r.kind === 'knife' ? 'Knife' : r.kind === 'prematch' ? 'Pre' : 'R' + r.label;
-    const sub = r.kind === 'knife' ? 'knife round' : r.kind === 'prematch' ? 'before the match' : 'half ' + r.half;
+    const sub = r.kind === 'knife' ? 'knife round' : r.kind === 'prematch' ? 'before the match' : d.halfInfo.unknown ? 'half ?' : 'half ' + r.half;
     const reason = r.reason ? [r.reason, r.reasonHeuristic ? approx(r.reasonSource) : null]
       : na(r.complete ? 'no reason detected' : (r.startedBeforeRecording ? 'round incomplete in the demo' : 'the demo ends before the round is decided'));
     const head = el('div', { class: 'round-head' },

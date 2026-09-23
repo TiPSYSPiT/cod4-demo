@@ -22,15 +22,22 @@
       const teamLabel = (t, cls) => el('div', { class: 'score-team ' + cls, title: t.nameHeuristic ? '' : 'no common clan tag found' },
         t.name, t.nameHeuristic ? approx('team name from the common name prefix of the players') : null);
       const halves = [];
+      const hi = d.halfInfo;
       const n = Math.max(A.halves.length, B.halves.length);
-      for (let i = 0; i < n; i++) halves.push((i === 0 ? '1st' : i === 1 ? '2nd' : (i + 1) + 'th') + ' half ' + (A.halves[i] || 0) + ':' + (B.halves[i] || 0));
+      const first = A.halves.findIndex((v, i) => v != null || B.halves[i] != null);
+      for (let i = Math.max(0, first); i < n; i++) {
+        const label = hi.unknown ? 'half ?' : (i === 0 ? '1st' : i === 1 ? '2nd' : i === 2 ? '3rd' : (i + 1) + 'th') + ' half';
+        const partial = i === first && hi.firstPartial;
+        halves.push([label + ' ' + (A.halves[i] || 0) + ':' + (B.halves[i] || 0),
+          partial ? [' ', approx('this half started before the recording - only its recorded rounds' + (hi.heuristic ? '; half number from the ruleset (MR/OT) and the start score' : ''))] : null]);
+      }
       const initial = d.initialScore.A + d.initialScore.B;
       scoreCard = el('div', { class: 'ov-card ov-score' },
         el('div', { class: 'ov-label' }, 'Final score' + (m.isSearchAndDestroy ? ' (rounds won)' : '')),
         el('div', { class: 'score-line' }, teamLabel(A, 'a'),
           el('div', { class: 'score-num' }, el('span', { class: 'team-a' }, A.wins), el('span', { class: 'sep' }, ':'), el('span', { class: 'team-b' }, B.wins)),
           teamLabel(B, 'b')),
-        el('div', { class: 'score-halves' }, halves.join('  ·  ') + (initial ? '  ·  recording started at ' + d.initialScore.A + ':' + d.initialScore.B : '')));
+        el('div', { class: 'score-halves' }, halves.map((h, i) => [i ? '  ·  ' : '', h]), initial ? '  ·  recording started at ' + d.initialScore.A + ':' + d.initialScore.B : ''));
     } else {
       scoreCard = el('div', { class: 'ov-card ov-score' }, el('div', { class: 'ov-label' }, 'Final score'),
         el('div', { class: 'ov-value' }, na(m.isSearchAndDestroy ? 'no complete round in the demo' : 'no rounds detected - round logic is built for Search & Destroy')));
