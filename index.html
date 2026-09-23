@@ -1,41 +1,102 @@
-<meta charset="utf-8">
-<title>CoD4 Demo Inspector</title>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Saira+Condensed:wght@500;600;700&display=swap">
-<link rel="stylesheet" href="css/style.css">
-
-<div class="wrap">
-  <header>
-    <a class="ghlink" href="https://github.com/TiPSYSPiT/cod4-demo" target="_blank"
-       rel="noopener" title="Project page on GitHub" aria-label="Project page on GitHub">
-      <svg viewBox="0 0 16 16" width="22" height="22" aria-hidden="true" focusable="false">
-        <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .271.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/>
-      </svg>
-    </a>
-    <p class="eyebrow">.dm_1 &middot; Call of Duty 4 / CoD4X</p>
-    <h1>CoD4 Demo Inspector</h1>
-    <p class="lede">Drop in a demo and it is decoded in your browser. You get teams, player stats, a round-by-round breakdown and the chat log.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CoD4 Demo Viewer</title>
+  <meta name="description" content="Call of Duty 4 demo (.dm_1) viewer - parses the demo locally in the browser.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">CoD4</span> Demo Viewer</div>
+    <div class="file-actions">
+      <span id="file-name" class="file-name"></span>
+      <label class="btn" title="Open a .dm_1 demo">
+        <input type="file" id="file-input" accept=".dm_1,.DM_1" hidden>Open demo
+      </label>
+      <div class="export" id="export-wrap" hidden>
+        <button class="btn" id="export-btn" title="Download DemoData as JSON">Export JSON</button>
+        <label class="export-opt" title="Include the large per-player position arrays"><input type="checkbox" id="export-positions"> with positions</label>
+      </div>
+    </div>
   </header>
 
-  <div class="drop" id="drop">
-    <div class="txt">
-      <b>Drop a demo here</b> &ndash; or
-      <button class="btn ghost" id="pick" type="button">choose a file</button>
-      <div class="hint">Client demo from <span class="mono">main/demos</span> or <span class="mono">mods/&lt;mod&gt;/demos</span>, e.g. <span class="mono">demo0025.dm_1</span></div>
-    </div>
-    <input type="file" id="file" accept=".dm_1" hidden>
-  </div>
+  <main id="app">
+    <section id="dropzone" class="dropzone">
+      <div class="dropzone-inner">
+        <div class="drop-icon" aria-hidden="true"></div>
+        <h1>Drop a CoD4 demo here</h1>
+        <p>or <label class="link">choose a file<input type="file" id="file-input-2" accept=".dm_1,.DM_1" hidden></label> (<code>.dm_1</code>, stock CoD4 or CoD4X)</p>
+        <p class="muted">The file is read locally in your browser. Nothing is uploaded.</p>
+      </div>
+    </section>
 
-  <div id="prog" hidden>
-    <progress id="pbar" max="100" value="0"></progress>
-    <div class="status" id="pmsg"></div>
-  </div>
-  <p class="err" id="error" hidden></p>
+    <section id="progress" class="progress" hidden>
+      <div class="progress-label" id="progress-label">Parsing…</div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    </section>
 
-  <div id="out"></div>
-</div>
+    <section id="error" class="banner banner-error" hidden></section>
+    <section id="warnings" class="banners"></section>
 
-<script src="js/netfields.js"></script>
-<script src="js/snapshot.js"></script>
-<script src="js/dm1.js"></script>
-<script src="js/app.js"></script>
+    <section id="viewer" hidden>
+      <div id="overview" class="overview"></div>
+      <nav class="tabs" id="tabs" role="tablist">
+        <button role="tab" data-tab="scoreboard" class="active">Scoreboard</button>
+        <button role="tab" data-tab="rounds">Round by Round</button>
+        <button role="tab" data-tab="kpr">Kills per Round</button>
+        <button role="tab" data-tab="chat">Chat</button>
+        <button role="tab" data-tab="console">Console</button>
+        <button role="tab" data-tab="events">Events</button>
+        <button role="tab" data-tab="map">Map</button>
+      </nav>
+      <div class="tab-panels">
+        <section class="tab-panel active" id="tab-scoreboard"></section>
+        <section class="tab-panel" id="tab-rounds"></section>
+        <section class="tab-panel" id="tab-kpr"></section>
+        <section class="tab-panel" id="tab-chat"></section>
+        <section class="tab-panel" id="tab-console"></section>
+        <section class="tab-panel" id="tab-events"></section>
+        <section class="tab-panel" id="tab-map"></section>
+      </div>
+    </section>
+  </main>
+
+  <!-- parser / analysis (DOM-free, also run inside the worker) -->
+  <script src="js/core/c4.js"></script>
+  <script src="js/parser/tables.js"></script>
+  <script src="js/parser/huffman.js"></script>
+  <script src="js/parser/msg.js"></script>
+  <script src="js/parser/delta.js"></script>
+  <script src="js/parser/demo.js"></script>
+  <script src="js/common/text.js"></script>
+  <script src="js/common/constants.js"></script>
+  <script src="js/common/servercmd.js"></script>
+  <script src="js/common/names.js"></script>
+  <script src="js/analysis/weapons.js"></script>
+  <script src="js/analysis/collect.js"></script>
+  <script src="js/analysis/teams.js"></script>
+  <script src="js/analysis/rounds.js"></script>
+  <script src="js/analysis/events.js"></script>
+  <script src="js/analysis/build.js"></script>
+  <script src="js/analysis/worker.js"></script>
+  <!-- map calibration (JS instead of JSON: fetch() is blocked on file://) -->
+  <script src="assets/maps/maps.js"></script>
+  <!-- user interface -->
+  <script src="js/ui/dom.js"></script>
+  <script src="js/ui/overview.js"></script>
+  <script src="js/ui/scoreboard.js"></script>
+  <script src="js/ui/rounds.js"></script>
+  <script src="js/ui/killsPerRound.js"></script>
+  <script src="js/ui/chat.js"></script>
+  <script src="js/ui/console.js"></script>
+  <script src="js/ui/events.js"></script>
+  <script src="js/ui/map/config.js"></script>
+  <script src="js/ui/map/renderer.js"></script>
+  <script src="js/ui/map/heatmap.js"></script>
+  <script src="js/ui/map/playback.js"></script>
+  <script src="js/ui/map/mapTab.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

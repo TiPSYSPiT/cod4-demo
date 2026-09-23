@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CoD4 Demo Viewer - self test</title>
+  <style>
+    body { background: #111418; color: #d8dde3; font: 13px/1.45 Consolas, monospace; margin: 16px; }
+    h1 { font: 600 18px system-ui, sans-serif; }
+    table { border-collapse: collapse; margin-top: 12px; }
+    td, th { border: 1px solid #2a3038; padding: 3px 7px; text-align: right; }
+    th { background: #1b2027; }
+    td:first-child { text-align: left; }
+    .ok { color: #6fd08c; } .bad { color: #ff7a7a; } .warn { color: #f0c060; }
+    button, input { font: inherit; }
+  </style>
+</head>
+<body>
+  <h1>CoD4 Demo Viewer - parser self test</h1>
+  <p>Runs the complete analysis on demo files and checks: every snapshot decoded, kills per player =
+    scoreboard kills, round wins = final score = server score, events chronological, no NaN / undefined.
+    Choose demo files, or open this page via <code>start.bat</code> with <code>?auto=../../demos/</code>
+    to test a served folder.</p>
+  <input type="file" id="files" accept=".dm_1" multiple>
+  <button id="worker">use worker</button>
+  <div id="status"></div>
+  <table id="out"><thead><tr><th>demo</th><th>MB</th><th>proto</th><th>ms</th><th>snaps</th><th>dropped</th>
+    <th>players</th><th>rounds</th><th>score</th><th>server</th><th>kills</th><th>sb mismatch</th><th>events</th>
+    <th>chat</th><th>grenades</th><th>kill sig</th><th>checks</th></tr></thead><tbody></tbody></table>
+
+  <script src="../js/core/c4.js"></script>
+  <script src="../js/parser/tables.js"></script>
+  <script src="../js/parser/huffman.js"></script>
+  <script src="../js/parser/msg.js"></script>
+  <script src="../js/parser/delta.js"></script>
+  <script src="../js/parser/demo.js"></script>
+  <script src="../js/common/text.js"></script>
+  <script src="../js/common/constants.js"></script>
+  <script src="../js/common/servercmd.js"></script>
+  <script src="../js/common/names.js"></script>
+  <script src="../js/analysis/weapons.js"></script>
+  <script src="../js/analysis/collect.js"></script>
+  <script src="../js/analysis/teams.js"></script>
+  <script src="../js/analysis/rounds.js"></script>
+  <script src="../js/analysis/events.js"></script>
+  <script src="../js/analysis/build.js"></script>
+  <script src="../js/analysis/worker.js"></script>
+  <script src="selftest.js"></script>
+</body>
+</html>

@@ -1,160 +1,189 @@
-# CoD4 Demo Inspector
+# CoD4 Demo Viewer
 
-Reads Call of Duty 4 demos (`.dm_1`) and turns them into a match: teams, player
-stats, a round-by-round breakdown, a kill feed with weapons, the chat log, and a
-playable map with everyone's movement.
+A local web app for Call of Duty 4 (2007) demos (`.dm_1`, stock CoD4 and CoD4X).
+The demo is parsed completely in the browser - nothing is uploaded - and shown in
+a quick overview plus seven tabs: Scoreboard, Round by Round, Kills per Round,
+Chat, Console, Events and a 2D Map replay.
 
-Two ways in, same analysis:
-
-* **In the browser** - drop a demo onto the page, that is it. The file never
-  leaves your machine; everything runs locally.
-* **On the command line** - `py source/py/dm1.py DEMO` prints a text report,
-  `--json` writes the full data.
-
-Both are independent implementations of the same logic and are checked against
-each other: for the same file they have to produce the same result field for
-field.
+Plain HTML, CSS and JavaScript. No framework, no build step, no external library.
 
 ---
 
-## The interface
+## Start
 
-Above every tab sit the final score of both teams with their halves, and a box
-with the map, game mode, ruleset, server, recording point of view, length and
-protocol version.
+**Double-click `index.html`.** That is all - the viewer is built to run from
+`file://` (see "Why classic scripts" below).
 
-### Players
+Alternatively run **`start.bat`**: it starts a local web server on
+<http://127.0.0.1:8080/index.html> (needs Python 3; falls back to opening
+`index.html` directly if Python is missing).
 
-One table per team with team tag, name, score, kills, assists, deaths and K/D,
-with the team totals underneath. The recording player is marked as POV; anyone
-who joined mid-match or left early gets the time next to their name.
+Then drop a `.dm_1` file onto the page or use **Open demo**.
 
-Kills and deaths come from the kill feed, not from the scoreboard - the last
-scoreboard in a demo is often older than the last round.
+Tested with Chromium (Chrome / Edge). Firefox should work (Blob workers and
+canvas are standard); it was not tested.
 
-### Round by round
+---
 
-Every round as a block: number, half, winner, reason (elimination, bomb
-exploded, bomb defused), running score and duration. Inside it, the round as it
-happened - who killed whom with what, headshots and opening kills highlighted,
-plus bomb actions and, where the server reports them, how many players each side
-had left.
+## Using it
 
-### Kills per round
+### Quick overview
 
-A matrix of players against rounds: how many kills each player had in which
-round, with total kills and deaths along the edge. Rounds whose boundaries are
-not exactly in the data stream are marked.
+Final score (rounds won in S&D, per half; "recording started at x:y" when the
+demo begins mid-match), map (raw and display name), mode, ruleset (Promod's
+HUD header, e.g. *Knockout Knife MR12 OT3*, plus the mod folder), protocol,
+server name with colour codes, demo POV, length, record date.
+
+### Tabs
+
+| Tab | What it shows |
+|---|---|
+| **Scoreboard** | Per team (sorted by score, every column sortable), Clan, Player, Score, K, A, D, K/D, team totals, POV badge, "left" badge for players who left early, spectators below. |
+| **Round by Round** | Every round as a card (click to open): winner, reason, duration, score after the round, sides. Halftime divider. Inside: kills (`R7 · 01:23 · Killer → Victim · Weapon`, HS / Teamkill / Suicide / Falling / World / Car explosion) and bomb plant / defuse. |
+| **Kills per Round** | Players × rounds matrix, colour intensity by kills, 3K/4K outlined, 5K red. |
+| **Chat** | Time, round, All/Team badge, player, message; filter All / Team, search. |
+| **Console** | Everything the server sent: prints, game messages, chat, config string and dvar changes, scores, restarts, menu / sound commands, system info. Type chips, search. |
+| **Events** | Player ready, connected, disconnected, joined / left the server, attack / defence eliminated, bomb planted / defused, kills, halftime, timeout (+ optional: joined team, bomb picked up / dropped). Search, type chips with counts, player filter. |
+| **Map** | 2D replay, see below. |
+
+A click on a kill or bomb event in *Round by Round* or *Events* opens the map
+2 seconds before it.
 
 ### Map
 
-The map as a floor plan, playable along a timeline. If an image for the map sits
-under `source/maps/`, it is used and placed exactly onto the world rectangle;
-otherwise the display builds the floor plan from the positions itself - cells
-nobody ever entered become wall.
+* **Range:** whole match or a single round. **Play / Pause**, speeds 0.5×, 1×,
+  2×, 4×, **timeline** with kill markers (colour of the killer's team), bomb
+  plant (yellow) / defuse (green) and round starts.
+* **Strat time / countdown is skipped.** A round starts at its live start
+  (config string 11 set = end of the strat time, 6 s after the restart in every
+  sample round); in the round view the clock and the timeline start there at
+  00:00. *Whole match* jumps over the countdown phases (dark on the timeline)
+  while the clock keeps the real match time; ← / dragging backwards into a
+  countdown lands at the end of the previous round. Knife rounds have no strat
+  time (kills from 0.9 s after the restart), so they start at the restart.
+* **Reset per round:** trails, grenade paths, detonation circles, death markers
+  and last known positions are only drawn for the round containing the current
+  time - when playing, seeking and rewinding. Heatmaps: current round only in
+  the round view, cumulative in *Whole match* (without countdown phases).
+* **Keys:** Space = play / pause, ← / → = ±5 s.
+* **Modes:** *Recent trail* (last 5 s, fading, broken at data gaps > 0.5 s,
+  jumps and new rounds), *Heatmap player* (selected players), *Heatmap team*
+  (two colours) - accumulated over the range up to the current time.
+* **Players:** list grouped by team with All / None / team toggle; fixed colour
+  per player in the team's hue; names on / off; view direction cone; ring =
+  firing; X = death position (5 s); "Last known position" draws players the
+  server stopped sending as hollow dots (same life only).
+* **Grenades:** flight path (from the transmitted trajectory) and detonation:
+  smoke grey and large, frag orange, flash yellow, stun purple. All grenades
+  are shown - the thrower is not in the demo. Smoke: radius 220 units, visible
+  for exactly 10 s from the detonation with a 1 s fade-out (`SMOKE_RADIUS`,
+  `SMOKE_DURATION_MS`, `SMOKE_FADE_MS` in `js/ui/map/config.js`), computed from
+  demo time, so it is correct at every speed and after seeking.
+* **Zoom** with the mouse wheel, **pan** by dragging, double-click resets.
+* **Event list** on the right: kills and bomb events of the range; click jumps
+  2 s before, the current event is highlighted and followed.
 
-* **Timeline** with a round picker or the whole match, playback, and speeds from
-  0.5x to 4x.
-* **Players** as a dot in the team colour with facing, name and the weapon
-  currently held. A hollow marker means the server is not sending them right
-  now, so the spot is the last one known. Whoever is dead disappears.
-* **Overlay** either as a short trail of the last five seconds, as a heatmap of
-  one player or of both teams, or off.
-* **Kills** as a line from killer to victim with the weapon name, and a cross on
-  the victim.
-* **Throws** with their flight path and a marker where they go off - frag, smoke
-  and flash in their own colours. A dashed circle means the impact is computed:
-  the server often stops transmitting the flight path before it lands.
-* **Your own callouts** can be placed on the map, renamed and dragged around.
-  They live in the viewer's browser and apply per map.
+### Export JSON
 
-Clicking a player - on the map or in the bar above it - highlights them and
-opens their analysis:
+Downloads `DemoData` (everything the UI shows). Tick *with positions* to
+include the per-player position arrays (~5 MB for a 16-minute match).
 
-| | |
-|---|---|
-| Opening routes | the first ten seconds of each life, grouped into routes |
-| Hotspots | where they linger, bundled by your own callouts |
-| Death spots | where they fall and to which weapon, plus their most common killers |
-| Distances | distance to the victim per weapon |
-| Predictability | 0 to 100, with one line on how the number came about |
+### Markers
 
-### Chat
-
-The chat log with timestamps, separated into team chat and open chat.
-
-### Events
-
-A deliberately short list: connects and disconnects, team changes, the ready
-message, eliminations, bomb planted and defused, timeout, halftime and every
-kill. Searchable. Everything else in the message stream stays out.
-
-### Raw data
-
-The complete server command stream with time and sequence number, filterable,
-plus the analysis as JSON to copy.
+* `n/a` - the value is not in the demo; the tooltip says why.
+* `≈` - heuristic value; the tooltip names the rule.
 
 ---
 
-## Command line
+## Known limitations
 
-```bash
-py source/py/dm1.py demos/example.dm_1
-```
+What a client demo does not contain, and what is derived, is documented in
+detail in [`docs/ANALYSIS.md`](docs/ANALYSIS.md). In short:
 
-| Option | Effect |
-|---|---|
-| `--json FILE` | the full analysis as JSON |
-| `--tracks` | include the movement tracks (large, hence not the default) |
-| `--report FILE` | write the text report to a file |
-| `--raw DIR` | config strings and commands as TSV |
-| `--selftest` | check the Huffman table against its fingerprint |
+* **Other players only while the POV sees them.** Positions have gaps; trails
+  are not drawn across them. Obituaries are broadcast, so the kill feed is
+  complete.
+* **Grenade thrower: not in the demo** - grenades are shown for everyone.
+* **Smoke size and duration** are display constants (`js/ui/map/config.js`).
+* **Per-player ready status: not in the demo** - shown are the POV's own
+  status, anonymous "a player is ready (waiting on N)" steps and "All Players
+  are Ready!".
+* **Headshot kills** carry no weapon; the killer's held weapon is shown with ≈.
+* **Clan tags / team names** come from common name prefixes (≈).
+* **Record date** is the map start time on the server (≈), or the file date.
+* **Round reason** without a Promod status line (e.g. `fps_promod_285`
+  *Match MR12*) is derived from the S&D rules, kill feed and bomb messages (≈).
+* **Scoreboard:** the game's scoreboard is shown. If the last scoreboard is
+  older than the last round, kills / deaths after it are added from the kill
+  feed (≈). Differences between scoreboard and own count are logged with
+  `console.debug`. A player who reconnects restarts at 0 in the game's
+  scoreboard.
+* **Round logic is built for (Promod) Search & Destroy.** Other game modes show
+  scoreboard, chat, console, events and the map, but no rounds.
+* **Stock 1.7 / 1.8 match demos were not available for testing**; only a stock
+  deathrun fixture was decoded. The protocol is supported, round detection on
+  stock servers is untested.
+* **mp_cluster** has no background image (neutral grid in the calibrated
+  rectangle).
+* The recording may start mid-match; earlier rounds are then missing (the
+  overview says so, round numbers continue from the real count).
+
+---
+
+## Tests
+
+`tools/selftest.html` runs the complete analysis on demos and checks:
+every snapshot decoded; round wins = final score = the server's team scores;
+events chronological; no NaN / undefined; kills per player = scoreboard kills
+(differences listed). Open it and choose demo files, or - served via
+`start.bat` - `tools/selftest.html?auto=<folder url>`.
+
+Results on the 53 sample demos (`C:\Claude\cod4-demo\demos`): all decoded
+without an error, all final scores consistent with the server scores, kill
+feeds identical to the independent Python extractor (`python/`) for all 53
+demos. See `docs/ANALYSIS.md`, section 9.
+
+---
 
 ## Layout
 
-| Path | Contents |
-|---|---|
-| `source/index.html`, `source/css/`, `source/js/` | the web interface, no third-party libraries |
-| `source/maps/` | floor plan images, one per map |
-| `source/py/` | the Python parser and the tools around it |
-| `demos/` | the demos to look at |
-| `dist/` | the bundled single file |
-| `analysis/` | verification reports |
-
-## Tools
-
-| File | Purpose |
-|---|---|
-| `source/py/dm1.py` | parser and command line, standard library only |
-| `source/py/snapshot.py` | snapshot decoding: delta entities, player state, client state |
-| `source/py/netfields.py` | field tables, generated from the reference |
-| `source/py/gen_netfields.py` | generates `netfields.py` and `source/js/netfields.js` |
-| `source/py/check.py` | check a single demo for consistency |
-| `source/py/verify_all.py` | check a whole folder |
-| `source/py/inventory.py` | what is in the data stream, and what of it gets read |
-| `source/py/build_single.py` | bundle `source/` into one HTML file |
-
-`py source/py/build_single.py` bundles the interface into a single file under
-`dist/`. The map images are not included there; put a `maps/` folder next to the
-file if you want them.
-
-## Checking
-
-```bash
-py source/py/verify_all.py demos
+```
+source/
+  index.html            the app
+  start.bat             optional local web server
+  README.md             this file
+  css/styles.css
+  js/
+    core/c4.js          namespace, module registry, Blob worker factory
+    parser/             tables, huffman, msg (bit reader), delta, demo (container)
+    common/             text (colour codes, tokenizer), constants, servercmd, names
+    analysis/           collect (one pass), teams, rounds, events, weapons, build (DemoData), worker
+    ui/                 dom helpers, overview and one file per tab
+    ui/map/             config (radii, durations), renderer, heatmap, playback, mapTab
+    main.js             file loading, worker, tabs, export
+  assets/maps/          map images + maps.js (calibration)
+  tools/selftest.html   parser self test in the browser
+  docs/ANALYSIS.md      demo format and where every value comes from
+  maps/                 original map images (reference, unchanged)
+  python/               Python extractor (step 1) - see python/README.md
 ```
 
-Three levels: does the Huffman stream run cleanly to the end of the file, are
-all sections filled, and do the kill feed and the scoreboard agree for every
-single player? The last point is the real safeguard - the two sources come from
-completely different parts of the file.
+### Why classic scripts and maps.js
 
-## Further reading
+Browsers block ES modules, `fetch()` and worker scripts on `file://`. So the
+code uses classic `<script>` files that register themselves on a global `C4`
+namespace; the parser worker is created from a Blob that contains the source of
+the DOM-free modules; the calibration is `assets/maps/maps.js` instead of a
+`maps.json`. This makes a double-click on `index.html` enough.
 
-* [DATA.md](DATA.md) - what can be read out of a demo, what is in there but
-  goes unused, and what is not in the file at all
-* [FORMAT.md](FORMAT.md) - container, Huffman, snapshots, and how each of those
-  was verified
+### Map calibration
+
+`assets/maps/maps.js` maps each map to its image and the world rectangle the
+image covers (`[x1, y1, x2, y2]`, image axis-aligned: left = min x, top =
+max y). The viewer prefers the rectangle from the demo itself (config string
+823), so every demo is calibrated even for maps without an image. Verified on
+backlot, crash, strike, crossfire and citystreets by overlaying real player
+positions.
 
 ## Licence
 
