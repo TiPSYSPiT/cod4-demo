@@ -177,7 +177,19 @@ C4.define('build', function (C4) {
       for (const e of sb.entries) if (e.client != null) lastEntry.set(e.client, Object.assign({ t: sb.t }, e));
     }
     const own = new Map(), after = new Map();
-    const bump = (map, cl, key) => { if (cl == null || cl >= 64) return; const o = map.get(cl) || { kills: 0, deaths: 0 }; o[key]++; map.set(cl, o); };
+    const bump = (map, cl, key) => { if (cl == null || cl >= 64) return; const o = map.get(cl) || { kills: 0, deaths: 0, headshots: 0, teamkills: 0 }; o[key]++; map.set(cl, o); };
+    // team kills of the running match only: live phase of a match round (live start = CS 11 to the
+    // round win). Warm-up, pauses (timeouts), strat mode and ready-up are segments without a round,
+    // the knife round is not counted either (like kills / deaths); excluded ones go to diagnostics.
+    const teamkillsExcluded = { outsideRounds: 0, knifeRound: 0, outsideLivePhase: 0 };
+    for (const k of kills) {
+      if (!k.teamkill) continue;
+      const r = k.round >= 0 ? rounds[k.round] : null;
+      if (!r) teamkillsExcluded.outsideRounds++;
+      else if (r.kind !== 'round') teamkillsExcluded.knifeRound++;
+      else if (k.t < r.start || (r.end != null && k.t > r.end)) teamkillsExcluded.outsideLivePhase++;
+      else bump(own, k.attacker, 'teamkills');
+    }
     for (const k of kills) {
       if (k.round < 0 || rounds[k.round].kind !== 'round') continue;
       // counting rules measured against the Promod scoreboard: team kills and suicides give
@@ -186,6 +198,7 @@ C4.define('build', function (C4) {
       const death = !k.world;
       if (death) bump(own, k.victim, 'deaths');
       if (credit) bump(own, k.attacker, 'kills');
+      if (credit && k.headshot) bump(own, k.attacker, 'headshots');
       // kills after a player's last scoreboard entry: the last scoreboard can be older than the last round
       const ev = lastEntry.get(k.victim);
       if (death && ev && k.t > ev.t) bump(after, k.victim, 'deaths');
@@ -203,6 +216,22 @@ C4.define('build', function (C4) {
     }
     // a player who came back after leaving did not leave early
     for (const s of col.slotEvents) if (s.kind === 'connected' && leftAt.has(s.client) && rel(s.t) > leftAt.get(s.client)) leftAt.delete(s.client);
+    // bomb plants / defuses per player: server message MP_EXPLOSIVES_PLANTED_BY / _DEFUSED_BY<name>,
+    // counted in match rounds only (not in warm-up or strat mode); unresolved names are listed in diagnostics.
+    // The bomb can be planted and defused once per round: a repeated message (seen: the same plant
+    // sent twice 50 ms apart) is counted once.
+    const plants = new Map(), defuses = new Map(), bombUnresolved = [], bombSeen = new Set();
+    for (const e of events) {
+      if (e.type !== 'bomb_planted' && e.type !== 'bomb_defused') continue;
+      const ri = C4.events.roundAt(rounds, e.t);
+      if (ri < 0 || rounds[ri].kind !== 'round') continue;
+      if (bombSeen.has(e.type + ri)) continue;
+      bombSeen.add(e.type + ri);
+      const cl = e.clients.length ? e.clients[0] : null;
+      if (cl == null) { bombUnresolved.push({ t: e.t, text: e.text }); continue; }
+      const m = e.type === 'bomb_planted' ? plants : defuses;
+      m.set(cl, (m.get(cl) || 0) + 1);
+    }
 
     const byTeam = { A: [], B: [] };
     const players = [];
@@ -221,6 +250,10 @@ C4.define('build', function (C4) {
         statsSource: e ? (a.kills || a.deaths ? 'scoreboard+killfeed' : 'scoreboard') : 'killfeed',
         scoreboardTime: e ? e.t : null, killsAfterScoreboard: a.kills, deathsAfterScoreboard: a.deaths,
         ownKills: o.kills, ownDeaths: o.deaths,
+        // headshot share of the kills in the kill feed of this demo (the scoreboard has no headshots)
+        headshots: o.headshots || 0, headshotPct: o.kills ? (o.headshots || 0) / o.kills * 100 : null,
+        plants: plants.get(cl) || 0, defuses: defuses.get(cl) || 0,
+        teamkills: o.teamkills || 0,
         joinedAt: joinedAt.has(cl) ? joinedAt.get(cl) : null, leftAt: leftAt.has(cl) ? leftAt.get(cl) : null,
         clan: '', clanHeuristic: false
       };
@@ -238,7 +271,7 @@ C4.define('build', function (C4) {
       }
     }
     // own count vs. game scoreboard (the brief asks for console.debug of the differences)
-    const diagnostics = { scoreboardMismatches: [], scoreboardResetIgnored: validUntil !== Infinity };
+    const diagnostics = { scoreboardMismatches: [], scoreboardResetIgnored: validUntil !== Infinity, bombUnresolved, teamkillsExcluded };
     for (const p of players) {
       if (p.statsSource !== 'killfeed' && (p.kills !== p.ownKills || p.deaths !== p.ownDeaths)) {
         diagnostics.scoreboardMismatches.push({ client: p.client, name: p.cleanName, shown: [p.kills, p.deaths],

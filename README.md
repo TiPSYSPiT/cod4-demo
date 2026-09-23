@@ -38,7 +38,7 @@ server name with colour codes, demo POV, length, record date.
 
 | Tab | What it shows |
 |---|---|
-| **Scoreboard** | Per team (sorted by score, every column sortable), Clan, Player, Score, K, A, D, K/D, team totals, POV badge, "left" badge for players who left early, spectators below. |
+| **Scoreboard** | Per team (sorted by score, every column sortable), Clan, Player, Score, K, A, D, K/D, TK (team kills while a match round is live - not in warm-up, pauses or the knife round), HS % (headshot kills / kills from the kill feed), Plants, Defuses (from the bomb messages), team totals, POV badge, "left" badge for players who left early, spectators below. |
 | **Round by Round** | Every round as a card (click to open): winner, reason, duration, score after the round, sides. Halftime divider. Inside: kills (`R7 · 01:23 · Killer → Victim · Weapon`, HS / Teamkill / Suicide / Falling / World / Car explosion) and bomb plant / defuse. |
 | **Kills per Round** | Players × rounds matrix, colour intensity by kills, 3K/4K outlined, 5K red. |
 | **Chat** | Time, round, All/Team badge, player, message; filter All / Team, search. |

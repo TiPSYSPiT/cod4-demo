@@ -26,7 +26,11 @@ C4.define('events', function (C4) {
   function nameResolver(nameHistory, names) {
     const all = [];
     for (const h of nameHistory) all.push([stripColors(h.name).trim(), h.client]);
-    for (const [cl, v] of names) all.push([stripColors(v.name).trim(), cl]);
+    for (const [cl, v] of names) {
+      all.push([stripColors(v.name).trim(), cl]);
+      // CoD4X clan tag: server messages can carry it in front of the name ("[TAG]name")
+      if (v.clantag) all.push(['[' + stripColors(v.clantag).trim() + ']' + stripColors(v.name).trim(), cl]);
+    }
     all.sort((a, b) => b[0].length - a[0].length);
     const exact = new Map();
     for (const [n, cl] of all) if (n && !exact.has(n)) exact.set(n, cl);

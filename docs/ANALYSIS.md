@@ -201,6 +201,9 @@ either. The viewer reports this as "snapshots skipped" and continues.
 | Stale last scoreboard | the server does not always send a scoreboard after the last round: kills/deaths after a player's last scoreboard entry are added from the kill feed (≈) | heuristic |
 | Scoreboard reset | after the match the map restarts and the scoreboard drops to all zeros: scoreboards after the last round that are all zero are ignored | reliable |
 | K/D | computed | – |
+| HS % | not in the scoreboard: headshot kills (`MOD_HEAD_SHOT`) / kills, both from the kill feed with the counting rule above (match rounds; no team kills / suicides). Only the recorded rounds - for a recording that starts mid-match the base is smaller than the scoreboard's K | reliable |
+| TK (team kills) | not in the scoreboard: kill feed, killer and victim on the same side at the time of the kill (raw client state), credited to the killer. **Running match only**: between the live start (CS 11) and the round win of a match round. Warm-up, pauses (timeouts), strat mode and ready-up are segments without a round; the knife round is excluded like for K/D. Samples: 210 team kills, 168 outside rounds, 7 in knife rounds, 0 in strat time or after a round win, 35 counted. Excluded counts: `diagnostics.teamkillsExcluded` | reliable |
+| Plants / Defuses | not in the scoreboard: `f "MP_EXPLOSIVES_PLANTED_BY<name>"` / `…DEFUSED_BY<name>`, name → client, match rounds only (warm-up / strat mode excluded). Unresolved names: `diagnostics.bombUnresolved` | reliable |
 | Team, spectators | client state `team` (1 axis, 2 allies, 3 spectator); Promod "Shoutcaster" = spectator | reliable |
 | Left early | message `<name> EXE_LEFTGAME` and removal of the client state | reliable |
 | Clan | see 3.1 | heuristic |
