@@ -109,11 +109,36 @@ C4.define('teams', function (C4) {
 
   /* ---- clan tags and team names (heuristic) ---- */
 
-  function commonPrefix(list) {
-    if (!list.length) return '';
-    let p = list[0];
-    for (const s of list.slice(1)) while (p && !s.startsWith(p)) p = p.slice(0, -1);
-    return p;
+  // characters that can end a clan tag: "ALPHA Shooter", "W@rZ/Sky", "inf.eS NATHZN", "=TAG= x", "RL|x"
+  const SEP = /[\s|/\\:.\-_~*#=+,;>»«•·]/;
+  const TRAIL = /[\s|/\\:.\-_~,;<([{]+$/;   // connectors / opening brackets dropped from the end of a shown tag
+  // comparison key, case- and leetspeak-insensitive: "W@rZ" = "WarZ" = "warz"
+  const LEET = { '@': 'a', '4': 'a', '3': 'e', '1': 'i', '!': 'i', '0': 'o', '5': 's', '$': 's', '7': 't' };
+  const tagKey = tag => tag.toLowerCase().replace(/[@43!105$7]/g, c => LEET[c]).replace(/[^a-z0-9]/g, '');
+
+  /** possible clan tags of one name: every prefix up to a separator (at most 12 characters,
+   * the player's own name must follow) and an explicit [TAG] - as Map key -> spelling */
+  function tagCandidates(name, cod4xTag) {
+    const out = new Map();
+    const add = spelling => {
+      const s = spelling.replace(TRAIL, '').trim();
+      const k = tagKey(s);
+      if (k.length < 2) return;
+      if (!out.has(k) || s.length > out.get(k).length) out.set(k, s);
+    };
+    if (cod4xTag) add(stripColors(cod4xTag));
+    const e = explicitTag(name);
+    if (e) add(e);
+    for (let i = 1; i < name.length && i <= 12; i++) {
+      if (!SEP.test(name[i]) || !/[A-Za-z0-9]/.test(name.slice(i + 1))) continue;
+      const head = name.slice(0, i);
+      // a tag of symbols only ("// COOKIE") needs a space after it and is compared as written
+      if (/\s/.test(name[i]) && !/[A-Za-z0-9]/.test(head) && head.trim().length >= 2 && !/\s/.test(head.trim())) {
+        const s = head.trim();
+        if (!out.has('sym:' + s)) out.set('sym:' + s, s);
+      } else add(head);
+    }
+    return out;
   }
 
   /** explicit tag patterns: [TAG]name, (TAG)name, TAG|name, TAG.name ... */
@@ -134,42 +159,40 @@ C4.define('teams', function (C4) {
     const teamNames = {};
     for (const key of Object.keys(playersByTeam)) {
       const members = playersByTeam[key];
-      const names = members.map(p => p.cleanName);
-      // 1. common prefix of all members (at least 2 members, >= 2 characters)
-      let prefix = '';
-      if (members.length >= 2) {
-        // the tag must end at a separator: "ALPHA Shooter" + "ALPHA Sho" -> "ALPHA", never "ALPHA Sho"
-        const SEP = /[\s|\])>.:\-_~]/;
-        prefix = commonPrefix(names);
-        if (prefix && !SEP.test(prefix[prefix.length - 1])) {
-          let k = prefix.length - 1;
-          while (k >= 0 && !SEP.test(prefix[k])) k--;
-          prefix = k >= 0 ? prefix.slice(0, k + 1) : '';
+      const cands = new Map(members.map(p => [p.client, tagCandidates(p.cleanName, p.cod4xTag)]));
+      // the tag shared by most members (at least 2 and half the team); tie -> the longer tag
+      // ("inf" and "inf.eS" are shared by all -> "inf.eS")
+      const count = new Map(), spellings = new Map();
+      for (const c of cands.values()) {
+        for (const [k, s] of c) {
+          count.set(k, (count.get(k) || 0) + 1);
+          if (!spellings.has(k)) spellings.set(k, new Map());
+          spellings.get(k).set(s, (spellings.get(k).get(s) || 0) + 1);
         }
-        prefix = prefix.replace(/[\s|.:\-_~]+$/, '');
-        if (prefix.replace(/[^A-Za-z0-9]/g, '').length < 2) prefix = '';
       }
-      // 2. first word shared by the majority
-      if (!prefix && members.length >= 2) {
-        const count = new Map();
-        for (const n of names) {
-          const w = explicitTag(n) || (n.match(/^(\S{2,12})\s+\S/) || [])[1];
-          if (w) count.set(w, (count.get(w) || 0) + 1);
-        }
-        let best = '', bestN = 0;
-        for (const [w, n] of count) if (n > bestN) { best = w; bestN = n; }
-        if (bestN >= Math.max(2, Math.ceil(members.length / 2))) prefix = best;
+      let best = null;
+      for (const [k, n] of count) {
+        if (!best || n > count.get(best) || (n === count.get(best) && k.length > best.length)) best = k;
+      }
+      if (best && count.get(best) < Math.max(2, Math.ceil(members.length / 2))) best = null;
+      // team name: the most frequent spelling ("W@rZ" x4 beats "WarZ" x1)
+      let teamTag = '';
+      if (best) {
+        let bn = 0;
+        for (const [s, n] of spellings.get(best)) if (n > bn) { teamTag = s; bn = n; }
       }
       for (const p of members) {
         if (p.cod4xTag) { tags.set(p.client, { tag: stripColors(p.cod4xTag), heuristic: false }); continue; }
-        if (prefix && p.cleanName.startsWith(prefix)) { tags.set(p.client, { tag: prefix, heuristic: true }); continue; }
+        const c = cands.get(p.client);
+        // the player's own spelling of the team tag ("WarZ superb" -> "WarZ")
+        if (best && c.has(best)) { tags.set(p.client, { tag: c.get(best), heuristic: true }); continue; }
         const e = explicitTag(p.cleanName);
         tags.set(p.client, e ? { tag: e, heuristic: true } : { tag: '', heuristic: false });
       }
-      teamNames[key] = prefix ? { name: prefix, heuristic: true } : null;
+      teamNames[key] = teamTag ? { name: teamTag, heuristic: true } : null;
     }
     return { tags, teamNames };
   }
 
-  C4.teams = { analyzeTeams, clanTags };
+  C4.teams = { analyzeTeams, clanTags, tagKey };
 });

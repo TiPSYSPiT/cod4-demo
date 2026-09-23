@@ -182,7 +182,7 @@ either. The viewer reports this as "snapshots skipped" and continues.
 | Field | Source | Level |
 |---|---|---|
 | Final Score | round wins counted per team (3.3); cross-checked with the last `G`/`H` and scoreboard team scores | reliable |
-| Team name / clan tag | CoD4X clan tag field (empty in all samples) → otherwise common name prefix of the team members | **heuristic** |
+| Team name / clan tag | CoD4X clan tag field (set in one sample) → otherwise the tag most team members share: candidates per name are `[TAG]`-style tags and every prefix (≤ 12 characters) up to a separator (space `\| / \ : . - _ ~ * # = + , ; > »`), compared case- and leetspeak-insensitively (`W@rZ/Sky` = `WarZ superb`); needs ≥ 2 players and half the team, tie → longer tag (`inf.eS` over `inf`). Symbol-only tags (`// name`) need a space. Team name = most frequent spelling; each player keeps his own spelling | **heuristic** |
 | Map | CS 0 `mapname`; display name from a mapping table (`mp_crash` → "Crash", `mp_citystreets` → "District") | reliable |
 | Mode | CS 0 `g_gametype` + mapping (`sd` → "Search & Destroy") | reliable |
 | Ruleset | Promod: CS 381 (e.g. "Knockout Knife MR12 OT3", "Match MR12", "Strat Mode") + CS 380 version header; always `fs_game` (e.g. `mods/promod_x`). Without Promod headers: mod name only | reliable (as announced by the server) |
