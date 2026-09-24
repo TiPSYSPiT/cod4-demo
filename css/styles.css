@@ -57,6 +57,15 @@ a, .link { color: var(--accent-2); cursor: pointer; text-decoration: underline; 
 .btn.active { border-color: var(--accent); color: var(--accent-2); }
 .export { display: flex; align-items: center; gap: 8px; }
 .export-opt { color: var(--muted); font-size: 12.5px; display: flex; gap: 4px; align-items: center; }
+/* GitHub link, right end of the top bar: same 32 px height as the buttons, icon in currentColor */
+.repo-link {
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  width: 32px; height: 32px; border-radius: 6px; color: var(--muted); text-decoration: none;
+  transition: color .15s ease, background-color .15s ease;
+}
+.repo-link:hover, .repo-link:focus-visible { color: var(--text); background: rgba(255,255,255,.07); }
+.repo-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.repo-link svg { display: block; }
 
 main { padding: 16px 20px 40px; }
 
