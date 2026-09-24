@@ -126,6 +126,24 @@ table.data tr.team-head.a td { color: var(--team-a); box-shadow: inset 3px 0 0 v
 table.data tr.team-head.b td { color: var(--team-b); box-shadow: inset 3px 0 0 var(--team-b); }
 table.data tr.team-head.spec td { color: var(--spec); }
 table.data tr.total td { font-weight: 700; background: rgba(255,255,255,.02); border-bottom: 2px solid var(--line-2); }
+/* scoreboard column widths: one table for both teams, so the columns of both teams and of the total
+   rows line up. All statistics columns have the same width, set by --stat-col-width: the widest
+   content is the header "DEFUSES" (~54 px at 12 px uppercase) + the sort arrow (~12 px) + 3 px gap
+   + 2 x 8 px padding = ~85 px; values ("100 %" bold ~40 px, a 4-digit score ~32 px) are narrower. */
+table.data.scoreboard {
+  --stat-col-width: 7.3rem;          /* was 6.1rem (x 1.2) */
+  --clan-col-width: 9.1rem;          /* was 7rem (x 1.3) */
+  table-layout: fixed;
+}
+table.data.scoreboard col.col-stat { width: var(--stat-col-width); }
+table.data.scoreboard col.col-clan { width: var(--clan-col-width); }
+/* col.col-player has no width: it takes the rest */
+table.data.scoreboard th.col-stat, table.data.scoreboard td.col-stat { padding-left: 8px; padding-right: 8px; text-align: right; font-variant-numeric: tabular-nums; }
+table.data.scoreboard .col-clan, table.data.scoreboard .col-player { overflow: hidden; text-overflow: ellipsis; }
+/* sort arrow of a statistics column: in the space reserved on the left, so the right-aligned
+   header text keeps its place and the width does not change */
+table.data.scoreboard th.col-stat.sorted::after { position: absolute; left: 8px; top: 50%; transform: translateY(-50%); content: "\25BE"; }
+table.data.scoreboard th.col-stat.sorted.asc::after { content: "\25B4"; }
 /* scoreboard: visible gap between the teams (the total row stays above it, with its team) */
 table.data.scoreboard tbody tr.team-head ~ tr.team-head td { border-top: 14px solid var(--bg); }
 table.data tr.pov td:first-child { box-shadow: inset 3px 0 0 var(--accent); }

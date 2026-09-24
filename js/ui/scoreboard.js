@@ -13,7 +13,7 @@
     const sum = k => rows.reduce((a, p) => a + (p[k] || 0), 0);
     const K = sum('kills'), D = sum('deaths'), ownK = sum('ownKills'), HS = sum('headshots');
     return { score: sum('score'), kills: K, assists: sum('assists'), deaths: D, kd: D ? K / D : K,
-      tk: sum('teamkills'), hsPercent: ownK ? HS / ownK * 100 : null, plants: sum('plants'), defuses: sum('defuses') };
+      nadeKills: sum('nadeKills'), nadeDeaths: sum('nadeDeaths'), tk: sum('teamkills'), hsPercent: ownK ? HS / ownK * 100 : null, plants: sum('plants'), defuses: sum('defuses') };
   }
 
   /** the scoreboard as plain JSON: map, record date, half scores, then teams (in table order),
@@ -58,6 +58,8 @@
           assists: p.assists,
           deaths: p.deaths,
           kd: round2(kd(p)),
+          nadeKills: p.nadeKills,
+          nadeDeaths: p.nadeDeaths,
           tk: p.teamkills,
           hsPercent: p.headshotPct == null ? null : Math.round(p.headshotPct),
           plants: p.plants,
@@ -76,34 +78,51 @@
       : p.statsSource === 'scoreboard+killfeed'
         ? approx('the last scoreboard is older than the last round - kills/deaths after it (' + p.killsAfterScoreboard + '/' + p.deathsAfterScoreboard + ') added from the kill feed')
         : null;
+    // The columns in display order - the only place that defines them. Header (label, title),
+    // cells (render / key), sorting (sort / key), team total (total(tot), tot = teamTotals()) and
+    // the width class (cls -> <col>, styles.css) all come from here, so they cannot get out of step.
     const columns = [
-      { key: 'clan', label: 'Clan', sort: p => p.clan || '', render: p => p.clan ? [p.clan, p.clanHeuristic ? approx('clan tag taken from the name') : null] : '' },
       {
-        key: 'player', label: 'Player', sort: p => p.cleanName.toLowerCase(), render: p => [
+        key: 'clan', label: 'Clan', cls: 'col-clan', sort: p => p.clan || '',
+        render: p => p.clan ? [p.clan, p.clanHeuristic ? approx('clan tag taken from the name') : null] : '',
+        cellTitle: p => p.clan || null
+      },
+      {
+        key: 'player', label: 'Player', cls: 'col-player', sort: p => p.cleanName.toLowerCase(),
+        render: p => [
           app.playerNode(p.client),
           p.isPov ? [' ', el('span', { class: 'badge pov', title: 'the player who recorded the demo' }, 'POV')] : null,
           p.leftEarly ? [' ', el('span', { class: 'badge left', title: 'left the server at ' + fmtTime(p.leftAt) }, 'left ' + fmtTime(p.leftAt))] : null
-        ]
+        ],
+        cellTitle: p => p.cleanName + (p.isPov ? ' (POV)' : '') + (p.leftEarly ? ' - left at ' + fmtTime(p.leftAt) : ''),
+        total: () => 'Team total'
       },
-      { key: 'score', label: 'Score', num: true, render: p => p.score == null ? na('not in any scoreboard of the demo') : String(p.score) },
-      { key: 'kills', label: 'K', num: true, render: p => [String(p.kills), approxStats(p)] },
-      { key: 'assists', label: 'A', num: true, render: p => p.assists == null ? na('assists only come from the scoreboard') : String(p.assists) },
-      { key: 'deaths', label: 'D', num: true, render: p => [String(p.deaths), approxStats(p)] },
-      { key: 'kd', label: 'K/D', num: true, sort: kd, title: 'kills / deaths; with 0 deaths K/D = kills', render: p => kd(p) == null ? '' : kd(p).toFixed(2) },
+      { key: 'score', label: 'Score', render: p => p.score == null ? na('not in any scoreboard of the demo') : String(p.score), total: t => t.score },
+      { key: 'kills', label: 'K', render: p => [String(p.kills), approxStats(p)], total: t => t.kills },
+      { key: 'assists', label: 'A', render: p => p.assists == null ? na('assists only come from the scoreboard') : String(p.assists), total: t => t.assists },
+      { key: 'deaths', label: 'D', render: p => [String(p.deaths), approxStats(p)], total: t => t.deaths },
+      { key: 'kd', label: 'K/D', sort: kd, title: 'kills / deaths; with 0 deaths K/D = kills', render: p => kd(p) == null ? '' : kd(p).toFixed(2), total: t => t.kd.toFixed(2) },
       {
-        key: 'teamkills', label: 'TK', num: true,
-        title: 'team kills in the running match only: live phase of the match rounds (from the kill feed). Warm-up, pauses / timeouts, strat mode and the knife round are not counted.'
-      },
-      {
-        key: 'headshotPct', label: 'HS %', num: true,
+        key: 'headshotPct', label: 'HS %',
         title: 'headshot kills / kills, both counted from the kill feed of this demo (match rounds; no team kills or suicides). The game scoreboard has no headshots.',
         render: p => p.headshotPct == null
           ? el('span', { class: 'dim', title: 'no kills in the kill feed' }, '–')
-          : el('span', { title: p.headshots + ' of ' + p.ownKills + ' kills (kill feed)' }, fmtPct(p.headshotPct))
+          : el('span', { title: p.headshots + ' of ' + p.ownKills + ' kills (kill feed)' }, fmtPct(p.headshotPct)),
+        total: t => t.hsPercent == null ? '–' : fmtPct(t.hsPercent)
       },
-      { key: 'plants', label: 'Plants', num: true, title: 'bomb plants (server message "planted the bomb", match rounds only)' },
-      { key: 'defuses', label: 'Defuses', num: true, title: 'bomb defuses (server message "defused the bomb", match rounds only)' }
+      {
+        key: 'teamkills', label: 'TK',
+        title: 'team kills in the running match only: live phase of the match rounds (from the kill feed). Warm-up, pauses / timeouts, strat mode and the knife round are not counted.',
+        total: t => t.tk
+      },
+      { key: 'nadeKills', label: 'Nade K', title: 'Kills with frag grenades', render: p => String(p.nadeKills), total: t => t.nadeKills },
+      { key: 'nadeDeaths', label: 'Nade D', title: 'Deaths by frag grenades', render: p => String(p.nadeDeaths), total: t => t.nadeDeaths },
+      { key: 'plants', label: 'Plants', title: 'bomb plants (server message "planted the bomb", match rounds only)', total: t => t.plants },
+      { key: 'defuses', label: 'Defuses', title: 'bomb defuses (server message "defused the bomb", match rounds only)', total: t => t.defuses }
     ];
+    // every column after Player is a statistics column: numeric, right-aligned, shared width
+    // (--stat-col-width); Clan has its own width, Player takes the rest (cut names: tooltip)
+    for (const c of columns) if (!c.cls) { c.cls = 'col-stat'; c.num = true; }
     const groups = [];
     for (const t of d.teams) {
       const rows = d.players.filter(p => p.team === t.key);
@@ -112,8 +131,7 @@
       groups.push({
         label: el('span', null, t.name, t.nameHeuristic ? approx('team name from the common name prefix') : null, el('span', { class: 'dim' }, '  —  ' + t.wins + ' rounds won')),
         cls: t.key === 'A' ? 'a' : 'b', rows,
-        totals: { player: 'Team total', score: tot.score, kills: tot.kills, assists: tot.assists, deaths: tot.deaths, kd: tot.kd.toFixed(2),
-          teamkills: tot.tk, headshotPct: tot.hsPercent == null ? '–' : fmtPct(tot.hsPercent), plants: tot.plants, defuses: tot.defuses }
+        totals: Object.fromEntries(columns.filter(c => c.total).map(c => [c.key, c.total(tot)]))
       });
     }
     const specs = d.players.filter(p => p.team === 'spectator');
@@ -122,11 +140,11 @@
       el('div', { class: 'toolbar' },
         el('button', {
           class: 'btn', title: 'teams, players (by score) and team totals as JSON',
-          onclick: () => app.download(app.fileBase + '.scoreboard.json', JSON.stringify(scoreJson(d), null, 2))
+          onclick: () => app.download(C4.exportName.buildExportFileName(d), JSON.stringify(scoreJson(d), null, 2))
         }, '⬇ Download score (JSON)')),
       el('p', { class: 'note' }, 'Values from the game’s scoreboard (last scoreboard each player appears in). ',
         'Click a column header to sort. ', el('span', { class: 'approx' }, '≈'), ' marks values completed from the kill feed. ',
-        'TK, HS %, Plants and Defuses are not in the game’s scoreboard - they are counted from the kill feed and the bomb messages of this demo (only the recorded rounds; ',
+        'HS %, TK, Nade K / D, Plants and Defuses are not in the game’s scoreboard - they are counted from the kill feed and the bomb messages of this demo (only the recorded rounds; ',
         'team kills only while a match round is live, not in warm-up, pauses or the knife round).'),
       sortableTable(columns, groups, { sortKey: 'score', asc: false, cls: 'scoreboard', rowClass: p => (p.isPov ? 'pov ' : '') })
     );

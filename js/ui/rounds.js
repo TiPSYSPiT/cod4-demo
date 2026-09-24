@@ -37,7 +37,7 @@
     }
     const [A, B] = d.teams;
     const bar = el('div', { class: 'toolbar' },
-      el('button', { class: 'btn small', onclick: () => root.querySelectorAll('.round-card').forEach(c => c.classList.add('open')) }, 'Expand all'),
+      el('button', { class: 'btn small', onclick: () => root.querySelectorAll('.round-card').forEach(c => { if (c.fill) c.fill(); c.classList.add('open'); }) }, 'Expand all'),
       el('button', { class: 'btn small', onclick: () => root.querySelectorAll('.round-card').forEach(c => c.classList.remove('open')) }, 'Collapse all'),
       el('span', { class: 'spacer' }),
       el('span', { class: 'muted' }, 'Click a kill or bomb event to open it on the map (2 s before).'));
@@ -76,9 +76,11 @@
       el('div', { class: 'round-toggle' }, '▶'));
     const body = el('div', { class: 'round-body' });
     const card = el('div', { class: 'round-card ' + (r.winnerTeam === 'A' ? 'win-a' : r.winnerTeam === 'B' ? 'win-b' : '') }, head, body);
+    // the kill list is built on the first opening (also by "Expand all")
     let filled = false;
+    card.fill = () => { if (!filled) { fillTimeline(app, r, i, body); filled = true; } };
     head.addEventListener('click', () => {
-      if (!filled) { fillTimeline(app, r, i, body); filled = true; }
+      card.fill();
       card.classList.toggle('open');
     });
     return card;

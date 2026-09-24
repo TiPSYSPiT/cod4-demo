@@ -38,7 +38,7 @@ server name with colour codes, demo POV, length, record date.
 
 | Tab | What it shows |
 |---|---|
-| **Scoreboard** | Per team (sorted by score, every column sortable), Clan, Player, Score, K, A, D, K/D, TK (team kills while a match round is live - not in warm-up, pauses or the knife round), HS % (headshot kills / kills from the kill feed), Plants, Defuses (from the bomb messages), team totals, POV badge, "left" badge for players who left early, spectators below. |
+| **Scoreboard** | Per team (sorted by score, every column sortable), Clan, Player, Score, K, A, D, K/D, HS % (headshot kills / kills from the kill feed), TK (team kills while a match round is live - not in warm-up, pauses or the knife round), Nade K / Nade D (kills with / deaths by frag grenades, from the kill feed), Plants, Defuses (from the bomb messages), team totals, POV badge, "left" badge for players who left early, spectators below. |
 | **Round by Round** | Every round as a card (click to open): winner, reason, duration, score after the round, sides. Halftime divider. Inside: kills (`R7 · 01:23 · Killer → Victim · Weapon`, HS / Teamkill / Suicide / Falling / World / Car explosion) and bomb plant / defuse. |
 | **Kills per Round** | Players × rounds matrix, colour intensity by kills, 3K/4K outlined, 5K red. |
 | **Chat** | Time, round, All/Team badge, player, message; filter All / Team, search. |
@@ -85,7 +85,14 @@ A click on a kill or bomb event in *Round by Round* or *Events* opens the map
 
 ### Download score (JSON)
 
-The button above the scoreboard saves `<demo>.scoreboard.json`. Top level:
+The button above the scoreboard saves `YYYYMMDD_TeamA_vs_TeamB_map.json`
+(e.g. `20260914_infeS_vs_WrZ_strike.json`): record date (else the file date),
+the team names as in the scoreboard (upper team first; clan tag or "Team A"),
+the map without `mp_`. Names are cleaned for file names: no colour codes,
+brackets or special characters, spaces and `_` become `-`, `_` only separates
+the parts, an empty part becomes `unknown`. The rule is
+`C4.exportName.buildExportFileName(data, {suffix, ext})` in
+`js/common/exportName.js`, for later exports. Top level:
 `map` (raw name, e.g. `mp_strike`), `recordDate` (`YYYYMMDDHHMMSS`) with
 `recordDateSource` (`g_mapStartTime` = map start on the server, or `file date`
 - the demo stores no recording date), `halves` (per half `half` number,
@@ -95,7 +102,7 @@ the half started before the recording). A recording that starts mid-match adds
 from the ruleset (MR12 = 12 rounds per half, OT3) and the start score (≈).
 Then per team the
 clan / team name, `roundsWon`, the players sorted by score (`name`, `score`,
-`kills`, `assists`, `deaths`, `kd`, `tk`, `hsPercent`, `plants`, `defuses`,
+`kills`, `assists`, `deaths`, `kd`, `nadeKills`, `nadeDeaths`, `tk`, `hsPercent`, `plants`, `defuses`,
 `pov: true` for the recording player) and `teamTotal`. Values as in the
 table; `kd` rounded to 2 decimals, `hsPercent` to whole percent (`null`
 without kills). Spectators are not included.

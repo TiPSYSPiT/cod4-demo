@@ -161,6 +161,8 @@ C4.define('build', function (C4) {
         index, t, attacker: k.attacker, victim: k.victim, weapon, weaponName: wName, weaponLabel: label,
         weaponHeuristic, mod, headshot: mod === 'MOD_HEAD_SHOT', knife: mod === 'MOD_MELEE',
         falling: mod === 'MOD_FALLING', suicide, world, entityAttacker, teamkill,
+        // frag grenade kill: only from the weapon in the obituary (never from the held weapon of a headshot)
+        nade: weapon != null && W.isFragNade(weaponName(weapon)),
         bomb: /briefcase_bomb/.test(wName || ''), car: wName === 'destructible_car',
         attackerTeam: aTeam || null, victimTeam: vTeam || null,
         attackerPos: k.attackerPos, victimPos: k.victimPos, distance: dist, round: -1
@@ -214,7 +216,7 @@ C4.define('build', function (C4) {
       for (const e of sb.entries) if (e.client != null) lastEntry.set(e.client, Object.assign({ t: sb.t }, e));
     }
     const own = new Map(), after = new Map();
-    const bump = (map, cl, key) => { if (cl == null || cl >= 64) return; const o = map.get(cl) || { kills: 0, deaths: 0, headshots: 0, teamkills: 0 }; o[key]++; map.set(cl, o); };
+    const bump = (map, cl, key) => { if (cl == null || cl >= 64) return; const o = map.get(cl) || { kills: 0, deaths: 0, headshots: 0, teamkills: 0, nadeKills: 0, nadeDeaths: 0 }; o[key]++; map.set(cl, o); };
     // team kills of the running match only: live phase of a match round (live start = CS 11 to the
     // round win). Warm-up, pauses (timeouts), strat mode and ready-up are segments without a round,
     // the knife round is not counted either (like kills / deaths); excluded ones go to diagnostics.
@@ -236,6 +238,10 @@ C4.define('build', function (C4) {
       if (death) bump(own, k.victim, 'deaths');
       if (credit) bump(own, k.attacker, 'kills');
       if (credit && k.headshot) bump(own, k.attacker, 'headshots');
+      // frag grenade kills / deaths, same kill events and rules as K/D: an own grenade or a team
+      // mate's grenade gives the victim a nade death but nobody a nade kill
+      if (credit && k.nade) bump(own, k.attacker, 'nadeKills');
+      if (death && k.nade) bump(own, k.victim, 'nadeDeaths');
       // kills after a player's last scoreboard entry: the last scoreboard can be older than the last round
       const ev = lastEntry.get(k.victim);
       if (death && ev && k.t > ev.t) bump(after, k.victim, 'deaths');
@@ -291,6 +297,7 @@ C4.define('build', function (C4) {
         headshots: o.headshots || 0, headshotPct: o.kills ? (o.headshots || 0) / o.kills * 100 : null,
         plants: plants.get(cl) || 0, defuses: defuses.get(cl) || 0,
         teamkills: o.teamkills || 0,
+        nadeKills: o.nadeKills || 0, nadeDeaths: o.nadeDeaths || 0,
         joinedAt: joinedAt.has(cl) ? joinedAt.get(cl) : null, leftAt: leftAt.has(cl) ? leftAt.get(cl) : null,
         clan: '', clanHeuristic: false
       };

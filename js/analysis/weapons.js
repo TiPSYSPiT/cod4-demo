@@ -58,5 +58,11 @@ C4.define('weapons', function (C4) {
     return null;
   }
 
-  C4.weapons = { label, grenadeKind, MOD_LABELS: MOD };
+  /** frag grenade kill weapon ("nade"): frag_grenade_mp only - cooked or not, the obituary names the
+   * same weapon. Martyrdom (frag_grenade_short_mp) and the grenade launcher (gl_*, *_gl_*) are not nades. */
+  function isFragNade(name) {
+    return String(name || '').toLowerCase().replace(/_mp$/, '') === 'frag_grenade';
+  }
+
+  C4.weapons = { label, grenadeKind, isFragNade, MOD_LABELS: MOD };
 });

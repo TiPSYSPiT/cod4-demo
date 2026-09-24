@@ -84,17 +84,21 @@
   function teamClass(key) { return key === 'A' ? 'team-a' : key === 'B' ? 'team-b' : 'team-spec'; }
 
   /**
-   * Sortable table. columns: [{key, label, num, sort(row) -> value, render(row) -> node|string, title}]
+   * Sortable table. columns: [{key, label, num, sort(row) -> value, render(row) -> node|string, title,
+   *   cls (class of th / td and of the <col>, for column widths), cellTitle(row) -> tooltip of the cell}]
    * groups: [{label, cls, rows, totals}] ; sorting applies within each group.
    */
   function sortableTable(columns, groups, opts = {}) {
     let sortKey = opts.sortKey || null, asc = !!opts.asc;
     const table = el('table', { class: 'data ' + (opts.cls || '') });
+    const cellClass = c => ((c.num ? 'num ' : '') + (c.cls || '')).trim() || null;
+    // <colgroup>: one <col> per column, so CSS can size the columns (table-layout: fixed)
+    if (columns.some(c => c.cls)) table.append(el('colgroup', null, columns.map(c => el('col', { class: c.cls || null }))));
     const thead = el('thead');
     const tbody = el('tbody');
     const headRow = el('tr');
     for (const c of columns) {
-      const th = el('th', { class: (c.num ? 'num ' : '') + (c.sort !== false ? 'sortable' : ''), title: c.title || null }, c.label);
+      const th = el('th', { class: (c.num ? 'num ' : '') + (c.cls ? c.cls + ' ' : '') + (c.sort !== false ? 'sortable' : ''), title: c.title || null }, c.label);
       if (c.sort !== false) th.addEventListener('click', () => {
         if (sortKey === c.key) asc = !asc; else { sortKey = c.key; asc = !c.num; }
         render();
@@ -123,13 +127,13 @@
         }
         for (const row of rows) {
           const tr = el('tr', { class: (opts.rowClass ? opts.rowClass(row) : '') || null });
-          for (const c of columns) tr.append(el('td', { class: c.num ? 'num' : null }, c.render ? c.render(row) : (row[c.key] == null ? '' : String(row[c.key]))));
+          for (const c of columns) tr.append(el('td', { class: cellClass(c), title: c.cellTitle ? c.cellTitle(row) : null }, c.render ? c.render(row) : (row[c.key] == null ? '' : String(row[c.key]))));
           if (opts.onRowClick) { tr.classList.add('clickable'); tr.addEventListener('click', () => opts.onRowClick(row)); }
           tbody.append(tr);
         }
         if (g.totals) {
           const tr = el('tr', { class: 'total' });
-          for (const c of columns) tr.append(el('td', { class: c.num ? 'num' : null }, g.totals[c.key] == null ? '' : g.totals[c.key]));
+          for (const c of columns) tr.append(el('td', { class: cellClass(c) }, g.totals[c.key] == null ? '' : g.totals[c.key]));
           tbody.append(tr);
         }
       }
