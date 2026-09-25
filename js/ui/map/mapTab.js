@@ -164,7 +164,7 @@
     // toolbar
     const scopeSel = el('select', { title: 'replay range', onchange: e => setScope(Number(e.target.value)) }, el('option', { value: '-1' }, 'Whole match'));
     d.rounds.forEach((r, i) => scopeSel.append(el('option', { value: String(i) },
-      (r.kind === 'knife' ? 'Knife round' : r.kind === 'prematch' ? 'Pre-match round' : 'Round ' + r.label) + '  (' + fmtTime(S.live[i]) + ' – ' + fmtTime(r.segEnd) + ')')));
+      (r.kind === 'knife' ? 'Knife round (not counted)' : r.kind === 'prematch' ? 'Pre-match round (not counted)' : r.kind === 'aftermatch' ? 'Aftermatch (not counted)' : 'Round ' + r.label) + '  (' + fmtTime(S.live[i]) + ' – ' + fmtTime(r.segEnd) + ')')));
     S.scopeSel = scopeSel;
     const modeSeg = el('div', { class: 'seg' });
     for (const [key, label] of [['trail', 'Recent trail'], ['heat-player', 'Heatmap player'], ['heat-team', 'Heatmap team']]) {
@@ -296,6 +296,7 @@
     for (const it of items) {
       const node = el('div', { class: 'map-ev', title: 'jump to 2 s before', onclick: () => S.pb.seek(it.t - 2000) },
         el('span', { class: 'time' }, fmtTime(it.t - S.base)),
+        C4.ui.phaseBadge(C4.rounds.phaseAt(d.phases, it.t)),
         el('span', { class: 'tl-what' }, it.kill ? C4.ui.killNodes(S.app, it.kill) : el('span', { style: { color: 'var(--warn)' } }, it.ev.text)));
       S.evList.append(node);
       S.evItems.push({ t: it.t, node });

@@ -21,7 +21,7 @@
         : el('span', { class: 'dim', title: 'the sender could not be matched to a player' }, stripColors(c.senderRaw || '?'));
       return el('div', { title: stripColors(c.raw) },
         el('span', { class: 'time' }, fmtTime(c.t)),
-        el('span', { class: 'round' }, c.round >= 0 ? fmtRoundTime(d, c.round, c.t).split(' · ')[0] : ''),
+        el('span', { class: 'round' }, C4.ui.roundCell(d, c)),
         el('span', { class: 'badge ' + (c.scope === 'team' ? 'team' : 'all') }, c.scope === 'team' ? 'Team' : 'All'),
         el('span', { class: 'who' }, who, c.dead ? el('span', { class: 'dim' }, ' (dead)') : null),
         el('span', { class: 'text' }, c.text));

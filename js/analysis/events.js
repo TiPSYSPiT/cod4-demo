@@ -115,7 +115,8 @@ C4.define('events', function (C4) {
     for (const k of kills) add(k.t, 'kill', '', [k.attacker, k.victim].filter(x => x != null && x < 64), { kill: k.index });
 
     ev.sort((a, b) => a.t - b.t || EVENT_TYPES.findIndex(x => x[0] === a.type) - EVENT_TYPES.findIndex(x => x[0] === b.type));
-    for (const e of ev) { e.t = Math.max(0, Math.min(e.t, endTime)); e.round = roundAt(rounds, e.t); }
+    const phaseOf = ctx.phaseAt || (() => 'live');
+    for (const e of ev) { e.t = Math.max(0, Math.min(e.t, endTime)); e.round = roundAt(rounds, e.t); e.phase = phaseOf(e.t); }
     return ev;
   }
 
@@ -128,6 +129,7 @@ C4.define('events', function (C4) {
   /* ---- chat ---- */
   function buildChat(ctx) {
     const { commands, resolver, rounds } = ctx;
+    const phaseOf = ctx.phaseAt || (() => 'live');
     const out = [];
     for (const c of commands) {
       if (c.d.verb !== 'h' && c.d.verb !== 'i') continue;
@@ -149,7 +151,7 @@ C4.define('events', function (C4) {
         message = i >= 0 ? clean.slice(i + 2) : clean;
       }
       const dead = prefixes.some(p => /dead/i.test(p));
-      out.push({ t: c.t, round: roundAt(rounds, c.t), scope: c.d.scope, client, dead,
+      out.push({ t: c.t, round: roundAt(rounds, c.t), phase: phaseOf(c.t), scope: c.d.scope, client, dead,
         senderRaw: client == null ? (clean.indexOf(':') > 0 ? clean.slice(0, clean.indexOf(':')) : '') : null,
         text: quickMessage(message), raw });
     }
@@ -219,7 +221,8 @@ C4.define('events', function (C4) {
       out.push({ t: c.t, type, verb: d.verb, text, raw: c.text, client: type === 'chat' || type === 'message' || type === 'print' || type === 'announcement' ? resolver.contained(plain) : null });
     }
     out.sort((a, b) => a.t - b.t);
-    for (const o of out) o.round = roundAt(rounds, o.t);
+    const phaseOf = ctx.phaseAt || (() => 'live');
+    for (const o of out) { o.round = roundAt(rounds, o.t); o.phase = phaseOf(o.t); }
     return out;
   }
 

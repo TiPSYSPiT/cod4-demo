@@ -135,6 +135,10 @@
     if (data.diagnostics.scoreboardMismatches.length) {
       console.debug('Scoreboard vs. own kill feed count differences (scoreboard values are shown):', data.diagnostics.scoreboardMismatches);
     }
+    if (data.diagnostics.scoreboardSessions && data.diagnostics.scoreboardSessions.length) {
+      console.debug('Reconnected players - the game restarts their scoreboard at 0, the sessions are summed:', data.diagnostics.scoreboardSessions);
+    }
+    if (data.diagnostics.teamkillsExcluded) console.debug('Team kills outside the live match time (not counted):', data.diagnostics.teamkillsExcluded);
     C4.tabs.overview.render($('overview'), app);
     $('viewer').hidden = false;
     $('export-wrap').hidden = false;

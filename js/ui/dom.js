@@ -71,8 +71,29 @@
     if (!r) return '';
     const base = r.start != null ? r.start : r.segStart;
     const d = t - base;
-    const label = r.kind === 'knife' ? 'Knife' : r.kind === 'prematch' ? 'Pre' : 'R' + r.label;
+    const label = r.kind === 'knife' ? 'Knife' : r.kind === 'prematch' ? 'Pre' : r.kind === 'aftermatch' ? 'After' : 'R' + r.label;
     return label + ' · ' + (d < 0 ? '-' + fmtTime(-d) : fmtTime(d));
+  }
+
+  /** game phases (DemoData.phases): only "live" counts for the scoreboard */
+  const PHASES = {
+    live: { label: 'Live', title: 'regular match time - counted' },
+    warmup: { label: 'Warmup', title: 'warm-up / ready-up before the match - not counted in the scoreboard' },
+    knife: { label: 'Knife', title: 'knife round - not counted in the scoreboard' },
+    halftime: { label: 'Halftime', title: 'halftime break - not counted in the scoreboard' },
+    timeout: { label: 'Timeout', title: 'timeout / break between rounds - not counted in the scoreboard' },
+    aftermatch: { label: 'After', title: 'after the official match end - not counted in the scoreboard' }
+  };
+  /** small badge for a phase other than "live" (null for live) */
+  function phaseBadge(phase) {
+    if (!phase || phase === 'live') return null;
+    const p = PHASES[phase] || { label: phase, title: phase };
+    return el('span', { class: 'badge phase phase-' + phase, title: p.title }, p.label);
+  }
+  /** round cell of a list row: round label while live, otherwise the phase badge */
+  function roundCell(data, item) {
+    if (item.phase && item.phase !== 'live') return phaseBadge(item.phase);
+    return item.round >= 0 ? fmtRoundTime(data, item.round, item.t).split(' · ')[0] : '';
   }
 
   /** n/a with the reason as tooltip */
@@ -189,6 +210,6 @@
     return api;
   }
 
-  C4.ui = { el, append, clear, coloured, fmtTime, fmtRoundTime, na, approx, teamClass, sortableTable, virtualList };
+  C4.ui = { el, append, clear, coloured, fmtTime, fmtRoundTime, na, approx, teamClass, sortableTable, virtualList, PHASES, phaseBadge, roundCell };
   C4.tabs = C4.tabs || {};       // tab modules register here
 })(window.C4);

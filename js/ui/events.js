@@ -52,7 +52,7 @@
     const list = virtualList(e => {
       const row = el('div', { class: clickable(e) ? 'clickable' : null, title: clickable(e) ? 'show on the map (2 s before)' : null },
         el('span', { class: 'time' }, fmtTime(e.t)),
-        el('span', { class: 'round' }, e.round >= 0 ? fmtRoundTime(d, e.round, e.t).split(' · ')[0] : ''),
+        el('span', { class: 'round' }, C4.ui.roundCell(d, e)),
         el('span', { class: 'type' }, el('span', { class: 'ev-badge', style: { '--chip': COLORS[e.type] } }, labels[e.type])),
         el('span', { class: 'text tl-what' }, describe(e)));
       if (clickable(e)) row.addEventListener('click', () => app.gotoMap(e.t, e.round));

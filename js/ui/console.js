@@ -31,7 +31,7 @@
     const count = el('span', { class: 'muted' });
     const list = virtualList(c => el('div', { title: c.raw || c.text },
       el('span', { class: 'time' }, fmtTime(c.t)),
-      el('span', { class: 'round' }, c.round >= 0 ? fmtRoundTime(d, c.round, c.t).split(' · ')[0] : ''),
+      el('span', { class: 'round' }, C4.ui.roundCell(d, c)),
       el('span', { class: 'type' }, el('span', { class: 'ev-badge', style: { '--chip': color[c.type], minWidth: '110px' } }, label[c.type])),
       c.client != null ? el('span', { class: 'who' }, app.playerNode(c.client)) : null,
       el('span', { class: 'text mono' }, c.text)));

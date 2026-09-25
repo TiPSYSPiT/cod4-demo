@@ -13,7 +13,7 @@
     const sum = k => rows.reduce((a, p) => a + (p[k] || 0), 0);
     const K = sum('kills'), D = sum('deaths'), ownK = sum('ownKills'), HS = sum('headshots');
     return { score: sum('score'), kills: K, assists: sum('assists'), deaths: D, kd: D ? K / D : K,
-      nadeKills: sum('nadeKills'), nadeDeaths: sum('nadeDeaths'), tk: sum('teamkills'), hsPercent: ownK ? HS / ownK * 100 : null, plants: sum('plants'), defuses: sum('defuses') };
+      nadeKills: sum('nadeKills'), nadeDeaths: sum('nadeDeaths'), tk: sum('teamkills'), teamKilled: sum('teamKilled'), hsPercent: ownK ? HS / ownK * 100 : null, plants: sum('plants'), defuses: sum('defuses') };
   }
 
   /** the scoreboard as plain JSON: map, record date, half scores, then teams (in table order),
@@ -61,6 +61,7 @@
           nadeKills: p.nadeKills,
           nadeDeaths: p.nadeDeaths,
           tk: p.teamkills,
+          teamKilled: p.teamKilled,
           hsPercent: p.headshotPct == null ? null : Math.round(p.headshotPct),
           plants: p.plants,
           defuses: p.defuses
@@ -73,6 +74,10 @@
 
   function render(root, app) {
     const d = app.data;
+    const noMatch = d.match && d.match.start == null && d.meta.isSearchAndDestroy;
+    const incomplete = p => p.scoreIncomplete
+      ? approx('the player reconnected and the game sent no scoreboard for one of his sessions - score / assists of that session are missing')
+      : p.scoreboardSessions > 1 ? approx('the player reconnected: the scoreboard sessions are summed (the game restarts at 0)') : null;
     const approxStats = p => p.statsSource === 'killfeed'
       ? approx('no scoreboard entry for this player - counted from the kill feed')
       : p.statsSource === 'scoreboard+killfeed'
@@ -97,9 +102,9 @@
         cellTitle: p => p.cleanName + (p.isPov ? ' (POV)' : '') + (p.leftEarly ? ' - left at ' + fmtTime(p.leftAt) : ''),
         total: () => 'Team total'
       },
-      { key: 'score', label: 'Score', render: p => p.score == null ? na('not in any scoreboard of the demo') : String(p.score), total: t => t.score },
+      { key: 'score', label: 'Score', render: p => p.score == null ? na(noMatch ? 'no match round in the demo (warm-up only)' : 'not in any scoreboard of the demo') : [String(p.score), incomplete(p)], total: t => t.score },
       { key: 'kills', label: 'K', render: p => [String(p.kills), approxStats(p)], total: t => t.kills },
-      { key: 'assists', label: 'A', render: p => p.assists == null ? na('assists only come from the scoreboard') : String(p.assists), total: t => t.assists },
+      { key: 'assists', label: 'A', render: p => p.assists == null ? na(noMatch ? 'no match round in the demo (warm-up only)' : 'assists only come from the scoreboard') : [String(p.assists), incomplete(p)], total: t => t.assists },
       { key: 'deaths', label: 'D', render: p => [String(p.deaths), approxStats(p)], total: t => t.deaths },
       { key: 'kd', label: 'K/D', sort: kd, title: 'kills / deaths; with 0 deaths K/D = kills', render: p => kd(p) == null ? '' : kd(p).toFixed(2), total: t => t.kd.toFixed(2) },
       {
@@ -110,11 +115,8 @@
           : el('span', { title: p.headshots + ' of ' + p.ownKills + ' kills (kill feed)' }, fmtPct(p.headshotPct)),
         total: t => t.hsPercent == null ? '–' : fmtPct(t.hsPercent)
       },
-      {
-        key: 'teamkills', label: 'TK',
-        title: 'team kills in the running match only: live phase of the match rounds (from the kill feed). Warm-up, pauses / timeouts, strat mode and the knife round are not counted.',
-        total: t => t.tk
-      },
+      { key: 'teamkills', label: 'TK', title: 'Teamkills (killed a teammate)', render: p => String(p.teamkills), total: t => t.tk },
+      { key: 'teamKilled', label: 'TKd', title: 'Times killed by a teammate', render: p => String(p.teamKilled), total: t => t.teamKilled },
       { key: 'nadeKills', label: 'Nade K', title: 'Kills with frag grenades', render: p => String(p.nadeKills), total: t => t.nadeKills },
       { key: 'nadeDeaths', label: 'Nade D', title: 'Deaths by frag grenades', render: p => String(p.nadeDeaths), total: t => t.nadeDeaths },
       { key: 'plants', label: 'Plants', title: 'bomb plants (server message "planted the bomb", match rounds only)', total: t => t.plants },
@@ -142,7 +144,9 @@
           class: 'btn', title: 'teams, players (by score) and team totals as JSON',
           onclick: () => app.download(C4.exportName.buildExportFileName(d), JSON.stringify(scoreJson(d), null, 2))
         }, '⬇ Download score (JSON)')),
-      el('p', { class: 'note' }, 'Values from the game’s scoreboard (last scoreboard each player appears in). ',
+      el('p', { class: 'note' }, 'Only the regular match time counts: no warm-up, knife round, halftime, timeouts or aftermatch' +
+        (d.match && d.match.end != null ? ' (official match end ' + fmtTime(d.match.end) + ')' : '') + '. ',
+        'Values from the game’s scoreboard as it stood at the match end (reconnected players: sessions summed). ',
         'Click a column header to sort. ', el('span', { class: 'approx' }, '≈'), ' marks values completed from the kill feed. ',
         'HS %, TK, Nade K / D, Plants and Defuses are not in the game’s scoreboard - they are counted from the kill feed and the bomb messages of this demo (only the recorded rounds; ',
         'team kills only while a match round is live, not in warm-up, pauses or the knife round).'),

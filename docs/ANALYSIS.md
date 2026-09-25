@@ -205,7 +205,7 @@ either. The viewer reports this as "snapshots skipped" and continues.
 | HS % | not in the scoreboard: headshot kills (`MOD_HEAD_SHOT`) / kills, both from the kill feed with the counting rule above (match rounds; no team kills / suicides). Only the recorded rounds - for a recording that starts mid-match the base is smaller than the scoreboard's K | reliable |
 | Half number (recording starts mid-match) | halftimes before the recording are not in the demo and no dvar gives the rounds per half: taken from the ruleset (`MR12` = 12 rounds per half, `OT3` = 3 rounds per overtime half; all samples with a recorded halftime switch before round 13) and the score at the start. The half the recording starts in is marked incomplete. Without MR in the ruleset the number is unknown (`half ?`) | **heuristic** |
 | Record date stamp | `g_mapStartTime` (ctime, server local time) parsed by hand to `YYYYMMDDHHMMSS`, else the file date in local time | heuristic (no recording date in the demo) |
-| TK (team kills) | not in the scoreboard: kill feed, killer and victim on the same side at the time of the kill (raw client state), credited to the killer. **Running match only**: between the live start (CS 11) and the round win of a match round. Warm-up, pauses (timeouts), strat mode and ready-up are segments without a round; the knife round is excluded like for K/D. Samples: 210 team kills, 168 outside rounds, 7 in knife rounds, 0 in strat time or after a round win, 35 counted. Excluded counts: `diagnostics.teamkillsExcluded` | reliable |
+| TK (team kills) | not in the scoreboard: kill feed, killer and victim on the same side at the time of the kill (raw client state), credited to the killer. **Running match only**: phase `live` (see "Game phases" in section 4), between the live start (CS 11) and the round win of a match round. Warm-up, knife round, halftime, timeouts and the aftermatch are not counted. Excluded counts per phase: `diagnostics.teamkillsExcluded`. **TKd** (`teamKilled`): the same team kills credited to the victim - per team, sum TK = sum TKd (all samples: 49 = 49) | reliable |
 | Plants / Defuses | not in the scoreboard: `f "MP_EXPLOSIVES_PLANTED_BY<name>"` / `…DEFUSED_BY<name>`, name → client, match rounds only (warm-up / strat mode excluded). Unresolved names: `diagnostics.bombUnresolved` | reliable |
 | Team, spectators | client state `team` (1 axis, 2 allies, 3 spectator); Promod "Shoutcaster" = spectator | reliable |
 | Left early | message `<name> EXE_LEFTGAME` and removal of the client state | reliable |
@@ -334,6 +334,44 @@ fight), so their live start is the restart. A round already running when the
 recording starts begins at the first snapshot (or at CS 11 if the recording
 starts inside the strat time, e.g. +5850 ms). No heuristic is involved. The map
 replay skips `[restart, live start)` and uses it as 00:00 of the round.
+
+**Game phases.** Every event, chat line, console line and kill has a phase:
+`warmup`, `knife`, `live`, `halftime`, `timeout`, `aftermatch` (`DemoData.phases`,
+`DemoData.match`). Only `live` counts for the scoreboard, Round by Round and Kills
+per Round. The signals:
+
+* Match rounds: restart segments with a round timer (CS 11) or a round win, not
+  before a score reset (earlier match / warm-up) - see above.
+* Knife round: status line "Knife Round", or (Promod "Match Knife MR12" sends
+  none) a round before the match in a knife ruleset whose kills are all melee
+  kills (≈). Not counted.
+* **Official match end: the round win that fulfils the win condition of the
+  ruleset** - "MR12" = decided at 13 wins; at 12:12 overtime with "OT3" (3 if
+  the ruleset names none) rounds per side, decided at 16, then 19, ... wins.
+  The server may go on: Promod "Match" rulesets (scoreboard "limit 24") start a
+  new round after 13 wins. Those rounds are `aftermatch`. Without a win rule: a
+  drop of the team score sum after the last match round (map restart, switch to
+  strat mode) ends the match.
+* Between match rounds: `halftime` (halftime sound / side swap), `timeout`
+  ("Timeout called by" or a break without a round). Before the first match
+  round: `warmup`.
+* A recording that ends during the match: the last round stays `live`,
+  marked unfinished.
+* The scoreboard of the game is used as it stood at the match end: scoreboards
+  before the match start (warm-up values) and after the first kill / bomb event
+  / score reset after the match end are ignored. A reconnect (client slot freed
+  and taken again) restarts the game's counters at 0: the sessions are summed
+  (last scoreboard entry per session + kill-feed events after it; an entry sent
+  while the slot is free shows reset values and is ignored).
+* Samples (51 files): e.g. `20260916_inf_vs_revolt_backlot` - knife round
+  00:05-00:34, match 02:19-35:40 (9:13), timeout 28:23-32:08, then the server
+  started a 23rd round and switched to strat mode (9 team kills from grenade
+  practice) - all `aftermatch`. `20260916_inf_vs_revolt_strike` - a 20th round
+  was played at 13:6 (server 14:6): `aftermatch`, final 13:6.
+* Remaining differences: `Match_mp_cluster_HWybxCU0` - the game counts one kill
+  deox m1taR → ALPHA Shooter that has no obituary in the demo (scoreboard 14 /
+  11, kill feed 13 / 10); `Match_mp_crossfire_Q4yUjGvh` - a team change counts as
+  "suicide" in the kill feed but not in Promod's deaths (only the own count differs).
 
 **Bomb plant/defuse.** `f "MP_EXPLOSIVES_PLANTED_BY<name>"`,
 `…DEFUSED_BY<name>`, also `RECOVERED` (picked up) and `DROPPED`. The name is

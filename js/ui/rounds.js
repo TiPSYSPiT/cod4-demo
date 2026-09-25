@@ -42,25 +42,49 @@
       el('span', { class: 'spacer' }),
       el('span', { class: 'muted' }, 'Click a kill or bomb event to open it on the map (2 s before).'));
     const list = el('div', { class: 'rounds' });
+    // Only the match rounds are numbered and counted. Rounds before the match (knife round,
+    // warm-up) and after the official match end (aftermatch) get their own marked section.
+    const idx = d.rounds.map((r, i) => i);
+    const before = idx.filter(i => d.rounds[i].kind === 'knife' || d.rounds[i].kind === 'prematch');
+    const match = idx.filter(i => d.rounds[i].kind === 'round');
+    const after = idx.filter(i => d.rounds[i].kind === 'aftermatch');
+    if (before.length) {
+      list.append(el('div', { class: 'phase-section' }, 'Before the match — not counted',
+        el('small', null, 'knife round / warm-up rounds: no round number, not in the scoreboard')));
+      for (const i of before) list.append(roundCard(app, d.rounds[i], i, A, B));
+      if (match.length) list.append(el('div', { class: 'phase-section live' }, 'Match — ' + match.length + ' round' + (match.length === 1 ? '' : 's'),
+        el('small', null, 'official start ' + fmtTime(d.match.start))));
+    }
     // a recording that starts mid-match begins in a later half (d.halfInfo.offset halves not recorded)
-    let lastHalf = d.rounds.length ? d.rounds[0].half : 1;
+    let lastHalf = match.length ? d.rounds[match[0]].half : 1;
     const halftimes = d.halftimes;
-    d.rounds.forEach((r, i) => {
+    for (const i of match) {
+      const r = d.rounds[i];
       if (r.half > lastHalf) {
         const ht = halftimes[r.half - 2 - d.halfInfo.offset];
         list.append(el('div', { class: 'halftime' }, 'Halftime — teams switch sides' + (ht != null ? '  (' + fmtTime(ht) + ')' : '')));
         lastHalf = r.half;
       }
       list.append(roundCard(app, r, i, A, B));
-    });
+    }
+    if (after.length || (d.match.end != null && d.kills.some(k => k.phase === 'aftermatch'))) {
+      const final = d.teams.map(t => t.wins).join(':');
+      list.append(el('div', { class: 'phase-section after' }, 'Aftermatch — not counted',
+        el('small', null, d.match.end != null
+          ? 'official match end ' + fmtTime(d.match.end) + ' at ' + final + ' (' + (d.match.endSource === 'win rule' ? 'win condition of ' + (d.meta.ruleset || 'the ruleset') : 'score reset after the last round') + '); everything after it is not in the scoreboard'
+          : 'after the last match round')));
+      for (const i of after) list.append(roundCard(app, d.rounds[i], i, A, B));
+    }
     root.append(bar, list);
   }
 
   function roundCard(app, r, i, A, B) {
     const d = app.data;
     const winner = r.winnerTeam ? app.team(r.winnerTeam) : null;
-    const title = r.kind === 'knife' ? 'Knife' : r.kind === 'prematch' ? 'Pre' : 'R' + r.label;
-    const sub = r.kind === 'knife' ? 'knife round' : r.kind === 'prematch' ? 'before the match' : d.halfInfo.unknown ? 'half ?' : 'half ' + r.half;
+    const title = r.kind === 'knife' ? 'Knife' : r.kind === 'prematch' ? 'Pre' : r.kind === 'aftermatch' ? 'After' : 'R' + r.label;
+    const sub = r.kind === 'knife' ? ['knife round', r.knifeHeuristic ? approx('no "Knife Round" status line: a round before the match in a knife ruleset with melee kills only') : null]
+      : r.kind === 'prematch' ? 'before the match' : r.kind === 'aftermatch' ? 'after the match end'
+      : (d.halfInfo.unknown ? 'half ?' : 'half ' + r.half) + (r.end == null ? ' · unfinished' : '');
     const reason = r.reason ? [r.reason, r.reasonHeuristic ? approx(r.reasonSource) : null]
       : na(r.complete ? 'no reason detected' : (r.startedBeforeRecording ? 'round incomplete in the demo' : 'the demo ends before the round is decided'));
     const head = el('div', { class: 'round-head' },
@@ -75,7 +99,7 @@
       el('div', { class: 'muted' }, el('span', { class: 'team-a' }, A.name), ' ', sideLabel(r.sides.A), el('span', { class: 'dim' }, '  /  '), el('span', { class: 'team-b' }, B.name), ' ', sideLabel(r.sides.B)),
       el('div', { class: 'round-toggle' }, '▶'));
     const body = el('div', { class: 'round-body' });
-    const card = el('div', { class: 'round-card ' + (r.winnerTeam === 'A' ? 'win-a' : r.winnerTeam === 'B' ? 'win-b' : '') }, head, body);
+    const card = el('div', { class: 'round-card ' + (r.kind !== 'round' ? 'not-counted ' : '') + (r.winnerTeam === 'A' ? 'win-a' : r.winnerTeam === 'B' ? 'win-b' : '') }, head, body);
     // the kill list is built on the first opening (also by "Expand all")
     let filled = false;
     card.fill = () => { if (!filled) { fillTimeline(app, r, i, body); filled = true; } };

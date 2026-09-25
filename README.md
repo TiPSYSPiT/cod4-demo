@@ -34,11 +34,23 @@ demo begins mid-match), map (raw and display name), mode, ruleset (Promod's
 HUD header, e.g. *Knockout Knife MR12 OT3*, plus the mod folder), protocol,
 server name with colour codes, demo POV, length, record date.
 
+### Game phases
+
+Every event has a phase: warm-up, knife round, live, halftime, timeout,
+aftermatch. **Only the regular match time ("live") counts** for Scoreboard,
+Kills per Round and the numbered rounds in Round by Round. The match ends with
+the round win that fulfils the win condition of the ruleset (MR12: 13 wins; at
+12:12 overtime, 3 rounds per side, until a winner is decided) - rounds the
+server plays after it are "aftermatch". Round by Round shows the knife round /
+warm-up and the aftermatch as marked sections without a round number; Events,
+Chat, Console and Map show a phase badge (Warmup, Knife, Halftime, Timeout,
+After) instead of the round. Details: `docs/ANALYSIS.md`, section 4.
+
 ### Tabs
 
 | Tab | What it shows |
 |---|---|
-| **Scoreboard** | Per team (sorted by score, every column sortable), Clan, Player, Score, K, A, D, K/D, HS % (headshot kills / kills from the kill feed), TK (team kills while a match round is live - not in warm-up, pauses or the knife round), Nade K / Nade D (kills with / deaths by frag grenades, from the kill feed), Plants, Defuses (from the bomb messages), team totals, POV badge, "left" badge for players who left early, spectators below. |
+| **Scoreboard** | Per team (sorted by score, every column sortable), Clan, Player, Score, K, A, D, K/D, HS % (headshot kills / kills from the kill feed), TK (team kills while a match round is live - not in warm-up, pauses or the knife round), TKd (times killed by a teammate - the same team kills seen from the victim), Nade K / Nade D (kills with / deaths by frag grenades, from the kill feed), Plants, Defuses (from the bomb messages), team totals, POV badge, "left" badge for players who left early, spectators below. |
 | **Round by Round** | Every round as a card (click to open): winner, reason, duration, score after the round, sides. Halftime divider. Inside: kills (`R7 · 01:23 · Killer → Victim · Weapon`, HS / Teamkill / Suicide / Falling / World / Car explosion) and bomb plant / defuse. |
 | **Kills per Round** | Players × rounds matrix, colour intensity by kills, 3K/4K outlined, 5K red. |
 | **Chat** | Time, round, All/Team badge, player, message; filter All / Team, search. |
@@ -102,7 +114,7 @@ the half started before the recording). A recording that starts mid-match adds
 from the ruleset (MR12 = 12 rounds per half, OT3) and the start score (≈).
 Then per team the
 clan / team name, `roundsWon`, the players sorted by score (`name`, `score`,
-`kills`, `assists`, `deaths`, `kd`, `nadeKills`, `nadeDeaths`, `tk`, `hsPercent`, `plants`, `defuses`,
+`kills`, `assists`, `deaths`, `kd`, `nadeKills`, `nadeDeaths`, `tk`, `teamKilled`, `hsPercent`, `plants`, `defuses`,
 `pov: true` for the recording player) and `teamTotal`. Values as in the
 table; `kd` rounded to 2 decimals, `hsPercent` to whole percent (`null`
 without kills). Spectators are not included.

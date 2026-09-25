@@ -111,7 +111,21 @@ C4.define('build', function (C4) {
       for (const [s, k] of count) if (k > n) { best = s; n = k; }
       return best;
     };
-    const rulesetHud = mostFrequent(381);
+    // Ruleset: the Promod HUD header ("Knockout Knife MR12 OT3", "Match Knife MR12"). Its config
+    // string index differs between Promod versions (381, 385, 389 ...) and the gamestate value can be
+    // left over from the previous match - so the header with "MR<n>" set most often during the demo
+    // wins; config string 381 of the whole demo only as fallback.
+    const rulesetHud = (() => {
+      const count = new Map();
+      for (const ch of csChanges) {
+        if (!((ch.index >= 380 && ch.index <= 400) || ch.index === 733)) continue;
+        const s = stripColors(ch.value || '').trim();
+        if (/\bMR\d+\b/i.test(s)) count.set(s, (count.get(s) || 0) + 1);
+      }
+      let best = null, n = 0;
+      for (const [s, k] of count) if (k > n) { best = s; n = k; }
+      return best || mostFrequent(381);
+    })();
     const promodHeader = mostFrequent(380);
     const fsGame = serverinfo.fs_game || systeminfo.fs_game || '';
 
@@ -171,9 +185,18 @@ C4.define('build', function (C4) {
 
     // rounds
     const R = C4.rounds.analyzeRounds({ commands, csChanges, teams, kills, attackSide, endTime,
-      clients: Array.from(teams.byClient.keys()) });
+      clients: Array.from(teams.byClient.keys()), ruleset: rulesetHud });
     const rounds = R.rounds;
     for (let i = 0; i < rounds.length; i++) for (const ki of rounds[i].kills) kills[ki].round = i;
+    // phase of every kill (warmup, knife, live, halftime, timeout, aftermatch): only "live" counts.
+    // Other game modes have no round logic: the whole demo is "live" there. A S&D demo without any
+    // match round has no live time at all (warm-up only).
+    const isSD = (serverinfo.g_gametype || '').toLowerCase() === 'sd';
+    if (!isSD && !rounds.some(r => r.kind === 'round')) R.phases = [{ phase: 'live', start: 0, detail: 'no round logic for this game mode' }];
+    const noMatch = isSD && R.matchStart == null;
+    if (noMatch) warnings.push('No match round in this demo (warm-up only) - the scoreboard counts nothing.');
+    const phaseAt = t => C4.rounds.phaseAt(R.phases, t);
+    for (const k of kills) k.phase = phaseAt(k.t);
     if (R.initialScore.A + R.initialScore.B > 0) {
       warnings.push('The recording starts in the middle of the match at ' + R.initialScore.A + ':' + R.initialScore.B +
         ' - the first ' + (R.initialScore.A + R.initialScore.B) + ' rounds are not in the demo.');
@@ -202,35 +225,97 @@ C4.define('build', function (C4) {
       for (const r of rounds) r.half += halfInfo.offset;
     }
 
-    // players: the game's scoreboard (b) first.
-    // Scoreboards reset to zero after the last round (map restart after the match) are ignored.
+    // players: the game's scoreboard (b) first, as it stood at the official match end.
+    // - Scoreboards reset to zero after the last round (map restart after the match) are ignored.
+    // - After the official match end only scoreboards before the first kill / bomb event / score
+    //   reset count (the server may go on, e.g. a new round or strat mode after the deciding win).
+    // - Scoreboards before the match start show the warm-up (Promod resets the scoreboard at the
+    //   start); a recording that starts mid-match keeps them.
+    // - A player who reconnects starts at 0 again: his sessions are summed (last entry of each).
     const boards = col.scoreboards.map(sb => ({ t: rel(sb.t), entries: sb.entries }));
     const isZero = sb => sb.entries.length > 0 && sb.entries.every(e => !e.score && !e.kills && !e.deaths && !e.assists);
     let validUntil = Infinity;
     for (let i = 1; i < boards.length; i++) {
       if (isZero(boards[i]) && !isZero(boards[i - 1]) && R.lastRoundEnd != null && boards[i].t > R.lastRoundEnd) { validUntil = boards[i].t; break; }
     }
-    const lastEntry = new Map();
+    if (R.matchEnd != null) {
+      let firstChange = kills.reduce((m, k) => (k.t > R.matchEnd && k.t < m ? k.t : m), Infinity);
+      if (R.matchEndSource === 'score reset') firstChange = Math.min(firstChange, R.matchEnd);
+      validUntil = Math.min(validUntil, firstChange);
+      for (const b of R.bomb) if (b.t > R.matchEnd && (b.action === 'planted' || b.action === 'defused')) { validUntil = Math.min(validUntil, b.t); break; }
+    }
+    // (S&D demo without a match round: no scoreboard of the game counts - it only shows the warm-up)
+    const validFrom = noMatch ? Infinity : R.initialScore.A + R.initialScore.B > 0 || R.matchStart == null ? -Infinity : R.matchStart;
+    // Sessions: a reconnect (client slot freed and taken again) starts a new session in which the
+    // game's scoreboard counts from 0. The sessions come from the slot events, not from the
+    // scoreboards - those are only sent now and then (a session can have none at all), and the
+    // counters alone are no signal (Promod shows other values during a timeout, then restores them).
+    const slotEv = col.slotEvents.map(s => ({ t: rel(s.t), client: s.client, kind: s.kind }));
+    const splits = new Map();           // client -> times it came back (start of sessions 1, 2, ...)
+    const gaps = new Map();             // client -> [[slot freed, taken again (or Infinity))]
+    for (const s of slotEv) {
+      if (s.kind !== 'disconnected') continue;
+      const back = slotEv.find(c => c.kind === 'connected' && c.client === s.client && c.t > s.t);
+      if (!gaps.has(s.client)) gaps.set(s.client, []);
+      gaps.get(s.client).push([s.t, back ? back.t : Infinity]);
+      if (!back) continue;
+      if (!splits.has(s.client)) splits.set(s.client, []);
+      if (!splits.get(s.client).includes(back.t)) splits.get(s.client).push(back.t);
+    }
+    const sessionOf = (cl, t) => { const s = splits.get(cl) || []; let i = 0; while (i < s.length && t >= s[i]) i++; return i; };
+    // reconnects during the counted match time (not the warm-up or the aftermatch)
+    const matchReconnects = cl => (splits.get(cl) || []).filter(t => t > validFrom && t < validUntil);
+    // last scoreboard entry per client and session. An entry sent while the slot is free already
+    // shows the reset values (seen: 0/0 between leaving and coming back) - it is ignored.
+    const inGap = (cl, t) => (gaps.get(cl) || []).some(([a, b]) => t >= a && t < b);
+    const sessionBoards = new Map();    // client -> Map(session -> entry)
     for (const sb of boards) {
       if (sb.t >= validUntil) break;
-      for (const e of sb.entries) if (e.client != null) lastEntry.set(e.client, Object.assign({ t: sb.t }, e));
+      if (sb.t < validFrom) continue;
+      for (const e of sb.entries) {
+        if (e.client == null || inGap(e.client, sb.t)) continue;
+        if (!sessionBoards.has(e.client)) sessionBoards.set(e.client, new Map());
+        sessionBoards.get(e.client).set(sessionOf(e.client, sb.t), Object.assign({ t: sb.t }, e));
+      }
     }
+    const lastEntry = new Map();        // the game's values at the match end, summed over the sessions
+    for (const [cl, m] of sessionBoards) {
+      const list = [...m.entries()].sort((a, b) => a[0] - b[0]).map(x => x[1]);
+      const sum = k => list.some(x => x[k] == null) ? null : list.reduce((a, x) => a + x[k], 0);
+      const cur = list[list.length - 1];
+      lastEntry.set(cl, Object.assign({}, cur, { score: sum('score'), kills: sum('kills'), deaths: sum('deaths'), assists: sum('assists'),
+        sessions: matchReconnects(cl).length + 1, t: cur.t }));
+    }
+    /** a kill at time t is not in the game's scoreboard of client cl: after the last scoreboard entry
+     * of its session, or in a session without any scoreboard */
+    const afterScoreboard = (cl, t) => {
+      const m = sessionBoards.get(cl);
+      if (!m) return false;
+      const e = m.get(sessionOf(cl, t));
+      return !e || t > e.t;
+    };
+    // sessions with match events but without a scoreboard: score / assists of the player are incomplete
+    const sessionsWithoutBoard = new Map();
     const own = new Map(), after = new Map();
-    const bump = (map, cl, key) => { if (cl == null || cl >= 64) return; const o = map.get(cl) || { kills: 0, deaths: 0, headshots: 0, teamkills: 0, nadeKills: 0, nadeDeaths: 0 }; o[key]++; map.set(cl, o); };
-    // team kills of the running match only: live phase of a match round (live start = CS 11 to the
-    // round win). Warm-up, pauses (timeouts), strat mode and ready-up are segments without a round,
-    // the knife round is not counted either (like kills / deaths); excluded ones go to diagnostics.
-    const teamkillsExcluded = { outsideRounds: 0, knifeRound: 0, outsideLivePhase: 0 };
+    const bump = (map, cl, key) => { if (cl == null || cl >= 64) return; const o = map.get(cl) || { kills: 0, deaths: 0, headshots: 0, teamkills: 0, teamKilled: 0, nadeKills: 0, nadeDeaths: 0 }; o[key]++; map.set(cl, o); };
+    // team kills of the running match only: phase "live" and within the round's live time (live start
+    // = CS 11 to the round win). Warm-up, knife round, halftime, timeouts and the aftermatch are
+    // other phases; the excluded ones are counted per phase in diagnostics.
+    const teamkillsExcluded = { warmup: 0, knife: 0, halftime: 0, timeout: 0, aftermatch: 0, outsideLivePhase: 0 };
     for (const k of kills) {
       if (!k.teamkill) continue;
       const r = k.round >= 0 ? rounds[k.round] : null;
-      if (!r) teamkillsExcluded.outsideRounds++;
-      else if (r.kind !== 'round') teamkillsExcluded.knifeRound++;
-      else if (k.t < r.start || (r.end != null && k.t > r.end)) teamkillsExcluded.outsideLivePhase++;
-      else bump(own, k.attacker, 'teamkills');
+      if (k.phase !== 'live') teamkillsExcluded[k.phase]++;
+      else if (r && (k.t < r.start || (r.end != null && k.t > r.end))) teamkillsExcluded.outsideLivePhase++;
+      else {
+        // the same team kill from both sides: TK for the killer, "team killed" (TKd) for the victim
+        bump(own, k.attacker, 'teamkills');
+        bump(own, k.victim, 'teamKilled');
+      }
     }
     for (const k of kills) {
-      if (k.round < 0 || rounds[k.round].kind !== 'round') continue;
+      // only the running match (phase "live"): no warm-up, knife round, halftime, timeout, aftermatch
+      if (k.phase !== 'live') continue;
       // counting rules measured against the Promod scoreboard: team kills and suicides give
       // the shooter no kill; deaths by the world (falling) are not counted as deaths
       const credit = !k.suicide && !k.world && !k.entityAttacker && !k.teamkill;
@@ -243,14 +328,17 @@ C4.define('build', function (C4) {
       if (credit && k.nade) bump(own, k.attacker, 'nadeKills');
       if (death && k.nade) bump(own, k.victim, 'nadeDeaths');
       // kills after a player's last scoreboard entry: the last scoreboard can be older than the last round
-      const ev = lastEntry.get(k.victim);
-      if (death && ev && k.t > ev.t) bump(after, k.victim, 'deaths');
-      const ea = lastEntry.get(k.attacker);
-      if (credit && ea && k.t > ea.t) bump(after, k.attacker, 'kills');
+      if (death && afterScoreboard(k.victim, k.t)) bump(after, k.victim, 'deaths');
+      if (credit && afterScoreboard(k.attacker, k.t)) bump(after, k.attacker, 'kills');
+      for (const cl of [death ? k.victim : null, credit ? k.attacker : null]) {
+        if (cl == null || !sessionBoards.has(cl) || sessionBoards.get(cl).has(sessionOf(cl, k.t))) continue;
+        if (!sessionsWithoutBoard.has(cl)) sessionsWithoutBoard.set(cl, new Set());
+        sessionsWithoutBoard.get(cl).add(sessionOf(cl, k.t));
+      }
     }
     const resolver = C4.events.nameResolver(col.nameHistory, names);
     const status = R.status;
-    const events = C4.events.buildEvents({ commands, rounds, kills, slotEvents: col.slotEvents.map(s => ({ t: rel(s.t) - (s.t === col.firstTime ? 1 : 0), client: s.client, kind: s.kind })), resolver, povClient, playerName, endTime, status, halftimes: R.halftimes, halftimeFromSound: R.halftimeFromSound });
+    const events = C4.events.buildEvents({ commands, rounds, kills, slotEvents: col.slotEvents.map(s => ({ t: rel(s.t) - (s.t === col.firstTime ? 1 : 0), client: s.client, kind: s.kind })), resolver, povClient, playerName, endTime, status, halftimes: R.halftimes, halftimeFromSound: R.halftimeFromSound, phaseAt });
     const leftAt = new Map(), joinedAt = new Map();
     for (const e of events) {
       if (e.type === 'left' && e.clients.length) leftAt.set(e.clients[0], e.t);
@@ -267,7 +355,7 @@ C4.define('build', function (C4) {
     for (const e of events) {
       if (e.type !== 'bomb_planted' && e.type !== 'bomb_defused') continue;
       const ri = C4.events.roundAt(rounds, e.t);
-      if (ri < 0 || rounds[ri].kind !== 'round') continue;
+      if (ri < 0 || e.phase !== 'live') continue;
       if (bombSeen.has(e.type + ri)) continue;
       bombSeen.add(e.type + ri);
       const cl = e.clients.length ? e.clients[0] : null;
@@ -292,11 +380,14 @@ C4.define('build', function (C4) {
         assists: e ? e.assists : null, ping: e ? e.ping : null,
         statsSource: e ? (a.kills || a.deaths ? 'scoreboard+killfeed' : 'scoreboard') : 'killfeed',
         scoreboardTime: e ? e.t : null, killsAfterScoreboard: a.kills, deathsAfterScoreboard: a.deaths,
+        scoreboardSessions: e ? e.sessions : 0,     // > 1: reconnected, the sessions are summed
+        // a session with match events but no scoreboard: its score / assists are missing (K / D come from the kill feed)
+        scoreIncomplete: !!(e && sessionsWithoutBoard.has(cl)),
         ownKills: o.kills, ownDeaths: o.deaths,
         // headshot share of the kills in the kill feed of this demo (the scoreboard has no headshots)
         headshots: o.headshots || 0, headshotPct: o.kills ? (o.headshots || 0) / o.kills * 100 : null,
         plants: plants.get(cl) || 0, defuses: defuses.get(cl) || 0,
-        teamkills: o.teamkills || 0,
+        teamkills: o.teamkills || 0, teamKilled: o.teamKilled || 0,
         nadeKills: o.nadeKills || 0, nadeDeaths: o.nadeDeaths || 0,
         joinedAt: joinedAt.has(cl) ? joinedAt.get(cl) : null, leftAt: leftAt.has(cl) ? leftAt.get(cl) : null,
         clan: '', clanHeuristic: false
@@ -315,7 +406,11 @@ C4.define('build', function (C4) {
       }
     }
     // own count vs. game scoreboard (the brief asks for console.debug of the differences)
-    const diagnostics = { scoreboardMismatches: [], scoreboardResetIgnored: validUntil !== Infinity, bombUnresolved, teamkillsExcluded };
+    const diagnostics = { scoreboardMismatches: [], scoreboardResetIgnored: validUntil !== Infinity, bombUnresolved, teamkillsExcluded,
+      scoreboardWindow: { from: Number.isFinite(validFrom) ? validFrom : null, until: Number.isFinite(validUntil) ? validUntil : null },
+      // reconnected players: per session its start and the last scoreboard entry (null = none sent)
+      scoreboardSessions: [...splits].filter(([cl]) => lastEntry.has(cl) && matchReconnects(cl).length).map(([cl, s]) => ({ client: cl, name: playerName(cl),
+        sessions: [null, ...s].map((start, i) => ({ start, board: (sessionBoards.get(cl) && sessionBoards.get(cl).get(i)) || null })) })) };
     for (const p of players) {
       if (p.statsSource !== 'killfeed' && (p.kills !== p.ownKills || p.deaths !== p.ownDeaths)) {
         diagnostics.scoreboardMismatches.push({ client: p.client, name: p.cleanName, shown: [p.kills, p.deaths],
@@ -350,9 +445,9 @@ C4.define('build', function (C4) {
     }
 
     // chat and console
-    const chat = C4.events.buildChat({ commands, resolver, rounds });
+    const chat = C4.events.buildChat({ commands, resolver, rounds, phaseAt });
     const consoleLines = C4.events.buildConsole({ commands, resolver, rounds, gamestate: col.gamestate,
-      issues: col.issues.map(i => ({ t: 0, text: i.text })), csCategory, csOld: csOldByCmd });
+      issues: col.issues.map(i => ({ t: 0, text: i.text })), csCategory, csOld: csOldByCmd, phaseAt });
 
     // positions -> typed arrays
     const positions = {};
@@ -426,7 +521,9 @@ C4.define('build', function (C4) {
     return {
       format: 'cod4-demo-viewer/1',
       meta, serverinfo, systeminfo, warnings, diagnostics,
-      teams: teamList, players, rounds, initialScore: R.initialScore, halfInfo, halftimes: R.halftimes, swaps: teams.swaps,
+      teams: teamList, players, rounds, initialScore: R.initialScore, halfInfo, halftimes: R.halftimes,
+      // game phases over the whole demo [{phase, start, detail}] and the official match start / end
+      phases: R.phases, match: { start: R.matchStart, end: R.matchEnd, endSource: R.matchEndSource, decided: R.matchDecided, winRule: R.winRule }, swaps: teams.swaps,
       kills, events, chat, console: consoleLines,
       eventTypes: C4.events.EVENT_TYPES,
       positions, grenades
