@@ -49,6 +49,28 @@
     return [...new Set(problems)];
   }
 
+  /** plausibility warnings (the demo is readable, but a count does not add up) */
+  function plausibility(d) {
+    const warn = [];
+    const W = window.C4.weapons;
+    // 1. frag grenade kills in Round by Round (match rounds, phase live) == sum of Nade K / Nade D,
+    //    counted with the same central rule (C4.weapons.isFragGrenadeKill)
+    const rbr = [];
+    d.rounds.forEach(r => { if (r.kind === 'round') for (const ki of r.kills) rbr.push(d.kills[ki]); });
+    const nades = rbr.filter(k => k.phase === 'live' && W.isFragGrenadeKill(k));
+    const expK = nades.filter(k => !k.teamkill && !k.suicide && !k.world && !k.entityAttacker).length;
+    const expD = nades.filter(k => !k.world).length;
+    const sumK = d.players.reduce((a, p) => a + (p.nadeKills || 0), 0);
+    const sumD = d.players.reduce((a, p) => a + (p.nadeDeaths || 0), 0);
+    if (sumK !== expK) warn.push('Nade K ' + sumK + ' != frag grenade kills in Round by Round ' + expK);
+    if (sumD !== expD) warn.push('Nade D ' + sumD + ' != frag grenade deaths in Round by Round ' + expD);
+    // 2. weapon list vs weapon indices: thrown missiles must be grenades, the defuse kit kills nobody
+    const odd = d.grenades.filter(g => g.segments.length && /destructible_car|briefcase_bomb/.test(g.weapon || '')).length;
+    const kit = d.kills.filter(k => k.weaponName === 'briefcase_bomb_defuse_mp').length;
+    if (odd || kit) warn.push('weapon list does not match the weapon indices (' + odd + ' thrown "car/bomb" missiles, ' + kit + ' defuse-kit kills)');
+    return warn;
+  }
+
   async function run(name, buffer, size) {
     const t0 = performance.now();
     let d, err = null;
@@ -65,6 +87,8 @@
       return;
     }
     const problems = check(d);
+    const plaus = plausibility(d);
+    for (const w of plaus) console.warn('[plausibility] ' + name + ': ' + w);
     const st = d.meta.stats || {};
     const played = d.rounds.filter(r => r.kind === 'round').length;
     const r = {
@@ -74,16 +98,19 @@
       server: d.diagnostics.serverScore ? d.diagnostics.serverScore.A + ':' + d.diagnostics.serverScore.B : '',
       kills: d.kills.length, sbMismatch: d.diagnostics.scoreboardMismatches.length,
       mismatches: d.diagnostics.scoreboardMismatches, events: d.events.length, chat: d.chat.length,
-      grenades: d.grenades.length, killSig: killSignature(d.kills), problems, warnings: d.warnings,
+      grenades: d.grenades.length, killSig: killSignature(d.kills), problems, plausibility: plaus, warnings: d.warnings,
       teams: d.teams.map(t => t.name), ruleset: d.meta.ruleset, map: d.meta.map
     };
     results.push(r);
     const cells = [r.name, r.mb, r.protocol, r.ms, r.snapshots, r.dropped, r.players, r.rounds, r.score, r.server,
       r.kills, r.sbMismatch, r.events, r.chat, r.grenades, r.killSig];
     tr.innerHTML = cells.map(c => '<td>' + c + '</td>').join('') +
-      '<td class="' + (problems.length ? 'bad' : (r.sbMismatch ? 'warn' : 'ok')) + '">' + (problems.join('; ') || 'ok') + '</td>';
+      '<td class="' + (problems.length ? 'bad' : (plaus.length || r.sbMismatch ? 'warn' : 'ok')) + '">' +
+      (problems.join('; ') || (plaus.length ? 'warning: ' + plaus.join('; ') : 'ok')) + '</td>';
     tbody.append(tr);
   }
+
+  window.__plausibility = plausibility;       // for tests of the check itself
 
   document.getElementById('files').onchange = async ev => {
     for (const f of ev.target.files) { status.textContent = 'reading ' + f.name; await run(f.name, await f.arrayBuffer(), f.size); }

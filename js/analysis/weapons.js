@@ -64,5 +64,16 @@ C4.define('weapons', function (C4) {
     return String(name || '').toLowerCase().replace(/_mp$/, '') === 'frag_grenade';
   }
 
-  C4.weapons = { label, grenadeKind, isFragNade, MOD_LABELS: MOD };
+  /**
+   * THE rule for a frag grenade kill ("nade"), used by the scoreboard (Nade K / Nade D), Round by
+   * Round, the JSON export and tools/selftest: the weapon named by the obituary (never the held
+   * weapon guessed for a headshot) is frag_grenade_mp. The name must come from the weapon list of
+   * the map loaded at the time of the kill (DemoData resolves it so). Who gets what is up to the
+   * caller: killer -> Nade K unless team kill / suicide, victim -> Nade D always.
+   */
+  function isFragGrenadeKill(kill) {
+    return !!kill && kill.weapon != null && !kill.weaponHeuristic && isFragNade(kill.weaponName);
+  }
+
+  C4.weapons = { label, grenadeKind, isFragNade, isFragGrenadeKill, MOD_LABELS: MOD };
 });

@@ -163,7 +163,9 @@ C4.define('demo', function (C4) {
       }
       // commands of a message are applied before its snapshot: they get its time
       const t = snapshot ? snapshot.serverTime : st.serverTime;
-      for (const o of others) if (o.kind === 'gamestate' && visitor.onGamestate) visitor.onGamestate(o.value);
+      // a gamestate gets the time of the last snapshot before it (null for the first one): a demo can
+      // contain several (map change / map restart), each with its own configstrings
+      for (const o of others) if (o.kind === 'gamestate' && visitor.onGamestate) { o.value.serverTime = st.serverTime != null ? st.serverTime : null; visitor.onGamestate(o.value); }
       for (const c of cmds) { c.serverTime = t; if (visitor.onServerCommand) visitor.onServerCommand(c); }
       for (const o of others) {
         if (o.kind === 'configclient') { o.value.serverTime = t; if (visitor.onConfigClient) visitor.onConfigClient(o.value); }

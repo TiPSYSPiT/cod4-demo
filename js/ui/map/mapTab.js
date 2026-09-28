@@ -272,7 +272,9 @@
     S.scopeSel.value = String(i);
     // round view: live start (00:00) to the next restart; whole match: everything,
     // the countdown phases are skipped by the playback clock
-    const range = i < 0 ? [0, d.meta.durationMs] : [S.live[i], d.rounds[i].segEnd];
+    // whole match: up to a map change at most (after it the positions belong to another map)
+    const mw = d.meta.mapWindow || { start: 0, end: d.meta.durationMs };
+    const range = i < 0 ? [mw.start, mw.end] : [S.live[i], Math.min(d.rounds[i].segEnd, mw.end)];
     S.base = i < 0 ? 0 : S.live[i];
     S.pb.skips = i < 0 ? S.countdowns : [];
     S.pb.setRange(range[0], range[1]);

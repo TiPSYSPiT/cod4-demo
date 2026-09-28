@@ -201,7 +201,7 @@ either. The viewer reports this as "snapshots skipped" and continues.
 | Stale last scoreboard | the server does not always send a scoreboard after the last round: kills/deaths after a player's last scoreboard entry are added from the kill feed (≈) | heuristic |
 | Scoreboard reset | after the match the map restarts and the scoreboard drops to all zeros: scoreboards after the last round that are all zero are ignored | reliable |
 | K/D | computed | – |
-| Nade K / Nade D | not in the scoreboard: kills whose obituary weapon is `frag_grenade_mp` (cooked or not - the obituary names the same weapon), same kill events and rules as the own K/D count (match rounds). Nade K: credited kills only (no team kills, no suicides); Nade D: every death by a frag grenade, also by an own or a team mate's grenade. Martyrdom (`frag_grenade_short_mp`) and the grenade launcher (`gl_*`) are not counted - both are in some weapon lists, but no sample has a kill with them; no sample sends `MOD_GRENADE*` instead of the weapon | reliable |
+| Nade K / Nade D | not in the scoreboard: one central rule, `C4.weapons.isFragGrenadeKill(kill)`, used by the scoreboard, the export and `tools/selftest` (which warns when the frag grenade kills in Round by Round do not add up to Nade K / Nade D, and when the weapon list does not fit the weapon indices): kills whose obituary weapon is `frag_grenade_mp` (cooked or not - the obituary names the same weapon), same kill events and rules as the own K/D count (match rounds). Nade K: credited kills only (no team kills, no suicides); Nade D: every death by a frag grenade, also by an own or a team mate's grenade. Martyrdom (`frag_grenade_short_mp`) and the grenade launcher (`gl_*`) are not counted - both are in some weapon lists, but no sample has a kill with them; no sample sends `MOD_GRENADE*` instead of the weapon | reliable |
 | HS % | not in the scoreboard: headshot kills (`MOD_HEAD_SHOT`) / kills, both from the kill feed with the counting rule above (match rounds; no team kills / suicides). Only the recorded rounds - for a recording that starts mid-match the base is smaller than the scoreboard's K | reliable |
 | Half number (recording starts mid-match) | halftimes before the recording are not in the demo and no dvar gives the rounds per half: taken from the ruleset (`MR12` = 12 rounds per half, `OT3` = 3 rounds per overtime half; all samples with a recorded halftime switch before round 13) and the score at the start. The half the recording starts in is marked incomplete. Without MR in the ruleset the number is unknown (`half ?`) | **heuristic** |
 | Record date stamp | `g_mapStartTime` (ctime, server local time) parsed by hand to `YYYYMMDDHHMMSS`, else the file date in local time | heuristic (no recording date in the demo) |
@@ -313,7 +313,21 @@ appears in a snapshot (exactly as the client does) – no time-window
 de-duplication needed; 119 kills in `demo0025`, identical to the reference
 project's result after its de-duplication.
 
-**Weapons.** Weapon index `w` → `CS2258.split(' ')[w-1]`; readable names via a
+**Map loads / several gamestates.** A demo can contain more than one gamestate: a map change
+at the end of the recording loads the next map (samples: `20260927_inf_vs_nosweat_backlot`
+20:05 → mp_strike, `20260916_inf_vs_revolt_backlot` 36:19 → mp_strike, `Match_mp_strike_JsjiwJTx`
+29:50 → mp_crash, `Match_mp_cluster_jOZum75b`). Every gamestate brings its own configstrings -
+in particular **another weapon list**: the server assigns weapon indices per map load in the
+order the weapons are registered (`BG_SetupWeaponDef`), so index 19 is `frag_grenade_mp` on one
+map load and `frag_grenade_short_mp` on the next. Demo-wide values (map, serverinfo, minimap,
+ruleset, weapon list shown) come from the gamestate covering most of the recording; weapon names
+of kills and grenades are resolved with the list valid at the time of the event. Everything after
+a map change is phase `aftermatch`, positions / grenades of the other map are dropped
+(`meta.mapWindow`, `meta.mapChanges`). Before this, the last gamestate's list was used for the
+whole demo: frag kills showed as "Martyrdom" (not counted as Nade K / D), smokes / flashes as cars /
+bombs, car kills as "defuse kit" kills, and the map name was the next map's.
+
+**Weapons.** Weapon index `w` → `CS2258.split(' ')[w-1]` (of the map load at that time); readable names via a
 mapping table (`ak47_mp` → "AK-47", suffixes `_silencer`/`_reflex`/`_acog`,
 MOD names `MOD_FALLING` → "Falling"). Index 0 → "none".
 

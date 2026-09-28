@@ -25,6 +25,8 @@ C4.define('build', function (C4) {
   }
 
   const pad2 = n => String(n).padStart(2, '0');
+  /** ms -> "mm:ss" (for warnings) */
+  const fmtMs = ms => pad2(Math.floor(ms / 60000)) + ':' + pad2(Math.floor(ms / 1000) % 60);
   /** "Sun Aug 30 18:22:12 2026" (ctime, server local time) -> "20260830182212"; null if not in that form.
    * Parsed by hand: Date() would apply the browser's time zone. */
   function ctimeStamp(text) {
@@ -72,12 +74,44 @@ C4.define('build', function (C4) {
     if (![1, 17, 19, 21].includes(proto)) warnings.push('Protocol ' + proto + ' has not been tested (tested: stock CoD4, CoD4X 17, 19, 21). The field tables may differ - check the results.');
     if (summary && summary.stats.snapshotsDropped) warnings.push(summary.stats.snapshotsDropped + ' snapshot(s) could not be decoded (delta reference missing in the file) and were skipped.');
 
-    const cs = col.cs;
-    const csInit = col.csInitial || cs;
+    // Map loads: every gamestate starts a section with its own configstrings. A demo can contain a
+    // map change (the next map is loaded at the end of the recording) - its configstrings, e.g. the
+    // weapon list, must not be used for the match: weapon indices are assigned per map load in the
+    // order the weapons are registered, so the same index is another weapon on the next map.
+    // Demo-wide values come from the section covering most of the recording ("main" map); weapon
+    // names are resolved with the list valid at the time of the event.
+    const gsList = col.gamestates && col.gamestates.length ? col.gamestates : [{ t: null, configstrings: col.csInitial || col.cs }];
+    const sections = gsList.map((g, i) => ({
+      start: g.t == null ? 0 : rel(g.t), configstrings: g.configstrings,
+      end: i + 1 < gsList.length ? (gsList[i + 1].t == null ? 0 : rel(gsList[i + 1].t)) : endTime
+    }));
+    let mainIdx = 0;
+    sections.forEach((s, i) => { if (s.end - s.start > sections[mainIdx].end - sections[mainIdx].start) mainIdx = i; });
+    const main = sections[mainIdx];
+    const sectionAt = t => { let i = 0; while (i + 1 < sections.length && t >= sections[i + 1].start) i++; return i; };
+    // configstrings of the main map: its gamestate + the updates while it is loaded
+    const csInit = main.configstrings;
+    const cs = new Map(csInit);
+    for (const ch of col.csChanges) { const t = rel(ch.t || col.firstTime); if (t >= main.start && t < main.end) cs.set(ch.index, ch.value); }
     const serverinfo = parseInfostring(cs.get(K.CS.SERVERINFO) || '');
     const systeminfo = parseInfostring(cs.get(K.CS.SYSTEMINFO) || '');
-    const weapons = String(cs.get(K.CS.WEAPONFILES) || '').split(/\s+/).filter(Boolean);
-    const weaponName = i => (i > 0 && i <= weapons.length ? weapons[i - 1] : (i === 0 ? 'none' : null));
+    const splitList = s => String(s || '').split(/\s+/).filter(Boolean);
+    const weapons = splitList(cs.get(K.CS.WEAPONFILES));
+    // weapon list over time: each gamestate, then the updates of config string 2258
+    const weaponLists = sections.map(s => ({ t: s.start, list: splitList(s.configstrings.get(K.CS.WEAPONFILES)) }));
+    for (const ch of col.csChanges) if (ch.index === K.CS.WEAPONFILES) weaponLists.push({ t: rel(ch.t || col.firstTime), list: splitList(ch.value) });
+    weaponLists.sort((a, b) => a.t - b.t);
+    /** weapon index -> internal name, with the weapon list valid at time t (ms since the first snapshot) */
+    const weaponName = (i, t) => {
+      if (i === 0) return 'none';
+      let list = weaponLists.length ? weaponLists[0].list : weapons;
+      for (const w of weaponLists) { if (w.t <= t) list = w.list; else break; }
+      return i > 0 && i <= list.length ? list[i - 1] : null;
+    };
+    // the main map as a time window: before / after it the recording shows another map
+    const mapName = cfg => (parseInfostring(cfg.get(K.CS.SERVERINFO) || '').mapname || '');
+    const mapWindow = { start: main.start, end: main.end < endTime ? main.end : endTime + 1 };
+    const mapChanges = sections.slice(1).map(s => ({ t: s.start, map: mapName(s.configstrings) }));
 
     // dvars announced by the server (names 20..147, values +128)
     const dvars = {};
@@ -119,6 +153,7 @@ C4.define('build', function (C4) {
       const count = new Map();
       for (const ch of csChanges) {
         if (!((ch.index >= 380 && ch.index <= 400) || ch.index === 733)) continue;
+        if (ch.t < mapWindow.start || ch.t >= mapWindow.end) continue;      // the main map only
         const s = stripColors(ch.value || '').trim();
         if (/\bMR\d+\b/i.test(s)) count.set(s, (count.get(s) || 0) + 1);
       }
@@ -158,10 +193,10 @@ C4.define('build', function (C4) {
       const vTeam = teams.teamAt(k.victim, t);
       const aSide = teams.rawSideAt(k.attacker, t), vSide = teams.rawSideAt(k.victim, t);
       const teamkill = !suicide && !world && !entityAttacker && (aSide === 1 || aSide === 2) && aSide === vSide;
-      let wName = weapon != null ? weaponName(weapon) : null;
+      let wName = weapon != null ? weaponName(weapon, t) : null;
       let weaponHeuristic = false;
       if (mod === 'MOD_HEAD_SHOT' && k.attackerWeapon != null) {
-        wName = weaponName(k.attackerWeapon);
+        wName = weaponName(k.attackerWeapon, t);
         weaponHeuristic = true;
       }
       let label;
@@ -171,21 +206,26 @@ C4.define('build', function (C4) {
       const dist = k.attackerPos && k.victimPos && !suicide && !world
         ? Math.round(Math.hypot(k.attackerPos[0] - k.victimPos[0], k.attackerPos[1] - k.victimPos[1], k.attackerPos[2] - k.victimPos[2]))
         : null;
-      return {
+      const kill = {
         index, t, attacker: k.attacker, victim: k.victim, weapon, weaponName: wName, weaponLabel: label,
         weaponHeuristic, mod, headshot: mod === 'MOD_HEAD_SHOT', knife: mod === 'MOD_MELEE',
         falling: mod === 'MOD_FALLING', suicide, world, entityAttacker, teamkill,
-        // frag grenade kill: only from the weapon in the obituary (never from the held weapon of a headshot)
-        nade: weapon != null && W.isFragNade(weaponName(weapon)),
-        bomb: /briefcase_bomb/.test(wName || ''), car: wName === 'destructible_car',
+        bomb: wName === 'briefcase_bomb_mp', car: wName === 'destructible_car',
         attackerTeam: aTeam || null, victimTeam: vTeam || null,
         attackerPos: k.attackerPos, victimPos: k.victimPos, distance: dist, round: -1
       };
+      // frag grenade kill - the one central rule (weapons.js), used by every tab and the export
+      kill.nade = W.isFragGrenadeKill(kill);
+      return kill;
     });
 
     // rounds
     const R = C4.rounds.analyzeRounds({ commands, csChanges, teams, kills, attackSide, endTime,
-      clients: Array.from(teams.byClient.keys()), ruleset: rulesetHud });
+      clients: Array.from(teams.byClient.keys()), ruleset: rulesetHud, mapWindow, mapChanges });
+    for (const mc of mapChanges) {
+      warnings.push('Map change at ' + fmtMs(mc.t) + ': the recording continues on ' + (mc.map || 'another map') +
+        '. Everything from then on belongs to that map and is not counted (phase aftermatch).');
+    }
     const rounds = R.rounds;
     for (let i = 0; i < rounds.length; i++) for (const ki of rounds[i].kills) kills[ki].round = i;
     // phase of every kill (warmup, knife, live, halftime, timeout, aftermatch): only "live" counts.
@@ -452,19 +492,27 @@ C4.define('build', function (C4) {
     // positions -> typed arrays
     const positions = {};
     for (const [cl, tr] of col.tracks) {
+      // only the samples on the main map (after a map change the coordinates belong to another map)
+      const keep = [];
+      for (let i = 0; i < tr.t.length; i++) { const t = tr.t[i] - t0; if (t >= mapWindow.start && t < mapWindow.end) keep.push(i); }
+      if (!keep.length) continue;
+      const pick = (arr, Type) => Type.from(keep, i => arr[i]);
       positions[cl] = {
-        t: Int32Array.from(tr.t, v => v - t0),
-        x: Float32Array.from(tr.x), y: Float32Array.from(tr.y), z: Float32Array.from(tr.z),
-        yaw: Float32Array.from(tr.yaw), pitch: Float32Array.from(tr.pitch),
-        flags: Uint8Array.from(tr.flags), weapon: Uint8Array.from(tr.weapon)
+        t: Int32Array.from(keep, i => tr.t[i] - t0),
+        x: pick(tr.x, Float32Array), y: pick(tr.y, Float32Array), z: pick(tr.z, Float32Array),
+        yaw: pick(tr.yaw, Float32Array), pitch: pick(tr.pitch, Float32Array),
+        flags: pick(tr.flags, Uint8Array), weapon: pick(tr.weapon, Uint8Array)
       };
     }
 
     // grenades
     const grenades = [];
+    // (only while the main map is loaded: after a map change the positions belong to another map)
+    const onMainMap = t => t != null && t >= mapWindow.start && t < mapWindow.end;
     for (const key of col.grenadeOrder) {
       const g = col.grenades.get(key);
-      const wName = weaponName(g.weapon);
+      if (!onMainMap(rel(g.first))) continue;
+      const wName = weaponName(g.weapon, rel(g.first));
       grenades.push({
         entity: g.entity, weapon: wName, kind: W.grenadeKind(wName) || 'other',
         launch: rel(g.launch), first: rel(g.first), last: rel(g.last),
@@ -474,7 +522,8 @@ C4.define('build', function (C4) {
       });
     }
     for (const d of col.detonations) {
-      const wName = weaponName(d.weapon);
+      if (!onMainMap(rel(d.t))) continue;
+      const wName = weaponName(d.weapon, rel(d.t));
       grenades.push({ entity: null, weapon: wName, kind: W.grenadeKind(wName) || 'other', launch: null,
         first: rel(d.t), last: rel(d.t), segments: [], detonation: { t: rel(d.t), x: d.x, y: d.y, z: d.z }, thrower: null });
     }
@@ -510,6 +559,8 @@ C4.define('build', function (C4) {
       gameVersion: cs.get(K.CS.GAME_VERSION) || '',
       povClient, povName: povClient != null ? playerName(povClient) : null,
       durationMs: endTime, firstServerTime: t0, recordDate,
+      // the analysed map as a time window, and map changes in the recording ({t, map})
+      mapWindow: { start: mapWindow.start, end: Math.min(mapWindow.end, endTime) }, mapChanges,
       minimap, northYaw: parseFloat(cs.get(K.CS.NORTHYAW) || '0') || 0,
       weapons, dvars, attackSide, attackSideHeuristic,
       sideNames: { axis: dvars.g_TeamName_Axis || 'Axis', allies: dvars.g_TeamName_Allies || 'Allies' },

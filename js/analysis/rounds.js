@@ -40,6 +40,9 @@ C4.define('rounds', function (C4) {
 
   function analyzeRounds(ctx) {
     const { commands, csChanges, teams, kills, attackSide, endTime, clients, ruleset } = ctx;
+    // the analysed map as a time window (a map change loads another map at the end of the recording)
+    const mapWindow = ctx.mapWindow || { start: 0, end: Infinity };
+    const mapChange = (ctx.mapChanges || []).find(m => m.t >= mapWindow.end - 1) || null;
     const defenceSide = attackSide === 'axis' ? 'allies' : 'axis';
     const status = [];            // {t, text}
     const halftimeSounds = [];
@@ -169,6 +172,12 @@ C4.define('rounds', function (C4) {
     }
     if (lastReset != null) for (const r of rounds) if (r.kind === 'round' && r.segEnd <= lastReset + 1000) r.kind = 'prematch';
 
+    // rounds on another map (before / after a map change) never belong to this match
+    for (const r of rounds) {
+      if (r.segStart >= mapWindow.end) r.kind = 'aftermatch';
+      else if (r.segEnd <= mapWindow.start) r.kind = 'prematch';
+    }
+
     // Knife round without a "Knife Round" status line (Promod "Match Knife MR12" only shows its
     // ruleset header): a round before the match, in a ruleset with a knife round, whose kills are
     // all melee kills (plus suicides / falls) - heuristic
@@ -246,6 +255,10 @@ C4.define('rounds', function (C4) {
         if (o.axis + o.allies < final) { matchEnd = o.t; matchEndSource = 'score reset'; break; }
       }
     }
+    // a map change ends the match on this map at the latest
+    if (Number.isFinite(mapWindow.end) && mapWindow.end <= endTime && (matchEnd == null || matchEnd > mapWindow.end)) {
+      matchEnd = mapWindow.end; matchEndSource = 'map change' + (mapChange && mapChange.map ? ' to ' + mapChange.map : '');
+    }
     const timeoutCalls = [];
     for (const c of commands) if ((c.d.verb === 'f' || c.d.verb === 'e') && /timeout called by/i.test(stripColors(c.d.text || ''))) timeoutCalls.push(c.t);
     const bounds2 = [0, ...restarts.filter(t => t > 0), endTime + 1];
@@ -261,13 +274,14 @@ C4.define('rounds', function (C4) {
       const r = rounds.find(x => x.segStart === a) || (a === 0 ? rounds.find(x => x.segStart === 0) : null);
       if (r && r.kind === 'round') {
         push('live', a, 'R' + r.label);
-        // the match ends inside this round (its deciding win, or a score reset)
+        // the match ends inside this round (its deciding win, a score reset or a map change)
         if (matchEnd != null && matchEnd >= a && matchEnd < b) push('aftermatch', matchEnd + 1, matchEndSource);
         prevMatch = r;
         continue;
       }
       let phase, detail = null;
-      if (r && r.kind === 'knife') phase = 'knife';
+      if (a >= mapWindow.end) { phase = 'aftermatch'; detail = matchEndSource; }
+      else if (r && r.kind === 'knife') phase = 'knife';
       else if (r && r.kind === 'aftermatch') phase = 'aftermatch';
       else if (matchEnd != null && a > matchEnd) phase = 'aftermatch';
       else if (!prevMatch) phase = 'warmup';
@@ -278,6 +292,8 @@ C4.define('rounds', function (C4) {
         else { phase = 'timeout'; detail = timeoutCalls.some(t => t >= prevMatch.segStart && t < b) ? 'timeout called' : 'break without a round'; }
       }
       push(phase, a, detail);
+      // a map change inside a break / warm-up segment
+      if (phase !== 'aftermatch' && mapWindow.end > a && mapWindow.end < b) push('aftermatch', mapWindow.end, matchEndSource);
     }
     return { rounds, halftimes, halftimeFromSound: halftimeSounds.length > 0, bomb, status, restarts,
       finalScore: score, initialScore: initial, serverScore, lastRoundEnd: lastWin ? lastWin.t : null,

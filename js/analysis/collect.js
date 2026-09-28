@@ -39,6 +39,7 @@ C4.define('collect', function (C4) {
       gamestate: null,
       cs: new Map(),                // current config strings
       csInitial: null,
+      gamestates: [],               // {t (null = start), configstrings} - one per map load
       csChanges: [],                // {t, index, old, value}
       commands: [],                 // {t, seq, text, d}
       names: new Map(),             // client -> {name, clantag}
@@ -87,6 +88,9 @@ C4.define('collect', function (C4) {
       onArchive(fr) { if (c.firstArchive === null) c.firstArchive = fr.serverTime; },
       onGamestate(gs) {
         if (!c.gamestate) c.gamestate = gs;
+        // every gamestate with its time (null = start of the recording): a map change loads new
+        // configstrings, e.g. another weapon list (weapon indices are assigned per map load)
+        c.gamestates.push({ t: gs.serverTime || null, configstrings: new Map(gs.configstrings) });
         for (const [k, v] of gs.configstrings) c.cs.set(k, v);
         if (!c.csInitial) c.csInitial = new Map(gs.configstrings);
         for (const [cl, v] of gs.clients) setName(cl, v.name, v.clantag, null, 'gamestate');
