@@ -159,8 +159,11 @@ detail in [`docs/ANALYSIS.md`](docs/ANALYSIS.md). In short:
 * **Stock 1.7 / 1.8 match demos were not available for testing**; only a stock
   deathrun fixture was decoded. The protocol is supported, round detection on
   stock servers is untested.
-* **mp_cluster** has no background image (neutral grid in the calibrated
-  rectangle).
+* **Maps without a sample demo** (bloc, bog, broadcast, chinatown, wet work,
+  ambush, countdown, winter crash, creek, downpour, killhouse, overgrown,
+  pipeline, shipment, showdown, vacant) have an image but no verified
+  calibration - they are placed with the rectangle of the demo (config string
+  823); without it the neutral grid is shown.
 * The recording may start mid-match; earlier rounds are then missing (the
   overview says so, round numbers continue from the real count).
 
@@ -197,7 +200,9 @@ source/
     ui/                 dom helpers, overview and one file per tab
     ui/map/             config (radii, durations), renderer, heatmap, playback, mapTab
     main.js             file loading, worker, tabs, export
-  assets/maps/          map images + maps.js (calibration)
+  assets/maps/          map images (mp_*.png, the in-game compass maps) + maps.js (registry:
+                        image, display name, calibration, aliases)
+  assets/killfeed/      killfeed icons (pointing left -> right); mapping in js/analysis/weapons.js
   tools/selftest.html   parser self test in the browser
   docs/ANALYSIS.md      demo format and where every value comes from
   maps/                 original map images (reference, unchanged)
@@ -214,12 +219,23 @@ the DOM-free modules; the calibration is `assets/maps/maps.js` instead of a
 
 ### Map calibration
 
-`assets/maps/maps.js` maps each map to its image and the world rectangle the
-image covers (`[x1, y1, x2, y2]`, image axis-aligned: left = min x, top =
-max y). The viewer prefers the rectangle from the demo itself (config string
-823), so every demo is calibrated even for maps without an image. Verified on
-backlot, crash, strike, crossfire and citystreets by overlaying real player
-positions.
+`assets/maps/maps.js` is the only map list: raw map name → image, display name
+(Quick Overview, export file name), world rectangle the image covers
+(`[x1, y1, x2, y2]`, image axis-aligned: left = min x, top = max y) and aliases
+for custom versions (`mp_backlot_x` → `mp_backlot`). It is a `C4.define` module,
+so the analysis in the worker uses the same display names. The viewer prefers
+the rectangle from the demo itself (config string 823); an image is only drawn
+with a real calibration, never on a rectangle guessed from the positions.
+Verified with the new 1024 px compass images on backlot, crash, strike,
+crossfire, citystreets and cluster by overlaying real player positions.
+
+### Killfeed icons
+
+`js/analysis/weapons.js` holds the one mapping weapon / means of death → icon
+(`C4.weapons.killIcons(kill)`), including the visible content box of every icon,
+so all icons are scaled to the same height. Round by Round, Map → Kills & bomb
+and Events show "Killer [weapon] [headshot] Victim"; a weapon without an icon
+is shown by name.
 
 ## Licence
 

@@ -3,24 +3,38 @@
   'use strict';
   const { el, clear, fmtTime, fmtRoundTime, na, approx, teamClass } = C4.ui;
 
-  /** "Killer → Victim · Weapon [HS]" with the special cases named */
+  /* killfeed icons: the visible content of every icon is scaled to ICON_H (C4.weapons.ICONS has
+   * the content box), the aspect ratio is kept; tooltip = readable weapon name */
+  const ICON_H = 18;
+  function iconNode(ic, fallbackText) {
+    const s = ICON_H / ic.box[3];
+    const px = v => (v * s).toFixed(2) + 'px';
+    const img = el('img', { src: ic.src, alt: ic.title, draggable: 'false',
+      style: { width: px(ic.size[0]), height: px(ic.size[1]), marginLeft: px(-ic.box[0]), marginTop: px(-ic.box[1]) } });
+    const wrap = el('span', { class: 'kf-icon', title: ic.title, style: { width: px(ic.box[2]) } }, img);
+    // missing file: the name as text, as for weapons without an icon
+    img.addEventListener('error', () => wrap.replaceWith(el('span', { class: 'weapon' }, fallbackText || ic.title)));
+    return wrap;
+  }
+  C4.ui.iconNode = iconNode;
+
+  /** like the game's killfeed: "Killer [weapon] [headshot] Victim" (icons from C4.weapons.killIcons) */
   function killNodes(app, k) {
     const victim = app.playerNode(k.victim, { team: k.victimTeam || undefined });
-    const weapon = [el('span', { class: 'weapon' }, k.weaponLabel), k.weaponHeuristic ? approx('the obituary of a headshot carries no weapon; this is the weapon the killer held at that moment') : null];
-    const hs = k.headshot ? [' ', el('span', { class: 'badge hs' }, 'HS')] : null;
+    const icons = C4.weapons.killIcons(k);
+    const slot = (text, title) => el('span', { class: 'kf-weapon' },
+      icons.weapon ? [iconNode(icons.weapon, text),
+        icons.weapon.heuristic ? approx('the obituary of a headshot carries no weapon; this is the weapon the killer held at that moment') : null]
+        : el('span', { class: 'weapon', title: title || null }, text),
+      icons.headshot ? iconNode(icons.headshot, 'HS') : null);
     if (k.suicide) {
-      const what = k.mod === 'MOD_SUICIDE' ? 'Suicide' : 'Suicide (' + k.weaponLabel + ')';
-      return [victim, el('span', { class: 'weapon' }, what)];
+      return [slot(k.mod === 'MOD_SUICIDE' ? 'Suicide' : 'Suicide (' + k.weaponLabel + ')'), victim, el('span', { class: 'dim kf-note' }, 'suicide')];
     }
-    if (k.world) {
-      return [victim, el('span', { class: 'weapon', title: 'killed by the world (map, falling, trigger)' }, k.falling ? 'Falling' : 'World / trigger (' + k.weaponLabel + ')')];
-    }
-    if (k.entityAttacker) {
-      return [victim, el('span', { class: 'weapon', title: 'killed by entity ' + k.attacker + ' (not a player)' }, k.car ? 'Car explosion' : 'World entity (' + k.weaponLabel + ')')];
-    }
-    return [app.playerNode(k.attacker, { team: k.attackerTeam || undefined }), el('span', { class: 'arrow' }, '→'), victim, weapon, hs,
-      k.teamkill ? [' ', el('span', { class: 'badge tk', title: 'attacker and victim were on the same side' }, 'Teamkill')] : null,
-      k.bomb ? [' ', el('span', { class: 'badge', title: 'killed by the bomb explosion' }, 'Bomb')] : null];
+    if (k.world) return [slot(k.falling ? 'Falling' : 'World / trigger (' + k.weaponLabel + ')', 'killed by the world (map, falling, trigger)'), victim];
+    if (k.entityAttacker) return [slot(k.car ? 'Car explosion' : 'World entity (' + k.weaponLabel + ')', 'killed by entity ' + k.attacker + ' (not a player)'), victim];
+    return [app.playerNode(k.attacker, { team: k.attackerTeam || undefined }), slot(k.weaponLabel), victim,
+      k.teamkill ? el('span', { class: 'badge tk', title: 'attacker and victim were on the same side' }, 'Teamkill') : null,
+      k.bomb ? el('span', { class: 'badge', title: 'killed by the bomb explosion' }, 'Bomb') : null];
   }
   C4.ui.killNodes = killNodes;
 

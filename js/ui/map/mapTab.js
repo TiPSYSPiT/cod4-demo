@@ -19,12 +19,14 @@
   function prepare(app) {
     const d = app.data, m = d.meta;
     const positions = d.positions;
-    // world rectangle: compass rectangle from the demo (CS 823) > maps.js > extent of positions
-    const known = window.C4MAPS && m.mapKey ? window.C4MAPS[m.mapKey] : null;
-    let rect = null, rectSource = null;
+    // world rectangle: compass rectangle from the demo (CS 823) > maps.js > extent of positions.
+    // The image (the compass map) covers exactly that rectangle - it is only drawn with a real
+    // calibration, never on the rectangle guessed from the positions.
+    const known = C4.maps ? C4.maps.entry(m.map) : null;
+    let rect = null, rectSource = null, calibrated = false;
     const toRect = c => ({ minX: Math.min(c[0], c[2]), maxX: Math.max(c[0], c[2]), minY: Math.min(c[1], c[3]), maxY: Math.max(c[1], c[3]) });
-    if (m.minimap && m.minimap.corners) { rect = toRect(m.minimap.corners); rectSource = 'compass rectangle from the demo (config string 823)'; }
-    else if (known && known.bounds) { rect = toRect(known.bounds); rectSource = 'calibration from assets/maps/maps.js'; }
+    if (m.minimap && m.minimap.corners) { rect = toRect(m.minimap.corners); rectSource = 'compass rectangle from the demo (config string 823)'; calibrated = true; }
+    else if (known && known.bounds) { rect = toRect(known.bounds); rectSource = 'calibration from assets/maps/maps.js'; calibrated = true; }
     let bbox = null;
     for (const p of Object.values(positions)) {
       for (let i = 0; i < p.t.length; i++) {
@@ -83,7 +85,7 @@
       return { g, pts, start, end: g.detonation ? g.detonation.t + c.duration : end + 500, cfg: c };
     });
     const teamColor = key => key === 'A' ? '#ff6a3d' : key === 'B' ? '#3ea8ff' : '#9aa4b2';
-    return { d, rect, rectSource, known, bbox, colors, deaths, live, countdowns, bounds, grenades, teamColor };
+    return { d, rect, rectSource, calibrated, known, bbox, colors, deaths, live, countdowns, bounds, grenades, teamColor };
   }
 
   /** start of the segment (round) containing t: trails, grenades, death markers and
@@ -192,14 +194,15 @@
     stage.append(clock, hint);
     S.clock = clock;
     const imgName = S.known && S.known.image;
-    if (imgName) {
+    if (imgName && S.calibrated) {
       const img = new Image();
       img.onload = () => { S.renderer.setImage(img, S.rect); S.pb.invalidate(); };
       img.onerror = () => { hint.textContent = 'Background image ' + imgName + ' could not be loaded - neutral grid.'; };
-      img.src = 'assets/maps/' + imgName;
+      img.src = C4.maps.IMAGE_DIR + imgName;
       hint.textContent = 'Background: ' + imgName + ', placed with the ' + S.rectSource + '. Wheel = zoom, drag = pan, double-click = reset.';
     } else {
-      hint.textContent = 'No background image for ' + (d.meta.map || 'this map') + ' - neutral grid (' + S.rectSource + '). Wheel = zoom, drag = pan.';
+      hint.textContent = (imgName ? 'Background ' + imgName + ' not shown: no calibration for this demo' : 'No background image for ' + (d.meta.map || 'this map')) +
+        ' - neutral grid (' + S.rectSource + '). Wheel = zoom, drag = pan.';
     }
 
     // side: players + events

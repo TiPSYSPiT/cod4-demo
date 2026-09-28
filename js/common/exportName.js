@@ -28,7 +28,7 @@ C4.define('exportName', function (C4) {
    *   date the quick overview shows; "unknown" if there is none
    * - teams: team names as in the scoreboard (the clan tag when one was found, otherwise
    *   "Team A" / "Team B"), upper team first
-   * - map: map name without "mp_", lower case
+   * - map: display name of the map (assets/maps/maps.js), lower case - else the raw name without "mp_"
    */
   function buildExportFileName(data, opts = {}) {
     const m = data.meta || {};
@@ -38,7 +38,8 @@ C4.define('exportName', function (C4) {
     const shown = (data.teams || []).filter(t => (data.players || []).some(p => p.team === t.key));
     const teamA = fileNamePart(shown[0] ? shown[0].name : '');
     const teamB = fileNamePart(shown[1] ? shown[1].name : '');
-    const map = fileNamePart(String(m.map || '').toLowerCase().replace(/^mp_/, ''));
+    // the display name of the map registry (as in the Quick Overview), else the raw name without "mp_"
+    const map = fileNamePart(String(m.mapDisplay || String(m.map || '').replace(/^mp_/i, '')).toLowerCase());
     const parts = [date, teamA, 'vs', teamB, map];
     if (opts.suffix) parts.push(fileNamePart(opts.suffix));
     return parts.join('_') + '.' + (opts.ext || 'json');

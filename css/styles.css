@@ -242,7 +242,16 @@ select { height: 32px; padding: 0 8px; border-radius: 6px; border: 1px solid var
 .tl-row.clickable:hover { background: rgba(255,255,255,.03); }
 .tl-time { color: var(--muted); font-family: var(--mono); font-size: 12.5px; }
 .tl-what .arrow { color: var(--dim); margin: 0 6px; }
-.tl-what .weapon { color: var(--muted); margin-left: 8px; }
+.tl-what .weapon { color: var(--muted); }
+/* killfeed: "Killer [weapon icon] [headshot icon] Victim" on one line, icons vertically centred */
+.tl-what { display: flex; align-items: center; gap: 6px; min-width: 0; white-space: nowrap; overflow: hidden; }
+.tl-what > .player { min-width: 0; overflow: hidden; text-overflow: ellipsis; flex: 0 1 auto; }
+.kf-weapon { display: inline-flex; align-items: center; gap: 4px; margin: 0 4px; flex: none; vertical-align: middle; }
+.kf-icon { display: inline-block; height: 18px; overflow: hidden; vertical-align: middle; flex: none; line-height: 0; }
+.kf-icon img { display: block; max-width: none; }
+.kf-note { font-size: 11.5px; flex: none; }
+/* badges in a kill line (Teamkill, Bomb) no higher than the icons: the rows keep one height */
+.tl-what .badge { flex: none; line-height: 14px; padding: 1px 6px; font-size: 11px; }
 .tl-row.bomb .tl-what { color: var(--warn); }
 /* Round by Round: sections before the match / match / aftermatch */
 .phase-section { margin: 14px 0 8px; padding: 6px 12px; border-left: 3px solid #b48cff; background: rgba(180,140,255,.07);
@@ -292,6 +301,8 @@ table.kpr td.multi5 { outline-color: #ff4a4a; }
 .map-ev:hover { background: rgba(255,255,255,.04); }
 .map-ev.current { background: rgba(255,138,31,.14); box-shadow: inset 2px 0 0 var(--accent); }
 .map-ev .time { color: var(--muted); font-family: var(--mono); flex: none; }
+.map-ev { align-items: center; white-space: nowrap; }
+.map-ev .tl-what { flex: 1; }
 .controls { display: flex; align-items: center; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
 .controls .time-now { font-family: var(--mono); min-width: 120px; }
 .timeline { position: relative; flex: 1; min-width: 400px; height: 36px; cursor: pointer; }
