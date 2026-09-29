@@ -69,9 +69,9 @@ in the *POV Damage* health chart, opens the map 2 seconds before it.
   kills / deaths. **Damage dealt is `n/a`:** the server sends the POV no damage
   value for his own hits, only the hit marker.
 * **Per round** (click a row: chart shows that round), **per opponent** (damage
-  and hits on the POV, kills both ways; *hits by the POV* per player is `n/a` -
-  a hit marker names no victim, and the bullet impacts give the victim only as
-  the nearest player, not evaluated yet), **per weapon** (damage taken
+  and hits on the POV, kills both ways; *hits by the POV* per player ≈ from his
+  own bullet impacts - the shooter is transmitted, the victim is the nearest
+  player to the impact), **per weapon** (damage taken
   per attacker weapon / cause; hits and kills per weapon of the POV) with the
   killfeed icons.
 * **Health chart** (SVG): health of the POV, markers for damage taken, hits
@@ -80,12 +80,17 @@ in the *POV Damage* health chart, opens the map 2 seconds before it.
 * **Exact:** health (player state), the damage counter (`damageEvent` +1 and
   `damageCount` = health lost for every hit), attacker and weapon of bullet hits
   on the POV (`EV_BULLET_HIT_CLIENT_*`), kills and deaths (kill feed), the number
-  of hits dealt (the hit-marker sound `mp_hit_alert` the server plays for the POV).
-  The lethal hit counts with the health left (e.g. 40 → 0), not its raw damage.
+  of hits dealt (the hit-marker sound `mp_hit_alert` the server plays for the POV),
+  the POV's own bullet impacts (`EV_BULLET_HIT`, shooter in `otherEntityNum`) with
+  their head flag (headshot hits dealt). The lethal hit counts with the health
+  left (e.g. 40 → 0), not its raw damage.
 * **≈:** damage without a hit event (own grenade or fall when the damage has no
   attacker direction; explosion with unknown thrower otherwise), the weapon of a
-  dealt hit (the weapon the POV held; his own grenade when it just detonated),
-  headshot hits (sound `bullet_impact_headshot_2`).
+  dealt hit without own impact (the weapon the POV held; his own grenade when it
+  just detonated), headshot hits taken (sound `bullet_impact_headshot_2`), the
+  victim of an own impact (nearest player within 80 units - right for 681 of 682
+  POV kills in the samples). Impacts and hit markers are two sources: impacts
+  are bullets only, hit markers every damage incl. grenades.
 * Only phase *live* counts, as in the scoreboard; the kills follow the
   scoreboard's rule. The data is `DemoData.povDamage` (overview, rounds,
   opponents, weapons, timeline) - the tab, the chart and the JSON export use

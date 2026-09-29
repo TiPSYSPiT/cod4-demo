@@ -318,10 +318,10 @@ sent to him alone. Measured on all 56 sample demos:
 | Damage without hit event | `damageYaw` 255 = no attacker direction: all 160 falls (`landing_pain`), own grenade (the one "You inflicted 26 damage to yourself" message); only 7 of 1,212 bullet hits have 255. → no direction = **self** (own grenade if a frag detonated within 200 ms, else fall); with direction + frag detonation = explosion, thrower unknown | ≈ |
 | Every death | health lost since the last full health minus health regenerated in between = **exactly 100** for all 773 deaths in live time | check in `tools/selftest` |
 | Hits dealt (count) | local sound `s <n>` → sound config string `1342 + n` = `mp_hit_alert` (the hit marker, `_damagefeedback`), in 54 of 56 demos; 771 of 887 POV kills have one within 0.6 s. The sound index must be resolved with the config strings valid at that time (a map change loads another list) | reliable count, no value, no victim |
-| Headshot hits | local sound `bullet_impact_headshot_2`: played both for a headshot by the POV (with a hit marker) and on the POV (with a health drop) | ≈ |
+| Headshot hits | dealt: head flag (`un1` bit 0) of the POV's own bullet impacts. Taken: local sound `bullet_impact_headshot_2` (played both for a headshot by the POV and on the POV) at a health drop, or a headshot kill | dealt reliable, taken ≈ |
 | Weapon of a dealt hit | weapon the POV held; a detonation of his own frag (first seen within 120 units of him right after the launch) within 200 ms → that grenade | ≈ |
 | **Damage dealt (value)** | **not in the demo** - only 26 "You inflicted N damage to …" messages in 1-2 demos | n/a |
-| **Whom the POV hit** | a hit marker names no victim. The bullet impact event `EV_BULLET_HIT` on flesh (sent to everyone but the victim, KisakCOD `game_mp/g_client_script_cmd_mp.cpp`) carries the **shooter in `otherEntityNum`** (`attackerEntityNum` is always 0), `un1` bit 0 = head, bit 1 = the hit killed; the victim is not in it (nearest player to the impact, ≈). Verified on all 56 demos: of 5,987 killing impacts, 5,981 have an obituary of that shooter within 100 ms, 5,957 with the inferred victim. The POV's own impacts match his hit markers (e.g. `demo0025` 30 impacts / 34 hit markers). **Not used by the tab yet** (it shows n/a) - an earlier reading took `attackerEntityNum` as shooter and wrongly concluded the shooter was not in the demo | n/a in the tab, available (≈ victim) |
+| **Whom the POV hit** | a hit marker names no victim. The bullet impact event `EV_BULLET_HIT` on flesh (sent to everyone but the victim, KisakCOD `game_mp/g_client_script_cmd_mp.cpp`) carries the **shooter in `otherEntityNum`** (`attackerEntityNum` is always 0), `un1` bit 0 = head, bit 1 = the hit killed; the victim is not in it (nearest player to the impact, ≈). Verified on all 56 demos: of 5,987 killing impacts, 5,981 have an obituary of that shooter within 100 ms, 5,957 with the inferred victim. The POV's own impacts match his hit markers (e.g. `demo0025` 30 impacts / 34 hit markers; all 56 demos: 2,046 impacts / 1,689 hit markers - impacts are bullets only and several bullets can give one marker). **Hits per opponent** = own impacts per inferred victim: 9 of 2,046 without a player near the impact; the victim of the POV's killing impact is the kill's victim in 681 of 682 kills. (An earlier reading took `attackerEntityNum` as shooter and wrongly concluded the shooter was not in the demo.) | shooter reliable, victim ≈ |
 
 Only phase *live* counts (like the scoreboard); kills use the scoreboard's rule
 (no team kills / suicides / world kills) and equal the POV's K in all 56 demos.
@@ -535,8 +535,9 @@ map falls back to a grid fitted to the bounding box of all positions.
 
 **Heuristic (marked `≈`)**
 
-* POV damage without a hit event (own grenade / fall / explosion), weapon and
-  headshot of a hit dealt by the POV.
+* POV damage without a hit event (own grenade / fall / explosion), the weapon of
+  a hit marker without own impact, headshot hits taken, the victim of the POV's
+  own bullet impacts (hits per opponent).
 
 * Clan tag / team name from name prefixes.
 * Record date = map start time.

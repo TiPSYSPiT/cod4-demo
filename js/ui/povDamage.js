@@ -12,7 +12,7 @@
   const HITS_DEALT_INFO = 'Hit-marker sound (mp_hit_alert) the server plays for the POV whenever he damages a player - an exact count of damage events, without value or victim (grenade damage and hits on team mates included).';
   const APPROX_TAKEN = 'part of it derived: damage without a bullet hit event - without attacker direction = own grenade or fall, with direction and a frag detonation = explosion (thrower unknown)';
   const NA_HITS_DEALT = 'No hit-marker sound in this demo although the POV killed players - this server does not send it.';
-  const NA_VICTIM = 'Not evaluated: a hit marker names no victim. Bullet impacts name the shooter, but the victim only as the nearest player (would be an estimate). Kills per player are exact.';
+  const IMPACT_VICTIM = 'The POV\'s own bullet impacts (EV_BULLET_HIT: shooter = POV) - the victim is not transmitted: the nearest player to the impact (within 80 units). Bullets only (no grenade damage), and only impacts sent to the POV - so the sum can differ from the hit markers.';
 
   let state = null;
 
@@ -64,8 +64,9 @@
       card('Hits taken', String(O.hitsTaken), bySources(O.hitsTakenBy), 'Damage events of the POV (player state damage counter; a lethal hit without counter step counts once)'),
       card('Hits dealt', dealtHits, O.hitsDealt == null ? 'no hit-marker sound' : 'hit markers, no value / victim', HITS_DEALT_INFO),
       card('Headshots', el('span', null,
-        O.headshotKills + ' kills', ' · ', O.headshotHitsDealt == null ? na(NA_HITS_DEALT) : O.headshotHitsDealt + ' hits', approx('headshot hits from the sound bullet_impact_headshot_2 at a hit marker; headshot kills are exact (kill feed)')),
-        'taken: ' + O.headshotHitsTaken + ' hits (≈)'),
+        O.headshotKills + ' kills · ' + O.headshotHitsDealt + ' hits'),
+        'taken: ' + O.headshotHitsTaken + ' hits (≈)',
+        'Headshot kills: kill feed. Headshot hits dealt: head flag of the POV\'s own bullet impacts. Headshot hits taken (≈): sound bullet_impact_headshot_2 at a health drop, or a headshot kill.'),
       card('Kills / Deaths', kd, kdSub, 'Kills: kill feed, the scoreboard\'s rule (no team kills / suicides). Deaths: every death of the POV incl. falls.')));
 
     // ---- health chart
@@ -109,24 +110,26 @@
       sortableTable(roundCols, groups, { cls: 'pd-table', onRowClick: r => { if (r.round < 1e9) { sel.value = String(r.round); state.scope = sel.value; drawChart(); chartBox.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); } } })));
 
     // ---- per opponent
-    const hitsByPovCell = () => na(NA_VICTIM);
+    const hitsByPovCell = o => el('span', { title: o.headshotHitsDealt ? o.headshotHitsDealt + ' of them in the head' : null }, String(o.hitsDealt || 0), o.hitsDealt ? approx(IMPACT_VICTIM) : null);
     const oppCols = [
       { key: 'name', label: 'Player', sort: o => o.name, render: o => app.playerNode(o.client) },
       { key: 'damageTaken', label: 'Damage to POV', num: true, title: 'health the POV lost by this player (bullet hits and lethal hits: exact)' },
       { key: 'hitsTaken', label: 'Hits on POV', num: true },
       { key: 'killedPov', label: 'Killed POV', num: true },
       { key: 'kills', label: 'Killed by POV', num: true },
-      { key: 'hitsDealt', label: 'Hits by POV', num: true, sort: false, render: hitsByPovCell, title: 'not in the demo (see the n/a tooltip)' }
+      { key: 'hitsDealt', label: 'Hits by POV', num: true, render: hitsByPovCell, title: 'bullet impacts of the POV, victim = nearest player (≈)' }
     ];
     const enemies = P.opponents.filter(o => o.relation === 'enemy'), mates = P.opponents.filter(o => o.relation === 'team');
     const sum = (rows, k) => rows.reduce((a, o) => a + (o[k] || 0), 0);
     const oppGroups = [];
-    const totals = rows => ({ name: 'Total', damageTaken: sum(rows, 'damageTaken'), hitsTaken: sum(rows, 'hitsTaken'), killedPov: sum(rows, 'killedPov'), kills: sum(rows, 'kills'), hitsDealt: 'n/a' });
+    const totals = rows => ({ name: 'Total', damageTaken: sum(rows, 'damageTaken'), hitsTaken: sum(rows, 'hitsTaken'), killedPov: sum(rows, 'killedPov'), kills: sum(rows, 'kills'), hitsDealt: sum(rows, 'hitsDealt') });
     if (enemies.length) oppGroups.push({ label: 'Enemies', cls: 'b', rows: enemies, totals: totals(enemies) });
     if (mates.length) oppGroups.push({ label: 'Team mates (team damage)', cls: 'a', rows: mates, totals: totals(mates) });
     root.append(el('div', { class: 'pd-section' }, el('h3', { class: 'pd-h' }, 'Per opponent'),
       oppGroups.length ? sortableTable(oppCols, oppGroups, { cls: 'pd-table', sortKey: 'damageTaken' }) : el('div', { class: 'empty' }, 'No damage from or kills of other players in the live match time.'),
-      el('p', { class: 'note' }, 'Self damage (' + O.damageTakenBy.self + ' HP) and damage of other / unknown source (' + O.damageTakenBy.other + ' HP) are listed per weapon below, not per player.')));
+      el('p', { class: 'note' }, 'Self damage (' + O.damageTakenBy.self + ' HP) and damage of other / unknown source (' + O.damageTakenBy.other + ' HP) are listed per weapon below, not per player. ' +
+        'Hits by POV: ' + O.impacts + ' own bullet impacts' + (O.impactsNoVictim ? ', ' + O.impactsNoVictim + ' of them without a player near the impact (not assigned)' : '') +
+        ' - another source than the ' + (O.hitsDealt == null ? 'hit markers (not sent here)' : O.hitsDealt + ' hit markers') + ' (impacts: bullets only; hit markers: every damage incl. grenades).')));
 
     // ---- per weapon
     const takenCols = [
@@ -231,7 +234,8 @@
         const y = Y(e.healthAfter);
         node = svg('path', { d: 'M' + (x - 5) + ' ' + (y - 9) + 'H' + (x + 5) + 'L' + x + ' ' + y + 'Z', class: 'pd-m taken ' + e.source + (e.approx ? ' approx' : '') }, svgTitle(tip));
       } else if (e.type === 'dealt') {
-        const tip = fmtTime(e.t) + '  hit dealt (hit marker, victim unknown)' + (e.weapon ? ', ' + W.label(e.weapon) + ' ≈' : '') + (e.headshot ? ', headshot ≈' : '');
+        const tip = fmtTime(e.t) + '  hit dealt (hit marker)' + (e.weapon ? ', ' + W.label(e.weapon) + (e.weaponApprox ? ' ≈' : '') : '') + (e.headshot ? ', headshot' : '') +
+          (e.victim != null ? ', victim ≈ ' + name(e.victim) : ', victim unknown');
         node = svg('path', { d: 'M' + (x - 4) + ' ' + (padT + 1) + 'H' + (x + 4) + 'L' + x + ' ' + (padT - 7) + 'Z', class: 'pd-m dealt' }, svgTitle(tip));
       } else if (e.type === 'kill') {
         node = svg('text', { x, y: padT + 14, class: 'pd-m kill', 'text-anchor': 'middle' }, '★',

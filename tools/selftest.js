@@ -96,6 +96,10 @@
         if (s !== O.damageTakenBy[rel]) warn.push('POV damage: opponents (' + rel + ') ' + s + ' != ' + O.damageTakenBy[rel]);
       }
       if (sum(P.weapons.taken, w => w.damage) !== O.damageTaken) warn.push('POV damage: weapons taken != total');
+      // hits per opponent (own bullet impacts): assigned + not assigned == all impacts; headshots per round == total
+      const oppHits = sum(P.opponents, o => o.hitsDealt);
+      if (oppHits + O.impactsNoVictim > O.impacts) warn.push('POV damage: hits per opponent ' + oppHits + ' + ' + O.impactsNoVictim + ' unassigned > impacts ' + O.impacts);
+      if (sum(parts, r => r.headshotHitsDealt) !== O.headshotHitsDealt) warn.push('POV damage: rounds headshotHitsDealt != total');
       const pov = d.players.find(p => p.client === P.povClient);
       if (pov && pov.ownKills !== O.kills) warn.push('POV damage: kills ' + O.kills + ' != kill-feed K ' + pov.ownKills);
       const H = P.timeline.health, taken = P.timeline.events.filter(e => e.type === 'taken');

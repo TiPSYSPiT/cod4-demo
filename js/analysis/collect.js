@@ -11,7 +11,9 @@ C4.define('collect', function (C4) {
   // entityState word offsets (see python/cod4demo/states.py)
   const E_TYPE = 1, E_EFLAGS = 2, E_POS_TRTYPE = 3, E_POS_TRTIME = 4, E_POS = 6, E_VEL = 9,
     E_APOS = 15, E_U0 = 21, E_OTHER = 29, E_ATTACKER = 30, E_CLIENTNUM = 35, E_EVENTPARM = 39,
-    E_EVENTSEQ = 40, E_EVENTS = 41, E_EVENTPARMS = 45, E_WEAPON = 49;
+    E_EVENTSEQ = 40, E_EVENTS = 41, E_EVENTPARMS = 45, E_WEAPON = 49, E_SURFTYPE = 33, E_UN1 = 53;
+  const SURF_FLESH = 7;
+  const IMPACT_VICTIM_DIST = 80;    // bullet impact -> nearest player within this distance = victim (≈)
   const EXPLOSIONS = new Set([K.EV.GRENADE_EXPLODE, K.EV.FLASHBANG_EXPLODE, K.EV.CUSTOM_EXPLODE,
     K.EV.CUSTOM_EXPLODE_NOMARKS, K.EV.ROCKET_EXPLODE, K.EV.ROCKET_EXPLODE_NOMARKS]);
   const PSI = {
@@ -61,6 +63,8 @@ C4.define('collect', function (C4) {
       // weapon changes: {t, client, health (stats[0]), damageEvent, damageYaw, damageCount, pmType, weapon}
       povStates: [],
       hitsTaken: [],                // EV_BULLET_HIT_CLIENT_*: {t, victim, attacker, weapon}
+      // EV_BULLET_HIT on flesh shot by the POV: {t, weapon, headshot, lethal, victim (nearest player) | null, dist}
+      povImpacts: [],
       firstArchive: null
     };
     const bigCs = new BigConfigString();
@@ -263,9 +267,20 @@ C4.define('collect', function (C4) {
       } else if (ev === K.EV.BULLET_HIT_CLIENT_SMALL || ev === K.EV.BULLET_HIT_CLIENT_LARGE) {
         // a bullet hit the recording client (or the player it follows): attacker = otherEntityNum
         c.hitsTaken.push({ t, victim: st[E_CLIENTNUM], attacker: st[E_OTHER], weapon: st[E_WEAPON] });
+      } else if (ev === K.EV.BULLET_HIT && st[E_SURFTYPE] === SURF_FLESH && c.gamestate && st[E_OTHER] === c.gamestate.clientNum) {
+        // a bullet of the POV hit a player (MP damage code, sent to everyone but the victim):
+        // otherEntityNum = shooter, un1 bit 0 = head, bit 1 = the hit killed (docs/ANALYSIS.md 3.9).
+        // The victim is not transmitted: the nearest other player to the impact (position <= 200 ms old)
+        const x = u2f(st[E_POS]), y = u2f(st[E_POS + 1]), z = u2f(st[E_POS + 2]);
+        let victim = null, best = IMPACT_VICTIM_DIST;
+        for (const [cl, p] of lastPos) {
+          if (cl === st[E_OTHER] || t - p[0] > 200) continue;
+          const d = Math.hypot(p[1] - x, p[2] - y, p[3] - z);
+          if (d < best) { best = d; victim = cl; }
+        }
+        const flags = st[E_UN1];
+        c.povImpacts.push({ t, weapon: st[E_WEAPON], headshot: !!(flags & 1), lethal: !!(flags & 2), victim, dist: victim == null ? null : R(best) });
       }
-      // (EV_BULLET_HIT on flesh - shooter in otherEntityNum, un1 bit 0 = head, bit 1 = killed, victim
-      // not transmitted - is not collected yet; see docs/ANALYSIS.md 3.9)
     }
 
     function onMissile(t, num, st, transmitted) {

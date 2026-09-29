@@ -545,8 +545,8 @@ C4.define('build', function (C4) {
     }
     grenades.sort((a, b) => (a.first - b.first));
 
-    // POV damage (povDamage.js): health / damage of the player state, bullet hits on the POV and
-    // the POV's local sounds ("s <n>" = sound config string 1342 + n, resolved with the
+    // POV damage (povDamage.js): health / damage of the player state, bullet hits on the POV, the
+    // POV's own bullet impacts and his local sounds ("s <n>" = sound config string 1342 + n, resolved with the
     // config strings valid at that time - a map change loads another sound list)
     const soundChanges = new Map();
     for (const ch of csChanges) {
@@ -571,6 +571,7 @@ C4.define('build', function (C4) {
       pov: povClient, povName: povClient != null ? playerName(povClient) : null,
       states: col.povStates.map(s => Object.assign({}, s, { t: rel(s.t) })),
       hitsTaken: col.hitsTaken.map(h => ({ t: rel(h.t), victim: h.victim, attacker: h.attacker, weapon: weaponName(h.weapon, rel(h.t)) })),
+      povImpacts: col.povImpacts.map(h => ({ t: rel(h.t), weapon: weaponName(h.weapon, rel(h.t)), headshot: h.headshot, lethal: h.lethal, victim: h.victim, dist: h.dist })),
       sounds, kills, rounds, phaseAt, roundAt: C4.events.roundAt, sideAt: teams.rawSideAt, weaponName,
       grenades, povTrack: povClient != null ? positions[povClient] : null, playerName
     });

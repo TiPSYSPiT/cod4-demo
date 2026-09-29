@@ -6,14 +6,14 @@
  *   exact    health (player state stats[0]); every damage raises damageEvent by 1 and damageCount =
  *            the health lost; bullet hits on the POV (EV_BULLET_HIT_CLIENT_*) with attacker and
  *            weapon; kills and deaths (obituary); the hit-marker sound "mp_hit_alert" the server
- *            plays for the POV whenever he damages a player (number of hits dealt, no value)
+ *            plays for the POV whenever he damages a player (number of hits dealt, no value); the
+ *            POV's own bullet impacts EV_BULLET_HIT (shooter = otherEntityNum, un1 bit 0 = head)
  *   derived  (≈) damage without hit event and without attacker direction (damageYaw 255) = own
  *            grenade (a frag of the POV detonated) or fall; an explosion with direction = thrower
- *            unknown; the weapon of a dealt hit = the weapon the POV held; headshot hits from the
- *            sound "bullet_impact_headshot_2"
- *   n/a      damage dealt as a value; whom the POV hit (a hit marker names no victim; the bullet
- *            impacts EV_BULLET_HIT would give the shooter - otherEntityNum - but the victim only
- *            as the nearest player: not evaluated yet, docs/ANALYSIS.md 3.9)
+ *            unknown; the weapon of a dealt hit = the weapon the POV held; headshot hits taken
+ *            from the sound "bullet_impact_headshot_2"; the victim of an own bullet impact = the
+ *            nearest player (hits per opponent)
+ *   n/a      damage dealt as a value
  * Only phase "live" counts (like the scoreboard). The lethal hit shows as the health left (e.g.
  * 40 -> 0), not as its raw damage. All times: ms since the first snapshot. */
 C4.define('povDamage', function (C4) {
@@ -21,6 +21,7 @@ C4.define('povDamage', function (C4) {
   const W = C4.weapons;
 
   const HIT_WINDOW = 100;        // bullet hit event <-> health drop (measured: same snapshot)
+  const IMPACT_WINDOW = 150;     // own bullet impact <-> hit marker
   const DEATH_WINDOW = 150;      // obituary <-> last health drop
   const BLAST_WINDOW = [200, 100];   // frag detonation before / after a health drop or hit alert
   const NO_DIRECTION = 255;      // damageYaw without attacker direction (self / world)
@@ -96,7 +97,7 @@ C4.define('povDamage', function (C4) {
     const opp = new Map();
     const oppRow = (cl, t) => {
       if (!opp.has(cl)) opp.set(cl, { client: cl, name: playerName(cl), relation: relation(cl, t), damageTaken: 0, hitsTaken: 0,
-        killedPov: 0, kills: 0, hitsDealt: null });
+        killedPov: 0, kills: 0, hitsDealt: 0, headshotHitsDealt: 0, hitsDealtApprox: true });
       return opp.get(cl);
     };
     const wTaken = new Map(), wDealt = new Map();
@@ -186,12 +187,14 @@ C4.define('povDamage', function (C4) {
       if (lethal) wr.kills++;
     }
 
-    // ---- headshot sounds: taken (at a health drop) or dealt (at a hit alert)
+    // ---- headshot sounds: headshot hits taken (the sound at a health drop, ≈); the POV's own
+    //      headshots come from the head flag of his bullet impacts
     const takenEv = ev.filter(e => e.type === 'taken');
     const alerts = ctx.sounds.filter(x => x.name === 'mp_hit_alert');
     const hsSounds = ctx.sounds.filter(x => x.name === 'bullet_impact_headshot_2');
     out.sources.hitAlerts = alerts.length;
     out.sources.headshotSounds = hsSounds.length;
+    out.sources.ownImpacts = (ctx.povImpacts || []).length;
     for (const h of hsSounds) {
       const drop = within(takenEv, h.t, HIT_WINDOW, HIT_WINDOW);
       if (drop && !drop.headshot) { drop.headshot = true; drop.headshotApprox = true; }
@@ -208,17 +211,31 @@ C4.define('povDamage', function (C4) {
       }
       return null;
     };
+    const impacts = ctx.povImpacts || [];
     for (const a of alerts) {
       const blast = within(blasts, a.t, BLAST_WINDOW[0], BLAST_WINDOW[1]);
-      const weapon = blast && blast.own ? blast.weapon : heldWeaponAt(a.t);
-      const headshot = !!within(hsSounds, a.t, HIT_WINDOW, HIT_WINDOW) && !within(takenEv, a.t, HIT_WINDOW, HIT_WINDOW);
+      // the own bullet impact of this hit marker (same snapshot): weapon, head flag, victim (≈)
+      const imp = impacts.length ? within(impacts, a.t, IMPACT_WINDOW, IMPACT_WINDOW) : null;
+      const weapon = imp ? imp.weapon : blast && blast.own ? blast.weapon : heldWeaponAt(a.t);
       const isCounted = counted(a.t);
       const { ri, b } = bucketAt(a.t);
-      ev.push({ t: a.t, type: 'dealt', weapon, weaponApprox: true, headshot, headshotApprox: true, round: ri, counted: isCounted });
+      ev.push({ t: a.t, type: 'dealt', weapon, weaponApprox: !imp, headshot: imp ? imp.headshot : null,
+        victim: imp ? imp.victim : null, victimApprox: true, round: ri, counted: isCounted });
       if (!isCounted) continue;
       b.hitsDealt++;
-      if (headshot) b.headshotHitsDealt++;
-      weaponRow(wDealt, weapon, true).hits++;
+      weaponRow(wDealt, weapon, !imp).hits++;
+    }
+    // ---- the POV's own bullet impacts: headshots (flag, exact) and hits per opponent (victim ≈)
+    let impactsCounted = 0, impactsNoVictim = 0;
+    for (const h of impacts) {
+      if (!counted(h.t)) continue;
+      impactsCounted++;
+      const { b } = bucketAt(h.t);
+      if (h.headshot) b.headshotHitsDealt++;
+      if (h.victim == null || h.victim >= 64) { impactsNoVictim++; continue; }
+      const o = oppRow(h.victim, h.t);
+      o.hitsDealt++;
+      if (h.headshot) o.headshotHitsDealt++;
     }
 
     // ---- kills and deaths (exact, obituary)
@@ -262,7 +279,7 @@ C4.define('povDamage', function (C4) {
       out.rounds.push(Object.assign({ round: i, label: r.label, half: r.half }, b));
       sumInto(total, b);
     });
-    const otherUsed = other.damageTaken || other.hitsTaken || other.hitsDealt || other.kills || other.deaths;
+    const otherUsed = other.damageTaken || other.hitsTaken || other.hitsDealt || other.headshotHitsDealt || other.kills || other.deaths;
     if (otherUsed) { out.otherLive = Object.assign({}, other); sumInto(total, other); }
     const headshotHitsTaken = takenEv.filter(e => e.counted && e.headshot).length;
     out.overview = {
@@ -270,13 +287,16 @@ C4.define('povDamage', function (C4) {
       hitsTaken: total.hitsTaken, hitsTakenBy: total.hitsTakenBy,
       damageDealt: null,
       hitsDealt: total.hitsDealt, headshotHitsDealt: total.headshotHitsDealt, headshotHitsTaken,
+      // own bullet impacts of the POV (another source than the hit markers: bullets only, and only
+      // the impacts sent to him); without a player near the impact no victim
+      impacts: impactsCounted, impactsNoVictim,
       kills: total.kills, headshotKills: total.headshotKills, deaths: total.deaths,
       // kills of the POV but not one hit-marker sound in the whole demo: the server does not send it
       hitsDealtAvailable: alerts.length > 0 || !kills.some(k => k.attacker === pov && k.victim !== pov && !k.world)
     };
     if (!out.overview.hitsDealtAvailable) {
-      out.overview.hitsDealt = null; out.overview.headshotHitsDealt = null;
-      for (const r of out.rounds) { r.hitsDealt = null; r.headshotHitsDealt = null; }
+      out.overview.hitsDealt = null;
+      for (const r of out.rounds) r.hitsDealt = null;
     }
     out.opponents = [...opp.values()].filter(o => o.relation === 'enemy' || o.relation === 'team')
       .sort((a, b) => (a.relation === b.relation ? 0 : a.relation === 'enemy' ? -1 : 1) || b.damageTaken - a.damageTaken || b.kills - a.kills);
