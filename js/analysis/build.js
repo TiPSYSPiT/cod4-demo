@@ -220,8 +220,10 @@ C4.define('build', function (C4) {
     });
 
     // rounds
+    // bomb events: detected once (C4.events.bombEvents), checked per round (rounds.js), used everywhere
     const R = C4.rounds.analyzeRounds({ commands, csChanges, teams, kills, attackSide, endTime,
-      clients: Array.from(teams.byClient.keys()), ruleset: rulesetHud, mapWindow, mapChanges });
+      clients: Array.from(teams.byClient.keys()), ruleset: rulesetHud, mapWindow, mapChanges,
+      bombEvents: C4.events.bombEvents(commands), isSD: (serverinfo.g_gametype || '').toLowerCase() === 'sd' });
     for (const mc of mapChanges) {
       warnings.push('Map change at ' + fmtMs(mc.t) + ': the recording continues on ' + (mc.map || 'another map') +
         '. Everything from then on belongs to that map and is not counted (phase aftermatch).');
@@ -378,7 +380,7 @@ C4.define('build', function (C4) {
     }
     const resolver = C4.events.nameResolver(col.nameHistory, names);
     const status = R.status;
-    const events = C4.events.buildEvents({ commands, rounds, kills, slotEvents: col.slotEvents.map(s => ({ t: rel(s.t) - (s.t === col.firstTime ? 1 : 0), client: s.client, kind: s.kind })), resolver, povClient, playerName, endTime, status, halftimes: R.halftimes, halftimeFromSound: R.halftimeFromSound, phaseAt });
+    const events = C4.events.buildEvents({ commands, rounds, kills, slotEvents: col.slotEvents.map(s => ({ t: rel(s.t) - (s.t === col.firstTime ? 1 : 0), client: s.client, kind: s.kind })), resolver, povClient, playerName, endTime, status, halftimes: R.halftimes, halftimeFromSound: R.halftimeFromSound, phaseAt, bomb: R.bomb });
     const leftAt = new Map(), joinedAt = new Map();
     for (const e of events) {
       if (e.type === 'left' && e.clients.length) leftAt.set(e.clients[0], e.t);
@@ -387,17 +389,14 @@ C4.define('build', function (C4) {
     }
     // a player who came back after leaving did not leave early
     for (const s of col.slotEvents) if (s.kind === 'connected' && leftAt.has(s.client) && rel(s.t) > leftAt.get(s.client)) leftAt.delete(s.client);
-    // bomb plants / defuses per player: server message MP_EXPLOSIVES_PLANTED_BY / _DEFUSED_BY<name>,
-    // counted in match rounds only (not in warm-up or strat mode); unresolved names are listed in diagnostics.
-    // The bomb can be planted and defused once per round: a repeated message (seen: the same plant
-    // sent twice 50 ms apart) is counted once.
-    const plants = new Map(), defuses = new Map(), bombUnresolved = [], bombSeen = new Set();
+    // bomb plants / defuses per player: the bomb events of the central detection (already one per
+    // executed server command and at most one plant / defuse per S&D round), counted in the live
+    // match only; unresolved names are listed in diagnostics
+    const plants = new Map(), defuses = new Map(), bombUnresolved = [];
     for (const e of events) {
       if (e.type !== 'bomb_planted' && e.type !== 'bomb_defused') continue;
       const ri = C4.events.roundAt(rounds, e.t);
       if (ri < 0 || e.phase !== 'live') continue;
-      if (bombSeen.has(e.type + ri)) continue;
-      bombSeen.add(e.type + ri);
       const cl = e.clients.length ? e.clients[0] : null;
       if (cl == null) { bombUnresolved.push({ t: e.t, text: e.text }); continue; }
       const m = e.type === 'bomb_planted' ? plants : defuses;
@@ -447,6 +446,10 @@ C4.define('build', function (C4) {
     }
     // own count vs. game scoreboard (the brief asks for console.debug of the differences)
     const diagnostics = { scoreboardMismatches: [], scoreboardResetIgnored: validUntil !== Infinity, bombUnresolved, teamkillsExcluded,
+      // a second plant / defuse in one S&D round (kept: the first) - with the raw server message
+      bombRejected: R.bombRejected,
+      // reliable server commands received again with the same sequence number (not executed twice)
+      commandsRepeated: summary && summary.stats ? summary.stats.serverCommandsRepeated || 0 : 0,
       scoreboardWindow: { from: Number.isFinite(validFrom) ? validFrom : null, until: Number.isFinite(validUntil) ? validUntil : null },
       // reconnected players: per session its start and the last scoreboard entry (null = none sent)
       scoreboardSessions: [...splits].filter(([cl]) => lastEntry.has(cl) && matchReconnects(cl).length).map(([cl, s]) => ({ client: cl, name: playerName(cl),

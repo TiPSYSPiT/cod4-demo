@@ -158,7 +158,7 @@ for ev in DemoParser("demo.dm_1"):
 | `ArchiveFrame` | client archive record: `index`, `origin`, `velocity`, `movement_dir`, `bob_cycle`, `server_time`, `angles` |
 | `Gamestate` | `configstrings` {index: text}, `baselines` {entity: raw state}, `clients` {client: (name, clan tag)}, `server_command_seq`, `server_config_seq`, `client_num` (recorder), `checksum_feed` |
 | `ConfigClient` | name / clan tag update outside the gamestate |
-| `ServerCommand` | `seq`, `text`, `server_time`, `message_seq` |
+| `ServerCommand` | `seq`, `text`, `server_time`, `message_seq`; each command once (repeats with an already executed sequence are skipped, see [Repeated server commands](#repeated-server-commands)) |
 | `Snapshot` | `server_time`, `message_seq`, `delta_num`, `snap_flags`, `ps` (`PlayerState`), `entities`, `clients`, `info.changed_entities`, `info.removed_entities`, `info.changed_clients` |
 | `ReliableMessage` | raw CoD4X reliable record (`command`, `data`) |
 | `Download` | raw `svc_download` payload |
@@ -202,7 +202,7 @@ Conventions for all tables:
 | `meta.file`, `size_bytes`, `sha1` | the file |
 | `meta.protocol`, `protocol_kind` | 1 = stock CoD4 (no protocol record), 17 = CoD4X with legacy origin encoding, 18+ = CoD4X |
 | `meta.clean_end`, `truncated` | end marker found / last record cut off |
-| `meta.records` | counts: records, messages, archive frames, snapshots, dropped snapshots, server commands, gamestates, decompressed bytes, issues |
+| `meta.records` | counts: records, messages, archive frames, snapshots, dropped snapshots, server commands (executed), server commands repeated (skipped re-sends), gamestates, decompressed bytes, issues |
 | `meta.decode_errors` | snapshots the delta decoder had to drop |
 | `meta.gamestate` | server command sequence, config data sequence, recorder client number, checksum feed, number of config strings and baselines |
 | `meta.pov_client`, `pov_name` | the recording player |
@@ -249,7 +249,9 @@ hold the names, +128 the values): `index`, `name`, `value`. For example
 `g_TeamName_Axis`, `bg_fallDamageMinHeight`, all movement physics dvars.
 
 **`server_commands`** — every reliable server command, raw: `server_time`,
-`message_seq`, `cmd_seq`, `verb` (first character), `name`, `text`.
+`message_seq`, `cmd_seq`, `verb` (first character), `name`, `text`. Each
+command appears once; the server's re-sends of not yet acknowledged commands
+are skipped (see [Repeated server commands](#repeated-server-commands)).
 
 | Verb | Name | Meaning |
 |---|---|---|
@@ -499,6 +501,21 @@ contains a sequence of operations:
 | 5 | download | file download (not used in demos) |
 | 7 | EOF | end of message |
 
+### Repeated server commands
+
+Server commands are reliable: the server sends every command again, with the
+same sequence number, in each following message until the client has
+acknowledged it. A demo therefore contains many commands several times (in
+`20260916_inf_vs_revolt_backlot` half of all received commands are repeats).
+Like the game client (`CL_ParseCommandString`: only `seq >
+serverCommandSequence` is executed) the parser keeps the sequence of the last
+executed command; a gamestate sets it to the server command sequence it
+carries. A command whose sequence is not greater is skipped and only counted
+in `stats["server_commands_repeated"]` (`meta.records.server_commands_repeated`),
+so `ServerCommand` events, `server_commands` and every table derived from it
+(chat, game messages, scores, configstring changes …) hold each command
+exactly once.
+
 ### Snapshots
 
 Snapshots are delta coded: each field is either unchanged or sent with one of
@@ -718,13 +735,13 @@ deathrun map, which the continuity check reports.
 | FPS_324087_mp_backlot_x_BDaN.dm_1 | 7.2 | 21 | 14,058 | 0 | 96 | 210 | 2029 | 9 | 4.4 | ok |
 | FPS_324089_mp_crash_E6Hk.dm_1 | 17.3 | 21 | 34,565 | 0 | 163 | 374 | 3729 | 16 | 10.2 | ok |
 | FPS_324092_mp_strike_pdy1.dm_1 | 8.5 | 21 | 16,489 | 0 | 111 | 213 | 1713 | 16 | 6.5 | ok |
-| FPS_327111_mp_crash_bFjF.dm_1 | 15.0 | 21 | 28,263 | 0 | 159 | 412 | 3951 | 36 | 8.9 | ok |
+| FPS_327111_mp_crash_bFjF.dm_1 | 15.0 | 21 | 28,263 | 0 | 159 | 412 | 3951 | 32 | 8.9 | ok |
 | inf_vs_myquest_knife.dm_1 | 1.7 | 21 | 3,634 | 0 | 33 | 55 | 584 | 14 | 1.1 | ok |
 | lafine_knife.dm_1 | 2.0 | 21 | 4,347 | 0 | 10 | 12 | 237 | 4 | 1.4 | ok |
 | Match_mp_backlot_x_8xQPAHh5.dm_1 | 10.5 | 21 | 20,796 | 0 | 140 | 352 | 2848 | 25 | 6.5 | ok |
 | Match_mp_backlot_x_f3MQE16i.dm_1 | 17.9 | 21 | 40,747 | 0 | 207 | 449 | 4432 | 27 | 11.7 | ok |
 | Match_mp_backlot_x_uGGDzj83.dm_1 | 12.0 | 21 | 24,038 | 0 | 136 | 318 | 2887 | 16 | 7.3 | ok |
-| Match_mp_backlot_x_uR4pgAiK.dm_1 | 10.6 | 21 | 20,796 | 0 | 140 | 353 | 2856 | 35 | 6.5 | ok |
+| Match_mp_backlot_x_uR4pgAiK.dm_1 | 10.6 | 21 | 20,796 | 0 | 140 | 353 | 2856 | 33 | 6.5 | ok |
 | Match_mp_backlot_x_ZTIXQWnu.dm_1 | 17.9 | 21 | 40,747 | 0 | 207 | 450 | 4424 | 49 | 11.8 | ok |
 | Match_mp_cluster_6Bp3FC6s.dm_1 | 0.3 | 21 | 612 | 0 | 0 | 0 | 0 | 0 | 0.1 | ok |
 | Match_mp_cluster_HWybxCU0.dm_1 | 16.3 | 21 | 36,813 | 0 | 188 | 371 | 3331 | 30 | 11.7 | ok |
@@ -734,13 +751,13 @@ deathrun map, which the continuity check reports.
 | Match_mp_crash_eCMiGVlm.dm_1 | 16.1 | 21 | 32,652 | 0 | 165 | 397 | 3462 | 24 | 9.9 | ok |
 | Match_mp_crossfire_0JILLpdq.dm_1 | 15.6 | 21 | 35,420 | 0 | 175 | 403 | 4122 | 14 | 11.2 | ok |
 | Match_mp_crossfire_FXrJV0U6.dm_1 | 9.6 | 21 | 19,720 | 0 | 93 | 238 | 2346 | 7 | 5.7 | ok |
-| Match_mp_crossfire_Q4yUjGvh.dm_1 | 16.6 | 21 | 37,976 | 0 | 191 | 428 | 5454 | 60 | 11.6 | ok |
+| Match_mp_crossfire_Q4yUjGvh.dm_1 | 16.6 | 21 | 37,976 | 0 | 191 | 428 | 5454 | 56 | 11.6 | ok |
 | Match_mp_strike_3A39ZNZr.dm_1 | 12.6 | 21 | 28,500 | 0 | 154 | 374 | 3368 | 14 | 10.8 | ok |
 | Match_mp_strike_Bl3Yj3WC.dm_1 | 12.6 | 21 | 28,707 | 0 | 128 | 303 | 2828 | 8 | 10.4 | ok |
 | Match_mp_strike_BpCHnb5O.dm_1 | 11.1 | 21 | 25,657 | 0 | 127 | 249 | 1959 | 39 | 9.3 | ok |
 | Match_mp_strike_DR1ux4gv.dm_1 | 12.4 | 21 | 28,706 | 0 | 128 | 306 | 2827 | 11 | 10.2 | ok |
 | Match_mp_strike_JsjiwJTx.dm_1 | 20.0 | 21 | 40,006 | 0 | 176 | 414 | 4419 | 48 | 15.1 | ok |
-| Match_mp_strike_KG4JQgq7.dm_1 | 12.7 | 21 | 25,098 | 0 | 146 | 305 | 2451 | 27 | 9.7 | ok |
+| Match_mp_strike_KG4JQgq7.dm_1 | 12.7 | 21 | 25,098 | 0 | 146 | 305 | 2451 | 26 | 9.7 | ok |
 | Match_mp_strike_nxzWi1lO.dm_1 | 1.6 | 21 | 2,985 | 0 | 11 | 0 | 211 | 11 | 1.2 | ok |
 | Match_mp_strike_qPN2I122.dm_1 | 12.7 | 21 | 25,098 | 0 | 146 | 303 | 2443 | 28 | 10.0 | ok |
 | Match_mp_strike_TjLEPKo1.dm_1 | 2.2 | 21 | 5,006 | 0 | 28 | 62 | 614 | 6 | 1.9 | ok |

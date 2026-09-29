@@ -22,6 +22,26 @@ C4.define('events', function (C4) {
     ['bomb_drop', 'Bomb dropped', false]
   ];
 
+  /**
+   * THE bomb event detection (the only one - rounds, events, scoreboard and map use its result):
+   * server message f "MP_EXPLOSIVES_<PLANTED|DEFUSED|RECOVERED|DROPPED>_BY<name>".
+   * -> [{t, action: planted|defused|recovered|dropped, name, raw, seq}]
+   * The commands must be the executed ones (each sequence number once - demo.js). There is no
+   * message for the explosion: it is derived from the round win (rounds.js, "Bomb exploded").
+   */
+  const BOMB_RE = /^MP_EXPLOSIVES_(PLANTED|DEFUSED|RECOVERED|DROPPED)_BY(.*)$/;
+  function bombEvents(commands) {
+    const out = [];
+    for (const c of commands) {
+      if (c.d.verb !== 'f') continue;
+      const m = stripColors(c.d.text).match(BOMB_RE);
+      if (m) out.push({ t: c.t, action: m[1].toLowerCase(), name: m[2].trim(), raw: c.text, seq: c.seq });
+    }
+    return out;
+  }
+  const BOMB_TYPE = { planted: 'bomb_planted', defused: 'bomb_defused', recovered: 'bomb_pickup', dropped: 'bomb_drop' };
+  const BOMB_VERB = { planted: 'planted the bomb', defused: 'defused the bomb', recovered: 'picked up the bomb', dropped: 'dropped the bomb' };
+
   /** name -> client resolver over every name a client ever had */
   function nameResolver(nameHistory, names) {
     const all = [];
@@ -76,11 +96,6 @@ C4.define('events', function (C4) {
         } else if ((m = text.match(/^Timeout called by (.+)$/i))) {
           const cl = resolver.exact(m[1]);
           add(c.t, 'timeout', 'Timeout called by ' + m[1].trim(), cl != null ? [cl] : []);
-        } else if ((m = text.match(/^MP_EXPLOSIVES_(PLANTED|DEFUSED|RECOVERED|DROPPED)_BY(.*)$/))) {
-          const cl = resolver.exact(m[2]);
-          const type = { PLANTED: 'bomb_planted', DEFUSED: 'bomb_defused', RECOVERED: 'bomb_pickup', DROPPED: 'bomb_drop' }[m[1]];
-          const verb = { PLANTED: 'planted the bomb', DEFUSED: 'defused the bomb', RECOVERED: 'picked up the bomb', DROPPED: 'dropped the bomb' }[m[1]];
-          add(c.t, type, m[2].trim() + ' ' + verb, cl != null ? [cl] : []);
         }
       } else if (d.verb === 'v') {
         for (const [name, value] of d.dvars) {
@@ -110,6 +125,11 @@ C4.define('events', function (C4) {
       if (seen.has(key) && s.t - seen.get(key) < 3000) continue;
       seen.set(key, s.t);
       add(s.t, type, s.text, [], type === 'ready' ? { all: true } : {});
+    }
+    // bomb events: the accepted ones of the central detection (bombEvents + the S&D rule in rounds.js)
+    for (const b of ctx.bomb || []) {
+      const cl = resolver.exact(b.name);
+      add(b.t, BOMB_TYPE[b.action], b.name + ' ' + BOMB_VERB[b.action], cl != null ? [cl] : []);
     }
     for (const h of ctx.halftimes) add(h, 'halftime', 'Halftime - teams switch sides', [], { heuristic: !ctx.halftimeFromSound });
     for (const k of kills) add(k.t, 'kill', '', [k.attacker, k.victim].filter(x => x != null && x < 64), { kill: k.index });
@@ -226,5 +246,5 @@ C4.define('events', function (C4) {
     return out;
   }
 
-  C4.events = { EVENT_TYPES, nameResolver, buildEvents, buildChat, buildConsole, roundAt };
+  C4.events = { EVENT_TYPES, nameResolver, bombEvents, buildEvents, buildChat, buildConsole, roundAt };
 });

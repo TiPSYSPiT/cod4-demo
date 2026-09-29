@@ -56,7 +56,7 @@ The decompressed payload is a sequence of operations (`svc_ops_e`):
 | Op | Name | Content |
 |---|---|---|
 | 1 | gamestate | full initial state (see 1.4) |
-| 4 | serverCommand | `int32 sequence` + text (reliable command, see 1.7) |
+| 4 | serverCommand | `int32 sequence` + text (reliable command, see 1.7). **Executed once per sequence number:** the server sends a reliable command again (same sequence) in the following messages until the client has acknowledged it - like the client (`CL_ParseCommandString`: only `seq > serverCommandSequence`; the gamestate sets that counter) the parser drops the repeats. In the samples 0.3 % to 50 % of all received commands are such repeats (e.g. `20260916_inf_vs_revolt_backlot` 5340 of 10622); before this fix every chat line, bomb message, timeout etc. of a repeat was counted twice (`meta.stats.serverCommandsRepeated`) |
 | 6 | snapshot | delta-coded world state (see 1.5) |
 | 11 | configclient | CoD4X: `int32 sequence`, `byte client`, name, clan tag |
 | 5 | download | not used in demos |
@@ -395,7 +395,18 @@ matched to a client.
 (index differs per map/mod, e.g. 1360–1362) followed by all players swapping
 between axis and allies. Only the first occurrence per swap counts.
 
-**Timeouts.** `f "Timeout called by <name>"` (22 occurrences in the samples).
+**Timeouts.** `f "Timeout called by <name>"` (the earlier count of 22 in the samples included repeated commands).
+
+**Bomb events - one detection.** `C4.events.bombEvents(commands)` is the only place that reads
+`f "MP_EXPLOSIVES_<PLANTED|DEFUSED|RECOVERED|DROPPED>_BY<name>"` (from the executed commands, each
+sequence number once). `rounds.js` assigns them to the rounds and, in Search & Destroy only, keeps at
+most one plant and one defuse per round (the first; further ones go to `diagnostics.bombRejected`
+with the raw message and are logged with `console.debug` - none in the samples since the repeat
+fix). Round by Round, the Events tab, the map timeline / "Kills & bomb", Plants / Defuses and the
+JSON export all use this result. There is no explosion message: the sound configstrings
+(`exp_suitcase_bomb_main`, `promod_destroyed`) are only registered the first time on a map, so
+"Bomb exploded" stays derived from the round win after a plant. `tools/selftest` warns when a S&D
+round has more than one plant / defuse or the scoreboard's Plants / Defuses differ from Round by Round.
 
 **Ready status.** See 3.7 – per-player ready is not in a client demo.
 

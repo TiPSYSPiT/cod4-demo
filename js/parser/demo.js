@@ -41,8 +41,8 @@ C4.define('demo', function (C4) {
     }
     const dv = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
     const stats = { records: 0, messages: 0, archives: 0, reliable: 0, snapshots: 0,
-      snapshotsDropped: 0, serverCommands: 0, gamestates: 0, configClients: 0, issues: 0 };
-    const st = { protocol: PROTOCOL_STOCK, serverTime: 0, serverConfigSeq: null };
+      snapshotsDropped: 0, serverCommands: 0, serverCommandsRepeated: 0, gamestates: 0, configClients: 0, issues: 0 };
+    const st = { protocol: PROTOCOL_STOCK, serverTime: 0, serverConfigSeq: null, commandSeq: null };
     let decoder = new DeltaDecoder(PROTOCOL_STOCK);
     let cleanEnd = false, truncated = false;
     let p = 0, first = true, nextProgress = 0;
@@ -130,6 +130,11 @@ C4.define('demo', function (C4) {
         if (op === SVC_SERVERCOMMAND) {
           const cseq = m.readLong();
           const text = m.readString();
+          // Reliable commands are sent again (same sequence number) in the following messages until
+          // the client has acknowledged them. Like the client (CL_ParseCommandString: only
+          // seq > serverCommandSequence is executed) every command counts once.
+          if (st.commandSeq != null && cseq <= st.commandSeq) { stats.serverCommandsRepeated++; continue; }
+          st.commandSeq = cseq;
           stats.serverCommands++;
           cmds.push({ seq: cseq, text, serverTime: 0, messageSeq: seq, offset });
         } else if (op === SVC_GAMESTATE) {
@@ -177,6 +182,8 @@ C4.define('demo', function (C4) {
       decoder.resetForGamestate();
       m.lastEntity = -1;
       const cmdSeq = m.readLong();
+      // the gamestate sets the client's command sequence (commands up to it are already executed)
+      st.commandSeq = cmdSeq;
       const configstrings = new Map();
       const clients = new Map();
       const cod4x = st.protocol !== PROTOCOL_STOCK;

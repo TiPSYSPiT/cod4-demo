@@ -192,11 +192,13 @@ class DemoParser:
         self.server_time = 0
         self.stats = {"records": 0, "messages": 0, "archives": 0, "reliable": 0,
                       "snapshots": 0, "snapshots_dropped": 0, "server_commands": 0,
-                      "gamestates": 0, "configclients": 0, "bytes_decompressed": 0,
+                      "server_commands_repeated": 0, "gamestates": 0, "configclients": 0, "bytes_decompressed": 0,
                       "issues": 0}
         self.clean_end = False
         self.truncated = False
         self.server_config_seq: int | None = None
+        #: sequence of the last executed server command (the client's serverCommandSequence)
+        self.command_seq: int | None = None
 
     # -- public ------------------------------------------------------------
     def __iter__(self) -> Iterator:
@@ -292,6 +294,13 @@ class DemoParser:
             if op == SVC_SERVERCOMMAND:
                 cseq = m.read_long()
                 text = m.read_string()
+                # Reliable commands are sent again (same sequence number) in the following messages
+                # until the client has acknowledged them. Like the client (CL_ParseCommandString: only
+                # seq > serverCommandSequence is executed) every command counts once.
+                if self.command_seq is not None and cseq <= self.command_seq:
+                    self.stats["server_commands_repeated"] += 1
+                    continue
+                self.command_seq = cseq
                 self.stats["server_commands"] += 1
                 pending_cmds.append(ServerCommand(offset, seq, 0, cseq, text))
             elif op == SVC_GAMESTATE:
@@ -354,6 +363,8 @@ class DemoParser:
         dec.reset_for_gamestate()
         m.last_entity = -1
         cmd_seq = m.read_long()
+        # the gamestate sets the client's command sequence (commands up to it are already executed)
+        self.command_seq = cmd_seq
         configstrings: dict[int, str] = {}
         clients: dict[int, tuple[str, str]] = {}
         cod4x = self.protocol != PROTOCOL_STOCK

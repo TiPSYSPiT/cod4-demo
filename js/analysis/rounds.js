@@ -14,7 +14,6 @@ C4.define('rounds', function (C4) {
 
   const STATUS_INDEX = i => (i >= 380 && i <= 400) || i === 733;
   const SOUND_INDEX = i => i >= 1342 && i <= 1597;
-  const BOMB_RE = /^MP_EXPLOSIVES_(PLANTED|DEFUSED|RECOVERED|DROPPED)_BY(.*)$/;
 
   /** Win condition from the Promod ruleset: "MR12" = 12 rounds per half, the match is decided at
    * MR + 1 wins; at MR:MR it goes to overtime with OT rounds per side ("OT3"; 3 if the ruleset names
@@ -85,11 +84,24 @@ C4.define('rounds', function (C4) {
         if (cur.axis == null && c.d.scoreAxis != null) cur.axis = c.d.scoreAxis;
         if (cur.allies == null && c.d.scoreAllies != null) cur.allies = c.d.scoreAllies;
         scoreObs.push({ t: c.t, axis: cur.axis, allies: cur.allies });
-      } else if (v === 'f') {
-        const m = stripColors(c.d.text).match(BOMB_RE);
-        if (m) bomb.push({ t: c.t, action: m[1].toLowerCase(), name: m[2].trim() });
       }
     }
+    // bomb events: the central detection (C4.events.bombEvents), passed in by build.js
+    for (const b of ctx.bombEvents || []) bomb.push(b);
+    // Search & Destroy: the bomb is planted and defused at most once per round. Should a round still
+    // show more (an error in the recording), the first is kept, the others go to bombRejected
+    // (with the raw message) - not for modes with several plants (sabotage).
+    const bombRejected = [];
+    const oncePerRound = segBomb => {
+      if (!ctx.isSD) return segBomb;
+      const seen = new Set();
+      return segBomb.filter(b => {
+        if (b.action !== 'planted' && b.action !== 'defused') return true;
+        if (seen.has(b.action)) { bombRejected.push(b); return false; }
+        seen.add(b.action);
+        return true;
+      });
+    };
     const scoreBefore = t => {
       let s = null;
       for (const o of scoreObs) { if (o.t < t) s = o; else break; }
@@ -111,7 +123,7 @@ C4.define('rounds', function (C4) {
       const knife = segStatus.some(s => s.t - seg.start < 3000 && /knife round/i.test(s.text));
       const timer = timers.find(x => inSeg(x.t) && x.value > 0);
       const win = scoreEvents.find(e => inSeg(e.t));
-      const segBomb = bomb.filter(b => inSeg(b.t));
+      const segBomb = oncePerRound(bomb.filter(b => inSeg(b.t)));
       if (!knife && !timer && !win) continue;          // warm-up, ready-up, strat mode ...
       const r = {
         kind: knife ? 'knife' : 'round',
@@ -295,7 +307,9 @@ C4.define('rounds', function (C4) {
       // a map change inside a break / warm-up segment
       if (phase !== 'aftermatch' && mapWindow.end > a && mapWindow.end < b) push('aftermatch', mapWindow.end, matchEndSource);
     }
-    return { rounds, halftimes, halftimeFromSound: halftimeSounds.length > 0, bomb, status, restarts,
+    // the accepted bomb events (without the ones rejected by the S&D rule): used by every tab
+    const bombAccepted = bomb.filter(b => !bombRejected.includes(b));
+    return { rounds, halftimes, halftimeFromSound: halftimeSounds.length > 0, bomb: bombAccepted, bombRejected, status, restarts,
       finalScore: score, initialScore: initial, serverScore, lastRoundEnd: lastWin ? lastWin.t : null,
       phases, matchStart, matchEnd, matchEndSource, matchDecided: decidedAt != null, winRule: rule };
   }

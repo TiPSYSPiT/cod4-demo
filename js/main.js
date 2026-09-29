@@ -139,6 +139,9 @@
       console.debug('Reconnected players - the game restarts their scoreboard at 0, the sessions are summed:', data.diagnostics.scoreboardSessions);
     }
     if (data.diagnostics.teamkillsExcluded) console.debug('Team kills outside the live match time (not counted):', data.diagnostics.teamkillsExcluded);
+    if (data.diagnostics.bombRejected && data.diagnostics.bombRejected.length) {
+      console.debug('Search & Destroy: more than one plant / defuse in a round - the first is kept, these are not counted:', data.diagnostics.bombRejected);
+    }
     C4.tabs.overview.render($('overview'), app);
     $('viewer').hidden = false;
     $('export-wrap').hidden = false;

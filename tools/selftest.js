@@ -64,7 +64,21 @@
     const sumD = d.players.reduce((a, p) => a + (p.nadeDeaths || 0), 0);
     if (sumK !== expK) warn.push('Nade K ' + sumK + ' != frag grenade kills in Round by Round ' + expK);
     if (sumD !== expD) warn.push('Nade D ' + sumD + ' != frag grenade deaths in Round by Round ' + expD);
-    // 2. weapon list vs weapon indices: thrown missiles must be grenades, the defuse kit kills nobody
+    // 2. bomb (S&D): at most one plant and one defuse per round, and the scoreboard's Plants /
+    //    Defuses == the plants / defuses of the match rounds in Round by Round (live phase)
+    if (d.meta.isSearchAndDestroy) {
+      const liveBomb = (r, action) => r.bomb.filter(b => b.action === action && C4.rounds.phaseAt(d.phases, b.t) === 'live').length;
+      for (const r of d.rounds) {
+        const p = r.bomb.filter(b => b.action === 'planted').length, df = r.bomb.filter(b => b.action === 'defused').length;
+        if (p > 1 || df > 1) warn.push('round ' + r.label + ': ' + p + ' plants / ' + df + ' defuses (S&D allows one)');
+      }
+      const match = d.rounds.filter(r => r.kind === 'round');
+      const rbrP = match.reduce((a, r) => a + liveBomb(r, 'planted'), 0), rbrD = match.reduce((a, r) => a + liveBomb(r, 'defused'), 0);
+      const sbP = d.players.reduce((a, p) => a + (p.plants || 0), 0), sbD = d.players.reduce((a, p) => a + (p.defuses || 0), 0);
+      const unresolved = (d.diagnostics.bombUnresolved || []).length;      // no player to credit
+      if (sbP + sbD + unresolved !== rbrP + rbrD || sbP > rbrP || sbD > rbrD) warn.push('Plants / Defuses ' + sbP + ' / ' + sbD + ' != Round by Round ' + rbrP + ' / ' + rbrD + (unresolved ? ' (' + unresolved + ' unresolved names)' : ''));
+    }
+    // 3. weapon list vs weapon indices: thrown missiles must be grenades, the defuse kit kills nobody
     const odd = d.grenades.filter(g => g.segments.length && /destructible_car|briefcase_bomb/.test(g.weapon || '')).length;
     const kit = d.kills.filter(k => k.weaponName === 'briefcase_bomb_defuse_mp').length;
     if (odd || kit) warn.push('weapon list does not match the weapon indices (' + odd + ' thrown "car/bomb" missiles, ' + kit + ' defuse-kit kills)');
