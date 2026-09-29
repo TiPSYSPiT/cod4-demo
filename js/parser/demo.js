@@ -9,6 +9,10 @@
  *   onServerCommand({seq, text, serverTime, messageSeq})
  *   onSnapshot(snap, decoder)
  *   onIssue({offset, messageSeq, text})
+ *
+ * Damaged data in the middle of a file (an invalid record) does not end the reading: the reader
+ * searches the next position where valid records follow again (resync, same rules as parser.py),
+ * reports the skipped bytes and goes on. Only a record cut off at the end counts as truncated.
  */
 C4.define('demo', function (C4) {
   'use strict';
@@ -22,6 +26,8 @@ C4.define('demo', function (C4) {
     'snapshot', 'EOF', 'steamcommands', 'statscommands', 'configdata', 'configclient', 'acdata'];
   const PROTOCOL_STOCK = 1;
   const MAX_MSGLEN = 0x20000;
+  // resync: message records of a valid chain, largest sequence step inside it
+  const RESYNC_MESSAGES = 3, RESYNC_MAX_SEQ_STEP = 64;
 
   class DemoError extends Error {}
 
@@ -41,10 +47,15 @@ C4.define('demo', function (C4) {
     }
     const dv = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
     const stats = { records: 0, messages: 0, archives: 0, reliable: 0, snapshots: 0,
-      snapshotsDropped: 0, serverCommands: 0, serverCommandsRepeated: 0, gamestates: 0, configClients: 0, issues: 0 };
+      snapshotsDropped: 0, snapshotsDroppedAfterDamage: 0, serverCommands: 0, serverCommandsRepeated: 0,
+      gamestates: 0, configClients: 0, issues: 0, damagedParts: 0, bytesSkipped: 0 };
     const st = { protocol: PROTOCOL_STOCK, serverTime: 0, serverConfigSeq: null, commandSeq: null };
     let decoder = new DeltaDecoder(PROTOCOL_STOCK);
     let cleanEnd = false, truncated = false;
+    const damaged = [];             // {offset, bytesSkipped} of damaged parts in the middle of the file
+    // snapshots dropped since the last decoded one: a damage often starts inside the message before
+    // the broken record - those drops are caused by the damage, too
+    let droppedSinceDecoded = 0;
     let p = 0, first = true, nextProgress = 0;
 
     const issue = (offset, messageSeq, text) => {
@@ -57,6 +68,7 @@ C4.define('demo', function (C4) {
       const start = p;
       p++;
       stats.records++;
+      let bad = null;               // why the record at start is invalid
       if (rec === REC_PROTOCOL) {
         if (p + 16 > size) { truncated = true; break; }
         const proto = dv.getUint32(p, true);
@@ -85,27 +97,42 @@ C4.define('demo', function (C4) {
         const seq = dv.getInt32(p, true), length = dv.getInt32(p + 4, true);
         p += 8;
         if (seq === -1 || length === -1) { cleanEnd = true; break; }
-        if (length < 4 || p + length > size) {
-          truncated = true;
-          issue(start, seq, 'The last message record is cut off (demo truncated).');
-          break;
+        if (length < 4 || length > MAX_MSGLEN) bad = 'message record with invalid length ' + length;
+        else if (p + length > size) bad = 'message record length ' + length + ' exceeds the file';
+        else {
+          const bodyStart = p;
+          p += length;
+          stats.messages++;
+          readMessage(start, seq, bodyStart, length);
         }
-        const bodyStart = p;
-        p += length;
-        stats.messages++;
-        readMessage(start, seq, bodyStart, length);
       } else if (rec === REC_RELIABLE) {
         if (p + 4 > size) { truncated = true; break; }
         const length = dv.getInt32(p, true);
         p += 4;
-        if (length < 0 || p + length > size) { truncated = true; break; }
-        p += length;
-        stats.reliable++;
-        issue(start, null, 'CoD4X reliable message record (' + length + ' bytes) kept undecoded.');
+        if (length < 0 || p + length > size) bad = 'reliable message record with invalid length ' + length;
+        else {
+          p += length;
+          stats.reliable++;
+          issue(start, null, 'CoD4X reliable message record (' + length + ' bytes) kept undecoded.');
+        }
       } else {
-        truncated = true;
-        issue(start, null, 'Unknown record type ' + rec + ' at byte ' + start + ' - reading stopped here.');
-        break;
+        bad = 'unknown record type ' + rec;
+      }
+      if (bad !== null) {
+        const resume = resync(start + 1);
+        if (resume < 0) {
+          // nothing valid follows: the file ends with a cut off / broken record
+          truncated = true;
+          issue(start, null, 'The demo is truncated at byte ' + start + ': ' + bad + ', no valid record follows.');
+          break;
+        }
+        damaged.push({ offset: start, bytesSkipped: resume - start });
+        stats.snapshotsDroppedAfterDamage += droppedSinceDecoded;
+        droppedSinceDecoded = 0;
+        stats.damagedParts++;
+        stats.bytesSkipped += resume - start;
+        issue(start, null, 'Damaged data at byte ' + start + ' (' + bad + '): ' + (resume - start) + ' bytes skipped, reading resumed at byte ' + resume + '.');
+        p = resume;
       }
       first = false;
       if (onProgress && p >= nextProgress) {
@@ -114,7 +141,45 @@ C4.define('demo', function (C4) {
       }
     }
     if (onProgress) onProgress(1);
-    return { protocol: st.protocol, cleanEnd, truncated, stats, errors: decoder.errorLog.slice() };
+    return { protocol: st.protocol, cleanEnd, truncated, damaged, stats, errors: decoder.errorLog.slice() };
+
+    /* First offset >= from where valid records follow again: a message record starting a chain of
+     * RESYNC_MESSAGES message records (archive / reliable records in between) with plausible
+     * lengths and rising sequence numbers, or followed by the end of the file / the end marker.
+     * -1 if there is none. The sequence number is not compared with the message before the damage:
+     * it starts again at a map change. */
+    function resync(from) {
+      for (let q = bytes.indexOf(REC_MESSAGE, from); q >= 0 && q <= size - 9; q = bytes.indexOf(REC_MESSAGE, q + 1)) {
+        if (chainOk(q)) return q;
+      }
+      return -1;
+    }
+    function chainOk(q) {
+      let messages = 0, prevSeq = null;
+      while (messages < RESYNC_MESSAGES) {
+        if (q === size) return messages > 0;
+        const rec = bytes[q];
+        if (rec === REC_MESSAGE) {
+          if (q + 9 > size) return false;
+          const seq = dv.getInt32(q + 1, true), length = dv.getInt32(q + 5, true);
+          if (seq === -1 || length === -1) return messages > 0;
+          if (seq < 0 || length < 4 || length > MAX_MSGLEN || q + 9 + length > size) return false;
+          if (prevSeq !== null && !(seq - prevSeq > 0 && seq - prevSeq <= RESYNC_MAX_SEQ_STEP)) return false;
+          prevSeq = seq;
+          messages++;
+          q += 9 + length;
+        } else if (rec === REC_ARCHIVE && messages) {
+          if (q + 53 > size) return false;
+          q += 53;
+        } else if (rec === REC_RELIABLE && messages) {
+          if (q + 5 > size) return false;
+          const length = dv.getInt32(q + 1, true);
+          if (length < 0 || q + 5 + length > size) return false;
+          q += 5 + length;
+        } else return false;
+      }
+      return true;
+    }
 
     /* ---- one server message ---- */
     function readMessage(offset, seq, start, length) {
@@ -151,10 +216,13 @@ C4.define('demo', function (C4) {
           const snap = decoder.parseSnapshot(m, seq);
           if (!snap) {
             stats.snapshotsDropped++;
+            if (damaged.length) stats.snapshotsDroppedAfterDamage++;
+            else droppedSinceDecoded++;
             issue(offset, seq, decoder.errorLog[decoder.errorLog.length - 1] || 'snapshot dropped');
             break;
           }
           stats.snapshots++;
+          droppedSinceDecoded = 0;
           st.serverTime = snap.serverTime;
           snapshot = snap;
         } else if (op === SVC_DOWNLOAD) {

@@ -38,11 +38,24 @@ EV_BULLET_HIT = 41
 EV_BULLET_HIT_CLIENT_SMALL = 42
 EV_BULLET_HIT_CLIENT_LARGE = 43
 EV_GRENADE_EXPLODE = 45
+EV_ROCKET_EXPLODE = 46
+EV_ROCKET_EXPLODE_NOMARKS = 47
 EV_FLASHBANG_EXPLODE = 48
+EV_CUSTOM_EXPLODE = 49                  # smoke grenade
+EV_CUSTOM_EXPLODE_NOMARKS = 50
 EV_SOUND_ALIAS = 3
 EV_SOUND_ALIAS_AS_MASTER = 4
 EV_PLAY_FX = 55
 SURF_FLESH = 7
+#: events that end a missile (same set as js/analysis/collect.js)
+EXPLOSION_EVENTS = frozenset((EV_GRENADE_EXPLODE, EV_ROCKET_EXPLODE, EV_ROCKET_EXPLODE_NOMARKS,
+                              EV_FLASHBANG_EXPLODE, EV_CUSTOM_EXPLODE, EV_CUSTOM_EXPLODE_NOMARKS))
+#: a detonation temp entity appears one snapshot after its missile vanished (measured: 50 ms)
+DETONATION_MAX_DELAY_MS = 250
+MOD_HEAD_SHOT = MEANS_OF_DEATH.index("MOD_HEAD_SHOT")
+MOD_SUICIDE = MEANS_OF_DEATH.index("MOD_SUICIDE")
+#: protocols the field tables were verified on (stock CoD4 = 1, CoD4X 17 / 19 / 21)
+TESTED_PROTOCOLS = (1, 17, 19, 21)
 
 #: how old a position may be to be used for kill distances / hit attribution
 POSITION_MAX_AGE_MS = 1000
@@ -111,6 +124,12 @@ def _dist(a, b) -> float | None:
     if a is None or b is None or None in a or None in b:
         return None
     return round(((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2 + (a[2] - b[2]) ** 2) ** 0.5, 1)
+
+
+def _dist2d(a, b) -> float | None:
+    if a is None or b is None or None in a[:2] or None in b[:2]:
+        return None
+    return ((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2) ** 0.5
 
 
 class _Extractor:
@@ -207,7 +226,8 @@ class _Extractor:
                        "last_time", "start_x", "start_y", "start_z", "start_vx",
                        "start_vy", "start_vz", "last_x", "last_y", "last_z", "points",
                        "explode_time", "explode_x", "explode_y", "explode_z"],
-          "One row per thrown missile (grouped by entity number + launch time)")
+          "One row per thrown missile (grouped by entity number + launch time), plus one row per "
+          "detonation whose missile was never in a snapshot (entity empty)")
         T("entities", ["entity", "entity_type", "first_time", "last_time", "snapshots",
                        "client", "weapon", "index", "model", "first_x", "first_y", "first_z",
                        "last_x", "last_y", "last_z"],
@@ -241,8 +261,13 @@ class _Extractor:
         self.ent_prev_seq: dict[int, int] = {}
         self.ent_life: dict[int, list] = {}
         self.last_pos: dict[int, tuple] = {}              # client -> (time, (x,y,z))
-        self.grenades: dict[tuple, list] = {}
+        self.grenades: dict[tuple, list] = {}            # in the order the missiles appeared
+        self.grenade_keys: list[tuple] = []
         self.missile_key: dict[int, tuple] = {}          # entity -> current grenade key
+        self.detonations: list[list] = []                # detonations without a known missile
+        #: one entry per gamestate (map load): {"t": time or None, "cs": its config strings
+        #: incl. the updates while it is loaded}
+        self.sections: list[dict] = []
         self.prev_ps = None
         self.big_cs = BigConfigStringAssembler()
         self.first_time = None
@@ -315,8 +340,11 @@ class _Extractor:
             elif isinstance(ev, P.Download):
                 self.t("issues").add(ev.offset, ev.message_seq,
                                      f"svc_download with {len(ev.data)} bytes (not decoded)")
-            elif isinstance(ev, P.DemoEnd):
-                self.end = ev
+            elif isinstance(ev, P.ProtocolInfo):
+                if ev.protocol not in TESTED_PROTOCOLS:
+                    self.t("issues").add(ev.offset, None,
+                                         f"protocol {ev.protocol} has not been tested (tested: stock "
+                                         "CoD4, CoD4X 17, 19, 21) - the field tables may differ")
         self.finish()
         return self.data
 
@@ -334,6 +362,9 @@ class _Extractor:
                 "configstrings_nonempty": sum(1 for v in gs.configstrings.values() if v),
                 "baselines": len(gs.baselines),
             }
+        # a map change loads new config strings (other weapon list, map, serverinfo): keep them per
+        # map load - the meta data comes from the map that covers most of the recording
+        self.sections.append({"t": gs.server_time, "cs": dict(gs.configstrings)})
         for idx, val in gs.configstrings.items():
             self.cs[idx] = val
             self.cs_source[idx] = "gamestate"
@@ -345,6 +376,7 @@ class _Extractor:
             bl.add(num, entity_type_name(st[1]), json.dumps(entity_dict(st), separators=(",", ":")))
         self.prev_entities = {}
         self.ent_prev_seq = {}
+        self.missile_key = {}
 
     def refresh_cs_derived(self, index: int | None = None) -> None:
         if index is None or index == CS_WEAPONFILES:
@@ -422,6 +454,8 @@ class _Extractor:
         cat, off = configstring_category(index)
         self.t("configstring_changes").add(t, seq, index, cat, old, value)
         self.cs[index] = value
+        if self.sections:
+            self.sections[-1]["cs"][index] = value
         self.cs_source[index] = "update" if self.cs_source.get(index) != "gamestate" \
             else "gamestate+update"
         self.cs_updates[index] = self.cs_updates.get(index, 0) + 1
@@ -769,6 +803,7 @@ class _Extractor:
         if g is None:
             g = [num, w, self.weapon_name(w), launch, t, t, pos, vel, pos, 1, None, None]
             self.grenades[key] = g
+            self.grenade_keys.append(key)
         else:
             g[5] = t
             if transmitted:
@@ -810,13 +845,36 @@ class _Extractor:
                             bool(state[E["un1"]]) if state is not None else None, pos)
             elif ev in (EV_BULLET_HIT_CLIENT_SMALL, EV_BULLET_HIT_CLIENT_LARGE):
                 self.on_hit(t, seq, "taken", other, client, weapon, None, pos)
-        if ev in (EV_GRENADE_EXPLODE, EV_FLASHBANG_EXPLODE) and source == "entity":
-            key = self.missile_key.get(entity)
-            if key and key in self.grenades:
-                g = self.grenades[key]
-                if g[10] is None:
-                    g[10] = t
-                    g[11] = pos
+        if ev in EXPLOSION_EVENTS and source in ("entity", "event_entity"):
+            self.on_detonation(t, entity, pos, weapon)
+
+    def on_detonation(self, t, entity, pos, weapon) -> None:
+        """Link a detonation to its missile (same rules as js/analysis/collect.js onDetonation).
+
+        The event ring of the missile entity itself names it directly. Mostly the explosion is a
+        separate temp event entity instead: it appears one snapshot after the missile vanished
+        (measured: always 50 ms, same weapon) - then the missile of the same weapon that vanished
+        last (0 .. DETONATION_MAX_DELAY_MS before) and nearest to the explosion is taken.
+        """
+        key = self.missile_key.get(entity)
+        g = self.grenades.get(key) if key is not None else None
+        if g is None or g[10] is not None:
+            g, best = None, None
+            for k in reversed(self.grenade_keys):
+                cand = self.grenades[k]
+                if t - cand[5] > 5000 and cand[4] < t - 30000:
+                    break
+                if cand[10] is not None or cand[1] != weapon or t < cand[5] \
+                        or t - cand[5] > DETONATION_MAX_DELAY_MS:
+                    continue
+                d = _dist2d(cand[8], pos)
+                if d is not None and (best is None or d < best):
+                    g, best = cand, d
+        if g is not None:
+            g[10] = t
+            g[11] = pos
+        else:
+            self.detonations.append([t, weapon, self.weapon_name(weapon), pos])
 
     def pos_of(self, c, t):
         lp = self.last_pos.get(c)
@@ -832,9 +890,11 @@ class _Extractor:
             mod = None
             weapon = parm
         world = attacker == ENTITYNUM_WORLD or attacker == ENTITYNUM_NONE
-        suicide = attacker == victim or world
+        # suicide = killed oneself (own weapon or MOD_SUICIDE); a death by the world (falling,
+        # trigger) is flagged "world", not "suicide" - same definition as the JavaScript app
+        suicide = attacker == victim or mod == MOD_SUICIDE
         vteam, ateam = self.team(victim), self.team(attacker)
-        teamkill = (not suicide and vteam is not None and vteam == ateam
+        teamkill = (not suicide and not world and vteam is not None and vteam == ateam
                     and vteam in ("axis", "allies"))
         vp, ap = self.pos_of(victim, t), (None if world else self.pos_of(attacker, t))
         self.t("kills").add(
@@ -842,7 +902,7 @@ class _Extractor:
             self.name(victim), vteam, weapon,
             "none" if weapon == 0 else self.weapon_name(weapon), mod,
             MEANS_OF_DEATH[mod] if mod is not None and mod < len(MEANS_OF_DEATH) else None,
-            mod == 8, suicide, world, teamkill,
+            mod == MOD_HEAD_SHOT, suicide, world, teamkill,
             ap[0] if ap else None, ap[1] if ap else None, ap[2] if ap else None,
             vp[0] if vp else None, vp[1] if vp else None, vp[2] if vp else None,
             _dist(ap, vp), parm)
@@ -888,32 +948,71 @@ class _Extractor:
             self.full_fh.close()
         for num in list(self.ent_life):
             self.close_entity(num)
-        g = self.t("grenades")
-        for key in sorted(self.grenades, key=lambda k: self.grenades[k][4]):
+        rows = []
+        for key in self.grenade_keys:
             num, w, wn, launch, t0, t1, p0, v0, p1, n, te, pe = self.grenades[key]
-            g.add(num, w, wn, launch, t0, t1, p0[0], p0[1], p0[2], v0[0], v0[1], v0[2],
-                  p1[0], p1[1], p1[2], n, te, pe[0] if pe else None, pe[1] if pe else None,
-                  pe[2] if pe else None)
+            rows.append([num, w, wn, launch, t0, t1, p0[0], p0[1], p0[2], v0[0], v0[1], v0[2],
+                         p1[0], p1[1], p1[2], n, te, pe[0] if pe else None,
+                         pe[1] if pe else None, pe[2] if pe else None])
+        for te, w, wn, pe in self.detonations:
+            rows.append([None, w or None, wn, None, te, te, None, None, None, None, None, None,
+                         None, None, None, 0, te, pe[0], pe[1], pe[2]])
+        g = self.t("grenades")
+        g.rows.extend(sorted(rows, key=lambda r: r[4]))
         cst = self.t("configstrings")
         for idx in sorted(self.cs):
             cat, off = configstring_category(idx)
             cst.add(idx, cat, off, self.cs[idx], self.cs_source.get(idx),
                     self.cs_updates.get(idx, 0), self.cs_last.get(idx))
+        main_cs = self.main_configstrings()
         dv = self.t("dvars")
         for i in range(128):
-            name = self.cs.get(CS_CODINFO + i)
+            name = main_cs.get(CS_CODINFO + i)
             if name:
-                dv.add(CS_CODINFO + i, name, self.cs.get(CS_CODINFO_VALUE + i, ""))
-        self.build_meta()
+                dv.add(CS_CODINFO + i, name, main_cs.get(CS_CODINFO_VALUE + i, ""))
+        self.build_meta(main_cs)
 
-    def build_meta(self) -> None:
+    def section_bounds(self) -> list[tuple[int | None, int | None]]:
+        """(start, end) server time of every map load; a section ends where the next one starts."""
+        out = []
+        for i, s in enumerate(self.sections):
+            start = s["t"] if s["t"] is not None else self.first_time
+            nxt = self.sections[i + 1]["t"] if i + 1 < len(self.sections) else None
+            end = nxt if nxt is not None else self.last_time
+            out.append((start, end))
+        return out
+
+    def main_section(self) -> int:
+        """Index of the map load that covers most of the recording (the first one on a tie) - like
+        the JavaScript app. A map change at the end of a recording loads the next map: its config
+        strings (map name, serverinfo, weapon list, minimap) must not describe the demo."""
+        best, best_len = 0, None
+        for i, (a, b) in enumerate(self.section_bounds()):
+            n = (b - a) if a is not None and b is not None else 0
+            if best_len is None or n > best_len:
+                best, best_len = i, n
+        return best
+
+    def main_configstrings(self) -> dict[int, str]:
+        return self.sections[self.main_section()]["cs"] if self.sections else self.cs
+
+    def build_meta(self, main_cs: dict[int, str]) -> None:
         p = self.parser
         d = self.data
-        d.serverinfo = parse_infostring(self.cs.get(CS_SERVERINFO, ""))
-        d.systeminfo = parse_infostring(self.cs.get(CS_SYSTEMINFO, ""))
+        d.serverinfo = parse_infostring(main_cs.get(CS_SERVERINFO, ""))
+        d.systeminfo = parse_infostring(main_cs.get(CS_SYSTEMINFO, ""))
         si = d.serverinfo
-        minimap = self.cs.get(CS_MINIMAP, "")
+        minimap = main_cs.get(CS_MINIMAP, "")
         mm = minimap.replace('"', "").split()
+        try:
+            map_center = [float(x) for x in (main_cs.get(CS_MAPCENTER) or "").split()[:3]]
+        except ValueError:
+            map_center = self.map_center
+        main = self.main_section()
+        bounds = self.section_bounds()
+        map_changes = [{"server_time": bounds[i][0],
+                        "map": parse_infostring(s["cs"].get(CS_SERVERINFO, "")).get("mapname")}
+                       for i, s in enumerate(self.sections) if i > 0]
         size = len(p.data)
         sha1 = hashlib.sha1(p.data).hexdigest()
         players = {}
@@ -928,12 +1027,16 @@ class _Extractor:
             "protocol": p.protocol,
             "protocol_kind": "stock CoD4 (no protocol record)" if p.protocol == 1 else
                              ("CoD4X, legacy origin encoding" if p.protocol <= 17 else "CoD4X"),
+            "protocol_tested": p.protocol in TESTED_PROTOCOLS,
             "clean_end": p.clean_end,
             "truncated": p.truncated,
+            "damaged": [{"offset": o, "bytes_skipped": n} for o, n in p.damaged],
             "records": dict(p.stats),
             "decode_errors": p.decoder.errors if p.decoder else 0,
             "gamestates": self.gamestates,
             "gamestate": self.gamestate_info,
+            "main_gamestate": main,
+            "map_changes": map_changes,
             "pov_client": self.pov_client,
             "pov_name": self.names.get(self.pov_client) if self.pov_client is not None else None,
             "first_server_time": self.first_time,
@@ -947,12 +1050,12 @@ class _Extractor:
             "hostname_clean": strip_colors(si.get("sv_hostname", "")),
             "fs_game": si.get("fs_game") or d.systeminfo.get("fs_game"),
             "server_version": si.get("version") or si.get("shortversion"),
-            "game_version": self.cs.get(CS_GAME_VERSION),
+            "game_version": main_cs.get(CS_GAME_VERSION),
             "map_start_time": si.get("g_mapStartTime"),
-            "map_center": self.map_center,
+            "map_center": map_center,
             "minimap": {"material": mm[0], "corners": [float(x) for x in mm[1:5]]}
                        if len(mm) >= 5 else (minimap or None),
-            "weapons": self.weapons,
+            "weapons": (main_cs.get(CS_WEAPONFILES) or "").split(),
             "players": players,
             "event_counts": dict(sorted(self.event_counts.items(), key=lambda kv: -kv[1])),
             "tables": {name: len(tbl) for name, tbl in d.tables.items()},

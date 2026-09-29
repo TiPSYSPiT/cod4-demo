@@ -27,12 +27,11 @@
         icons.weapon.heuristic ? approx('the obituary of a headshot carries no weapon; this is the weapon the killer held at that moment') : null]
         : el('span', { class: 'weapon', title: title || null }, text),
       icons.headshot ? iconNode(icons.headshot, 'HS') : null);
-    if (k.suicide) {
-      return [slot(k.mod === 'MOD_SUICIDE' ? 'Suicide' : 'Suicide (' + k.weaponLabel + ')'), victim, el('span', { class: 'dim kf-note' }, 'suicide')];
-    }
-    if (k.world) return [slot(k.falling ? 'Falling' : 'World / trigger (' + k.weaponLabel + ')', 'killed by the world (map, falling, trigger)'), victim];
-    if (k.entityAttacker) return [slot(k.car ? 'Car explosion' : 'World entity (' + k.weaponLabel + ')', 'killed by entity ' + k.attacker + ' (not a player)'), victim];
-    return [app.playerNode(k.attacker, { team: k.attackerTeam || undefined }), slot(k.weaponLabel), victim,
+    // (the texts come from C4.weapons.killText)
+    if (k.suicide) return [slot(icons.text), victim, el('span', { class: 'dim kf-note' }, 'suicide')];
+    if (k.world) return [slot(icons.text, 'killed by the world (map, falling, trigger)'), victim];
+    if (k.entityAttacker) return [slot(icons.text, 'killed by entity ' + k.attacker + ' (not a player)'), victim];
+    return [app.playerNode(k.attacker, { team: k.attackerTeam || undefined }), slot(icons.text), victim,
       k.teamkill ? el('span', { class: 'badge tk', title: 'attacker and victim were on the same side' }, 'Teamkill') : null,
       k.bomb ? el('span', { class: 'badge', title: 'killed by the bomb explosion' }, 'Bomb') : null];
   }

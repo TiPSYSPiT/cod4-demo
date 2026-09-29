@@ -79,8 +79,8 @@
       if (sbP + sbD + unresolved !== rbrP + rbrD || sbP > rbrP || sbD > rbrD) warn.push('Plants / Defuses ' + sbP + ' / ' + sbD + ' != Round by Round ' + rbrP + ' / ' + rbrD + (unresolved ? ' (' + unresolved + ' unresolved names)' : ''));
     }
     // 3. weapon list vs weapon indices: thrown missiles must be grenades, the defuse kit kills nobody
-    const odd = d.grenades.filter(g => g.segments.length && /destructible_car|briefcase_bomb/.test(g.weapon || '')).length;
-    const kit = d.kills.filter(k => k.weaponName === 'briefcase_bomb_defuse_mp').length;
+    const odd = d.grenades.filter(g => g.segments.length && W.isNonMissileWeapon(g.weapon)).length;
+    const kit = d.kills.filter(k => W.isDefuseKitWeapon(k.weaponName)).length;
     if (odd || kit) warn.push('weapon list does not match the weapon indices (' + odd + ' thrown "car/bomb" missiles, ' + kit + ' defuse-kit kills)');
     return warn;
   }

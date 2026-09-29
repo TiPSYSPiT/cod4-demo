@@ -235,7 +235,18 @@ crossfire, citystreets and cluster by overlaying real player positions.
 (`C4.weapons.killIcons(kill)`), including the visible content box of every icon,
 so all icons are scaled to the same height. Round by Round, Map → Kills & bomb
 and Events show "Killer [weapon] [headshot] Victim"; a weapon without an icon
-is shown by name.
+is shown by name (`C4.weapons.killText(kill)`). The same file holds the weapon
+rules used everywhere: `isFragGrenadeKill` (Nade K / D), `isBombKill`,
+`isCarKill`, `isDefuseKitWeapon`, `isNonMissileWeapon` - no other file compares
+weapon names.
+
+### Damaged demos
+
+A damaged part in the middle of a file (e.g. a broken download) does not stop
+the reading: the reader skips to the next valid records, says how many bytes
+were skipped and goes on. Chat, scores and round results behind it are shown;
+positions and kills behind it are missing, because each snapshot builds on the
+previous one. Details: [docs/ANALYSIS.md](docs/ANALYSIS.md).
 
 ## Licence
 

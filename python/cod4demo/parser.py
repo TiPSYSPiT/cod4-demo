@@ -14,6 +14,11 @@ found in it, in file order:
     ParseIssue      anything that could not be decoded
     DemoEnd         end of file / end marker
 
+Damaged data in the middle of a file (an invalid record) does not end the
+reading: the parser searches the next position where valid records follow
+again ("resync"), reports the skipped bytes as a ParseIssue and goes on.
+Only a record cut off at the end of the file counts as ``truncated``.
+
 Nothing is interpreted here beyond what the engine itself does while reading;
 ``extract.py`` builds the high-level tables on top of these events.
 """
@@ -74,6 +79,9 @@ class Gamestate:
     server_config_seq: int | None
     client_num: int                             # the recording client (POV)
     checksum_feed: int
+    #: time of the last snapshot before the gamestate (None for the first one): a demo can
+    #: contain several gamestates (map change), each with its own config strings
+    server_time: int | None = None
 
 
 @dataclass
@@ -166,6 +174,17 @@ class DemoEnd:
     offset: int
     clean: bool            # True if the end marker (seq == -1) was found
     truncated: bool        # True if the last record was cut off
+    damaged: list = field(default_factory=list)   # [(offset, skipped bytes)] of damaged parts
+
+
+class DemoError(ValueError):
+    """The file is not a CoD4 demo (empty, too small or an unknown first record)."""
+
+
+#: message records of a valid chain that must follow a resync position (see DemoParser._resync)
+_RESYNC_MESSAGES = 3
+#: largest message sequence step inside a valid chain (dropped packets skip a few numbers)
+_RESYNC_MAX_SEQ_STEP = 64
 
 
 # ---------------------------------------------------------------------------
@@ -193,9 +212,15 @@ class DemoParser:
         self.stats = {"records": 0, "messages": 0, "archives": 0, "reliable": 0,
                       "snapshots": 0, "snapshots_dropped": 0, "server_commands": 0,
                       "server_commands_repeated": 0, "gamestates": 0, "configclients": 0, "bytes_decompressed": 0,
-                      "issues": 0}
+                      "issues": 0, "damaged_parts": 0, "bytes_skipped": 0,
+                      "snapshots_dropped_after_damage": 0}
         self.clean_end = False
         self.truncated = False
+        #: damaged parts in the middle of the file: [(offset, skipped bytes)]
+        self.damaged: list[tuple[int, int]] = []
+        # snapshots dropped since the last decoded one: a damage often starts inside the message
+        # before the broken record - those drops are caused by the damage, too
+        self._dropped_since_decoded = 0
         self.server_config_seq: int | None = None
         #: sequence of the last executed server command (the client's serverCommandSequence)
         self.command_seq: int | None = None
@@ -207,6 +232,11 @@ class DemoParser:
     def events(self) -> Iterator:
         data = self.data
         size = len(data)
+        # like the JavaScript reader: anything that cannot start a demo is rejected
+        if size < 13:
+            raise DemoError(f"the file is too small to be a CoD4 demo ({size} bytes)")
+        if data[0] not in (REC_PROTOCOL, REC_MESSAGE):
+            raise DemoError(f"not a CoD4 demo (.dm_1): unknown first record type {data[0]}")
         p = 0
         self.decoder = DeltaDecoder(self.protocol)
         first = True
@@ -215,6 +245,7 @@ class DemoParser:
             start = p
             p += 1
             self.stats["records"] += 1
+            bad = None                  # why the record at ``start`` is invalid
             if rec == REC_PROTOCOL:
                 if p + 16 > size:
                     self.truncated = True
@@ -244,14 +275,15 @@ class DemoParser:
                 if length == -1 or seq == -1:
                     self.clean_end = True
                     break
-                if length < 4 or p + length > size:
-                    self.truncated = True
-                    yield ParseIssue(start, seq, f"message record length {length} exceeds file")
-                    break
-                body_start = p
-                p += length
-                self.stats["messages"] += 1
-                yield from self._read_message(start, seq, data, body_start, length)
+                if length < 4 or length > _MAX_MSGLEN:
+                    bad = f"message record with invalid length {length}"
+                elif p + length > size:
+                    bad = f"message record length {length} exceeds the file"
+                else:
+                    body_start = p
+                    p += length
+                    self.stats["messages"] += 1
+                    yield from self._read_message(start, seq, data, body_start, length)
             elif rec == REC_RELIABLE:
                 if p + 4 > size:
                     self.truncated = True
@@ -259,20 +291,87 @@ class DemoParser:
                 length = struct.unpack_from("<i", data, p)[0]
                 p += 4
                 if length < 0 or p + length > size:
-                    self.truncated = True
-                    break
-                body = data[p:p + length]
-                p += length
-                self.stats["reliable"] += 1
-                cmd = s32(int.from_bytes(body[:4], "little")) if len(body) >= 4 else -1
-                yield ReliableMessage(start, cmd, body)
+                    bad = f"reliable message record with invalid length {length}"
+                else:
+                    body = data[p:p + length]
+                    p += length
+                    self.stats["reliable"] += 1
+                    cmd = s32(int.from_bytes(body[:4], "little")) if len(body) >= 4 else -1
+                    yield ReliableMessage(start, cmd, body)
             else:
+                bad = f"unknown record type {rec}"
+            if bad is not None:
                 self.stats["issues"] += 1
-                yield ParseIssue(start, None, f"unknown record type {rec} - stopping")
-                self.truncated = True
-                break
+                resume = self._resync(start + 1)
+                if resume is None:
+                    # nothing valid follows: the file ends with a cut off / broken record
+                    self.truncated = True
+                    yield ParseIssue(start, None, f"{bad} at byte {start}, no valid record follows"
+                                                  " - the demo is truncated here")
+                    break
+                self.damaged.append((start, resume - start))
+                self.stats["snapshots_dropped_after_damage"] += self._dropped_since_decoded
+                self._dropped_since_decoded = 0
+                self.stats["damaged_parts"] += 1
+                self.stats["bytes_skipped"] += resume - start
+                yield ParseIssue(start, None, f"damaged data: {bad} at byte {start}; {resume - start}"
+                                              f" bytes skipped, reading resumed at byte {resume}")
+                p = resume
             first = False
-        yield DemoEnd(p, self.clean_end, self.truncated)
+        yield DemoEnd(p, self.clean_end, self.truncated, list(self.damaged))
+
+    def _resync(self, start: int) -> int | None:
+        """First offset >= ``start`` where valid records follow again: a message record starting
+        a chain of ``_RESYNC_MESSAGES`` message records (archive / reliable records in between)
+        with plausible lengths and rising sequence numbers, or followed by the end of the file /
+        the end marker. None if there is no such offset.
+
+        The sequence number is not compared with the last message before the damage: it starts
+        again at a map change (seen in the demos with a map change)."""
+        data = self.data
+        size = len(data)
+        q = data.find(b"\x00", start)
+        while 0 <= q <= size - 9:
+            if self._chain_ok(q):
+                return q
+            q = data.find(b"\x00", q + 1)
+        return None
+
+    def _chain_ok(self, q: int) -> bool:
+        data = self.data
+        size = len(data)
+        messages, prev_seq = 0, None
+        while messages < _RESYNC_MESSAGES:
+            if q == size:
+                return messages > 0
+            rec = data[q]
+            if rec == REC_MESSAGE:
+                if q + 9 > size:
+                    return False
+                seq, length = struct.unpack_from("<ii", data, q + 1)
+                if seq == -1 or length == -1:
+                    return messages > 0
+                if seq < 0 or length < 4 or length > _MAX_MSGLEN or q + 9 + length > size:
+                    return False
+                if prev_seq is not None and not 0 < seq - prev_seq <= _RESYNC_MAX_SEQ_STEP:
+                    return False
+                prev_seq = seq
+                messages += 1
+                q += 9 + length
+            elif rec == REC_ARCHIVE and messages:
+                if q + 53 > size:
+                    return False
+                q += 53
+            elif rec == REC_RELIABLE and messages:
+                if q + 5 > size:
+                    return False
+                length = struct.unpack_from("<i", data, q + 1)[0]
+                if length < 0 or q + 5 + length > size:
+                    return False
+                q += 5 + length
+            else:
+                return False
+        return True
 
     # -- messages ----------------------------------------------------------
     def _read_message(self, offset: int, seq: int, data: bytes, start: int, length: int):
@@ -305,6 +404,7 @@ class DemoParser:
                 pending_cmds.append(ServerCommand(offset, seq, 0, cseq, text))
             elif op == SVC_GAMESTATE:
                 gs = self._read_gamestate(m, offset, seq)
+                gs.server_time = self.server_time if self.stats["snapshots"] else None
                 self.stats["gamestates"] += 1
                 pending_other.append(gs)
             elif op == SVC_CONFIGCLIENT:
@@ -321,11 +421,16 @@ class DemoParser:
                 info = self.decoder.parse_snapshot(m, seq)
                 if info is None:
                     self.stats["snapshots_dropped"] += 1
+                    if self.damaged:
+                        self.stats["snapshots_dropped_after_damage"] += 1
+                    else:
+                        self._dropped_since_decoded += 1
                     self.stats["issues"] += 1
                     pending_other.append(ParseIssue(offset, seq, self.decoder.error_log[-1]
                                                     if self.decoder.error_log else "snapshot dropped"))
                     break
                 self.stats["snapshots"] += 1
+                self._dropped_since_decoded = 0
                 self.server_time = info.server_time
                 snapshot_event = Snapshot(offset, info, self.decoder)
             elif op == SVC_DOWNLOAD:

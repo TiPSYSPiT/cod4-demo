@@ -242,8 +242,8 @@ either. The viewer reports this as "snapshots skipped" and continues.
 | Falling | `MOD_FALLING`, attacker = world (1022) | reliable |
 | World / trigger | attacker = world with weapon index 0 (`MOD_TRIGGER_HURT` is not sent separately, so trigger vs. other world deaths are indistinguishable) | reliable "world", trigger **not distinguishable** |
 | Teamkill | attacker and victim on the same team (client states) | reliable |
-| Car explosion | weapon `destructible_car` (measured: 10 kills in 3 demos) | reliable |
-| Bomb explosion kill | weapon `briefcase_bomb_mp` expected; **not observed** in the samples | unverified |
+| Car explosion | weapon `destructible_car` (measured: 103 kills in the 56 samples); rule `C4.weapons.isCarKill` | reliable |
+| Bomb explosion kill | weapon `briefcase_bomb_mp` expected (rule `C4.weapons.isBombKill`); **not observed** in the 56 samples | unverified |
 | Kill position / distance | last known positions of both players (≤ 1 s old) | reliable when visible, else n/a |
 
 ### 3.5 Chat
@@ -325,7 +325,18 @@ of kills and grenades are resolved with the list valid at the time of the event.
 a map change is phase `aftermatch`, positions / grenades of the other map are dropped
 (`meta.mapWindow`, `meta.mapChanges`). Before this, the last gamestate's list was used for the
 whole demo: frag kills showed as "Martyrdom" (not counted as Nade K / D), smokes / flashes as cars /
-bombs, car kills as "defuse kit" kills, and the map name was the next map's.
+bombs, car kills as "defuse kit" kills, and the map name was the next map's. The Python extractor
+uses the same rule for its meta data (`meta.main_gamestate`, `meta.map_changes`); its tables keep
+the rows of the other map.
+
+**Damaged files.** Both readers (`parser/demo.js`, `python/cod4demo/parser.py`) do not stop at an
+invalid record in the middle of a file: they skip to the next offset where a chain of 3 valid
+message records starts (lengths inside the file, sequence numbers rising by 1..64; not compared
+with the message before the damage, because the sequence starts again at a map change - measured
+in the 5 map-change demos) and report the skipped bytes (`meta.damaged`, warning). Server commands
+behind the damage are read again (chat, scores, round results); snapshots are not, their delta
+chain starts in the skipped bytes (`stats.snapshotsDroppedAfterDamage`, own warning). "Truncated"
+means only a record cut off at the end of the file.
 
 **Weapons.** Weapon index `w` → `CS2258.split(' ')[w-1]` (of the map load at that time); readable names via a
 mapping table (`ak47_mp` → "AK-47", suffixes `_silencer`/`_reflex`/`_acog`,

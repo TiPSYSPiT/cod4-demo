@@ -63,5 +63,14 @@ C4.define('text', function (C4) {
     }
   }
 
-  C4.text = { stripColors, stripControl, parseInfostring, tokenize };
+  /** ms -> "mm:ss" ("h:mm:ss" from one hour) - the one time format of the app (UI and warnings) */
+  function fmtTime(ms) {
+    if (ms == null || !Number.isFinite(ms)) return 'n/a';
+    const s = Math.max(0, Math.floor(ms / 1000));
+    const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), sec = s % 60;
+    const mm = String(m).padStart(2, '0'), ss = String(sec).padStart(2, '0');
+    return h ? h + ':' + mm + ':' + ss : mm + ':' + ss;
+  }
+
+  C4.text = { stripColors, stripControl, parseInfostring, tokenize, fmtTime };
 });

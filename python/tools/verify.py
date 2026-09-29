@@ -82,7 +82,8 @@ def main() -> int:
     args = ap.parse_args()
     files = []
     for p in args.paths:
-        files.extend(sorted(p.glob("*.dm_*")) if p.is_dir() else [p])
+        # folders with their subfolders
+        files.extend(sorted(f for f in p.rglob("*.dm_*") if f.is_file()) if p.is_dir() else [p])
     rows = []
     print(" | ".join(COLUMNS))
     for f in files:

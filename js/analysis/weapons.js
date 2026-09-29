@@ -58,11 +58,29 @@ C4.define('weapons', function (C4) {
     return null;
   }
 
+  /** internal weapon name without case and "_mp" ('Briefcase_Bomb_MP' -> 'briefcase_bomb') */
+  const plainName = name => String(name || '').toLowerCase().replace(/_mp$/, '');
+
   /** frag grenade kill weapon ("nade"): frag_grenade_mp only - cooked or not, the obituary names the
    * same weapon. Martyrdom (frag_grenade_short_mp) and the grenade launcher (gl_*, *_gl_*) are not nades. */
   function isFragNade(name) {
-    return String(name || '').toLowerCase().replace(/_mp$/, '') === 'frag_grenade';
+    return plainName(name) === 'frag_grenade';
   }
+  /** the S&D bomb (briefcase_bomb_mp): its explosion kills. The defuse kit is another weapon. */
+  function isBombWeapon(name) { return plainName(name) === 'briefcase_bomb'; }
+  /** the bomb defuse kit (briefcase_bomb_defuse_mp): carried while defusing, kills nobody */
+  function isDefuseKitWeapon(name) { return plainName(name) === 'briefcase_bomb_defuse'; }
+  /** an exploding car (destructible_car): a map entity, not a player weapon */
+  function isCarWeapon(name) { return plainName(name) === 'destructible_car'; }
+  /** weapons that are never thrown as a missile (a missile with such a weapon means the weapon list
+   * does not match the weapon indices - tools/selftest) */
+  function isNonMissileWeapon(name) { return isBombWeapon(name) || isDefuseKitWeapon(name) || isCarWeapon(name); }
+  // the weapon named by the obituary (never the held weapon guessed for a headshot)
+  const obituaryWeapon = kill => (kill && kill.weapon != null && !kill.weaponHeuristic ? kill.weaponName : null);
+  /** killed by the bomb explosion */
+  function isBombKill(kill) { return isBombWeapon(obituaryWeapon(kill)); }
+  /** killed by an exploding car */
+  function isCarKill(kill) { return isCarWeapon(obituaryWeapon(kill)); }
 
   /**
    * THE rule for a frag grenade kill ("nade"), used by the scoreboard (Nade K / Nade D), Round by
@@ -72,7 +90,7 @@ C4.define('weapons', function (C4) {
    * caller: killer -> Nade K unless team kill / suicide, victim -> Nade D always.
    */
   function isFragGrenadeKill(kill) {
-    return !!kill && kill.weapon != null && !kill.weaponHeuristic && isFragNade(kill.weaponName);
+    return isFragNade(obituaryWeapon(kill));
   }
 
   /* ---- killfeed icons (assets/killfeed) ----
@@ -141,7 +159,7 @@ C4.define('weapons', function (C4) {
    * marked heuristic) + headshot icon.
    */
   function killIcons(k) {
-    const out = { weapon: null, headshot: null, text: k.weaponLabel || '' };
+    const out = { weapon: null, headshot: null, text: killText(k) };
     if (k.headshot) out.headshot = iconOf(MOD_ICON.MOD_HEAD_SHOT, 'Headshot');
     if (k.falling) out.weapon = iconOf(MOD_ICON.MOD_FALLING, 'Falling');
     else if (k.car) out.weapon = iconOf('car.png', 'Car explosion');
@@ -152,7 +170,16 @@ C4.define('weapons', function (C4) {
     if (!out.weapon && k.suicide) out.weapon = iconOf(MOD_ICON.MOD_SUICIDE, 'Suicide');
     return out;
   }
+  /** killfeed text of a kill (shown when there is no weapon icon) */
+  function killText(k) {
+    const lab = k.weaponLabel || '';
+    if (k.suicide) return k.mod === 'MOD_SUICIDE' ? MOD.MOD_SUICIDE : 'Suicide (' + lab + ')';
+    if (k.world) return k.falling ? MOD.MOD_FALLING : 'World / trigger (' + lab + ')';
+    if (k.entityAttacker) return k.car ? 'Car explosion' : 'World entity (' + lab + ')';
+    return lab;
+  }
 
-  C4.weapons = { label, grenadeKind, isFragNade, isFragGrenadeKill, MOD_LABELS: MOD,
-    ICONS, ICON_DIR, WEAPON_ICON, MOD_ICON, baseWeapon, weaponIcon, killIcons };
+  C4.weapons = { label, grenadeKind, isFragNade, isFragGrenadeKill, isBombWeapon, isDefuseKitWeapon, isCarWeapon,
+    isNonMissileWeapon, isBombKill, isCarKill, MOD_LABELS: MOD,
+    ICONS, ICON_DIR, WEAPON_ICON, MOD_ICON, baseWeapon, weaponIcon, killIcons, killText };
 });

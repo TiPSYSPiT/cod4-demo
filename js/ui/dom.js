@@ -56,14 +56,8 @@
     return span;
   }
 
-  /** mm:ss (h:mm:ss from one hour) */
-  function fmtTime(ms) {
-    if (ms == null || !Number.isFinite(ms)) return 'n/a';
-    const s = Math.max(0, Math.floor(ms / 1000));
-    const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), sec = s % 60;
-    const mm = String(m).padStart(2, '0'), ss = String(sec).padStart(2, '0');
-    return h ? h + ':' + mm + ':' + ss : mm + ':' + ss;
-  }
+  /** mm:ss (h:mm:ss from one hour) - common/text.js */
+  const fmtTime = C4.text.fmtTime;
 
   /** "R7 · 01:23" (time since the live start of the round) */
   function fmtRoundTime(data, roundIndex, t) {

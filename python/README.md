@@ -55,7 +55,7 @@ server      ARMY League Server > Mars  (CoD4 X - linux-i386-custom build 1229 Se
 map / mode  mp_cluster / sd   fs_game mods/promod_x
 recorder    client 0 = ALPHA z1nkARY'
 length      987.7 s of server time, 19,732 snapshots, 123,723 archive frames
-integrity   clean end True, truncated False, snapshots dropped 0, issues 0
+integrity   clean end True, truncated False, damaged parts 0 (0 bytes skipped), snapshots dropped 0, issues 0
 tables:
   kills                        119
   hits                         236
@@ -84,7 +84,10 @@ py -m cod4demo DEMO [DEMO|FOLDER ...] [options]
 | `--selftest` | Rebuild the Huffman tree from the engine's frequency table and compare it with the shipped table. |
 | `-q`, `--quiet` | No progress output. |
 
-A folder argument processes every `*.dm_*` file in it.
+A folder argument processes every `*.dm_*` file in it **and in its sub-folders**;
+the output keeps the sub-folder structure (`out\infes\<demo name>\`). A file that
+is no CoD4 demo (empty, too small, unknown first record) is reported as
+`ERROR DemoError(...)` and skipped. `tools\verify.py` searches folders the same way.
 
 `summary.json` always contains the metadata (see [4.1](#41-summaryjson)) and a
 list of all tables with their row counts, columns and a one-line description.
@@ -156,17 +159,34 @@ for ev in DemoParser("demo.dm_1"):
 |---|---|
 | `ProtocolInfo` | CoD4X protocol record: `protocol`, `legacy_end`, `reserved` |
 | `ArchiveFrame` | client archive record: `index`, `origin`, `velocity`, `movement_dir`, `bob_cycle`, `server_time`, `angles` |
-| `Gamestate` | `configstrings` {index: text}, `baselines` {entity: raw state}, `clients` {client: (name, clan tag)}, `server_command_seq`, `server_config_seq`, `client_num` (recorder), `checksum_feed` |
+| `Gamestate` | `configstrings` {index: text}, `baselines` {entity: raw state}, `clients` {client: (name, clan tag)}, `server_command_seq`, `server_config_seq`, `client_num` (recorder), `checksum_feed`, `server_time` (last snapshot before it; `None` for the first gamestate) |
 | `ConfigClient` | name / clan tag update outside the gamestate |
 | `ServerCommand` | `seq`, `text`, `server_time`, `message_seq`; each command once (repeats with an already executed sequence are skipped, see [Repeated server commands](#repeated-server-commands)) |
 | `Snapshot` | `server_time`, `message_seq`, `delta_num`, `snap_flags`, `ps` (`PlayerState`), `entities`, `clients`, `info.changed_entities`, `info.removed_entities`, `info.changed_clients` |
 | `ReliableMessage` | raw CoD4X reliable record (`command`, `data`) |
 | `Download` | raw `svc_download` payload |
 | `ParseIssue` | anything that could not be decoded, with offset and reason |
-| `DemoEnd` | `clean` (end marker found), `truncated` |
+| `DemoEnd` | `clean` (end marker found), `truncated` (last record cut off), `damaged` [(offset, skipped bytes)] |
 
 `DemoParser(path, decode_snapshots=False)` skips snapshot decoding and only
 reads gamestate, config strings and server commands (much faster).
+
+A file that cannot be a demo (smaller than 13 bytes, first record neither
+protocol nor message) raises `cod4demo.parser.DemoError` when iterating.
+
+**Damaged files.** An invalid record in the middle of a file (unknown record
+type, impossible length) does not stop the reading: the parser searches the
+next offset where a chain of 3 valid message records starts (archive /
+reliable records in between, lengths inside the file, sequence numbers rising
+by 1..64), reports the skipped bytes as a `ParseIssue` ("damaged data ... bytes
+skipped, reading resumed at byte ...") and goes on. The sequence number is not
+compared with the message before the damage: it starts again at a map change.
+If no valid chain follows, the file ends there and counts as `truncated`.
+Server commands behind a damaged part (chat, scores, round results, config
+strings) are read again. Snapshots are not: each builds on an earlier one
+(delta), and the chain starts in the skipped bytes - they are dropped and
+counted in `records.snapshots_dropped_after_damage`. The JavaScript reader
+uses the same rules.
 
 Raw state values are 32-bit patterns exactly as the engine keeps them;
 `cod4demo.states` converts them (`entity_dict`, `entity_delta_dict`, `ps_dict`,
@@ -201,22 +221,35 @@ Conventions for all tables:
 |---|---|
 | `meta.file`, `size_bytes`, `sha1` | the file |
 | `meta.protocol`, `protocol_kind` | 1 = stock CoD4 (no protocol record), 17 = CoD4X with legacy origin encoding, 18+ = CoD4X |
+| `meta.protocol_tested` | false for a protocol the field tables were not verified on (tested: 1, 17, 19, 21; `issues` then has a row) |
 | `meta.clean_end`, `truncated` | end marker found / last record cut off |
-| `meta.records` | counts: records, messages, archive frames, snapshots, dropped snapshots, server commands (executed), server commands repeated (skipped re-sends), gamestates, decompressed bytes, issues |
+| `meta.damaged` | damaged parts in the middle of the file: `offset`, `bytes_skipped` (see "Damaged files" in [3](#3-using-it-as-a-library)) |
+| `meta.records` | counts: records, messages, archive frames, snapshots, dropped snapshots (of them after a damaged part), server commands (executed), server commands repeated (skipped re-sends), gamestates, decompressed bytes, issues, damaged parts, skipped bytes |
 | `meta.decode_errors` | snapshots the delta decoder had to drop |
-| `meta.gamestate` | server command sequence, config data sequence, recorder client number, checksum feed, number of config strings and baselines |
+| `meta.gamestate` | first gamestate: server command sequence, config data sequence, recorder client number, checksum feed, number of config strings and baselines |
+| `meta.main_gamestate`, `map_changes` | index of the map load the meta data comes from, and every later map load (`server_time`, `map`) - see below |
 | `meta.pov_client`, `pov_name` | the recording player |
 | `meta.first_server_time`, `last_server_time`, `duration_s` | snapshot time span |
 | `meta.first_archive_time`, `last_archive_time` | archive frame time span |
 | `meta.map`, `gametype`, `hostname`, `hostname_clean`, `fs_game`, `server_version`, `game_version`, `map_start_time` | from config strings 0 and 2 |
 | `meta.map_center` | config string 12 |
 | `meta.minimap` | config string 823: compass material and the world coordinates of its corners (to place positions on a minimap image) |
-| `meta.weapons` | the server's weapon list (index 1 = first entry) |
+| `meta.weapons` | the server's weapon list of the main map (index 1 = first entry) |
 | `meta.players` | client → name, clan tag, last team |
 | `meta.event_counts` | how often each event type occurred |
 | `meta.tables` | rows per table |
 | `serverinfo`, `systeminfo` | config strings 0 and 1 parsed into key/value pairs (all server and system cvars sent to clients: `sv_hostname`, `g_gametype`, `mapname`, `sv_maxclients`, `version`, `sv_pure`, `sv_iwds`, `sv_referencedFFNames`, …) |
 | `tables` | every table with rows, columns, description |
+
+**Map changes.** A demo can contain several gamestates: a map change at the end
+of a recording loads the next map with its own config strings (map name,
+serverinfo, `g_mapStartTime`, minimap, weapon list). Map, date, serverinfo,
+systeminfo, minimap, map centre, weapon list and the `dvars` table therefore
+come from the map load that covers most of the recording (`main_gamestate`,
+the first one on a tie) - the same rule as the JavaScript app. The rows of all
+tables still cover the whole recording, and every `weapon_name` is resolved
+with the weapon list loaded at that time (weapon indices are assigned per map
+load). The `configstrings` table is the final state at the end of the demo.
 
 ### 4.2 Server data
 
@@ -385,7 +418,7 @@ failed), `x y z`, `icon` / `icon_name` (e.g. `compass_waypoint_defend_a`),
 | `victim`, `victim_name`, `victim_team` | |
 | `weapon`, `weapon_name` | weapon index; empty when a means of death is sent instead; `0`/`none` when the server sent no weapon |
 | `mod`, `mod_name` | means of death, only sent for knife (`MOD_MELEE`), headshot (`MOD_HEAD_SHOT`), crush, falling, suicide and impact |
-| `headshot`, `suicide`, `world`, `teamkill` | flags |
+| `headshot`, `suicide`, `world`, `teamkill` | flags. `suicide` = killed oneself (attacker = victim, e.g. an own grenade, or `MOD_SUICIDE`); a death by the world (falling, trigger: attacker 1022) is `world`, not `suicide`; `teamkill` excludes both - the same definitions as the JavaScript app |
 | `attacker_x/y/z`, `victim_x/y/z`, `distance` | last known positions (at most 1 s old); empty when unknown |
 | `event_parm` | raw value |
 
@@ -429,9 +462,15 @@ with `dt = (t − tr_time) / 1000` seconds.
 **`grenades`** — one row per thrown missile (entity number + launch time):
 `weapon`, `launch_time`, `first_time`, `last_time`, start position and
 velocity, last position, number of transmitted `points`, and
-`explode_time` / `explode_x/y/z` when a `grenade_explode` / `flashbang_explode`
-event was seen for it. Smoke grenades usually stop being transmitted right
-after the throw.
+`explode_time` / `explode_x/y/z` of its detonation (`grenade_explode`,
+`flashbang_explode`, `custom_explode` = smoke, `rocket_explode`, the `_nomarks`
+variants). The detonation is mostly a separate temporary event entity that
+appears one snapshot after the missile vanished (measured: 50 ms, same
+weapon); it is linked to the missile of the same weapon that vanished last,
+at most 250 ms before, nearest to the explosion. An explosion in the missile's
+own event ring names it directly. A detonation whose missile was never in a
+snapshot (thrown out of view) gets a row of its own with empty `entity`,
+`launch_time` and start values. Same rules as the JavaScript app.
 
 ### 4.6 Other entities
 
@@ -664,6 +703,13 @@ the server never sent cannot be recovered:
 
 Result on the 53 sample demos plus the 3 CoD4-DM1 fixtures: see
 [8.1](#81-results).
+
+Broken files were checked with prepared copies of a demo: an empty file
+(`DemoError`), a file cut off at 60 % (`truncated`, everything before is read),
+400 garbage bytes in the middle (1 damaged part, 811 bytes skipped, all 7,580
+server commands read as in the intact file, the snapshots behind the damage
+dropped) and a protocol record changed to 99 (read, with an `issues` row). The
+JavaScript reader gives the same figures.
 
 Independent cross-check against the existing JavaScript/Python project in
 `C:\Claude\cod4-demo\info\cod-demo` (different code, same demo `demo0025`):

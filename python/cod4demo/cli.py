@@ -42,6 +42,7 @@ def _info(data) -> str:
         f"length      {m['duration_s']:.1f} s of server time, "
         f"{m['records']['snapshots']:,} snapshots, {m['records']['archives']:,} archive frames",
         f"integrity   clean end {m['clean_end']}, truncated {m['truncated']}, "
+        f"damaged parts {len(m['damaged'])} ({m['records']['bytes_skipped']:,} bytes skipped), "
         f"snapshots dropped {m['records']['snapshots_dropped']}, issues {m['records']['issues']}",
         "tables:",
     ]
@@ -74,18 +75,19 @@ def main(argv=None) -> int:
         ap.print_help()
         return 2
 
-    files: list[Path] = []
+    # folders are searched with their subfolders; the output keeps the subfolder structure
+    files: list[tuple[Path, Path]] = []            # (demo, subfolder relative to the argument)
     for p in args.demos:
         if p.is_dir():
-            files.extend(sorted(p.glob("*.dm_*")))
+            files.extend((f, f.parent.relative_to(p)) for f in sorted(p.rglob("*.dm_*")) if f.is_file())
         else:
-            files.append(p)
+            files.append((p, Path()))
     tables = args.tables.split(",") if args.tables else None
     rc = 0
-    for f in files:
+    for f, sub in files:
         name = f.name.rsplit(".", 1)[0]
-        out_dir = (args.out / name) if (args.out and len(files) > 1) else \
-                  (args.out or Path("out") / name)
+        out_dir = (args.out / sub / name) if (args.out and len(files) > 1) else \
+                  (args.out or Path("out") / sub / name)
         t0 = time.time()
         try:
             data = extract(f, full_output=(out_dir / "snapshots_full.jsonl") if args.full and not args.info else None,

@@ -5,7 +5,7 @@
  * All times in DemoData are milliseconds since the first snapshot. */
 C4.define('build', function (C4) {
   'use strict';
-  const { stripColors, parseInfostring } = C4.text;
+  const { stripColors, parseInfostring, fmtTime } = C4.text;
   const K = C4.constants;
   const W = C4.weapons;
   const N = C4.names;
@@ -25,8 +25,6 @@ C4.define('build', function (C4) {
   }
 
   const pad2 = n => String(n).padStart(2, '0');
-  /** ms -> "mm:ss" (for warnings) */
-  const fmtMs = ms => pad2(Math.floor(ms / 60000)) + ':' + pad2(Math.floor(ms / 1000) % 60);
   /** "Sun Aug 30 18:22:12 2026" (ctime, server local time) -> "20260830182212"; null if not in that form.
    * Parsed by hand: Date() would apply the browser's time zone. */
   function ctimeStamp(text) {
@@ -68,11 +66,24 @@ C4.define('build', function (C4) {
     const rel = t => (t == null ? null : Math.max(0, Math.min(t - t0, endTime)));
     const warnings = [];
     if (fatal) warnings.push('Reading stopped because of an internal error: ' + (fatal.message || fatal) + '. Results are partial.');
+    const damaged = summary && summary.damaged ? summary.damaged : [];
+    if (damaged.length) {
+      const bytes = damaged.reduce((a, d) => a + d.bytesSkipped, 0);
+      warnings.push('The demo is damaged: ' + damaged.length + ' damaged part(s) (' + bytes.toLocaleString('en') + ' bytes, first at byte ' +
+        damaged[0].offset.toLocaleString('en') + ') were skipped and reading went on behind them. What was in these bytes is missing.');
+    }
     if (summary && summary.truncated) warnings.push('The demo is truncated (the last record is cut off). Everything up to that point is shown.');
     if (summary && !summary.cleanEnd && !summary.truncated) warnings.push('The demo has no end marker.');
     const proto = summary ? summary.protocol : col.protocol;
     if (![1, 17, 19, 21].includes(proto)) warnings.push('Protocol ' + proto + ' has not been tested (tested: stock CoD4, CoD4X 17, 19, 21). The field tables may differ - check the results.');
-    if (summary && summary.stats.snapshotsDropped) warnings.push(summary.stats.snapshotsDropped + ' snapshot(s) could not be decoded (delta reference missing in the file) and were skipped.');
+    if (summary && summary.stats.snapshotsDropped) {
+      const st = summary.stats, afterDamage = st.snapshotsDroppedAfterDamage || 0, other = st.snapshotsDropped - afterDamage;
+      // after a damaged part the snapshots refer (delta) to snapshots in the skipped bytes: they cannot be
+      // decoded any more (positions, kills, grenades); server commands (chat, scores, round results) still are
+      if (afterDamage) warnings.push(afterDamage + ' snapshot(s) after the damaged part could not be decoded: they build on snapshots in the skipped bytes. ' +
+        'Positions, kills and grenades from there on are missing; chat, scores and round results are read again.');
+      if (other) warnings.push(other + ' snapshot(s) could not be decoded (delta reference missing in the file) and were skipped.');
+    }
 
     // Map loads: every gamestate starts a section with its own configstrings. A demo can contain a
     // map change (the next map is loaded at the end of the recording) - its configstrings, e.g. the
@@ -210,12 +221,13 @@ C4.define('build', function (C4) {
         index, t, attacker: k.attacker, victim: k.victim, weapon, weaponName: wName, weaponLabel: label,
         weaponHeuristic, mod, headshot: mod === 'MOD_HEAD_SHOT', knife: mod === 'MOD_MELEE',
         falling: mod === 'MOD_FALLING', suicide, world, entityAttacker, teamkill,
-        bomb: wName === 'briefcase_bomb_mp', car: wName === 'destructible_car',
         attackerTeam: aTeam || null, victimTeam: vTeam || null,
         attackerPos: k.attackerPos, victimPos: k.victimPos, distance: dist, round: -1
       };
-      // frag grenade kill - the one central rule (weapons.js), used by every tab and the export
+      // frag grenade / bomb / car kill - the central rules (weapons.js), used by every tab and the export
       kill.nade = W.isFragGrenadeKill(kill);
+      kill.bomb = W.isBombKill(kill);
+      kill.car = W.isCarKill(kill);
       return kill;
     });
 
@@ -225,7 +237,7 @@ C4.define('build', function (C4) {
       clients: Array.from(teams.byClient.keys()), ruleset: rulesetHud, mapWindow, mapChanges,
       bombEvents: C4.events.bombEvents(commands), isSD: (serverinfo.g_gametype || '').toLowerCase() === 'sd' });
     for (const mc of mapChanges) {
-      warnings.push('Map change at ' + fmtMs(mc.t) + ': the recording continues on ' + (mc.map || 'another map') +
+      warnings.push('Map change at ' + fmtTime(mc.t) + ': the recording continues on ' + (mc.map || 'another map') +
         '. Everything from then on belongs to that map and is not counted (phase aftermatch).');
     }
     const rounds = R.rounds;
@@ -251,8 +263,9 @@ C4.define('build', function (C4) {
     const playedBefore = R.initialScore.A + R.initialScore.B;
     const firstMatchRound = rounds.find(r => r.kind === 'round');
     if (playedBefore > 0 && firstMatchRound) {
-      const mr = Number((/\bMR(\d+)/i.exec(rulesetHud || '') || [])[1]) || 0;
-      const ot = Number((/\bOT(\d+)/i.exec(rulesetHud || '') || [])[1]) || 0;
+      // MR / OT from the one ruleset parser (rounds.js); the overtime length only if the ruleset names it
+      const rule = C4.rounds.winRule(rulesetHud);
+      const mr = rule ? rule.mr : 0, ot = rule && rule.otFromRuleset ? rule.ot : 0;
       let off = null, boundary = false;
       if (mr && playedBefore < 2 * mr) { off = Math.floor(playedBefore / mr); boundary = playedBefore % mr === 0; }
       else if (mr && ot) { off = 2 + Math.floor((playedBefore - 2 * mr) / ot); boundary = (playedBefore - 2 * mr) % ot === 0; }
@@ -552,7 +565,7 @@ C4.define('build', function (C4) {
       fileName: fileInfo.name || null, fileSize: fileInfo.size || null,
       protocol: summary ? summary.protocol : col.protocol,
       protocolLabel: protocolLabel(summary ? summary.protocol : col.protocol),
-      cleanEnd: summary ? summary.cleanEnd : false, truncated: summary ? summary.truncated : true,
+      cleanEnd: summary ? summary.cleanEnd : false, truncated: summary ? summary.truncated : true, damaged,
       stats: summary ? summary.stats : null,
       map: mapRaw, mapKey: N.mapKey(mapRaw), mapDisplay: N.mapDisplay(mapRaw),
       gametype: serverinfo.g_gametype || '', gametypeDisplay: N.gametypeDisplay(serverinfo.g_gametype),
