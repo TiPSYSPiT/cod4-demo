@@ -82,6 +82,34 @@
     const odd = d.grenades.filter(g => g.segments.length && W.isNonMissileWeapon(g.weapon)).length;
     const kit = d.kills.filter(k => W.isDefuseKitWeapon(k.weaponName)).length;
     if (odd || kit) warn.push('weapon list does not match the weapon indices (' + odd + ' thrown "car/bomb" missiles, ' + kit + ' defuse-kit kills)');
+    // 4. POV damage (DemoData.povDamage): rounds / opponents / weapons add up to the totals, the POV's
+    //    kills == his own kill-feed count of the scoreboard, and every death costs 100 HP since the
+    //    last full health, minus what he healed in between (the lethal hit counts with the health left)
+    const P = d.povDamage;
+    if (P && P.available) {
+      const O = P.overview, sum = (arr, f) => arr.reduce((a, x) => a + (f(x) || 0), 0);
+      const parts = P.rounds.concat(P.otherLive ? [P.otherLive] : []);
+      for (const k of ['damageTaken', 'hitsTaken', 'kills', 'deaths']) if (sum(parts, r => r[k]) !== O[k]) warn.push('POV damage: rounds ' + k + ' ' + sum(parts, r => r[k]) + ' != total ' + O[k]);
+      if (O.hitsDealt != null && sum(parts, r => r.hitsDealt) !== O.hitsDealt) warn.push('POV damage: rounds hitsDealt != total');
+      for (const rel of ['enemy', 'team']) {
+        const s = sum(P.opponents.filter(o => o.relation === rel), o => o.damageTaken);
+        if (s !== O.damageTakenBy[rel]) warn.push('POV damage: opponents (' + rel + ') ' + s + ' != ' + O.damageTakenBy[rel]);
+      }
+      if (sum(P.weapons.taken, w => w.damage) !== O.damageTaken) warn.push('POV damage: weapons taken != total');
+      const pov = d.players.find(p => p.client === P.povClient);
+      if (pov && pov.ownKills !== O.kills) warn.push('POV damage: kills ' + O.kills + ' != kill-feed K ' + pov.ownKills);
+      const H = P.timeline.health, taken = P.timeline.events.filter(e => e.type === 'taken');
+      for (const e of P.timeline.events) {
+        if (e.type !== 'death' || !e.counted) continue;
+        let full = -1;
+        for (let i = 0; i < H.t.length && H.t[i] <= e.t; i++) if (H.hp[i] === 100) full = i;
+        if (full < 0) continue;
+        let healed = 0;
+        for (let i = full + 1; i < H.t.length && H.t[i] <= e.t + 200; i++) if (H.hp[i] != null && H.hp[i - 1] != null && H.hp[i] > H.hp[i - 1]) healed += H.hp[i] - H.hp[i - 1];
+        const lost = taken.filter(x => x.t > H.t[full] && x.t <= e.t + 200).reduce((a, x) => a + x.amount, 0);
+        if (lost - healed !== 100) warn.push('POV damage: death at ' + C4.text.fmtTime(e.t) + ' after ' + lost + ' HP lost, ' + healed + ' healed (expected 100 net)');
+      }
+    }
     return warn;
   }
 

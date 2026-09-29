@@ -148,8 +148,11 @@ C4.define('weapons', function (C4) {
     return n;
   }
   const iconOf = (file, title, heuristic) => file && ICONS[file] ? Object.assign({ file, src: ICON_DIR + file, title, heuristic: !!heuristic }, ICONS[file]) : null;
-  /** icon of an internal weapon name (null if none) */
-  function weaponIcon(name) { return iconOf(WEAPON_ICON[baseWeapon(name)], label(name)); }
+  /** icon of an internal weapon name or a means of death (MOD_FALLING, MOD_MELEE ...; null if none) */
+  function weaponIcon(name) {
+    if (MOD_ICON[name]) return iconOf(MOD_ICON[name], MOD[name] || name);
+    return iconOf(WEAPON_ICON[baseWeapon(name)], label(name));
+  }
 
   /**
    * Killfeed icons of a kill - THE mapping for all tabs:

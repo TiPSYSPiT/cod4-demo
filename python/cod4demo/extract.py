@@ -216,7 +216,7 @@ class _Extractor:
           "Kill feed (EV_OBITUARY event entities)")
         T("hits", ["server_time", "message_seq", "kind", "attacker", "attacker_name",
                    "victim", "victim_name", "victim_inferred", "victim_distance", "weapon",
-                   "weapon_name", "headshot", "x", "y", "z"],
+                   "weapon_name", "headshot", "x", "y", "z", "lethal"],
           "Bullet hits on players (EV_BULLET_HIT seen by the recorder / EV_BULLET_HIT_CLIENT_* taken by the recorder)")
         T("missiles", ["server_time", "entity", "transmitted", "weapon", "weapon_name",
                        "launch_time", "tr_type", "tr_time", "x", "y", "z", "vx", "vy", "vz",
@@ -841,9 +841,17 @@ class _Extractor:
             if ev == EV_OBITUARY:
                 self.on_obituary(t, seq, other, attacker, parm)
             elif ev == EV_BULLET_HIT and surf == SURF_FLESH:
-                self.on_hit(t, seq, "seen", attacker, None, weapon,
-                            bool(state[E["un1"]]) if state is not None else None, pos)
+                # a bullet hit a player (G_Damage path of the MP game, KisakCOD
+                # game_mp/g_client_script_cmd_mp.cpp): sent to everyone but the victim;
+                # otherEntityNum = shooter (attackerEntityNum is not set, always 0);
+                # un1 bit 0 = hit in the head, bit 1 = the hit killed (measured: every
+                # impact with bit 1 has an obituary of that shooter within 100 ms)
+                flags = state[E["un1"]] if state is not None else None
+                self.on_hit(t, seq, "seen", other, None, weapon,
+                            bool(flags & 1) if flags is not None else None, pos,
+                            bool(flags & 2) if flags is not None else None)
             elif ev in (EV_BULLET_HIT_CLIENT_SMALL, EV_BULLET_HIT_CLIENT_LARGE):
+                # only to the victim: otherEntityNum = shooter, clientNum = victim
                 self.on_hit(t, seq, "taken", other, client, weapon, None, pos)
         if ev in EXPLOSION_EVENTS and source in ("entity", "event_entity"):
             self.on_detonation(t, entity, pos, weapon)
@@ -907,7 +915,7 @@ class _Extractor:
             vp[0] if vp else None, vp[1] if vp else None, vp[2] if vp else None,
             _dist(ap, vp), parm)
 
-    def on_hit(self, t, seq, kind, attacker, victim, weapon, headshot, pos) -> None:
+    def on_hit(self, t, seq, kind, attacker, victim, weapon, headshot, pos, lethal=None) -> None:
         inferred = False
         vdist = None
         if kind == "taken" and victim is None:
@@ -925,7 +933,7 @@ class _Extractor:
                 victim, inferred, vdist = best, True, bd
         self.t("hits").add(t, seq, kind, attacker, self.name(attacker), victim,
                            self.name(victim), inferred, vdist, weapon or None,
-                           self.weapon_name(weapon), headshot, pos[0], pos[1], pos[2])
+                           self.weapon_name(weapon), headshot, pos[0], pos[1], pos[2], lethal)
 
     # full dumps
     def full_dump(self, snap: P.Snapshot) -> dict:

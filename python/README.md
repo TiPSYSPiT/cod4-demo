@@ -430,8 +430,17 @@ from `player_positions.weapon` of the attacker).
 
 | `kind` | Source event | Who receives it | Content |
 |---|---|---|---|
-| `seen` | `EV_BULLET_HIT` on flesh | everyone except the victim, if in view | attacker, weapon, **headshot flag**, hit position; victim **inferred** (nearest player to the impact, `victim_inferred = 1`, `victim_distance`) |
-| `taken` | `EV_BULLET_HIT_CLIENT_SMALL/LARGE` | only the victim | attacker, weapon, victim (the recorder or the player it spectates), hit position |
+| `seen` | `EV_BULLET_HIT` on flesh | everyone except the victim, if in view | attacker, weapon, **headshot flag**, **`lethal` flag**, hit position; victim **inferred** (nearest player to the impact, `victim_inferred = 1`, `victim_distance`) |
+| `taken` | `EV_BULLET_HIT_CLIENT_SMALL/LARGE` | only the victim | attacker, weapon, victim (the recorder or the player it spectates), hit position; `headshot` / `lethal` empty (not sent) |
+
+Both events come from the damage code of the MP game (KisakCOD
+`game_mp/g_client_script_cmd_mp.cpp`): the shooter is in `otherEntityNum`
+(`attackerEntityNum` is not set and always 0); for `seen` `un1` bit 0 = hit in
+the head, bit 1 = the hit killed. Measured on all 56 sample demos: of 5,987
+impacts with `lethal`, 5,981 have an obituary of that shooter within 100 ms and
+5,957 of these the inferred victim as victim. (Before this was known the table
+took `attackerEntityNum` - every `seen` hit was credited to client 0 - and any
+non-zero `un1` as headshot.)
 
 **`entity_events`** — every event the game client would play, from three sources:
 
@@ -661,7 +670,8 @@ the server never sent cannot be recovered:
   complete. Use `pov_ammo` (clip decrements) for exact shot counts of the
   recorder.
 * **Hit victims seen from outside** are inferred (nearest player to the
-  impact within 80 units), marked `victim_inferred`.
+  impact within 80 units, not the shooter), marked `victim_inferred`; the
+  shooter itself is transmitted.
 * **Chat senders** are recovered by name matching; a name change in the same
   moment, or two players with the same name, can defeat it (`sender_client`
   empty).

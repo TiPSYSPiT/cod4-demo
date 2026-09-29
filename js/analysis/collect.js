@@ -17,7 +17,8 @@ C4.define('collect', function (C4) {
   const PSI = {
     client: PS_INDEX['ClientNum'], pmType: PS_INDEX['pm_type'], eFlags: PS_INDEX['eFlags'],
     weapon: PS_INDEX['weapon'], ox: PS_INDEX['origin[0]'], oy: PS_INDEX['origin[1]'],
-    oz: PS_INDEX['origin[2]'], pitch: PS_INDEX['viewangles[0]'], yaw: PS_INDEX['viewangles[1]']
+    oz: PS_INDEX['origin[2]'], pitch: PS_INDEX['viewangles[0]'], yaw: PS_INDEX['viewangles[1]'],
+    damageEvent: PS_INDEX['damageEvent'], damageYaw: PS_INDEX['damageYaw'], damageCount: PS_INDEX['damageCount']
   };
   const CSI_TEAM = CS_INDEX['team'];
   const R = v => Math.round(v * 10) / 10;
@@ -56,6 +57,10 @@ C4.define('collect', function (C4) {
       firstTime: null, lastTime: null,
       snapshots: 0,
       povTimeline: [],              // {t, client} changes of the followed client
+      // player state of the followed client whenever health / damage counter / client / pm type /
+      // weapon changes: {t, client, health (stats[0]), damageEvent, damageYaw, damageCount, pmType, weapon}
+      povStates: [],
+      hitsTaken: [],                // EV_BULLET_HIT_CLIENT_*: {t, victim, attacker, weapon}
       firstArchive: null
     };
     const bigCs = new BigConfigString();
@@ -163,6 +168,12 @@ C4.define('collect', function (C4) {
       const client = f[PSI.client];
       if (client !== lastPsClient) { c.povTimeline.push({ t, client }); lastPsClient = client; }
       const pm = f[PSI.pmType];
+      // health and damage feedback of the followed client (change points only)
+      const health = snap.ps.stats[0] << 16 >> 16, dEv = f[PSI.damageEvent], w0 = f[PSI.weapon];
+      const lp = c.povStates.length ? c.povStates[c.povStates.length - 1] : null;
+      if (!lp || lp.client !== client || lp.health !== health || lp.damageEvent !== dEv || lp.pmType !== pm || lp.weapon !== w0) {
+        c.povStates.push({ t, client, health, damageEvent: dEv, damageYaw: f[PSI.damageYaw], damageCount: f[PSI.damageCount], pmType: pm, weapon: w0 });
+      }
       if (client >= 64 || pm === 4 || pm === 5) return;       // spectator / intermission
       if (snap.ps.originFromArchive && !snap.ps.archiveFound) return;
       const x = u2f(f[PSI.ox]), y = u2f(f[PSI.oy]), z = u2f(f[PSI.oz]);
@@ -249,7 +260,12 @@ C4.define('collect', function (C4) {
         });
       } else if (EXPLOSIONS.has(ev)) {
         onDetonation(t, num, st, ev);
+      } else if (ev === K.EV.BULLET_HIT_CLIENT_SMALL || ev === K.EV.BULLET_HIT_CLIENT_LARGE) {
+        // a bullet hit the recording client (or the player it follows): attacker = otherEntityNum
+        c.hitsTaken.push({ t, victim: st[E_CLIENTNUM], attacker: st[E_OTHER], weapon: st[E_WEAPON] });
       }
+      // (EV_BULLET_HIT on flesh - shooter in otherEntityNum, un1 bit 0 = head, bit 1 = killed, victim
+      // not transmitted - is not collected yet; see docs/ANALYSIS.md 3.9)
     }
 
     function onMissile(t, num, st, transmitted) {

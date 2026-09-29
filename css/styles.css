@@ -309,3 +309,32 @@ table.kpr td.multi5 { outline-color: #ff4a4a; }
 .timeline canvas { width: 100%; height: 100%; display: block; }
 .opt { display: inline-flex; align-items: center; gap: 5px; color: var(--muted); font-size: 12.5px; cursor: pointer; }
 .opt input { accent-color: var(--accent); margin: 0; }
+
+/* ---- POV Damage tab ---- */
+.banner-info { background: rgba(62,168,255,.08); border-color: rgba(62,168,255,.35); color: #cfe6ff; font-size: 13px; }
+.pd-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; margin-bottom: 14px; }
+.pd-section { margin: 0 0 18px; }
+.pd-h { margin: 0 0 6px; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.pd-section .toolbar .pd-h { margin: 0; }
+.pd-weapons { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 14px; }
+.pd-chart { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; min-height: 240px; }
+.pd-svg { display: block; }
+.pd-svg .pd-grid { stroke: var(--line); stroke-width: 1; }
+.pd-svg .pd-axis { fill: var(--muted); font-size: 11px; font-family: var(--font); }
+.pd-svg .pd-round { stroke: var(--line-2); stroke-dasharray: 3 3; }
+.pd-svg .pd-round-label { fill: var(--dim); }
+.pd-svg .pd-notlive { fill: rgba(255,255,255,.06); }
+.pd-svg .pd-health { fill: none; stroke: var(--good); stroke-width: 1.6; }
+.pd-svg .pd-m { cursor: pointer; }
+.pd-svg .pd-m.taken { fill: var(--bad); stroke: var(--bad); stroke-width: 1; }
+.pd-svg .pd-m.taken.team { fill: var(--warn); stroke: var(--warn); }
+.pd-svg .pd-m.taken.self, .pd-svg .pd-m.taken.other { fill: var(--spec); stroke: var(--spec); }
+.pd-svg .pd-m.taken.approx { fill: transparent; stroke-width: 1.4; }
+.pd-svg .pd-m.dealt { fill: var(--team-b); }
+.pd-svg .pd-m.kill { fill: var(--accent); font-size: 13px; }
+.pd-svg .pd-m.death { fill: var(--bad); font-size: 13px; font-weight: 700; }
+.pd-svg .pd-m:hover { opacity: .75; }
+.pd-sym { display: inline-block; margin-right: 5px; font-size: 12px; }
+.pd-sym.taken { color: var(--bad); } .pd-sym.dealt { color: var(--team-b); } .pd-sym.kill { color: var(--accent); } .pd-sym.death { color: var(--bad); font-weight: 700; }
+.pd-died { color: var(--bad); font-weight: 600; }
+.pd-weapon { margin: 0; }

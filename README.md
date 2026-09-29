@@ -57,9 +57,39 @@ After) instead of the round. Details: `docs/ANALYSIS.md`, section 4.
 | **Console** | Everything the server sent: prints, game messages, chat, config string and dvar changes, scores, restarts, menu / sound commands, system info. Type chips, search. |
 | **Events** | Player ready, connected, disconnected, joined / left the server, attack / defence eliminated, bomb planted / defused, kills, halftime, timeout (+ optional: joined team, bomb picked up / dropped). Search, type chips with counts, player filter. |
 | **Map** | 2D replay, see below. |
+| **POV Damage** | Damage statistics of the recording player only (the demo contains only his view), live match time only - see below. |
 
-A click on a kill or bomb event in *Round by Round* or *Events* opens the map
-2 seconds before it.
+A click on a kill or bomb event in *Round by Round* or *Events*, or on a marker
+in the *POV Damage* health chart, opens the map 2 seconds before it.
+
+### POV Damage
+
+* **Overview:** damage taken (split: enemies / team mates / self = own grenade,
+  fall, suicide / other or unknown source), hits taken, hits dealt, headshots,
+  kills / deaths. **Damage dealt is `n/a`:** the server sends the POV no damage
+  value for his own hits, only the hit marker.
+* **Per round** (click a row: chart shows that round), **per opponent** (damage
+  and hits on the POV, kills both ways; *hits by the POV* per player is `n/a` -
+  a hit marker names no victim, and the bullet impacts give the victim only as
+  the nearest player, not evaluated yet), **per weapon** (damage taken
+  per attacker weapon / cause; hits and kills per weapon of the POV) with the
+  killfeed icons.
+* **Health chart** (SVG): health of the POV, markers for damage taken, hits
+  dealt, kills, deaths and round borders, grey = not live or the POV spectates.
+  Filter *Whole match* / one round.
+* **Exact:** health (player state), the damage counter (`damageEvent` +1 and
+  `damageCount` = health lost for every hit), attacker and weapon of bullet hits
+  on the POV (`EV_BULLET_HIT_CLIENT_*`), kills and deaths (kill feed), the number
+  of hits dealt (the hit-marker sound `mp_hit_alert` the server plays for the POV).
+  The lethal hit counts with the health left (e.g. 40 → 0), not its raw damage.
+* **≈:** damage without a hit event (own grenade or fall when the damage has no
+  attacker direction; explosion with unknown thrower otherwise), the weapon of a
+  dealt hit (the weapon the POV held; his own grenade when it just detonated),
+  headshot hits (sound `bullet_impact_headshot_2`).
+* Only phase *live* counts, as in the scoreboard; the kills follow the
+  scoreboard's rule. The data is `DemoData.povDamage` (overview, rounds,
+  opponents, weapons, timeline) - the tab, the chart and the JSON export use
+  this one object. Checked by `tools/selftest.html` (sums, K, 100 HP per death).
 
 ### Map
 
@@ -121,8 +151,11 @@ without kills). Spectators are not included.
 
 ### Export JSON
 
-Downloads `DemoData` (everything the UI shows). Tick *with positions* to
-include the per-player position arrays (~5 MB for a 16-minute match).
+Downloads `DemoData` (everything the UI shows), including the section
+`povDamage` (POV Damage tab: `overview`, `rounds`, `opponents`, `weapons`,
+`timeline` with the health curve and the damage / hit / kill / death events).
+Tick *with positions* to include the per-player position arrays (~5 MB for a
+16-minute match).
 
 ### Markers
 
@@ -196,7 +229,7 @@ source/
     core/c4.js          namespace, module registry, Blob worker factory
     parser/             tables, huffman, msg (bit reader), delta, demo (container)
     common/             text (colour codes, tokenizer), constants, servercmd, names
-    analysis/           collect (one pass), teams, rounds, events, weapons, build (DemoData), worker
+    analysis/           collect (one pass), teams, rounds, events, weapons, povDamage, build (DemoData), worker
     ui/                 dom helpers, overview and one file per tab
     ui/map/             config (radii, durations), renderer, heatmap, playback, mapTab
     main.js             file loading, worker, tabs, export

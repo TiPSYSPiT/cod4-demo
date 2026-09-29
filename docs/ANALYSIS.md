@@ -304,6 +304,30 @@ Shoutcaster`), bomb picked up / dropped.
 | **Grenade thrower** | **not in the demo.** The missile carries no owner, no event marks the throw on the thrower (only the POV's own `use_offhand`). Nearest player at launch was right in only ~60 % of the cases in the reference project's measurement | **not available** (heuristic only) |
 | Smoke duration / size | **not in the demo** (client-side effect) → constant | n/a, constant |
 
+### 3.9 POV Damage tab (`js/analysis/povDamage.js`)
+
+Only the recording player (POV): the full player state and the local sounds are
+sent to him alone. Measured on all 56 sample demos:
+
+| Value | Source | Level |
+|---|---|---|
+| Health, health lost | player state `stats[0]`, only while `ClientNum` = POV (else he spectates) | reliable |
+| Damage events | `damageEvent` +1 per hit and `damageCount` = health lost - in all 69 checked hits of 3 demos. The lethal hit shows no step: health goes to 0, the health left is the damage counted | reliable |
+| Attacker / weapon of a bullet hit on the POV | temp event `EV_BULLET_HIT_CLIENT_SMALL/LARGE`: `otherEntityNum` = attacker, `weapon` (1,932 health drops, each with such an event within 100 ms; the last shooter before a death is the killer in 565 of 592 deaths, the rest were hit by one enemy and killed by another) | reliable |
+| Lethal hit | obituary of the POV within 150 ms (156 drops) | reliable |
+| Damage without hit event | `damageYaw` 255 = no attacker direction: all 160 falls (`landing_pain`), own grenade (the one "You inflicted 26 damage to yourself" message); only 7 of 1,212 bullet hits have 255. → no direction = **self** (own grenade if a frag detonated within 200 ms, else fall); with direction + frag detonation = explosion, thrower unknown | ≈ |
+| Every death | health lost since the last full health minus health regenerated in between = **exactly 100** for all 773 deaths in live time | check in `tools/selftest` |
+| Hits dealt (count) | local sound `s <n>` → sound config string `1342 + n` = `mp_hit_alert` (the hit marker, `_damagefeedback`), in 54 of 56 demos; 771 of 887 POV kills have one within 0.6 s. The sound index must be resolved with the config strings valid at that time (a map change loads another list) | reliable count, no value, no victim |
+| Headshot hits | local sound `bullet_impact_headshot_2`: played both for a headshot by the POV (with a hit marker) and on the POV (with a health drop) | ≈ |
+| Weapon of a dealt hit | weapon the POV held; a detonation of his own frag (first seen within 120 units of him right after the launch) within 200 ms → that grenade | ≈ |
+| **Damage dealt (value)** | **not in the demo** - only 26 "You inflicted N damage to …" messages in 1-2 demos | n/a |
+| **Whom the POV hit** | a hit marker names no victim. The bullet impact event `EV_BULLET_HIT` on flesh (sent to everyone but the victim, KisakCOD `game_mp/g_client_script_cmd_mp.cpp`) carries the **shooter in `otherEntityNum`** (`attackerEntityNum` is always 0), `un1` bit 0 = head, bit 1 = the hit killed; the victim is not in it (nearest player to the impact, ≈). Verified on all 56 demos: of 5,987 killing impacts, 5,981 have an obituary of that shooter within 100 ms, 5,957 with the inferred victim. The POV's own impacts match his hit markers (e.g. `demo0025` 30 impacts / 34 hit markers). **Not used by the tab yet** (it shows n/a) - an earlier reading took `attackerEntityNum` as shooter and wrongly concluded the shooter was not in the demo | n/a in the tab, available (≈ victim) |
+
+Only phase *live* counts (like the scoreboard); kills use the scoreboard's rule
+(no team kills / suicides / world kills) and equal the POV's K in all 56 demos.
+Totals are the sums of the rounds; per opponent, damage of enemies and team mates
+adds up to the damage split; self and unknown damage are listed per weapon only.
+
 ---
 
 ## 4. Detection rules in detail
@@ -505,8 +529,14 @@ map falls back to a grid fitted to the bounding box of all positions.
 * Input/console commands of any player.
 * Team chat of the opposing team.
 * Exact recording start date (only map start time on the server).
+* Damage dealt by the POV as a value (only the number of hit markers).
+* The victim of a bullet impact seen from outside (`EV_BULLET_HIT`: shooter in
+  `otherEntityNum`, victim only as the nearest player, ≈).
 
 **Heuristic (marked `≈`)**
+
+* POV damage without a hit event (own grenade / fall / explosion), weapon and
+  headshot of a hit dealt by the POV.
 
 * Clan tag / team name from name prefixes.
 * Record date = map start time.

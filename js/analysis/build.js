@@ -545,6 +545,36 @@ C4.define('build', function (C4) {
     }
     grenades.sort((a, b) => (a.first - b.first));
 
+    // POV damage (povDamage.js): health / damage of the player state, bullet hits on the POV and
+    // the POV's local sounds ("s <n>" = sound config string 1342 + n, resolved with the
+    // config strings valid at that time - a map change loads another sound list)
+    const soundChanges = new Map();
+    for (const ch of csChanges) {
+      if (ch.index < K.CS.SOUNDALIASES || ch.index > K.CS.SOUNDALIASES + 255) continue;
+      if (!soundChanges.has(ch.index)) soundChanges.set(ch.index, []);
+      soundChanges.get(ch.index).push(ch);
+    }
+    const csValueAt = (index, t) => {
+      const s = sections[sectionAt(t)];
+      let v = s.configstrings.has(index) ? s.configstrings.get(index) : null;
+      for (const ch of soundChanges.get(index) || []) { if (ch.t > t) break; if (ch.t >= s.start) v = ch.value; }
+      return v;
+    };
+    const sounds = [];
+    for (const c of commands) {
+      if (c.d.verb !== 's') continue;
+      const n = parseInt(c.d.args && c.d.args[0], 10);
+      if (!Number.isFinite(n)) continue;
+      sounds.push({ t: c.t, name: String(csValueAt(K.CS.SOUNDALIASES + n, c.t) || '').toLowerCase() });
+    }
+    const povDamage = C4.povDamage.analyze({
+      pov: povClient, povName: povClient != null ? playerName(povClient) : null,
+      states: col.povStates.map(s => Object.assign({}, s, { t: rel(s.t) })),
+      hitsTaken: col.hitsTaken.map(h => ({ t: rel(h.t), victim: h.victim, attacker: h.attacker, weapon: weaponName(h.weapon, rel(h.t)) })),
+      sounds, kills, rounds, phaseAt, roundAt: C4.events.roundAt, sideAt: teams.rawSideAt, weaponName,
+      grenades, povTrack: povClient != null ? positions[povClient] : null, playerName
+    });
+
     // map calibration from config string 823 (compass image rectangle)
     let minimap = null;
     const mm = String(cs.get(K.CS.MINIMAP) || '').replace(/"/g, '').trim().split(/\s+/);
@@ -593,7 +623,9 @@ C4.define('build', function (C4) {
       phases: R.phases, match: { start: R.matchStart, end: R.matchEnd, endSource: R.matchEndSource, decided: R.matchDecided, winRule: R.winRule }, swaps: teams.swaps,
       kills, events, chat, console: consoleLines,
       eventTypes: C4.events.EVENT_TYPES,
-      positions, grenades
+      positions, grenades,
+      // damage statistics of the recording player (povDamage.js) - the source of the POV Damage tab
+      povDamage
     };
   }
 
