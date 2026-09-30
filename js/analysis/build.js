@@ -576,6 +576,19 @@ C4.define('build', function (C4) {
       grenades, povTrack: povClient != null ? positions[povClient] : null, playerName
     });
 
+    // own-kill metrics (ownKills.js): shots / sound events per client, relative times, sorted
+    const relTimes = map => { const out = new Map(); for (const [cl, a] of map) out.set(cl, a.map(rel).sort((x, y) => x - y)); return out; };
+    const psEye = new Map();
+    for (const [cl, e] of col.psEye) psEye.set(cl, { t: e.t.map(rel), vh: e.vh });
+    // team key while the player was in a team (A / B, normalised over the halftime swap); null otherwise
+    const strictTeamAt = (cl, t) => { for (const s of teams.membership.get(cl) || []) if (t >= s.t0 && t <= s.t1) return s.key; return null; };
+    const ownKills = C4.ownKills.analyze({ kills, positions, pov: povClient, players, rounds, sideAt: teams.rawSideAt, teamAt: strictTeamAt,
+      shots: relTimes(col.shots), impactShots: relTimes(col.impactShots), ammoShots: relTimes(col.ammoShots), sounds: relTimes(col.sounds), psEye });
+    // candidate sight lines for "unseen" - tested against the map geometry on the main thread
+    // (C4.ownKills.applySight, main.js), then removed from DemoData
+    const sightJob = ownKills.sightJob;
+    delete ownKills.sightJob;
+
     // map calibration from config string 823 (compass image rectangle)
     let minimap = null;
     const mm = String(cs.get(K.CS.MINIMAP) || '').replace(/"/g, '').trim().split(/\s+/);
@@ -625,8 +638,11 @@ C4.define('build', function (C4) {
       kills, events, chat, console: consoleLines,
       eventTypes: C4.events.EVENT_TYPES,
       positions, grenades,
-      // damage statistics of the recording player (povDamage.js) - the source of the POV Damage tab
-      povDamage
+      // damage statistics of the recording player (povDamage.js) and own-kill metrics
+      // of the POV team (ownKills.js) - the sources of the POV tab
+      povDamage, ownKills,
+      // not exported: consumed by C4.ownKills.applySight and deleted (main.js)
+      sightJob
     };
   }
 

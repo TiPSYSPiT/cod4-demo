@@ -114,6 +114,45 @@
         if (lost - healed !== 100) warn.push('POV damage: death at ' + C4.text.fmtTime(e.t) + ' after ' + lost + ' HP lost, ' + healed + ' healed (expected 100 net)');
       }
     }
+    // 5. own-kill metrics (DemoData.ownKills): only the POV's team (both teams for a POV without a
+    //    team), POV first, per player sums == ALL, kills = evaluated + excluded, own kills only from
+    //    counted kills of the live time within the limit and of the team at the kill time, shares 0..100
+    const OKM = d.ownKills;
+    if (OKM) {
+      const sum = (arr, f) => arr.reduce((a, x) => a + (f(x) || 0), 0);
+      const pov = d.players.find(p => p.isPov);
+      const expect = pov && (pov.team === 'A' || pov.team === 'B') ? [pov.team] : ['A', 'B'];
+      if (JSON.stringify(Object.keys(OKM.teams).sort()) !== JSON.stringify(expect.slice().sort())) warn.push('own kills: teams ' + Object.keys(OKM.teams) + ' != ' + expect);
+      for (const TM of Object.values(OKM.teams)) {
+        const A = TM.all;
+        for (const k of ['ownKills', 'kills', 'evaluated']) if (sum(TM.players, r => r[k]) !== A[k]) warn.push('own kills (' + TM.team + '): players ' + k + ' != ALL');
+        const exc = r => sum(Object.values(r.excluded), x => x);
+        for (const r of TM.players.concat([A])) {
+          if (r.evaluated + exc(r) !== r.kills) warn.push('own kills (' + TM.team + '): evaluated + excluded != kills for ' + (r.name || 'ALL'));
+          for (const key of ['pctEarlyOnTarget', 'pctSilent', 'pctSilentUnseen']) if (r[key] != null && (r[key] < 0 || r[key] > 100)) warn.push('own kills: ' + key + ' out of range');
+        }
+        if (pov && TM.players.some(r => r.isPov) && !TM.players[0].isPov) warn.push('own kills: the POV is not the first row');
+        for (const r of TM.kills) {
+          const k = d.kills[r.kill];
+          if (!k || k.phase !== 'live' || k.teamkill || k.suicide || k.world) { warn.push('own kills: kill ' + r.kill + ' is not a counted kill'); break; }
+          if (r.team !== TM.team) { warn.push('own kills: kill ' + r.kill + ' of another team'); break; }
+          if (r.own && !(r.evaluated && r.errShot <= OKM.rules.ownKillMaxDeg)) { warn.push('own kills: kill ' + r.kill + ' own with error ' + r.errShot); break; }
+          if (r.evaluated && (r.errShot == null || r.errEarly == null)) { warn.push('own kills: evaluated kill ' + r.kill + ' without errors'); break; }
+        }
+        // optional silent & unseen: only for own kills, true only with a silent victim
+        if (TM.kills.some(r => r.silentUnseen === true && (r.silent !== true || !r.own))) warn.push('own kills: silent & unseen without a silent victim');
+      }
+      // "unseen" with walls: the geometry may only turn "seen" into "unseen" / unknown - never the reverse
+      if (!OKM.sight || !['geometry', 'cone'].includes(OKM.sight.method)) warn.push('own kills: no valid sight method');
+      if (d.sightJob) warn.push('sightJob left in DemoData');
+      if (d.__coneUnseen) {
+        for (const TM of Object.values(OKM.teams)) for (const r of TM.kills) {
+          const before = d.__coneUnseen.get(r.kill);
+          if (before === undefined) continue;
+          if ((before === true && r.unseen !== true) || (before === null && r.unseen !== null)) { warn.push('own kills: kill ' + r.kill + ' unseen ' + before + ' -> ' + r.unseen + ' with geometry'); break; }
+        }
+      }
+    }
     return warn;
   }
 
@@ -123,6 +162,14 @@
     try {
       const fileInfo = { name, size };
       d = useWorker ? await analyzeInWorker(buffer, fileInfo) : C4.analyzeDemo(new Uint8Array(buffer), fileInfo);
+      // as main.js: "unseen" with the map geometry (../geometry/<map>/sight.js), when present
+      const job = d.sightJob;
+      delete d.sightJob;
+      const cone = new Map();
+      for (const TM of Object.values(d.ownKills.teams)) for (const r of TM.kills) cone.set(r.kill, r.unseen);
+      const bvh = await C4.sight.load(d.meta.map, '../geometry/');
+      C4.ownKills.applySight(d.ownKills, job, bvh, d.players, d.meta.map, bvh ? null : 'no map geometry');
+      Object.defineProperty(d, '__coneUnseen', { value: cone, enumerable: false });
     } catch (e) { err = e; }
     const ms = Math.round(performance.now() - t0);
     const tr = document.createElement('tr');
@@ -145,7 +192,8 @@
       kills: d.kills.length, sbMismatch: d.diagnostics.scoreboardMismatches.length,
       mismatches: d.diagnostics.scoreboardMismatches, events: d.events.length, chat: d.chat.length,
       grenades: d.grenades.length, killSig: killSignature(d.kills), problems, plausibility: plaus, warnings: d.warnings,
-      teams: d.teams.map(t => t.name), ruleset: d.meta.ruleset, map: d.meta.map
+      teams: d.teams.map(t => t.name), ruleset: d.meta.ruleset, map: d.meta.map,
+      sight: d.ownKills && d.ownKills.sight
     };
     results.push(r);
     const cells = [r.name, r.mb, r.protocol, r.ms, r.snapshots, r.dropped, r.players, r.rounds, r.score, r.server,

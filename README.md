@@ -57,12 +57,16 @@ After) instead of the round. Details: `docs/ANALYSIS.md`, section 4.
 | **Console** | Everything the server sent: prints, game messages, chat, config string and dvar changes, scores, restarts, menu / sound commands, system info. Type chips, search. |
 | **Events** | Player ready, connected, disconnected, joined / left the server, attack / defence eliminated, bomb planted / defused, kills, halftime, timeout (+ optional: joined team, bomb picked up / dropped). Search, type chips with counts, player filter. |
 | **Map** | 2D replay, see below. |
-| **POV Damage** | Damage statistics of the recording player only (the demo contains only his view), live match time only - see below. |
+| **POV** | The recording player: key figures, then three views - *Health & rounds*, *Opponents & weapons* (the POV's damage statistics) and *Own-kill metrics* (POV and team mates) - live match time only, see below. |
 
 A click on a kill or bomb event in *Round by Round* or *Events*, or on a marker
-in the *POV Damage* health chart, opens the map 2 seconds before it.
+in the *POV* health chart, opens the map 2 seconds before it.
 
-### POV Damage
+### POV
+
+Key figures on top (damage taken / dealt, hits taken / dealt, headshots,
+kills / deaths, own kills of the POV), then three views; the last one opened
+stays selected.
 
 * **Overview:** damage taken (split: enemies / team mates / self = own grenade,
   fall, suicide / other or unknown source), hits taken, hits dealt, headshots,
@@ -95,6 +99,56 @@ in the *POV Damage* health chart, opens the map 2 seconds before it.
   scoreboard's rule. The data is `DemoData.povDamage` (overview, rounds,
   opponents, weapons, timeline) - the tab, the chart and the JSON export use
   this one object. Checked by `tools/selftest.html` (sums, K, 100 HP per death).
+
+**Own-kill metrics** (view 3 - `DemoData.ownKills`, `js/analysis/ownKills.js`): only
+the POV and the POV's team mates. The team is the team key (A / B) from the team
+membership, so the halftime side swap does not change it; a player who changed
+teams counts only for the kills made while in the POV's team. The POV is always
+the top row (badge *POV*). A POV without a team (spectator / shoutcaster) gets a
+note and a selector for the team to evaluate. Counted: the kills of the live match
+time (no warm-up, timeout, halftime, aftermatch), no team kills, suicides or world
+kills.
+
+Each kill is either **excluded** (not estimated) or **evaluated**:
+
+| Excluded because | Rule |
+|---|---|
+| not an aim kill | grenade, launcher, knife, explosive, car - no crosshair to judge |
+| no shot seen | no fire event / bullet impact / clip decrement of the killer (fallback: firing flag of a sample) in the 300 ms before |
+| killer / victim not continuously in the snapshots | a data gap > 150 ms in the window 550 ms before the kill up to the kill |
+
+An evaluated kill is an **own kill** when the crosshair was within 10° of the victim
+at the shot. The metrics are computed over the own kills:
+
+| Column | Rule |
+|---|---|
+| Data coverage | evaluated kills / all kills of the player, e.g. `24/31`; the tooltip lists the excluded kills and why |
+| Own kills (n) | evaluated kills with the crosshair ≤10° at the shot (the tooltip counts the ones more than 10° off) |
+| % crosshair ≤3° at -0.5 s | share of the own kills with the crosshair within 3° of the victim 0.5 s before the kill |
+| Median crosshair error at -0.5 s | median angle view direction ↔ victim 0.5 s before the kill |
+| % target silent | share of the own kills whose victim sent no sound event in the 2 s before (footsteps, shots, jump, landing, reload, weapon switch, grenade, melee, pickup); only victims in the snapshots for the whole 2 s |
+| Median distance | kill distance in world units |
+| % target silent & unseen (**optional**) | shown with the checkbox above the table (off by default): the victim was silent and no living team mate of the killer saw it in the 2 s before - at no sample was the victim inside a team mate's view cone (±40° horizontal / ±35° vertical) **with a free sight line through the map geometry** (`geometry/<map>/sight.js`, [docs/GEOMETRY.md](docs/GEOMETRY.md); eye → the victim's feet, chest or head). ≈: static models (trees, bushes, cars, crates) and smoke are not in the geometry, glass and doors do not block, so the share is understated. Without geometry for the map the column falls back to the cone alone (marked *rough*, no walls). Only kills whose living team mates were all in the snapshots for the whole 2 s count; `ownKills.sight` in the JSON says which method was used |
+
+**Crosshair error (≈):** the real 3D angle (pitch and yaw together) between the view
+direction and the line eye → nearest point of the victim's upper body (chest to
+head). View and position of the POV (and of a followed player) come from the player
+state, those of the others from the entity (16-bit angles, 0.0055°). Values between
+two snapshots are interpolated (yaw over the shortest way), a sample exactly at the
+time is used as is (kill times lie on the 50 ms snapshot grid). Eye = feet + the
+real view height of the player state, else 60 / 40 / 11 by stance; target segment
+feet + 44…58 / 30…40 / 8…12 (stand / crouch / prone), lean ignored. Shot source per
+kill: the latest of fire event, bullet impact, clip decrement (followed player), else
+the firing flag - the note under the table counts them.
+
+*ALL (POV team)* is the same over the players shown, with the ratio player ÷ ALL
+marked from 1.3× (▲) and up to 0.7× (▼). Rows with fewer than 15 evaluated kills
+are grey - their values say little. Bar charts per metric with the ALL line, POV
+first. All thresholds are in `RULES` in `ownKills.js` (300 ms, 10°, 3°, -0.5 s, 2 s,
+150 ms, 15). The view says it: **an indication, no proof** - small samples vary a
+lot (with 20 own kills a share of 54 % lies between 35 and 70 % by chance).
+"Unseen" is a line-of-sight test against the collision geometry, not the rendered
+picture - see the limits above.
 
 ### Map
 
@@ -157,7 +211,8 @@ without kills). Spectators are not included.
 ### Export JSON
 
 Downloads `DemoData` (everything the UI shows), including the section
-`povDamage` (POV Damage tab: `overview`, `rounds`, `opponents`, `weapons`,
+`ownKills` (own-kill metrics: `rules`, `reasons`, `povTeam`, `sight` (how "unseen" was decided), `teams.<A|B>` with `all`, `players` - POV first - `shotSources` and `kills` per kill with `excluded` / `evaluated` / `own`, `shotSource`, `errShot`, `errEarly`) and
+`povDamage` (POV tab: `overview`, `rounds`, `opponents`, `weapons`,
 `timeline` with the health curve and the damage / hit / kill / death events).
 Tick *with positions* to include the per-player position arrays (~5 MB for a
 16-minute match).
@@ -234,7 +289,7 @@ source/
     core/c4.js          namespace, module registry, Blob worker factory
     parser/             tables, huffman, msg (bit reader), delta, demo (container)
     common/             text (colour codes, tokenizer), constants, servercmd, names
-    analysis/           collect (one pass), teams, rounds, events, weapons, povDamage, build (DemoData), worker
+    analysis/           collect (one pass), teams, rounds, events, weapons, povDamage, ownKills, build (DemoData), worker
     ui/                 dom helpers, overview and one file per tab
     ui/map/             config (radii, durations), renderer, heatmap, playback, mapTab
     main.js             file loading, worker, tabs, export
@@ -243,6 +298,9 @@ source/
   assets/killfeed/      killfeed icons (pointing left -> right); mapping in js/analysis/weapons.js
   tools/selftest.html   parser self test in the browser
   docs/ANALYSIS.md      demo format and where every value comes from
+  docs/GEOMETRY.md      map geometry for sight lines: sight.bvh format, build, checks
+  geometry/             map collision geometry, sight.bvh + sight.js per map (from the game files, not in
+                        the public repo; built by python/tools/build_sight_bvh.py, loaded by js/analysis/sight.js)
   maps/                 original map images (reference, unchanged)
   python/               Python extractor (step 1) - see python/README.md
 ```

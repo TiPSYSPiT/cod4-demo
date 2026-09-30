@@ -7,6 +7,7 @@ C4.define('workerMain', function (C4) {
   function transferList(data) {
     const list = [];
     for (const p of Object.values(data.positions)) for (const a of Object.values(p)) list.push(a.buffer);
+    if (data.sightJob) for (const j of data.sightJob.kills) list.push(j.segs.buffer);
     return list;
   }
 

@@ -1,0 +1,1125 @@
+{
+ "format": "C4BV",
+ "version": 1,
+ "tool": "python/tools/build_sight_bvh.py",
+ "groups": {
+  "solid": 0,
+  "terrain": 4,
+  "brushmodel": 2,
+  "glass": 1
+ },
+ "flags": {
+  "glass": 1,
+  "brushmodel": 2,
+  "terrain": 4
+ },
+ "build": {
+  "sahBins": 16,
+  "leafMax": 24,
+  "leafMin": 8,
+  "costTraverse": 4.0,
+  "minArea": 1e-06
+ },
+ "maps": {
+  "mp_backlot": {
+   "bytes": 5390720,
+   "vertices": 104161,
+   "triangles": 196703,
+   "nodes": 49487,
+   "depth": 27,
+   "sha256": "d7b7ad85ee5de548eb2594ee1588f9636bb00ba4f444792143d4f73457cfeee5",
+   "bounds": [
+    -3904.0,
+    -4864.0,
+    -512.0,
+    4736.0,
+    4864.0,
+    1109.0
+   ],
+   "script": {
+    "file": "mp_backlot/sight.js",
+    "bytes": 7187841,
+    "sha256": "4d57c7d687d44c4a51f871ea0dcd2add492b4a36f4cb4f0702636e5d421b9a5d"
+   },
+   "file": "mp_backlot/sight.bvh",
+   "sourceTriangles": 241309,
+   "droppedDegenerate": 0,
+   "droppedDuplicate": 3297,
+   "groupTriangles": {
+    "solid": 172380,
+    "glass": 452,
+    "brushmodel": 216,
+    "terrain": 23655
+   },
+   "flagged": {
+    "glass": 452,
+    "brushmodel": 216,
+    "terrain": 23655
+   },
+   "source": {
+    "file": "mp_backlot/collision.bin",
+    "bytes": 4838016,
+    "sha256": "ce49d1f8a973c9c4a8f16a9bb8d716ea6ba416b1ea801854c8abf3a3f33482e8"
+   },
+   "check": {
+    "rays": 100,
+    "hits": 88,
+    "mismatches": 0,
+    "ms_bvh": 0.135,
+    "ms_brute": 77.4
+   }
+  },
+  "mp_backlot_x": {
+   "bytes": 5408004,
+   "vertices": 104536,
+   "triangles": 197199,
+   "nodes": 49685,
+   "depth": 27,
+   "sha256": "df6b5304e87bddad75435c4b3fd460e4133e5fb951cb07a3d58b7cf401010ceb",
+   "bounds": [
+    -3904.0,
+    -4864.0,
+    -512.0,
+    4736.0,
+    4864.0,
+    1109.0
+   ],
+   "script": {
+    "file": "mp_backlot_x/sight.js",
+    "bytes": 7210889,
+    "sha256": "e8cb83ef6a1c0e17d3d76bdb762b857030218da849fad5902056957b27a77ef8"
+   },
+   "file": "mp_backlot_x/sight.bvh",
+   "sourceTriangles": 241729,
+   "droppedDegenerate": 0,
+   "droppedDuplicate": 2824,
+   "groupTriangles": {
+    "solid": 172811,
+    "glass": 452,
+    "brushmodel": 216,
+    "terrain": 23720
+   },
+   "flagged": {
+    "glass": 452,
+    "brushmodel": 216,
+    "terrain": 23720
+   },
+   "source": {
+    "file": "mp_backlot_x/collision.bin",
+    "bytes": 4846584,
+    "sha256": "f2f261ce9a44d7ea1c230a9dc67367e8dd0c81002ec47787db1b90170c1a39c0"
+   },
+   "check": {
+    "rays": 100,
+    "hits": 97,
+    "mismatches": 0,
+    "ms_bvh": 0.145,
+    "ms_brute": 80.6
+   }
+  },
+  "mp_bloc": {
+   "bytes": 5416060,
+   "vertices": 95922,
+   "triangles": 207380,
+   "nodes": 49031,
+   "depth": 27,
+   "sha256": "7a1f59c7938e6ea32b3572670e85973681e10cfc91242164f3a2248b67a65469",
+   "bounds": [
+    -7936.0,
+    -15104.0,
+    -512.0,
+    10752.0,
+    3328.0,
+    1320.0
+   ],
+   "script": {
+    "file": "mp_bloc/sight.js",
+    "bytes": 7221623,
+    "sha256": "f150faeb9c74a4d4c438321c2a41374f212703721510d6af6f2858cc8cab76a2"
+   },
+   "file": "mp_bloc/sight.bvh",
+   "sourceTriangles": 244957,
+   "droppedDegenerate": 0,
+   "droppedDuplicate": 1261,
+   "groupTriangles": {
+    "solid": 191602,
+    "glass": 444,
+    "brushmodel": 240,
+    "terrain": 15094
+   },
+   "flagged": {
+    "glass": 420,
+    "brushmodel": 240,
+    "terrain": 15094
+   },
+   "source": {
+    "file": "mp_bloc/collision.bin",
+    "bytes": 4909836,
+    "sha256": "c09163344c415184afce07bdc7cdaa4a2da08747f119c42d8cef029339c1a893"
+   },
+   "check": {
+    "rays": 100,
+    "hits": 97,
+    "mismatches": 0,
+    "ms_bvh": 0.211,
+    "ms_brute": 195.5
+   }
+  },
+  "mp_bog": {
+   "bytes": 2391244,
+   "vertices": 48359,
+   "triangles": 84910,
+   "nodes": 22095,
+   "depth": 25,
+   "sha256": "685216b714d1c510099864195af136aa2ee3090715e1cd5847258aba2702cbc4",
+   "bounds": [
+    -7168.0,
+    -9984.0,
+    -896.0,
+    15744.0,
+    11072.0,
+    1040.0
+   ],
+   "script": {
+    "file": "mp_bog/sight.js",
+    "bytes": 3188533,
+    "sha256": "9c070efe2f13b61cb033d99c7e6b11a76d3ff3a12ad579e5b2b82ff0f300b29e"
+   },
+   "file": "mp_bog/sight.bvh",
+   "sourceTriangles": 103369,
+   "droppedDegenerate": 1,
+   "droppedDuplicate": 1959,
+   "groupTriangles": {
+    "solid": 70604,
+    "glass": 326,
+    "brushmodel": 881,
+    "terrain": 13099
+   },
+   "flagged": {
+    "glass": 326,
+    "brushmodel": 881,
+    "terrain": 13099
+   },
+   "source": {
+    "file": "mp_bog/collision.bin",
+    "bytes": 2051616,
+    "sha256": "95e73034c074776a93c38b7165d57d46122bb27ec58e672780a71380081460f6"
+   },
+   "check": {
+    "rays": 100,
+    "hits": 77,
+    "mismatches": 0,
+    "ms_bvh": 0.22,
+    "ms_brute": 80.6
+   }
+  },
+  "mp_broadcast": {
+   "bytes": 3321912,
+   "vertices": 65925,
+   "triangles": 119677,
+   "nodes": 30467,
+   "depth": 27,
+   "sha256": "aaaadf910300ef152afae7744347891e56bf804efecd612b9bcde291327d95d9",
+   "bounds": [
+    -11392.0,
+    -9472.0,
+    -1088.0,
+    18816.0,
+    18432.0,
+    2000.0
+   ],
+   "script": {
+    "file": "mp_broadcast/sight.js",
+    "bytes": 4429433,
+    "sha256": "52fe40fda82ee07e0c0e0b372829b54fbed647f1156d9fec241db0d709b295d2"
+   },
+   "file": "mp_broadcast/sight.bvh",
+   "sourceTriangles": 165120,
+   "droppedDegenerate": 0,
+   "droppedDuplicate": 1565,
+   "groupTriangles": {
+    "solid": 95636,
+    "glass": 486,
+    "brushmodel": 260,
+    "terrain": 23295
+   },
+   "flagged": {
+    "glass": 486,
+    "brushmodel": 260,
+    "terrain": 23295
+   },
+   "source": {
+    "file": "mp_broadcast/collision.bin",
+    "bytes": 3358176,
+    "sha256": "828c0bf75ba8f9e46ff0a917e15b331f509f8c4a33f64571798fb5a078275837"
+   },
+   "check": {
+    "rays": 100,
+    "hits": 91,
+    "mismatches": 0,
+    "ms_bvh": 0.296,
+    "ms_brute": 115.9
+   }
+  },
+  "mp_carentan": {
+   "bytes": 10986376,
+   "vertices": 206835,
+   "triangles": 392916,
+   "nodes": 106137,
+   "depth": 27,
+   "sha256": "81c5fc388f9c15ee36108d233d7834d7f5a256eb9c67c718b5c0e8648a6406cc",
+   "bounds": [
+    -8504.0,
+    -8768.0,
+    -288.0,
+    10872.0,
+    11584.0,
+    851.0
+   ],
+   "script": {
+    "file": "mp_carentan/sight.js",
+    "bytes": 14648719,
+    "sha256": "eef53a6d3a0de8fe5ca64e9e34b53151dc7b60cafd8cddc8a61052d16f0bbc82"
+   },
+   "file": "mp_carentan/sight.bvh",
+   "sourceTriangles": 458803,
+   "droppedDegenerate": 0,
+   "droppedDuplicate": 4876,
+   "groupTriangles": {
+    "solid": 327568,
+    "glass": 480,
+    "brushmodel": 276,
+    "terrain": 64592
+   },
+   "flagged": {
+    "glass": 480,
+    "brushmodel": 276,
+    "terrain": 64592
+   },
+   "source": {
+    "file": "mp_carentan/collision.bin",
+    "bytes": 9210888,
+    "sha256": "b1ec80280c9da32d7132bad261a1cf5bdbf2be23a4e0262a04bf804d1fa427de"
+   },
+   "check": {
+    "rays": 100,
+    "hits": 99,
+    "mismatches": 0,
+    "ms_bvh": 0.291,
+    "ms_brute": 327.2
+   }
+  },
+  "mp_cargoship": {
+   "bytes": 2686044,
+   "vertices": 54319,
+   "triangles": 95646,
+   "nodes": 24711,
+   "depth": 24,
+   "sha256": "2285ca5afb8051065599e500ad1172afa8003085b8e405b3c559b21860a70225",
+   "bounds": [
+    -9344.002,
+    -7360.0,
+    -1024.0,
+    10240.0,
+    7360.001,
+    1800.0
+   ],
+   "script": {
+    "file": "mp_cargoship/sight.js",
+    "bytes": 3581609,
+    "sha256": "aa8f26f4a6d9a4b17deca5fb51f1e036e8295302ea2003d8067af9868206445b"
+   },
+   "file": "mp_cargoship/sight.bvh",
+   "sourceTriangles": 146797,
+   "droppedDegenerate": 0,
+   "droppedDuplicate": 790,
+   "groupTriangles": {
+    "solid": 69225,
+    "brushmodel": 236,
+    "terrain": 26185
+   },
+   "flagged": {
+    "glass": 0,
+    "brushmodel": 236,
+    "terrain": 26185
+   },
+   "source": {
+    "file": "mp_cargoship/collision.bin",
+    "bytes": 2961420,
+    "sha256": "f21879d0883c4e90088c3efccad93bf386a976c0b7b8a5a837b499eefa8c3f4b"
+   },
+   "check": {
+    "rays": 100,
+    "hits": 81,
+    "mismatches": 0,
+    "ms_bvh": 0.139,
+    "ms_brute": 46.1
+   }
+  },
+  "mp_citystreets": {
+   "bytes": 7392736,
+   "vertices": 146492,
+   "triangles": 268656,
+   "nodes": 66945,
+   "depth": 28,
+   "sha256": "b3e56ad70edf045487c588682ffd5c71b316e83a0eba324d8bd88645ebf1d2cf",
+   "bounds": [
+    -768.0,
+    -6656.0,
+    -1288.0,
+    11520.0,
+    5120.0,
+    1024.0
+   ],
+   "script": {
+    "file": "mp_citystreets/sight.js",
+    "bytes": 9857205,
+    "sha256": "b02a62d1e702026cfb12d8088fa471a08e4ff4e6e9677f696225103250c29182"
+   },
+   "file": "mp_citystreets/sight.bvh",
+   "sourceTriangles": 320806,
+   "droppedDegenerate": 0,
+   "droppedDuplicate": 1802,
+   "groupTriangles": {
+    "solid": 235844,
+    "glass": 3712,
+    "brushmodel": 554,
+    "terrain": 28546
+   },
+   "flagged": {
+    "glass": 3712,
+    "brushmodel": 554,
+    "terrain": 28546
+   },
+   "source": {
+    "file": "mp_citystreets/collision.bin",
+    "bytes": 6539052,
+    "sha256": "d0bc4bbc1a9baec9a0e87caf6c2f0d81f05ec5839c1a000c820fc3ae3d186765"
+   },
+   "check": {
+    "rays": 100,
+    "hits": 90,
+    "mismatches": 0,
+    "ms_bvh": 0.182,
+    "ms_brute": 162.4
+   }
+  },
+  "mp_cluster": {
+   "bytes": 3838736,
+   "vertices": 69039,
+   "triangles": 140386,
+   "nodes": 37037,
+   "depth": 24,
+   "sha256": "c4d63e07c68aea34306f95f7571bdc5d231756f62e4edad9d7c43684046bae42",
+   "bounds": [
+    -7056.0,
+    -508.9,
+    -496.0,
+    2082.81,
+    6681.1,
+    844.0
+   ],
+   "script": {
+    "file": "mp_cluster/sight.js",
+    "bytes": 5118529,
+    "sha256": "4f94dafec2d3146aa91e458cd2e7e6b6860beeb1f2eda93e01cb5a44f66859ae"
+   },
+   "file": "mp_cluster/sight.bvh",
+   "sourceTriangles": 182933,
+   "droppedDegenerate": 0,
+   "droppedDuplicate": 716,
+   "groupTriangles": {
+    "solid": 131688,
+    "glass": 216,
+    "brushmodel": 264,
+    "terrain": 8218
+   },
+   "flagged": {
+    "glass": 216,
+    "brushmodel": 264,
+    "terrain": 8218
+   },
+   "source": {
+    "file": "mp_cluster/collision.bin",
+    "bytes": 3670440,
+    "sha256": "a870a4e51d7c98269962a23aa6ccba69a81e12fdeeaacdd02eb8ba3c1382d0d4"
+   },
+   "check": {
+    "rays": 100,
+    "hits": 97,
+    "mismatches": 0,
+    "ms_bvh": 0.222,
+    "ms_brute": 126.3
+   }
+  },
+  "mp_convoy": {
+   "bytes": 5618564,
+   "vertices": 104444,
+   "triangles": 205653,
+   "nodes": 52865,
+   "depth": 27,
+   "sha256": "eb248c5415b86fd863a7e2412d15e98836ef8bace3a162661745dedb41f980e3",
+   "bounds": [
+    -19968.0,
+    -14336.0,
+    -1088.0,
+    21056.0,
+    28160.0,
+    1056.0
+   ],
+   "script": {
+    "file": "mp_convoy/sight.js",
+    "bytes": 7491631,
+    "sha256": "df1fae0cc56e4f75b8205b8ee8eadc4e7b06042f6799b2c49f21f258eb31d8e5"
+   },
+   "file": "mp_convoy/sight.bvh",
+   "sourceTriangles": 286552,
+   "droppedDegenerate": 0,
+   "droppedDuplicate": 18732,
+   "groupTriangles": {
+    "solid": 180542,
+    "glass": 244,
+    "brushmodel": 287,
+    "terrain": 24580
+   },
+   "flagged": {
+    "glass": 244,
+    "brushmodel": 287,
+    "terrain": 24580
+   },
+   "source": {
+    "file": "mp_convoy/collision.bin",
+    "bytes": 5695044,
+    "sha256": "7d82ffdd8cc1bd4140a9e5720f88fb84e2b9c167842f9fe0f535a86b18750a13"
+   },
+   "check": {
+    "rays": 100,
+    "hits": 77,
+    "mismatches": 0,
+    "ms_bvh": 0.236,
+    "ms_brute": 193.7
+   }
+  },
+  "mp_countdown": {
+   "bytes": 3428576,
+   "vertices": 69489,
+   "triangles": 118266,
+   "nodes": 33037,
+   "depth": 28,
+   "sha256": "48d4ad2bb633e318699543c00f311ef5f8175ad4b6d5b2c96f4280de39eda083",
+   "bounds": [
+    -16384.0,
+    -14848.0,
+    -3328.0,
+    16896.0,
+    31232.0,
+    2185.5
+   ],
+   "script": {
+    "file": "mp_countdown/sight.js",
+    "bytes": 4571653,
+    "sha256": "0bc8b9b7ecc2a52d75edc7c208fb7234b28d21e568c3489d65a36636cdac5928"
+   },
+   "file": "mp_countdown/sight.bvh",
+   "sourceTriangles": 161076,
+   "droppedDegenerate": 1,
+   "droppedDuplicate": 1849,
+   "groupTriangles": {
+    "solid": 55160,
+    "glass": 1232,
+    "brushmodel": 744,
+    "terrain": 61130
+   },
+   "flagged": {
+    "glass": 1232,
+    "brushmodel": 744,
+    "terrain": 61130
+   },
+   "source": {
+    "file": "mp_countdown/collision.bin",
+    "bytes": 3175152,
+    "sha256": "73c8b2951487138b27e223045767c3264a44f270f390f595f1a57839f42d0bda"
+   },
+   "check": {
+    "rays": 100,
+    "hits": 84,
+    "mismatches": 0,
+    "ms_bvh": 0.234,
+    "ms_brute": 118.0
+   }
+  },
+  "mp_crash": {
+   "bytes": 3088168,
+   "vertices": 56110,
+   "triangles": 113696,
+   "nodes": 29273,
+   "depth": 24,
+   "sha256": "728921ed1c4def0a11a8bd888a412ce777adf8397d590f54fa46a9e12c860ac0",
+   "bounds": [
+    -2600.0,
+    -4416.0,
+    -64.0,
+    4744.0,
+    4032.0,
+    1072.0
+   ],
+   "script": {
+    "file": "mp_crash/sight.js",
+    "bytes": 4117769,
+    "sha256": "e0b9745545a75f163d4acbd8e2c412a24bac69992f8f21006f85526b3189f4a1"
+   },
+   "file": "mp_crash/sight.bvh",
+   "sourceTriangles": 156807,
+   "droppedDegenerate": 1,
+   "droppedDuplicate": 1014,
+   "groupTriangles": {
+    "solid": 98309,
+    "glass": 276,
+    "brushmodel": 239,
+    "terrain": 14872
+   },
+   "flagged": {
+    "glass": 276,
+    "brushmodel": 239,
+    "terrain": 14872
+   },
+   "source": {
+    "file": "mp_crash/collision.bin",
+    "bytes": 3142920,
+    "sha256": "86ecc9b7f3cb5e1f7ef4b1a9596fcb4b4a5f548ba85e32778204524f69d87b35"
+   },
+   "check": {
+    "rays": 100,
+    "hits": 96,
+    "mismatches": 0,
+    "ms_bvh": 0.207,
+    "ms_brute": 116.1
+   }
+  },
+  "mp_crash_snow": {
+   "bytes": 3149588,
+   "vertices": 57535,
+   "triangles": 116224,
+   "nodes": 29631,
+   "depth": 25,
+   "sha256": "3438b7742272afb6bff143d5e5ad4a268ed4e46f06b65ba343959e08722c05ba",
+   "bounds": [
+    -2600.0,
+    -4416.0,
+    -32.0,
+    4744.0,
+    4032.0,
+    1072.0
+   ],
+   "script": {
+    "file": "mp_crash_snow/sight.js",
+    "bytes": 4199671,
+    "sha256": "fc4315dd4996e0c52cc9f9592851fd22c730e40982afeb94d64cd6f6c6fce5c5"
+   },
+   "file": "mp_crash_snow/sight.bvh",
+   "sourceTriangles": 157935,
+   "droppedDegenerate": 1,
+   "droppedDuplicate": 1597,
+   "groupTriangles": {
+    "solid": 98381,
+    "glass": 276,
+    "brushmodel": 239,
+    "terrain": 17328
+   },
+   "flagged": {
+    "glass": 276,
+    "brushmodel": 239,
+    "terrain": 17328
+   },
+   "source": {
+    "file": "mp_crash_snow/collision.bin",
+    "bytes": 3181812,
+    "sha256": "686b558969e353a18e3746ef1f99628563b8f10a166c7b0b3336443dd9a2cc99"
+   },
+   "check": {
+    "rays": 100,
+    "hits": 92,
+    "mismatches": 0,
+    "ms_bvh": 0.211,
+    "ms_brute": 123.2
+   }
+  },
+  "mp_creek": {
+   "bytes": 3729808,
+   "vertices": 74892,
+   "triangles": 127825,
+   "nodes": 36541,
+   "depth": 27,
+   "sha256": "db070a313be453f13e2fc4e9547936654287784f93ea01b8aa10c84abb52c2ca",
+   "bounds": [
+    -23232.0,
+    -57472.0,
+    -1728.0,
+    23040.0,
+    57920.0,
+    4008.391
+   ],
+   "script": {
+    "file": "mp_creek/sight.js",
+    "bytes": 4973289,
+    "sha256": "c40bd4c1400a3e64611d992de879479eb5db709a3348c690f23d3e6d3a8020b5"
+   },
+   "file": "mp_creek/sight.bvh",
+   "sourceTriangles": 193279,
+   "droppedDegenerate": 6,
+   "droppedDuplicate": 6316,
+   "groupTriangles": {
+    "solid": 61171,
+    "brushmodel": 295,
+    "terrain": 66359
+   },
+   "flagged": {
+    "glass": 0,
+    "brushmodel": 295,
+    "terrain": 66359
+   },
+   "source": {
+    "file": "mp_creek/collision.bin",
+    "bytes": 3814092,
+    "sha256": "9cce5e44216aca14a205a9c01cc452a82154a368990570853743bc0828abfe2e"
+   },
+   "check": {
+    "rays": 100,
+    "hits": 84,
+    "mismatches": 0,
+    "ms_bvh": 0.166,
+    "ms_brute": 58.1
+   }
+  },
+  "mp_crossfire": {
+   "bytes": 5264632,
+   "vertices": 100950,
+   "triangles": 189894,
+   "nodes": 49517,
+   "depth": 28,
+   "sha256": "9baf1a063c2d53e251faa97dde7aeb95e8798f45ead041180879df195eff2cf1",
+   "bounds": [
+    -6287.304,
+    -14741.096,
+    -440.0,
+    22262.0,
+    10328.0,
+    1042.0
+   ],
+   "script": {
+    "file": "mp_crossfire/sight.js",
+    "bytes": 7019729,
+    "sha256": "a9883dddb04ed0f423ef14f34c2c6b20a5ab222cce6e9790d2dfcdbbe67b283a"
+   },
+   "file": "mp_crossfire/sight.bvh",
+   "sourceTriangles": 240159,
+   "droppedDegenerate": 7,
+   "droppedDuplicate": 2469,
+   "groupTriangles": {
+    "solid": 164453,
+    "glass": 962,
+    "brushmodel": 336,
+    "terrain": 24143
+   },
+   "flagged": {
+    "glass": 962,
+    "brushmodel": 336,
+    "terrain": 24143
+   },
+   "source": {
+    "file": "mp_crossfire/collision.bin",
+    "bytes": 4811376,
+    "sha256": "9bd5621da92d5e5ebcb1fd5568a689468ee60d7c2760072a33e9d761a2aa888c"
+   },
+   "check": {
+    "rays": 100,
+    "hits": 95,
+    "mismatches": 0,
+    "ms_bvh": 0.195,
+    "ms_brute": 83.1
+   }
+  },
+  "mp_farm": {
+   "bytes": 3038448,
+   "vertices": 52943,
+   "triangles": 113730,
+   "nodes": 28893,
+   "depth": 26,
+   "sha256": "bb505a886475bbfde9d4067497763ec914c4390b6554b7e9281ff71e3cbc3cc8",
+   "bounds": [
+    -5264.0,
+    -6112.0,
+    -832.0,
+    6576.0,
+    6624.0,
+    1225.0
+   ],
+   "script": {
+    "file": "mp_farm/sight.js",
+    "bytes": 4051471,
+    "sha256": "9b94e43c11b237d75e7ddb1d6ea0708b572e64f99743ba354b2ff415e0f24b84"
+   },
+   "file": "mp_farm/sight.bvh",
+   "sourceTriangles": 178101,
+   "droppedDegenerate": 0,
+   "droppedDuplicate": 2503,
+   "groupTriangles": {
+    "solid": 81718,
+    "glass": 6018,
+    "brushmodel": 243,
+    "terrain": 25751
+   },
+   "flagged": {
+    "glass": 6018,
+    "brushmodel": 243,
+    "terrain": 25751
+   },
+   "source": {
+    "file": "mp_farm/collision.bin",
+    "bytes": 3545448,
+    "sha256": "dd7edbb6676ffc03769af2ef4c6cee31e318f1cf64fdd10117ae2b2804dee897"
+   },
+   "check": {
+    "rays": 100,
+    "hits": 72,
+    "mismatches": 0,
+    "ms_bvh": 0.127,
+    "ms_brute": 52.1
+   }
+  },
+  "mp_killhouse": {
+   "bytes": 4001704,
+   "vertices": 84969,
+   "triangles": 143687,
+   "nodes": 34815,
+   "depth": 28,
+   "sha256": "6a9377330ef4bc2527276ba1ffd148ba12722a261757f5fee35a30818bd203ee",
+   "bounds": [
+    -10464.0,
+    -11712.0,
+    -128.0,
+    15616.0,
+    6528.0,
+    771.0
+   ],
+   "script": {
+    "file": "mp_killhouse/sight.js",
+    "bytes": 5335825,
+    "sha256": "b1e259e55f45e9c243d5743aa2c03d3e7073e3d87755540130b71fb2e485acf3"
+   },
+   "file": "mp_killhouse/sight.bvh",
+   "sourceTriangles": 206003,
+   "droppedDegenerate": 0,
+   "droppedDuplicate": 356,
+   "groupTriangles": {
+    "solid": 110236,
+    "glass": 22128,
+    "brushmodel": 276,
+    "terrain": 11047
+   },
+   "flagged": {
+    "glass": 22128,
+    "brushmodel": 276,
+    "terrain": 11047
+   },
+   "source": {
+    "file": "mp_killhouse/collision.bin",
+    "bytes": 4158720,
+    "sha256": "ecf4daa8fc270a4ffac507e33ce92a348ff64ca74b3f5cfc4eef86db4e75f9e8"
+   },
+   "check": {
+    "rays": 100,
+    "hits": 81,
+    "mismatches": 0,
+    "ms_bvh": 0.122,
+    "ms_brute": 63.2
+   }
+  },
+  "mp_overgrown": {
+   "bytes": 4148200,
+   "vertices": 77329,
+   "triangles": 152413,
+   "nodes": 38713,
+   "depth": 29,
+   "sha256": "479a963201237c07d29d614b69f281bd4bb23180e0415f0a1be70f7b25e7c839",
+   "bounds": [
+    -12288.0,
+    -18432.0,
+    -512.0,
+    15360.0,
+    8192.0,
+    1616.0
+   ],
+   "script": {
+    "file": "mp_overgrown/sight.js",
+    "bytes": 5531153,
+    "sha256": "8daf883bfbbaa00b642e116076979a49ede0592983fe6ad1269f87fe93372efe"
+   },
+   "file": "mp_overgrown/sight.bvh",
+   "sourceTriangles": 200614,
+   "droppedDegenerate": 2,
+   "droppedDuplicate": 5409,
+   "groupTriangles": {
+    "solid": 114146,
+    "brushmodel": 278,
+    "terrain": 37989
+   },
+   "flagged": {
+    "glass": 0,
+    "brushmodel": 278,
+    "terrain": 37989
+   },
+   "source": {
+    "file": "mp_overgrown/collision.bin",
+    "bytes": 3955608,
+    "sha256": "4f3a18db3a6567a404e38c62ce1fb1dd5ca3b55645af7a4cf5399aba1914fe45"
+   },
+   "check": {
+    "rays": 100,
+    "hits": 93,
+    "mismatches": 0,
+    "ms_bvh": 0.182,
+    "ms_brute": 69.7
+   }
+  },
+  "mp_pipeline": {
+   "bytes": 4070116,
+   "vertices": 78535,
+   "triangles": 147952,
+   "nodes": 37633,
+   "depth": 25,
+   "sha256": "254eecccb8303fa52350da01e18b8da2ae27ae8c77575922b10910689b4e91fa",
+   "bounds": [
+    -8208.0,
+    -6112.0,
+    -1024.0,
+    7680.0,
+    8512.0,
+    1166.0
+   ],
+   "script": {
+    "file": "mp_pipeline/sight.js",
+    "bytes": 5427039,
+    "sha256": "22544c6cf29ef9a621d8dd32520d6a53536cc78cbd4fe63f06cdd3d4013b09d6"
+   },
+   "file": "mp_pipeline/sight.bvh",
+   "sourceTriangles": 183308,
+   "droppedDegenerate": 0,
+   "droppedDuplicate": 1814,
+   "groupTriangles": {
+    "solid": 137285,
+    "glass": 84,
+    "brushmodel": 293,
+    "terrain": 10290
+   },
+   "flagged": {
+    "glass": 84,
+    "brushmodel": 293,
+    "terrain": 10290
+   },
+   "source": {
+    "file": "mp_pipeline/collision.bin",
+    "bytes": 3674952,
+    "sha256": "46b0a7a70ff5b754a726336a78ea4045113f7693dae796871381cfeb2fdebf7e"
+   },
+   "check": {
+    "rays": 100,
+    "hits": 80,
+    "mismatches": 0,
+    "ms_bvh": 0.209,
+    "ms_brute": 156.1
+   }
+  },
+  "mp_shipment": {
+   "bytes": 501612,
+   "vertices": 11206,
+   "triangles": 17295,
+   "nodes": 4445,
+   "depth": 20,
+   "sha256": "8cad3a24d055ba4342f843de735c8fd87de1d717f7a36bb194b341b9d93e579e",
+   "bounds": [
+    -8640.0,
+    -5376.0,
+    -320.0,
+    8448.0,
+    6912.0,
+    406.0
+   ],
+   "script": {
+    "file": "mp_shipment/sight.js",
+    "bytes": 669031,
+    "sha256": "5e2d022fbeedfcde898df06243ced2cf06e077a122dc9cf69146d0d9ac8ab0e4"
+   },
+   "file": "mp_shipment/sight.bvh",
+   "sourceTriangles": 36351,
+   "droppedDegenerate": 0,
+   "droppedDuplicate": 0,
+   "groupTriangles": {
+    "solid": 15436,
+    "brushmodel": 248,
+    "terrain": 1611
+   },
+   "flagged": {
+    "glass": 0,
+    "brushmodel": 248,
+    "terrain": 1611
+   },
+   "source": {
+    "file": "mp_shipment/collision.bin",
+    "bytes": 733308,
+    "sha256": "841684b103b19ba5c0985502ca66753e7cf4b49f0dff09be6a3a75b2d200fbcd"
+   },
+   "check": {
+    "rays": 100,
+    "hits": 88,
+    "mismatches": 0,
+    "ms_bvh": 0.132,
+    "ms_brute": 17.7
+   }
+  },
+  "mp_showdown": {
+   "bytes": 3110060,
+   "vertices": 61657,
+   "triangles": 107409,
+   "nodes": 30431,
+   "depth": 25,
+   "sha256": "246afd802634c327a37df7beda583a760f60bd9e3a207a1a5fcccf7007d5a52c",
+   "bounds": [
+    -8256.0,
+    -6272.0,
+    -384.0,
+    8384.0,
+    8000.0,
+    898.0
+   ],
+   "script": {
+    "file": "mp_showdown/sight.js",
+    "bytes": 4146963,
+    "sha256": "a9ac6ca6155113eb4600be7616fc6d03ceda422e4e5e72bd7a569a1ff9460401"
+   },
+   "file": "mp_showdown/sight.bvh",
+   "sourceTriangles": 136269,
+   "droppedDegenerate": 0,
+   "droppedDuplicate": 701,
+   "groupTriangles": {
+    "solid": 64799,
+    "glass": 108,
+    "brushmodel": 240,
+    "terrain": 42262
+   },
+   "flagged": {
+    "glass": 108,
+    "brushmodel": 240,
+    "terrain": 42262
+   },
+   "source": {
+    "file": "mp_showdown/collision.bin",
+    "bytes": 2747952,
+    "sha256": "dc69223faff935fbb0b5f5a0c9a0974f1cd2758cd52e6e2b41d882999ce451af"
+   },
+   "check": {
+    "rays": 100,
+    "hits": 96,
+    "mismatches": 0,
+    "ms_bvh": 0.227,
+    "ms_brute": 94.8
+   }
+  },
+  "mp_strike": {
+   "bytes": 6684568,
+   "vertices": 124819,
+   "triangles": 246421,
+   "nodes": 61975,
+   "depth": 28,
+   "sha256": "59679b980bfb84f73a8be096144e7dbf8a0bce40e4512967b48d8fc4f934d019",
+   "bounds": [
+    -12736.0,
+    -4544.0,
+    -256.0,
+    12288.0,
+    14784.0,
+    860.0
+   ],
+   "script": {
+    "file": "mp_strike/sight.js",
+    "bytes": 8912971,
+    "sha256": "c8621e909a74bcb67ec9b7f048cb996c7456b0f56b8b318d5fc51d2f68175c24"
+   },
+   "file": "mp_strike/sight.bvh",
+   "sourceTriangles": 297656,
+   "droppedDegenerate": 0,
+   "droppedDuplicate": 2547,
+   "groupTriangles": {
+    "solid": 216982,
+    "glass": 1316,
+    "brushmodel": 240,
+    "terrain": 27883
+   },
+   "flagged": {
+    "glass": 1316,
+    "brushmodel": 240,
+    "terrain": 27883
+   },
+   "source": {
+    "file": "mp_strike/collision.bin",
+    "bytes": 5974092,
+    "sha256": "871f61c11420433c4a646ba05f58561ff8b2c7f16f90d491c06abbf237a4bae2"
+   },
+   "check": {
+    "rays": 100,
+    "hits": 96,
+    "mismatches": 0,
+    "ms_bvh": 0.219,
+    "ms_brute": 207.2
+   }
+  },
+  "mp_vacant": {
+   "bytes": 1010168,
+   "vertices": 18222,
+   "triangles": 37281,
+   "nodes": 9587,
+   "depth": 22,
+   "sha256": "64dc1bca3d6549d2049d4941dbdb1172b8b0bc9942db7e1d00d2069e6e1e3ed3",
+   "bounds": [
+    -7488.0,
+    -5760.0,
+    -768.0,
+    8640.0,
+    5504.0,
+    1200.0
+   ],
+   "script": {
+    "file": "mp_vacant/sight.js",
+    "bytes": 1347103,
+    "sha256": "c96e3c582a51503f1240dd3068291437409add6f8ca5d7b033933134c7b8977d"
+   },
+   "file": "mp_vacant/sight.bvh",
+   "sourceTriangles": 71453,
+   "droppedDegenerate": 0,
+   "droppedDuplicate": 521,
+   "groupTriangles": {
+    "solid": 33438,
+    "glass": 204,
+    "brushmodel": 240,
+    "terrain": 3399
+   },
+   "flagged": {
+    "glass": 204,
+    "brushmodel": 240,
+    "terrain": 3399
+   },
+   "source": {
+    "file": "mp_vacant/collision.bin",
+    "bytes": 1432680,
+    "sha256": "883cfaa631b7913e275171d814d99cdcb2d22ae25b28416a784ca7786c1d273b"
+   },
+   "check": {
+    "rays": 100,
+    "hits": 87,
+    "mismatches": 0,
+    "ms_bvh": 0.188,
+    "ms_brute": 37.3
+   }
+  }
+ }
+}

@@ -16,11 +16,18 @@ C4.define('collect', function (C4) {
   const IMPACT_VICTIM_DIST = 80;    // bullet impact -> nearest player within this distance = victim (≈)
   const EXPLOSIONS = new Set([K.EV.GRENADE_EXPLODE, K.EV.FLASHBANG_EXPLODE, K.EV.CUSTOM_EXPLODE,
     K.EV.CUSTOM_EXPLODE_NOMARKS, K.EV.ROCKET_EXPLODE, K.EV.ROCKET_EXPLODE_NOMARKS]);
+  // own-kill metrics (ownKills.js): a shot of a player, and every event of a player that makes a sound
+  const SHOT_EVENTS = new Set([26, 27, 38]);                // fire_weapon, fire_weapon_lastshot, fire_weapon_mg42
+  const SOUND_EVENTS = new Set([9, 15, 16, 17, 18, 19, 20, 21, 23, 26, 27, 28, 30, 31, 32, 33, 35, 36, 37, 38,
+    72, 73, 74, 75, 76]);                                    // item pickup, reload, weapon raise / put away, shots,
+  const isSoundEvent = ev => SOUND_EVENTS.has(ev) || (ev >= 77 && ev < 135);   // melee, grenade, footsteps, jump; landing (+ pain)
   const PSI = {
     client: PS_INDEX['ClientNum'], pmType: PS_INDEX['pm_type'], eFlags: PS_INDEX['eFlags'],
     weapon: PS_INDEX['weapon'], ox: PS_INDEX['origin[0]'], oy: PS_INDEX['origin[1]'],
     oz: PS_INDEX['origin[2]'], pitch: PS_INDEX['viewangles[0]'], yaw: PS_INDEX['viewangles[1]'],
-    damageEvent: PS_INDEX['damageEvent'], damageYaw: PS_INDEX['damageYaw'], damageCount: PS_INDEX['damageCount']
+    damageEvent: PS_INDEX['damageEvent'], damageYaw: PS_INDEX['damageYaw'], damageCount: PS_INDEX['damageCount'],
+    eventSeq: PS_INDEX['eventSequence'], events: [0, 1, 2, 3].map(i => PS_INDEX['events[' + i + ']']),
+    viewHeight: PS_INDEX['viewHeightCurrent']
   };
   const CSI_TEAM = CS_INDEX['team'];
   const R = v => Math.round(v * 10) / 10;
@@ -65,8 +72,22 @@ C4.define('collect', function (C4) {
       hitsTaken: [],                // EV_BULLET_HIT_CLIENT_*: {t, victim, attacker, weapon}
       // EV_BULLET_HIT on flesh shot by the POV: {t, weapon, headshot, lethal, victim (nearest player) | null, dist}
       povImpacts: [],
+      // per client: times of his shots by source - fire events (entity / player state ring), bullet
+      // impacts he caused, clip decrements of the player state (followed client only) - and of his
+      // sound events (footsteps, jumps, landings, shots, reload ...); only while he is in the snapshots
+      shots: new Map(), impactShots: new Map(), ammoShots: new Map(), sounds: new Map(),
+      // exact view height of the followed client (player state viewHeightCurrent): client -> {t: [], vh: []}
+      psEye: new Map(),
       firstArchive: null
     };
+    let prevClip = null, prevClipClient = -1;
+    const addTime = (map, cl, t) => { let a = map.get(cl); if (!a) map.set(cl, a = []); if (a[a.length - 1] !== t) a.push(t); };
+    const playerEvent = (cl, ev, t) => {
+      if (cl == null || cl >= 64) return;
+      if (SHOT_EVENTS.has(ev)) addTime(c.shots, cl, t);
+      if (isSoundEvent(ev)) addTime(c.sounds, cl, t);
+    };
+    let prevPsSeq = null, prevPsEvClient = -1;
     const bigCs = new BigConfigString();
     let prevEntities = new Map();
     const ringSeq = new Map();
@@ -178,6 +199,28 @@ C4.define('collect', function (C4) {
       if (!lp || lp.client !== client || lp.health !== health || lp.damageEvent !== dEv || lp.pmType !== pm || lp.weapon !== w0) {
         c.povStates.push({ t, client, health, damageEvent: dEv, damageYaw: f[PSI.damageYaw], damageCount: f[PSI.damageCount], pmType: pm, weapon: w0 });
       }
+      // event ring of the player state (4 slots, CG_CheckPlayerstateEvents): shots / sounds of the
+      // followed client - he is not in the entity list of his own snapshot
+      const seq = f[PSI.eventSeq];
+      if (prevPsSeq != null && prevPsEvClient === client && client < 64) {
+        let n = (seq - prevPsSeq) & 0xff;
+        if (n > 0 && n < 128) {
+          n = Math.min(n, 4);
+          for (let k = n; k > 0; k--) playerEvent(client, f[PSI.events[(seq - k) & 3]], t);
+        }
+      }
+      prevPsSeq = seq; prevPsEvClient = client;
+      // shots from the clip: any clip slot of the followed client going down (a reload raises it)
+      const clip = snap.ps.ammoclip;
+      if (prevClip && prevClipClient === client && client < 64 && clip !== prevClip) {
+        for (let i = 0; i < clip.length; i++) if (clip[i] < prevClip[i]) { addTime(c.ammoShots, client, t); break; }
+      }
+      prevClip = clip; prevClipClient = client;
+      if (client < 64 && pm !== 4 && pm !== 5) {
+        let e = c.psEye.get(client);
+        if (!e) c.psEye.set(client, e = { t: [], vh: [] });
+        e.t.push(t); e.vh.push(R(u2f(f[PSI.viewHeight])));
+      }
       if (client >= 64 || pm === 4 || pm === 5) return;       // spectator / intermission
       if (snap.ps.originFromArchive && !snap.ps.archiveFound) return;
       const x = u2f(f[PSI.ox]), y = u2f(f[PSI.oy]), z = u2f(f[PSI.oz]);
@@ -222,6 +265,7 @@ C4.define('collect', function (C4) {
           for (let i = p; i < evseq; i++) {
             const ev = st[E_EVENTS + (i & 3)];
             if (EXPLOSIONS.has(ev)) onDetonation(t, num, st, ev);
+            else if (etype === K.ET.PLAYER && num < 64) playerEvent(num, ev, t);
           }
           ringSeq.set(num, evseq);
         } else ringSeq.set(num, 0);
@@ -267,7 +311,11 @@ C4.define('collect', function (C4) {
       } else if (ev === K.EV.BULLET_HIT_CLIENT_SMALL || ev === K.EV.BULLET_HIT_CLIENT_LARGE) {
         // a bullet hit the recording client (or the player it follows): attacker = otherEntityNum
         c.hitsTaken.push({ t, victim: st[E_CLIENTNUM], attacker: st[E_OTHER], weapon: st[E_WEAPON] });
-      } else if (ev === K.EV.BULLET_HIT && st[E_SURFTYPE] === SURF_FLESH && c.gamestate && st[E_OTHER] === c.gamestate.clientNum) {
+      } else if (ev === K.EV.BULLET_HIT && st[E_SURFTYPE] === SURF_FLESH && st[E_OTHER] < 64) {
+        // every bullet impact on a player proves a shot of the shooter (otherEntityNum)
+        addTime(c.impactShots, st[E_OTHER], t);
+      }
+      if (ev === K.EV.BULLET_HIT && st[E_SURFTYPE] === SURF_FLESH && c.gamestate && st[E_OTHER] === c.gamestate.clientNum) {
         // a bullet of the POV hit a player (MP damage code, sent to everyone but the victim):
         // otherEntityNum = shooter, un1 bit 0 = head, bit 1 = the hit killed (docs/ANALYSIS.md 3.9).
         // The victim is not transmitted: the nearest other player to the impact (position <= 200 ms old)

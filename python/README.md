@@ -851,6 +851,7 @@ source/
     tools/
       gen_netfields.py       generates _netfields.py from NetFields.cpp (+ KisakCOD cross-check)
       verify.py              integrity check over many demos
+      build_sight_bvh.py     geometry/<map>/sight.bvh + sight.js: sight-blocking triangles + BVH (see ../docs/GEOMETRY.md)
 ```
 
 ## 10. Sources and licence

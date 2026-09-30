@@ -55,7 +55,7 @@
         <button role="tab" data-tab="console">Console</button>
         <button role="tab" data-tab="events">Events</button>
         <button role="tab" data-tab="map">Map</button>
-        <button role="tab" data-tab="povdmg">POV Damage</button>
+        <button role="tab" data-tab="pov">POV</button>
       </nav>
       <div class="tab-panels">
         <section class="tab-panel active" id="tab-scoreboard"></section>
@@ -65,7 +65,7 @@
         <section class="tab-panel" id="tab-console"></section>
         <section class="tab-panel" id="tab-events"></section>
         <section class="tab-panel" id="tab-map"></section>
-        <section class="tab-panel" id="tab-povdmg"></section>
+        <section class="tab-panel" id="tab-pov"></section>
       </div>
     </section>
   </main>
@@ -88,6 +88,8 @@
   <script src="js/analysis/rounds.js"></script>
   <script src="js/analysis/events.js"></script>
   <script src="js/analysis/povDamage.js"></script>
+  <script src="js/analysis/sight.js"></script>
+  <script src="js/analysis/ownKills.js"></script>
   <script src="js/analysis/build.js"></script>
   <script src="js/analysis/worker.js"></script>
   <!-- map calibration (JS instead of JSON: fetch() is blocked on file://) -->
@@ -106,7 +108,7 @@
   <script src="js/ui/map/heatmap.js"></script>
   <script src="js/ui/map/playback.js"></script>
   <script src="js/ui/map/mapTab.js"></script>
-  <script src="js/ui/povDamage.js"></script>
+  <script src="js/ui/pov.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

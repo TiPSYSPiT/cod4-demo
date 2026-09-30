@@ -19,6 +19,9 @@
   --good: #58d68d;
   --bad: #ff5f5f;
   --warn: #f5c451;
+  /* own-kill metrics (POV tab): every player neutral, only the POV highlighted */
+  --metric-player-color: #8a95a5;
+  --metric-pov-color: #ff8a1f;
   --radius: 8px;
   --font: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
   --mono: "Cascadia Mono", Consolas, "Courier New", monospace;
@@ -338,3 +341,61 @@ table.kpr td.multi5 { outline-color: #ff4a4a; }
 .pd-sym.taken { color: var(--bad); } .pd-sym.dealt { color: var(--team-b); } .pd-sym.kill { color: var(--accent); } .pd-sym.death { color: var(--bad); font-weight: 700; }
 .pd-died { color: var(--bad); font-weight: 600; }
 .pd-weapon { margin: 0; }
+
+/* ---- POV tab: head, view switch, own-kill metrics ---- */
+.pov-head { margin: 0 0 10px; }
+.pov-title { margin: 0 0 2px; font-size: 16px; font-weight: 600; display: flex; align-items: baseline; gap: 8px; }
+.pov-note { margin: 0; }
+.pov-nav { display: flex; gap: 0; margin: 4px 0 14px; border-bottom: 1px solid var(--line); }
+.pov-nav-btn { background: none; border: 0; border-bottom: 2px solid transparent; padding: 8px 14px; color: var(--muted); cursor: pointer; font-weight: 600; margin-bottom: -1px; }
+.pov-nav-btn:hover { color: var(--text); }
+.pov-nav-btn.active { color: var(--text); border-bottom-color: var(--accent); }
+.pd-hint { font-size: 11px; text-transform: none; letter-spacing: 0; font-weight: 400; }
+.ok-intro { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 12px; margin-bottom: 14px; }
+.ok-defs { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 14px; font-size: 12.5px; color: var(--muted); display: grid; gap: 4px; }
+.ok-defs strong { color: var(--text); font-weight: 600; }
+.ok-caveat { margin: 0; font-size: 12.5px; }
+.ok-cell { display: inline-flex; flex-direction: column; align-items: flex-end; line-height: 1.2; }
+.ok-ratio { font-size: 11px; color: var(--dim); }
+.ok-ratio.hi, .ok-ratio.lo { color: var(--text); font-weight: 700; background: rgba(255,138,31,.16); border-radius: 4px; padding: 0 4px; }
+.ok-small { color: var(--muted); }
+.ok-small-mark { font-size: 10.5px; color: var(--dim); }
+.ok-charts { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 12px; margin-top: 8px; }
+.ok-chart { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 8px 10px; }
+.ok-chart-title { font-size: 12px; font-weight: 600; margin-bottom: 4px; }
+.ok-svg { display: block; width: 100%; height: auto; }
+.ok-svg .ok-label { fill: var(--muted); font-size: 11px; font-family: var(--font); }
+.ok-svg .ok-value { fill: var(--muted); font-size: 11px; font-family: var(--font); }
+.ok-svg .ok-value.out { fill: var(--text); font-weight: 700; }
+.ok-svg .ok-na { fill: var(--dim); font-size: 11px; font-family: var(--font); }
+.ok-svg .ok-bar.player { fill: var(--metric-player-color); }
+.ok-svg .ok-bar.pov { fill: var(--metric-pov-color); }
+.ok-svg .ok-label.pov { fill: var(--metric-pov-color); font-weight: 600; }
+.ok-svg .ok-badge { fill: none; stroke: var(--metric-pov-color); stroke-width: 1; }
+.ok-svg .ok-badge-text { fill: var(--metric-pov-color); font-size: 9.5px; font-weight: 700; font-family: var(--font); letter-spacing: .03em; }
+.ok-svg .ok-bar.small { opacity: .55; }
+.ok-svg .ok-bar.out { stroke: var(--text); stroke-width: 1.5; }
+.ok-svg .ok-all { stroke: var(--text); stroke-width: 1.5; stroke-dasharray: 4 3; }
+.ok-allsw { display: inline-block; width: 16px; height: 0; border-top: 2px dashed var(--text); vertical-align: middle; margin-right: 5px; }
+@media (max-width: 900px) { .ok-intro { grid-template-columns: 1fr; } }
+/* optional "silent & unseen" (rough approximation) */
+.ok-options { margin: 0 0 8px; }
+.ok-rough { font-size: 11px; color: var(--warn); border: 1px solid rgba(245,196,81,.4); border-radius: 4px; padding: 0 5px; margin-left: 4px; }
+.ok-geo { font-size: 11px; color: var(--muted); border: 1px solid var(--line-2); border-radius: 4px; padding: 0 5px; margin-left: 4px; }
+.ok-def-optional { border-top: 1px dashed var(--line-2); padding-top: 4px; }
+table.data.ok-table td.ok-optional, table.data.ok-table th.ok-optional { background: rgba(245,196,81,.05); }
+.ok-chart.rough { border-style: dashed; border-color: rgba(245,196,81,.45); }
+/* own-kill metrics: POV row, unreliable rows (fewer evaluated kills than the limit), spectator team choice */
+table.data.ok-table .ok-name { color: var(--metric-player-color); }
+table.data.ok-table .ok-name.pov { color: var(--metric-pov-color); font-weight: 600; }
+.ok-pov-badge { margin-left: 6px; font-size: 10.5px; color: var(--metric-pov-color); background: transparent; border-color: var(--metric-pov-color); }
+table.data.ok-table tr.pov td { background: color-mix(in srgb, var(--metric-pov-color) 7%, transparent); }
+table.data.ok-table tr.pov td:first-child { box-shadow: inset 3px 0 0 var(--metric-pov-color); }
+table.data.ok-table tr.ok-all-row td { border-top: 2px solid var(--line-2); }
+.legend .ok-sw { background: var(--metric-player-color); }
+.legend .ok-sw.pov { background: var(--metric-pov-color); }
+.legend .ok-sw.small { opacity: .55; }
+table.data.ok-table tr.ok-unreliable td { color: var(--dim); opacity: .6; }
+table.data.ok-table tr.ok-unreliable td .ok-ratio { opacity: .6; }
+.ok-cov { cursor: help; }
+.ok-spec { margin: 0 0 12px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }

@@ -5,7 +5,7 @@
   const $ = id => document.getElementById(id);
   C4.tabs = C4.tabs || {};
 
-  const state = { data: null, fileInfo: null, rendered: new Set(), current: 'scoreboard', worker: null };
+  const state = { data: null, fileInfo: null, rendered: new Set(), current: 'scoreboard', worker: null, loadId: 0 };
 
   /* ---- app facade given to every tab ---- */
   const app = {
@@ -69,6 +69,7 @@
     setProgress(0);
     $('file-name').textContent = file.name;
     state.fileInfo = { name: file.name, size: file.size, lastModified: file.lastModified };
+    const loadId = ++state.loadId;
     let buffer;
     try {
       buffer = await file.arrayBuffer();
@@ -83,7 +84,7 @@
       worker.onmessage = ev => {
         const m = ev.data;
         if (m.type === 'progress') setProgress(m.value);
-        else if (m.type === 'done') { worker.terminate(); state.worker = null; show(m.data); }
+        else if (m.type === 'done') { worker.terminate(); state.worker = null; finish(m.data, loadId); }
         else if (m.type === 'error') { worker.terminate(); state.worker = null; fail(errorText(m.message, m.invalid), m.stack); }
       };
       worker.onerror = e => {
@@ -91,20 +92,41 @@
         worker.terminate();
         state.worker = null;
         console.warn('Worker failed, parsing on the main thread instead.', e.message);
-        parseMainThread(buffer);
+        parseMainThread(buffer, loadId);
       };
       worker.postMessage({ buffer, fileInfo: state.fileInfo }, [buffer]);
     } else {
-      parseMainThread(buffer);
+      parseMainThread(buffer, loadId);
     }
   }
 
-  function parseMainThread(buffer) {
+  function parseMainThread(buffer, loadId) {
     $('progress-label').textContent += ' (main thread - the page may freeze briefly)';
     setTimeout(() => {
-      try { show(C4.analyzeDemo(new Uint8Array(buffer), state.fileInfo, setProgress)); }
-      catch (err) { fail(errorText(err.message, err instanceof C4.demo.DemoError), err.stack); }
+      let data;
+      try { data = C4.analyzeDemo(new Uint8Array(buffer), state.fileInfo, setProgress); }
+      catch (err) { return fail(errorText(err.message, err instanceof C4.demo.DemoError), err.stack); }
+      finish(data, loadId);
     }, 30);
+  }
+
+  /** "unseen" of the own-kill metrics with walls: load geometry/<map>/sight.js (if present) and test the
+   *  candidate sight lines of the analysis (ownKills.js applySight); then show the demo */
+  async function finish(data, loadId) {
+    const job = data.sightJob, map = data.meta.map;
+    delete data.sightJob;                          // internal, not part of DemoData / the export
+    if (data.ownKills) {
+      $('progress-label').textContent = 'Checking sight lines through the map geometry …';
+      let bvh = null, reason = null;
+      try {
+        bvh = await C4.sight.load(map, 'geometry/');
+        if (!bvh) reason = 'no map geometry for ' + (map || 'this map') + ' (geometry/' + (map || '<map>') + '/sight.js not found)';
+      } catch (err) { reason = 'the map geometry could not be loaded: ' + err.message; }
+      try { C4.ownKills.applySight(data.ownKills, job, bvh, data.players, map, reason); }
+      catch (err) { console.error(err); C4.ownKills.applySight(data.ownKills, null, null, data.players, map, 'sight line test failed: ' + err.message); }
+    }
+    if (loadId !== state.loadId) return;           // another demo was opened meanwhile
+    show(data);
   }
 
   function errorText(message, invalid) {

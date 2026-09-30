@@ -304,7 +304,7 @@ Shoutcaster`), bomb picked up / dropped.
 | **Grenade thrower** | **not in the demo.** The missile carries no owner, no event marks the throw on the thrower (only the POV's own `use_offhand`). Nearest player at launch was right in only ~60 % of the cases in the reference project's measurement | **not available** (heuristic only) |
 | Smoke duration / size | **not in the demo** (client-side effect) → constant | n/a, constant |
 
-### 3.9 POV Damage tab (`js/analysis/povDamage.js`)
+### 3.9 POV tab: damage (`js/analysis/povDamage.js`)
 
 Only the recording player (POV): the full player state and the local sounds are
 sent to him alone. Measured on all 56 sample demos:
@@ -327,6 +327,59 @@ Only phase *live* counts (like the scoreboard); kills use the scoreboard's rule
 (no team kills / suicides / world kills) and equal the POV's K in all 56 demos.
 Totals are the sums of the rounds; per opponent, damage of enemies and team mates
 adds up to the damage split; self and unknown damage are listed per weapon only.
+
+### 3.10 POV tab: own-kill metrics (`js/analysis/ownKills.js`)
+
+Since the revision (see *Revision* below): only the POV and the POV's team mates,
+over the kills of the live match time (scoreboard rule). The table below is the
+feasibility check on all 56 sample demos before building it (all players):
+
+| Value | Source | Level |
+|---|---|---|
+| Positions / view of killer and victim | player entity (`pos`, `apos` pitch / yaw) or player state for the followed player; one sample per snapshot = 50 ms (99.9 % of the snapshots), angles 16 bit (0.0055°), stored at 0.1°. At the kill time killer and victim were in the snapshots for 99.6 % of the kills (7,310 / 7,342 kills of other players, 867 / 869 of the POV) | reliable while in the POV's snapshots |
+| Shot of the killer ≤300 ms before | `fire_weapon` / `fire_weapon_lastshot` / `fire_weapon_mg42` in the entity event ring (player state ring for the followed player) and the bullet impacts `EV_BULLET_HIT` with the killer as shooter - seen for 88-90 % of the kills | reliable when seen |
+| Crosshair error | angle between the view vector (pitch, yaw) and the line eye → victim; eye = feet + 60 / 40 / 11 (stand / crouch / prone from the entity flags), aim point = feet + 44 / 30 / 8, lean ignored. At the shot: median 1.4-1.6°, 99 % within 10° - the model fits. 12 units off are 3.4° at 200 units, 1.4° at 500; 31 % of the own kills are closer than 500 units | ≈ |
+| Own kills | 6,838 of 7,825 live kills (87 %); not judged: 848 without a shot seen, 138 more than 10° off, 1 without positions | ≈ |
+| % ≤3° at -0.5 s / median error | the error 0.5 s before the kill; per demo the ALL share lies between 43 and 71 %, the median around 2.7-3.4° - the 3° limit cuts the distribution in the middle, small model errors move many kills | ≈ |
+| Silent | sound events are transmitted as entity events (footsteps 72-75, jump 76, landing 77-134, shots, reload, weapon raise / put away, grenade, melee, item pickup) - not generated client-side only. Only victims in the snapshots for the whole 2 s (gaps ≤150 ms) count. "No event" ≠ "not heard": loudness and range are not in the demo | ≈ |
+| Unseen by team mates | **Optional, off by default.** The victim (aim point) inside ±40° horizontal / ±35° vertical of the view of a living team mate of the killer (dead before the window: kill feed) at a snapshot of the 2 s window **and** a free sight line from the team mate's eye to the victim's feet, chest or head through the map collision geometry (`geometry/<map>/sight.js`, docs/GEOMETRY.md) = "seen"; unknown if a living team mate was not in the snapshots for the whole window. The worker collects the candidate lines (inside a cone), the main thread tests them after loading the geometry (`C4.ownKills.applySight`, 0-11 ms per demo). Not in the geometry: static models (trees, cars, crates) and smoke; glass and brush entities (doors) do not block - so "unseen" stays understated. 60 demos: of the own kills with a known result 3.5 % silent & unseen with the cone alone, 19.3 % with walls (per demo 0-33 %; 630 of 751 kills with a cone contact had every line blocked, 18 became unknown). No geometry for the map: cone alone, marked *rough* | ≈, optional |
+
+Sample size: with 20 own kills a true share of 54 % lies between 35 and 70 % in
+90 % of random samples (ratio 0.65 … 1.30), with 36 own kills between 42 and 67 %.
+The ratio marks (1.3× / 0.7×) therefore hit normal players regularly; the tab
+greys rows with fewer than 15 evaluated kills and says the values are an
+indication, no proof.
+
+**Revision (POV team, exclusions, 3D error).** Checked on all 60 demos, POV team:
+
+* *Who:* the team key (A / B) of the POV from `teams.membership` - normalised over
+  the halftime swap; a kill counts for the team the killer was in at the kill time
+  (strict, no fallback outside the spans). 0 kills of other teams in the 60 demos.
+  A POV without a team gets both teams and a selector in the UI.
+* *Weak points found (step A, 4,608 POV-team kills):* 4,029 own kills, 503 without
+  a shot (nearly all grenade / knife / explosive kills - no crosshair to judge),
+  69 more than 10° off, 5 victims not in the snapshots, 2 data gaps. Interpolation
+  vs nearest sample at -0.5 s: 0.00° (kill times lie on the 50 ms grid). Chest
+  point vs upper-body segment: median 0.00°, p90 0.34°, share ≤3° 54 → 56 %. POV:
+  player state vs the 8 ms archive view median 0.65°, p90 4.75° (the player state
+  is the server's value and is used). Real view height of the player state vs the
+  stance model: identical in 838 / 838 POV kills. Clip decrements add 3 POV kills
+  without a fire event. Before, own kills without -0.5 s data were still counted
+  (subsets differed per metric) and the opponents were in the table.
+* *Now:* every counted kill is excluded (not an aim kill, no shot, killer / victim
+  gap > 150 ms in [t-550 ms, t]) or evaluated; the metrics use evaluated own kills
+  only, so all have both errors. Error = 3D angle to the nearest point of the
+  chest → head segment, eye = feet + player-state view height or the stance table.
+* *Before → after (4,412 POV-team kills of the live match time):* own kills
+  3,900 → 3,905; kills without a verdict 447 → excluded 454 (all "not an aim kill",
+  0 without shot, 0 gaps); more than 10° off 65 → 53; shot source of the evaluated
+  kills 3,939 fire event, 19 bullet impact. Per player the share ≤3° changes by
+  -1 … +5 points and the median error by -0.6 … +0.1°; 292 opponent rows are gone.
+* *Spot check* (nosweat demo, map at t-500 ms): kill 16 at 1,247 units 3D 0.0° /
+  yaw 0.0°, kill 95 at 2,112 units 3.4° / 3.4°, kill 22 at 353 units 10.0° / yaw
+  6.4° (the killer lies prone and looks 2° down at a standing victim: the pitch
+  part adds the rest), kill 107 at 314 units 27.4° / yaw 22.9° (15° down vs about
+  27° needed). At long range 3D and yaw agree; at short range the height matters.
 
 ---
 
