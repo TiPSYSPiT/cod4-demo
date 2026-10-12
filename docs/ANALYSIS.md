@@ -236,7 +236,7 @@ either. The viewer reports this as "snapshots skipped" and continues.
 | Killer, victim | obituary event entity (`attackerEntityNum`, `otherEntityNum`); obituaries are broadcast to every client, so the feed is complete | reliable |
 | Weapon | obituary `eventParm` = weapon index into CS 2258 | reliable |
 | Headshot | `eventParm` = 0x80 + `MOD_HEAD_SHOT` | reliable |
-| Weapon of a headshot kill | **not in the obituary** (the server sends the means of death instead); taken from the killer's held weapon at that time if visible | **heuristic** |
+| Weapon of a headshot kill | **not in the obituary** (the server sends the means of death instead). 1. the killer's lethal head hit: `EV_BULLET_HIT` on flesh with `un1` bit 1 (lethal) and bit 0 (head), shooter = `otherEntityNum`, weapon = `weapon`, within −100 / +50 ms of the obituary (not sent to the victim, so not for the POV's own deaths) - reliable; 2. else the killer's held weapon at that time if visible - heuristic (≈); 3. else "Unknown weapon". A headshot is never shown as a weapon (`C4.weapons.killWeapon`). Measured on 67 demos: 1,013 headshot kills, 789 via the lethal hit (all identical to the held weapon), 224 via the held weapon, 0 unknown. `kills[].weaponSource` = obituary / impact / held | reliable / **heuristic** |
 | Knife | `MOD_MELEE` | reliable |
 | Suicide | attacker = victim (`MOD_SUICIDE`, or own grenade) | reliable |
 | Falling | `MOD_FALLING`, attacker = world (1022) | reliable |
@@ -301,7 +301,7 @@ Shoutcaster`), bomb picked up / dropped.
 | Grenade flight | missile entity: launch time, trajectory base + velocity (gravity 800); positions at each transmission | reliable (computed curve between transmitted points) |
 | Grenade detonation | event on the grenade entity with the grenade weapon: frag = `grenade_explode`, smoke = `custom_explode`, flash = `flashbang_explode` (measured 553 / 290 / 48 in 3 demos) | reliable |
 | Grenade type | missile `weapon` field (`frag_grenade_mp`, `smoke_grenade_mp`, `flash_grenade_mp`; `concussion_grenade_mp` not in any sample weapon list) | reliable |
-| **Grenade thrower** | **not in the demo.** The missile carries no owner, no event marks the throw on the thrower (only the POV's own `use_offhand`). Nearest player at launch was right in only ~60 % of the cases in the reference project's measurement | **not available** (heuristic only) |
+| **Grenade thrower** | **not in the demo.** The missile carries no owner (`otherEntityNum` / `attackerEntityNum` 0, `clientNum` 64), no event marks the throw on the thrower (only the POV's own `use_offhand`). Nearest player at launch was right in only ~60 % of the cases in the reference project's measurement. Estimate used for the player stats (`grenades[].thrower`, `throwerHeuristic`): only grenades seen from their launch (first sighting ≤ 150 ms after it), the nearest living player at the first sighting if within 96 units and ≥ 32 units nearer than the next one, else none. Checked against frag kills (the obituary names the thrower) in 34 demos: 564 right, 25 wrong (≈ 96 %), 17 without a thrower; 94 % of the launched grenades get one | **not available** (heuristic only, ≈) |
 | Smoke duration / size | **not in the demo** (client-side effect) → constant | n/a, constant |
 
 ### 3.9 POV tab: damage (`js/analysis/povDamage.js`)
@@ -380,6 +380,39 @@ indication, no proof.
   6.4° (the killer lies prone and looks 2° down at a standing victim: the pitch
   part adds the rest), kill 107 at 314 units 27.4° / yaw 22.9° (15° down vs about
   27° needed). At long range 3D and yaw agree; at short range the height matters.
+
+### 3.11 Bomb position (`events.js` bombTrack, map tab)
+
+Search & Destroy only (Sabotage: no sample demo, not enabled). Collected per
+snapshot (`collect.js` doBomb, one entry per change) and combined per round with
+the accepted bomb events (3.3) and the round result:
+
+| Source | Content | Seen by |
+|---|---|---|
+| compass objective `compass_waypoint_bomb` (player state) | `entNum` = carrier client, or 1023 + origin = lying (start position / dropped) | attacking side only (also while the POV follows a team mate) |
+| bomb model `prop_suitcase_bomb` (entity, config string 830 + model index) | position while lying on the ground or planted; not sent while carried | both sides |
+| objective `compass_waypoint_defend_a/b` (attack) / `defuse_a/b` (defence) | position of the planted bomb and the site | both sides |
+| `MP_EXPLOSIVES_PLANTED/DEFUSED_BY` | plant / defuse time (the state changes exactly then) | both sides |
+| round won by "Bomb exploded" | explosion at the round end | both sides |
+| `MP_EXPLOSIVES_RECOVERED/DROPPED_BY` | pickup / drop with the name | own team only (not used: the objective has the same with positions) |
+
+States: `base` (start position, not yet moved), `carried` (carrier), `dropped`,
+`planted` (site A / B), `defused`, `exploded`, `unknown` (last known position;
+a defending POV while the bomb is carried), `none`. Every round starts from
+scratch at its restart; the map tab looks the state up by time (correct after
+every seek, at every speed).
+
+Checked on all 67 sample demos (1,348 rounds): attacking POV 662 of 662 rounds
+complete; defending POV 683 rounds partly known (start position, drops seen,
+plant / defuse / explosion), 3 complete; no round without any information.
+In the browser check (nosweat_backlot, deox_crossfire, deox_backlot) drops lie
+0-14 units from the carrier's death position (kill feed), every pickup after a
+drop is by a team mate of the previous carrier, every planted state starts at
+the time of the plant message (Δ 0 ms) and lies at the site of the objective;
+1,100 random seeks and 5,609 frames of 4× playback drew exactly the state of
+the track. The bomb model is not always sent while it lies (nosweat round 9:
+gone 7.5 s before the defuse) - the planted state comes from the plant message
+and the site objective, which both sides receive. Spectator POV: no sample demo.
 
 ---
 
@@ -595,7 +628,8 @@ map falls back to a grid fitted to the bounding box of all positions.
 * Clan tag / team name from name prefixes.
 * Record date = map start time.
 * Chat sender (name matching).
-* Weapon of headshot kills (killer's held weapon).
+* Weapon of headshot kills without a seen lethal hit (killer's held weapon).
+* Grenade thrower for the player stats (nearest player at launch, ≈ 96 % right on frag kills).
 * Round reason when no Promod status line is present.
 * Own kill/death count used only as scoreboard fallback.
 

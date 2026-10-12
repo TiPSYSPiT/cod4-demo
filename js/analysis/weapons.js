@@ -173,6 +173,18 @@ C4.define('weapons', function (C4) {
     if (!out.weapon && k.suicide) out.weapon = iconOf(MOD_ICON.MOD_SUICIDE, 'Suicide');
     return out;
   }
+  /**
+   * THE weapon of a kill for weapon lists (scoreboard popups, POV tab): the internal weapon name, or a
+   * means of death that stands for a weapon (knife MOD_MELEE, falling ...), or null = unknown.
+   * Never MOD_HEAD_SHOT: a headshot is no weapon (the kill keeps its real weapon, build.js resolves
+   * it; the headshot is k.headshot).
+   */
+  function killWeapon(k) {
+    if (k.weaponName && k.weaponName !== 'none') return k.weaponName;
+    if (k.mod && k.mod !== 'MOD_HEAD_SHOT') return k.mod;
+    return null;
+  }
+
   /** killfeed text of a kill (shown when there is no weapon icon) */
   function killText(k) {
     const lab = k.weaponLabel || '';
@@ -183,6 +195,6 @@ C4.define('weapons', function (C4) {
   }
 
   C4.weapons = { label, grenadeKind, isFragNade, isFragGrenadeKill, isBombWeapon, isDefuseKitWeapon, isCarWeapon,
-    isNonMissileWeapon, isBombKill, isCarKill, MOD_LABELS: MOD,
+    isNonMissileWeapon, isBombKill, isCarKill, killWeapon, MOD_LABELS: MOD,
     ICONS, ICON_DIR, WEAPON_ICON, MOD_ICON, baseWeapon, weaponIcon, killIcons, killText };
 });

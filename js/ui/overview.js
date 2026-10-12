@@ -3,11 +3,13 @@
   'use strict';
   const { el, clear, coloured, fmtTime, na, approx } = C4.ui;
 
+  /** one compact item: "LABEL value · sub" on one line, cut with an ellipsis; the full text is the tooltip */
   function card(label, value, sub, cls) {
-    return el('div', { class: 'ov-card ' + (cls || '') },
-      el('div', { class: 'ov-label' }, label),
-      el('div', { class: 'ov-value' }, value),
-      sub ? el('div', { class: 'ov-sub' }, sub) : null);
+    const node = el('div', { class: 'ov-item ' + (cls || '') },
+      el('span', { class: 'ov-label' }, label),
+      el('span', { class: 'ov-value' }, value, sub ? el('span', { class: 'ov-sub' }, ' · ', sub) : null));
+    node.title = label + ': ' + node.querySelector('.ov-value').textContent.replace(/\s+/g, ' ').trim();
+    return node;
   }
 
   function render(root, app) {
@@ -19,7 +21,7 @@
     const played = d.rounds.filter(r => r.kind === 'round');
     let scoreCard;
     if (played.length) {
-      const teamLabel = (t, cls) => el('div', { class: 'score-team ' + cls, title: t.nameHeuristic ? '' : 'no common clan tag found' },
+      const teamLabel = (t, cls) => el('div', { class: 'score-team ' + cls, title: t.name + (t.nameHeuristic ? '' : ' (no common clan tag found)') },
         t.name, t.nameHeuristic ? approx('team name from the common name prefix of the players') : null);
       const halves = [];
       const hi = d.halfInfo;
@@ -38,6 +40,8 @@
           el('div', { class: 'score-num' }, el('span', { class: 'team-a' }, A.wins), el('span', { class: 'sep' }, ':'), el('span', { class: 'team-b' }, B.wins)),
           teamLabel(B, 'b')),
         el('div', { class: 'score-halves' }, halves.map((h, i) => [i ? '  ·  ' : '', h]), initial ? '  ·  recording started at ' + d.initialScore.A + ':' + d.initialScore.B : ''));
+      const sh = scoreCard.querySelector('.score-halves');
+      sh.title = sh.textContent;
     } else {
       scoreCard = el('div', { class: 'ov-card ov-score' }, el('div', { class: 'ov-label' }, 'Final score'),
         el('div', { class: 'ov-value' }, na(m.isSearchAndDestroy ? 'no complete round in the demo' : 'no rounds detected - round logic is built for Search & Destroy')));
@@ -50,8 +54,9 @@
       ? [m.recordDate.text, ' ', m.recordDate.fileDate ? el('span', { class: 'dim' }, '(file date)') : approx(m.recordDate.source + ' - the demo stores no recording date')]
       : na('the demo stores no date and the file date is unknown');
 
-    root.append(
-      scoreCard,
+    const items = el('div', { class: 'ov-items' });
+    root.append(scoreCard, items);
+    items.append(
       card('Map', m.mapDisplay || na('no map name'), m.map),
       card('Mode', m.gametypeDisplay || na('no game type'), m.gametype),
       card('Ruleset', ruleset, m.promodVersion || null),

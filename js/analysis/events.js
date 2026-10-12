@@ -39,6 +39,81 @@ C4.define('events', function (C4) {
     }
     return out;
   }
+  /**
+   * THE bomb position over time (Search & Destroy; docs/ANALYSIS.md 3.11) - DemoData.bombTrack.
+   * Sources, in this order:
+   *   1. the accepted plant / defuse events of the round (bombEvents + the S&D rule of rounds.js)
+   *      and the explosion (round won by "Bomb exploded", at the round end)
+   *   2. the compass objective of the bomb (player state): carrier or position - attacking side only
+   *   3. the bomb model (entity) lying on the ground or planted - both sides, while it is sent
+   *   4. the objective at the planted bomb (defend / defuse, both sides): plant position and site
+   * Without 2 and 3 (defending POV while the bomb is carried) the state is 'unknown' - with the last
+   * known position, never a guessed one. Every round starts from scratch (segStart).
+   * obs: collector bombObs with relative times; rounds: analyzeRounds().rounds.
+   * -> [{t, state, x, y, z, carrier, site, source}], each entry valid until the next one;
+   *    state: base | dropped | carried | planted | defused | exploded | unknown | none
+   */
+  function bombTrack(obs, rounds, isSD) {
+    if (!isSD) return [];
+    const out = [];
+    const push = e => {
+      const p = out[out.length - 1];
+      if (p && p.t === e.t) out.pop();
+      const q = out[out.length - 1];
+      if (q && q.state === e.state && q.carrier === e.carrier && q.x === e.x && q.y === e.y && q.site === e.site && q.source === e.source) return;
+      out.push(e);
+    };
+    const none = t => ({ t, state: 'none', x: null, y: null, z: null, carrier: null, site: null, source: null });
+    let oi = 0;
+    for (const r of rounds) {
+      if (r.kind !== 'round') continue;
+      const a = r.segStart, b = r.segEnd;
+      const ev = action => { const e = (r.bomb || []).find(x => x.action === action); return e ? e.t : null; };
+      const plantT = ev('planted'), defuseT = ev('defused');
+      const explodeT = r.reason === 'Bomb exploded' && r.end != null ? r.end : null;
+      // observations: the one valid at the round start, then every change in the round
+      while (oi < obs.length && obs[oi].t <= a) oi++;
+      const first = oi > 0 ? oi - 1 : oi;
+      let last = first;
+      while (last < obs.length && obs[last].t < b) last++;
+      const roundObs = obs.slice(first, last);
+      const times = new Set([a]);
+      for (const o of roundObs) if (o.t > a) times.add(o.t);
+      for (const x of [plantT, defuseT, explodeT]) if (x != null && x >= a && x < b) times.add(x);
+      let left = false, known = null, plantPos = null;
+      let k = 0;
+      for (const t of [...times].sort((x, y) => x - y)) {
+        while (k + 1 < roundObs.length && roundObs[k + 1].t <= t) k++;
+        const o = roundObs.length && roundObs[k].t <= t ? roundObs[k] : null;
+        let e;
+        if (plantT != null && t >= plantT) {
+          if (o && o.site && o.t >= plantT - 1000) plantPos = { x: o.site[1], y: o.site[2], z: o.site[3], site: o.site[0], source: 'objective' };
+          else if (!plantPos && o && o.ent) plantPos = { x: o.ent[0], y: o.ent[1], z: o.ent[2], site: null, source: 'model' };
+          const p = plantPos || (known ? { x: known.x, y: known.y, z: known.z, site: null, source: 'last known' } : null);
+          const state = explodeT != null && t >= explodeT ? 'exploded' : defuseT != null && t >= defuseT ? 'defused' : 'planted';
+          e = p ? { t, state, x: p.x, y: p.y, z: p.z, carrier: null, site: p.site, source: p.source }
+            : { t, state, x: null, y: null, z: null, carrier: null, site: null, source: 'message' };
+        } else if (o && o.obj && o.obj[0] >= 0) {
+          left = true;
+          e = { t, state: 'carried', x: null, y: null, z: null, carrier: o.obj[0], site: null, source: 'objective' };
+        } else if (o && (o.obj || o.ent)) {
+          const p = o.obj ? o.obj.slice(1) : o.ent;
+          if (known && known.state !== 'unknown' && known.state !== 'carried' && Math.hypot(p[0] - known.x, p[1] - known.y) > 48) left = true;
+          e = { t, state: left ? 'dropped' : 'base', x: p[0], y: p[1], z: p[2], carrier: null, site: null, source: o.obj ? 'objective' : 'model' };
+        } else if (known) {
+          left = true;
+          e = { t, state: 'unknown', x: known.x, y: known.y, z: known.z, carrier: known.carrier, site: null, source: null };
+        } else {
+          e = none(t);
+        }
+        if (e.state !== 'none' && e.state !== 'unknown') known = e;
+        push(e);
+      }
+      push(none(b));
+    }
+    return out;
+  }
+
   const BOMB_TYPE = { planted: 'bomb_planted', defused: 'bomb_defused', recovered: 'bomb_pickup', dropped: 'bomb_drop' };
   const BOMB_VERB = { planted: 'planted the bomb', defused: 'defused the bomb', recovered: 'picked up the bomb', dropped: 'dropped the bomb' };
 
@@ -246,5 +321,5 @@ C4.define('events', function (C4) {
     return out;
   }
 
-  C4.events = { EVENT_TYPES, nameResolver, bombEvents, buildEvents, buildChat, buildConsole, roundAt };
+  C4.events = { EVENT_TYPES, nameResolver, bombEvents, bombTrack, buildEvents, buildChat, buildConsole, roundAt };
 });

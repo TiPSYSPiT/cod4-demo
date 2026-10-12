@@ -32,7 +32,17 @@ canvas are standard); it was not tested.
 Final score (rounds won in S&D, per half; "recording started at x:y" when the
 demo begins mid-match), map (raw and display name), mode, ruleset (Promod's
 HUD header, e.g. *Knockout Knife MR12 OT3*, plus the mod folder), protocol,
-server name with colour codes, demo POV, length, record date.
+server name with colour codes, demo POV, length, record date - compact above
+the tabs (the score block and two rows of four items); long values are cut with
+an ellipsis, the full value is the tooltip.
+
+**Team colours:** the POV's team is blue, the other team red (a spectator POV:
+the team shown first in the scoreboard is blue) - in every tab (scoreboard, kill
+lists, rounds, map, timeline, heatmaps). The colour belongs to the team, not to
+the side, so it stays after the halftime swap. Defined once in `styles.css`
+(`--team-blue`, `--team-red`; `main.js` points `--team-a` / `--team-b` at them
+per demo, the map reads them with `app.teamColor`). The own-kill metrics keep
+their own scheme (all players grey, the POV highlighted).
 
 ### Game phases
 
@@ -164,23 +174,107 @@ picture - see the limits above.
   time (kills from 0.9 s after the restart), so they start at the restart.
 * **Reset per round:** trails, grenade paths, detonation circles, death markers
   and last known positions are only drawn for the round containing the current
-  time - when playing, seeking and rewinding. Heatmaps: current round only in
-  the round view, cumulative in *Whole match* (without countdown phases).
+  time - when playing, seeking and rewinding. The heatmap covers the range
+  chosen (the round, or *Whole match*), phase "live" only.
 * **Keys:** Space = play / pause, ← / → = ±5 s.
-* **Modes:** *Recent trail* (last 5 s, fading, broken at data gaps > 0.5 s,
-  jumps and new rounds), *Heatmap player* (selected players), *Heatmap team*
-  (two colours) - accumulated over the range up to the current time.
-* **Players:** list grouped by team with All / None / team toggle; fixed colour
-  per player in the team's hue; names on / off; view direction cone; ring =
-  firing; X = death position (5 s); "Last known position" draws players the
-  server stopped sending as hollow dots (same life only).
+* **Trails:** last 5 s, fading, broken at data gaps > 0.5 s, jumps and new
+  rounds.
+* **Map tools** (top right of the map, under the clock): zoom + / − (around
+  the centre) and **Heatmap** - the button opens a floating options panel over
+  the right of the map (closes with the button, Escape or a click outside; the
+  button is highlighted while a heatmap is shown). All settings are stored in
+  localStorage (team and players by name).
+  * *Heatmap:* Off, Positions (living players, sampled every 100 ms from the
+    live start of each round, so snapshot rate and data gaps do not weigh the
+    result; no dead players, no spectators), Kills (killer spots: the killer's
+    position at the kill; no team kills / suicides - the scoreboard rule),
+    Deaths (the victim's position), Grenade landings (detonations of frag,
+    flash, stun), Smokes (smoke detonations), Shots fired (the shooter's
+    position at every shot seen).
+  * *Team*, *Side* (attacking / defending in that round - sides swap at
+    halftime), *Player* (dropdown with checkboxes, grouped by team) filter by the
+    causer: killer, victim (deaths), thrower, shooter. Grenades without a known
+    thrower (the thrower is estimated, ≈) are only in the unfiltered view.
+  * *Look:* Radius (world units - the spots scale with zoom and map),
+    Intensity (gain), *Keep players visible* (off: only the heatmap on the map).
+    *Up to current time* / *Full range* (the whole round or match chosen).
+  * Legend: colour scale low → high and n (points drawn); events without a
+    known position are counted and named, not drawn. Tooltip: based on the data
+    visible in this POV demo - other players only while the POV saw them.
+  * Rendering: counts on a world grid (512 cells along the longer side),
+    blurred with a Gaussian of the radius (three box blurs), normalised to the
+    maximum of the filtered data (square root, times the intensity), coloured
+    blue → cyan → green → yellow → red with a transparent background; drawn
+    with the map's matrix, so it lies exactly on the map in every rotation and
+    zoom. The points of a category are computed once; "Up to current time"
+    adds them incrementally (while playing at most 4 updates per second).
+    A video export draws the heatmap of the view (not the panel).
+* **Rotation:** the map turns in 90° steps (⟲ / ⟳ in the toolbar, keys Q / E),
+  default 90° to the left, stored per map (localStorage). One transform in the
+  renderer (world → screen matrix with the rotation) moves the image, players,
+  trails, view directions, grenades, the bomb, death markers and heatmaps
+  together; labels stay upright. Turning keeps zoom, pan and the playback.
+* **Round table** (right, above the event list; × collapses it, *Round table*
+  shows it again): round number and status (in progress, won by … (reason),
+  strat time, halftime …) at the playback time - in *Whole match* the round of
+  the current time. One card per team (scoreboard order): team colour, name,
+  rounds won so far, side (ATTACK / DEFENCE), players alive. Per player: the
+  weapon in hand (readable name, "-" when dead), K and D up to the current time
+  (the scoreboard rule, phase "live" only, `C4.build.kdRule`), POV badge; dead
+  players of the round greyed and struck through. Click a row = show / hide the
+  player on the map (hidden rows dimmed), click a team name = the whole team,
+  *All* / *None*; hover a row = the player is highlighted on the map (all
+  players of a team have the same colour).
+* **Player stats** (bar chart icon in each row of the round table): a popup next
+  to the icon (always inside the window; one at a time - another icon switches
+  the player; × / Escape / click outside closes it; the icon of the open popup
+  stays highlighted). *Match* = the whole match, phase "live" only (the
+  scoreboard rule; a difference to the game's scoreboard is marked), *This round* =
+  the round at the playback time. Kills, deaths, K/D, headshots (count and %),
+  frags / flashes / smokes thrown (≈, see grenades), shots fired (seen: only fire
+  events in the demo - every shot of the POV and of the player it follows,
+  others only while in the POV's snapshots), kills per weapon (killfeed icon,
+  sorted; the sum is the kills).
+* **Players on the map:** one colour per team; names on / off; view direction
+  cone; ring = firing; white ring = the player the POV follows; X = death
+  position (5 s); "Last known position" draws players the server stopped
+  sending as hollow dots (same life only).
 * **Grenades:** flight path (from the transmitted trajectory) and detonation:
   smoke grey and large, frag orange, flash yellow, stun purple. All grenades
-  are shown - the thrower is not in the demo. Smoke: radius 220 units, visible
+  are shown - the thrower is not in the demo. For the player stats a thrower
+  is estimated (≈, `grenades[].thrower` / `throwerHeuristic`): only for a grenade
+  seen from its launch (≤ 150 ms), the nearest living player within 96 units and
+  at least 32 units nearer than the next one; other grenades stay unassigned. Smoke: radius 220 units, visible
   for exactly 10 s from the detonation with a 1 s fade-out (`SMOKE_RADIUS`,
   `SMOKE_DURATION_MS`, `SMOKE_FADE_MS` in `js/ui/map/config.js`), computed from
   demo time, so it is correct at every speed and after seeking.
+* **Bomb** (Search & Destroy, `DemoData.bombTrack`): strong orange diamond with
+  a light border (`BOMB` in `js/ui/map/config.js`) - lying at the start position
+  or where it was dropped; carried: a small round dot (smaller than a player
+  dot) next to the carrier with an orange ring (also when the carrier is not
+  shown), pulsing when planted, green when defused, a burst for 3 s when it
+  exploded. Tooltip: state, carrier, site and the source of the position. A
+  defending POV does not see the carrier: the last known position is drawn
+  hollow with "?" ("Bomb position unknown (not visible to POV)"). Details:
+  `docs/ANALYSIS.md`, section 3.11.
 * **Zoom** with the mouse wheel, **pan** by dragging, double-click resets.
+* **Export** (button in the playback controls): the current view as MP4 or GIF -
+  exactly what the map shows (rotation, zoom / pan, players shown, mode,
+  grenades, bomb), without the controls or popups. Range: *Whole round* (the
+  round of the current position from its live start, without the countdown) or
+  *Custom range* (mm:ss in the clock of the view, *Set from slider*); the range
+  is marked green on the timeline. MP4 720p / 1080p at 30 / 60 fps, GIF 360p /
+  480p at 10 / 15 fps, speed 0.5× - 4×, optional overlay (round, round time,
+  score, kill feed of the last 5 s). Rendered frame by frame from the demo time
+  (independent of the playback and the computer's speed; countdowns skipped as
+  in the playback), progress in %, *Cancel*, the page stays usable. The dialog
+  shows the size estimate first and warns for a GIF > 30 s or > 50 MB.
+  MP4: WebCodecs `VideoEncoder` (H.264) + an own muxer (`mp4mux.js`); without
+  H.264 encoding the browser records WebM with `MediaRecorder` instead, in real
+  time (said in the dialog). GIF: own encoder (`gifenc.js`, in a worker: a
+  median-cut palette per frame, only the changed rectangle, unchanged pixels
+  transparent). File name: the export name + round + range, e.g.
+  `…_crossfire_R9.mp4`, `…_crossfire_R9_0130-0215.gif` (range in round time).
 * **Event list** on the right: kills and bomb events of the range; click jumps
   2 s before, the current event is highlighted and followed.
 
@@ -211,7 +305,7 @@ without kills). Spectators are not included.
 ### Export JSON
 
 Downloads `DemoData` (everything the UI shows), including the section
-`ownKills` (own-kill metrics: `rules`, `reasons`, `povTeam`, `sight` (how "unseen" was decided), `teams.<A|B>` with `all`, `players` - POV first - `shotSources` and `kills` per kill with `excluded` / `evaluated` / `own`, `shotSource`, `errShot`, `errEarly`) and
+`bombTrack` (bomb state over time: `t`, `state`, position, `carrier`, `site`, `source`), `weaponLists` (weapon index -> name over time, for the weapon a player holds), `ownKills` (own-kill metrics: `rules`, `reasons`, `povTeam`, `sight` (how "unseen" was decided), `teams.<A|B>` with `all`, `players` - POV first - `shotSources` and `kills` per kill with `excluded` / `evaluated` / `own`, `shotSource`, `errShot`, `errEarly`) and
 `povDamage` (POV tab: `overview`, `rounds`, `opponents`, `weapons`,
 `timeline` with the health curve and the damage / hit / kill / death events).
 Tick *with positions* to include the per-player position arrays (~5 MB for a
@@ -232,12 +326,18 @@ detail in [`docs/ANALYSIS.md`](docs/ANALYSIS.md). In short:
 * **Other players only while the POV sees them.** Positions have gaps; trails
   are not drawn across them. Obituaries are broadcast, so the kill feed is
   complete.
-* **Grenade thrower: not in the demo** - grenades are shown for everyone.
+* **Grenade thrower: not in the demo** - grenades are shown for everyone; the
+  thrown-grenade counts of the player stats are estimated (≈) and leave
+  grenades without a clear thrower out (their number is in the tooltip).
 * **Smoke size and duration** are display constants (`js/ui/map/config.js`).
 * **Per-player ready status: not in the demo** - shown are the POV's own
   status, anonymous "a player is ready (waiting on N)" steps and "All Players
   are Ready!".
-* **Headshot kills** carry no weapon; the killer's held weapon is shown with ≈.
+* **Headshot kills** carry no weapon in the obituary (`MOD_HEAD_SHOT` instead).
+  The weapon comes from the killer's lethal head hit (`EV_BULLET_HIT`, the shooter
+  and the weapon are in it) when the POV saw it, else from the killer's held
+  weapon (≈), else "Unknown weapon" - a headshot is never a weapon
+  (`C4.weapons.killWeapon`). `kills[].weaponSource`: obituary / impact / held.
 * **Clan tags / team names** come from common name prefixes (≈).
 * **Record date** is the map start time on the server (≈), or the file date.
 * **Round reason** without a Promod status line (e.g. `fps_promod_285`
@@ -291,7 +391,8 @@ source/
     common/             text (colour codes, tokenizer), constants, servercmd, names
     analysis/           collect (one pass), teams, rounds, events, weapons, povDamage, ownKills, build (DemoData), worker
     ui/                 dom helpers, overview and one file per tab
-    ui/map/             config (radii, durations), renderer, heatmap, playback, mapTab
+    ui/map/             config (radii, durations), renderer, heatmap (+ heatPanel), playback, statsPopup,
+                        exportVideo (+ mp4mux, gifenc: own MP4 muxer and GIF encoder), mapTab
     main.js             file loading, worker, tabs, export
   assets/maps/          map images (mp_*.png, the in-game compass maps) + maps.js (registry:
                         image, display name, calibration, aliases)

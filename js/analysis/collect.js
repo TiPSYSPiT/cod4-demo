@@ -11,7 +11,13 @@ C4.define('collect', function (C4) {
   // entityState word offsets (see python/cod4demo/states.py)
   const E_TYPE = 1, E_EFLAGS = 2, E_POS_TRTYPE = 3, E_POS_TRTIME = 4, E_POS = 6, E_VEL = 9,
     E_APOS = 15, E_U0 = 21, E_OTHER = 29, E_ATTACKER = 30, E_CLIENTNUM = 35, E_EVENTPARM = 39,
-    E_EVENTSEQ = 40, E_EVENTS = 41, E_EVENTPARMS = 45, E_WEAPON = 49, E_SURFTYPE = 33, E_UN1 = 53;
+    E_EVENTSEQ = 40, E_EVENTS = 41, E_EVENTPARMS = 45, E_WEAPON = 49, E_SURFTYPE = 33, E_UN1 = 53,
+    E_INDEX = 34;                       // model index (config string MODELS + index)
+  // the bomb (Search & Destroy, docs/ANALYSIS.md 3.11): the script model of the bomb lying on the
+  // ground / planted, and the compass objectives of the player state
+  const BOMB_MODEL_RE = /^prop_suitcase_bomb/;
+  const BOMB_OBJ_ICON = 'compass_waypoint_bomb';
+  const SITE_OBJ_RE = /^compass_waypoint_(?:defend|defuse)_([ab])$/;
   const SURF_FLESH = 7;
   const IMPACT_VICTIM_DIST = 80;    // bullet impact -> nearest player within this distance = victim (≈)
   const EXPLOSIONS = new Set([K.EV.GRENADE_EXPLODE, K.EV.FLASHBANG_EXPLODE, K.EV.CUSTOM_EXPLODE,
@@ -72,15 +78,20 @@ C4.define('collect', function (C4) {
       hitsTaken: [],                // EV_BULLET_HIT_CLIENT_*: {t, victim, attacker, weapon}
       // EV_BULLET_HIT on flesh shot by the POV: {t, weapon, headshot, lethal, victim (nearest player) | null, dist}
       povImpacts: [],
+      // lethal flesh impacts of every shooter: {t, shooter, weapon, head} - the weapon of headshot kills
+      lethalImpacts: [],
       // per client: times of his shots by source - fire events (entity / player state ring), bullet
       // impacts he caused, clip decrements of the player state (followed client only) - and of his
       // sound events (footsteps, jumps, landings, shots, reload ...); only while he is in the snapshots
       shots: new Map(), impactShots: new Map(), ammoShots: new Map(), sounds: new Map(),
       // exact view height of the followed client (player state viewHeightCurrent): client -> {t: [], vh: []}
       psEye: new Map(),
+      // the bomb as the POV sees it: change points {t, obj, site, ent} (doBomb)
+      bombObs: [],
       firstArchive: null
     };
     let prevClip = null, prevClipClient = -1;
+    let bombEntNow = null;          // bomb model of the current snapshot (doEntities -> doBomb)
     const addTime = (map, cl, t) => { let a = map.get(cl); if (!a) map.set(cl, a = []); if (a[a.length - 1] !== t) a.push(t); };
     const playerEvent = (cl, ev, t) => {
       if (cl == null || cl >= 64) return;
@@ -150,8 +161,31 @@ C4.define('collect', function (C4) {
         doClients(snap, decoder, t);
         doPlayerState(snap, t);
         doEntities(snap, decoder, t);
+        doBomb(snap, t);
       }
     };
+
+    /** what the POV sees of the bomb in this snapshot - one entry per change (c.bombObs):
+     *  obj  = compass objective of the bomb (attacking side only): [carrier client or -1, x, y, z]
+     *  site = objective at the planted bomb (both sides): [site letter, x, y, z]
+     *  ent  = the bomb model lying on the ground / planted (both sides, while sent): [x, y, z] */
+    let lastBombKey = null;
+    function doBomb(snap, t) {
+      let obj = null, site = null;
+      for (const o of snap.ps.objectives) {
+        if (o[0] !== 1) continue;                               // active objectives only
+        const icon = c.cs.get(K.CS.SERVER_MATERIALS + o[4]);
+        if (!icon) continue;
+        const pos = [R(u2f(o[1])), R(u2f(o[2])), R(u2f(o[3]))];
+        if (icon === BOMB_OBJ_ICON) obj = [o[5] < 64 ? o[5] : -1, ...pos];
+        else { const m = SITE_OBJ_RE.exec(icon); if (m) site = [m[1].toUpperCase(), ...pos]; }
+      }
+      const ent = bombEntNow;
+      const key = JSON.stringify([obj, site, ent]);
+      if (key === lastBombKey) return;
+      lastBombKey = key;
+      c.bombObs.push({ t, obj, site, ent });
+    }
 
     function doClients(snap, decoder, t) {
       const present = new Set();
@@ -240,11 +274,15 @@ C4.define('collect', function (C4) {
     function doEntities(snap, decoder, t) {
       const changed = new Set(snap.changedEntities);
       const cur = new Map();
+      bombEntNow = null;
       for (const st of decoder.entitiesOf(snap)) {
         const num = st[0];
         cur.set(num, st);
         const etype = st[E_TYPE];
         const prev = prevEntities.get(num);
+        if (etype !== K.ET.PLAYER && etype < K.ET.EVENTS && BOMB_MODEL_RE.test(c.cs.get(K.CS.MODELS + st[E_INDEX]) || '')) {
+          bombEntNow = [R(u2f(st[E_POS])), R(u2f(st[E_POS + 1])), R(u2f(st[E_POS + 2]))];
+        }
         if (etype >= K.ET.EVENTS) {
           // temporary event entity: played once when it appears (or is reused)
           if (!prev || prev[E_TYPE] !== etype || !sameState(prev, st)) onEventEntity(t, num, st, etype - K.ET.EVENTS);
@@ -314,6 +352,9 @@ C4.define('collect', function (C4) {
       } else if (ev === K.EV.BULLET_HIT && st[E_SURFTYPE] === SURF_FLESH && st[E_OTHER] < 64) {
         // every bullet impact on a player proves a shot of the shooter (otherEntityNum)
         addTime(c.impactShots, st[E_OTHER], t);
+        // a lethal impact names the weapon of the kill exactly (un1 bit 0 = head, bit 1 = lethal) - the
+        // obituary of a headshot names no weapon (build.js). Not sent to the victim.
+        if (st[E_UN1] & 2) c.lethalImpacts.push({ t, shooter: st[E_OTHER], weapon: st[E_WEAPON], head: !!(st[E_UN1] & 1) });
       }
       if (ev === K.EV.BULLET_HIT && st[E_SURFTYPE] === SURF_FLESH && c.gamestate && st[E_OTHER] === c.gamestate.clientNum) {
         // a bullet of the POV hit a player (MP damage code, sent to everyone but the victim):

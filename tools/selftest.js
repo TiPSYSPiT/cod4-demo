@@ -153,6 +153,27 @@
         }
       }
     }
+    // 6. bomb track (DemoData.bombTrack, S&D): sorted, valid states, a carrier for "carried", a position
+    //    for lying / planted, planted only from the accepted plant event of its round on, one plant per round
+    const BT = d.bombTrack || [];
+    const STATES = ['base', 'dropped', 'carried', 'planted', 'defused', 'exploded', 'unknown', 'none'];
+    for (let i = 0; i < BT.length; i++) {
+      const e = BT[i];
+      if (i && e.t < BT[i - 1].t) { warn.push('bomb track not sorted'); break; }
+      if (!STATES.includes(e.state)) { warn.push('bomb track: state ' + e.state); break; }
+      if (e.state === 'carried' && !(Number.isInteger(e.carrier) && e.carrier >= 0 && e.carrier < 64)) { warn.push('bomb track: carried without carrier at ' + e.t); break; }
+      if ((e.state === 'base' || e.state === 'dropped') && e.x == null) { warn.push('bomb track: ' + e.state + ' without position at ' + e.t); break; }
+      if (e.state === 'planted') {
+        const r = d.rounds.find(x => e.t >= x.segStart && e.t < x.segEnd);
+        const p = r && (r.bomb || []).find(b => b.action === 'planted');
+        if (!p || e.t < p.t) { warn.push('bomb track: planted without / before the plant event at ' + e.t); break; }
+      }
+    }
+    for (const r of d.rounds) {
+      // the plant position may be refined (bomb model -> objective) but stays at one spot
+      const plants = BT.filter(e => e.t >= r.segStart && e.t < r.segEnd && e.state === 'planted' && e.x != null);
+      if (plants.some(e => Math.hypot(e.x - plants[0].x, e.y - plants[0].y) > 100)) warn.push('bomb track: round ' + r.label + ' planted at two positions');
+    }
     return warn;
   }
 

@@ -42,6 +42,18 @@
       a.click();
       setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
     },
+    /** team colour (canvas drawing): the POV's team blue, the other red - see applyTeamColors */
+    teamColor(key) {
+      if (key !== 'A' && key !== 'B') return cssVar('--spec');
+      return cssVar(key === state.blueTeam ? '--team-blue' : '--team-red');
+    },
+    /** the same as [r, g, b] (heatmaps) */
+    teamRgb(key) {
+      const m = /^#?([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i.exec(app.teamColor(key));
+      return m ? [parseInt(m[1], 16), parseInt(m[2], 16), parseInt(m[3], 16)] : [154, 164, 178];
+    },
+    /** the blue team key (the POV's team, or the team shown first for a spectator POV) */
+    get blueTeam() { return state.blueTeam; },
     /** switch to the map tab and jump to 2 s before t */
     gotoMap(t, roundIndex) {
       showTab('map');
@@ -49,6 +61,24 @@
     }
   };
   C4.app = app;
+
+  const cssVar = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+
+  /** team colours of this demo (styles.css): the POV's team is blue, the other red; a spectator POV:
+   * the team shown first (scoreboard order) is blue. Bound to the team key (A / B), so the colour
+   * stays with the team over the halftime side swap. */
+  function applyTeamColors(data) {
+    const pov = data.players.find(p => p.isPov);
+    const shown = data.teams.filter(t => data.players.some(p => p.team === t.key));
+    const blue = pov && (pov.team === 'A' || pov.team === 'B') ? pov.team : ((shown[0] || data.teams[0] || {}).key || 'B');
+    state.blueTeam = blue;
+    const root = document.documentElement.style;
+    for (const key of ['A', 'B']) {
+      const c = key === blue ? 'blue' : 'red', k = key.toLowerCase();
+      root.setProperty('--team-' + k, 'var(--team-' + c + ')');
+      root.setProperty('--team-' + k + '-soft', 'var(--team-' + c + '-soft)');
+    }
+  }
 
   /* ---- loading ---- */
   function onFiles(files) {
@@ -148,6 +178,7 @@
   /* ---- showing a demo ---- */
   function show(data) {
     state.data = data;
+    applyTeamColors(data);
     state.rendered.clear();
     $('progress').hidden = true;
     $('dropzone').hidden = false;

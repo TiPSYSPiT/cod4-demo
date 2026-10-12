@@ -143,7 +143,7 @@ C4.define('povDamage', function (C4) {
         // the obituary of a headshot names no weapon: the bullet hit event does (else the killer's held weapon, ≈)
         if (hit && death.headshot) weapon = hit.weapon;
         else if (death.weaponName && death.weaponName !== 'none') { weapon = death.weaponName; weaponApprox = !!death.weaponHeuristic; }
-        else weapon = death.mod || null;
+        else weapon = W.killWeapon(death);
         how = death.falling ? 'fall' : death.suicide ? 'suicide' : death.world ? 'world' : death.entityAttacker ? 'entity' : 'kill';
         source = death.suicide || death.falling ? 'self' : death.world || death.entityAttacker ? 'other' : death.teamkill ? 'team' : relation(attacker, t);
       } else if (hit) {
@@ -260,7 +260,7 @@ C4.define('povDamage', function (C4) {
         if (!credit) continue;
         b.kills++;
         if (k.headshot) b.headshotKills++;
-        const wr = weaponRow(wDealt, k.weaponName && k.weaponName !== 'none' ? k.weaponName : k.mod, !!k.weaponHeuristic);
+        const wr = weaponRow(wDealt, W.killWeapon(k), !!k.weaponHeuristic);
         wr.kills++;
         if (k.headshot) wr.headshotKills++;
       }

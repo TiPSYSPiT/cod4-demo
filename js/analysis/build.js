@@ -205,13 +205,19 @@ C4.define('build', function (C4) {
       const aSide = teams.rawSideAt(k.attacker, t), vSide = teams.rawSideAt(k.victim, t);
       const teamkill = !suicide && !world && !entityAttacker && (aSide === 1 || aSide === 2) && aSide === vSide;
       let wName = weapon != null ? weaponName(weapon, t) : null;
-      let weaponHeuristic = false;
-      if (mod === 'MOD_HEAD_SHOT' && k.attackerWeapon != null) {
-        wName = weaponName(k.attackerWeapon, t);
-        weaponHeuristic = true;
+      let weaponHeuristic = false, weaponSource = weapon != null ? 'obituary' : null;
+      // The obituary of a headshot names the means of death (MOD_HEAD_SHOT) instead of the weapon.
+      // A headshot is no weapon: the kill gets the weapon that killed - exact from the lethal head
+      // impact of the killer at the kill (EV_BULLET_HIT, not sent to the victim), else the weapon the
+      // killer held (≈), else unknown. The headshot itself is only k.headshot.
+      if (mod === 'MOD_HEAD_SHOT') {
+        const imp = col.lethalImpacts.find(x => x.shooter === k.attacker && x.head && x.t >= k.t - 100 && x.t <= k.t + 50);
+        if (imp) { wName = weaponName(imp.weapon, t); weaponSource = 'impact'; }
+        else if (k.attackerWeapon != null) { wName = weaponName(k.attackerWeapon, t); weaponHeuristic = true; weaponSource = 'held'; }
+        if (wName === 'none') { wName = null; weaponHeuristic = false; weaponSource = null; }
       }
       let label;
-      if (mod === 'MOD_HEAD_SHOT') label = wName ? W.label(wName) : 'Headshot';
+      if (mod === 'MOD_HEAD_SHOT') label = wName ? W.label(wName) : 'Unknown weapon';
       else if (mod) label = W.MOD_LABELS[mod] || mod;
       else label = wName ? W.label(wName) : 'Weapon #' + weapon;
       const dist = k.attackerPos && k.victimPos && !suicide && !world
@@ -219,7 +225,7 @@ C4.define('build', function (C4) {
         : null;
       const kill = {
         index, t, attacker: k.attacker, victim: k.victim, weapon, weaponName: wName, weaponLabel: label,
-        weaponHeuristic, mod, headshot: mod === 'MOD_HEAD_SHOT', knife: mod === 'MOD_MELEE',
+        weaponHeuristic, weaponSource, mod, headshot: mod === 'MOD_HEAD_SHOT', knife: mod === 'MOD_MELEE',
         falling: mod === 'MOD_FALLING', suicide, world, entityAttacker, teamkill,
         attackerTeam: aTeam || null, victimTeam: vTeam || null,
         attackerPos: k.attackerPos, victimPos: k.victimPos, distance: dist, round: -1
@@ -236,6 +242,11 @@ C4.define('build', function (C4) {
     const R = C4.rounds.analyzeRounds({ commands, csChanges, teams, kills, attackSide, endTime,
       clients: Array.from(teams.byClient.keys()), ruleset: rulesetHud, mapWindow, mapChanges,
       bombEvents: C4.events.bombEvents(commands), isSD: (serverinfo.g_gametype || '').toLowerCase() === 'sd' });
+    // bomb position over time (S&D): the same central detection (events.js bombTrack) on top of the
+    // accepted bomb events and round results; only observations of the main map
+    const bombSD = (serverinfo.g_gametype || '').toLowerCase() === 'sd';
+    const bombObs = col.bombObs.map(o => Object.assign({}, o, { t: rel(o.t) })).filter(o => o.t >= mapWindow.start && o.t < mapWindow.end);
+    const bombTrack = C4.events.bombTrack(bombObs, R.rounds, bombSD);
     for (const mc of mapChanges) {
       warnings.push('Map change at ' + fmtTime(mc.t) + ': the recording continues on ' + (mc.map || 'another map') +
         '. Everything from then on belongs to that map and is not counted (phase aftermatch).');
@@ -371,10 +382,9 @@ C4.define('build', function (C4) {
     for (const k of kills) {
       // only the running match (phase "live"): no warm-up, knife round, halftime, timeout, aftermatch
       if (k.phase !== 'live') continue;
-      // counting rules measured against the Promod scoreboard: team kills and suicides give
-      // the shooter no kill; deaths by the world (falling) are not counted as deaths
-      const credit = !k.suicide && !k.world && !k.entityAttacker && !k.teamkill;
-      const death = !k.world;
+      // counting rules measured against the Promod scoreboard (kdRule): team kills and suicides
+      // give the shooter no kill; deaths by the world (falling) are not counted as deaths
+      const { credit, death } = kdRule(k);
       if (death) bump(own, k.victim, 'deaths');
       if (credit) bump(own, k.attacker, 'kills');
       if (credit && k.headshot) bump(own, k.attacker, 'headshots');
@@ -544,6 +554,29 @@ C4.define('build', function (C4) {
         first: rel(d.t), last: rel(d.t), segments: [], detonation: { t: rel(d.t), x: d.x, y: d.y, z: d.z }, thrower: null });
     }
     grenades.sort((a, b) => (a.first - b.first));
+    // thrower ≈: the grenade entity names no thrower (otherEntityNum / attackerEntityNum are 0). A grenade
+    // seen from its launch (first sighting <= 150 ms after it) starts at the thrower's hand: the nearest
+    // living player at the first sighting, if he is close (< 96 units) and clearly the nearest (the next
+    // one >= 32 units farther). Otherwise thrower stays null.
+    const posAt = (cl, t) => {
+      const P = positions[cl]; if (!P) return null;
+      let lo = 0, hi = P.t.length; while (lo < hi) { const m = (lo + hi) >> 1; if (P.t[m] <= t) lo = m + 1; else hi = m; }
+      const i = lo - 1;
+      return i >= 0 && t - P.t[i] <= 100 && !(P.flags[i] & C4.collect.PF.DEAD) ? [P.x[i], P.y[i], P.z[i]] : null;
+    };
+    for (const g of grenades) {
+      if (g.launch == null || !g.segments.length || g.first - g.launch > 150) continue;
+      const s = g.segments[0], dt = Math.max(0, (g.first - s[0]) / 1000);
+      const gx = s[2] + (s[1] === 5 ? s[5] * dt : 0), gy = s[3] + (s[1] === 5 ? s[6] * dt : 0);
+      let best = null, bd = Infinity, second = Infinity;
+      for (const cl of Object.keys(positions)) {
+        if (+cl >= 64) continue;
+        const p = posAt(cl, g.first); if (!p) continue;
+        const dd = Math.hypot(p[0] - gx, p[1] - gy);
+        if (dd < bd) { second = bd; bd = dd; best = +cl; } else if (dd < second) second = dd;
+      }
+      if (best != null && bd < 96 && second - bd >= 32) { g.thrower = best; g.throwerHeuristic = true; }
+    }
 
     // POV damage (povDamage.js): health / damage of the player state, bullet hits on the POV, the
     // POV's own bullet impacts and his local sounds ("s <n>" = sound config string 1342 + n, resolved with the
@@ -641,11 +674,26 @@ C4.define('build', function (C4) {
       // damage statistics of the recording player (povDamage.js) and own-kill metrics
       // of the POV team (ownKills.js) - the sources of the POV tab
       povDamage, ownKills,
+      // position / state of the bomb over time (S&D, events.js bombTrack) - drawn by the map tab
+      bombTrack,
+      // fire events seen per client (the POV / followed player: player state ring; others: while in the
+      // POV's snapshots) - "shots fired (seen)": {client: [t, ...]}
+      shotsSeen: Object.fromEntries([...relTimes(col.shots)].map(([cl, a]) => [cl, a])),
+      // weapon index -> name over time: [{t, list}] (list[i - 1] = weapon i, valid from t on) - the
+      // weapon a player holds (positions[].weapon) at time t; weapon indices are per map load
+      weaponLists,
       // not exported: consumed by C4.ownKills.applySight and deleted (main.js)
       sightJob
     };
   }
 
+  /** K / D of one kill - THE rule of the scoreboard (only kills of phase "live" count; the caller
+   * checks the phase): team kills and suicides give the shooter no kill, deaths by the world
+   * (falling) are no deaths. Used by the player totals and the map tab's round table. */
+  function kdRule(k) {
+    return { credit: !k.suicide && !k.world && !k.entityAttacker && !k.teamkill, death: !k.world };
+  }
+
   C4.analyzeDemo = analyzeDemo;
-  C4.build = { csCategory, protocolLabel };
+  C4.build = { csCategory, protocolLabel, kdRule };
 });

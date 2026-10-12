@@ -95,6 +95,8 @@
       this.draw();
     }
     setTime(t) { this.t = t; this.draw(); }
+    /** the range of a video export [a, b] (marked on the bar), or null */
+    setBand(band) { this.band = band; this.draw(); }
     draw() {
       const r = this.box.getBoundingClientRect();
       const dpr = Math.min(3, window.devicePixelRatio || 1);
@@ -110,6 +112,13 @@
       g.fillRect(0, mid - 3, W, 6);
       g.fillStyle = 'rgba(255,138,31,0.55)';
       g.fillRect(0, mid - 3, X(this.t), 6);
+      if (this.band) {
+        const x0 = X(Math.max(a, this.band[0])), x1 = X(Math.min(b, this.band[1]));
+        g.fillStyle = 'rgba(88,214,141,0.22)';
+        g.fillRect(x0, 1, Math.max(2, x1 - x0), H - 2);
+        g.strokeStyle = 'rgba(88,214,141,0.9)'; g.lineWidth = 1.5;
+        g.strokeRect(x0 + 0.5, 1.5, Math.max(2, x1 - x0) - 1, H - 3);
+      }
       // skipped intervals (strat time / countdown): cut out of the bar
       g.fillStyle = 'rgba(0,0,0,0.7)';
       for (const [s0, s1] of this.skips) {
