@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "fx_shotgun_shell",
+ "kind": "fx",
+ "faction": null,
+ "file": "fx_shotgun_shell.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 540
+  },
+  "normal": {
+   "offset": 540,
+   "length": 180
+  },
+  "uv": {
+   "offset": 720,
+   "length": 360
+  },
+  "skinIndex": {
+   "offset": 1080,
+   "length": 180
+  },
+  "skinWeight": {
+   "offset": 1260,
+   "length": 180
+  },
+  "index": {
+   "offset": 1440,
+   "length": 204
+  },
+  "color": {
+   "offset": 1644,
+   "length": 180
+  }
+ },
+ "vertexCount": 45,
+ "triangleCount": 34,
+ "bones": [
+  {
+   "name": "shell1",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 102,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_fx_shotgun_shell",
+   "texture": "_textures/fx_shotgun_shell_col.webp",
+   "textureAlpha": false,
+   "color": "#553e37",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/fx_shotgun_shell_nml.normal.webp",
+   "specularMap": "_textures/fx_shotgun_shell_spc-rgb_fx__edff6e5f.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -0.36,
+   -1.04,
+   -0.37
+  ],
+  "maxs": [
+   0.36,
+   1.0,
+   0.37
+  ]
+ }
+}

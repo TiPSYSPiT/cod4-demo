@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "fx_glass_piece01",
+ "kind": "fx",
+ "faction": null,
+ "file": "fx_glass_piece01.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 168
+  },
+  "normal": {
+   "offset": 168,
+   "length": 56
+  },
+  "uv": {
+   "offset": 224,
+   "length": 112
+  },
+  "skinIndex": {
+   "offset": 336,
+   "length": 56
+  },
+  "skinWeight": {
+   "offset": 392,
+   "length": 56
+  },
+  "index": {
+   "offset": 448,
+   "length": 36
+  },
+  "color": {
+   "offset": 484,
+   "length": 56
+  }
+ },
+ "vertexCount": 14,
+ "triangleCount": 6,
+ "bones": [
+  {
+   "name": "pcube3",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 18,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/com_glass_shattered_outside",
+   "texture": "_textures/glass_shattered_col.webp",
+   "textureAlpha": true,
+   "color": "#687575",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/glass_shattered_nml.normal.webp",
+   "specularMap": "_textures/glass_shattered_spc-rgb_glas_36dd5f9b.specular.webp",
+   "envMapParms": [
+    2.0,
+    12.0,
+    10.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -0.28,
+   -0.53,
+   -0.38
+  ],
+  "maxs": [
+   0.28,
+   0.53,
+   0.38
+  ]
+ }
+}

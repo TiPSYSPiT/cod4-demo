@@ -1,0 +1,24 @@
+# The site's data must reach GitHub Pages byte for byte (tools/check_deploy.py checks it).
+# Text: stored with LF, whatever the checkout (the export writes LF; maps3d/manifest.json hashes LF).
+* text=auto eol=lf
+*.json text eol=lf
+*.js text eol=lf
+*.mjs text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.md text eol=lf
+*.py text eol=lf
+*.yml text eol=lf
+# Binary: never converted, never diffed as text. Not Git LFS - Pages would serve the pointer files.
+*.bin binary
+*.webp binary
+*.png binary
+*.jpg binary
+*.gif binary
+*.ico binary
+*.wav binary
+*.mp3 binary
+*.dm_1 binary
+*.ff binary
+*.iwi binary
+*.zip binary

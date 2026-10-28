@@ -1,0 +1,121 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "weapon_desert_eagle_silver",
+ "kind": "weapon",
+ "faction": null,
+ "file": "weapon_desert_eagle_silver.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 8808
+  },
+  "normal": {
+   "offset": 8808,
+   "length": 2936
+  },
+  "uv": {
+   "offset": 11744,
+   "length": 5872
+  },
+  "skinIndex": {
+   "offset": 17616,
+   "length": 2936
+  },
+  "skinWeight": {
+   "offset": 20552,
+   "length": 2936
+  },
+  "index": {
+   "offset": 23488,
+   "length": 2760
+  },
+  "color": {
+   "offset": 26248,
+   "length": 2936
+  }
+ },
+ "vertexCount": 734,
+ "triangleCount": 460,
+ "bones": [
+  {
+   "name": "tag_weapon",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "j_pistol_grip",
+   "parent": 0,
+   "pos": [
+    -10.4593,
+    0.0,
+    -1.6231
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 1,
+   "pos": [
+    -8.5397,
+    -0.2964,
+    0.3638
+   ],
+   "quat": [
+    -0.212622,
+    -0.212622,
+    -0.674367,
+    0.674398
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 1,
+   "pos": [
+    -1.5216,
+    0.0,
+    0.6534
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 1380,
+   "material": -1
+  }
+ ],
+ "materials": [],
+ "bounds": {
+  "mins": [
+   -13.14,
+   -1.03,
+   -4.99
+  ],
+  "maxs": [
+   -1.5,
+   1.03,
+   1.49
+  ]
+ }
+}

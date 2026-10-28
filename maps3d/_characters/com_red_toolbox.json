@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_red_toolbox",
+ "kind": "script",
+ "faction": null,
+ "file": "com_red_toolbox.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 3744
+  },
+  "normal": {
+   "offset": 3744,
+   "length": 1248
+  },
+  "uv": {
+   "offset": 4992,
+   "length": 2496
+  },
+  "skinIndex": {
+   "offset": 7488,
+   "length": 1248
+  },
+  "skinWeight": {
+   "offset": 8736,
+   "length": 1248
+  },
+  "index": {
+   "offset": 9984,
+   "length": 1260
+  },
+  "color": {
+   "offset": 11244,
+   "length": 1248
+  }
+ },
+ "vertexCount": 312,
+ "triangleCount": 210,
+ "bones": [
+  {
+   "name": "red_toolbox_lod0",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 630,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_red_toolbox",
+   "texture": "_textures/red_toolbox_col.webp",
+   "textureAlpha": false,
+   "color": "#50332e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/red_toolbox_nml.normal.webp",
+   "specularMap": "_textures/red_toolbox_spc-rgb_red_tool_1120824b.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -4.84,
+   -13.0,
+   0.0
+  ],
+  "maxs": [
+   4.99,
+   12.99,
+   10.46
+  ]
+ }
+}

@@ -1,0 +1,129 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "me_picture4",
+ "kind": "script",
+ "faction": null,
+ "file": "me_picture4.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 888
+  },
+  "normal": {
+   "offset": 888,
+   "length": 296
+  },
+  "uv": {
+   "offset": 1184,
+   "length": 592
+  },
+  "skinIndex": {
+   "offset": 1776,
+   "length": 296
+  },
+  "skinWeight": {
+   "offset": 2072,
+   "length": 296
+  },
+  "index": {
+   "offset": 2368,
+   "length": 216
+  },
+  "color": {
+   "offset": 2584,
+   "length": 296
+  }
+ },
+ "vertexCount": 74,
+ "triangleCount": 36,
+ "bones": [
+  {
+   "name": "",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 96,
+   "material": 0
+  },
+  {
+   "indexStart": 96,
+   "indexCount": 12,
+   "material": 1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_me_pictureframes",
+   "texture": "_textures/me_pictureframes.webp",
+   "textureAlpha": false,
+   "color": "#937c5b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_pictureframes_bump.normal.webp",
+   "specularMap": "_textures/me_pictureframes_spec-rgb__white-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_me_paintings3",
+   "texture": "_textures/me_paintings3.webp",
+   "textureAlpha": false,
+   "color": "#908c86",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/me_paintings3_spc-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    3.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -13.24,
+   -1.13,
+   -18.48
+  ],
+  "maxs": [
+   13.26,
+   0.05,
+   1.39
+  ]
+ }
+}

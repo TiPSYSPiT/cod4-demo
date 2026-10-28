@@ -1,0 +1,129 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "vehicle_80s_hatch2_tan",
+ "kind": "script",
+ "faction": null,
+ "file": "vehicle_80s_hatch2_tan.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 50208
+  },
+  "normal": {
+   "offset": 50208,
+   "length": 16736
+  },
+  "uv": {
+   "offset": 66944,
+   "length": 33472
+  },
+  "skinIndex": {
+   "offset": 100416,
+   "length": 16736
+  },
+  "skinWeight": {
+   "offset": 117152,
+   "length": 16736
+  },
+  "index": {
+   "offset": 133888,
+   "length": 20592
+  },
+  "color": {
+   "offset": 154480,
+   "length": 16736
+  }
+ },
+ "vertexCount": 4184,
+ "triangleCount": 3432,
+ "bones": [
+  {
+   "name": "",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 9936,
+   "material": 0
+  },
+  {
+   "indexStart": 9936,
+   "indexCount": 360,
+   "material": 1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_80s_econ_tan",
+   "texture": "_textures/80s_econ_tan_col.webp",
+   "textureAlpha": false,
+   "color": "#7a6040",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/80s_econ_nml.normal.webp",
+   "specularMap": "_textures/80s_econ_spc-rgb_80s_econ_cos-l-11.specular.webp",
+   "envMapParms": [
+    1.04,
+    3.4,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_80s_econ_glass",
+   "texture": "_textures/80s_econ_glass_col.webp",
+   "textureAlpha": true,
+   "color": "#515856",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "specularMap": "_textures/80s_econ_glass_spc-rgb_80s_e_29444396.specular.webp",
+   "envMapParms": [
+    1.4,
+    4.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -68.28,
+   -34.15,
+   -0.65
+  ],
+  "maxs": [
+   68.6,
+   34.15,
+   54.94
+  ]
+ }
+}

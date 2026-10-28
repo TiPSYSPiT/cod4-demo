@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "me_fruit_orange",
+ "kind": "script",
+ "faction": null,
+ "file": "me_fruit_orange.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 2004
+  },
+  "normal": {
+   "offset": 2004,
+   "length": 668
+  },
+  "uv": {
+   "offset": 2672,
+   "length": 1336
+  },
+  "skinIndex": {
+   "offset": 4008,
+   "length": 668
+  },
+  "skinWeight": {
+   "offset": 4676,
+   "length": 668
+  },
+  "index": {
+   "offset": 5344,
+   "length": 1584
+  },
+  "color": {
+   "offset": 6928,
+   "length": 668
+  }
+ },
+ "vertexCount": 167,
+ "triangleCount": 264,
+ "bones": [
+  {
+   "name": "orange_lod0",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 792,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_orange",
+   "texture": "_textures/orange_col.webp",
+   "textureAlpha": false,
+   "color": "#956214",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/orange_nml.normal.webp",
+   "specularMap": "_textures/orange_spc-rgb_orange_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.0,
+    12.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -1.92,
+   -2.52,
+   -0.03
+  ],
+  "maxs": [
+   2.07,
+   1.48,
+   3.54
+  ]
+ }
+}

@@ -1,0 +1,170 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "weapon_m4_silencer_mp",
+ "kind": "weapon",
+ "faction": null,
+ "file": "weapon_m4_silencer_mp.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 12732
+  },
+  "normal": {
+   "offset": 12732,
+   "length": 4244
+  },
+  "uv": {
+   "offset": 16976,
+   "length": 8488
+  },
+  "skinIndex": {
+   "offset": 25464,
+   "length": 4244
+  },
+  "skinWeight": {
+   "offset": 29708,
+   "length": 4244
+  },
+  "index": {
+   "offset": 33952,
+   "length": 6024
+  },
+  "color": {
+   "offset": 39976,
+   "length": 4244
+  }
+ },
+ "vertexCount": 1061,
+ "triangleCount": 1004,
+ "bones": [
+  {
+   "name": "tag_weapon",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 0,
+   "pos": [
+    -5.5946,
+    -0.7866,
+    0.9946
+   ],
+   "quat": [
+    -0.624039,
+    0.332497,
+    -0.624039,
+    0.332559
+   ]
+  },
+  {
+   "name": "tag_clip",
+   "parent": 0,
+   "pos": [
+    -5.4327,
+    -0.01,
+    -3.2194
+   ],
+   "quat": [
+    0.0,
+    -0.205328,
+    0.0,
+    0.978693
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    15.1278,
+    0.0,
+    0.1616
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_laser",
+   "parent": 0,
+   "pos": [
+    3.2442,
+    1.2632,
+    -0.3493
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 90,
+   "material": -1
+  },
+  {
+   "indexStart": 90,
+   "indexCount": 300,
+   "material": 0
+  },
+  {
+   "indexStart": 390,
+   "indexCount": 2622,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_m4_m16",
+   "texture": "_textures/weapon_m4_col.webp",
+   "textureAlpha": false,
+   "color": "#2a2c2d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_m4_spc-r-17g-17b-17_w_aca95990.specular.webp",
+   "envMapParms": [
+    2.0,
+    4.0,
+    0.8,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -22.52,
+   -1.26,
+   -7.67
+  ],
+  "maxs": [
+   15.12,
+   1.12,
+   3.02
+  ]
+ }
+}

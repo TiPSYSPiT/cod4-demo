@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_barrel_tan_rust",
+ "kind": "script",
+ "faction": null,
+ "file": "com_barrel_tan_rust.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 4896
+  },
+  "normal": {
+   "offset": 4896,
+   "length": 1632
+  },
+  "uv": {
+   "offset": 6528,
+   "length": 3264
+  },
+  "skinIndex": {
+   "offset": 9792,
+   "length": 1632
+  },
+  "skinWeight": {
+   "offset": 11424,
+   "length": 1632
+  },
+  "index": {
+   "offset": 13056,
+   "length": 3048
+  },
+  "color": {
+   "offset": 16104,
+   "length": 1632
+  }
+ },
+ "vertexCount": 408,
+ "triangleCount": 508,
+ "bones": [
+  {
+   "name": "tag_origin",
+   "parent": -1,
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "quat": [
+    0,
+    0,
+    0,
+    1
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 1524,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_barrel_tan_rust",
+   "texture": "_textures/55_gallon_drum_tan_rust.webp",
+   "textureAlpha": false,
+   "color": "#726a5c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/rusty_barrel_bump.normal.webp",
+   "specularMap": "_textures/rusty_barrel_spec-rgb_rusty__96f69cf3.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -14.63,
+   -14.64,
+   0.0
+  ],
+  "maxs": [
+   14.59,
+   14.57,
+   44.01
+  ]
+ }
+}

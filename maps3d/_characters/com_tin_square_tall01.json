@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_tin_square_tall01",
+ "kind": "script",
+ "faction": null,
+ "file": "com_tin_square_tall01.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 2364
+  },
+  "normal": {
+   "offset": 2364,
+   "length": 788
+  },
+  "uv": {
+   "offset": 3152,
+   "length": 1576
+  },
+  "skinIndex": {
+   "offset": 4728,
+   "length": 788
+  },
+  "skinWeight": {
+   "offset": 5516,
+   "length": 788
+  },
+  "index": {
+   "offset": 6304,
+   "length": 1128
+  },
+  "color": {
+   "offset": 7432,
+   "length": 788
+  }
+ },
+ "vertexCount": 197,
+ "triangleCount": 188,
+ "bones": [
+  {
+   "name": "tin_square_tall01_lod01",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 564,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_tin_boxes",
+   "texture": "_textures/tin_boxes_col.webp",
+   "textureAlpha": false,
+   "color": "#5b5346",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/tin_boxes_normal.normal.webp",
+   "specularMap": "_textures/tin_boxes_spec-rgb__white-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -1.88,
+   -3.74,
+   0.0
+  ],
+  "maxs": [
+   1.91,
+   0.05,
+   7.38
+  ]
+ }
+}

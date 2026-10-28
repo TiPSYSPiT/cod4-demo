@@ -1,0 +1,1186 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "vehicle_80s_sedan1_silv_destructible_mp",
+ "kind": "script",
+ "faction": null,
+ "file": "vehicle_80s_sedan1_silv_destructible_mp.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 58668
+  },
+  "normal": {
+   "offset": 58668,
+   "length": 19556
+  },
+  "uv": {
+   "offset": 78224,
+   "length": 39112
+  },
+  "skinIndex": {
+   "offset": 117336,
+   "length": 19556
+  },
+  "skinWeight": {
+   "offset": 136892,
+   "length": 19556
+  },
+  "index": {
+   "offset": 156448,
+   "length": 23400
+  },
+  "color": {
+   "offset": 179848,
+   "length": 19556
+  }
+ },
+ "vertexCount": 4889,
+ "triangleCount": 3900,
+ "bones": [
+  {
+   "name": "tag_origin",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_body",
+   "parent": 0,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_wheel_back_left",
+   "parent": 0,
+   "pos": [
+    -50.1134,
+    26.2126,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_wheel_back_right",
+   "parent": 0,
+   "pos": [
+    -50.1133,
+    -26.6011,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_wheel_front_left",
+   "parent": 0,
+   "pos": [
+    51.2737,
+    26.2126,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_wheel_front_right",
+   "parent": 0,
+   "pos": [
+    51.2737,
+    -26.6011,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "left_wheel_01_jnt",
+   "parent": 4,
+   "pos": [
+    51.2737,
+    26.2126,
+    11.8117
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "left_wheel_02_jnt",
+   "parent": 2,
+   "pos": [
+    -50.1134,
+    26.2126,
+    11.8117
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "right_wheel_01_jnt",
+   "parent": 5,
+   "pos": [
+    51.2737,
+    -26.6011,
+    11.8117
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "name": "right_wheel_02_jnt",
+   "parent": 3,
+   "pos": [
+    -50.1133,
+    -26.6011,
+    11.8117
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "name": "tag_bumper_back",
+   "parent": 1,
+   "pos": [
+    -82.1236,
+    0.0002,
+    21.3633
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_bumper_front",
+   "parent": 1,
+   "pos": [
+    81.0371,
+    -0.0709,
+    21.119
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_death_fx",
+   "parent": 1,
+   "pos": [
+    0.0,
+    0.0,
+    10.0
+   ],
+   "quat": [
+    -0.512438,
+    -0.48726,
+    -0.512438,
+    0.48723
+   ]
+  },
+  {
+   "name": "tag_door_left_back",
+   "parent": 1,
+   "pos": [
+    -8.9561,
+    31.7734,
+    27.5783
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_door_left_front",
+   "parent": 1,
+   "pos": [
+    32.9701,
+    31.7734,
+    27.0633
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_door_right_back",
+   "parent": 1,
+   "pos": [
+    -8.9561,
+    -31.7734,
+    27.5783
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_door_right_front",
+   "parent": 1,
+   "pos": [
+    32.9701,
+    -31.7734,
+    27.0633
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_back",
+   "parent": 1,
+   "pos": [
+    -53.7401,
+    -0.0,
+    40.67
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_back_d",
+   "parent": 1,
+   "pos": [
+    -53.7401,
+    -0.0,
+    40.67
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_back_fx",
+   "parent": 1,
+   "pos": [
+    -47.8187,
+    0.0,
+    47.885
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_front",
+   "parent": 1,
+   "pos": [
+    36.5127,
+    -0.0,
+    40.6241
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_front_d",
+   "parent": 1,
+   "pos": [
+    36.5127,
+    -0.0,
+    40.6241
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_front_fx",
+   "parent": 1,
+   "pos": [
+    26.6097,
+    0.0,
+    47.885
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_hood",
+   "parent": 1,
+   "pos": [
+    40.154,
+    -0.0,
+    39.8785
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_hood_fx",
+   "parent": 1,
+   "pos": [
+    81.6789,
+    0.0,
+    28.896
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "name": "tag_light_left_back",
+   "parent": 1,
+   "pos": [
+    -80.5995,
+    18.45,
+    32.2055
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_light_left_back_d",
+   "parent": 1,
+   "pos": [
+    -80.5995,
+    18.45,
+    32.2055
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_light_left_front",
+   "parent": 1,
+   "pos": [
+    79.2315,
+    20.8701,
+    28.5308
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_light_left_front_d",
+   "parent": 1,
+   "pos": [
+    79.2315,
+    20.8701,
+    28.5308
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_light_right_back",
+   "parent": 1,
+   "pos": [
+    -80.5995,
+    -18.7639,
+    31.908
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_light_right_back_d",
+   "parent": 1,
+   "pos": [
+    -80.5995,
+    -18.7639,
+    31.908
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_light_right_front",
+   "parent": 1,
+   "pos": [
+    79.2315,
+    -20.8701,
+    28.5308
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_light_right_front_d",
+   "parent": 1,
+   "pos": [
+    79.2315,
+    -20.8701,
+    28.5308
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_trunk",
+   "parent": 1,
+   "pos": [
+    -55.0515,
+    -0.0,
+    40.3117
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_left_back",
+   "parent": 13,
+   "pos": [
+    -9.7449,
+    28.5662,
+    37.6178
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_left_back_d",
+   "parent": 13,
+   "pos": [
+    -9.7449,
+    28.5662,
+    37.6178
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_left_back_fx",
+   "parent": 13,
+   "pos": [
+    -22.0854,
+    25.9518,
+    46.0204
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_left_front",
+   "parent": 14,
+   "pos": [
+    29.1675,
+    28.1713,
+    37.6178
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_left_front_d",
+   "parent": 14,
+   "pos": [
+    29.1675,
+    28.1713,
+    37.6178
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_left_front_fx",
+   "parent": 14,
+   "pos": [
+    5.4874,
+    25.9518,
+    46.0204
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_right_back",
+   "parent": 15,
+   "pos": [
+    -9.7445,
+    -28.5661,
+    37.6178
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_right_back_d",
+   "parent": 15,
+   "pos": [
+    -9.7445,
+    -28.5661,
+    37.6178
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_right_back_fx",
+   "parent": 15,
+   "pos": [
+    -22.3612,
+    -25.646,
+    46.0204
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_right_front",
+   "parent": 16,
+   "pos": [
+    29.2296,
+    -28.1069,
+    37.6178
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_right_front_d",
+   "parent": 16,
+   "pos": [
+    29.2296,
+    -28.1069,
+    37.6178
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_right_front_fx",
+   "parent": 16,
+   "pos": [
+    5.4874,
+    -25.646,
+    46.0204
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_mirror_left",
+   "parent": 14,
+   "pos": [
+    18.4286,
+    30.7804,
+    35.7048
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_mirror_right",
+   "parent": 16,
+   "pos": [
+    17.9537,
+    -30.4826,
+    35.6788
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 6744,
+   "material": 0
+  },
+  {
+   "indexStart": 6744,
+   "indexCount": 258,
+   "material": 0
+  },
+  {
+   "indexStart": 7002,
+   "indexCount": 282,
+   "material": 0
+  },
+  {
+   "indexStart": 7284,
+   "indexCount": 240,
+   "material": 0
+  },
+  {
+   "indexStart": 7524,
+   "indexCount": 282,
+   "material": 0
+  },
+  {
+   "indexStart": 7806,
+   "indexCount": 150,
+   "material": 0
+  },
+  {
+   "indexStart": 7956,
+   "indexCount": 60,
+   "material": 0
+  },
+  {
+   "indexStart": 8016,
+   "indexCount": 48,
+   "material": 0
+  },
+  {
+   "indexStart": 8064,
+   "indexCount": 60,
+   "material": 0
+  },
+  {
+   "indexStart": 8124,
+   "indexCount": 48,
+   "material": 0
+  },
+  {
+   "indexStart": 8172,
+   "indexCount": 150,
+   "material": 0
+  },
+  {
+   "indexStart": 8322,
+   "indexCount": 150,
+   "material": 0
+  },
+  {
+   "indexStart": 8472,
+   "indexCount": 48,
+   "material": 1
+  },
+  {
+   "indexStart": 8520,
+   "indexCount": 48,
+   "material": 1
+  },
+  {
+   "indexStart": 8568,
+   "indexCount": 12,
+   "material": 1
+  },
+  {
+   "indexStart": 8580,
+   "indexCount": 18,
+   "material": 1
+  },
+  {
+   "indexStart": 8598,
+   "indexCount": 12,
+   "material": 1
+  },
+  {
+   "indexStart": 8610,
+   "indexCount": 18,
+   "material": 1
+  },
+  {
+   "indexStart": 8628,
+   "indexCount": 60,
+   "material": 2
+  },
+  {
+   "indexStart": 8688,
+   "indexCount": 42,
+   "material": 2
+  },
+  {
+   "indexStart": 8730,
+   "indexCount": 60,
+   "material": 2
+  },
+  {
+   "indexStart": 8790,
+   "indexCount": 42,
+   "material": 2
+  },
+  {
+   "indexStart": 8832,
+   "indexCount": 48,
+   "material": 3
+  },
+  {
+   "indexStart": 8880,
+   "indexCount": 48,
+   "material": 3
+  },
+  {
+   "indexStart": 8928,
+   "indexCount": 12,
+   "material": 3
+  },
+  {
+   "indexStart": 8940,
+   "indexCount": 18,
+   "material": 3
+  },
+  {
+   "indexStart": 8958,
+   "indexCount": 12,
+   "material": 3
+  },
+  {
+   "indexStart": 8970,
+   "indexCount": 18,
+   "material": 3
+  },
+  {
+   "indexStart": 8988,
+   "indexCount": 48,
+   "material": 4
+  },
+  {
+   "indexStart": 9036,
+   "indexCount": 48,
+   "material": 4
+  },
+  {
+   "indexStart": 9084,
+   "indexCount": 12,
+   "material": 4
+  },
+  {
+   "indexStart": 9096,
+   "indexCount": 18,
+   "material": 4
+  },
+  {
+   "indexStart": 9114,
+   "indexCount": 12,
+   "material": 4
+  },
+  {
+   "indexStart": 9126,
+   "indexCount": 18,
+   "material": 4
+  },
+  {
+   "indexStart": 9144,
+   "indexCount": 48,
+   "material": 5
+  },
+  {
+   "indexStart": 9192,
+   "indexCount": 48,
+   "material": 5
+  },
+  {
+   "indexStart": 9240,
+   "indexCount": 12,
+   "material": 5
+  },
+  {
+   "indexStart": 9252,
+   "indexCount": 18,
+   "material": 5
+  },
+  {
+   "indexStart": 9270,
+   "indexCount": 12,
+   "material": 5
+  },
+  {
+   "indexStart": 9282,
+   "indexCount": 18,
+   "material": 5
+  },
+  {
+   "indexStart": 9300,
+   "indexCount": 66,
+   "material": 6
+  },
+  {
+   "indexStart": 9366,
+   "indexCount": 90,
+   "material": 6
+  },
+  {
+   "indexStart": 9456,
+   "indexCount": 408,
+   "material": 7
+  },
+  {
+   "indexStart": 9864,
+   "indexCount": 408,
+   "material": 7
+  },
+  {
+   "indexStart": 10272,
+   "indexCount": 408,
+   "material": 7
+  },
+  {
+   "indexStart": 10680,
+   "indexCount": 408,
+   "material": 7
+  },
+  {
+   "indexStart": 11088,
+   "indexCount": 330,
+   "material": 7
+  },
+  {
+   "indexStart": 11418,
+   "indexCount": 282,
+   "material": 7
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_80s_econ_silv",
+   "texture": "_textures/80s_econ_silv_col.webp",
+   "textureAlpha": false,
+   "color": "#54504a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/80s_econ_nml.normal.webp",
+   "specularMap": "_textures/80s_econ_spc-rgb_80s_econ_cos-l-71.specular.webp",
+   "envMapParms": [
+    1.0,
+    3.8,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_80s_econ_glass_outside",
+   "texture": "_textures/80s_econ_glass_col.webp",
+   "textureAlpha": true,
+   "color": "#515856",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "specularMap": "_textures/80s_econ_glass_spc-rgb_80s_e_29444396.specular.webp",
+   "envMapParms": [
+    1.4,
+    4.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_80s_econdestroy_green",
+   "texture": "_textures/80s_econdestroy_green_col.webp",
+   "textureAlpha": false,
+   "color": "#41493e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/80s_econdestroy_nml.normal.webp",
+   "specularMap": "_textures/80s_econdestroy_spc-rgb_80s__2838a1ce.specular.webp",
+   "envMapParms": [
+    0.4,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": ",mc/com_glass_shattered_outside",
+   "texture": null,
+   "textureAlpha": false,
+   "color": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true
+  },
+  {
+   "name": "mc/com_glass_shattered_inside",
+   "texture": "_textures/glass_shattered_col.webp",
+   "textureAlpha": true,
+   "color": "#687575",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "normalMap": "_textures/glass_shattered_nml.normal.webp",
+   "specularMap": "_textures/glass_shattered_spc-rgb_glas_36dd5f9b.specular.webp",
+   "envMapParms": [
+    2.0,
+    12.0,
+    10.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_80s_econ_glass_inside",
+   "texture": "_textures/80s_econ_glass_col.webp",
+   "textureAlpha": true,
+   "color": "#515856",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "specularMap": "_textures/80s_econ_glass_spc-rgb_80s_e_29444396.specular.webp",
+   "envMapParms": [
+    1.4,
+    4.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_engine",
+   "texture": "_textures/car_engine_col.webp",
+   "textureAlpha": false,
+   "color": "#433e3c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/car_engine_nml.normal.webp",
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_80s_econ_green_rubber",
+   "texture": "_textures/80s_econ_green_col.webp",
+   "textureAlpha": false,
+   "color": "#555e4d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/80s_econ_nml.normal.webp",
+   "specularMap": "_textures/80s_econ_spc-rgb_80s_econ_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.6,
+    3.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -85.71,
+   -37.88,
+   0.0
+  ],
+  "maxs": [
+   85.7,
+   38.14,
+   59.43
+  ]
+ }
+}

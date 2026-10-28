@@ -1,0 +1,91 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "weapon_c4",
+ "kind": "weapon",
+ "faction": null,
+ "file": "weapon_c4.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 10788
+  },
+  "normal": {
+   "offset": 10788,
+   "length": 3596
+  },
+  "uv": {
+   "offset": 14384,
+   "length": 7192
+  },
+  "skinIndex": {
+   "offset": 21576,
+   "length": 3596
+  },
+  "skinWeight": {
+   "offset": 25172,
+   "length": 3596
+  },
+  "index": {
+   "offset": 28768,
+   "length": 4140
+  },
+  "color": {
+   "offset": 32908,
+   "length": 3596
+  }
+ },
+ "vertexCount": 899,
+ "triangleCount": 690,
+ "bones": [
+  {
+   "name": "tag_origin",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_fx",
+   "parent": 0,
+   "pos": [
+    0.3221,
+    2.0606,
+    3.0793
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    -0.707107,
+    0.707107
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 2070,
+   "material": -1
+  }
+ ],
+ "materials": [],
+ "bounds": {
+  "mins": [
+   -5.57,
+   -6.45,
+   -1.95
+  ],
+  "maxs": [
+   6.49,
+   7.05,
+   2.84
+  ]
+ }
+}

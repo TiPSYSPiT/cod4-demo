@@ -1,0 +1,239 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "weapon_dragunov",
+ "kind": "weapon",
+ "faction": null,
+ "file": "weapon_dragunov.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 16944
+  },
+  "normal": {
+   "offset": 16944,
+   "length": 5648
+  },
+  "uv": {
+   "offset": 22592,
+   "length": 11296
+  },
+  "skinIndex": {
+   "offset": 33888,
+   "length": 5648
+  },
+  "skinWeight": {
+   "offset": 39536,
+   "length": 5648
+  },
+  "index": {
+   "offset": 45184,
+   "length": 5700
+  },
+  "color": {
+   "offset": 50884,
+   "length": 5648
+  }
+ },
+ "vertexCount": 1412,
+ "triangleCount": 950,
+ "bones": [
+  {
+   "name": "tag_weapon",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 0,
+   "pos": [
+    -4.168,
+    -0.4844,
+    -0.6028
+   ],
+   "quat": [
+    -0.212622,
+    -0.212622,
+    -0.674367,
+    0.674398
+   ]
+  },
+  {
+   "name": "tag_clip",
+   "parent": 0,
+   "pos": [
+    -5.4048,
+    -0.01,
+    -2.6033
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    24.1697,
+    0.0,
+    -0.9915
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 1584,
+   "material": 0
+  },
+  {
+   "indexStart": 1584,
+   "indexCount": 78,
+   "material": 0
+  },
+  {
+   "indexStart": 1662,
+   "indexCount": 708,
+   "material": 1
+  },
+  {
+   "indexStart": 2370,
+   "indexCount": 18,
+   "material": 2
+  },
+  {
+   "indexStart": 2388,
+   "indexCount": 102,
+   "material": 3
+  },
+  {
+   "indexStart": 2490,
+   "indexCount": 360,
+   "material": 3
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_dragunov",
+   "texture": "_textures/weapon_dragunov_col.webp",
+   "textureAlpha": false,
+   "color": "#2d241f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_dragunuv_spec-rgb_wea_41893625.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_dragunov_scope",
+   "texture": "_textures/weapon_dragunov_scope_col.webp",
+   "textureAlpha": false,
+   "color": "#161613",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_dragunov_scope_spec-r_d3ea198e.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_red_scope",
+   "texture": "_textures/weapon_red_scope_col.webp",
+   "textureAlpha": false,
+   "color": "#4e2210",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_red_scope_spc-r65g65b_d4364490.specular.webp",
+   "envMapParms": [
+    2.8,
+    3.6,
+    1.2,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_dragunov_misc_nocamo",
+   "texture": "_textures/weapon_dragunov_col.webp",
+   "textureAlpha": false,
+   "color": "#2d241f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_dragunuv_spec-rgb_wea_41893625.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -20.81,
+   -1.5,
+   -5.25
+  ],
+  "maxs": [
+   24.13,
+   1.29,
+   3.2
+  ]
+ }
+}

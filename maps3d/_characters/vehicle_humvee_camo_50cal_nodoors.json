@@ -1,0 +1,799 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "vehicle_humvee_camo_50cal_nodoors",
+ "kind": "script",
+ "faction": null,
+ "file": "vehicle_humvee_camo_50cal_nodoors.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 118464
+  },
+  "normal": {
+   "offset": 118464,
+   "length": 39488
+  },
+  "uv": {
+   "offset": 157952,
+   "length": 78976
+  },
+  "skinIndex": {
+   "offset": 236928,
+   "length": 39488
+  },
+  "skinWeight": {
+   "offset": 276416,
+   "length": 39488
+  },
+  "index": {
+   "offset": 315904,
+   "length": 49968
+  },
+  "color": {
+   "offset": 365872,
+   "length": 39488
+  }
+ },
+ "vertexCount": 9872,
+ "triangleCount": 8328,
+ "bones": [
+  {
+   "name": "tag_origin",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_body",
+   "parent": 0,
+   "pos": [
+    0.0,
+    0.0,
+    28.2086
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_walker0",
+   "parent": 0,
+   "pos": [
+    78.2202,
+    79.2851,
+    4.1568
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_walker1",
+   "parent": 0,
+   "pos": [
+    78.2202,
+    -73.7301,
+    4.1568
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_walker2",
+   "parent": 0,
+   "pos": [
+    -2.6184,
+    90.2351,
+    4.1568
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_walker3",
+   "parent": 0,
+   "pos": [
+    -2.6184,
+    -94.6114,
+    4.1568
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_walker4",
+   "parent": 0,
+   "pos": [
+    -89.0934,
+    83.5339,
+    4.1568
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_walker5",
+   "parent": 0,
+   "pos": [
+    -89.0934,
+    -75.8476,
+    4.1568
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_wheel_back_left",
+   "parent": 0,
+   "pos": [
+    -58.6704,
+    29.9209,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_wheel_back_right",
+   "parent": 0,
+   "pos": [
+    -58.6705,
+    -29.9209,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_wheel_front_left",
+   "parent": 0,
+   "pos": [
+    70.218,
+    29.921,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_wheel_front_right",
+   "parent": 0,
+   "pos": [
+    70.2181,
+    -29.9209,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "body_animate_jnt",
+   "parent": 1,
+   "pos": [
+    0.0,
+    0.0,
+    28.2086
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "left_wheel_01_jnt",
+   "parent": 10,
+   "pos": [
+    70.218,
+    29.921,
+    18.2382
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "left_wheel_02_jnt",
+   "parent": 8,
+   "pos": [
+    -58.6704,
+    29.921,
+    18.2382
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "right_wheel_01_jnt",
+   "parent": 11,
+   "pos": [
+    70.2181,
+    -29.9209,
+    18.2382
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "right_wheel_02_jnt",
+   "parent": 9,
+   "pos": [
+    -58.6705,
+    -29.9209,
+    18.2382
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_antenna",
+   "parent": 12,
+   "pos": [
+    -79.6318,
+    -32.3923,
+    60.657
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.707107,
+    0.707107
+   ]
+  },
+  {
+   "name": "tag_brakelight_left",
+   "parent": 12,
+   "pos": [
+    -89.7249,
+    31.0657,
+    42.0706
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "name": "tag_brakelight_right",
+   "parent": 12,
+   "pos": [
+    -89.7248,
+    -31.0659,
+    42.0706
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "name": "tag_deathfx",
+   "parent": 12,
+   "pos": [
+    0.0,
+    0.0,
+    51.5293
+   ],
+   "quat": [
+    0.0,
+    -0.707107,
+    0.0,
+    0.707107
+   ]
+  },
+  {
+   "name": "tag_detach",
+   "parent": 12,
+   "pos": [
+    16.6678,
+    54.0616,
+    28.5547
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_driver",
+   "parent": 12,
+   "pos": [
+    15.0439,
+    29.4019,
+    35.7667
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_engine_left",
+   "parent": 12,
+   "pos": [
+    -62.7,
+    46.9516,
+    75.5822
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_engine_right",
+   "parent": 12,
+   "pos": [
+    66.4002,
+    -0.367,
+    39.9366
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_guy0",
+   "parent": 12,
+   "pos": [
+    -24.3876,
+    29.4019,
+    35.7667
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_guy1",
+   "parent": 12,
+   "pos": [
+    -24.3876,
+    -29.502,
+    35.7667
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.707107,
+    0.707107
+   ]
+  },
+  {
+   "name": "tag_headlight_left",
+   "parent": 12,
+   "pos": [
+    89.7121,
+    19.6305,
+    44.2966
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_headlight_right",
+   "parent": 12,
+   "pos": [
+    89.7121,
+    -20.1806,
+    44.2966
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_passenger",
+   "parent": 12,
+   "pos": [
+    15.0439,
+    -29.7767,
+    35.7667
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_player",
+   "parent": 12,
+   "pos": [
+    15.0439,
+    29.4019,
+    35.7667
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_turret",
+   "parent": 12,
+   "pos": [
+    -2.5142,
+    -1.7432,
+    75.5366
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "turret_animate_jnt",
+   "parent": 31,
+   "pos": [
+    -2.5142,
+    -1.7432,
+    75.5366
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "hatch_open_base_jnt",
+   "parent": 32,
+   "pos": [
+    -13.7774,
+    8.856,
+    75.5359
+   ],
+   "quat": [
+    0.309122,
+    0.950774,
+    -0.006775,
+    0.020661
+   ]
+  },
+  {
+   "name": "tag_barrel",
+   "parent": 32,
+   "pos": [
+    22.9828,
+    -0.0996,
+    89.2861
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_gunner",
+   "parent": 32,
+   "pos": [
+    -2.5142,
+    -1.7432,
+    34.9616
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "barrel_animate_jnt",
+   "parent": 34,
+   "pos": [
+    22.9828,
+    -0.0996,
+    89.2861
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "hatch_open_door_jnt",
+   "parent": 33,
+   "pos": [
+    -29.1009,
+    19.998,
+    75.4995
+   ],
+   "quat": [
+    0.307737,
+    0.946492,
+    0.030008,
+    -0.092474
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 36,
+   "pos": [
+    67.382,
+    -0.6921,
+    93.2656
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_gunner_pov",
+   "parent": 36,
+   "pos": [
+    -2.5142,
+    0.0,
+    100.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 96,
+   "material": 0
+  },
+  {
+   "indexStart": 96,
+   "indexCount": 612,
+   "material": 0
+  },
+  {
+   "indexStart": 708,
+   "indexCount": 1722,
+   "material": 0
+  },
+  {
+   "indexStart": 2430,
+   "indexCount": 324,
+   "material": 1
+  },
+  {
+   "indexStart": 2754,
+   "indexCount": 3936,
+   "material": -1
+  },
+  {
+   "indexStart": 6690,
+   "indexCount": 516,
+   "material": -1
+  },
+  {
+   "indexStart": 7206,
+   "indexCount": 13224,
+   "material": -1
+  },
+  {
+   "indexStart": 20430,
+   "indexCount": 594,
+   "material": -1
+  },
+  {
+   "indexStart": 21024,
+   "indexCount": 804,
+   "material": -1
+  },
+  {
+   "indexStart": 21828,
+   "indexCount": 738,
+   "material": -1
+  },
+  {
+   "indexStart": 22566,
+   "indexCount": 804,
+   "material": -1
+  },
+  {
+   "indexStart": 23370,
+   "indexCount": 804,
+   "material": -1
+  },
+  {
+   "indexStart": 24174,
+   "indexCount": 804,
+   "material": -1
+  },
+  {
+   "indexStart": 24978,
+   "indexCount": 6,
+   "material": 2
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/ch_concretewall07",
+   "texture": "_textures/ch_concretewall07_col.webp",
+   "textureAlpha": false,
+   "color": "#7a766c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ch_concretewall07_nml.normal.webp",
+   "specularMap": "_textures/ch_concretewall07_spc-r30g30_83359674.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_american_humvee",
+   "texture": "_textures/humvee_col.webp",
+   "textureAlpha": false,
+   "color": "#545046",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/humvee_nor.normal.webp",
+   "specularMap": "_textures/humvee_spec-rgb_humvee_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_american_humvee_glass",
+   "texture": "_textures/glass_col.webp",
+   "textureAlpha": true,
+   "color": "#817e71",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "normalMap": "_textures/glass__nrm.normal.webp",
+   "specularMap": "_textures/glass__spec-rgb_glass__cos-l-11.specular.webp",
+   "envMapParms": [
+    2.0,
+    2.24,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -94.28,
+   -53.25,
+   0.42
+  ],
+  "maxs": [
+   93.97,
+   53.25,
+   153.55
+  ]
+ }
+}

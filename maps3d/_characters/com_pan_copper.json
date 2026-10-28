@@ -1,0 +1,108 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_pan_copper",
+ "kind": "script",
+ "faction": null,
+ "file": "com_pan_copper.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 4656
+  },
+  "normal": {
+   "offset": 4656,
+   "length": 1552
+  },
+  "uv": {
+   "offset": 6208,
+   "length": 3104
+  },
+  "skinIndex": {
+   "offset": 9312,
+   "length": 1552
+  },
+  "skinWeight": {
+   "offset": 10864,
+   "length": 1552
+  },
+  "index": {
+   "offset": 12416,
+   "length": 2328
+  },
+  "color": {
+   "offset": 14744,
+   "length": 1552
+  }
+ },
+ "vertexCount": 388,
+ "triangleCount": 388,
+ "bones": [
+  {
+   "name": "copper_pan_lod1",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 1164,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_copperpan_metalpots",
+   "texture": "_textures/copperpan_metalpots_col.webp",
+   "textureAlpha": false,
+   "color": "#7c6c5d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/copperpan_metalpots_norm.normal.webp",
+   "specularMap": "_textures/copperpan_metalpots_spec-rgb_aedebf0f.specular.webp",
+   "detailScale": [
+    16.0,
+    16.0,
+    0.0,
+    0.0
+   ],
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "detailMap": "_textures/metal_01.webp"
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -5.24,
+   -5.11,
+   0.0
+  ],
+  "maxs": [
+   5.21,
+   19.21,
+   7.66
+  ]
+ }
+}

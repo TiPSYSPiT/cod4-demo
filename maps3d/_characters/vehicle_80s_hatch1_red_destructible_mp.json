@@ -1,0 +1,1167 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "vehicle_80s_hatch1_red_destructible_mp",
+ "kind": "script",
+ "faction": null,
+ "file": "vehicle_80s_hatch1_red_destructible_mp.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 56400
+  },
+  "normal": {
+   "offset": 56400,
+   "length": 18800
+  },
+  "uv": {
+   "offset": 75200,
+   "length": 37600
+  },
+  "skinIndex": {
+   "offset": 112800,
+   "length": 18800
+  },
+  "skinWeight": {
+   "offset": 131600,
+   "length": 18800
+  },
+  "index": {
+   "offset": 150400,
+   "length": 20940
+  },
+  "color": {
+   "offset": 171340,
+   "length": 18800
+  }
+ },
+ "vertexCount": 4700,
+ "triangleCount": 3490,
+ "bones": [
+  {
+   "name": "tag_origin",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_body",
+   "parent": 0,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_wheel_back_left",
+   "parent": 0,
+   "pos": [
+    -37.5912,
+    24.752,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_wheel_back_right",
+   "parent": 0,
+   "pos": [
+    -37.5908,
+    -24.752,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_wheel_front_left",
+   "parent": 0,
+   "pos": [
+    47.2984,
+    24.752,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_wheel_front_right",
+   "parent": 0,
+   "pos": [
+    47.2988,
+    -24.752,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "left_wheel_01_jnt",
+   "parent": 4,
+   "pos": [
+    47.2984,
+    24.752,
+    10.3444
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "left_wheel_02_jnt",
+   "parent": 2,
+   "pos": [
+    -37.5912,
+    24.752,
+    10.3444
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "right_wheel_01_jnt",
+   "parent": 5,
+   "pos": [
+    47.2988,
+    -24.752,
+    10.3444
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "name": "right_wheel_02_jnt",
+   "parent": 3,
+   "pos": [
+    -37.5908,
+    -24.752,
+    10.3444
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "name": "tag_bumper_back",
+   "parent": 1,
+   "pos": [
+    -68.0,
+    0.0002,
+    20.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_bumper_front",
+   "parent": 1,
+   "pos": [
+    76.0,
+    -0.0709,
+    18.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_death_fx",
+   "parent": 1,
+   "pos": [
+    -2.0348,
+    -22.0794,
+    8.9428
+   ],
+   "quat": [
+    -0.512438,
+    -0.48726,
+    -0.512438,
+    0.48723
+   ]
+  },
+  {
+   "name": "tag_door_left_back",
+   "parent": 1,
+   "pos": [
+    -12.9803,
+    29.7465,
+    25.1641
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_door_left_front",
+   "parent": 1,
+   "pos": [
+    30.2527,
+    29.7465,
+    24.5479
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_door_right_back",
+   "parent": 1,
+   "pos": [
+    -12.9803,
+    -29.7465,
+    25.1641
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_door_right_front",
+   "parent": 1,
+   "pos": [
+    30.2527,
+    -29.7465,
+    24.5479
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_back",
+   "parent": 1,
+   "pos": [
+    -58.0363,
+    0.0,
+    38.8165
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_back_d",
+   "parent": 1,
+   "pos": [
+    -58.0363,
+    0.0,
+    38.8165
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_back_fx",
+   "parent": 1,
+   "pos": [
+    -52.0322,
+    0.0,
+    43.623
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "name": "tag_glass_front",
+   "parent": 1,
+   "pos": [
+    33.5518,
+    0.0,
+    37.1768
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_front_d",
+   "parent": 1,
+   "pos": [
+    33.5518,
+    0.0,
+    37.1768
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_front_fx",
+   "parent": 1,
+   "pos": [
+    26.8346,
+    -0.0,
+    41.8642
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "name": "tag_hood",
+   "parent": 1,
+   "pos": [
+    34.4099,
+    0.0,
+    36.7275
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_hood_fx",
+   "parent": 1,
+   "pos": [
+    76.9574,
+    0.0,
+    28.0979
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "name": "tag_light_left_back",
+   "parent": 1,
+   "pos": [
+    -66.9296,
+    18.45,
+    28.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_light_left_back_d",
+   "parent": 1,
+   "pos": [
+    -66.9296,
+    18.45,
+    28.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_light_left_front",
+   "parent": 1,
+   "pos": [
+    74.6705,
+    20.8701,
+    25.7223
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_light_left_front_d",
+   "parent": 1,
+   "pos": [
+    74.6705,
+    20.8701,
+    25.7223
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_light_right_back",
+   "parent": 1,
+   "pos": [
+    -66.9296,
+    -18.7639,
+    28.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_light_right_back_d",
+   "parent": 1,
+   "pos": [
+    -66.9296,
+    -18.7639,
+    28.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_light_right_front",
+   "parent": 1,
+   "pos": [
+    74.6705,
+    -20.8701,
+    25.7223
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_light_right_front_d",
+   "parent": 1,
+   "pos": [
+    74.6705,
+    -20.8701,
+    25.7223
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_trunk",
+   "parent": 1,
+   "pos": [
+    -35.2285,
+    0.0,
+    51.8378
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_left_back",
+   "parent": 13,
+   "pos": [
+    -14.2563,
+    26.8742,
+    34.4766
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_left_back_d",
+   "parent": 13,
+   "pos": [
+    -14.2563,
+    26.8742,
+    34.4766
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_left_back_fx",
+   "parent": 13,
+   "pos": [
+    -26.3499,
+    24.6084,
+    41.3108
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.707107,
+    0.707107
+   ]
+  },
+  {
+   "name": "tag_glass_left_front",
+   "parent": 14,
+   "pos": [
+    26.4004,
+    26.1767,
+    34.5085
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_left_front_d",
+   "parent": 14,
+   "pos": [
+    26.4004,
+    26.1767,
+    34.5085
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_left_front_fx",
+   "parent": 14,
+   "pos": [
+    2.516,
+    24.6186,
+    40.6951
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.707107,
+    0.707107
+   ]
+  },
+  {
+   "name": "tag_glass_right_back",
+   "parent": 15,
+   "pos": [
+    -14.2563,
+    -26.8742,
+    34.4766
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_right_back_d",
+   "parent": 15,
+   "pos": [
+    -14.2563,
+    -26.8742,
+    34.4766
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_right_back_fx",
+   "parent": 15,
+   "pos": [
+    -26.3499,
+    -24.5562,
+    41.3108
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    -0.707107,
+    0.707107
+   ]
+  },
+  {
+   "name": "tag_glass_right_front",
+   "parent": 16,
+   "pos": [
+    26.4004,
+    -26.1767,
+    34.5085
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_right_front_d",
+   "parent": 16,
+   "pos": [
+    26.4004,
+    -26.1767,
+    34.5085
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_right_front_fx",
+   "parent": 16,
+   "pos": [
+    2.516,
+    -24.4536,
+    40.6951
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    -0.707107,
+    0.707107
+   ]
+  },
+  {
+   "name": "tag_mirror_left",
+   "parent": 14,
+   "pos": [
+    24.9724,
+    29.161,
+    32.3662
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_mirror_right",
+   "parent": 16,
+   "pos": [
+    24.9724,
+    -29.161,
+    32.3662
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 42,
+   "material": 0
+  },
+  {
+   "indexStart": 42,
+   "indexCount": 48,
+   "material": 0
+  },
+  {
+   "indexStart": 90,
+   "indexCount": 18,
+   "material": 0
+  },
+  {
+   "indexStart": 108,
+   "indexCount": 18,
+   "material": 0
+  },
+  {
+   "indexStart": 126,
+   "indexCount": 18,
+   "material": 0
+  },
+  {
+   "indexStart": 144,
+   "indexCount": 18,
+   "material": 0
+  },
+  {
+   "indexStart": 162,
+   "indexCount": 42,
+   "material": 1
+  },
+  {
+   "indexStart": 204,
+   "indexCount": 48,
+   "material": 1
+  },
+  {
+   "indexStart": 252,
+   "indexCount": 18,
+   "material": 1
+  },
+  {
+   "indexStart": 270,
+   "indexCount": 18,
+   "material": 1
+  },
+  {
+   "indexStart": 288,
+   "indexCount": 18,
+   "material": 1
+  },
+  {
+   "indexStart": 306,
+   "indexCount": 18,
+   "material": 1
+  },
+  {
+   "indexStart": 324,
+   "indexCount": 6078,
+   "material": 2
+  },
+  {
+   "indexStart": 6402,
+   "indexCount": 150,
+   "material": 2
+  },
+  {
+   "indexStart": 6552,
+   "indexCount": 276,
+   "material": 2
+  },
+  {
+   "indexStart": 6828,
+   "indexCount": 276,
+   "material": 2
+  },
+  {
+   "indexStart": 7104,
+   "indexCount": 150,
+   "material": 2
+  },
+  {
+   "indexStart": 7254,
+   "indexCount": 12,
+   "material": 2
+  },
+  {
+   "indexStart": 7266,
+   "indexCount": 12,
+   "material": 2
+  },
+  {
+   "indexStart": 7278,
+   "indexCount": 12,
+   "material": 2
+  },
+  {
+   "indexStart": 7290,
+   "indexCount": 12,
+   "material": 2
+  },
+  {
+   "indexStart": 7302,
+   "indexCount": 150,
+   "material": 2
+  },
+  {
+   "indexStart": 7452,
+   "indexCount": 84,
+   "material": 3
+  },
+  {
+   "indexStart": 7536,
+   "indexCount": 30,
+   "material": 3
+  },
+  {
+   "indexStart": 7566,
+   "indexCount": 96,
+   "material": 3
+  },
+  {
+   "indexStart": 7662,
+   "indexCount": 30,
+   "material": 3
+  },
+  {
+   "indexStart": 7692,
+   "indexCount": 30,
+   "material": 3
+  },
+  {
+   "indexStart": 7722,
+   "indexCount": 30,
+   "material": 3
+  },
+  {
+   "indexStart": 7752,
+   "indexCount": 12,
+   "material": 4
+  },
+  {
+   "indexStart": 7764,
+   "indexCount": 12,
+   "material": 4
+  },
+  {
+   "indexStart": 7776,
+   "indexCount": 12,
+   "material": 4
+  },
+  {
+   "indexStart": 7788,
+   "indexCount": 12,
+   "material": 4
+  },
+  {
+   "indexStart": 7800,
+   "indexCount": 270,
+   "material": 5
+  },
+  {
+   "indexStart": 8070,
+   "indexCount": 348,
+   "material": 6
+  },
+  {
+   "indexStart": 8418,
+   "indexCount": 348,
+   "material": 6
+  },
+  {
+   "indexStart": 8766,
+   "indexCount": 348,
+   "material": 6
+  },
+  {
+   "indexStart": 9114,
+   "indexCount": 348,
+   "material": 6
+  },
+  {
+   "indexStart": 9462,
+   "indexCount": 330,
+   "material": 6
+  },
+  {
+   "indexStart": 9792,
+   "indexCount": 282,
+   "material": 6
+  },
+  {
+   "indexStart": 10074,
+   "indexCount": 156,
+   "material": 7
+  },
+  {
+   "indexStart": 10230,
+   "indexCount": 60,
+   "material": 7
+  },
+  {
+   "indexStart": 10290,
+   "indexCount": 60,
+   "material": 7
+  },
+  {
+   "indexStart": 10350,
+   "indexCount": 60,
+   "material": 7
+  },
+  {
+   "indexStart": 10410,
+   "indexCount": 60,
+   "material": 7
+  }
+ ],
+ "materials": [
+  {
+   "name": ",mc/com_glass_shattered_outside",
+   "texture": null,
+   "textureAlpha": false,
+   "color": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true
+  },
+  {
+   "name": "mc/com_glass_shattered_inside",
+   "texture": "_textures/glass_shattered_col.webp",
+   "textureAlpha": true,
+   "color": "#687575",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "normalMap": "_textures/glass_shattered_nml.normal.webp",
+   "specularMap": "_textures/glass_shattered_spc-rgb_glas_36dd5f9b.specular.webp",
+   "envMapParms": [
+    2.0,
+    12.0,
+    10.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_80s_econ_red",
+   "texture": "_textures/80s_econ_red_col.webp",
+   "textureAlpha": false,
+   "color": "#5f463a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/80s_econ_nml.normal.webp",
+   "specularMap": "_textures/80s_econ_spc-rgb_80s_econ_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    3.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_80s_econ_glass",
+   "texture": "_textures/80s_econ_glass_col.webp",
+   "textureAlpha": true,
+   "color": "#515856",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "specularMap": "_textures/80s_econ_glass_spc-rgb_80s_e_29444396.specular.webp",
+   "envMapParms": [
+    1.4,
+    4.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_80s_econdestroy_green",
+   "texture": "_textures/80s_econdestroy_green_col.webp",
+   "textureAlpha": false,
+   "color": "#41493e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/80s_econdestroy_nml.normal.webp",
+   "specularMap": "_textures/80s_econdestroy_spc-rgb_80s__2838a1ce.specular.webp",
+   "envMapParms": [
+    0.4,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_engine",
+   "texture": "_textures/car_engine_col.webp",
+   "textureAlpha": false,
+   "color": "#433e3c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/car_engine_nml.normal.webp",
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_80s_econ_green_rubber",
+   "texture": "_textures/80s_econ_green_col.webp",
+   "textureAlpha": false,
+   "color": "#555e4d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/80s_econ_nml.normal.webp",
+   "specularMap": "_textures/80s_econ_spc-rgb_80s_econ_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.6,
+    3.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_80s_econ_green_metal",
+   "texture": "_textures/80s_econ_green_col.webp",
+   "textureAlpha": false,
+   "color": "#555e4d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/80s_econ_nml.normal.webp",
+   "specularMap": "_textures/80s_econ_spc-rgb_80s_econ_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.6,
+    3.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -71.07,
+   -35.99,
+   -0.66
+  ],
+  "maxs": [
+   79.41,
+   35.99,
+   53.44
+  ]
+ }
+}

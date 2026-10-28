@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "vehicle_80s_sedan1_green_mirror_r",
+ "kind": "script",
+ "faction": null,
+ "file": "vehicle_80s_sedan1_green_mirror_r.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 708
+  },
+  "normal": {
+   "offset": 708,
+   "length": 236
+  },
+  "uv": {
+   "offset": 944,
+   "length": 472
+  },
+  "skinIndex": {
+   "offset": 1416,
+   "length": 236
+  },
+  "skinWeight": {
+   "offset": 1652,
+   "length": 236
+  },
+  "index": {
+   "offset": 1888,
+   "length": 300
+  },
+  "color": {
+   "offset": 2188,
+   "length": 236
+  }
+ },
+ "vertexCount": 59,
+ "triangleCount": 50,
+ "bones": [
+  {
+   "name": "tag_mirror_right",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 150,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_80s_econ_green",
+   "texture": "_textures/80s_econ_green_col.webp",
+   "textureAlpha": false,
+   "color": "#555e4d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/80s_econ_nml.normal.webp",
+   "specularMap": "_textures/80s_econ_spc-rgb_80s_econ_cos-l-11.specular.webp",
+   "envMapParms": [
+    1.0,
+    3.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -2.3,
+   -7.4,
+   -1.23
+  ],
+  "maxs": [
+   2.16,
+   1.28,
+   5.09
+  ]
+ }
+}

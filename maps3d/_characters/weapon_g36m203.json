@@ -1,0 +1,178 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "weapon_g36m203",
+ "kind": "weapon",
+ "faction": null,
+ "file": "weapon_g36m203.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 23868
+  },
+  "normal": {
+   "offset": 23868,
+   "length": 7956
+  },
+  "uv": {
+   "offset": 31824,
+   "length": 15912
+  },
+  "skinIndex": {
+   "offset": 47736,
+   "length": 7956
+  },
+  "skinWeight": {
+   "offset": 55692,
+   "length": 7956
+  },
+  "index": {
+   "offset": 63648,
+   "length": 7092
+  },
+  "color": {
+   "offset": 70740,
+   "length": 7956
+  }
+ },
+ "vertexCount": 1989,
+ "triangleCount": 1182,
+ "bones": [
+  {
+   "name": "tag_weapon",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 0,
+   "pos": [
+    -5.5994,
+    -0.4699,
+    0.5294
+   ],
+   "quat": [
+    -0.212622,
+    -0.212622,
+    -0.674367,
+    0.674398
+   ]
+  },
+  {
+   "name": "tag_clip",
+   "parent": 0,
+   "pos": [
+    -5.3769,
+    -0.01,
+    -3.592
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    7.0754,
+    0.0,
+    0.2933
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 90,
+   "material": 0
+  },
+  {
+   "indexStart": 90,
+   "indexCount": 3072,
+   "material": 0
+  },
+  {
+   "indexStart": 3162,
+   "indexCount": 384,
+   "material": 1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_g36",
+   "texture": "_textures/weapon_g36_col.webp",
+   "textureAlpha": false,
+   "color": "#232324",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_g36_spec-r30g30b30_we_833b4d4f.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_m4_m16",
+   "texture": "_textures/weapon_m4_col.webp",
+   "textureAlpha": false,
+   "color": "#2a2c2d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_m4_spc-r-17g-17b-17_w_aca95990.specular.webp",
+   "envMapParms": [
+    2.0,
+    4.0,
+    0.8,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -22.6,
+   -0.98,
+   -7.82
+  ],
+  "maxs": [
+   8.49,
+   1.21,
+   3.49
+  ]
+ }
+}

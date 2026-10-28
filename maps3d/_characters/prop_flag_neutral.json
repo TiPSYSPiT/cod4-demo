@@ -1,0 +1,88 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "prop_flag_neutral",
+ "kind": "script",
+ "faction": null,
+ "file": "prop_flag_neutral.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 3660
+  },
+  "normal": {
+   "offset": 3660,
+   "length": 1220
+  },
+  "uv": {
+   "offset": 4880,
+   "length": 2440
+  },
+  "skinIndex": {
+   "offset": 7320,
+   "length": 1220
+  },
+  "skinWeight": {
+   "offset": 8540,
+   "length": 1220
+  },
+  "index": {
+   "offset": 9760,
+   "length": 3120
+  },
+  "color": {
+   "offset": 12880,
+   "length": 1220
+  }
+ },
+ "vertexCount": 305,
+ "triangleCount": 520,
+ "bones": [
+  {
+   "name": "",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 1560,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_flag_neutral",
+   "texture": "_textures/flag_neutral.webp",
+   "textureAlpha": true,
+   "color": "#7c7874",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "textureGuess": "name"
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -1.06,
+   -6.6,
+   0.92
+  ],
+  "maxs": [
+   53.69,
+   15.42,
+   98.11
+  ]
+ }
+}

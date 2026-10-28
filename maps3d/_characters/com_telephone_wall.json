@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_telephone_wall",
+ "kind": "script",
+ "faction": null,
+ "file": "com_telephone_wall.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 6360
+  },
+  "normal": {
+   "offset": 6360,
+   "length": 2120
+  },
+  "uv": {
+   "offset": 8480,
+   "length": 4240
+  },
+  "skinIndex": {
+   "offset": 12720,
+   "length": 2120
+  },
+  "skinWeight": {
+   "offset": 14840,
+   "length": 2120
+  },
+  "index": {
+   "offset": 16960,
+   "length": 3456
+  },
+  "color": {
+   "offset": 20416,
+   "length": 2120
+  }
+ },
+ "vertexCount": 530,
+ "triangleCount": 576,
+ "bones": [
+  {
+   "name": "wall_telephone_01",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 1728,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_telephone_wall",
+   "texture": "_textures/telephone_wall_col.webp",
+   "textureAlpha": false,
+   "color": "#4c4c4c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/telephone_wall_nml.normal.webp",
+   "specularMap": "_textures/telephone_wall_spc-rgb_telep_1a2637e6.specular.webp",
+   "envMapParms": [
+    0.4,
+    2.4,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -6.24,
+   -11.37,
+   0.0
+  ],
+  "maxs": [
+   2.59,
+   7.25,
+   3.98
+  ]
+ }
+}

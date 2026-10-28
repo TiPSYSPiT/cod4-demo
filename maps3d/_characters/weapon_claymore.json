@@ -1,0 +1,91 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "weapon_claymore",
+ "kind": "weapon",
+ "faction": null,
+ "file": "weapon_claymore.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 5628
+  },
+  "normal": {
+   "offset": 5628,
+   "length": 1876
+  },
+  "uv": {
+   "offset": 7504,
+   "length": 3752
+  },
+  "skinIndex": {
+   "offset": 11256,
+   "length": 1876
+  },
+  "skinWeight": {
+   "offset": 13132,
+   "length": 1876
+  },
+  "index": {
+   "offset": 15008,
+   "length": 1896
+  },
+  "color": {
+   "offset": 16904,
+   "length": 1876
+  }
+ },
+ "vertexCount": 469,
+ "triangleCount": 316,
+ "bones": [
+  {
+   "name": "tag_origin",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_fx",
+   "parent": 0,
+   "pos": [
+    1.6031,
+    0.0,
+    8.6376
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 948,
+   "material": -1
+  }
+ ],
+ "materials": [],
+ "bounds": {
+  "mins": [
+   -1.09,
+   -5.52,
+   -2.42
+  ],
+  "maxs": [
+   1.62,
+   5.52,
+   10.14
+  ]
+ }
+}

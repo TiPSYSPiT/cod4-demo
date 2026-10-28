@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "bathroom_plunger",
+ "kind": "script",
+ "faction": null,
+ "file": "bathroom_plunger.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 1608
+  },
+  "normal": {
+   "offset": 1608,
+   "length": 536
+  },
+  "uv": {
+   "offset": 2144,
+   "length": 1072
+  },
+  "skinIndex": {
+   "offset": 3216,
+   "length": 536
+  },
+  "skinWeight": {
+   "offset": 3752,
+   "length": 536
+  },
+  "index": {
+   "offset": 4288,
+   "length": 888
+  },
+  "color": {
+   "offset": 5176,
+   "length": 536
+  }
+ },
+ "vertexCount": 134,
+ "triangleCount": 148,
+ "bones": [
+  {
+   "name": "newnodename35",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 444,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_bathroom_props",
+   "texture": "_textures/bathroom_chrome_clr.webp",
+   "textureAlpha": false,
+   "color": "#2e302e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/bathroom_chrome_nml.normal.webp",
+   "specularMap": "_textures/bathroom_chrome_spc-rgb_bath_03806b1d.specular.webp",
+   "envMapParms": [
+    1.2,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -3.99,
+   -3.84,
+   -0.06
+  ],
+  "maxs": [
+   3.9,
+   4.05,
+   19.58
+  ]
+ }
+}

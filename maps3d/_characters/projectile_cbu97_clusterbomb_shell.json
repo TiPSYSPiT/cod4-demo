@@ -1,0 +1,76 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "projectile_cbu97_clusterbomb_shell",
+ "kind": "fx",
+ "faction": null,
+ "file": "projectile_cbu97_clusterbomb_shell.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 1500
+  },
+  "normal": {
+   "offset": 1500,
+   "length": 500
+  },
+  "uv": {
+   "offset": 2000,
+   "length": 1000
+  },
+  "skinIndex": {
+   "offset": 3000,
+   "length": 500
+  },
+  "skinWeight": {
+   "offset": 3500,
+   "length": 500
+  },
+  "index": {
+   "offset": 4000,
+   "length": 696
+  },
+  "color": {
+   "offset": 4696,
+   "length": 500
+  }
+ },
+ "vertexCount": 125,
+ "triangleCount": 116,
+ "bones": [
+  {
+   "name": "polysurface26",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 348,
+   "material": -1
+  }
+ ],
+ "materials": [],
+ "bounds": {
+  "mins": [
+   -37.35,
+   -4.22,
+   -7.45
+  ],
+  "maxs": [
+   35.76,
+   3.41,
+   7.62
+  ]
+ }
+}

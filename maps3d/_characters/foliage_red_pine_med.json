@@ -1,0 +1,115 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "foliage_red_pine_med",
+ "kind": "script",
+ "faction": null,
+ "file": "foliage_red_pine_med.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 43404
+  },
+  "normal": {
+   "offset": 43404,
+   "length": 14468
+  },
+  "uv": {
+   "offset": 57872,
+   "length": 28936
+  },
+  "skinIndex": {
+   "offset": 86808,
+   "length": 14468
+  },
+  "skinWeight": {
+   "offset": 101276,
+   "length": 14468
+  },
+  "index": {
+   "offset": 115744,
+   "length": 10428
+  },
+  "color": {
+   "offset": 126172,
+   "length": 14468
+  }
+ },
+ "vertexCount": 3617,
+ "triangleCount": 1738,
+ "bones": [
+  {
+   "name": "",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 2688,
+   "material": 0
+  },
+  {
+   "indexStart": 2688,
+   "indexCount": 2466,
+   "material": -1
+  },
+  {
+   "indexStart": 5154,
+   "indexCount": 60,
+   "material": 1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_red_pine_canopy",
+   "texture": "_textures/red_pine_col.webp",
+   "textureAlpha": true,
+   "color": "#211e1b",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "textureFrom": "mp_bloc"
+  },
+  {
+   "name": "mc/mtl_tree_shadow_caster",
+   "texture": "_textures/tree_shadowcaster.webp",
+   "textureAlpha": true,
+   "color": "#000000",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "shadowOnly": true
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -149.57,
+   -144.76,
+   -20.65
+  ],
+  "maxs": [
+   121.23,
+   122.78,
+   451.13
+  ]
+ }
+}

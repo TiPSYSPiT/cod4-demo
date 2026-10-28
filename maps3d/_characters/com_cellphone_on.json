@@ -1,0 +1,116 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_cellphone_on",
+ "kind": "script",
+ "faction": null,
+ "file": "com_cellphone_on.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 2292
+  },
+  "normal": {
+   "offset": 2292,
+   "length": 764
+  },
+  "uv": {
+   "offset": 3056,
+   "length": 1528
+  },
+  "skinIndex": {
+   "offset": 4584,
+   "length": 764
+  },
+  "skinWeight": {
+   "offset": 5348,
+   "length": 764
+  },
+  "index": {
+   "offset": 6112,
+   "length": 1224
+  },
+  "color": {
+   "offset": 7336,
+   "length": 764
+  }
+ },
+ "vertexCount": 191,
+ "triangleCount": 204,
+ "bones": [
+  {
+   "name": "tag_origin",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_weapon",
+   "parent": 0,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 612,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_cellphone",
+   "texture": "_textures/cellphone_col.webp",
+   "textureAlpha": false,
+   "color": "#2f3233",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/cellphone_nml.normal.webp",
+   "specularMap": "_textures/cellphone_spc-rgb_cellphone_cos-l-11.specular.webp",
+   "envMapParms": [
+    2.0,
+    4.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -1.26,
+   -1.18,
+   0.02
+  ],
+  "maxs": [
+   1.26,
+   0.03,
+   7.06
+  ]
+ }
+}

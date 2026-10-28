@@ -1,0 +1,129 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "vehicle_80s_sedan1_brndest",
+ "kind": "script",
+ "faction": null,
+ "file": "vehicle_80s_sedan1_brndest.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 33528
+  },
+  "normal": {
+   "offset": 33528,
+   "length": 11176
+  },
+  "uv": {
+   "offset": 44704,
+   "length": 22352
+  },
+  "skinIndex": {
+   "offset": 67056,
+   "length": 11176
+  },
+  "skinWeight": {
+   "offset": 78232,
+   "length": 11176
+  },
+  "index": {
+   "offset": 89408,
+   "length": 13392
+  },
+  "color": {
+   "offset": 102800,
+   "length": 11176
+  }
+ },
+ "vertexCount": 2794,
+ "triangleCount": 2232,
+ "bones": [
+  {
+   "name": "tag_origin",
+   "parent": -1,
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "quat": [
+    0,
+    0,
+    0,
+    1
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 6522,
+   "material": 0
+  },
+  {
+   "indexStart": 6522,
+   "indexCount": 174,
+   "material": 1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_80s_econdestroy_brn",
+   "texture": "_textures/80s_econdestroy_brn_col.webp",
+   "textureAlpha": false,
+   "color": "#4a4137",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/80s_econdestroy_nml.normal.webp",
+   "specularMap": "_textures/80s_econdestroy_spc-rgb_80s__2838a1ce.specular.webp",
+   "envMapParms": [
+    0.4,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_80s_edestroy_glass",
+   "texture": "_textures/80s_destglass_col.webp",
+   "textureAlpha": true,
+   "color": "#505c5b",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "specularMap": "_textures/80s_destglass_spc-rgb_80s_de_0f42539d.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -82.27,
+   -31.06,
+   -3.85
+  ],
+  "maxs": [
+   83.1,
+   40.11,
+   64.25
+  ]
+ }
+}

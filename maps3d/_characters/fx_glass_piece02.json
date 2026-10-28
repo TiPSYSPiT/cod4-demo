@@ -1,0 +1,76 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "fx_glass_piece02",
+ "kind": "fx",
+ "faction": null,
+ "file": "fx_glass_piece02.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 216
+  },
+  "normal": {
+   "offset": 216,
+   "length": 72
+  },
+  "uv": {
+   "offset": 288,
+   "length": 144
+  },
+  "skinIndex": {
+   "offset": 432,
+   "length": 72
+  },
+  "skinWeight": {
+   "offset": 504,
+   "length": 72
+  },
+  "index": {
+   "offset": 576,
+   "length": 48
+  },
+  "color": {
+   "offset": 624,
+   "length": 72
+  }
+ },
+ "vertexCount": 18,
+ "triangleCount": 8,
+ "bones": [
+  {
+   "name": "pcube4",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 24,
+   "material": -1
+  }
+ ],
+ "materials": [],
+ "bounds": {
+  "mins": [
+   -0.22,
+   -1.24,
+   -0.28
+  ],
+  "maxs": [
+   0.2,
+   1.24,
+   0.27
+  ]
+ }
+}

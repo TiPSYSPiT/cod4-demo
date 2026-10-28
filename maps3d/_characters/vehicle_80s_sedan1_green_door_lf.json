@@ -1,0 +1,146 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "vehicle_80s_sedan1_green_door_lf",
+ "kind": "script",
+ "faction": null,
+ "file": "vehicle_80s_sedan1_green_door_lf.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 1620
+  },
+  "normal": {
+   "offset": 1620,
+   "length": 540
+  },
+  "uv": {
+   "offset": 2160,
+   "length": 1080
+  },
+  "skinIndex": {
+   "offset": 3240,
+   "length": 540
+  },
+  "skinWeight": {
+   "offset": 3780,
+   "length": 540
+  },
+  "index": {
+   "offset": 4320,
+   "length": 564
+  },
+  "color": {
+   "offset": 4884,
+   "length": 540
+  }
+ },
+ "vertexCount": 135,
+ "triangleCount": 94,
+ "bones": [
+  {
+   "name": "tag_door_left_front",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_left_front",
+   "parent": 0,
+   "pos": [
+    -3.8026,
+    -3.6021,
+    10.5545
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_left_front_fx",
+   "parent": 0,
+   "pos": [
+    -27.4826,
+    -5.8216,
+    18.9571
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_mirror_left",
+   "parent": 0,
+   "pos": [
+    -14.5415,
+    -0.993,
+    8.6415
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 282,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_80s_econ_green",
+   "texture": "_textures/80s_econ_green_col.webp",
+   "textureAlpha": false,
+   "color": "#555e4d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/80s_econ_nml.normal.webp",
+   "specularMap": "_textures/80s_econ_spc-rgb_80s_econ_cos-l-11.specular.webp",
+   "envMapParms": [
+    1.0,
+    3.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -41.97,
+   -10.69,
+   -16.0
+  ],
+  "maxs": [
+   0.02,
+   0.01,
+   28.75
+  ]
+ }
+}

@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_soup_can",
+ "kind": "script",
+ "faction": null,
+ "file": "com_soup_can.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 828
+  },
+  "normal": {
+   "offset": 828,
+   "length": 276
+  },
+  "uv": {
+   "offset": 1104,
+   "length": 552
+  },
+  "skinIndex": {
+   "offset": 1656,
+   "length": 276
+  },
+  "skinWeight": {
+   "offset": 1932,
+   "length": 276
+  },
+  "index": {
+   "offset": 2208,
+   "length": 348
+  },
+  "color": {
+   "offset": 2556,
+   "length": 276
+  }
+ },
+ "vertexCount": 69,
+ "triangleCount": 58,
+ "bones": [
+  {
+   "name": "soupcan_lod0",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 174,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_soup_can",
+   "texture": "_textures/soup_can_col.webp",
+   "textureAlpha": false,
+   "color": "#696356",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/soup_can_nml.normal.webp",
+   "specularMap": "_textures/soup_can_spc-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -2.03,
+   -1.96,
+   -0.0
+  ],
+  "maxs": [
+   2.09,
+   1.96,
+   6.03
+  ]
+ }
+}

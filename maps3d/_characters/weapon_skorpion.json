@@ -1,0 +1,150 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "weapon_skorpion",
+ "kind": "weapon",
+ "faction": null,
+ "file": "weapon_skorpion.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 11940
+  },
+  "normal": {
+   "offset": 11940,
+   "length": 3980
+  },
+  "uv": {
+   "offset": 15920,
+   "length": 7960
+  },
+  "skinIndex": {
+   "offset": 23880,
+   "length": 3980
+  },
+  "skinWeight": {
+   "offset": 27860,
+   "length": 3980
+  },
+  "index": {
+   "offset": 31840,
+   "length": 6024
+  },
+  "color": {
+   "offset": 37864,
+   "length": 3980
+  }
+ },
+ "vertexCount": 995,
+ "triangleCount": 1004,
+ "bones": [
+  {
+   "name": "tag_weapon",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 0,
+   "pos": [
+    -7.0283,
+    -0.8111,
+    -0.3371
+   ],
+   "quat": [
+    -0.092288,
+    -0.092288,
+    -0.701074,
+    0.701043
+   ]
+  },
+  {
+   "name": "tag_clip",
+   "parent": 0,
+   "pos": [
+    -6.2067,
+    0.0,
+    -1.3558
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    0.3777,
+    0.0,
+    -0.6605
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 102,
+   "material": 0
+  },
+  {
+   "indexStart": 102,
+   "indexCount": 2910,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_scorpion",
+   "texture": "_textures/weapon_scorpion_col.webp",
+   "textureAlpha": false,
+   "color": "#29231f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_scorpion_spc-rgb_weap_5811727e.specular.webp",
+   "envMapParms": [
+    0.4,
+    4.0,
+    2.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -12.45,
+   -1.03,
+   -6.77
+  ],
+  "maxs": [
+   0.38,
+   1.03,
+   0.9
+  ]
+ }
+}

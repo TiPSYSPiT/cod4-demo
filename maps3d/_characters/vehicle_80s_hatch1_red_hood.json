@@ -1,0 +1,123 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "vehicle_80s_hatch1_red_hood",
+ "kind": "script",
+ "faction": null,
+ "file": "vehicle_80s_hatch1_red_hood.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 2028
+  },
+  "normal": {
+   "offset": 2028,
+   "length": 676
+  },
+  "uv": {
+   "offset": 2704,
+   "length": 1352
+  },
+  "skinIndex": {
+   "offset": 4056,
+   "length": 676
+  },
+  "skinWeight": {
+   "offset": 4732,
+   "length": 676
+  },
+  "index": {
+   "offset": 5408,
+   "length": 840
+  },
+  "color": {
+   "offset": 6248,
+   "length": 676
+  }
+ },
+ "vertexCount": 169,
+ "triangleCount": 140,
+ "bones": [
+  {
+   "name": "tag_hood",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 150,
+   "material": 0
+  },
+  {
+   "indexStart": 150,
+   "indexCount": 270,
+   "material": 1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_80s_econ_red",
+   "texture": "_textures/80s_econ_red_col.webp",
+   "textureAlpha": false,
+   "color": "#5f463a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/80s_econ_nml.normal.webp",
+   "specularMap": "_textures/80s_econ_spc-rgb_80s_econ_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    3.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_engine",
+   "texture": "_textures/car_engine_col.webp",
+   "textureAlpha": false,
+   "color": "#433e3c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/car_engine_nml.normal.webp",
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -4.16,
+   -25.9,
+   -9.0
+  ],
+  "maxs": [
+   41.99,
+   25.9,
+   0.01
+  ]
+ }
+}

@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "vehicle_80s_sedan1_silv_trunk_dam",
+ "kind": "script",
+ "faction": null,
+ "file": "vehicle_80s_sedan1_silv_trunk_dam.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 2280
+  },
+  "normal": {
+   "offset": 2280,
+   "length": 760
+  },
+  "uv": {
+   "offset": 3040,
+   "length": 1520
+  },
+  "skinIndex": {
+   "offset": 4560,
+   "length": 760
+  },
+  "skinWeight": {
+   "offset": 5320,
+   "length": 760
+  },
+  "index": {
+   "offset": 6080,
+   "length": 660
+  },
+  "color": {
+   "offset": 6740,
+   "length": 760
+  }
+ },
+ "vertexCount": 190,
+ "triangleCount": 110,
+ "bones": [
+  {
+   "name": "tag_origin",
+   "parent": -1,
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "quat": [
+    0,
+    0,
+    0,
+    1
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 330,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_80s_econdestroy_silv",
+   "texture": "_textures/80s_econdestroy_silv_col.webp",
+   "textureAlpha": false,
+   "color": "#494540",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/80s_econdestroy_nml.normal.webp",
+   "specularMap": "_textures/80s_econdestroy_spc-rgb_80s__2838a1ce.specular.webp",
+   "envMapParms": [
+    0.4,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -25.34,
+   -25.36,
+   -5.36
+  ],
+  "maxs": [
+   2.7,
+   25.37,
+   1.32
+  ]
+ }
+}

@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_paintcan",
+ "kind": "script",
+ "faction": null,
+ "file": "com_paintcan.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 4416
+  },
+  "normal": {
+   "offset": 4416,
+   "length": 1472
+  },
+  "uv": {
+   "offset": 5888,
+   "length": 2944
+  },
+  "skinIndex": {
+   "offset": 8832,
+   "length": 1472
+  },
+  "skinWeight": {
+   "offset": 10304,
+   "length": 1472
+  },
+  "index": {
+   "offset": 11776,
+   "length": 1872
+  },
+  "color": {
+   "offset": 13648,
+   "length": 1472
+  }
+ },
+ "vertexCount": 368,
+ "triangleCount": 312,
+ "bones": [
+  {
+   "name": "paintcan_lod0",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 936,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_paint_can",
+   "texture": "_textures/paint_can_col.webp",
+   "textureAlpha": false,
+   "color": "#7c7b73",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/paint_can_nml.normal.webp",
+   "specularMap": "_textures/paint_can_spc-rgb_paint_can_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -5.36,
+   -6.05,
+   0.02
+  ],
+  "maxs": [
+   5.95,
+   6.13,
+   12.95
+  ]
+ }
+}

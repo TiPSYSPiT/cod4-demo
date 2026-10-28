@@ -1,0 +1,100 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_barrel_shard2",
+ "kind": "script",
+ "faction": null,
+ "file": "com_barrel_shard2.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 768
+  },
+  "normal": {
+   "offset": 768,
+   "length": 256
+  },
+  "uv": {
+   "offset": 1024,
+   "length": 512
+  },
+  "skinIndex": {
+   "offset": 1536,
+   "length": 256
+  },
+  "skinWeight": {
+   "offset": 1792,
+   "length": 256
+  },
+  "index": {
+   "offset": 2048,
+   "length": 192
+  },
+  "color": {
+   "offset": 2240,
+   "length": 256
+  }
+ },
+ "vertexCount": 64,
+ "triangleCount": 32,
+ "bones": [
+  {
+   "name": "polysurface16",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 96,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_barrel_damaged",
+   "texture": "_textures/barrel_damaged_col.webp",
+   "textureAlpha": false,
+   "color": "#1e201f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "detailScale": [
+    16.0,
+    16.0,
+    0.0,
+    0.0
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "detailMap": "_textures/metal_01.webp"
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -6.72,
+   -2.71,
+   0.02
+  ],
+  "maxs": [
+   5.69,
+   4.41,
+   1.43
+  ]
+ }
+}

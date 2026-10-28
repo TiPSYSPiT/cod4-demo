@@ -1,0 +1,126 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "weapon_colt1911_silencer",
+ "kind": "weapon",
+ "faction": null,
+ "file": "weapon_colt1911_silencer.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 10368
+  },
+  "normal": {
+   "offset": 10368,
+   "length": 3456
+  },
+  "uv": {
+   "offset": 13824,
+   "length": 6912
+  },
+  "skinIndex": {
+   "offset": 20736,
+   "length": 3456
+  },
+  "skinWeight": {
+   "offset": 24192,
+   "length": 3456
+  },
+  "index": {
+   "offset": 27648,
+   "length": 3816
+  },
+  "color": {
+   "offset": 31464,
+   "length": 3456
+  }
+ },
+ "vertexCount": 864,
+ "triangleCount": 636,
+ "bones": [
+  {
+   "name": "tag_weapon",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "j_pistol_grip",
+   "parent": 0,
+   "pos": [
+    -10.4593,
+    0.0,
+    -1.6231
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 1,
+   "pos": [
+    -8.5397,
+    -0.2964,
+    0.3638
+   ],
+   "quat": [
+    -0.212622,
+    -0.212622,
+    -0.674367,
+    0.674398
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 1,
+   "pos": [
+    0.3571,
+    0.0,
+    0.1956
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 90,
+   "material": -1
+  },
+  {
+   "indexStart": 90,
+   "indexCount": 1818,
+   "material": -1
+  }
+ ],
+ "materials": [],
+ "bounds": {
+  "mins": [
+   -12.8,
+   -0.47,
+   -4.58
+  ],
+  "maxs": [
+   0.36,
+   0.62,
+   0.89
+  ]
+ }
+}

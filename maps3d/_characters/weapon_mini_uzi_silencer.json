@@ -1,0 +1,155 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "weapon_mini_uzi_silencer",
+ "kind": "weapon",
+ "faction": null,
+ "file": "weapon_mini_uzi_silencer.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 16116
+  },
+  "normal": {
+   "offset": 16116,
+   "length": 5372
+  },
+  "uv": {
+   "offset": 21488,
+   "length": 10744
+  },
+  "skinIndex": {
+   "offset": 32232,
+   "length": 5372
+  },
+  "skinWeight": {
+   "offset": 37604,
+   "length": 5372
+  },
+  "index": {
+   "offset": 42976,
+   "length": 5928
+  },
+  "color": {
+   "offset": 48904,
+   "length": 5372
+  }
+ },
+ "vertexCount": 1343,
+ "triangleCount": 988,
+ "bones": [
+  {
+   "name": "tag_weapon",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 0,
+   "pos": [
+    -10.4506,
+    -0.8111,
+    0.4335
+   ],
+   "quat": [
+    -0.092288,
+    -0.092288,
+    -0.701074,
+    0.701043
+   ]
+  },
+  {
+   "name": "tag_clip",
+   "parent": 0,
+   "pos": [
+    -10.4297,
+    0.0,
+    -1.3614
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    5.8551,
+    0.0,
+    -0.4954
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 30,
+   "material": 0
+  },
+  {
+   "indexStart": 30,
+   "indexCount": 2844,
+   "material": 0
+  },
+  {
+   "indexStart": 2874,
+   "indexCount": 90,
+   "material": -1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_mini_uzi",
+   "texture": "_textures/weapon_mini_uzi_col.webp",
+   "textureAlpha": false,
+   "color": "#262220",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_mini_uzi_spec-rgb_wea_260ac063.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -16.04,
+   -1.45,
+   -9.16
+  ],
+  "maxs": [
+   5.91,
+   1.0,
+   1.95
+  ]
+ }
+}

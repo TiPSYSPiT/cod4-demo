@@ -1,0 +1,93 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_tv1_screen",
+ "kind": "script",
+ "faction": null,
+ "file": "com_tv1_screen.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 336
+  },
+  "normal": {
+   "offset": 336,
+   "length": 112
+  },
+  "uv": {
+   "offset": 448,
+   "length": 224
+  },
+  "skinIndex": {
+   "offset": 672,
+   "length": 112
+  },
+  "skinWeight": {
+   "offset": 784,
+   "length": 112
+  },
+  "index": {
+   "offset": 896,
+   "length": 168
+  },
+  "color": {
+   "offset": 1064,
+   "length": 112
+  }
+ },
+ "vertexCount": 28,
+ "triangleCount": 28,
+ "bones": [
+  {
+   "name": "tv1_screen_lod0",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 84,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_tv_testpattern",
+   "texture": "_textures/com_tv_testpattern.webp",
+   "textureAlpha": false,
+   "color": "#a5a5a9",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -7.67,
+   -12.52,
+   1.77
+  ],
+  "maxs": [
+   11.29,
+   12.77,
+   21.29
+  ]
+ }
+}

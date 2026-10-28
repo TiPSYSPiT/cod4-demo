@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CoD4 Demo Viewer</title>
+  <meta name="description" content="Call of Duty 4 demo (.dm_1) replay in 2D and 3D - parsed locally in the browser.">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <!-- (Inter and JetBrains Mono come from the site itself: assets/fonts, css/styles.css @font-face) -->
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- three.js r170 from the project's own copy (vendor/three, see vendor/README.md): works offline
+       and on GitHub Pages, and 'three' and its addons always come from the same place. The CDN
+       alternative (the same version, byte-identical files):
+         "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+         "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/" -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "./vendor/three/build/three.module.js",
+      "three/addons/": "./vendor/three/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="top-l">
+      <!-- the logo after favicon.ico: a faceted steel star (lit from the upper left) with a "4" -->
+      <svg class="brand-mark" viewBox="0 0 256 256" aria-hidden="true"><defs><linearGradient id="bm-steel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dfe8da"/><stop offset=".5" stop-color="#9aab95"/><stop offset="1" stop-color="#4f5f4c"/></linearGradient></defs><path d="M127 12L155.2 93.2L241.1 94.9L172.7 146.8L197.5 229.1L127 180L56.5 229.1L81.3 146.8L12.9 94.9L98.8 93.2Z" fill="none" stroke="#9fbf98" stroke-width="10" stroke-linejoin="round"/><path d="M127 132L127 12L98.8 93.2Z" fill="#8a9e86"/><path d="M127 132L127 12L155.2 93.2Z" fill="#566857"/><path d="M127 132L241.1 94.9L155.2 93.2Z" fill="#879984"/><path d="M127 132L241.1 94.9L172.7 146.8Z" fill="#6b866b"/><path d="M127 132L197.5 229.1L172.7 146.8Z" fill="#2c362c"/><path d="M127 132L197.5 229.1L127 180Z" fill="#72846f"/><path d="M127 132L56.5 229.1L127 180Z" fill="#86a283"/><path d="M127 132L56.5 229.1L81.3 146.8Z" fill="#4e5f4b"/><path d="M127 132L12.9 94.9L81.3 146.8Z" fill="#9fbc9b"/><path d="M127 132L12.9 94.9L98.8 93.2Z" fill="#5f7262"/><path d="M190 137H215V197H223V215H215V233H193V215H146V198ZM172 197H192V167Z" fill="url(#bm-steel)" fill-rule="evenodd" stroke="#0d120c" stroke-width="12" stroke-linejoin="round" paint-order="stroke"/></svg>
+      <span class="brand">CoD4 Demo Viewer</span><span id="file-name" class="crumb"></span></div>
+    <div class="seg view-toggle" id="view-toggle" hidden>
+      <button data-view="2d" class="active" title="Top-down map (V toggles)">2D</button>
+      <button data-view="3d" title="3D map (V toggles)">3D</button>
+    </div>
+    <div class="top-r">
+      <button class="ib" id="details-btn" hidden title="Match details: scoreboard, rounds, chat and events" aria-label="Match details"></button>
+      <button class="ib" id="export-btn" hidden title="Download the parsed demo data as JSON" aria-label="Export JSON"></button>
+      <a class="ib gh-link" href="https://github.com/TiPSYSPiT/cod4-demo3d" target="_blank" rel="noopener noreferrer" title="View source on GitHub" aria-label="View source on GitHub">
+        <svg viewBox="0 0 16 16" width="17" height="17" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      </a>
+      <label class="tb pri" title="Open a .dm_1 demo">
+        <input type="file" id="file-input" accept=".dm_1,.DM_1" hidden><svg viewBox="0 0 24 24" class="i s" aria-hidden="true"><path d="M5 19a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4l2 3h7a2 2 0 0 1 2 2v1"/><path d="M5 19h14l3-8H8z"/></svg>Open demo
+      </label>
+    </div>
+  </header>
+
+  <main id="app">
+    <section id="dropzone" class="dropzone">
+      <div class="dropzone-inner">
+        <!-- (the icons of the static markup are in the HTML, so the drop zone is complete even when the scripts do not run) -->
+        <div class="drop-icon" id="drop-icon" aria-hidden="true"><svg viewBox="0 0 24 24" class="i" aria-hidden="true"><path d="M12 15V3"/><path d="m7 8 5-5 5 5"/><path d="M5 21h14"/></svg></div>
+        <h1>Drop a CoD4 demo here</h1>
+        <p>or <label class="link">choose a file<input type="file" id="file-input-2" accept=".dm_1,.DM_1" hidden></label> (<code>.dm_1</code>, stock CoD4 or CoD4X)</p>
+        <p class="muted">The file is read locally in your browser. Nothing is uploaded.</p>
+      </div>
+    </section>
+
+    <section id="progress" class="progress" hidden>
+      <div class="progress-label" id="progress-label">Parsing…</div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    </section>
+
+    <section id="error" class="banner banner-error" hidden></section>
+
+    <section id="viewer" hidden>
+      <!-- the stage: the active view full-bleed, the panels float over it -->
+      <div class="stage" id="viewport">
+        <div class="score glass" id="overview"></div>
+        <nav class="rail glass" id="rail" aria-label="View options"></nav>
+        <div class="toasts" id="warnings"></div>
+        <div class="view-error banner banner-warn" id="view-error" role="alert" hidden></div>
+        <aside class="drawer glass" id="drawer" aria-label="Teams and kill feed">
+          <div class="dhead" id="drawer-head"></div>
+          <div class="sec teams-sec" id="sec-teams">
+            <button class="sec-h" type="button" aria-expanded="true">Teams<span class="grow"></span></button>
+            <div class="sec-body" id="teams"></div>
+          </div>
+          <div class="sec feed-sec" id="sec-feed">
+            <button class="sec-h" type="button" aria-expanded="true">Kill feed &amp; bomb<span class="grow"></span></button>
+            <div class="sec-body map-events" id="feed"></div>
+          </div>
+        </aside>
+        <button class="ib glass drawer-open" id="drawer-open" type="button" title="Show the teams and kill feed panel" aria-label="Show panel" hidden></button>
+        <div class="bar glass" id="controls"></div>
+
+        <div class="details" id="details" role="dialog" aria-label="Match details" hidden>
+          <div class="details-head">
+            <nav class="tabs seg" id="tabs" role="tablist">
+              <button role="tab" data-tab="scoreboard" class="active">Scoreboard</button>
+              <button role="tab" data-tab="rounds">Round by Round</button>
+              <button role="tab" data-tab="chat">Chat</button>
+              <button role="tab" data-tab="events">Events</button>
+            </nav>
+            <button class="ib details-close" id="details-close" title="Close (Esc)" aria-label="Close match details"></button>
+          </div>
+          <div class="details-body">
+            <section class="tab-panel active" id="tab-scoreboard"></section>
+            <section class="tab-panel" id="tab-rounds"></section>
+            <section class="tab-panel" id="tab-chat"></section>
+            <section class="tab-panel" id="tab-events"></section>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- demo parser + analysis (classic scripts from cod4-demo, DOM-free, also run inside the worker) -->
+  <script src="js/c4/core/c4.js"></script>
+  <script src="js/c4/parser/tables.js"></script>
+  <script src="js/c4/parser/huffman.js"></script>
+  <script src="js/c4/parser/msg.js"></script>
+  <script src="js/c4/parser/delta.js"></script>
+  <script src="js/c4/parser/demo.js"></script>
+  <script src="js/c4/common/text.js"></script>
+  <script src="js/c4/common/constants.js"></script>
+  <script src="js/c4/common/servercmd.js"></script>
+  <script src="js/c4/common/names.js"></script>
+  <script src="js/c4/common/exportName.js"></script>
+  <script src="js/c4/analysis/weapons.js"></script>
+  <script src="js/c4/analysis/collect.js"></script>
+  <script src="js/c4/analysis/teams.js"></script>
+  <script src="js/c4/analysis/rounds.js"></script>
+  <script src="js/c4/analysis/events.js"></script>
+  <script src="js/c4/analysis/povDamage.js"></script>
+  <script src="js/c4/analysis/sight.js"></script>
+  <script src="js/c4/analysis/ownKills.js"></script>
+  <script src="js/c4/analysis/build.js"></script>
+  <script src="js/c4/analysis/worker.js"></script>
+  <script src="assets/maps/maps.js"></script>
+  <script src="assets/maps/usermaps.js"></script>
+  <!-- UI building blocks from cod4-demo (tables, 2D renderer, heatmap, video export) -->
+  <script src="js/c4/ui/dom.js"></script>
+  <script src="js/c4/ui/overview.js"></script>
+  <script src="js/c4/ui/scoreboard.js"></script>
+  <script src="js/c4/ui/rounds.js"></script>
+  <script src="js/c4/ui/chat.js"></script>
+  <script src="js/c4/ui/events.js"></script>
+  <script src="js/c4/ui/map/config.js"></script>
+  <script src="js/c4/ui/map/renderer.js"></script>
+  <script src="js/c4/ui/map/heatmap.js"></script>
+  <script src="js/c4/ui/map/heatPanel.js"></script>
+  <script src="js/c4/ui/map/playback.js"></script>
+  <script src="js/c4/ui/map/statsPopup.js"></script>
+  <script src="js/c4/ui/map/mp4mux.js"></script>
+  <script src="js/c4/ui/map/gifenc.js"></script>
+  <script src="js/c4/ui/map/exportVideo.js"></script>
+  <!-- the app: ES modules (shared match model + replay state, 2D and 3D views) -->
+  <script type="module" src="js/app/main.js"></script>
+</body>
+</html>

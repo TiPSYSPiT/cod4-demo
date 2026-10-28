@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_hub_cap_3",
+ "kind": "script",
+ "faction": null,
+ "file": "com_hub_cap_3.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 2664
+  },
+  "normal": {
+   "offset": 2664,
+   "length": 888
+  },
+  "uv": {
+   "offset": 3552,
+   "length": 1776
+  },
+  "skinIndex": {
+   "offset": 5328,
+   "length": 888
+  },
+  "skinWeight": {
+   "offset": 6216,
+   "length": 888
+  },
+  "index": {
+   "offset": 7104,
+   "length": 1560
+  },
+  "color": {
+   "offset": 8664,
+   "length": 888
+  }
+ },
+ "vertexCount": 222,
+ "triangleCount": 260,
+ "bones": [
+  {
+   "name": "com_hub_caps_3_lod_1",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 780,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_hub_caps",
+   "texture": "_textures/xpec_hub_caps_col.webp",
+   "textureAlpha": true,
+   "color": "#4c4a49",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/xpec_hub_caps_nml.normal.webp",
+   "specularMap": "_textures/xpec_hub_caps_spc-rgb_xpec_h_c01c4817.specular.webp",
+   "envMapParms": [
+    2.44,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -8.0,
+   -7.97,
+   -1.4
+  ],
+  "maxs": [
+   8.0,
+   7.96,
+   1.4
+  ]
+ }
+}

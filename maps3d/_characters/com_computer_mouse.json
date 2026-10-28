@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_computer_mouse",
+ "kind": "script",
+ "faction": null,
+ "file": "com_computer_mouse.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 1008
+  },
+  "normal": {
+   "offset": 1008,
+   "length": 336
+  },
+  "uv": {
+   "offset": 1344,
+   "length": 672
+  },
+  "skinIndex": {
+   "offset": 2016,
+   "length": 336
+  },
+  "skinWeight": {
+   "offset": 2352,
+   "length": 336
+  },
+  "index": {
+   "offset": 2688,
+   "length": 768
+  },
+  "color": {
+   "offset": 3456,
+   "length": 336
+  }
+ },
+ "vertexCount": 84,
+ "triangleCount": 128,
+ "bones": [
+  {
+   "name": "computer_mouse_lod0",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 384,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_computer2",
+   "texture": "_textures/computer_monitor_col.webp",
+   "textureAlpha": false,
+   "color": "#969282",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/computer_monitor_nml.normal.webp",
+   "specularMap": "_textures/computer_monitor_spc-rgb_com_7e136350.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -3.24,
+   -1.72,
+   0.01
+  ],
+  "maxs": [
+   3.24,
+   1.72,
+   1.81
+  ]
+ }
+}

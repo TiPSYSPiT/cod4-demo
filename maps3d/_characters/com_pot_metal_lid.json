@@ -1,0 +1,108 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_pot_metal_lid",
+ "kind": "script",
+ "faction": null,
+ "file": "com_pot_metal_lid.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 2856
+  },
+  "normal": {
+   "offset": 2856,
+   "length": 952
+  },
+  "uv": {
+   "offset": 3808,
+   "length": 1904
+  },
+  "skinIndex": {
+   "offset": 5712,
+   "length": 952
+  },
+  "skinWeight": {
+   "offset": 6664,
+   "length": 952
+  },
+  "index": {
+   "offset": 7616,
+   "length": 2088
+  },
+  "color": {
+   "offset": 9704,
+   "length": 952
+  }
+ },
+ "vertexCount": 238,
+ "triangleCount": 348,
+ "bones": [
+  {
+   "name": "metalpotlid_lod1",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 1044,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_copperpan_metalpots",
+   "texture": "_textures/copperpan_metalpots_col.webp",
+   "textureAlpha": false,
+   "color": "#7c6c5d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/copperpan_metalpots_norm.normal.webp",
+   "specularMap": "_textures/copperpan_metalpots_spec-rgb_aedebf0f.specular.webp",
+   "detailScale": [
+    16.0,
+    16.0,
+    0.0,
+    0.0
+   ],
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "detailMap": "_textures/metal_01.webp"
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -7.21,
+   -7.21,
+   -0.97
+  ],
+  "maxs": [
+   7.21,
+   7.21,
+   0.78
+  ]
+ }
+}

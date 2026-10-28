@@ -1,0 +1,76 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "weapon_us_smoke_grenade",
+ "kind": "weapon",
+ "faction": null,
+ "file": "weapon_us_smoke_grenade.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 5772
+  },
+  "normal": {
+   "offset": 5772,
+   "length": 1924
+  },
+  "uv": {
+   "offset": 7696,
+   "length": 3848
+  },
+  "skinIndex": {
+   "offset": 11544,
+   "length": 1924
+  },
+  "skinWeight": {
+   "offset": 13468,
+   "length": 1924
+  },
+  "index": {
+   "offset": 15392,
+   "length": 3216
+  },
+  "color": {
+   "offset": 18608,
+   "length": 1924
+  }
+ },
+ "vertexCount": 481,
+ "triangleCount": 536,
+ "bones": [
+  {
+   "name": "",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 1608,
+   "material": -1
+  }
+ ],
+ "materials": [],
+ "bounds": {
+  "mins": [
+   -0.82,
+   -1.08,
+   -3.93
+  ],
+  "maxs": [
+   1.62,
+   1.12,
+   1.77
+  ]
+ }
+}

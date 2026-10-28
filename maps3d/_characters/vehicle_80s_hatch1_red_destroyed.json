@@ -1,0 +1,736 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "vehicle_80s_hatch1_red_destroyed",
+ "kind": "script",
+ "faction": null,
+ "file": "vehicle_80s_hatch1_red_destroyed.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 36996
+  },
+  "normal": {
+   "offset": 36996,
+   "length": 12332
+  },
+  "uv": {
+   "offset": 49328,
+   "length": 24664
+  },
+  "skinIndex": {
+   "offset": 73992,
+   "length": 12332
+  },
+  "skinWeight": {
+   "offset": 86324,
+   "length": 12332
+  },
+  "index": {
+   "offset": 98656,
+   "length": 14700
+  },
+  "color": {
+   "offset": 113356,
+   "length": 12332
+  }
+ },
+ "vertexCount": 3083,
+ "triangleCount": 2450,
+ "bones": [
+  {
+   "name": "tag_origin",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_body",
+   "parent": 0,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_wheel_back_left",
+   "parent": 0,
+   "pos": [
+    -37.5912,
+    24.752,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_wheel_back_right",
+   "parent": 0,
+   "pos": [
+    -37.5908,
+    -24.752,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_wheel_front_left",
+   "parent": 0,
+   "pos": [
+    47.2984,
+    24.752,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_wheel_front_right",
+   "parent": 0,
+   "pos": [
+    47.2988,
+    -24.752,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "left_wheel_01_jnt",
+   "parent": 4,
+   "pos": [
+    47.2984,
+    24.752,
+    10.3444
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "left_wheel_02_jnt",
+   "parent": 2,
+   "pos": [
+    -37.5912,
+    24.752,
+    10.3444
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "right_wheel_01_jnt",
+   "parent": 5,
+   "pos": [
+    47.2988,
+    -24.752,
+    10.3444
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "name": "right_wheel_02_jnt",
+   "parent": 3,
+   "pos": [
+    -37.5908,
+    -24.752,
+    10.3444
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "name": "tag_bumper_back",
+   "parent": 1,
+   "pos": [
+    -68.0,
+    0.0002,
+    20.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_bumper_front",
+   "parent": 1,
+   "pos": [
+    76.0,
+    -0.0709,
+    18.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_death_fx",
+   "parent": 1,
+   "pos": [
+    -2.0348,
+    -22.0794,
+    8.9428
+   ],
+   "quat": [
+    -0.512438,
+    -0.48726,
+    -0.512438,
+    0.48723
+   ]
+  },
+  {
+   "name": "tag_door_left_back",
+   "parent": 1,
+   "pos": [
+    -12.9803,
+    29.7465,
+    25.1641
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_door_left_front",
+   "parent": 1,
+   "pos": [
+    30.2527,
+    29.7465,
+    24.5479
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_door_right_back",
+   "parent": 1,
+   "pos": [
+    -12.9803,
+    -29.7465,
+    25.1641
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_door_right_front",
+   "parent": 1,
+   "pos": [
+    30.2527,
+    -29.7465,
+    24.5479
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_back",
+   "parent": 1,
+   "pos": [
+    -58.0363,
+    0.0,
+    38.8165
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_back_fx",
+   "parent": 1,
+   "pos": [
+    -52.0322,
+    0.0,
+    43.623
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "name": "tag_glass_front",
+   "parent": 1,
+   "pos": [
+    33.5518,
+    0.0,
+    37.1768
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_front_fx",
+   "parent": 1,
+   "pos": [
+    26.8346,
+    -0.0,
+    41.8642
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "name": "tag_hood",
+   "parent": 1,
+   "pos": [
+    34.4099,
+    0.0,
+    36.7275
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_hood_fx",
+   "parent": 1,
+   "pos": [
+    76.9574,
+    0.0,
+    28.0979
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "name": "tag_light_left_back",
+   "parent": 1,
+   "pos": [
+    -66.9296,
+    18.45,
+    28.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_light_left_front",
+   "parent": 1,
+   "pos": [
+    74.6705,
+    20.8701,
+    25.7223
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_light_right_back",
+   "parent": 1,
+   "pos": [
+    -66.9296,
+    -18.7639,
+    28.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_light_right_front",
+   "parent": 1,
+   "pos": [
+    74.6705,
+    -20.8701,
+    25.7223
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_trunk",
+   "parent": 1,
+   "pos": [
+    -35.2285,
+    0.0,
+    51.8378
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_left_back",
+   "parent": 13,
+   "pos": [
+    -14.2563,
+    26.8742,
+    34.4766
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_left_back_fx",
+   "parent": 13,
+   "pos": [
+    -26.3499,
+    24.6084,
+    41.3108
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.707107,
+    0.707107
+   ]
+  },
+  {
+   "name": "tag_glass_left_front",
+   "parent": 14,
+   "pos": [
+    26.4004,
+    26.1767,
+    34.5085
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_left_front_fx",
+   "parent": 14,
+   "pos": [
+    2.516,
+    24.6186,
+    40.6951
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.707107,
+    0.707107
+   ]
+  },
+  {
+   "name": "tag_glass_right_back",
+   "parent": 15,
+   "pos": [
+    -14.2563,
+    -26.8742,
+    34.4766
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_right_back_fx",
+   "parent": 15,
+   "pos": [
+    -26.3499,
+    -24.5562,
+    41.3108
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    -0.707107,
+    0.707107
+   ]
+  },
+  {
+   "name": "tag_glass_right_front",
+   "parent": 16,
+   "pos": [
+    26.4004,
+    -26.1767,
+    34.5085
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_right_front_fx",
+   "parent": 16,
+   "pos": [
+    2.516,
+    -24.4536,
+    40.6951
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    -0.707107,
+    0.707107
+   ]
+  },
+  {
+   "name": "tag_mirror_left",
+   "parent": 14,
+   "pos": [
+    24.9724,
+    29.161,
+    32.3662
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_mirror_right",
+   "parent": 16,
+   "pos": [
+    24.9724,
+    -29.161,
+    32.3662
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 3402,
+   "material": 0
+  },
+  {
+   "indexStart": 3402,
+   "indexCount": 666,
+   "material": 1
+  },
+  {
+   "indexStart": 4068,
+   "indexCount": 2148,
+   "material": 2
+  },
+  {
+   "indexStart": 6216,
+   "indexCount": 1134,
+   "material": 3
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_80s_econdestroy_red",
+   "texture": "_textures/80s_econdestroy_red_col.webp",
+   "textureAlpha": false,
+   "color": "#483731",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/80s_econdestroy_nml.normal.webp",
+   "specularMap": "_textures/80s_econdestroy_spc-rgb_80s__2838a1ce.specular.webp",
+   "envMapParms": [
+    0.4,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_engine",
+   "texture": "_textures/car_engine_col.webp",
+   "textureAlpha": false,
+   "color": "#433e3c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/car_engine_nml.normal.webp",
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_80s_econdestroy_green_rubber",
+   "texture": "_textures/80s_econdestroy_green_col.webp",
+   "textureAlpha": false,
+   "color": "#41493e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/80s_econdestroy_nml.normal.webp",
+   "specularMap": "_textures/80s_econdestroy_spc-rgb_80s__2838a1ce.specular.webp",
+   "envMapParms": [
+    0.4,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_80s_econdestroy_green_metal",
+   "texture": "_textures/80s_econdestroy_green_col.webp",
+   "textureAlpha": false,
+   "color": "#41493e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/80s_econdestroy_nml.normal.webp",
+   "specularMap": "_textures/80s_econdestroy_spc-rgb_80s__2838a1ce.specular.webp",
+   "envMapParms": [
+    0.4,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -70.72,
+   -35.91,
+   -0.66
+  ],
+  "maxs": [
+   78.78,
+   50.8,
+   55.47
+  ]
+ }
+}

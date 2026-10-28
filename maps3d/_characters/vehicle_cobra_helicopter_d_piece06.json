@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "vehicle_cobra_helicopter_d_piece06",
+ "kind": "fx",
+ "faction": null,
+ "file": "vehicle_cobra_helicopter_d_piece06.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 432
+  },
+  "normal": {
+   "offset": 432,
+   "length": 144
+  },
+  "uv": {
+   "offset": 576,
+   "length": 288
+  },
+  "skinIndex": {
+   "offset": 864,
+   "length": 144
+  },
+  "skinWeight": {
+   "offset": 1008,
+   "length": 144
+  },
+  "index": {
+   "offset": 1152,
+   "length": 264
+  },
+  "color": {
+   "offset": 1416,
+   "length": 144
+  }
+ },
+ "vertexCount": 36,
+ "triangleCount": 44,
+ "bones": [
+  {
+   "name": "panel",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 132,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_cobra_d",
+   "texture": "_textures/cobra_d_clr.webp",
+   "textureAlpha": false,
+   "color": "#4c4e4c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/cobra_d_nml.normal.webp",
+   "specularMap": "_textures/cobra_d_spc-rgb_cobra_d_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.2,
+    3.8,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -37.72,
+   -2.37,
+   -8.47
+  ],
+  "maxs": [
+   34.8,
+   1.78,
+   8.32
+  ]
+ }
+}

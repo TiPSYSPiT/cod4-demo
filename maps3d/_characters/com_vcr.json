@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_vcr",
+ "kind": "script",
+ "faction": null,
+ "file": "com_vcr.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 7944
+  },
+  "normal": {
+   "offset": 7944,
+   "length": 2648
+  },
+  "uv": {
+   "offset": 10592,
+   "length": 5296
+  },
+  "skinIndex": {
+   "offset": 15888,
+   "length": 2648
+  },
+  "skinWeight": {
+   "offset": 18536,
+   "length": 2648
+  },
+  "index": {
+   "offset": 21184,
+   "length": 2712
+  },
+  "color": {
+   "offset": 23896,
+   "length": 2648
+  }
+ },
+ "vertexCount": 662,
+ "triangleCount": 452,
+ "bones": [
+  {
+   "name": "polysurface9",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 1356,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_vcr",
+   "texture": "_textures/vcr_col.webp",
+   "textureAlpha": false,
+   "color": "#525357",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/vcr_nml.normal.webp",
+   "specularMap": "_textures/vcr_spc-rgb_vcr_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -7.0,
+   -8.0,
+   -0.0
+  ],
+  "maxs": [
+   10.25,
+   8.0,
+   8.38
+  ]
+ }
+}

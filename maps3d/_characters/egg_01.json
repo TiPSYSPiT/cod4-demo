@@ -1,0 +1,177 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "egg_01",
+ "kind": "script",
+ "faction": null,
+ "file": "egg_01.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 357240
+  },
+  "normal": {
+   "offset": 357240,
+   "length": 119080
+  },
+  "uv": {
+   "offset": 476320,
+   "length": 238160
+  },
+  "skinIndex": {
+   "offset": 714480,
+   "length": 119080
+  },
+  "skinWeight": {
+   "offset": 833560,
+   "length": 119080
+  },
+  "index": {
+   "offset": 952640,
+   "length": 100212
+  },
+  "color": {
+   "offset": 1052852,
+   "length": 119080
+  }
+ },
+ "vertexCount": 29770,
+ "triangleCount": 16702,
+ "bones": [
+  {
+   "name": "tag_origin",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 23562,
+   "material": 0
+  },
+  {
+   "indexStart": 23562,
+   "indexCount": 702,
+   "material": 1
+  },
+  {
+   "indexStart": 24264,
+   "indexCount": 1722,
+   "material": 2
+  },
+  {
+   "indexStart": 25986,
+   "indexCount": 5940,
+   "material": 3
+  },
+  {
+   "indexStart": 31926,
+   "indexCount": 18180,
+   "material": 4
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/eg1_p4",
+   "texture": "_textures/eg1_p4.webp",
+   "textureAlpha": false,
+   "color": "#7f6952",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/eg1_p2",
+   "texture": "_textures/eg1_p2.webp",
+   "textureAlpha": false,
+   "color": "#281d1b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/eg1_p3",
+   "texture": "_textures/eg1_p3.webp",
+   "textureAlpha": true,
+   "color": "#000000",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/eg1_p5",
+   "texture": "_textures/eg1_p5.webp",
+   "textureAlpha": false,
+   "color": "#8b655c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/eg1_p1",
+   "texture": "_textures/eg1_p1.webp",
+   "textureAlpha": false,
+   "color": "#936957",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -20.61,
+   -7.55,
+   29.69
+  ],
+  "maxs": [
+   20.62,
+   6.48,
+   65.92
+  ]
+ }
+}

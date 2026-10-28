@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_table_mic",
+ "kind": "script",
+ "faction": null,
+ "file": "com_table_mic.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 6288
+  },
+  "normal": {
+   "offset": 6288,
+   "length": 2096
+  },
+  "uv": {
+   "offset": 8384,
+   "length": 4192
+  },
+  "skinIndex": {
+   "offset": 12576,
+   "length": 2096
+  },
+  "skinWeight": {
+   "offset": 14672,
+   "length": 2096
+  },
+  "index": {
+   "offset": 16768,
+   "length": 2724
+  },
+  "color": {
+   "offset": 19492,
+   "length": 2096
+  }
+ },
+ "vertexCount": 524,
+ "triangleCount": 454,
+ "bones": [
+  {
+   "name": "table_mic_lod0",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 1362,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_table_mic",
+   "texture": "_textures/table_mic_col.webp",
+   "textureAlpha": false,
+   "color": "#484847",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/table_mic_nml.normal.webp",
+   "specularMap": "_textures/table_mic_spc-rgb_table_mic_cos-l-11.specular.webp",
+   "envMapParms": [
+    1.0,
+    4.0,
+    2.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -6.49,
+   -3.67,
+   -0.04
+  ],
+  "maxs": [
+   6.03,
+   3.67,
+   12.53
+  ]
+ }
+}

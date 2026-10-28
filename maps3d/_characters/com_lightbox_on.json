@@ -1,0 +1,171 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_lightbox_on",
+ "kind": "script",
+ "faction": null,
+ "file": "com_lightbox_on.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 13692
+  },
+  "normal": {
+   "offset": 13692,
+   "length": 4564
+  },
+  "uv": {
+   "offset": 18256,
+   "length": 9128
+  },
+  "skinIndex": {
+   "offset": 27384,
+   "length": 4564
+  },
+  "skinWeight": {
+   "offset": 31948,
+   "length": 4564
+  },
+  "index": {
+   "offset": 36512,
+   "length": 5580
+  },
+  "color": {
+   "offset": 42092,
+   "length": 4564
+  }
+ },
+ "vertexCount": 1141,
+ "triangleCount": 930,
+ "bones": [
+  {
+   "name": "light_box_on_lod0",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "glow1",
+   "parent": 0,
+   "pos": [
+    0.1486,
+    -15.1879,
+    -1.9105
+   ],
+   "quat": [
+    0.099764,
+    0.0,
+    0.0,
+    0.995011
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 2730,
+   "material": 0
+  },
+  {
+   "indexStart": 2730,
+   "indexCount": 12,
+   "material": 1
+  },
+  {
+   "indexStart": 2742,
+   "indexCount": 36,
+   "material": 2
+  },
+  {
+   "indexStart": 2778,
+   "indexCount": 12,
+   "material": 3
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_lightbox_on",
+   "texture": "_textures/lightbox_on_c.webp",
+   "textureAlpha": false,
+   "color": "#6f6e6b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/gfx_floodlight_beam_godray75",
+   "texture": "_textures/floodlight_beam.webp",
+   "textureAlpha": false,
+   "color": "#2f2f2f",
+   "alphaTest": null,
+   "blend": "invdestcolor/one",
+   "doubleSided": true,
+   "depthWrite": false,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/gfx_spotlight_lensflare_godray80",
+   "texture": "_textures/spotlight_lensflare.webp",
+   "textureAlpha": false,
+   "color": "#0c0c0d",
+   "alphaTest": null,
+   "blend": "one/one",
+   "doubleSided": false,
+   "depthWrite": false,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/gfx_floodlight_beam_godray85",
+   "texture": "_textures/floodlight_beam.webp",
+   "textureAlpha": false,
+   "color": "#2f2f2f",
+   "alphaTest": null,
+   "blend": "invdestcolor/one",
+   "doubleSided": true,
+   "depthWrite": false,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -63.64,
+   -82.67,
+   -67.37
+  ],
+  "maxs": [
+   64.33,
+   14.77,
+   58.07
+  ]
+ }
+}

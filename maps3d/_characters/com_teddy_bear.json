@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_teddy_bear",
+ "kind": "script",
+ "faction": null,
+ "file": "com_teddy_bear.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 2712
+  },
+  "normal": {
+   "offset": 2712,
+   "length": 904
+  },
+  "uv": {
+   "offset": 3616,
+   "length": 1808
+  },
+  "skinIndex": {
+   "offset": 5424,
+   "length": 904
+  },
+  "skinWeight": {
+   "offset": 6328,
+   "length": 904
+  },
+  "index": {
+   "offset": 7232,
+   "length": 1728
+  },
+  "color": {
+   "offset": 8960,
+   "length": 904
+  }
+ },
+ "vertexCount": 226,
+ "triangleCount": 288,
+ "bones": [
+  {
+   "name": "polysurface25",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 864,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_prop_bear",
+   "texture": "_textures/bear_c.webp",
+   "textureAlpha": false,
+   "color": "#483d25",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/bear_n.normal.webp",
+   "specularMap": "_textures/bear_s-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -5.23,
+   -8.79,
+   -13.14
+  ],
+  "maxs": [
+   5.23,
+   8.79,
+   13.14
+  ]
+ }
+}

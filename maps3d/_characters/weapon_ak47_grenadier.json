@@ -1,0 +1,183 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "weapon_ak47_grenadier",
+ "kind": "weapon",
+ "faction": null,
+ "file": "weapon_ak47_grenadier.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 20040
+  },
+  "normal": {
+   "offset": 20040,
+   "length": 6680
+  },
+  "uv": {
+   "offset": 26720,
+   "length": 13360
+  },
+  "skinIndex": {
+   "offset": 40080,
+   "length": 6680
+  },
+  "skinWeight": {
+   "offset": 46760,
+   "length": 6680
+  },
+  "index": {
+   "offset": 53440,
+   "length": 6600
+  },
+  "color": {
+   "offset": 60040,
+   "length": 6680
+  }
+ },
+ "vertexCount": 1670,
+ "triangleCount": 1100,
+ "bones": [
+  {
+   "name": "tag_weapon",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 0,
+   "pos": [
+    -4.349,
+    -0.568,
+    -0.091
+   ],
+   "quat": [
+    -0.808308,
+    0.188756,
+    -0.354226,
+    0.430736
+   ]
+  },
+  {
+   "name": "tag_clip",
+   "parent": 0,
+   "pos": [
+    -6.4095,
+    -0.01,
+    -2.1764
+   ],
+   "quat": [
+    0.0,
+    -0.205328,
+    0.0,
+    0.978693
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    12.6966,
+    0.0,
+    -0.8805
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 240,
+   "material": 0
+  },
+  {
+   "indexStart": 240,
+   "indexCount": 1938,
+   "material": 0
+  },
+  {
+   "indexStart": 2178,
+   "indexCount": 516,
+   "material": -1
+  },
+  {
+   "indexStart": 2694,
+   "indexCount": 606,
+   "material": 1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_ak47",
+   "texture": "_textures/weapon_ak47_c.webp",
+   "textureAlpha": false,
+   "color": "#292522",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_ak47_s-r-61g-61b-61_w_0848fdf9.specular.webp",
+   "envMapParms": [
+    1.2,
+    3.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_ak47_misc_nocamo",
+   "texture": "_textures/weapon_ak47_c.webp",
+   "textureAlpha": false,
+   "color": "#292522",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_ak47_s-r30g30b30_weap_270f7f8d.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -22.9,
+   -1.38,
+   -9.76
+  ],
+  "maxs": [
+   12.66,
+   0.95,
+   1.94
+  ]
+ }
+}

@@ -1,0 +1,93 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_cinderblock",
+ "kind": "fx",
+ "faction": null,
+ "file": "com_cinderblock.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 288
+  },
+  "normal": {
+   "offset": 288,
+   "length": 96
+  },
+  "uv": {
+   "offset": 384,
+   "length": 192
+  },
+  "skinIndex": {
+   "offset": 576,
+   "length": 96
+  },
+  "skinWeight": {
+   "offset": 672,
+   "length": 96
+  },
+  "index": {
+   "offset": 768,
+   "length": 72
+  },
+  "color": {
+   "offset": 840,
+   "length": 96
+  }
+ },
+ "vertexCount": 24,
+ "triangleCount": 12,
+ "bones": [
+  {
+   "name": "cinderblock_lod1",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 36,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_cinderblock",
+   "texture": "_textures/cinderblocks_col.webp",
+   "textureAlpha": false,
+   "color": "#807f7e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -3.0,
+   -6.0,
+   0.0
+  ],
+  "maxs": [
+   3.0,
+   6.0,
+   8.0
+  ]
+ }
+}

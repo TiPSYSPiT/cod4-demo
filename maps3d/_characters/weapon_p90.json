@@ -1,0 +1,214 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "weapon_p90",
+ "kind": "weapon",
+ "faction": null,
+ "file": "weapon_p90.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 18132
+  },
+  "normal": {
+   "offset": 18132,
+   "length": 6044
+  },
+  "uv": {
+   "offset": 24176,
+   "length": 12088
+  },
+  "skinIndex": {
+   "offset": 36264,
+   "length": 6044
+  },
+  "skinWeight": {
+   "offset": 42308,
+   "length": 6044
+  },
+  "index": {
+   "offset": 48352,
+   "length": 6492
+  },
+  "color": {
+   "offset": 54844,
+   "length": 6044
+  }
+ },
+ "vertexCount": 1511,
+ "triangleCount": 1082,
+ "bones": [
+  {
+   "name": "tag_weapon",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 0,
+   "pos": [
+    -14.48,
+    0.0,
+    -4.5441
+   ],
+   "quat": [
+    0.0,
+    0.707107,
+    0.0,
+    0.707107
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    -2.12,
+    0.0,
+    -0.4917
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 2454,
+   "material": 0
+  },
+  {
+   "indexStart": 2454,
+   "indexCount": 168,
+   "material": 1
+  },
+  {
+   "indexStart": 2622,
+   "indexCount": 528,
+   "material": 2
+  },
+  {
+   "indexStart": 3150,
+   "indexCount": 96,
+   "material": 3
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_p90",
+   "texture": "_textures/weapon_p90_col.webp",
+   "textureAlpha": false,
+   "color": "#262623",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_p90_spc-r65g65b65_wea_ff8cb4f7.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.8,
+    1.6,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_laser_sight_a",
+   "texture": "_textures/weapon_laser_sight_a_col.webp",
+   "textureAlpha": false,
+   "color": "#3f3e3b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_laser_sight_a_spec-r-_14d7f668.specular.webp",
+   "envMapParms": [
+    0.8,
+    3.2,
+    1.3,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_mp5",
+   "texture": "_textures/weapon_mp5_c.webp",
+   "textureAlpha": false,
+   "color": "#1d1d1d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_mp5_s-r-49g-49b-49_we_029a9a7a.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_p90_misc_nocamo",
+   "texture": "_textures/weapon_p90_col.webp",
+   "textureAlpha": false,
+   "color": "#262623",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_p90_spc-r65g65b65_wea_ff8cb4f7.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.8,
+    1.6,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -22.96,
+   -1.24,
+   -4.7
+  ],
+  "maxs": [
+   -2.01,
+   1.69,
+   4.31
+  ]
+ }
+}

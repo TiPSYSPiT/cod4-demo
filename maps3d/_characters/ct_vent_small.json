@@ -1,0 +1,76 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "ct_vent_small",
+ "kind": "script",
+ "faction": null,
+ "file": "ct_vent_small.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 516
+  },
+  "normal": {
+   "offset": 516,
+   "length": 172
+  },
+  "uv": {
+   "offset": 688,
+   "length": 344
+  },
+  "skinIndex": {
+   "offset": 1032,
+   "length": 172
+  },
+  "skinWeight": {
+   "offset": 1204,
+   "length": 172
+  },
+  "index": {
+   "offset": 1376,
+   "length": 180
+  },
+  "color": {
+   "offset": 1556,
+   "length": 172
+  }
+ },
+ "vertexCount": 43,
+ "triangleCount": 30,
+ "bones": [
+  {
+   "name": "vent_lod0",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 90,
+   "material": -1
+  }
+ ],
+ "materials": [],
+ "bounds": {
+  "mins": [
+   0.12,
+   -3.02,
+   -2.03
+  ],
+  "maxs": [
+   1.46,
+   3.24,
+   1.88
+  ]
+ }
+}

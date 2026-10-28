@@ -1,0 +1,81 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "cs_cargohold_panel_high_right",
+ "kind": "script",
+ "faction": null,
+ "file": "cs_cargohold_panel_high_right.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 432
+  },
+  "normal": {
+   "offset": 432,
+   "length": 144
+  },
+  "uv": {
+   "offset": 576,
+   "length": 288
+  },
+  "skinIndex": {
+   "offset": 864,
+   "length": 144
+  },
+  "skinWeight": {
+   "offset": 1008,
+   "length": 144
+  },
+  "index": {
+   "offset": 1152,
+   "length": 120
+  },
+  "color": {
+   "offset": 1272,
+   "length": 144
+  }
+ },
+ "vertexCount": 36,
+ "triangleCount": 20,
+ "bones": [
+  {
+   "name": "polysurface1",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 12,
+   "material": -1
+  },
+  {
+   "indexStart": 12,
+   "indexCount": 48,
+   "material": -1
+  }
+ ],
+ "materials": [],
+ "bounds": {
+  "mins": [
+   -36.0,
+   -40.0,
+   -20.0
+  ],
+  "maxs": [
+   36.0,
+   42.0,
+   32.0
+  ]
+ }
+}

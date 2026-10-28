@@ -1,0 +1,91 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "projectile_m203grenade",
+ "kind": "fx",
+ "faction": null,
+ "file": "projectile_m203grenade.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 552
+  },
+  "normal": {
+   "offset": 552,
+   "length": 184
+  },
+  "uv": {
+   "offset": 736,
+   "length": 368
+  },
+  "skinIndex": {
+   "offset": 1104,
+   "length": 184
+  },
+  "skinWeight": {
+   "offset": 1288,
+   "length": 184
+  },
+  "index": {
+   "offset": 1472,
+   "length": 276
+  },
+  "color": {
+   "offset": 1748,
+   "length": 184
+  }
+ },
+ "vertexCount": 46,
+ "triangleCount": 46,
+ "bones": [
+  {
+   "name": "tag_origin",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_fx",
+   "parent": 0,
+   "pos": [
+    -1.1578,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    1.0,
+    0.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 138,
+   "material": -1
+  }
+ ],
+ "materials": [],
+ "bounds": {
+  "mins": [
+   -0.93,
+   -1.22,
+   -1.22
+  ],
+  "maxs": [
+   2.51,
+   1.22,
+   1.22
+  ]
+ }
+}

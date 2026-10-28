@@ -1,0 +1,6926 @@
+{
+ "format": "cod4-demo3d-props/2",
+ "file": "props.bin",
+ "stride": 14,
+ "sections": {
+  "instances": {
+   "offset": 0,
+   "length": 93464
+  },
+  "position": {
+   "offset": 93464,
+   "length": 919608
+  },
+  "normal": {
+   "offset": 1013072,
+   "length": 306536
+  },
+  "uv": {
+   "offset": 1319608,
+   "length": 613072
+  },
+  "index": {
+   "offset": 1932680,
+   "length": 395688
+  },
+  "probe": {
+   "offset": 2328368,
+   "length": 1669
+  },
+  "color": {
+   "offset": 2330040,
+   "length": 306536
+  }
+ },
+ "fields": "instances: model index, origin xyz, axis rows (forward xyz, left xyz, up xyz), scale",
+ "instanceCount": 1669,
+ "materials": [
+  {
+   "name": "mc/mtl_cargoship_door",
+   "texture": "_textures/cargoship_door_col.webp",
+   "textureAlpha": false,
+   "color": "#635c53",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/cargoship_door_nml.normal.webp",
+   "specularMap": "_textures/cargoship_door_spc-rgb_cargo_3320b8fd.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cargoship_door_interior",
+   "texture": "_textures/cargoship_door_interior_col.webp",
+   "textureAlpha": false,
+   "color": "#6c645d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/cargoship_door_nml.normal.webp",
+   "specularMap": "_textures/cargoship_door_spc-rgb_cargo_3320b8fd.specular.webp",
+   "envMapParms": [
+    4.0,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cargoship_door_glass",
+   "texture": "_textures/cargoship_door_glass.webp",
+   "textureAlpha": true,
+   "color": "#969696",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": true,
+   "depthWrite": false,
+   "specularMap": "_textures/cargoship_door_glass-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_restaurant_sink",
+   "texture": "_textures/restaurant_sink_col.webp",
+   "textureAlpha": false,
+   "color": "#7c7970",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/restaurant_sink_nml.normal.webp",
+   "specularMap": "_textures/restaurant_sink_spc-rgb_rest_93f2ca17.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_restaurantstainlessteelshelf",
+   "texture": "_textures/restaurant_stainlesssteelshelf_col.webp",
+   "textureAlpha": false,
+   "color": "#797978",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/restaurant_stainlesssteelshelf_nml.normal.webp",
+   "specularMap": "_textures/restaurant_stainlesssteelshe_01afeb18.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_folding_chair",
+   "texture": "_textures/folding_chair_color.webp",
+   "textureAlpha": false,
+   "color": "#6c6a69",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/folding_chair_normal.normal.webp",
+   "specularMap": "_textures/folding_chair_spec-rgb__white-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_bed_bunker",
+   "texture": "_textures/bunker_bed_c.webp",
+   "textureAlpha": true,
+   "color": "#5f5f59",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/bunker_bed_n.normal.webp",
+   "specularMap": "_textures/bunker_bed_s-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_bed_bunker2",
+   "texture": "_textures/bunker_bed_c.webp",
+   "textureAlpha": true,
+   "color": "#5f5f59",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/bunker_bed_n.normal.webp",
+   "specularMap": "_textures/bunker_bed_s-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_folding_table",
+   "texture": "_textures/folding_table_color.webp",
+   "textureAlpha": false,
+   "color": "#9b9990",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/folding_table_normal.normal.webp",
+   "specularMap": "_textures/folding_table_spec-rgb__white-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_folding_table_metal",
+   "texture": "_textures/folding_table_color.webp",
+   "textureAlpha": false,
+   "color": "#9b9990",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/folding_table_normal.normal.webp",
+   "specularMap": "_textures/folding_table_spec-rgb__white-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cargoship_wall_light_on",
+   "texture": "_textures/cargoship_wall_light1_col.webp",
+   "textureAlpha": false,
+   "color": "#5e5a54",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cargoship_wall_light_off",
+   "texture": "_textures/cargoship_wall_light1_col.webp",
+   "textureAlpha": false,
+   "color": "#5e5a54",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/cargoship_wall_light1_nml.normal.webp",
+   "specularMap": "_textures/cargoship_wall_light1_spc-rgbl99.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_lightbox_on",
+   "texture": "_textures/lightbox_on_c.webp",
+   "textureAlpha": false,
+   "color": "#6f6e6b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/gfx_floodlight_beam_godray75",
+   "texture": "_textures/floodlight_beam.webp",
+   "textureAlpha": false,
+   "color": "#2f2f2f",
+   "alphaTest": null,
+   "blend": "invdestcolor/one",
+   "doubleSided": true,
+   "depthWrite": false,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/gfx_spotlight_lensflare_godray80",
+   "texture": "_textures/spotlight_lensflare.webp",
+   "textureAlpha": false,
+   "color": "#0c0c0d",
+   "alphaTest": null,
+   "blend": "one/one",
+   "doubleSided": false,
+   "depthWrite": false,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/gfx_floodlight_beam_godray85",
+   "texture": "_textures/floodlight_beam.webp",
+   "textureAlpha": false,
+   "color": "#2f2f2f",
+   "alphaTest": null,
+   "blend": "invdestcolor/one",
+   "doubleSided": true,
+   "depthWrite": false,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_lightbox_off",
+   "texture": "_textures/lightbox_c.webp",
+   "textureAlpha": false,
+   "color": "#3a3736",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/lightbox_n.normal.webp",
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_hand_rail_wet",
+   "texture": "_textures/hand_rail_col.webp",
+   "textureAlpha": false,
+   "color": "#a7a39e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/hand_rail_nml.normal.webp",
+   "specularMap": "_textures/_white-rgbl.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cargoship_spotlight_off",
+   "texture": "_textures/cargoship_spotlight_col.webp",
+   "textureAlpha": false,
+   "color": "#99928e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/cargoship_spotlight_nml.normal.webp",
+   "specularMap": "_textures/cargoship_spotlight_spc-rgb__ff01938d.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cargoship_spotlight_on",
+   "texture": "_textures/cargoship_spotlight_col.webp",
+   "textureAlpha": false,
+   "color": "#99928e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_pipes_ceramic",
+   "texture": "_textures/metal_pipe_ceramic_col.webp",
+   "textureAlpha": false,
+   "color": "#86817f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/metal_pipe_nml.normal.webp",
+   "specularMap": "_textures/metal_pipe_spc-rgb_metal_pip_5c4a9049.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_pipes",
+   "texture": "_textures/metal_pipe_col.webp",
+   "textureAlpha": false,
+   "color": "#696260",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/metal_pipe_nml.normal.webp",
+   "specularMap": "_textures/metal_pipe_spc-rgb_metal_pip_5c4a9049.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_ac_window",
+   "texture": "_textures/ac_win_col.webp",
+   "textureAlpha": false,
+   "color": "#524a42",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ac_win_norm.normal.webp",
+   "specularMap": "_textures/ac_win_spec-rgb_ac_win_cp-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_pipes_gas",
+   "texture": "_textures/metal_pipe_red_col.webp",
+   "textureAlpha": false,
+   "color": "#713135",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/metal_pipe_nml.normal.webp",
+   "specularMap": "_textures/metal_pipe_spc-rgb_metal_pip_5c4a9049.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_air_duct1",
+   "texture": "_textures/air_duct1_col.webp",
+   "textureAlpha": false,
+   "color": "#80827b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/air_duct1_nml.normal.webp",
+   "specularMap": "_textures/air_duct1_spc-r34g34b34_air__7d327003.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_air_duct2",
+   "texture": "_textures/air_duct2_col.webp",
+   "textureAlpha": false,
+   "color": "#7c7d76",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/air_duct2_nml.normal.webp",
+   "specularMap": "_textures/air_duct2_spc-r-61g-61b-61_a_0fe3105c.specular.webp",
+   "envMapParms": [
+    2.0,
+    4.0,
+    2.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_electric_box1",
+   "texture": "_textures/electric_box1_c.webp",
+   "textureAlpha": false,
+   "color": "#5e5f5b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/electric_box1_n.normal.webp",
+   "specularMap": "_textures/electric_box1_s-r30g30b30_el_60092dfc.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_electric_box3",
+   "texture": "_textures/electric_box3_c.webp",
+   "textureAlpha": false,
+   "color": "#787976",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/electric_box3_n.normal.webp",
+   "specularMap": "_textures/electric_box3_s-r30g30b30_el_aa01d547.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_electrical_pipe",
+   "texture": "_textures/cargoship_wall_light1_col.webp",
+   "textureAlpha": false,
+   "color": "#5e5a54",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/cargoship_wall_light1_nml.normal.webp",
+   "specularMap": "_textures/bunkerlights_s-rgb__white-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_electric_box2",
+   "texture": "_textures/electric_box2_c.webp",
+   "textureAlpha": false,
+   "color": "#9d9891",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/electric_box2_n.normal.webp",
+   "specularMap": "_textures/electric_box2_s-r30g30b30_el_b581c4b0.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_restaurantkitchenvent",
+   "texture": "_textures/restaurantkitchenvent_col.webp",
+   "textureAlpha": false,
+   "color": "#78726b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/restaurantkitchenvent_nml.normal.webp",
+   "specularMap": "_textures/restaurantkitchenvent_spc-rg_fda222f4.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_radiator",
+   "texture": "_textures/ch_radiator01_col.webp",
+   "textureAlpha": false,
+   "color": "#7c7874",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ch_radiator01_norm.normal.webp",
+   "specularMap": "_textures/ch_radiator01_spec-rgb_ch_ra_ff839829.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/locker",
+   "texture": "_textures/bunkerlocker_col.webp",
+   "textureAlpha": false,
+   "color": "#716d65",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/bunkerlocker_normal.normal.webp",
+   "specularMap": "_textures/bunkerlocker_spec-r34g34b34l-92.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_computer2",
+   "texture": "_textures/computer_monitor_col.webp",
+   "textureAlpha": false,
+   "color": "#969282",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/computer_monitor_nml.normal.webp",
+   "specularMap": "_textures/computer_monitor_spc-rgb_com_7e136350.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cs_monitor01",
+   "texture": "_textures/cs_monitor01_col.webp",
+   "textureAlpha": false,
+   "color": "#5e5a50",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/cs_monitor01_col-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cs_monitorscreen1",
+   "texture": "_textures/cs_monitorscreen01_col.webp",
+   "textureAlpha": false,
+   "color": "#282727",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/cs_monitorscreen01_spc-rgb_c_cd057113.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cs_radarscreen01",
+   "texture": "_textures/cs_radarscreen01.webp",
+   "textureAlpha": false,
+   "color": "#071409",
+   "alphaTest": null,
+   "blend": "one/one",
+   "doubleSided": false,
+   "depthWrite": false,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cs_receiverblue",
+   "texture": "_textures/cs_receiver01_col.webp",
+   "textureAlpha": false,
+   "color": "#4c5868",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/cs_receiver01_col-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": ",mc/lambert1",
+   "texture": null,
+   "textureAlpha": false,
+   "color": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true
+  },
+  {
+   "name": "mc/mtl_wallfan1",
+   "texture": "_textures/wallfan01_col.webp",
+   "textureAlpha": true,
+   "color": "#46463f",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/wallfan01_nml.normal.webp",
+   "specularMap": "_textures/wallfan01_col-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_fire_extinguisher",
+   "texture": "_textures/fire_extinguisher_c.webp",
+   "textureAlpha": false,
+   "color": "#72645e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/fire_extinguisher_n.normal.webp",
+   "specularMap": "_textures/fire_extinguisher_s-rgb_fire_935c6a0d.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_console_rail",
+   "texture": "_textures/cs_console_rail_col.webp",
+   "textureAlpha": false,
+   "color": "#7da98f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cs_radarscreen02",
+   "texture": "_textures/cs_radarscreen02.webp",
+   "textureAlpha": false,
+   "color": "#031b05",
+   "alphaTest": null,
+   "blend": "one/one",
+   "doubleSided": false,
+   "depthWrite": false,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/me_trim_metal_conduit_wet",
+   "texture": "_textures/me_trim_metal_conduit_col.webp",
+   "textureAlpha": false,
+   "color": "#9c9f9b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_trim_metal_conduit_norm.normal.webp",
+   "specularMap": "_textures/_white-rgbl.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/me_trim_metal_01_wet",
+   "texture": "_textures/me_trim_metal01_col.webp",
+   "textureAlpha": false,
+   "color": "#858274",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_trim_metal01_norm.normal.webp",
+   "specularMap": "_textures/_white-rgbl.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cargocontainerlockingbar",
+   "texture": "_textures/cargocontainerlockingbar_col.webp",
+   "textureAlpha": false,
+   "color": "#92826d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/cargocontainerlockingbar_nml.normal.webp",
+   "specularMap": "_textures/cargocontainerlockingbar_spc_2ff803ff.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cargocontainerdoorhinge",
+   "texture": "_textures/cargocontainerdoorhinge_col.webp",
+   "textureAlpha": false,
+   "color": "#645040",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/cargocontainerdoorhinge_nml.normal.webp",
+   "specularMap": "_textures/cargocontainerdoorhinge_spc-_224e98d5.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cargocontainerdoorhinge_green",
+   "texture": "_textures/cargocontainerdoorhingegreen_col.webp",
+   "textureAlpha": false,
+   "color": "#535a54",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/cargocontainerdoorhinge_nml.normal.webp",
+   "specularMap": "_textures/cargocontainerdoorhinge_spc-_224e98d5.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cargocontainerdoorhinge_blue",
+   "texture": "_textures/cargocontainerdoorhingeblue_col.webp",
+   "textureAlpha": false,
+   "color": "#48566c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/cargocontainerdoorhinge_nml.normal.webp",
+   "specularMap": "_textures/cargocontainerdoorhinge_spc-_224e98d5.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_barrel_white_rust",
+   "texture": "_textures/55_gallon_drum_white_rust.webp",
+   "textureAlpha": false,
+   "color": "#7a7671",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/rusty_barrel_bump.normal.webp",
+   "specularMap": "_textures/rusty_barrel_spec-rgb_rusty__96f69cf3.specular.webp",
+   "envMapParms": [
+    0.4,
+    1.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cargocontainerdoorhinge_white",
+   "texture": "_textures/cargocontainerdoorhingewhite_col.webp",
+   "textureAlpha": false,
+   "color": "#79715f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/cargocontainerdoorhinge_nml.normal.webp",
+   "specularMap": "_textures/cargocontainerdoorhinge_spc-_224e98d5.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_restaurant_chair",
+   "texture": "_textures/restaurant_chair_1_col.webp",
+   "textureAlpha": false,
+   "color": "#404226",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/restaurant_chair_1_nml.normal.webp",
+   "specularMap": "_textures/restaurant_chair_1_spc-rgb_r_41f113a3.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_television1",
+   "texture": "_textures/television1_col.webp",
+   "textureAlpha": false,
+   "color": "#27282a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/television1_nml.normal.webp",
+   "specularMap": "_textures/television1_spc-rgb_televisi_dbaf2795.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/ch_trim_stainlessteel_1_wet",
+   "texture": "_textures/ch_trim_stainlessteel_1_col.webp",
+   "textureAlpha": false,
+   "color": "#666764",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/_white-rgbl.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_barrel_blue_rust",
+   "texture": "_textures/55_gallon_drum_blue_rust.webp",
+   "textureAlpha": false,
+   "color": "#585e6b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/rusty_barrel_bump.normal.webp",
+   "specularMap": "_textures/rusty_barrel_spec-rgb_rusty__96f69cf3.specular.webp",
+   "envMapParms": [
+    0.6,
+    1.6,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_truck_tires",
+   "texture": "_textures/mtl_truck_cab_col.webp",
+   "textureAlpha": false,
+   "color": "#3f3e3d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/mtl_truck_cab_nml.normal.webp",
+   "specularMap": "_textures/mtl_truck_cab_spc-rgb_mtl_tr_9004f4e3.specular.webp",
+   "envMapParms": [
+    2.0,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_truck_cab",
+   "texture": "_textures/mtl_truck_cab_col.webp",
+   "textureAlpha": false,
+   "color": "#3f3e3d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/mtl_truck_cab_nml.normal.webp",
+   "specularMap": "_textures/mtl_truck_cab_spc-rgb_mtl_tr_9004f4e3.specular.webp",
+   "envMapParms": [
+    1.2,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_vehicle_uaz",
+   "texture": "_textures/vehicle_uaz_col.webp",
+   "textureAlpha": false,
+   "color": "#403f36",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/vehicle_uaz_nml.normal.webp",
+   "specularMap": "_textures/vehicle_uaz_spc-r-59g-59b-59_a76c587d.specular.webp",
+   "envMapParms": [
+    1.2,
+    3.2,
+    3.52,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_vehicle_uaz_glass",
+   "texture": "_textures/vehicle_uaz_glass_col.webp",
+   "textureAlpha": true,
+   "color": "#524a2e",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "specularMap": "_textures/vehicle_uaz_glass_spc-r-61g-_e19262b7.specular.webp",
+   "envMapParms": [
+    2.4,
+    4.0,
+    3.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_vehicle_uaz_int",
+   "texture": "_textures/vehicle_uaz_int_col.webp",
+   "textureAlpha": false,
+   "color": "#292b24",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/vehicle_uaz_int_nml.normal.webp",
+   "specularMap": "_textures/vehicle_uaz_int_spc-r-61g-61_47d1ec3e.specular.webp",
+   "envMapParms": [
+    1.2,
+    3.2,
+    3.52,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_vehicle_uaz_tire",
+   "texture": "_textures/vehicle_uaz_tire_col.webp",
+   "textureAlpha": false,
+   "color": "#31322b",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/vehicle_uaz_tire_nml.normal.webp",
+   "specularMap": "_textures/vehicle_uaz_tire_spc-r-61g-6_d23037ac.specular.webp",
+   "envMapParms": [
+    1.2,
+    3.2,
+    3.52,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cargoship_wall_light_red_on",
+   "texture": "_textures/cargoship_wall_light_red_col.webp",
+   "textureAlpha": false,
+   "color": "#5d3a38",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cs_steeringwheel",
+   "texture": "_textures/cs_steeringwheel_col.webp",
+   "textureAlpha": false,
+   "color": "#71716c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/cs_steeringwheel_nml.normal.webp",
+   "specularMap": "_textures/cs_steeringwheel_col-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "models": [
+  {
+   "name": "cs_cargoship_door_push_edge",
+   "count": 42,
+   "mins": [
+    -3.54,
+    -32.0,
+    0.0
+   ],
+   "maxs": [
+    3.0,
+    28.0,
+    88.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 0,
+     "vertexCount": 428,
+     "indexStart": 0,
+     "indexCount": 912,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 288,
+       "material": 0
+      },
+      {
+       "indexStart": 288,
+       "indexCount": 624,
+       "material": 1
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 428,
+     "vertexCount": 365,
+     "indexStart": 912,
+     "indexCount": 720,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 192,
+       "material": 0
+      },
+      {
+       "indexStart": 192,
+       "indexCount": 528,
+       "material": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_cargoship_door_push",
+   "count": 42,
+   "mins": [
+    -5.01,
+    -2.21,
+    2.0
+   ],
+   "maxs": [
+    7.77,
+    56.0,
+    85.99
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 793,
+     "vertexCount": 1139,
+     "indexStart": 1632,
+     "indexCount": 3030,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2904,
+       "material": 0
+      },
+      {
+       "indexStart": 2904,
+       "indexCount": 6,
+       "material": 2
+      },
+      {
+       "indexStart": 2910,
+       "indexCount": 120,
+       "material": 1
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 1932,
+     "vertexCount": 668,
+     "indexStart": 4662,
+     "indexCount": 1488,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1416,
+       "material": 0
+      },
+      {
+       "indexStart": 1416,
+       "indexCount": 72,
+       "material": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_restaurantsink_2comps",
+   "count": 1,
+   "mins": [
+    -0.0,
+    -40.0,
+    -0.1
+   ],
+   "maxs": [
+    30.0,
+    40.0,
+    44.89
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 2600,
+     "vertexCount": 1843,
+     "indexStart": 6150,
+     "indexCount": 5076,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 5076,
+       "material": 3
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 4443,
+     "vertexCount": 236,
+     "indexStart": 11226,
+     "indexCount": 390,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 390,
+       "material": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_restaurantstainlessteelshelf_02",
+   "count": 1,
+   "mins": [
+    0.0,
+    -27.75,
+    -0.0
+   ],
+   "maxs": [
+    19.5,
+    27.75,
+    72.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 800.0,
+     "vertexStart": 4679,
+     "vertexCount": 744,
+     "indexStart": 11616,
+     "indexCount": 1752,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1752,
+       "material": 4
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 5423,
+     "vertexCount": 228,
+     "indexStart": 13368,
+     "indexCount": 360,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 360,
+       "material": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_folding_chair",
+   "count": 8,
+   "mins": [
+    -11.47,
+    -10.27,
+    -0.05
+   ],
+   "maxs": [
+    11.42,
+    10.27,
+    37.01
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 200.0,
+     "vertexStart": 5651,
+     "vertexCount": 574,
+     "indexStart": 13728,
+     "indexCount": 1530,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 504,
+       "material": 5
+      },
+      {
+       "indexStart": 504,
+       "indexCount": 522,
+       "material": 5
+      },
+      {
+       "indexStart": 1026,
+       "indexCount": 504,
+       "material": 5
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 6225,
+     "vertexCount": 160,
+     "indexStart": 15258,
+     "indexCount": 294,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 294,
+       "material": 5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mil_bunker_bed2",
+   "count": 1,
+   "mins": [
+    -18.19,
+    -43.68,
+    -0.0
+   ],
+   "maxs": [
+    18.21,
+    43.68,
+    33.63
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 6385,
+     "vertexCount": 388,
+     "indexStart": 15552,
+     "indexCount": 960,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 708,
+       "material": 6
+      },
+      {
+       "indexStart": 708,
+       "indexCount": 252,
+       "material": 7
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 6773,
+     "vertexCount": 158,
+     "indexStart": 16512,
+     "indexCount": 312,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 228,
+       "material": 6
+      },
+      {
+       "indexStart": 228,
+       "indexCount": 84,
+       "material": 7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_folding_table",
+   "count": 1,
+   "mins": [
+    -19.25,
+    -41.12,
+    -0.0
+   ],
+   "maxs": [
+    19.25,
+    41.12,
+    33.94
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 200.0,
+     "vertexStart": 6931,
+     "vertexCount": 694,
+     "indexStart": 16824,
+     "indexCount": 1704,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 420,
+       "material": 8
+      },
+      {
+       "indexStart": 420,
+       "indexCount": 1284,
+       "material": 9
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 7625,
+     "vertexCount": 114,
+     "indexStart": 18528,
+     "indexCount": 156,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 156,
+       "material": 8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_cargoship_wall_light_on",
+   "count": 70,
+   "mins": [
+    -4.39,
+    -5.53,
+    -7.73
+   ],
+   "maxs": [
+    4.39,
+    -0.0,
+    7.73
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 7739,
+     "vertexCount": 243,
+     "indexStart": 18684,
+     "indexCount": 762,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 144,
+       "material": 10
+      },
+      {
+       "indexStart": 144,
+       "indexCount": 618,
+       "material": 11
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1200.0,
+     "vertexStart": 7982,
+     "vertexCount": 126,
+     "indexStart": 19446,
+     "indexCount": 312,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 84,
+       "material": 10
+      },
+      {
+       "indexStart": 84,
+       "indexCount": 228,
+       "material": 11
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_lightbox_on",
+   "count": 43,
+   "mins": [
+    -63.64,
+    -82.67,
+    -67.37
+   ],
+   "maxs": [
+    64.33,
+    14.77,
+    58.07
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 8108,
+     "vertexCount": 1141,
+     "indexStart": 19758,
+     "indexCount": 2790,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2730,
+       "material": 12
+      },
+      {
+       "indexStart": 2730,
+       "indexCount": 12,
+       "material": 13
+      },
+      {
+       "indexStart": 2742,
+       "indexCount": 36,
+       "material": 14
+      },
+      {
+       "indexStart": 2778,
+       "indexCount": 12,
+       "material": 15
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 9249,
+     "vertexCount": 149,
+     "indexStart": 22548,
+     "indexCount": 264,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 204,
+       "material": 12
+      },
+      {
+       "indexStart": 204,
+       "indexCount": 12,
+       "material": 13
+      },
+      {
+       "indexStart": 216,
+       "indexCount": 36,
+       "material": 14
+      },
+      {
+       "indexStart": 252,
+       "indexCount": 12,
+       "material": 15
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_lightbox",
+   "count": 8,
+   "mins": [
+    -9.85,
+    -10.19,
+    -7.22
+   ],
+   "maxs": [
+    9.85,
+    -0.06,
+    7.22
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 9398,
+     "vertexCount": 1112,
+     "indexStart": 22812,
+     "indexCount": 2730,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2730,
+       "material": 16
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 9000.0,
+     "vertexStart": 10510,
+     "vertexCount": 120,
+     "indexStart": 25542,
+     "indexCount": 204,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 204,
+       "material": 16
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_handrail_short_stair_wet",
+   "count": 34,
+   "mins": [
+    -1.01,
+    -22.0,
+    -38.0
+   ],
+   "maxs": [
+    1.01,
+    22.0,
+    38.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 3000.0,
+     "vertexStart": 10630,
+     "vertexCount": 110,
+     "indexStart": 25746,
+     "indexCount": 252,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 252,
+       "material": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_handrail_90_left_wet",
+   "count": 36,
+   "mins": [
+    -3.0,
+    -1.58,
+    -0.0
+   ],
+   "maxs": [
+    1.37,
+    7.0,
+    35.91
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 750.0,
+     "vertexStart": 10740,
+     "vertexCount": 164,
+     "indexStart": 25998,
+     "indexCount": 522,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 522,
+       "material": 17
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 3000.0,
+     "vertexStart": 10904,
+     "vertexCount": 63,
+     "indexStart": 26520,
+     "indexCount": 186,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 186,
+       "material": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_handrail_90_right_wet",
+   "count": 32,
+   "mins": [
+    -1.37,
+    -1.58,
+    0.0
+   ],
+   "maxs": [
+    3.0,
+    7.0,
+    35.91
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 750.0,
+     "vertexStart": 10967,
+     "vertexCount": 164,
+     "indexStart": 26706,
+     "indexCount": 522,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 522,
+       "material": 17
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 3000.0,
+     "vertexStart": 11131,
+     "vertexCount": 164,
+     "indexStart": 27228,
+     "indexCount": 522,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 522,
+       "material": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_handrail_64_double_wet",
+   "count": 42,
+   "mins": [
+    -1.59,
+    -32.0,
+    -0.0
+   ],
+   "maxs": [
+    1.57,
+    32.0,
+    36.04
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 750.0,
+     "vertexStart": 11295,
+     "vertexCount": 118,
+     "indexStart": 27750,
+     "indexCount": 240,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 240,
+       "material": 17
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 11413,
+     "vertexCount": 28,
+     "indexStart": 27990,
+     "indexCount": 66,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 66,
+       "material": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_handrail_90_wet",
+   "count": 74,
+   "mins": [
+    -2.47,
+    -2.55,
+    0.0
+   ],
+   "maxs": [
+    4.52,
+    4.45,
+    36.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1500.0,
+     "vertexStart": 11441,
+     "vertexCount": 108,
+     "indexStart": 28056,
+     "indexCount": 300,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 300,
+       "material": 17
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 3000.0,
+     "vertexStart": 11549,
+     "vertexCount": 66,
+     "indexStart": 28356,
+     "indexCount": 150,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 150,
+       "material": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_handrail_128_double_wet",
+   "count": 28,
+   "mins": [
+    -1.58,
+    -64.0,
+    -0.0
+   ],
+   "maxs": [
+    1.58,
+    64.0,
+    36.04
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 750.0,
+     "vertexStart": 11615,
+     "vertexCount": 154,
+     "indexStart": 28506,
+     "indexCount": 324,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 324,
+       "material": 17
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 11769,
+     "vertexCount": 36,
+     "indexStart": 28830,
+     "indexCount": 90,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 90,
+       "material": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_cargoship_spotlight_part1",
+   "count": 28,
+   "mins": [
+    -0.82,
+    -5.42,
+    -0.0
+   ],
+   "maxs": [
+    0.82,
+    5.44,
+    16.96
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 11805,
+     "vertexCount": 168,
+     "indexStart": 28920,
+     "indexCount": 366,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 366,
+       "material": 18
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 11973,
+     "vertexCount": 103,
+     "indexStart": 29286,
+     "indexCount": 180,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 180,
+       "material": 18
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_cargoship_spotlight_on",
+   "count": 32,
+   "mins": [
+    -10.89,
+    -5.02,
+    -5.59
+   ],
+   "maxs": [
+    6.53,
+    5.03,
+    5.53
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 12076,
+     "vertexCount": 431,
+     "indexStart": 29466,
+     "indexCount": 918,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 30,
+       "material": 19
+      },
+      {
+       "indexStart": 30,
+       "indexCount": 888,
+       "material": 18
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 12507,
+     "vertexCount": 162,
+     "indexStart": 30384,
+     "indexCount": 282,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 12,
+       "material": 19
+      },
+      {
+       "indexStart": 12,
+       "indexCount": 270,
+       "material": 18
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_handrail_single_left_45_wet",
+   "count": 2,
+   "mins": [
+    -130.5,
+    -98.0,
+    0.0
+   ],
+   "maxs": [
+    130.5,
+    99.0,
+    12.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 750.0,
+     "vertexStart": 12669,
+     "vertexCount": 232,
+     "indexStart": 30666,
+     "indexCount": 696,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 696,
+       "material": 17
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 12901,
+     "vertexCount": 68,
+     "indexStart": 31362,
+     "indexCount": 264,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 264,
+       "material": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_pipe_coupling_ceramic",
+   "count": 20,
+   "mins": [
+    -2.63,
+    -10.59,
+    -9.0
+   ],
+   "maxs": [
+    2.5,
+    10.59,
+    9.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 12969,
+     "vertexCount": 184,
+     "indexStart": 31626,
+     "indexCount": 390,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 390,
+       "material": 20
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 13153,
+     "vertexCount": 184,
+     "indexStart": 32016,
+     "indexCount": 390,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 390,
+       "material": 20
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_pipe_4_coupling_ceramic",
+   "count": 24,
+   "mins": [
+    -1.27,
+    -5.3,
+    -4.5
+   ],
+   "maxs": [
+    1.27,
+    5.3,
+    4.5
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 13337,
+     "vertexCount": 360,
+     "indexStart": 32406,
+     "indexCount": 864,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 864,
+       "material": 20
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 13697,
+     "vertexCount": 184,
+     "indexStart": 33270,
+     "indexCount": 390,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 390,
+       "material": 20
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_pipe_8_90angle_ceramic",
+   "count": 9,
+   "mins": [
+    -12.01,
+    -9.0,
+    -8.0
+   ],
+   "maxs": [
+    8.03,
+    9.0,
+    11.99
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 13881,
+     "vertexCount": 196,
+     "indexStart": 33660,
+     "indexCount": 756,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 756,
+       "material": 20
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 14077,
+     "vertexCount": 106,
+     "indexStart": 34416,
+     "indexCount": 372,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 372,
+       "material": 20
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_pipe_4_90angle_ceramic",
+   "count": 5,
+   "mins": [
+    -11.97,
+    -4.54,
+    -3.99
+   ],
+   "maxs": [
+    4.03,
+    4.54,
+    12.01
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 14183,
+     "vertexCount": 194,
+     "indexStart": 34788,
+     "indexCount": 756,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 756,
+       "material": 20
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 14377,
+     "vertexCount": 106,
+     "indexStart": 35544,
+     "indexCount": 372,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 372,
+       "material": 20
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_pipe_4_45angle_ceramic",
+   "count": 6,
+   "mins": [
+    -11.98,
+    -4.59,
+    -3.99
+   ],
+   "maxs": [
+    11.34,
+    4.59,
+    11.3
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 14483,
+     "vertexCount": 194,
+     "indexStart": 35916,
+     "indexCount": 756,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 756,
+       "material": 20
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 14677,
+     "vertexCount": 106,
+     "indexStart": 36672,
+     "indexCount": 372,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 372,
+       "material": 20
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_pipe_8_45angle_ceramic",
+   "count": 3,
+   "mins": [
+    -11.97,
+    -9.0,
+    -8.11
+   ],
+   "maxs": [
+    14.17,
+    9.0,
+    14.14
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 14783,
+     "vertexCount": 194,
+     "indexStart": 37044,
+     "indexCount": 756,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 756,
+       "material": 20
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 14977,
+     "vertexCount": 106,
+     "indexStart": 37800,
+     "indexCount": 372,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 372,
+       "material": 20
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_pipe_8_45angle_metal",
+   "count": 2,
+   "mins": [
+    -11.97,
+    -9.0,
+    -8.11
+   ],
+   "maxs": [
+    14.17,
+    9.0,
+    14.14
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 15083,
+     "vertexCount": 194,
+     "indexStart": 38172,
+     "indexCount": 756,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 756,
+       "material": 21
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 15277,
+     "vertexCount": 106,
+     "indexStart": 38928,
+     "indexCount": 372,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 372,
+       "material": 21
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_pipe_coupling_metal",
+   "count": 25,
+   "mins": [
+    -2.63,
+    -10.59,
+    -9.0
+   ],
+   "maxs": [
+    2.5,
+    10.59,
+    9.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 15383,
+     "vertexCount": 184,
+     "indexStart": 39300,
+     "indexCount": 390,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 390,
+       "material": 21
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 6000.0,
+     "vertexStart": 15567,
+     "vertexCount": 184,
+     "indexStart": 39690,
+     "indexCount": 390,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 390,
+       "material": 21
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_pipe_8_fit_metal",
+   "count": 22,
+   "mins": [
+    -1.0,
+    -9.0,
+    -9.0
+   ],
+   "maxs": [
+    1.0,
+    9.0,
+    9.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 15751,
+     "vertexCount": 52,
+     "indexStart": 40080,
+     "indexCount": 138,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 138,
+       "material": 21
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 15803,
+     "vertexCount": 28,
+     "indexStart": 40218,
+     "indexCount": 66,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 66,
+       "material": 21
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_pipe_4_fit_ceramic",
+   "count": 6,
+   "mins": [
+    0.0,
+    -4.81,
+    -4.81
+   ],
+   "maxs": [
+    1.0,
+    4.81,
+    4.81
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 15831,
+     "vertexCount": 52,
+     "indexStart": 40284,
+     "indexCount": 138,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 138,
+       "material": 20
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 15883,
+     "vertexCount": 28,
+     "indexStart": 40422,
+     "indexCount": 66,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 66,
+       "material": 20
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_pipe_8_fit_ceramic",
+   "count": 8,
+   "mins": [
+    -1.0,
+    -9.0,
+    -9.0
+   ],
+   "maxs": [
+    1.0,
+    9.0,
+    9.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 15911,
+     "vertexCount": 52,
+     "indexStart": 40488,
+     "indexCount": 138,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 138,
+       "material": 20
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 15963,
+     "vertexCount": 28,
+     "indexStart": 40626,
+     "indexCount": 66,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 66,
+       "material": 20
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_ac_window",
+   "count": 24,
+   "mins": [
+    -17.82,
+    -19.54,
+    0.72
+   ],
+   "maxs": [
+    17.82,
+    17.96,
+    24.48
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000.0,
+     "vertexStart": 15991,
+     "vertexCount": 92,
+     "indexStart": 40692,
+     "indexCount": 168,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 168,
+       "material": 22
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 20000.0,
+     "vertexStart": 16083,
+     "vertexCount": 24,
+     "indexStart": 40860,
+     "indexCount": 36,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 36,
+       "material": 22
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_pipe_4_hold_gas",
+   "count": 24,
+   "mins": [
+    -0.65,
+    -4.37,
+    -6.18
+   ],
+   "maxs": [
+    0.65,
+    4.37,
+    64.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 16107,
+     "vertexCount": 156,
+     "indexStart": 40896,
+     "indexCount": 312,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 312,
+       "material": 23
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 16263,
+     "vertexCount": 156,
+     "indexStart": 41208,
+     "indexCount": 312,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 312,
+       "material": 23
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_pipe_4_coupling_metal",
+   "count": 62,
+   "mins": [
+    -1.27,
+    -5.3,
+    -4.5
+   ],
+   "maxs": [
+    1.27,
+    5.3,
+    4.5
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 16419,
+     "vertexCount": 360,
+     "indexStart": 41520,
+     "indexCount": 864,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 864,
+       "material": 21
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 4000.0,
+     "vertexStart": 16779,
+     "vertexCount": 184,
+     "indexStart": 42384,
+     "indexCount": 390,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 390,
+       "material": 21
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_pipe_8_4_t_metal",
+   "count": 5,
+   "mins": [
+    -8.0,
+    -12.0,
+    -8.0
+   ],
+   "maxs": [
+    8.0,
+    8.0,
+    8.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 16963,
+     "vertexCount": 101,
+     "indexStart": 42774,
+     "indexCount": 252,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 252,
+       "material": 21
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 17064,
+     "vertexCount": 56,
+     "indexStart": 43026,
+     "indexCount": 144,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 144,
+       "material": 21
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_pipe_8_holder_gas",
+   "count": 4,
+   "mins": [
+    -1.29,
+    -8.74,
+    -8.74
+   ],
+   "maxs": [
+    1.29,
+    8.74,
+    64.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 17120,
+     "vertexCount": 184,
+     "indexStart": 43170,
+     "indexCount": 390,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 390,
+       "material": 23
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 17304,
+     "vertexCount": 154,
+     "indexStart": 43560,
+     "indexCount": 306,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 306,
+       "material": 23
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_pipe_4_90angle_metal",
+   "count": 6,
+   "mins": [
+    -11.97,
+    -4.54,
+    -3.99
+   ],
+   "maxs": [
+    4.03,
+    4.54,
+    12.01
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 17458,
+     "vertexCount": 194,
+     "indexStart": 43866,
+     "indexCount": 756,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 756,
+       "material": 21
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 17652,
+     "vertexCount": 106,
+     "indexStart": 44622,
+     "indexCount": 372,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 372,
+       "material": 21
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_pipe_4_fit_metal",
+   "count": 49,
+   "mins": [
+    0.0,
+    -4.81,
+    -4.81
+   ],
+   "maxs": [
+    1.0,
+    4.81,
+    4.81
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 17758,
+     "vertexCount": 52,
+     "indexStart": 44994,
+     "indexCount": 138,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 138,
+       "material": 21
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 17810,
+     "vertexCount": 28,
+     "indexStart": 45132,
+     "indexCount": 66,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 66,
+       "material": 21
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_airduct_s_short",
+   "count": 14,
+   "mins": [
+    -10.52,
+    -9.45,
+    -7.28
+   ],
+   "maxs": [
+    10.52,
+    9.45,
+    7.28
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 17838,
+     "vertexCount": 64,
+     "indexStart": 45198,
+     "indexCount": 96,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 96,
+       "material": 24
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_airduct_square",
+   "count": 35,
+   "mins": [
+    -31.5,
+    -10.52,
+    -7.28
+   ],
+   "maxs": [
+    31.5,
+    10.52,
+    7.28
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 20000.0,
+     "vertexStart": 17902,
+     "vertexCount": 64,
+     "indexStart": 45294,
+     "indexCount": 96,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 96,
+       "material": 24
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_airduct_s_up_down",
+   "count": 8,
+   "mins": [
+    -0.0,
+    -9.45,
+    -28.44
+   ],
+   "maxs": [
+    31.5,
+    9.45,
+    6.32
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 17966,
+     "vertexCount": 64,
+     "indexStart": 45390,
+     "indexCount": 168,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 84,
+       "material": 24
+      },
+      {
+       "indexStart": 84,
+       "indexCount": 84,
+       "material": 25
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_electricbox1",
+   "count": 7,
+   "mins": [
+    0.02,
+    -4.73,
+    -6.83
+   ],
+   "maxs": [
+    4.45,
+    4.73,
+    6.83
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 18030,
+     "vertexCount": 191,
+     "indexStart": 45558,
+     "indexCount": 342,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 342,
+       "material": 26
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 3000.0,
+     "vertexStart": 18221,
+     "vertexCount": 70,
+     "indexStart": 45900,
+     "indexCount": 108,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 108,
+       "material": 26
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_electricbox4",
+   "count": 1,
+   "mins": [
+    -13.36,
+    -9.45,
+    -13.43
+   ],
+   "maxs": [
+    13.36,
+    0.03,
+    11.85
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 18291,
+     "vertexCount": 180,
+     "indexStart": 46008,
+     "indexCount": 288,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 288,
+       "material": 27
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 3000.0,
+     "vertexStart": 18471,
+     "vertexCount": 36,
+     "indexStart": 46296,
+     "indexCount": 54,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 54,
+       "material": 27
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_electrical_pipe",
+   "count": 8,
+   "mins": [
+    -2.41,
+    -0.0,
+    0.0
+   ],
+   "maxs": [
+    2.41,
+    76.0,
+    1.67
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 18507,
+     "vertexCount": 156,
+     "indexStart": 46350,
+     "indexCount": 312,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 312,
+       "material": 28
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 18663,
+     "vertexCount": 84,
+     "indexStart": 46662,
+     "indexCount": 156,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 156,
+       "material": 28
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_handrail_long_stair_wet",
+   "count": 18,
+   "mins": [
+    -1.0,
+    -64.0,
+    -93.95
+   ],
+   "maxs": [
+    1.0,
+    64.0,
+    94.02
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1500.0,
+     "vertexStart": 18747,
+     "vertexCount": 176,
+     "indexStart": 46818,
+     "indexCount": 348,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 348,
+       "material": 17
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 18923,
+     "vertexCount": 148,
+     "indexStart": 47166,
+     "indexCount": 306,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 306,
+       "material": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_electricbox3",
+   "count": 6,
+   "mins": [
+    -4.17,
+    -4.66,
+    -5.97
+   ],
+   "maxs": [
+    4.17,
+    0.01,
+    5.97
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 19071,
+     "vertexCount": 126,
+     "indexStart": 47472,
+     "indexCount": 312,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 312,
+       "material": 29
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 3000.0,
+     "vertexStart": 19197,
+     "vertexCount": 48,
+     "indexStart": 47784,
+     "indexCount": 96,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 96,
+       "material": 29
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_cargoship_door_pull_edge",
+   "count": 2,
+   "mins": [
+    -3.0,
+    -31.99,
+    0.0
+   ],
+   "maxs": [
+    3.53,
+    28.0,
+    88.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 19245,
+     "vertexCount": 424,
+     "indexStart": 47880,
+     "indexCount": 912,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 288,
+       "material": 0
+      },
+      {
+       "indexStart": 288,
+       "indexCount": 624,
+       "material": 1
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 19669,
+     "vertexCount": 361,
+     "indexStart": 48792,
+     "indexCount": 720,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 192,
+       "material": 0
+      },
+      {
+       "indexStart": 192,
+       "indexCount": 528,
+       "material": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_cargoship_door_pull",
+   "count": 2,
+   "mins": [
+    -8.04,
+    -2.23,
+    2.0
+   ],
+   "maxs": [
+    4.74,
+    56.0,
+    85.99
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 20030,
+     "vertexCount": 1138,
+     "indexStart": 49512,
+     "indexCount": 3030,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1224,
+       "material": 0
+      },
+      {
+       "indexStart": 1224,
+       "indexCount": 1680,
+       "material": 0
+      },
+      {
+       "indexStart": 2904,
+       "indexCount": 6,
+       "material": 2
+      },
+      {
+       "indexStart": 2910,
+       "indexCount": 120,
+       "material": 1
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 21168,
+     "vertexCount": 680,
+     "indexStart": 52542,
+     "indexCount": 1518,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 666,
+       "material": 0
+      },
+      {
+       "indexStart": 666,
+       "indexCount": 756,
+       "material": 0
+      },
+      {
+       "indexStart": 1422,
+       "indexCount": 6,
+       "material": 2
+      },
+      {
+       "indexStart": 1428,
+       "indexCount": 90,
+       "material": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_electrical_pipe_short",
+   "count": 3,
+   "mins": [
+    -2.41,
+    -0.0,
+    0.0
+   ],
+   "maxs": [
+    2.41,
+    28.0,
+    1.67
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 21848,
+     "vertexCount": 100,
+     "indexStart": 54060,
+     "indexCount": 210,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 210,
+       "material": 28
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 21948,
+     "vertexCount": 56,
+     "indexStart": 54270,
+     "indexCount": 102,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 102,
+       "material": 28
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_electrical_pipe_elbow",
+   "count": 2,
+   "mins": [
+    -3.0,
+    -0.66,
+    0.01
+   ],
+   "maxs": [
+    0.71,
+    3.0,
+    1.47
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 22004,
+     "vertexCount": 99,
+     "indexStart": 54372,
+     "indexCount": 228,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 228,
+       "material": 28
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 22103,
+     "vertexCount": 43,
+     "indexStart": 54600,
+     "indexCount": 96,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 96,
+       "material": 28
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_restaurantkitchenvent",
+   "count": 1,
+   "mins": [
+    -64.67,
+    -53.06,
+    -34.61
+   ],
+   "maxs": [
+    64.67,
+    0.0,
+    0.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 22146,
+     "vertexCount": 38,
+     "indexStart": 54696,
+     "indexCount": 66,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 66,
+       "material": 30
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_radiator01",
+   "count": 1,
+   "mins": [
+    -23.08,
+    -3.65,
+    -0.27
+   ],
+   "maxs": [
+    4.77,
+    3.65,
+    31.03
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 22184,
+     "vertexCount": 1039,
+     "indexStart": 54762,
+     "indexCount": 4224,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 4224,
+       "material": 31
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 23223,
+     "vertexCount": 204,
+     "indexStart": 58986,
+     "indexCount": 696,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 696,
+       "material": 31
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_locker_double",
+   "count": 2,
+   "mins": [
+    0.0,
+    -8.73,
+    0.0
+   ],
+   "maxs": [
+    24.2,
+    0.0,
+    77.78
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000.0,
+     "vertexStart": 23427,
+     "vertexCount": 150,
+     "indexStart": 59682,
+     "indexCount": 228,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 228,
+       "material": 32
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 23577,
+     "vertexCount": 24,
+     "indexStart": 59910,
+     "indexCount": 36,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 36,
+       "material": 32
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_computer_keyboard",
+   "count": 6,
+   "mins": [
+    -3.92,
+    -12.49,
+    0.02
+   ],
+   "maxs": [
+    4.01,
+    12.49,
+    1.41
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 250.0,
+     "vertexStart": 23601,
+     "vertexCount": 212,
+     "indexStart": 59946,
+     "indexCount": 360,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 360,
+       "material": 33
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 23813,
+     "vertexCount": 24,
+     "indexStart": 60306,
+     "indexCount": 36,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 36,
+       "material": 33
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_monitor1",
+   "count": 4,
+   "mins": [
+    -14.39,
+    -21.55,
+    0.05
+   ],
+   "maxs": [
+    14.4,
+    10.22,
+    51.67
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 23837,
+     "vertexCount": 260,
+     "indexStart": 60342,
+     "indexCount": 606,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 522,
+       "material": 34
+      },
+      {
+       "indexStart": 522,
+       "indexCount": 12,
+       "material": 35
+      },
+      {
+       "indexStart": 534,
+       "indexCount": 72,
+       "material": 36
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_receiver1",
+   "count": 6,
+   "mins": [
+    -9.73,
+    -9.29,
+    -6.19
+   ],
+   "maxs": [
+    9.73,
+    9.29,
+    12.52
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 24097,
+     "vertexCount": 90,
+     "indexStart": 60948,
+     "indexCount": 162,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 162,
+       "material": 37
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_wallfan1",
+   "count": 15,
+   "mins": [
+    -20.0,
+    -32.16,
+    -8.94
+   ],
+   "maxs": [
+    20.0,
+    0.0,
+    31.06
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 24187,
+     "vertexCount": 287,
+     "indexStart": 61110,
+     "indexCount": 780,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 18,
+       "material": 38
+      },
+      {
+       "indexStart": 18,
+       "indexCount": 762,
+       "material": 39
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 24474,
+     "vertexCount": 56,
+     "indexStart": 61890,
+     "indexCount": 84,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 84,
+       "material": 39
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_fire_extinguisher",
+   "count": 1,
+   "mins": [
+    -3.89,
+    -2.67,
+    -0.01
+   ],
+   "maxs": [
+    3.89,
+    2.67,
+    20.17
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 24530,
+     "vertexCount": 554,
+     "indexStart": 61974,
+     "indexCount": 1644,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1644,
+       "material": 40
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_console_rail",
+   "count": 10,
+   "mins": [
+    -1.0,
+    -32.5,
+    -0.95
+   ],
+   "maxs": [
+    1.0,
+    0.0,
+    0.95
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 200.0,
+     "vertexStart": 25084,
+     "vertexCount": 33,
+     "indexStart": 63618,
+     "indexCount": 90,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 90,
+       "material": 41
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 25117,
+     "vertexCount": 15,
+     "indexStart": 63708,
+     "indexCount": 24,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 24,
+       "material": 41
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_periscope1",
+   "count": 1,
+   "mins": [
+    -8.01,
+    -7.8,
+    -43.95
+   ],
+   "maxs": [
+    7.21,
+    7.8,
+    0.01
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 25132,
+     "vertexCount": 147,
+     "indexStart": 63732,
+     "indexCount": 444,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 354,
+       "material": 34
+      },
+      {
+       "indexStart": 354,
+       "indexCount": 90,
+       "material": 35
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_monitor_wall2",
+   "count": 3,
+   "mins": [
+    -15.67,
+    -11.2,
+    -0.01
+   ],
+   "maxs": [
+    15.66,
+    11.21,
+    2.04
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 25279,
+     "vertexCount": 88,
+     "indexStart": 64176,
+     "indexCount": 174,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 126,
+       "material": 34
+      },
+      {
+       "indexStart": 126,
+       "indexCount": 12,
+       "material": 35
+      },
+      {
+       "indexStart": 138,
+       "indexCount": 36,
+       "material": 42
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_monitor_wall",
+   "count": 4,
+   "mins": [
+    -15.67,
+    -11.2,
+    -0.01
+   ],
+   "maxs": [
+    15.66,
+    11.21,
+    2.04
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 25367,
+     "vertexCount": 88,
+     "indexStart": 64350,
+     "indexCount": 174,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 126,
+       "material": 34
+      },
+      {
+       "indexStart": 126,
+       "indexCount": 12,
+       "material": 35
+      },
+      {
+       "indexStart": 138,
+       "indexCount": 36,
+       "material": 36
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_handrail_256_double_wet",
+   "count": 46,
+   "mins": [
+    -1.58,
+    -128.0,
+    -0.0
+   ],
+   "maxs": [
+    1.58,
+    128.0,
+    36.04
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 750.0,
+     "vertexStart": 25455,
+     "vertexCount": 226,
+     "indexStart": 64524,
+     "indexCount": 492,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 492,
+       "material": 17
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 25681,
+     "vertexCount": 52,
+     "indexStart": 65016,
+     "indexCount": 132,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 132,
+       "material": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_handrail_256_damage_wet",
+   "count": 15,
+   "mins": [
+    -5.52,
+    -128.0,
+    -0.0
+   ],
+   "maxs": [
+    5.52,
+    128.0,
+    37.89
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1500.0,
+     "vertexStart": 25733,
+     "vertexCount": 492,
+     "indexStart": 65148,
+     "indexCount": 1716,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1716,
+       "material": 17
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 26225,
+     "vertexCount": 480,
+     "indexStart": 66864,
+     "indexCount": 1104,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1104,
+       "material": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_handrail_64_end_wet",
+   "count": 36,
+   "mins": [
+    -1.58,
+    -24.01,
+    0.0
+   ],
+   "maxs": [
+    1.58,
+    24.01,
+    35.9
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1500.0,
+     "vertexStart": 26705,
+     "vertexCount": 120,
+     "indexStart": 67968,
+     "indexCount": 354,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 354,
+       "material": 17
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 3000.0,
+     "vertexStart": 26825,
+     "vertexCount": 59,
+     "indexStart": 68322,
+     "indexCount": 180,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 180,
+       "material": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_deck_tie_bar",
+   "count": 24,
+   "mins": [
+    -8.5,
+    -1.5,
+    0.0
+   ],
+   "maxs": [
+    8.5,
+    1.5,
+    7.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 26884,
+     "vertexCount": 370,
+     "indexStart": 68502,
+     "indexCount": 576,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 528,
+       "material": 43
+      },
+      {
+       "indexStart": 528,
+       "indexCount": 48,
+       "material": 44
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_handrail_coupling_wet",
+   "count": 73,
+   "mins": [
+    -1.2,
+    -0.54,
+    -9.08
+   ],
+   "maxs": [
+    1.2,
+    0.54,
+    9.08
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 27254,
+     "vertexCount": 50,
+     "indexStart": 69078,
+     "indexCount": 96,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 96,
+       "material": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_cargocontainersingleface",
+   "count": 14,
+   "mins": [
+    -49.0,
+    -0.9,
+    2.78
+   ],
+   "maxs": [
+    49.0,
+    2.08,
+    103.14
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 200.0,
+     "vertexStart": 27304,
+     "vertexCount": 5832,
+     "indexStart": 69174,
+     "indexCount": 15360,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 12672,
+       "material": 45
+      },
+      {
+       "indexStart": 12672,
+       "indexCount": 2688,
+       "material": 46
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 33136,
+     "vertexCount": 616,
+     "indexStart": 84534,
+     "indexCount": 1056,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 768,
+       "material": 45
+      },
+      {
+       "indexStart": 768,
+       "indexCount": 288,
+       "material": 46
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_cargocontainerdoorhinge_green",
+   "count": 192,
+   "mins": [
+    -6.0,
+    -0.99,
+    -4.0
+   ],
+   "maxs": [
+    0.0,
+    0.08,
+    0.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 33752,
+     "vertexCount": 126,
+     "indexStart": 85590,
+     "indexCount": 336,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 336,
+       "material": 47
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 33878,
+     "vertexCount": 22,
+     "indexStart": 85926,
+     "indexCount": 36,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 36,
+       "material": 47
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_cargocontainerdoorhinge_blue",
+   "count": 88,
+   "mins": [
+    -6.0,
+    -0.99,
+    -4.0
+   ],
+   "maxs": [
+    0.0,
+    0.08,
+    0.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 33900,
+     "vertexCount": 126,
+     "indexStart": 85962,
+     "indexCount": 336,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 336,
+       "material": 48
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 34026,
+     "vertexCount": 22,
+     "indexStart": 86298,
+     "indexCount": 36,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 36,
+       "material": 48
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_barrel_white_rust",
+   "count": 5,
+   "mins": [
+    -14.63,
+    -14.64,
+    0.0
+   ],
+   "maxs": [
+    14.59,
+    14.57,
+    44.01
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 256.0,
+     "vertexStart": 34048,
+     "vertexCount": 408,
+     "indexStart": 86334,
+     "indexCount": 1524,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1524,
+       "material": 49
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 34456,
+     "vertexCount": 26,
+     "indexStart": 87858,
+     "indexCount": 60,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 60,
+       "material": 49
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_cargocontainerleftface_blue",
+   "count": 2,
+   "mins": [
+    -49.0,
+    -0.9,
+    2.78
+   ],
+   "maxs": [
+    -5.9,
+    2.08,
+    103.14
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 200.0,
+     "vertexStart": 34482,
+     "vertexCount": 2916,
+     "indexStart": 87918,
+     "indexCount": 7680,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 6336,
+       "material": 45
+      },
+      {
+       "indexStart": 6336,
+       "indexCount": 1344,
+       "material": 48
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 37398,
+     "vertexCount": 308,
+     "indexStart": 95598,
+     "indexCount": 528,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 384,
+       "material": 45
+      },
+      {
+       "indexStart": 384,
+       "indexCount": 144,
+       "material": 48
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_cargocontainersingleface_white",
+   "count": 16,
+   "mins": [
+    -49.0,
+    -0.9,
+    2.78
+   ],
+   "maxs": [
+    49.0,
+    2.08,
+    103.14
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 200.0,
+     "vertexStart": 37706,
+     "vertexCount": 5832,
+     "indexStart": 96126,
+     "indexCount": 15360,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 12672,
+       "material": 45
+      },
+      {
+       "indexStart": 12672,
+       "indexCount": 2688,
+       "material": 50
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 43538,
+     "vertexCount": 616,
+     "indexStart": 111486,
+     "indexCount": 1056,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 768,
+       "material": 45
+      },
+      {
+       "indexStart": 768,
+       "indexCount": 288,
+       "material": 50
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_cargocontainersingleface_green",
+   "count": 12,
+   "mins": [
+    -49.0,
+    -0.9,
+    2.78
+   ],
+   "maxs": [
+    49.0,
+    2.08,
+    103.14
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 200.0,
+     "vertexStart": 44154,
+     "vertexCount": 5832,
+     "indexStart": 112542,
+     "indexCount": 15360,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 12672,
+       "material": 45
+      },
+      {
+       "indexStart": 12672,
+       "indexCount": 2688,
+       "material": 47
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 49986,
+     "vertexCount": 616,
+     "indexStart": 127902,
+     "indexCount": 1056,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 768,
+       "material": 45
+      },
+      {
+       "indexStart": 768,
+       "indexCount": 288,
+       "material": 47
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_cargocontainersingleface_blue",
+   "count": 14,
+   "mins": [
+    -49.0,
+    -0.9,
+    2.78
+   ],
+   "maxs": [
+    49.0,
+    2.08,
+    103.14
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 200.0,
+     "vertexStart": 50602,
+     "vertexCount": 5832,
+     "indexStart": 128958,
+     "indexCount": 15360,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 12672,
+       "material": 45
+      },
+      {
+       "indexStart": 12672,
+       "indexCount": 2688,
+       "material": 48
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 56434,
+     "vertexCount": 616,
+     "indexStart": 144318,
+     "indexCount": 1056,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 768,
+       "material": 45
+      },
+      {
+       "indexStart": 768,
+       "indexCount": 288,
+       "material": 48
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_handrail_256_single_wet",
+   "count": 4,
+   "mins": [
+    -1.58,
+    -128.0,
+    0.0
+   ],
+   "maxs": [
+    1.58,
+    128.0,
+    36.08
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 750.0,
+     "vertexStart": 57050,
+     "vertexCount": 186,
+     "indexStart": 145374,
+     "indexCount": 432,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 432,
+       "material": 17
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 57236,
+     "vertexCount": 48,
+     "indexStart": 145806,
+     "indexCount": 132,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 132,
+       "material": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_handrail_256_single_curve_wet",
+   "count": 6,
+   "mins": [
+    -96.0,
+    -95.0,
+    0.0
+   ],
+   "maxs": [
+    94.96,
+    96.0,
+    36.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1500.0,
+     "vertexStart": 57284,
+     "vertexCount": 280,
+     "indexStart": 145938,
+     "indexCount": 912,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 912,
+       "material": 17
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 57564,
+     "vertexCount": 160,
+     "indexStart": 146850,
+     "indexCount": 540,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 540,
+       "material": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_handrail_64_single_curve_wet",
+   "count": 4,
+   "mins": [
+    -22.5,
+    -8.48,
+    0.01
+   ],
+   "maxs": [
+    8.5,
+    22.52,
+    35.96
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1500.0,
+     "vertexStart": 57724,
+     "vertexCount": 108,
+     "indexStart": 147390,
+     "indexCount": 372,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 372,
+       "material": 17
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 57832,
+     "vertexCount": 53,
+     "indexStart": 147762,
+     "indexCount": 216,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 216,
+       "material": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_handrail_256_single_damage_wet",
+   "count": 1,
+   "mins": [
+    -3.47,
+    -128.0,
+    0.0
+   ],
+   "maxs": [
+    7.57,
+    128.0,
+    38.03
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1500.0,
+     "vertexStart": 57885,
+     "vertexCount": 384,
+     "indexStart": 147978,
+     "indexCount": 1380,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1380,
+       "material": 17
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 58269,
+     "vertexCount": 280,
+     "indexStart": 149358,
+     "indexCount": 1116,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1116,
+       "material": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_handrail_128_single_wet",
+   "count": 6,
+   "mins": [
+    -1.58,
+    -64.0,
+    -0.03
+   ],
+   "maxs": [
+    1.58,
+    64.0,
+    36.08
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 750.0,
+     "vertexStart": 58549,
+     "vertexCount": 114,
+     "indexStart": 150474,
+     "indexCount": 264,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 264,
+       "material": 17
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 58663,
+     "vertexCount": 36,
+     "indexStart": 150738,
+     "indexCount": 84,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 84,
+       "material": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_handrail_64_single_damage_wet",
+   "count": 1,
+   "mins": [
+    -3.97,
+    -32.0,
+    -0.02
+   ],
+   "maxs": [
+    1.58,
+    32.0,
+    36.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1500.0,
+     "vertexStart": 58699,
+     "vertexCount": 100,
+     "indexStart": 150822,
+     "indexCount": 336,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 336,
+       "material": 17
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 58799,
+     "vertexCount": 66,
+     "indexStart": 151158,
+     "indexCount": 216,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 216,
+       "material": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_handrail_256_single_short_wet",
+   "count": 5,
+   "mins": [
+    -1.6,
+    -128.0,
+    0.0
+   ],
+   "maxs": [
+    1.56,
+    128.0,
+    12.06
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 750.0,
+     "vertexStart": 58865,
+     "vertexCount": 186,
+     "indexStart": 151374,
+     "indexCount": 432,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 432,
+       "material": 17
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 59051,
+     "vertexCount": 48,
+     "indexStart": 151806,
+     "indexCount": 132,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 132,
+       "material": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_handrail_128_single_short_wet",
+   "count": 8,
+   "mins": [
+    -1.6,
+    -64.0,
+    0.0
+   ],
+   "maxs": [
+    1.56,
+    64.0,
+    12.06
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 750.0,
+     "vertexStart": 59099,
+     "vertexCount": 114,
+     "indexStart": 151938,
+     "indexCount": 264,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 264,
+       "material": 17
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 59213,
+     "vertexCount": 32,
+     "indexStart": 152202,
+     "indexCount": 84,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 84,
+       "material": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_handrail_64_single_short_wet",
+   "count": 4,
+   "mins": [
+    -1.6,
+    -32.0,
+    0.0
+   ],
+   "maxs": [
+    1.56,
+    32.0,
+    12.06
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 750.0,
+     "vertexStart": 59245,
+     "vertexCount": 78,
+     "indexStart": 152286,
+     "indexCount": 180,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 180,
+       "material": 17
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 59323,
+     "vertexCount": 24,
+     "indexStart": 152466,
+     "indexCount": 60,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 60,
+       "material": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_handrail_128_curve_short_wet",
+   "count": 4,
+   "mins": [
+    -54.03,
+    -15.04,
+    0.0
+   ],
+   "maxs": [
+    14.99,
+    53.99,
+    12.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1500.0,
+     "vertexStart": 59347,
+     "vertexCount": 104,
+     "indexStart": 152526,
+     "indexCount": 396,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 396,
+       "material": 17
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 59451,
+     "vertexCount": 64,
+     "indexStart": 152922,
+     "indexCount": 240,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 240,
+       "material": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_handrail_64_damage_wet",
+   "count": 11,
+   "mins": [
+    -1.66,
+    -32.0,
+    0.0
+   ],
+   "maxs": [
+    4.06,
+    32.0,
+    35.9
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 750.0,
+     "vertexStart": 59515,
+     "vertexCount": 116,
+     "indexStart": 153162,
+     "indexCount": 360,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 360,
+       "material": 17
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 59631,
+     "vertexCount": 94,
+     "indexStart": 153522,
+     "indexCount": 240,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 240,
+       "material": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_handrail_single_right_45_wet",
+   "count": 2,
+   "mins": [
+    -130.5,
+    -98.0,
+    0.0
+   ],
+   "maxs": [
+    130.5,
+    99.0,
+    12.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 750.0,
+     "vertexStart": 59725,
+     "vertexCount": 232,
+     "indexStart": 153762,
+     "indexCount": 696,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 696,
+       "material": 17
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 59957,
+     "vertexCount": 128,
+     "indexStart": 154458,
+     "indexCount": 264,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 264,
+       "material": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_monitor2",
+   "count": 2,
+   "mins": [
+    -14.39,
+    -21.55,
+    0.05
+   ],
+   "maxs": [
+    14.4,
+    10.22,
+    51.67
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 60085,
+     "vertexCount": 260,
+     "indexStart": 154722,
+     "indexCount": 606,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 522,
+       "material": 34
+      },
+      {
+       "indexStart": 522,
+       "indexCount": 12,
+       "material": 35
+      },
+      {
+       "indexStart": 534,
+       "indexCount": 72,
+       "material": 42
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_restaurantchair_2",
+   "count": 1,
+   "mins": [
+    -11.6,
+    -11.24,
+    -0.01
+   ],
+   "maxs": [
+    11.6,
+    11.24,
+    40.96
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 100.0,
+     "vertexStart": 60345,
+     "vertexCount": 1180,
+     "indexStart": 155328,
+     "indexCount": 5250,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 5250,
+       "material": 51
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 61525,
+     "vertexCount": 122,
+     "indexStart": 160578,
+     "indexCount": 306,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 306,
+       "material": 51
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_tv1",
+   "count": 1,
+   "mins": [
+    -11.08,
+    -14.31,
+    -0.03
+   ],
+   "maxs": [
+    11.08,
+    14.3,
+    22.44
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 61647,
+     "vertexCount": 287,
+     "indexStart": 160884,
+     "indexCount": 720,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 720,
+       "material": 52
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 61934,
+     "vertexCount": 72,
+     "indexStart": 161604,
+     "indexCount": 126,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 126,
+       "material": 52
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_tow_hook",
+   "count": 5,
+   "mins": [
+    -39.0,
+    -8.0,
+    0.0
+   ],
+   "maxs": [
+    39.0,
+    8.0,
+    15.5
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 62006,
+     "vertexCount": 351,
+     "indexStart": 161730,
+     "indexCount": 1416,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1416,
+       "material": 53
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_pipe_4_hold_ceramic",
+   "count": 16,
+   "mins": [
+    -0.65,
+    -4.37,
+    -6.18
+   ],
+   "maxs": [
+    0.65,
+    4.37,
+    64.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 62357,
+     "vertexCount": 156,
+     "indexStart": 163146,
+     "indexCount": 312,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 312,
+       "material": 20
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 62513,
+     "vertexCount": 112,
+     "indexStart": 163458,
+     "indexCount": 192,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 192,
+       "material": 20
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_handrail_64_single_wet",
+   "count": 3,
+   "mins": [
+    -1.58,
+    -32.01,
+    -0.02
+   ],
+   "maxs": [
+    1.58,
+    32.0,
+    36.08
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 750.0,
+     "vertexStart": 62625,
+     "vertexCount": 78,
+     "indexStart": 163650,
+     "indexCount": 180,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 180,
+       "material": 17
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 62703,
+     "vertexCount": 24,
+     "indexStart": 163830,
+     "indexCount": 60,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 60,
+       "material": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_barrel_blue_rust",
+   "count": 12,
+   "mins": [
+    -14.63,
+    -14.64,
+    0.0
+   ],
+   "maxs": [
+    14.59,
+    14.57,
+    44.01
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 256.0,
+     "vertexStart": 62727,
+     "vertexCount": 408,
+     "indexStart": 163890,
+     "indexCount": 1524,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1524,
+       "material": 54
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 63135,
+     "vertexCount": 26,
+     "indexStart": 165414,
+     "indexCount": 60,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 60,
+       "material": 54
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_pipe_4x64_metal",
+   "count": 12,
+   "mins": [
+    -32.0,
+    -4.0,
+    -4.0
+   ],
+   "maxs": [
+    32.0,
+    4.0,
+    4.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 63161,
+     "vertexCount": 36,
+     "indexStart": 165474,
+     "indexCount": 96,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 96,
+       "material": 21
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 63197,
+     "vertexCount": 20,
+     "indexStart": 165570,
+     "indexCount": 48,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 48,
+       "material": 21
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_pipe_8x32_metal",
+   "count": 8,
+   "mins": [
+    -16.0,
+    -8.0,
+    -8.0
+   ],
+   "maxs": [
+    16.0,
+    8.0,
+    8.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 63217,
+     "vertexCount": 36,
+     "indexStart": 165618,
+     "indexCount": 96,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 96,
+       "material": 21
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 63253,
+     "vertexCount": 20,
+     "indexStart": 165714,
+     "indexCount": 48,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 48,
+       "material": 21
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_pipe_4x256_metal",
+   "count": 4,
+   "mins": [
+    -128.0,
+    -4.0,
+    -4.0
+   ],
+   "maxs": [
+    128.0,
+    4.0,
+    4.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 63273,
+     "vertexCount": 36,
+     "indexStart": 165762,
+     "indexCount": 96,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 96,
+       "material": 21
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 63309,
+     "vertexCount": 20,
+     "indexStart": 165858,
+     "indexCount": 48,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 48,
+       "material": 21
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_electricbox2",
+   "count": 4,
+   "mins": [
+    -8.36,
+    -8.47,
+    -19.12
+   ],
+   "maxs": [
+    8.36,
+    0.01,
+    19.12
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 63329,
+     "vertexCount": 166,
+     "indexStart": 165906,
+     "indexCount": 384,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 384,
+       "material": 29
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 3000.0,
+     "vertexStart": 63495,
+     "vertexCount": 64,
+     "indexStart": 166290,
+     "indexCount": 114,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 114,
+       "material": 29
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_pipe_4x32_metal",
+   "count": 4,
+   "mins": [
+    -16.0,
+    -4.0,
+    -4.0
+   ],
+   "maxs": [
+    16.0,
+    4.0,
+    4.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 63559,
+     "vertexCount": 36,
+     "indexStart": 166404,
+     "indexCount": 96,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 96,
+       "material": 21
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 63595,
+     "vertexCount": 20,
+     "indexStart": 166500,
+     "indexCount": 48,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 48,
+       "material": 21
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "vehicle_semi_trailer_axle",
+   "count": 3,
+   "mins": [
+    -23.73,
+    -47.86,
+    0.39
+   ],
+   "maxs": [
+    23.62,
+    47.86,
+    47.02
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 700.0,
+     "vertexStart": 63615,
+     "vertexCount": 716,
+     "indexStart": 166548,
+     "indexCount": 2286,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1512,
+       "material": 55
+      },
+      {
+       "indexStart": 1512,
+       "indexCount": 774,
+       "material": 56
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 6000.0,
+     "vertexStart": 64331,
+     "vertexCount": 90,
+     "indexStart": 168834,
+     "indexCount": 216,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 192,
+       "material": 55
+      },
+      {
+       "indexStart": 192,
+       "indexCount": 24,
+       "material": 56
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "vehicle_uaz_hardtop",
+   "count": 2,
+   "mins": [
+    -91.18,
+    -41.61,
+    0.25
+   ],
+   "maxs": [
+    97.87,
+    41.61,
+    86.69
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 700.0,
+     "vertexStart": 64421,
+     "vertexCount": 9969,
+     "indexStart": 169050,
+     "indexCount": 23016,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 492,
+       "material": 57
+      },
+      {
+       "indexStart": 492,
+       "indexCount": 8340,
+       "material": 57
+      },
+      {
+       "indexStart": 8832,
+       "indexCount": 6228,
+       "material": 57
+      },
+      {
+       "indexStart": 15060,
+       "indexCount": 678,
+       "material": 57
+      },
+      {
+       "indexStart": 15738,
+       "indexCount": 378,
+       "material": 57
+      },
+      {
+       "indexStart": 16116,
+       "indexCount": 378,
+       "material": 57
+      },
+      {
+       "indexStart": 16494,
+       "indexCount": 678,
+       "material": 57
+      },
+      {
+       "indexStart": 17172,
+       "indexCount": 120,
+       "material": 58
+      },
+      {
+       "indexStart": 17292,
+       "indexCount": 132,
+       "material": 59
+      },
+      {
+       "indexStart": 17424,
+       "indexCount": 3522,
+       "material": 59
+      },
+      {
+       "indexStart": 20946,
+       "indexCount": 606,
+       "material": 60
+      },
+      {
+       "indexStart": 21552,
+       "indexCount": 366,
+       "material": 60
+      },
+      {
+       "indexStart": 21918,
+       "indexCount": 366,
+       "material": 60
+      },
+      {
+       "indexStart": 22284,
+       "indexCount": 366,
+       "material": 60
+      },
+      {
+       "indexStart": 22650,
+       "indexCount": 366,
+       "material": 60
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 74390,
+     "vertexCount": 719,
+     "indexStart": 192066,
+     "indexCount": 1392,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 12,
+       "material": 38
+      },
+      {
+       "indexStart": 12,
+       "indexCount": 798,
+       "material": 57
+      },
+      {
+       "indexStart": 810,
+       "indexCount": 180,
+       "material": 59
+      },
+      {
+       "indexStart": 990,
+       "indexCount": 402,
+       "material": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_cargoship_wall_light_red_on",
+   "count": 5,
+   "mins": [
+    -4.39,
+    -5.53,
+    -7.73
+   ],
+   "maxs": [
+    4.39,
+    -0.0,
+    7.73
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 75109,
+     "vertexCount": 243,
+     "indexStart": 193458,
+     "indexCount": 762,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 144,
+       "material": 61
+      },
+      {
+       "indexStart": 144,
+       "indexCount": 618,
+       "material": 11
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1200.0,
+     "vertexStart": 75352,
+     "vertexCount": 126,
+     "indexStart": 194220,
+     "indexCount": 312,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 84,
+       "material": 61
+      },
+      {
+       "indexStart": 84,
+       "indexCount": 228,
+       "material": 11
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_pipe_8_90angle_metal",
+   "count": 1,
+   "mins": [
+    -12.01,
+    -9.0,
+    -8.0
+   ],
+   "maxs": [
+    8.03,
+    9.0,
+    11.99
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 75478,
+     "vertexCount": 196,
+     "indexStart": 194532,
+     "indexCount": 756,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 756,
+       "material": 21
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 9000.0,
+     "vertexStart": 75674,
+     "vertexCount": 106,
+     "indexStart": 195288,
+     "indexCount": 372,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 372,
+       "material": 21
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_fire_extinguisher_incase",
+   "count": 1,
+   "mins": [
+    -7.02,
+    -6.25,
+    -13.06
+   ],
+   "maxs": [
+    1.01,
+    6.25,
+    13.06
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 75780,
+     "vertexCount": 494,
+     "indexStart": 195660,
+     "indexCount": 1302,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1302,
+       "material": 40
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_steeringwheel",
+   "count": 1,
+   "mins": [
+    -14.39,
+    -25.17,
+    0.05
+   ],
+   "maxs": [
+    14.4,
+    12.46,
+    52.37
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 76274,
+     "vertexCount": 326,
+     "indexStart": 196962,
+     "indexCount": 804,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 552,
+       "material": 34
+      },
+      {
+       "indexStart": 552,
+       "indexCount": 252,
+       "material": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_console_rail2",
+   "count": 2,
+   "mins": [
+    -1.0,
+    -31.98,
+    -0.95
+   ],
+   "maxs": [
+    1.0,
+    0.0,
+    0.95
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 200.0,
+     "vertexStart": 76600,
+     "vertexCount": 22,
+     "indexStart": 197766,
+     "indexCount": 60,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 60,
+       "material": 41
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 76622,
+     "vertexCount": 12,
+     "indexStart": 197826,
+     "indexCount": 18,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 18,
+       "material": 41
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "stats": {
+  "instances": 1669,
+  "models": 105,
+  "modelsWithGeometry": 105,
+  "instancesWithGeometry": 1669,
+  "fallbackModels": {},
+  "vertices": 76634,
+  "indices": 197844,
+  "lod0InstanceTriangles": 629950,
+  "lowInstanceTriangles": 151904,
+  "materials": 63,
+  "materialsTextured": 62,
+  "lod0SurfacesWithoutMaterial": 0,
+  "materialHandles": {
+   "inline": 106,
+   "resolved": 449,
+   "unresolved": 49,
+   "null": 0,
+   "chains": 16,
+   "rules": {
+    "measured": 16
+   },
+   "shiftedModels": 6,
+   "windowedChains": 3,
+   "known": {
+    "12300": "mc/mtl_cargoship_door",
+    "12304": "mc/mtl_cargoship_door_interior",
+    "29292": "mc/mtl_cargoship_door_glass",
+    "54556": "mc/mtl_hand_rail_wet",
+    "118928": "mc/mtl_restaurant_sink",
+    "350440": "mc/mtl_restaurantstainlessteelshelf",
+    "382588": "mc/mtl_folding_chair",
+    "398764": "mc/mtl_bed_bunker",
+    "398768": "mc/mtl_bed_bunker2",
+    "418068": "mc/mtl_folding_table",
+    "418072": "mc/mtl_folding_table_metal",
+    "433596": "mc/mtl_cargoship_wall_light_on",
+    "433600": "mc/mtl_cargoship_wall_light_off",
+    "457288": "mc/mtl_lightbox_on",
+    "457292": "mc/gfx_floodlight_beam_godray75",
+    "457296": "mc/gfx_spotlight_lensflare_godray80",
+    "457300": "mc/gfx_floodlight_beam_godray85",
+    "466768": "mc/mtl_lightbox_off",
+    "527420": "mc/mtl_cargoship_spotlight_off",
+    "533052": "mc/mtl_cargoship_spotlight_on",
+    "564740": "mc/mtl_pipes_ceramic",
+    "609460": "mc/mtl_pipes",
+    "633840": "mc/mtl_ac_window",
+    "635384": "mc/mtl_pipes_gas",
+    "663936": "mc/mtl_air_duct1",
+    "668072": "mc/mtl_air_duct2",
+    "672552": "mc/mtl_fire_extinguisher",
+    "694344": "mc/mtl_electric_box1",
+    "697252": "mc/mtl_electric_box3",
+    "699140": "mc/mtl_electrical_pipe",
+    "706416": "mc/mtl_electric_box2",
+    "752812": "mc/mtl_restaurantkitchenvent",
+    "760992": "mc/mtl_radiator",
+    "793328": "mc/locker",
+    "798124": "mc/mtl_computer2",
+    "801340": "mc/mtl_cs_monitor01",
+    "801344": "mc/mtl_cs_monitorscreen1",
+    "801348": "mc/mtl_cs_radarscreen01",
+    "812024": "mc/mtl_cs_radarscreen02",
+    "823068": "mc/mtl_cs_steeringwheel",
+    "836664": "mc/mtl_cs_receiverblue",
+    "841084": ",mc/lambert1",
+    "841088": "mc/mtl_wallfan1",
+    "850584": "mc/mtl_restaurant_chair",
+    "933240": "mc/mtl_console_rail",
+    "949980": "mc/mtl_television1",
+    "956880": "mc/ch_trim_stainlessteel_1_wet",
+    "1011024": "mc/me_trim_metal_conduit_wet",
+    "1011028": "mc/me_trim_metal_01_wet",
+    "1053408": "mc/mtl_cargocontainerlockingbar",
+    "1053412": "mc/mtl_cargocontainerdoorhinge",
+    "1213792": "mc/mtl_cargocontainerdoorhinge_green",
+    "1217236": "mc/mtl_cargocontainerdoorhinge_blue",
+    "1221028": "mc/mtl_barrel_white_rust",
+    "1328320": "mc/mtl_cargocontainerdoorhinge_white",
+    "1647556": "mc/mtl_barrel_blue_rust",
+    "1828512": "mc/mtl_cargoship_wall_light_red_on",
+    "1837512": "mc/mtl_truck_tires",
+    "1837516": "mc/mtl_truck_cab",
+    "1916128": "mc/mtl_vehicle_uaz",
+    "1916156": "mc/mtl_vehicle_uaz_glass",
+    "1916160": "mc/mtl_vehicle_uaz_int",
+    "1916168": "mc/mtl_vehicle_uaz_tire",
+    "2085872": "mc/mtl_wall_clock",
+    "2091828": "mc/mtl_propane_tank",
+    "2111308": "mc/mtl_plasticcrate_yellow",
+    "2113340": "mc/mtl_plasticcrate_brown",
+    "2116600": "mc/mtl_plasticcrate_blue",
+    "2119864": "mc/mtl_plastic_crates",
+    "2126372": "mc/mtl_plastic_bucket",
+    "2126376": "mc/mtl_plastic_bucket_dirt",
+    "2146316": "mc/mtl_cardboardbox",
+    "2147608": "mc/mtl_cardboardbox_decal",
+    "2165212": "mc/mtl_barrel_black_rust",
+    "2178752": "mc/ch_kitchenstainlessteelpanels",
+    "2178756": "mc/me_metal_rust_03",
+    "2207212": "mc/mtl_plastic_case_bomb_d",
+    "2207216": "mc/mtl_styroform_d",
+    "2207220": "mc/mtl_pallet",
+    "2270636": "mc/mtl_styroform",
+    "2270640": "mc/mtl_plastic_case_bomb",
+    "2270652": "mc/mtl_weapon_stinger",
+    "2325060": "mc/mtl_perc_martyrdom",
+    "2325312": "mc/mtl_perc_doubletap",
+    "2338208": "mc/mtl_plastic_case_big",
+    "2404052": "mc/mtl_laptop_envu",
+    "2404056": "mc/mtl_laptop_envu_screen",
+    "2413360": "mc/mtl_cellphone",
+    "18059572": "mc/mtl_sas_ct_bodies_sp",
+    "18059580": "mc/mtl_sas_ct_head_sp",
+    "18059588": "mc/mtl_sas_ct_goggle_sp",
+    "18059592": "mc/mtl_eye_highlight",
+    "18059612": "mc/mtl_sas_ct_lod_sp",
+    "18089816": "mc/mtl_black_kit_hands",
+    "18089820": "mc/mtl_black_kit_sleeves",
+    "18419164": "mc/mtl_opforce_body_sp",
+    "18419180": "mc/mtl_opforce_lod_sp",
+    "18443508": "mc/mtl_opforce_justin_beanie_sp",
+    "18443516": "mc/mtl_opforce_hands_sp",
+    "18469848": "mc/mtl_op_force_gloves",
+    "18469852": "mc/mtl_op_force_sleeves",
+    "18542372": "mc/mtl_opforce_gear_sp",
+    "18567292": "mc/mtl_opforce_3hole_ski_mask_sp",
+    "18663312": "mc/mtl_opforce_fullwrap_sp",
+    "18759644": "mc/mtl_opforce_gas_mask_lens_sp",
+    "18759656": "mc/mtl_opforce_gas_mask_sp"
+   }
+  }
+ },
+ "note": "Activision's models, extracted from the game files (see maps3d/NOTICE.md). Models without lods are drawn as boxes of their bounds.",
+ "collision": {
+  "file": "props_coll.bin",
+  "triangles": 33758,
+  "models": [
+   [
+    0,
+    240
+   ],
+   [
+    240,
+    496
+   ],
+   [
+    736,
+    736
+   ],
+   [
+    1472,
+    584
+   ],
+   [
+    2056,
+    274
+   ],
+   [
+    2330,
+    320
+   ],
+   [
+    2650,
+    278
+   ],
+   [
+    2928,
+    104
+   ],
+   [
+    3032,
+    68
+   ],
+   [
+    3100,
+    68
+   ],
+   [
+    3168,
+    84
+   ],
+   [
+    3252,
+    128
+   ],
+   [
+    3380,
+    128
+   ],
+   [
+    3508,
+    42
+   ],
+   [
+    3550,
+    100
+   ],
+   [
+    3650,
+    64
+   ],
+   [
+    3714,
+    59
+   ],
+   [
+    3773,
+    224
+   ],
+   [
+    3997,
+    168
+   ],
+   [
+    4165,
+    130
+   ],
+   [
+    4295,
+    130
+   ],
+   [
+    4425,
+    124
+   ],
+   [
+    4549,
+    124
+   ],
+   [
+    4673,
+    124
+   ],
+   [
+    4797,
+    124
+   ],
+   [
+    4921,
+    124
+   ],
+   [
+    5045,
+    130
+   ],
+   [
+    5175,
+    22
+   ],
+   [
+    5197,
+    22
+   ],
+   [
+    5219,
+    22
+   ],
+   [
+    5241,
+    12
+   ],
+   [
+    5253,
+    104
+   ],
+   [
+    5357,
+    130
+   ],
+   [
+    5487,
+    48
+   ],
+   [
+    5535,
+    102
+   ],
+   [
+    5637,
+    124
+   ],
+   [
+    5761,
+    22
+   ],
+   [
+    5783,
+    32
+   ],
+   [
+    5815,
+    32
+   ],
+   [
+    5847,
+    56
+   ],
+   [
+    5903,
+    36
+   ],
+   [
+    5939,
+    18
+   ],
+   null,
+   [
+    5957,
+    116
+   ],
+   [
+    6073,
+    32
+   ],
+   [
+    6105,
+    240
+   ],
+   [
+    6345,
+    506
+   ],
+   null,
+   null,
+   [
+    6851,
+    22
+   ],
+   [
+    6873,
+    656
+   ],
+   [
+    7529,
+    76
+   ],
+   [
+    7605,
+    38
+   ],
+   [
+    7643,
+    202
+   ],
+   [
+    7845,
+    54
+   ],
+   null,
+   [
+    7899,
+    548
+   ],
+   null,
+   [
+    8447,
+    147
+   ],
+   [
+    8594,
+    58
+   ],
+   [
+    8652,
+    58
+   ],
+   [
+    8710,
+    108
+   ],
+   [
+    8818,
+    368
+   ],
+   [
+    9186,
+    59
+   ],
+   [
+    9245,
+    192
+   ],
+   [
+    9437,
+    32
+   ],
+   [
+    9469,
+    3312
+   ],
+   [
+    12781,
+    12
+   ],
+   [
+    12793,
+    12
+   ],
+   [
+    12805,
+    268
+   ],
+   [
+    13073,
+    1656
+   ],
+   [
+    14729,
+    3312
+   ],
+   [
+    18041,
+    3312
+   ],
+   [
+    21353,
+    3312
+   ],
+   [
+    24665,
+    100
+   ],
+   [
+    24765,
+    180
+   ],
+   [
+    24945,
+    124
+   ],
+   [
+    25069,
+    460
+   ],
+   [
+    25529,
+    56
+   ],
+   [
+    25585,
+    112
+   ],
+   [
+    25697,
+    100
+   ],
+   [
+    25797,
+    56
+   ],
+   [
+    25853,
+    34
+   ],
+   [
+    25887,
+    132
+   ],
+   [
+    26019,
+    86
+   ],
+   [
+    26105,
+    168
+   ],
+   [
+    26273,
+    202
+   ],
+   [
+    26475,
+    1110
+   ],
+   [
+    27585,
+    103
+   ],
+   [
+    27688,
+    472
+   ],
+   [
+    28160,
+    64
+   ],
+   [
+    28224,
+    34
+   ],
+   [
+    28258,
+    268
+   ],
+   [
+    28526,
+    16
+   ],
+   [
+    28542,
+    16
+   ],
+   [
+    28558,
+    16
+   ],
+   [
+    28574,
+    38
+   ],
+   [
+    28612,
+    16
+   ],
+   [
+    28628,
+    762
+   ],
+   [
+    29390,
+    3439
+   ],
+   [
+    32829,
+    104
+   ],
+   [
+    32933,
+    124
+   ],
+   [
+    33057,
+    433
+   ],
+   [
+    33490,
+    268
+   ],
+   null
+  ],
+  "layout": "float32 x 9 per triangle (model space), then uint8 surface type per triangle",
+  "note": "the models' collision surfaces (XModelCollSurf_s), solid and glass contents"
+ }
+}

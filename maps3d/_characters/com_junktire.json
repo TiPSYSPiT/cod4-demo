@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_junktire",
+ "kind": "script",
+ "faction": null,
+ "file": "com_junktire.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 8304
+  },
+  "normal": {
+   "offset": 8304,
+   "length": 2768
+  },
+  "uv": {
+   "offset": 11072,
+   "length": 5536
+  },
+  "skinIndex": {
+   "offset": 16608,
+   "length": 2768
+  },
+  "skinWeight": {
+   "offset": 19376,
+   "length": 2768
+  },
+  "index": {
+   "offset": 22144,
+   "length": 3072
+  },
+  "color": {
+   "offset": 25216,
+   "length": 2768
+  }
+ },
+ "vertexCount": 692,
+ "triangleCount": 512,
+ "bones": [
+  {
+   "name": "tag_origin",
+   "parent": -1,
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "quat": [
+    0,
+    0,
+    0,
+    1
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 1536,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_tire",
+   "texture": "_textures/junktire_col.webp",
+   "textureAlpha": false,
+   "color": "#343233",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/junktire_nml.normal.webp",
+   "specularMap": "_textures/junktire_spc-rgb_junktire_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -12.07,
+   -3.44,
+   -12.07
+  ],
+  "maxs": [
+   12.07,
+   3.44,
+   12.07
+  ]
+ }
+}

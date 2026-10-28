@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_copypaper_box_open",
+ "kind": "script",
+ "faction": null,
+ "file": "com_copypaper_box_open.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 1248
+  },
+  "normal": {
+   "offset": 1248,
+   "length": 416
+  },
+  "uv": {
+   "offset": 1664,
+   "length": 832
+  },
+  "skinIndex": {
+   "offset": 2496,
+   "length": 416
+  },
+  "skinWeight": {
+   "offset": 2912,
+   "length": 416
+  },
+  "index": {
+   "offset": 3328,
+   "length": 360
+  },
+  "color": {
+   "offset": 3688,
+   "length": 416
+  }
+ },
+ "vertexCount": 104,
+ "triangleCount": 60,
+ "bones": [
+  {
+   "name": "copy_box_open_lod0",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 180,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_copypaper_box",
+   "texture": "_textures/copy_paper_box_col.webp",
+   "textureAlpha": false,
+   "color": "#8e8d91",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/copy_paper_box_nml.normal.webp",
+   "specularMap": "_textures/copy_paper_box_spc-rgb_copy__48f49ba9.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -8.38,
+   -5.88,
+   0.0
+  ],
+  "maxs": [
+   8.38,
+   5.88,
+   7.75
+  ]
+ }
+}

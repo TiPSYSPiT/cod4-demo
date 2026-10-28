@@ -1,0 +1,116 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_tv2_d",
+ "kind": "script",
+ "faction": null,
+ "file": "com_tv2_d.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 3468
+  },
+  "normal": {
+   "offset": 3468,
+   "length": 1156
+  },
+  "uv": {
+   "offset": 4624,
+   "length": 2312
+  },
+  "skinIndex": {
+   "offset": 6936,
+   "length": 1156
+  },
+  "skinWeight": {
+   "offset": 8092,
+   "length": 1156
+  },
+  "index": {
+   "offset": 9248,
+   "length": 1344
+  },
+  "color": {
+   "offset": 10592,
+   "length": 1156
+  }
+ },
+ "vertexCount": 289,
+ "triangleCount": 224,
+ "bones": [
+  {
+   "name": "tag_origin",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_fx",
+   "parent": 0,
+   "pos": [
+    10.8317,
+    0.0,
+    12.6353
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 672,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_television2_d",
+   "texture": "_textures/television2_d_col.webp",
+   "textureAlpha": true,
+   "color": "#2d2c2d",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "normalMap": "_textures/television2_d_nml.normal.webp",
+   "specularMap": "_textures/television2_spc-rgb_televisi_fcb49a14.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -11.08,
+   -13.52,
+   -0.02
+  ],
+  "maxs": [
+   11.08,
+   13.7,
+   23.2
+  ]
+ }
+}

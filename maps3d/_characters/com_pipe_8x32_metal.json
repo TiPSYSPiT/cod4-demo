@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_pipe_8x32_metal",
+ "kind": "script",
+ "faction": null,
+ "file": "com_pipe_8x32_metal.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 432
+  },
+  "normal": {
+   "offset": 432,
+   "length": 144
+  },
+  "uv": {
+   "offset": 576,
+   "length": 288
+  },
+  "skinIndex": {
+   "offset": 864,
+   "length": 144
+  },
+  "skinWeight": {
+   "offset": 1008,
+   "length": 144
+  },
+  "index": {
+   "offset": 1152,
+   "length": 192
+  },
+  "color": {
+   "offset": 1344,
+   "length": 144
+  }
+ },
+ "vertexCount": 36,
+ "triangleCount": 32,
+ "bones": [
+  {
+   "name": "pipe_8_134",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 96,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_pipes",
+   "texture": "_textures/metal_pipe_col.webp",
+   "textureAlpha": false,
+   "color": "#696260",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/metal_pipe_nml.normal.webp",
+   "specularMap": "_textures/metal_pipe_spc-rgb_metal_pip_5c4a9049.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -16.0,
+   -8.0,
+   -8.0
+  ],
+  "maxs": [
+   16.0,
+   8.0,
+   8.0
+  ]
+ }
+}

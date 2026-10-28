@@ -1,0 +1,117 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "fx_watermelonchunk_06",
+ "kind": "fx",
+ "faction": null,
+ "file": "fx_watermelonchunk_06.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 576
+  },
+  "normal": {
+   "offset": 576,
+   "length": 192
+  },
+  "uv": {
+   "offset": 768,
+   "length": 384
+  },
+  "skinIndex": {
+   "offset": 1152,
+   "length": 192
+  },
+  "skinWeight": {
+   "offset": 1344,
+   "length": 192
+  },
+  "index": {
+   "offset": 1536,
+   "length": 312
+  },
+  "color": {
+   "offset": 1848,
+   "length": 192
+  }
+ },
+ "vertexCount": 48,
+ "triangleCount": 52,
+ "bones": [
+  {
+   "name": "watermelon_chunks_6_lod0",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 48,
+   "material": 0
+  },
+  {
+   "indexStart": 48,
+   "indexCount": 108,
+   "material": 1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_watermelon",
+   "texture": "_textures/watermelon_col.webp",
+   "textureAlpha": false,
+   "color": "#465142",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/watermelon_nml.normal.webp",
+   "specularMap": "_textures/watermelon_spc-rgb_watermelo_fd5a929b.specular.webp",
+   "envMapParms": [
+    0.0,
+    12.0,
+    1.2,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": ",mc/mtl_fx_watermelonchunks",
+   "texture": "_textures/fx_watermelonchunks_col.webp",
+   "textureAlpha": false,
+   "color": "#c25e5c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "textureGuess": "name"
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -1.36,
+   -1.28,
+   -0.82
+  ],
+  "maxs": [
+   1.36,
+   1.28,
+   0.82
+  ]
+ }
+}

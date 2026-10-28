@@ -1,0 +1,146 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "vehicle_80s_sedan1_brn_door_rf",
+ "kind": "script",
+ "faction": null,
+ "file": "vehicle_80s_sedan1_brn_door_rf.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 1896
+  },
+  "normal": {
+   "offset": 1896,
+   "length": 632
+  },
+  "uv": {
+   "offset": 2528,
+   "length": 1264
+  },
+  "skinIndex": {
+   "offset": 3792,
+   "length": 632
+  },
+  "skinWeight": {
+   "offset": 4424,
+   "length": 632
+  },
+  "index": {
+   "offset": 5056,
+   "length": 564
+  },
+  "color": {
+   "offset": 5620,
+   "length": 632
+  }
+ },
+ "vertexCount": 158,
+ "triangleCount": 94,
+ "bones": [
+  {
+   "name": "tag_origin",
+   "parent": -1,
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "quat": [
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "name": "bone1",
+   "parent": 0,
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "quat": [
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "name": "bone2",
+   "parent": 0,
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "quat": [
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "name": "bone3",
+   "parent": 0,
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "quat": [
+    0,
+    0,
+    0,
+    1
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 282,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_80s_econ_brn",
+   "texture": "_textures/80s_econ_brn_col.webp",
+   "textureAlpha": false,
+   "color": "#5b4a3a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/80s_econ_nml.normal.webp",
+   "specularMap": "_textures/80s_econ_spc-rgb_80s_econ_cos-l-11.specular.webp",
+   "envMapParms": [
+    1.0,
+    3.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -41.97,
+   0.0,
+   -16.0
+  ],
+  "maxs": [
+   0.02,
+   10.8,
+   28.79
+  ]
+ }
+}

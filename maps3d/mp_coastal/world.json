@@ -1,0 +1,3601 @@
+{
+ "format": "cod4-demo3d-world/1",
+ "map": "mp_coastal",
+ "source": "mp_coastal.ff",
+ "file": "world.bin",
+ "byteLength": 17755732,
+ "vertexCount": 428065,
+ "triangleCount": 266793,
+ "layout": {
+  "position": {
+   "offset": 0,
+   "length": 5136780,
+   "type": "float32",
+   "itemSize": 3
+  },
+  "normal": {
+   "offset": 5136780,
+   "length": 1712260,
+   "type": "int8",
+   "itemSize": 4
+  },
+  "color": {
+   "offset": 6849040,
+   "length": 1712260,
+   "type": "uint8",
+   "itemSize": 4
+  },
+  "uv": {
+   "offset": 8561300,
+   "length": 3424520,
+   "type": "float32",
+   "itemSize": 2
+  },
+  "uv2": {
+   "offset": 11985820,
+   "length": 1712260,
+   "type": "uint16",
+   "itemSize": 2
+  },
+  "probe": {
+   "offset": 13698080,
+   "length": 428065,
+   "type": "uint8",
+   "itemSize": 1
+  },
+  "light": {
+   "offset": 14126148,
+   "length": 428065,
+   "type": "uint8",
+   "itemSize": 1
+  },
+  "index": {
+   "offset": 14554216,
+   "length": 3201516,
+   "type": "uint32",
+   "itemSize": 1
+  }
+ },
+ "groups": [
+  {
+   "material": "wc/ch_church_roof",
+   "start": 0,
+   "count": 90,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/ch_churchroof.webp",
+   "textureAlpha": false,
+   "color": "#3e3e3e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ch_churchroof_nml.normal.webp",
+   "specularMap": "_textures/ch_churchroof_spc-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "material": "wc/ch_concrete_05",
+   "start": 90,
+   "count": 67605,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/ch_concrete_05_col.webp",
+   "textureAlpha": false,
+   "color": "#878684",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/ch_concrete_05_spc-r-25g-25b_2eeb3a58.specular.webp",
+   "envMapParms": [
+    0.2,
+    2.24,
+    1.8,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 5
+  },
+  {
+   "material": "wc/ch_concrete_ceiling_01",
+   "start": 67695,
+   "count": 1995,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/ch_concrete_ceiling01_col.webp",
+   "textureAlpha": false,
+   "color": "#646366",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ch_concrete_ceiling01_n.normal.webp",
+   "specularMap": "_textures/ch_concrete_ceiling01_s-rgb__00677740.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 5
+  },
+  {
+   "material": "wc/ch_concrete_floor01",
+   "start": 69690,
+   "count": 10506,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/ch_concrete_floor01_col.webp",
+   "textureAlpha": false,
+   "color": "#5d5a58",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 5
+  },
+  {
+   "material": "wc/ch_concretewall02",
+   "start": 80196,
+   "count": 8520,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/ch_concretewall02_col.webp",
+   "textureAlpha": false,
+   "color": "#7b7b74",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ch_concretewall02_nml.normal.webp",
+   "specularMap": "_textures/ch_concretewall02_spc-r73g73b73l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 5
+  },
+  {
+   "material": "wc/ch_concretewall02",
+   "start": 88716,
+   "count": 960,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/ch_concretewall02_col.webp",
+   "textureAlpha": false,
+   "color": "#7b7b74",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ch_concretewall02_nml.normal.webp",
+   "specularMap": "_textures/ch_concretewall02_spc-r73g73b73l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 5
+  },
+  {
+   "material": "wc/ch_concretewall03",
+   "start": 89676,
+   "count": 1503,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/ch_concretewall03_col.webp",
+   "textureAlpha": false,
+   "color": "#878275",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ch_concretewall03_nml.normal.webp",
+   "specularMap": "_textures/ch_concretewall03_spc-r30g30b30l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 5
+  },
+  {
+   "material": "wc/ch_ground_mud01",
+   "start": 91179,
+   "count": 63,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/ch_ground_mud01_col.webp",
+   "textureAlpha": false,
+   "color": "#4a473f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ch_ground_mud01_nml.normal.webp",
+   "specularMap": "_textures/ch_ground_mud01_spc-rgb_ch_g_75754388.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 14
+  },
+  {
+   "material": "wc/ch_ground_road_concrete01",
+   "start": 91242,
+   "count": 477,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/ch_ground_roadconcrete01_col.webp",
+   "textureAlpha": false,
+   "color": "#98948e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ch_ground_roadconcrete01_nml.normal.webp",
+   "specularMap": "_textures/ch_ground_roadconcrete01_spc_5ee756fd.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 5
+  },
+  {
+   "material": "wc/ch_roof_tiles_3",
+   "start": 91719,
+   "count": 42,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/ch_rooftiles_3_col.webp",
+   "textureAlpha": false,
+   "color": "#776865",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ch_rooftiles_3_nml.normal.webp",
+   "specularMap": "_textures/ch_rooftiles_3_spc-rgb_ch_ro_1f2debd3.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/ch_tile_floor03",
+   "start": 91761,
+   "count": 66,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/ch_tile_floor03_col.webp",
+   "textureAlpha": false,
+   "color": "#777066",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ch_tile_floor03_nml.normal.webp",
+   "specularMap": "_textures/ch_tile_floor03_spc-rgb_ch_t_9104e583.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 16
+  },
+  {
+   "material": "wc/ch_wood01",
+   "start": 91827,
+   "count": 129,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/ch_wood01_col.webp",
+   "textureAlpha": false,
+   "color": "#584b3a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ch_wood01_nml.normal.webp",
+   "specularMap": "_textures/ch_wood01_spc-rgb_ch_wood01_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/ch_woodwall01",
+   "start": 91956,
+   "count": 6960,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/ch_woodwall01_col.webp",
+   "textureAlpha": false,
+   "color": "#524e41",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ch_woodwall01_nml.normal.webp",
+   "specularMap": "_textures/ch_woodwall01_spc-r29g29b29__9eeac44b.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/dirty_galss_test_001",
+   "start": 98916,
+   "count": 1056,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/dirty_galss_test_001.webp",
+   "textureAlpha": false,
+   "color": "#45403b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 9
+  },
+  {
+   "material": "wc/door_frame_014",
+   "start": 99972,
+   "count": 150,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/door_frame_014.webp",
+   "textureAlpha": false,
+   "color": "#644b43",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/door_frame_014",
+   "start": 100122,
+   "count": 768,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/door_frame_014.webp",
+   "textureAlpha": false,
+   "color": "#644b43",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/kitchen_wallpaper",
+   "start": 100890,
+   "count": 21,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/kitchen_wallpaper_col.webp",
+   "textureAlpha": false,
+   "color": "#a79e83",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/kitchen_wallpaper_nml.normal.webp",
+   "specularMap": "_textures/kitchen_wallpaper_spc-rgb_ki_d99ff9da.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 15
+  },
+  {
+   "material": "wc/kitchen_wallpaper",
+   "start": 100911,
+   "count": 1188,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/kitchen_wallpaper_col.webp",
+   "textureAlpha": false,
+   "color": "#a79e83",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/kitchen_wallpaper_nml.normal.webp",
+   "specularMap": "_textures/kitchen_wallpaper_spc-rgb_ki_d99ff9da.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 15
+  },
+  {
+   "material": "wc/me_asphalt_01",
+   "start": 102099,
+   "count": 3366,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/me_asphalt_01.webp",
+   "textureAlpha": false,
+   "color": "#898074",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_asphalt_01_n.normal.webp",
+   "specularMap": "_textures/me_asphalt_01_s-r-25g-25b-25l-11.specular.webp",
+   "detailScale": [
+    32.0,
+    32.0,
+    0.0,
+    0.0
+   ],
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "detailMap": "_textures/concrete_wall_01.webp",
+   "surface": 22
+  },
+  {
+   "material": "wc/me_floor_concrete",
+   "start": 105465,
+   "count": 2976,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/me_floor_concrete_c.webp",
+   "textureAlpha": false,
+   "color": "#8a857e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_floor_concrete_n.normal.webp",
+   "specularMap": "_textures/me_floor_concrete_s-rgb_me_f_5099b0d2.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 5
+  },
+  {
+   "material": "wc/me_pinewood",
+   "start": 108441,
+   "count": 1800,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/me_pinewood_col.webp",
+   "textureAlpha": false,
+   "color": "#897564",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_pinewood_norm.normal.webp",
+   "specularMap": "_textures/me_pinewood_spc-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/me_plaster_02",
+   "start": 110241,
+   "count": 900,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/me_plaster_02.webp",
+   "textureAlpha": false,
+   "color": "#a8a299",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_plaster_02b_n.normal.webp",
+   "specularMap": "_textures/me_plaster_02_s-r-25g-25b-25l-86.specular.webp",
+   "envMapParms": [
+    0.0,
+    4.0,
+    2.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 16
+  },
+  {
+   "material": "wc/me_plaster_03_noalpha_test",
+   "start": 111141,
+   "count": 339,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/me_plaster_03_noalpha_test.webp",
+   "textureAlpha": false,
+   "color": "#b3a188",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 16
+  },
+  {
+   "material": "wc/me_plaster_brown",
+   "start": 111480,
+   "count": 57,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/me_brown_plaster.webp",
+   "textureAlpha": false,
+   "color": "#857764",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_brown_plaster_bump.normal.webp",
+   "specularMap": "_textures/me_brown_plaster_spec-r-25g-_80c9dee2.specular.webp",
+   "envMapParms": [
+    0.4,
+    4.8,
+    4.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 16
+  },
+  {
+   "material": "wc/me_plaster_brown",
+   "start": 111537,
+   "count": 285,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/me_brown_plaster.webp",
+   "textureAlpha": false,
+   "color": "#857764",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_brown_plaster_bump.normal.webp",
+   "specularMap": "_textures/me_brown_plaster_spec-r-25g-_80c9dee2.specular.webp",
+   "envMapParms": [
+    0.4,
+    4.8,
+    4.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 16
+  },
+  {
+   "material": "wc/me_wallpaper1",
+   "start": 111822,
+   "count": 294,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/me_wallpaper1_col.webp",
+   "textureAlpha": false,
+   "color": "#88725c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/me_wallpaper1_spec-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 16
+  },
+  {
+   "material": "wc/me_wallpaper_5",
+   "start": 112116,
+   "count": 21,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/me_wallpaper_5_col.webp",
+   "textureAlpha": false,
+   "color": "#8f886e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_wallpaper_4_nml.normal.webp",
+   "specularMap": "_textures/me_wallpaper_4_spc-rgb_me_wa_cc3d5f12.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 16
+  },
+  {
+   "material": "wc/me_wallpaper_5",
+   "start": 112137,
+   "count": 756,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/me_wallpaper_5_col.webp",
+   "textureAlpha": false,
+   "color": "#8f886e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_wallpaper_4_nml.normal.webp",
+   "specularMap": "_textures/me_wallpaper_4_spc-rgb_me_wa_cc3d5f12.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 16
+  },
+  {
+   "material": "wc/me_wallpaper_7",
+   "start": 112893,
+   "count": 57,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/me_wallpaper_7_col.webp",
+   "textureAlpha": false,
+   "color": "#9f9382",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "envMapParms": [
+    0.8,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 16
+  },
+  {
+   "material": "wc/me_wallpaper_7",
+   "start": 112950,
+   "count": 360,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/me_wallpaper_7_col.webp",
+   "textureAlpha": false,
+   "color": "#9f9382",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "envMapParms": [
+    0.8,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 16
+  },
+  {
+   "material": "wc/me_woodbeam_01",
+   "start": 113310,
+   "count": 1584,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/me_wood_beam.webp",
+   "textureAlpha": false,
+   "color": "#675b44",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_wood_beam_normal.normal.webp",
+   "specularMap": "_textures/me_wood_beam_spec-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/mlt_grass_background",
+   "start": 114894,
+   "count": 24,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mlt_grass_background.webp",
+   "textureAlpha": false,
+   "color": "#5a572a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 10
+  },
+  {
+   "material": "wc/mtl_brick_003",
+   "start": 114918,
+   "count": 1605,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/brick_003_col.webp",
+   "textureAlpha": false,
+   "color": "#352e29",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 2
+  },
+  {
+   "material": "wc/mtl_brick_004",
+   "start": 116523,
+   "count": 165,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_brick_col_004.webp",
+   "textureAlpha": false,
+   "color": "#44352b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 2
+  },
+  {
+   "material": "wc/mtl_brick_005",
+   "start": 116688,
+   "count": 8553,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_brick_col_005.webp",
+   "textureAlpha": false,
+   "color": "#827668",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 17
+  },
+  {
+   "material": "wc/mtl_brick_007",
+   "start": 125241,
+   "count": 1386,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_brick_col_007.webp",
+   "textureAlpha": false,
+   "color": "#5c504a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 2
+  },
+  {
+   "material": "wc/mtl_brick_008",
+   "start": 126627,
+   "count": 1488,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_brick_col_008.webp",
+   "textureAlpha": false,
+   "color": "#413632",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 2
+  },
+  {
+   "material": "wc/mtl_brick_012",
+   "start": 128115,
+   "count": 6,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_brick_col_012.webp",
+   "textureAlpha": false,
+   "color": "#857361",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 2
+  },
+  {
+   "material": "wc/mtl_brick_012",
+   "start": 128121,
+   "count": 3027,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_brick_col_012.webp",
+   "textureAlpha": false,
+   "color": "#857361",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 2
+  },
+  {
+   "material": "wc/mtl_brick_013",
+   "start": 131148,
+   "count": 348,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_brick_col_013.webp",
+   "textureAlpha": false,
+   "color": "#705751",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 2
+  },
+  {
+   "material": "wc/mtl_brick_016",
+   "start": 131496,
+   "count": 1395,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_brick_016.webp",
+   "textureAlpha": false,
+   "color": "#7a7063",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 2
+  },
+  {
+   "material": "wc/mtl_brick_017",
+   "start": 132891,
+   "count": 1416,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_brick_017.webp",
+   "textureAlpha": false,
+   "color": "#413632",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 2
+  },
+  {
+   "material": "wc/mtl_brick_018",
+   "start": 134307,
+   "count": 6444,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_brick_018.webp",
+   "textureAlpha": false,
+   "color": "#6e5e52",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 2
+  },
+  {
+   "material": "wc/mtl_brick_021",
+   "start": 140751,
+   "count": 528,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_brick_021.webp",
+   "textureAlpha": false,
+   "color": "#706759",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 2
+  },
+  {
+   "material": "wc/mtl_brick_022",
+   "start": 141279,
+   "count": 435,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_brick_022.webp",
+   "textureAlpha": false,
+   "color": "#5e5755",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 2
+  },
+  {
+   "material": "wc/mtl_brick_029",
+   "start": 141714,
+   "count": 183,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_brick_029.webp",
+   "textureAlpha": false,
+   "color": "#756d62",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 2
+  },
+  {
+   "material": "wc/mtl_brick_029",
+   "start": 141897,
+   "count": 231,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_brick_029.webp",
+   "textureAlpha": false,
+   "color": "#756d62",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 2
+  },
+  {
+   "material": "wc/mtl_concrete_001_v2",
+   "start": 142128,
+   "count": 3375,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_concrete_col_001_v2.webp",
+   "textureAlpha": false,
+   "color": "#b1a99e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 5
+  },
+  {
+   "material": "wc/mtl_concrete_002",
+   "start": 145503,
+   "count": 30,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_concrete_col_002.webp",
+   "textureAlpha": false,
+   "color": "#97928c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 5
+  },
+  {
+   "material": "wc/mtl_concrete_002",
+   "start": 145533,
+   "count": 234,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_concrete_col_002.webp",
+   "textureAlpha": false,
+   "color": "#97928c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 5
+  },
+  {
+   "material": "wc/mtl_concrete_004",
+   "start": 145767,
+   "count": 438,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_concrete_col_004.webp",
+   "textureAlpha": false,
+   "color": "#7e766e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 5
+  },
+  {
+   "material": "wc/mtl_concrete_005",
+   "start": 146205,
+   "count": 23349,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_concrete_col_005.webp",
+   "textureAlpha": false,
+   "color": "#726b61",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 2
+  },
+  {
+   "material": "wc/mtl_concrete_012",
+   "start": 169554,
+   "count": 6558,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_concrete_012.webp",
+   "textureAlpha": false,
+   "color": "#867b72",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 5
+  },
+  {
+   "material": "wc/mtl_concrete_014",
+   "start": 176112,
+   "count": 5607,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_concrete_014.webp",
+   "textureAlpha": false,
+   "color": "#615852",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 5
+  },
+  {
+   "material": "wc/mtl_concrete_015",
+   "start": 181719,
+   "count": 183,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_concrete_015.webp",
+   "textureAlpha": false,
+   "color": "#7a7772",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 5
+  },
+  {
+   "material": "wc/mtl_concrete_016",
+   "start": 181902,
+   "count": 165,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_concrete_016.webp",
+   "textureAlpha": false,
+   "color": "#767473",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 5
+  },
+  {
+   "material": "wc/mtl_concrete_017",
+   "start": 182067,
+   "count": 3381,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_concrete_017.webp",
+   "textureAlpha": false,
+   "color": "#8b8681",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 5
+  },
+  {
+   "material": "wc/mtl_concrete_020",
+   "start": 185448,
+   "count": 12174,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_concrete_020.webp",
+   "textureAlpha": false,
+   "color": "#6d6c64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 5
+  },
+  {
+   "material": "wc/mtl_concrete_021",
+   "start": 197622,
+   "count": 4911,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_concrete_021.webp",
+   "textureAlpha": false,
+   "color": "#8b7a6c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 2
+  },
+  {
+   "material": "wc/mtl_concrete_023",
+   "start": 202533,
+   "count": 150,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_concrete_023.webp",
+   "textureAlpha": false,
+   "color": "#a29570",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 5
+  },
+  {
+   "material": "wc/mtl_concrete_024",
+   "start": 202683,
+   "count": 156,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_concrete_024.webp",
+   "textureAlpha": false,
+   "color": "#a27f65",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 5
+  },
+  {
+   "material": "wc/mtl_curtain_04",
+   "start": 202839,
+   "count": 2976,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_curtain_col_04.webp",
+   "textureAlpha": false,
+   "color": "#8f8f93",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 9
+  },
+  {
+   "material": "wc/mtl_curtain_05",
+   "start": 205815,
+   "count": 612,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_curtain_col_05.webp",
+   "textureAlpha": false,
+   "color": "#a4a5a6",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 9
+  },
+  {
+   "material": "wc/mtl_curtain_06",
+   "start": 206427,
+   "count": 630,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_curtain_col_06.webp",
+   "textureAlpha": false,
+   "color": "#a4a4a5",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 9
+  },
+  {
+   "material": "wc/mtl_door_barn_02",
+   "start": 207057,
+   "count": 6,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_door_barn_col_02.webp",
+   "textureAlpha": false,
+   "color": "#62605a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/mtl_door_barn_02",
+   "start": 207063,
+   "count": 288,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_door_barn_col_02.webp",
+   "textureAlpha": false,
+   "color": "#62605a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/mtl_door_barn_03",
+   "start": 207351,
+   "count": 84,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_door_barn_col_03.webp",
+   "textureAlpha": false,
+   "color": "#636250",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/mtl_door_brush_01",
+   "start": 207435,
+   "count": 13038,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_door_brush_01.webp",
+   "textureAlpha": false,
+   "color": "#765642",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/mtl_glass_01",
+   "start": 220473,
+   "count": 894,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_glass_col_01.webp",
+   "textureAlpha": false,
+   "color": "#373737",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 9
+  },
+  {
+   "material": "wc/mtl_ground_001",
+   "start": 221367,
+   "count": 1860,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_ground_col_001.webp",
+   "textureAlpha": false,
+   "color": "#2c221e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 14
+  },
+  {
+   "material": "wc/mtl_iron_001",
+   "start": 223227,
+   "count": 960,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_iron_001.webp",
+   "textureAlpha": false,
+   "color": "#1e1b1b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 13
+  },
+  {
+   "material": "wc/mtl_iron_003",
+   "start": 224187,
+   "count": 243459,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_iron_003.webp",
+   "textureAlpha": false,
+   "color": "#474648",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 13
+  },
+  {
+   "material": "wc/mtl_marble_01",
+   "start": 467646,
+   "count": 1497,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_marble_col_01.webp",
+   "textureAlpha": false,
+   "color": "#625952",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 17
+  },
+  {
+   "material": "wc/mtl_marble_03",
+   "start": 469143,
+   "count": 93,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_marble_col_03.webp",
+   "textureAlpha": false,
+   "color": "#5d5a58",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 17
+  },
+  {
+   "material": "wc/mtl_marble_03",
+   "start": 469236,
+   "count": 564,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_marble_col_03.webp",
+   "textureAlpha": false,
+   "color": "#5d5a58",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 17
+  },
+  {
+   "material": "wc/mtl_metal_001",
+   "start": 469800,
+   "count": 26076,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_metal_col_001.webp",
+   "textureAlpha": false,
+   "color": "#313231",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 13
+  },
+  {
+   "material": "wc/mtl_officewall01_new",
+   "start": 495876,
+   "count": 36,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/officewall01_new.webp",
+   "textureAlpha": false,
+   "color": "#b3b1a4",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 5
+  },
+  {
+   "material": "wc/mtl_officewall01_new",
+   "start": 495912,
+   "count": 102,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/officewall01_new.webp",
+   "textureAlpha": false,
+   "color": "#b3b1a4",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 5
+  },
+  {
+   "material": "wc/mtl_paint_01",
+   "start": 496014,
+   "count": 6,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_paint_01.webp",
+   "textureAlpha": false,
+   "color": "#959568",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 15
+  },
+  {
+   "material": "wc/mtl_paint_02",
+   "start": 496020,
+   "count": 18,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_paint_02.webp",
+   "textureAlpha": false,
+   "color": "#514b42",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 15
+  },
+  {
+   "material": "wc/mtl_paint_03",
+   "start": 496038,
+   "count": 6,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_paint_03.webp",
+   "textureAlpha": false,
+   "color": "#9f8d76",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 15
+  },
+  {
+   "material": "wc/mtl_paint_05",
+   "start": 496044,
+   "count": 18,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_paint_05.webp",
+   "textureAlpha": false,
+   "color": "#594632",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 15
+  },
+  {
+   "material": "wc/mtl_paint_06",
+   "start": 496062,
+   "count": 12,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_paint_06.webp",
+   "textureAlpha": false,
+   "color": "#3a251c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 15
+  },
+  {
+   "material": "wc/mtl_pavement_09",
+   "start": 496074,
+   "count": 327,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_pavement_col_09.webp",
+   "textureAlpha": false,
+   "color": "#8b8884",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 17
+  },
+  {
+   "material": "wc/mtl_pavement_12",
+   "start": 496401,
+   "count": 846,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_pavement_col_12.webp",
+   "textureAlpha": false,
+   "color": "#655c55",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 17
+  },
+  {
+   "material": "wc/mtl_pavement_13",
+   "start": 497247,
+   "count": 126,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_pavement_col_13.webp",
+   "textureAlpha": false,
+   "color": "#706a65",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 17
+  },
+  {
+   "material": "wc/mtl_pavement_14",
+   "start": 497373,
+   "count": 4290,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_pavement_col_14.webp",
+   "textureAlpha": false,
+   "color": "#786e66",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 17
+  },
+  {
+   "material": "wc/mtl_plaster_002",
+   "start": 501663,
+   "count": 38670,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_plaster_002.webp",
+   "textureAlpha": false,
+   "color": "#7b7569",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 5
+  },
+  {
+   "material": "wc/mtl_plaster_003",
+   "start": 540333,
+   "count": 8424,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_plaster_003.webp",
+   "textureAlpha": false,
+   "color": "#575452",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 5
+  },
+  {
+   "material": "wc/mtl_reja_01",
+   "start": 548757,
+   "count": 102,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_reja_01.webp",
+   "textureAlpha": false,
+   "color": "#74635b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 13
+  },
+  {
+   "material": "wc/mtl_roof_001",
+   "start": 548859,
+   "count": 564,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_roof_col_001.webp",
+   "textureAlpha": false,
+   "color": "#3a3630",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 23
+  },
+  {
+   "material": "wc/mtl_roof_001_v2",
+   "start": 549423,
+   "count": 3234,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_roof_col_001_shadow_on.webp",
+   "textureAlpha": false,
+   "color": "#3a3630",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 23
+  },
+  {
+   "material": "wc/mtl_roof_004",
+   "start": 552657,
+   "count": 54,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_roof_col_004.webp",
+   "textureAlpha": false,
+   "color": "#12100f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 2
+  },
+  {
+   "material": "wc/mtl_roof_007",
+   "start": 552711,
+   "count": 795,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_roof_007.webp",
+   "textureAlpha": false,
+   "color": "#555655",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 2
+  },
+  {
+   "material": "wc/mtl_roof_008",
+   "start": 553506,
+   "count": 378,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_roof_008.webp",
+   "textureAlpha": false,
+   "color": "#323433",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 2
+  },
+  {
+   "material": "wc/mtl_roof_010",
+   "start": 553884,
+   "count": 30,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_roof_010.webp",
+   "textureAlpha": false,
+   "color": "#373330",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 2
+  },
+  {
+   "material": "wc/mtl_roof_model_003_v2",
+   "start": 553914,
+   "count": 42,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/roof_ceramic_003_col_v2.webp",
+   "textureAlpha": false,
+   "color": "#644037",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 2
+  },
+  {
+   "material": "wc/mtl_stone_wall_01",
+   "start": 553956,
+   "count": 117,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_stone_wall_col_01.webp",
+   "textureAlpha": false,
+   "color": "#6b6865",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 17
+  },
+  {
+   "material": "wc/mtl_trim_06",
+   "start": 554073,
+   "count": 72,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_trim_col_06.webp",
+   "textureAlpha": false,
+   "color": "#7c746b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 5
+  },
+  {
+   "material": "wc/mtl_trim_06",
+   "start": 554145,
+   "count": 1140,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_trim_col_06.webp",
+   "textureAlpha": false,
+   "color": "#7c746b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 5
+  },
+  {
+   "material": "wc/mtl_wallpaper_003",
+   "start": 555285,
+   "count": 846,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_wallpaper_col_003.webp",
+   "textureAlpha": false,
+   "color": "#90806c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 15
+  },
+  {
+   "material": "wc/mtl_wallpaper_005",
+   "start": 556131,
+   "count": 42,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_wallpaper_005.webp",
+   "textureAlpha": false,
+   "color": "#867355",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 15
+  },
+  {
+   "material": "wc/mtl_wallpaper_005",
+   "start": 556173,
+   "count": 783,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_wallpaper_005.webp",
+   "textureAlpha": false,
+   "color": "#867355",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 15
+  },
+  {
+   "material": "wc/mtl_window_house_a_defence",
+   "start": 556956,
+   "count": 14691,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_window_house_a_defence_col.webp",
+   "textureAlpha": false,
+   "color": "#584a40",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/mtl_window_house_a_defence_02",
+   "start": 571647,
+   "count": 1056,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_window_house_a_defence_02_col.webp",
+   "textureAlpha": false,
+   "color": "#453932",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/mtl_wood_005",
+   "start": 572703,
+   "count": 6,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_wood_col_005.webp",
+   "textureAlpha": false,
+   "color": "#5f5348",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/mtl_wood_005",
+   "start": 572709,
+   "count": 1353,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_wood_col_005.webp",
+   "textureAlpha": false,
+   "color": "#5f5348",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/mtl_wood_006",
+   "start": 574062,
+   "count": 5268,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_wood_006.webp",
+   "textureAlpha": false,
+   "color": "#1f1b18",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/mtl_wood_009",
+   "start": 579330,
+   "count": 987,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_wood_col_009.webp",
+   "textureAlpha": false,
+   "color": "#270e06",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/mtl_wood_016",
+   "start": 580317,
+   "count": 6420,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_wood_col_016.webp",
+   "textureAlpha": false,
+   "color": "#9c9e9f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/mtl_wood_017",
+   "start": 586737,
+   "count": 27,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_wood_col_017.webp",
+   "textureAlpha": false,
+   "color": "#4e3a2d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/mtl_wood_017",
+   "start": 586764,
+   "count": 9945,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_wood_col_017.webp",
+   "textureAlpha": false,
+   "color": "#4e3a2d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/mtl_wood_018",
+   "start": 596709,
+   "count": 333,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_wood_col_018.webp",
+   "textureAlpha": false,
+   "color": "#402b20",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/mtl_wood_018_nosdw",
+   "start": 597042,
+   "count": 72,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_wood_col_018_nosdw.webp",
+   "textureAlpha": false,
+   "color": "#402b20",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/mtl_wood_019",
+   "start": 597114,
+   "count": 7137,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_wood_col_019.webp",
+   "textureAlpha": false,
+   "color": "#a49f93",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/mtl_wood_019_v2",
+   "start": 604251,
+   "count": 130941,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_wood_col_019_v2.webp",
+   "textureAlpha": false,
+   "color": "#928c7d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/mtl_wood_022",
+   "start": 735192,
+   "count": 3147,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_wood_col_022.webp",
+   "textureAlpha": false,
+   "color": "#60564b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/mtl_wood_022_nosdw",
+   "start": 738339,
+   "count": 4296,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_wood_col_022_nosdw.webp",
+   "textureAlpha": false,
+   "color": "#60564b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/mtl_wood_025",
+   "start": 742635,
+   "count": 5817,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_wood_col_025.webp",
+   "textureAlpha": false,
+   "color": "#5c5249",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/mtl_wood_026",
+   "start": 748452,
+   "count": 2502,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_wood_col_026.webp",
+   "textureAlpha": false,
+   "color": "#646463",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/mtl_wood_027",
+   "start": 750954,
+   "count": 17862,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_wood_027.webp",
+   "textureAlpha": false,
+   "color": "#41291c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/mtl_wood_030",
+   "start": 768816,
+   "count": 4551,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_wood_030.webp",
+   "textureAlpha": false,
+   "color": "#3b322c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/mtl_wood_032",
+   "start": 773367,
+   "count": 786,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_wood_032.webp",
+   "textureAlpha": false,
+   "color": "#8a8279",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/mtl_wood_033",
+   "start": 774153,
+   "count": 93,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_wood_033.webp",
+   "textureAlpha": false,
+   "color": "#583b25",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/mtl_wood_039",
+   "start": 774246,
+   "count": 57,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_wood_039.webp",
+   "textureAlpha": false,
+   "color": "#4d4238",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/mtl_wood_039",
+   "start": 774303,
+   "count": 1215,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_wood_039.webp",
+   "textureAlpha": false,
+   "color": "#4d4238",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/mtl_wood_tiled_01",
+   "start": 775518,
+   "count": 18456,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/mtl_wood_tiled_col_01.webp",
+   "textureAlpha": false,
+   "color": "#563a28",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 15
+  },
+  {
+   "material": "wc/mtl_wood_tree_01",
+   "start": 793974,
+   "count": 3648,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_wood_tree_col_01.webp",
+   "textureAlpha": false,
+   "color": "#454238",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/mtl_wood_tree_02",
+   "start": 797622,
+   "count": 1608,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/mtl_wood_tree_col_02.webp",
+   "textureAlpha": false,
+   "color": "#7e6b51",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 21
+  },
+  {
+   "material": "wc/night_water_mud",
+   "start": 799230,
+   "count": 84,
+   "decal": false,
+   "lightmap": -1,
+   "texture": null,
+   "textureAlpha": false,
+   "color": null,
+   "alphaTest": "gt0",
+   "blend": "srcalpha/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "water": true,
+   "vertexAlpha": true,
+   "envMapParms": [
+    0.0,
+    0.5,
+    3.0,
+    2.5
+   ],
+   "surface": 20
+  },
+  {
+   "material": "wc/office_graywall_01",
+   "start": 799314,
+   "count": 15,
+   "decal": false,
+   "lightmap": 0,
+   "texture": "_textures/officewall01_col.webp",
+   "textureAlpha": false,
+   "color": "#b3b1a4",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/officewall01_nml.normal.webp",
+   "specularMap": "_textures/officewall01_spec-rgb_office_f65856fa.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    0.6588,
+    0.6588,
+    0.6588,
+    1.0
+   ],
+   "surface": 16
+  },
+  {
+   "material": "wc/office_graywall_01",
+   "start": 799329,
+   "count": 387,
+   "decal": false,
+   "lightmap": 1,
+   "texture": "_textures/officewall01_col.webp",
+   "textureAlpha": false,
+   "color": "#b3b1a4",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/officewall01_nml.normal.webp",
+   "specularMap": "_textures/officewall01_spec-rgb_office_f65856fa.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    0.6588,
+    0.6588,
+    0.6588,
+    1.0
+   ],
+   "surface": 16
+  },
+  {
+   "material": "wc/water_chechnya_puddle",
+   "start": 799716,
+   "count": 288,
+   "decal": false,
+   "lightmap": -1,
+   "texture": null,
+   "textureAlpha": false,
+   "color": null,
+   "alphaTest": "gt0",
+   "blend": "srcalpha/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "vertexAlpha": true,
+   "envMapParms": [
+    0.1,
+    0.95,
+    5.0,
+    2.5
+   ],
+   "surface": 20
+  },
+  {
+   "material": "wc/me_decal_papers",
+   "start": 800004,
+   "count": 30,
+   "decal": true,
+   "lightmap": 0,
+   "texture": "_textures/me_paper_debris_c.webp",
+   "textureAlpha": true,
+   "color": "#211f1f",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "vertexAlpha": true,
+   "normalMap": "_textures/me_paper_debris_n.normal.webp",
+   "specularMap": "_textures/me_paper_debris_s-r-17g-17b-_42c7fd05.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 15
+  },
+  {
+   "material": "wc/me_plaster_03_blend",
+   "start": 800034,
+   "count": 345,
+   "decal": true,
+   "lightmap": 0,
+   "texture": "_textures/me_plaster_03.webp",
+   "textureAlpha": false,
+   "color": "#b3a188",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "vertexAlpha": true,
+   "normalMap": "_textures/me_plaster_02_n.normal.webp",
+   "specularMap": "_textures/me_plaster_02_s-r-25g-25b-25l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "surface": 16
+  }
+ ],
+ "lightmaps": [
+  "lightmap0.webp",
+  "lightmap1.webp"
+ ],
+ "gameLightmaps": [
+  {
+   "secondary": "lightmap0_secondary.webp",
+   "primary": "lightmap0_primary.webp"
+  },
+  {
+   "secondary": "lightmap1_secondary.webp",
+   "primary": "lightmap1_primary.webp"
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -3268.5,
+   -50023.5,
+   -721.5
+  ],
+  "maxs": [
+   54225.0,
+   56074.5,
+   393.5
+  ]
+ },
+ "worldBounds": {
+  "mins": [
+   -32839.0,
+   -60856.0,
+   -2457.0
+  ],
+  "maxs": [
+   63031.0,
+   61525.0,
+   17927.5
+  ]
+ },
+ "sun": {
+  "ambientScale": 0.3,
+  "ambientColor": [
+   0.75,
+   0.84,
+   1.0
+  ],
+  "sunLight": 1.6,
+  "sunColor": [
+   1.0,
+   0.8941,
+   0.6235
+  ],
+  "angles": [
+   -47.34,
+   117.76,
+   -78.14
+  ],
+  "diffuse": [
+   1.17,
+   1.0461,
+   0.7295
+  ],
+  "dir": [
+   -0.31563,
+   0.59965,
+   0.73539
+  ],
+  "diffuseFraction": 0.1,
+  "index": 1
+ },
+ "sky": {
+  "file": "sky.webp",
+  "image": "cobrapilot_ft",
+  "size": 512,
+  "faces": "+X, -X, +Y, -Y, +Z, -Z (D3D cube order)"
+ },
+ "lights": [
+  {
+   "type": 0,
+   "shadow": 0,
+   "exponent": 0,
+   "color": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "dir": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "origin": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "radius": 0.0,
+   "cosOuter": 0.0,
+   "cosInner": 0.0,
+   "cosExpanded": 0.0,
+   "rotationLimit": 0.0,
+   "def": null
+  },
+  {
+   "type": 1,
+   "shadow": 0,
+   "exponent": 0,
+   "color": [
+    1.4289,
+    1.3312,
+    1.0509
+   ],
+   "dir": [
+    -0.31563,
+    0.59965,
+    0.73539
+   ],
+   "origin": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "radius": 0.0,
+   "cosOuter": 0.0,
+   "cosInner": 0.0,
+   "cosExpanded": 0.0,
+   "rotationLimit": 0.0,
+   "def": null
+  }
+ ],
+ "lightGrid": {
+  "file": "lightgrid.bin",
+  "format": 2,
+  "sunIndex": 1,
+  "colors": {
+   "file": "lightgrid_colors.webp",
+   "perRow": 4,
+   "rows": 1067,
+   "entries": 4268,
+   "layout": "palette entry e: row e / perRow, x = (e % perRow) x 56; 56 colours, the 4 x 4 x 4 block's shell in the game's order (R_SetLightGridColors)"
+  },
+  "columns": 17674,
+  "points": 40008,
+  "palette": 4268,
+  "sections": {
+   "columns": 0,
+   "points": 212088,
+   "palette": 372120
+  },
+  "cell": [
+   32,
+   32,
+   64
+  ],
+  "offset": 131072,
+  "rowAxis": 0,
+  "colAxis": 1,
+  "defaults": "palette 0 below the grid, 1 elsewhere (with the sun)",
+  "note": "the game's light grid (model lighting): ambient cube per grid point + sun visibility"
+ },
+ "sight": {
+  "file": "sight.bin",
+  "brushes": 11742,
+  "planes": 16386,
+  "tris": 26422,
+  "mask": 8193,
+  "sections": {
+   "brushes": 0,
+   "planes": 375744,
+   "tris": 637920
+  },
+  "skipped": {
+   "submodelBrushes": 35,
+   "otherContents": 2319
+  },
+  "note": "the world's sight-blocking brushes and terrain triangles (contents & 0x2001) for the light grid's sight traces (R_IsValidLightGridSample)"
+ },
+ "probes": {
+  "file": "probes.webp",
+  "size": 64,
+  "count": 51,
+  "origins": [
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    395.0,
+    -144.5,
+    -398.0
+   ],
+   [
+    1849.0,
+    421.0,
+    -459.0
+   ],
+   [
+    947.5,
+    -1631.0,
+    -459.0
+   ],
+   [
+    619.5,
+    -638.0,
+    -459.0
+   ],
+   [
+    611.5,
+    -1359.0,
+    -459.0
+   ],
+   [
+    184.0,
+    -1793.5,
+    -459.0
+   ],
+   [
+    1819.0,
+    -1595.5,
+    -459.0
+   ],
+   [
+    1838.5,
+    -2117.5,
+    -459.0
+   ],
+   [
+    1358.5,
+    -525.5,
+    -459.0
+   ],
+   [
+    0.5,
+    125.0,
+    -459.0
+   ],
+   [
+    -368.5,
+    -1020.0,
+    -459.0
+   ],
+   [
+    -1195.0,
+    -1674.0,
+    -291.0
+   ],
+   [
+    -1251.5,
+    -1147.5,
+    -291.0
+   ],
+   [
+    1511.5,
+    -1878.0,
+    -338.5
+   ],
+   [
+    1503.0,
+    -1924.5,
+    -479.5
+   ],
+   [
+    1497.5,
+    -2049.0,
+    -223.5
+   ],
+   [
+    1498.0,
+    -2050.5,
+    -340.5
+   ],
+   [
+    2055.5,
+    -1847.0,
+    -403.0
+   ],
+   [
+    1689.5,
+    -817.5,
+    -504.0
+   ],
+   [
+    1671.5,
+    -1123.5,
+    -504.0
+   ],
+   [
+    1628.5,
+    -1115.5,
+    -325.5
+   ],
+   [
+    1909.0,
+    -1308.0,
+    -325.5
+   ],
+   [
+    249.0,
+    -1413.0,
+    -479.5
+   ],
+   [
+    123.0,
+    -1408.0,
+    -340.5
+   ],
+   [
+    606.0,
+    -1796.0,
+    -415.5
+   ],
+   [
+    1419.5,
+    -2663.0,
+    -478.0
+   ],
+   [
+    -2256.5,
+    -183.5,
+    -419.0
+   ],
+   [
+    192.5,
+    -4318.5,
+    -398.5
+   ],
+   [
+    3071.0,
+    559.0,
+    -323.0
+   ],
+   [
+    191.0,
+    -3541.5,
+    -459.0
+   ],
+   [
+    -257.5,
+    -2465.5,
+    -459.0
+   ],
+   [
+    977.0,
+    -2401.0,
+    -459.0
+   ],
+   [
+    2137.0,
+    -943.0,
+    -459.0
+   ],
+   [
+    2543.5,
+    1355.5,
+    -459.0
+   ],
+   [
+    -1109.0,
+    45.0,
+    -459.0
+   ],
+   [
+    -791.5,
+    -368.0,
+    -459.0
+   ],
+   [
+    289.5,
+    -1069.0,
+    -459.0
+   ],
+   [
+    -368.5,
+    575.5,
+    -459.0
+   ],
+   [
+    704.0,
+    524.5,
+    -459.0
+   ],
+   [
+    2745.0,
+    2989.0,
+    -387.5
+   ],
+   [
+    1477.0,
+    1436.5,
+    -326.5
+   ],
+   [
+    1477.0,
+    1436.5,
+    -467.5
+   ],
+   [
+    -888.0,
+    -926.5,
+    -464.5
+   ],
+   [
+    -787.5,
+    495.5,
+    -504.0
+   ],
+   [
+    -805.5,
+    189.5,
+    -504.0
+   ],
+   [
+    -848.5,
+    197.5,
+    -325.5
+   ],
+   [
+    -568.0,
+    5.0,
+    -325.5
+   ],
+   [
+    -584.0,
+    30.0,
+    -504.0
+   ],
+   [
+    851.5,
+    -201.5,
+    -478.0
+   ],
+   [
+    1395.5,
+    -1343.0,
+    -459.0
+   ]
+  ],
+  "cells": {
+   "file": "cells.bin",
+   "cellCount": 24,
+   "nodeCount": 10087,
+   "planeCount": 927,
+   "sections": {
+    "nodes": 0,
+    "planes": 20176,
+    "starts": 35008,
+    "lists": 35058
+   }
+  },
+  "encoding": "colour / 2 (gamma space, x 2 in the viewer)",
+  "faces": "the game's face order (shots +X, -X, +Y, -Y, +Z, -Z of r_reflection_probe.cpp); a row per probe"
+ },
+ "texturesMissing": [],
+ "note": "Activision's geometry, extracted from the game files; see maps3d/NOTICE.md."
+}

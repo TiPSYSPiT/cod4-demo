@@ -1,0 +1,123 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_barrel_benzin",
+ "kind": "script",
+ "faction": null,
+ "file": "com_barrel_benzin.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 5040
+  },
+  "normal": {
+   "offset": 5040,
+   "length": 1680
+  },
+  "uv": {
+   "offset": 6720,
+   "length": 3360
+  },
+  "skinIndex": {
+   "offset": 10080,
+   "length": 1680
+  },
+  "skinWeight": {
+   "offset": 11760,
+   "length": 1680
+  },
+  "index": {
+   "offset": 13440,
+   "length": 3096
+  },
+  "color": {
+   "offset": 16536,
+   "length": 1680
+  }
+ },
+ "vertexCount": 420,
+ "triangleCount": 516,
+ "bones": [
+  {
+   "name": "tag_origin",
+   "parent": -1,
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "quat": [
+    0,
+    0,
+    0,
+    1
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 1524,
+   "material": 0
+  },
+  {
+   "indexStart": 1524,
+   "indexCount": 24,
+   "material": 1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_barrel_red",
+   "texture": "_textures/55_gallon_drum_red.webp",
+   "textureAlpha": false,
+   "color": "#724747",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/55_gallon_drum_bump.normal.webp",
+   "specularMap": "_textures/55_gallon_drum_spec-r-59g-59_bf714207.specular.webp",
+   "envMapParms": [
+    2.0,
+    4.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_flammable_liquid",
+   "texture": "_textures/55_gallon_drum_red.webp",
+   "textureAlpha": false,
+   "color": "#724747",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "textureFrom": "mp_manorhouse"
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -14.63,
+   -14.64,
+   0.0
+  ],
+  "maxs": [
+   14.59,
+   14.57,
+   44.01
+  ]
+ }
+}

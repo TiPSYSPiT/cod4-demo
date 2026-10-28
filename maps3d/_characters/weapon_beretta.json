@@ -1,0 +1,121 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "weapon_beretta",
+ "kind": "weapon",
+ "faction": null,
+ "file": "weapon_beretta.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 9528
+  },
+  "normal": {
+   "offset": 9528,
+   "length": 3176
+  },
+  "uv": {
+   "offset": 12704,
+   "length": 6352
+  },
+  "skinIndex": {
+   "offset": 19056,
+   "length": 3176
+  },
+  "skinWeight": {
+   "offset": 22232,
+   "length": 3176
+  },
+  "index": {
+   "offset": 25408,
+   "length": 3324
+  },
+  "color": {
+   "offset": 28732,
+   "length": 3176
+  }
+ },
+ "vertexCount": 794,
+ "triangleCount": 554,
+ "bones": [
+  {
+   "name": "tag_weapon",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "j_pistol_grip",
+   "parent": 0,
+   "pos": [
+    -10.4593,
+    0.0,
+    -1.6231
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 1,
+   "pos": [
+    -8.5397,
+    -0.2964,
+    0.3638
+   ],
+   "quat": [
+    -0.212622,
+    -0.212622,
+    -0.674367,
+    0.674398
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 1,
+   "pos": [
+    -3.6933,
+    0.0,
+    0.5388
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 1662,
+   "material": -1
+  }
+ ],
+ "materials": [],
+ "bounds": {
+  "mins": [
+   -12.27,
+   -0.56,
+   -4.3
+  ],
+  "maxs": [
+   -3.69,
+   0.63,
+   1.1
+  ]
+ }
+}

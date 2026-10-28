@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_vcr_tape_blue",
+ "kind": "script",
+ "faction": null,
+ "file": "com_vcr_tape_blue.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 1728
+  },
+  "normal": {
+   "offset": 1728,
+   "length": 576
+  },
+  "uv": {
+   "offset": 2304,
+   "length": 1152
+  },
+  "skinIndex": {
+   "offset": 3456,
+   "length": 576
+  },
+  "skinWeight": {
+   "offset": 4032,
+   "length": 576
+  },
+  "index": {
+   "offset": 4608,
+   "length": 552
+  },
+  "color": {
+   "offset": 5160,
+   "length": 576
+  }
+ },
+ "vertexCount": 144,
+ "triangleCount": 92,
+ "bones": [
+  {
+   "name": "tag_origin",
+   "parent": -1,
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "quat": [
+    0,
+    0,
+    0,
+    1
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 276,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_vcr_tape_plastic_blue",
+   "texture": "_textures/vcr_tape_plastic_blue_col.webp",
+   "textureAlpha": false,
+   "color": "#56585a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/vcr_tape_plastic_1_nml.normal.webp",
+   "specularMap": "_textures/vcr_tape_plastic_1_spc-r29g2_24087965.specular.webp",
+   "envMapParms": [
+    2.0,
+    4.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -2.3,
+   0.0,
+   -0.75
+  ],
+  "maxs": [
+   2.3,
+   8.0,
+   0.75
+  ]
+ }
+}

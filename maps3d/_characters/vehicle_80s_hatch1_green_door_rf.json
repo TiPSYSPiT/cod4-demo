@@ -1,0 +1,146 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "vehicle_80s_hatch1_green_door_rf",
+ "kind": "script",
+ "faction": null,
+ "file": "vehicle_80s_hatch1_green_door_rf.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 1596
+  },
+  "normal": {
+   "offset": 1596,
+   "length": 532
+  },
+  "uv": {
+   "offset": 2128,
+   "length": 1064
+  },
+  "skinIndex": {
+   "offset": 3192,
+   "length": 532
+  },
+  "skinWeight": {
+   "offset": 3724,
+   "length": 532
+  },
+  "index": {
+   "offset": 4256,
+   "length": 552
+  },
+  "color": {
+   "offset": 4808,
+   "length": 532
+  }
+ },
+ "vertexCount": 133,
+ "triangleCount": 92,
+ "bones": [
+  {
+   "name": "tag_door_right_front",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_right_front",
+   "parent": 0,
+   "pos": [
+    -3.8522,
+    3.5698,
+    9.9607
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_right_front_fx",
+   "parent": 0,
+   "pos": [
+    -27.7366,
+    5.2929,
+    16.1472
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    -0.707107,
+    0.707107
+   ]
+  },
+  {
+   "name": "tag_mirror_right",
+   "parent": 0,
+   "pos": [
+    -5.2802,
+    0.5855,
+    7.8183
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 276,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_80s_econ_green",
+   "texture": "_textures/80s_econ_green_col.webp",
+   "textureAlpha": false,
+   "color": "#555e4d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/80s_econ_nml.normal.webp",
+   "specularMap": "_textures/80s_econ_spc-rgb_80s_econ_cos-l-11.specular.webp",
+   "envMapParms": [
+    1.0,
+    3.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -44.41,
+   0.0,
+   -15.17
+  ],
+  "maxs": [
+   0.03,
+   10.37,
+   25.51
+  ]
+ }
+}

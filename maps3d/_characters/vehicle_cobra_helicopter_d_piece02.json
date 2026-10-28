@@ -1,0 +1,76 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "vehicle_cobra_helicopter_d_piece02",
+ "kind": "fx",
+ "faction": null,
+ "file": "vehicle_cobra_helicopter_d_piece02.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 324
+  },
+  "normal": {
+   "offset": 324,
+   "length": 108
+  },
+  "uv": {
+   "offset": 432,
+   "length": 216
+  },
+  "skinIndex": {
+   "offset": 648,
+   "length": 108
+  },
+  "skinWeight": {
+   "offset": 756,
+   "length": 108
+  },
+  "index": {
+   "offset": 864,
+   "length": 120
+  },
+  "color": {
+   "offset": 984,
+   "length": 108
+  }
+ },
+ "vertexCount": 27,
+ "triangleCount": 20,
+ "bones": [
+  {
+   "name": "rotor",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 60,
+   "material": -1
+  }
+ ],
+ "materials": [],
+ "bounds": {
+  "mins": [
+   0.0,
+   -17.24,
+   -14.8
+  ],
+  "maxs": [
+   228.27,
+   23.84,
+   1.51
+  ]
+ }
+}

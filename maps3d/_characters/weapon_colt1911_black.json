@@ -1,0 +1,121 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "weapon_colt1911_black",
+ "kind": "weapon",
+ "faction": null,
+ "file": "weapon_colt1911_black.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 9924
+  },
+  "normal": {
+   "offset": 9924,
+   "length": 3308
+  },
+  "uv": {
+   "offset": 13232,
+   "length": 6616
+  },
+  "skinIndex": {
+   "offset": 19848,
+   "length": 3308
+  },
+  "skinWeight": {
+   "offset": 23156,
+   "length": 3308
+  },
+  "index": {
+   "offset": 26464,
+   "length": 3636
+  },
+  "color": {
+   "offset": 30100,
+   "length": 3308
+  }
+ },
+ "vertexCount": 827,
+ "triangleCount": 606,
+ "bones": [
+  {
+   "name": "tag_weapon",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "j_pistol_grip",
+   "parent": 0,
+   "pos": [
+    -10.4593,
+    0.0,
+    -1.6231
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 1,
+   "pos": [
+    -8.5397,
+    -0.2964,
+    0.3638
+   ],
+   "quat": [
+    -0.212622,
+    -0.212622,
+    -0.674367,
+    0.674398
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 1,
+   "pos": [
+    -4.0306,
+    0.0,
+    0.1956
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 1818,
+   "material": -1
+  }
+ ],
+ "materials": [],
+ "bounds": {
+  "mins": [
+   -12.8,
+   -0.47,
+   -4.58
+  ],
+  "maxs": [
+   -4.32,
+   0.62,
+   0.89
+  ]
+ }
+}

@@ -1,0 +1,100 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "weapon_m84_flashbang_grenade_burnt",
+ "kind": "fx",
+ "faction": null,
+ "file": "weapon_m84_flashbang_grenade_burnt.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 3456
+  },
+  "normal": {
+   "offset": 3456,
+   "length": 1152
+  },
+  "uv": {
+   "offset": 4608,
+   "length": 2304
+  },
+  "skinIndex": {
+   "offset": 6912,
+   "length": 1152
+  },
+  "skinWeight": {
+   "offset": 8064,
+   "length": 1152
+  },
+  "index": {
+   "offset": 9216,
+   "length": 1440
+  },
+  "color": {
+   "offset": 10656,
+   "length": 1152
+  }
+ },
+ "vertexCount": 288,
+ "triangleCount": 240,
+ "bones": [
+  {
+   "name": "m84_flashbang_burnt_lod0_body",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 720,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_m84_burnt",
+   "texture": "_textures/m84_flashbang_burnt_col.webp",
+   "textureAlpha": true,
+   "color": "#1a150c",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/m84_flashbang_burnt_spec-rgb_aedebf0f.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -1.2,
+   -3.15,
+   -1.39
+  ],
+  "maxs": [
+   1.2,
+   3.15,
+   1.39
+  ]
+ }
+}

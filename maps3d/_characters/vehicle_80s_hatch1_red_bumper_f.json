@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "vehicle_80s_hatch1_red_bumper_f",
+ "kind": "script",
+ "faction": null,
+ "file": "vehicle_80s_hatch1_red_bumper_f.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 1272
+  },
+  "normal": {
+   "offset": 1272,
+   "length": 424
+  },
+  "uv": {
+   "offset": 1696,
+   "length": 848
+  },
+  "skinIndex": {
+   "offset": 2544,
+   "length": 424
+  },
+  "skinWeight": {
+   "offset": 2968,
+   "length": 424
+  },
+  "index": {
+   "offset": 3392,
+   "length": 564
+  },
+  "color": {
+   "offset": 3956,
+   "length": 424
+  }
+ },
+ "vertexCount": 106,
+ "triangleCount": 94,
+ "bones": [
+  {
+   "name": "tag_bumper_front",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 282,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_80s_econ_green_rubber",
+   "texture": "_textures/80s_econ_green_col.webp",
+   "textureAlpha": false,
+   "color": "#555e4d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/80s_econ_nml.normal.webp",
+   "specularMap": "_textures/80s_econ_spc-rgb_80s_econ_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.6,
+    3.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -7.43,
+   -30.39,
+   -2.1
+  ],
+  "maxs": [
+   3.41,
+   30.53,
+   3.18
+  ]
+ }
+}

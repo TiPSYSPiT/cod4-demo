@@ -1,0 +1,180 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "foliage_tree_palm_bushy_3",
+ "kind": "script",
+ "faction": null,
+ "file": "foliage_tree_palm_bushy_3.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 30936
+  },
+  "normal": {
+   "offset": 30936,
+   "length": 10312
+  },
+  "uv": {
+   "offset": 41248,
+   "length": 20624
+  },
+  "skinIndex": {
+   "offset": 61872,
+   "length": 10312
+  },
+  "skinWeight": {
+   "offset": 72184,
+   "length": 10312
+  },
+  "index": {
+   "offset": 82496,
+   "length": 16152
+  },
+  "color": {
+   "offset": 98648,
+   "length": 10312
+  }
+ },
+ "vertexCount": 2578,
+ "triangleCount": 2692,
+ "bones": [
+  {
+   "name": "tag_origin_bushy3",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "j_base_bushy3",
+   "parent": 0,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    -0.707107,
+    0.0,
+    0.707107
+   ]
+  },
+  {
+   "name": "j_tip1_bushy3",
+   "parent": 1,
+   "pos": [
+    0.0,
+    0.0,
+    345.3575
+   ],
+   "quat": [
+    0.0,
+    -0.707107,
+    0.0,
+    0.707107
+   ]
+  },
+  {
+   "name": "j_tip2_bushy3",
+   "parent": 1,
+   "pos": [
+    0.0,
+    0.0,
+    345.3575
+   ],
+   "quat": [
+    0.0,
+    -0.707107,
+    0.0,
+    0.707107
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 3936,
+   "material": 0
+  },
+  {
+   "indexStart": 3936,
+   "indexCount": 2952,
+   "material": 0
+  },
+  {
+   "indexStart": 6888,
+   "indexCount": 1188,
+   "material": 1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_palmtree_fronds",
+   "texture": "_textures/palmtrees_col.webp",
+   "textureAlpha": true,
+   "color": "#514e46",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "normalMap": "_textures/palmtrees_nml.normal.webp",
+   "specularMap": "_textures/palmtrees_spc-rgb_palmtrees_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.0,
+    4.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_palmtree_bark",
+   "texture": "_textures/palmtrees_col.webp",
+   "textureAlpha": true,
+   "color": "#514e46",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/palmtrees_nml.normal.webp",
+   "specularMap": "_textures/palmtrees_spc-rgb_palmtrees_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.0,
+    8.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -158.48,
+   -155.34,
+   -1.97
+  ],
+  "maxs": [
+   171.1,
+   162.04,
+   516.46
+  ]
+ }
+}

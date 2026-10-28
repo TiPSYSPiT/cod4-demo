@@ -1,0 +1,100 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "weapon_concussion_grenade",
+ "kind": "weapon",
+ "faction": null,
+ "file": "weapon_concussion_grenade.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 4092
+  },
+  "normal": {
+   "offset": 4092,
+   "length": 1364
+  },
+  "uv": {
+   "offset": 5456,
+   "length": 2728
+  },
+  "skinIndex": {
+   "offset": 8184,
+   "length": 1364
+  },
+  "skinWeight": {
+   "offset": 9548,
+   "length": 1364
+  },
+  "index": {
+   "offset": 10912,
+   "length": 1536
+  },
+  "color": {
+   "offset": 12448,
+   "length": 1364
+  }
+ },
+ "vertexCount": 341,
+ "triangleCount": 256,
+ "bones": [
+  {
+   "name": "",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 768,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_concussion_grenade",
+   "texture": "_textures/concussion_col.webp",
+   "textureAlpha": false,
+   "color": "#393230",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/m84_flashbang_spec-rgb_m84_f_9c887267.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -1.95,
+   -3.15,
+   -1.39
+  ],
+  "maxs": [
+   1.2,
+   4.43,
+   1.39
+  ]
+ }
+}

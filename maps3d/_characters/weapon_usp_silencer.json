@@ -1,0 +1,116 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "weapon_usp_silencer",
+ "kind": "weapon",
+ "faction": null,
+ "file": "weapon_usp_silencer.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 12408
+  },
+  "normal": {
+   "offset": 12408,
+   "length": 4136
+  },
+  "uv": {
+   "offset": 16544,
+   "length": 8272
+  },
+  "skinIndex": {
+   "offset": 24816,
+   "length": 4136
+  },
+  "skinWeight": {
+   "offset": 28952,
+   "length": 4136
+  },
+  "index": {
+   "offset": 33088,
+   "length": 4176
+  },
+  "color": {
+   "offset": 37264,
+   "length": 4136
+  }
+ },
+ "vertexCount": 1034,
+ "triangleCount": 696,
+ "bones": [
+  {
+   "name": "tag_weapon",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 0,
+   "pos": [
+    -8.1432,
+    -0.0273,
+    0.734
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    -0.707107,
+    0.707107
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    1.6375,
+    0.0,
+    0.2959
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 90,
+   "material": -1
+  },
+  {
+   "indexStart": 90,
+   "indexCount": 1464,
+   "material": -1
+  },
+  {
+   "indexStart": 1554,
+   "indexCount": 534,
+   "material": -1
+  }
+ ],
+ "materials": [],
+ "bounds": {
+  "mins": [
+   -12.22,
+   -0.57,
+   -4.52
+  ],
+  "maxs": [
+   1.64,
+   0.74,
+   1.01
+  ]
+ }
+}

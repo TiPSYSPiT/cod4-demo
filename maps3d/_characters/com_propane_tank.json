@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_propane_tank",
+ "kind": "script",
+ "faction": null,
+ "file": "com_propane_tank.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 12204
+  },
+  "normal": {
+   "offset": 12204,
+   "length": 4068
+  },
+  "uv": {
+   "offset": 16272,
+   "length": 8136
+  },
+  "skinIndex": {
+   "offset": 24408,
+   "length": 4068
+  },
+  "skinWeight": {
+   "offset": 28476,
+   "length": 4068
+  },
+  "index": {
+   "offset": 32544,
+   "length": 5952
+  },
+  "color": {
+   "offset": 38496,
+   "length": 4068
+  }
+ },
+ "vertexCount": 1017,
+ "triangleCount": 992,
+ "bones": [
+  {
+   "name": "propanetank_lod0",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 2976,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_propane_tank",
+   "texture": "_textures/propane_tank_col.webp",
+   "textureAlpha": false,
+   "color": "#989085",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/propane_tank_nml.normal.webp",
+   "specularMap": "_textures/propane_tank_spc-rgb_propane_6dbb2f65.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -7.59,
+   -7.59,
+   0.0
+  ],
+  "maxs": [
+   7.59,
+   7.59,
+   20.19
+  ]
+ }
+}

@@ -1,0 +1,158 @@
+/* Tab 1 - Scoreboard: per team, sortable, totals; spectators below. */
+(function (C4) {
+  'use strict';
+  const { el, fmtTime, na, approx, sortableTable, teamClass } = C4.ui;
+
+  const kd = p => (p.kills == null || p.deaths == null ? null : p.deaths === 0 ? p.kills : p.kills / p.deaths);
+  const fmtPct = v => Math.round(v) + ' %';
+  const round2 = v => v == null ? null : Math.round(v * 100) / 100;
+  const byScore = (a, b) => (b.score == null ? -Infinity : b.score) - (a.score == null ? -Infinity : a.score);
+
+  /** team totals as numbers (shared by the table and the JSON download) */
+  function teamTotals(rows) {
+    const sum = k => rows.reduce((a, p) => a + (p[k] || 0), 0);
+    const K = sum('kills'), D = sum('deaths'), ownK = sum('ownKills'), HS = sum('headshots');
+    return { score: sum('score'), kills: K, assists: sum('assists'), deaths: D, kd: D ? K / D : K,
+      nadeKills: sum('nadeKills'), nadeDeaths: sum('nadeDeaths'), tk: sum('teamkills'), teamKilled: sum('teamKilled'), hsPercent: ownK ? HS / ownK * 100 : null, plants: sum('plants'), defuses: sum('defuses') };
+  }
+
+  /** the scoreboard as plain JSON: map, record date, half scores, then teams (in table order),
+   * players by score, team totals */
+  function scoreJson(d) {
+    const m = d.meta;
+    const shown = d.teams.filter(t => d.players.some(p => p.team === t.key));
+    // half scores in the order of "teams"; only halves in the recording. complete: false = the half
+    // started before the recording (its earlier rounds are missing); half: null = number unknown
+    const hi = d.halfInfo;
+    const n = Math.max(0, ...shown.map(t => t.halves.length));
+    const halves = [];
+    for (let i = 0; i < n; i++) {
+      if (shown.every(t => t.halves[i] == null)) continue;
+      const rounds = shown.map(t => t.halves[i] || 0);
+      halves.push({ half: hi.unknown ? null : i + 1, score: rounds.join(':'), rounds, complete: !(hi.firstPartial && !halves.length) });
+    }
+    const head = {
+      map: m.map || null,
+      // YYYYMMDDHHMMSS; the demo stores no recording date: map start time on the server, else the file date
+      recordDate: m.recordDate ? m.recordDate.stamp : null,
+      recordDateSource: m.recordDate ? (m.recordDate.fileDate ? 'file date' : 'g_mapStartTime') : null,
+      halves
+    };
+    const initial = d.initialScore.A + d.initialScore.B;
+    if (initial) {
+      head.recordingStartedAt = shown.map(t => d.initialScore[t.key]).join(':');
+      if (hi.heuristic) head.halfNumberSource = 'ruleset (MR/OT) and the score at the start of the recording';
+    }
+    const teams = [];
+    for (const t of d.teams) {
+      const rows = d.players.filter(p => p.team === t.key);
+      if (!rows.length) continue;
+      const tot = teamTotals(rows);
+      teams.push({
+        clan: t.name,
+        roundsWon: t.wins,
+        players: rows.slice().sort(byScore).map(p => Object.assign({
+          name: p.cleanName,
+          score: p.score,
+          kills: p.kills,
+          assists: p.assists,
+          deaths: p.deaths,
+          kd: round2(kd(p)),
+          nadeKills: p.nadeKills,
+          nadeDeaths: p.nadeDeaths,
+          tk: p.teamkills,
+          teamKilled: p.teamKilled,
+          hsPercent: p.headshotPct == null ? null : Math.round(p.headshotPct),
+          plants: p.plants,
+          defuses: p.defuses
+        }, p.isPov ? { pov: true } : null)),
+        teamTotal: Object.assign(tot, { kd: round2(tot.kd), hsPercent: tot.hsPercent == null ? null : Math.round(tot.hsPercent) })
+      });
+    }
+    return Object.assign(head, { teams });
+  }
+
+  function render(root, app) {
+    const d = app.data;
+    const noMatch = d.match && d.match.start == null && d.meta.isSearchAndDestroy;
+    const incomplete = p => p.scoreIncomplete
+      ? approx('the player reconnected and the game sent no scoreboard for one of his sessions - score / assists of that session are missing')
+      : p.scoreboardSessions > 1 ? approx('the player reconnected: the scoreboard sessions are summed (the game restarts at 0)') : null;
+    const approxStats = p => p.statsSource === 'killfeed'
+      ? approx('no scoreboard entry for this player - counted from the kill feed')
+      : p.statsSource === 'scoreboard+killfeed'
+        ? approx('the last scoreboard is older than the last round - kills/deaths after it (' + p.killsAfterScoreboard + '/' + p.deathsAfterScoreboard + ') added from the kill feed')
+        : null;
+    // The columns in display order - the only place that defines them. Header (label, title),
+    // cells (render / key), sorting (sort / key), team total (total(tot), tot = teamTotals()) and
+    // the width class (cls -> <col>, styles.css) all come from here, so they cannot get out of step.
+    const columns = [
+      {
+        key: 'clan', label: 'Clan', cls: 'col-clan', sort: p => p.clan || '',
+        render: p => p.clan ? [p.clan, p.clanHeuristic ? approx('clan tag taken from the name') : null] : '',
+        cellTitle: p => p.clan || null
+      },
+      {
+        key: 'player', label: 'Player', cls: 'col-player', sort: p => p.cleanName.toLowerCase(),
+        render: p => [
+          app.playerNode(p.client),
+          p.isPov ? [' ', el('span', { class: 'badge pov', title: 'the player who recorded the demo' }, 'POV')] : null,
+          p.leftEarly ? [' ', el('span', { class: 'badge left', title: 'left the server at ' + fmtTime(p.leftAt) }, 'left ' + fmtTime(p.leftAt))] : null
+        ],
+        cellTitle: p => p.cleanName + (p.isPov ? ' (POV)' : '') + (p.leftEarly ? ' - left at ' + fmtTime(p.leftAt) : ''),
+        total: () => 'Team total'
+      },
+      { key: 'score', label: 'Score', render: p => p.score == null ? na(noMatch ? 'no match round in the demo (warm-up only)' : 'not in any scoreboard of the demo') : [String(p.score), incomplete(p)], total: t => t.score },
+      { key: 'kills', label: 'K', render: p => [String(p.kills), approxStats(p)], total: t => t.kills },
+      { key: 'assists', label: 'A', render: p => p.assists == null ? na(noMatch ? 'no match round in the demo (warm-up only)' : 'assists only come from the scoreboard') : [String(p.assists), incomplete(p)], total: t => t.assists },
+      { key: 'deaths', label: 'D', render: p => [String(p.deaths), approxStats(p)], total: t => t.deaths },
+      { key: 'kd', label: 'K/D', sort: kd, title: 'kills / deaths; with 0 deaths K/D = kills', render: p => kd(p) == null ? '' : kd(p).toFixed(2), total: t => t.kd.toFixed(2) },
+      {
+        key: 'headshotPct', label: 'HS %',
+        title: 'headshot kills / kills, both counted from the kill feed of this demo (match rounds; no team kills or suicides). The game scoreboard has no headshots.',
+        render: p => p.headshotPct == null
+          ? el('span', { class: 'dim', title: 'no kills in the kill feed' }, '–')
+          : el('span', { title: p.headshots + ' of ' + p.ownKills + ' kills (kill feed)' }, fmtPct(p.headshotPct)),
+        total: t => t.hsPercent == null ? '–' : fmtPct(t.hsPercent)
+      },
+      { key: 'teamkills', label: 'TK', title: 'Teamkills (killed a teammate)', render: p => String(p.teamkills), total: t => t.tk },
+      { key: 'teamKilled', label: 'TKd', title: 'Times killed by a teammate', render: p => String(p.teamKilled), total: t => t.teamKilled },
+      { key: 'nadeKills', label: 'Nade K', title: 'Kills with frag grenades', render: p => String(p.nadeKills), total: t => t.nadeKills },
+      { key: 'nadeDeaths', label: 'Nade D', title: 'Deaths by frag grenades', render: p => String(p.nadeDeaths), total: t => t.nadeDeaths },
+      { key: 'plants', label: 'Plants', title: 'bomb plants (server message "planted the bomb", match rounds only)', total: t => t.plants },
+      { key: 'defuses', label: 'Defuses', title: 'bomb defuses (server message "defused the bomb", match rounds only)', total: t => t.defuses }
+    ];
+    // every column after Player is a statistics column: numeric, right-aligned, sharing the width
+    // the fixed Clan and Player columns leave (styles.css; cut names: tooltip)
+    for (const c of columns) if (!c.cls) { c.cls = 'col-stat'; c.num = true; }
+    const groups = [];
+    for (const t of d.teams) {
+      const rows = d.players.filter(p => p.team === t.key);
+      if (!rows.length) continue;
+      const tot = teamTotals(rows);
+      groups.push({
+        label: el('span', null, t.name, t.nameHeuristic ? approx('team name from the common name prefix') : null, el('span', { class: 'dim' }, '  —  ' + t.wins + ' rounds won')),
+        cls: t.key === 'A' ? 'a' : 'b', rows,
+        totals: Object.fromEntries(columns.filter(c => c.total).map(c => [c.key, c.total(tot)]))
+      });
+    }
+    const specs = d.players.filter(p => p.team === 'spectator');
+    if (specs.length) groups.push({ label: 'Spectators', cls: 'spec', rows: specs });
+    root.append(
+      el('div', { class: 'toolbar' },
+        el('button', {
+          class: 'tb', title: 'teams, players (by score) and team totals as JSON',
+          onclick: () => app.download(C4.exportName.buildExportFileName(d), JSON.stringify(scoreJson(d), null, 2))
+        }, '⬇ Download score (JSON)')),
+      el('p', { class: 'note' }, 'Only the regular match time counts: no warm-up, knife round, halftime, timeouts or aftermatch' +
+        (d.match && d.match.end != null ? ' (official match end ' + fmtTime(d.match.end) + ')' : '') + '. ',
+        'Values from the game’s scoreboard as it stood at the match end (reconnected players: sessions summed). ',
+        'Click a column header to sort. ', el('span', { class: 'approx' }, '≈'), ' marks values completed from the kill feed. ',
+        'HS %, TK, Nade K / D, Plants and Defuses are not in the game’s scoreboard - they are counted from the kill feed and the bomb messages of this demo (only the recorded rounds; ',
+        'team kills only while a match round is live, not in warm-up, pauses or the knife round).'),
+      sortableTable(columns, groups, { sortKey: 'score', asc: false, cls: 'scoreboard', rowClass: p => (p.isPov ? 'pov ' : '') })
+    );
+  }
+
+  C4.tabs.scoreboard = { render, scoreJson };
+})(window.C4);

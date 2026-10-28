@@ -1,0 +1,146 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "vehicle_80s_wagon1_yel_door_rf",
+ "kind": "script",
+ "faction": null,
+ "file": "vehicle_80s_wagon1_yel_door_rf.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 1860
+  },
+  "normal": {
+   "offset": 1860,
+   "length": 620
+  },
+  "uv": {
+   "offset": 2480,
+   "length": 1240
+  },
+  "skinIndex": {
+   "offset": 3720,
+   "length": 620
+  },
+  "skinWeight": {
+   "offset": 4340,
+   "length": 620
+  },
+  "index": {
+   "offset": 4960,
+   "length": 648
+  },
+  "color": {
+   "offset": 5608,
+   "length": 620
+  }
+ },
+ "vertexCount": 155,
+ "triangleCount": 108,
+ "bones": [
+  {
+   "name": "tag_door_right_front",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_right_front",
+   "parent": 0,
+   "pos": [
+    -10.3268,
+    4.8918,
+    11.3713
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_right_front_fx",
+   "parent": 0,
+   "pos": [
+    -27.4826,
+    6.1274,
+    18.9571
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    -0.707107,
+    0.707107
+   ]
+  },
+  {
+   "name": "tag_mirror_right",
+   "parent": 0,
+   "pos": [
+    -7.8182,
+    4.7,
+    13.0815
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 324,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_80s_econ_yel",
+   "texture": "_textures/80s_econ_yel_col.webp",
+   "textureAlpha": false,
+   "color": "#857e5e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/80s_econ_nml.normal.webp",
+   "specularMap": "_textures/80s_econ_spc-rgb_80s_econ_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.6,
+    3.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -41.98,
+   0.0,
+   -16.0
+  ],
+  "maxs": [
+   0.0,
+   10.64,
+   28.35
+  ]
+ }
+}

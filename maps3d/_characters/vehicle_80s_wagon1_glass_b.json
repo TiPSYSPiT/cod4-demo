@@ -1,0 +1,100 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "vehicle_80s_wagon1_glass_b",
+ "kind": "script",
+ "faction": null,
+ "file": "vehicle_80s_wagon1_glass_b.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 720
+  },
+  "normal": {
+   "offset": 720,
+   "length": 240
+  },
+  "uv": {
+   "offset": 960,
+   "length": 480
+  },
+  "skinIndex": {
+   "offset": 1440,
+   "length": 240
+  },
+  "skinWeight": {
+   "offset": 1680,
+   "length": 240
+  },
+  "index": {
+   "offset": 1920,
+   "length": 264
+  },
+  "color": {
+   "offset": 2184,
+   "length": 240
+  }
+ },
+ "vertexCount": 60,
+ "triangleCount": 44,
+ "bones": [
+  {
+   "name": "tag_glass_back",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 132,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_80s_econ_glass",
+   "texture": "_textures/80s_econ_glass_col.webp",
+   "textureAlpha": true,
+   "color": "#515856",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "specularMap": "_textures/80s_econ_glass_spc-rgb_80s_e_29444396.specular.webp",
+   "envMapParms": [
+    1.4,
+    4.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   0.0,
+   -21.35,
+   -0.0
+  ],
+  "maxs": [
+   7.72,
+   21.35,
+   14.67
+  ]
+ }
+}

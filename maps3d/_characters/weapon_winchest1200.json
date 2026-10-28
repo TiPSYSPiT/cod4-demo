@@ -1,0 +1,158 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "weapon_winchest1200",
+ "kind": "weapon",
+ "faction": null,
+ "file": "weapon_winchest1200.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 15408
+  },
+  "normal": {
+   "offset": 15408,
+   "length": 5136
+  },
+  "uv": {
+   "offset": 20544,
+   "length": 10272
+  },
+  "skinIndex": {
+   "offset": 30816,
+   "length": 5136
+  },
+  "skinWeight": {
+   "offset": 35952,
+   "length": 5136
+  },
+  "index": {
+   "offset": 41088,
+   "length": 5328
+  },
+  "color": {
+   "offset": 46416,
+   "length": 5136
+  }
+ },
+ "vertexCount": 1284,
+ "triangleCount": 888,
+ "bones": [
+  {
+   "name": "tag_weapon",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 0,
+   "pos": [
+    -4.1748,
+    -0.4699,
+    -0.1886
+   ],
+   "quat": [
+    -0.212622,
+    -0.212622,
+    -0.674367,
+    0.674398
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    17.771,
+    0.0,
+    -0.2005
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 2526,
+   "material": 0
+  },
+  {
+   "indexStart": 2526,
+   "indexCount": 138,
+   "material": 1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_winchest1200",
+   "texture": "_textures/winchest1200_col.webp",
+   "textureAlpha": false,
+   "color": "#373531",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/winchest1200_spec-rgb_winche_e5e1fe71.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_winchest1200_misc_nocamo",
+   "texture": "_textures/winchest1200_col.webp",
+   "textureAlpha": false,
+   "color": "#373531",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/winchest1200_spec-rgb_winche_e5e1fe71.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -23.89,
+   -1.11,
+   -7.61
+  ],
+  "maxs": [
+   17.84,
+   0.97,
+   1.36
+  ]
+ }
+}

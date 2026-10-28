@@ -1,0 +1,312 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "vehicle_mig29_desert",
+ "kind": "script",
+ "faction": null,
+ "file": "vehicle_mig29_desert.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 14340
+  },
+  "normal": {
+   "offset": 14340,
+   "length": 4780
+  },
+  "uv": {
+   "offset": 19120,
+   "length": 9560
+  },
+  "skinIndex": {
+   "offset": 28680,
+   "length": 4780
+  },
+  "skinWeight": {
+   "offset": 33460,
+   "length": 4780
+  },
+  "index": {
+   "offset": 38240,
+   "length": 6504
+  },
+  "color": {
+   "offset": 44744,
+   "length": 4780
+  }
+ },
+ "vertexCount": 1195,
+ "triangleCount": 1084,
+ "bones": [
+  {
+   "name": "tag_origin",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_body",
+   "parent": 0,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "body_animate_joint",
+   "parent": 1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_deathfx",
+   "parent": 2,
+   "pos": [
+    76.0,
+    0.0,
+    40.0
+   ],
+   "quat": [
+    0.0,
+    -0.707107,
+    0.0,
+    0.707107
+   ]
+  },
+  {
+   "name": "tag_engine_left",
+   "parent": 2,
+   "pos": [
+    -257.7206,
+    29.8309,
+    8.9945
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "name": "tag_engine_right",
+   "parent": 2,
+   "pos": [
+    -257.7206,
+    -30.5601,
+    9.0831
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 2,
+   "pos": [
+    145.6622,
+    25.9299,
+    25.8742
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_left_alamo_missile",
+   "parent": 2,
+   "pos": [
+    -40.0058,
+    91.1643,
+    2.0763
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_left_aphid_missile",
+   "parent": 2,
+   "pos": [
+    -101.5277,
+    154.0127,
+    0.5111
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_left_archer_missile",
+   "parent": 2,
+   "pos": [
+    -74.7517,
+    125.0213,
+    1.6092
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_left_wingtip",
+   "parent": 2,
+   "pos": [
+    -174.377,
+    221.9794,
+    11.7177
+   ],
+   "quat": [
+    -0.024994,
+    0.001648,
+    0.999686,
+    0.0
+   ]
+  },
+  {
+   "name": "tag_pilot",
+   "parent": 2,
+   "pos": [
+    124.0,
+    0.0,
+    36.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_right_alamo_missile",
+   "parent": 2,
+   "pos": [
+    -40.0058,
+    -91.1643,
+    2.0763
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_right_aphid_missile",
+   "parent": 2,
+   "pos": [
+    -101.5277,
+    -154.0127,
+    0.5111
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_right_archer_missile",
+   "parent": 2,
+   "pos": [
+    -74.7517,
+    -125.0213,
+    1.6402
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_right_wingtip",
+   "parent": 2,
+   "pos": [
+    -174.377,
+    -221.9794,
+    11.7177
+   ],
+   "quat": [
+    -0.024994,
+    0.001648,
+    0.999686,
+    0.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 3252,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_mig29_desert",
+   "texture": null,
+   "textureAlpha": false,
+   "color": null,
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -314.99,
+   -222.65,
+   -15.26
+  ],
+  "maxs": [
+   336.12,
+   222.65,
+   127.61
+  ]
+ }
+}

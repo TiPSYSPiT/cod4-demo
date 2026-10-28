@@ -1,0 +1,8766 @@
+{
+ "format": "cod4-demo3d-props/2",
+ "file": "props.bin",
+ "stride": 14,
+ "sections": {
+  "instances": {
+   "offset": 0,
+   "length": 285152
+  },
+  "position": {
+   "offset": 285152,
+   "length": 691740
+  },
+  "normal": {
+   "offset": 976892,
+   "length": 230580
+  },
+  "uv": {
+   "offset": 1207472,
+   "length": 461160
+  },
+  "index": {
+   "offset": 1668632,
+   "length": 275388
+  },
+  "probe": {
+   "offset": 1944020,
+   "length": 5092
+  },
+  "color": {
+   "offset": 1949112,
+   "length": 230580
+  }
+ },
+ "fields": "instances: model index, origin xyz, axis rows (forward xyz, left xyz, up xyz), scale",
+ "instanceCount": 5092,
+ "materials": [
+  {
+   "name": "mc/mtl_ch_couch01",
+   "texture": "_textures/ch_couch_col.webp",
+   "textureAlpha": false,
+   "color": "#5f4438",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ch_couch_nml.normal.webp",
+   "specularMap": "_textures/ch_couch_spc-rgb_ch_couch_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.0,
+    8.0,
+    2.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_corkboards",
+   "texture": "_textures/corkboard_1_col.webp",
+   "textureAlpha": false,
+   "color": "#8b7357",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/corkboard_1_nml.normal.webp",
+   "specularMap": "_textures/corkboard_1_spc-rgb_corkboar_c0e3ea32.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_dvd_shelf_wood",
+   "texture": "_textures/dvd_shelf_wood_col.webp",
+   "textureAlpha": false,
+   "color": "#c5c4a7",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/dvd_shelf_wood_nml.normal.webp",
+   "specularMap": "_textures/dvd_shelf_wood_spc-rgb_dvd_s_63c673cf.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_dvds",
+   "texture": "_textures/dvds_col.webp",
+   "textureAlpha": false,
+   "color": "#756976",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/dvds_nml.normal.webp",
+   "specularMap": "_textures/dvds_spc-rgb_dvds_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.4,
+    4.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_lightfluo",
+   "texture": "_textures/lightfluohang_col.webp",
+   "textureAlpha": false,
+   "color": "#c7c5ac",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/lightfluohang_norm.normal.webp",
+   "specularMap": "_textures/lightfluohang_spec-rgb_light_20d8db0f.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_lightfluohang_on",
+   "texture": "_textures/lightfluohang_col.webp",
+   "textureAlpha": false,
+   "color": "#c7c5ac",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_restaurant_chair",
+   "texture": "_textures/restaurant_chair_1_col.webp",
+   "textureAlpha": false,
+   "color": "#404226",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/restaurant_chair_1_nml.normal.webp",
+   "specularMap": "_textures/restaurant_chair_1_spc-rgb_r_41f113a3.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_bunker_railing_01",
+   "texture": "_textures/ch_trim_stainlessteel_1_col.webp",
+   "textureAlpha": false,
+   "color": "#666764",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/ch_trim_stainlessteel_1_spc-_dac1f48f.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_com_stove",
+   "texture": "_textures/com_stove_col.webp",
+   "textureAlpha": false,
+   "color": "#6b665d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/com_stove_spc-r-49g-49b-49_c_e6a15fbe.specular.webp",
+   "envMapParms": [
+    3.2,
+    3.2,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_restaurant_sink",
+   "texture": "_textures/restaurant_sink_col.webp",
+   "textureAlpha": false,
+   "color": "#7c7970",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/restaurant_sink_nml.normal.webp",
+   "specularMap": "_textures/restaurant_sink_spc-rgb_rest_93f2ca17.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_chinese_lantern_red",
+   "texture": "_textures/chinese_lantern_col.webp",
+   "textureAlpha": false,
+   "color": "#743727",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_furniture_piano01",
+   "texture": "_textures/furniture_piano01_c.webp",
+   "textureAlpha": false,
+   "color": "#4b3d32",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/furniture_piano01_n.normal.webp",
+   "specularMap": "_textures/furniture_piano01_s-rgb_furn_1d1aa102.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_television1_d",
+   "texture": "_textures/television1_d_col.webp",
+   "textureAlpha": true,
+   "color": "#1f1f1f",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "normalMap": "_textures/television1_d_nml.normal.webp",
+   "specularMap": "_textures/television1_d_spc-rgb_televi_c60d0f1d.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_television1_d_nomarks",
+   "texture": "_textures/television1_d_col.webp",
+   "textureAlpha": true,
+   "color": "#1f1f1f",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "normalMap": "_textures/television1_d_nml.normal.webp",
+   "specularMap": "_textures/television1_d_spc-rgb_televi_c60d0f1d.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_office_shelf",
+   "texture": "_textures/office_shelf_col.webp",
+   "textureAlpha": false,
+   "color": "#6d6b67",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/office_shelf_nml.normal.webp",
+   "specularMap": "_textures/office_shelf_spc-rgb_office__5df260e9.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_books",
+   "texture": "_textures/books_c.webp",
+   "textureAlpha": false,
+   "color": "#412721",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/books_n.normal.webp",
+   "specularMap": "_textures/books_s-rgb_books_cp-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_trashcan_metal",
+   "texture": "_textures/trashcan_metal_col.webp",
+   "textureAlpha": false,
+   "color": "#75736c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/trashcan_metal_n.normal.webp",
+   "specularMap": "_textures/trashcan_metal_s-rgb_trashca_07688e36.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cafe_table2",
+   "texture": "_textures/cafe_table2_col.webp",
+   "textureAlpha": false,
+   "color": "#746154",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/cafe_table2_nml.normal.webp",
+   "specularMap": "_textures/cafe_table2_spc-rgb_cafe_tab_988aa013.specular.webp",
+   "envMapParms": [
+    4.0,
+    4.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cafe_table2_base",
+   "texture": "_textures/cafe_table2_col.webp",
+   "textureAlpha": false,
+   "color": "#746154",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/cafe_table2_nml.normal.webp",
+   "specularMap": "_textures/cafe_table2_spc-rgb_cafe_tab_988aa013.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_refrigerator2",
+   "texture": "_textures/refrigerator2_col.webp",
+   "textureAlpha": false,
+   "color": "#555a5d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/refrigerator2_nml.normal.webp",
+   "specularMap": "_textures/refrigerator2_spec-rgb_refri_bef6e359.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_transistor_radio",
+   "texture": "_textures/transistor_radio_col.webp",
+   "textureAlpha": false,
+   "color": "#4d4844",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/transistor_radio_nml.normal.webp",
+   "specularMap": "_textures/transistor_radio_spc-rgb_tra_f5a20699.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cardboardbox",
+   "texture": "_textures/cardboard_box_color.webp",
+   "textureAlpha": false,
+   "color": "#8b7560",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/cardboard_box_normal.normal.webp",
+   "specularMap": "_textures/cardboard_box_spec-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cardboardbox_decal",
+   "texture": "_textures/cardboard_box_decal.webp",
+   "textureAlpha": true,
+   "color": "#bd9c8b",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_doorknob",
+   "texture": "_textures/doorknob_col.webp",
+   "textureAlpha": false,
+   "color": "#51443c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/doorknob_nml.normal.webp",
+   "specularMap": "_textures/doorknob_spc-rgb_doorknob_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_electric_box3",
+   "texture": "_textures/electric_box3_c.webp",
+   "textureAlpha": false,
+   "color": "#787976",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/electric_box3_n.normal.webp",
+   "specularMap": "_textures/electric_box3_s-r30g30b30_el_aa01d547.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_icbm_electricpanels",
+   "texture": "_textures/mtl_icbm_electricbox.webp",
+   "textureAlpha": false,
+   "color": "#4a494a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/mtl_icbm_electricbox_bump.normal.webp",
+   "specularMap": "_textures/mtl_icbm_electricbox_spec-rgbl-11.specular.webp",
+   "envMapParms": [
+    3.0,
+    12.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_electric_box1",
+   "texture": "_textures/electric_box1_c.webp",
+   "textureAlpha": false,
+   "color": "#5e5f5b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/electric_box1_n.normal.webp",
+   "specularMap": "_textures/electric_box1_s-r30g30b30_el_60092dfc.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_hanging_clothes",
+   "texture": "_textures/xpec_hanging_clothes_col.webp",
+   "textureAlpha": false,
+   "color": "#6b6c6a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "normalMap": "_textures/xpec_hanging_clothes_nml.normal.webp",
+   "specularMap": "_textures/xpec_hanging_clothes_spc-rgb_7a366e9c.specular.webp",
+   "envMapParms": [
+    3.96,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_hanging_clothes_aqua",
+   "texture": "_textures/xpec_hanging_clothes_col.webp",
+   "textureAlpha": false,
+   "color": "#6b6c6a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "normalMap": "_textures/xpec_hanging_clothes_nml.normal.webp",
+   "specularMap": "_textures/xpec_hanging_clothes_spc-rgb_7a366e9c.specular.webp",
+   "detailScale": [
+    1024.0,
+    256.0,
+    0.0,
+    0.0
+   ],
+   "envMapParms": [
+    3.96,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "detailMap": "_textures/detail_aqua.webp"
+  },
+  {
+   "name": "mc/mtl_hanging_clothes_palepink",
+   "texture": "_textures/xpec_hanging_clothes_col.webp",
+   "textureAlpha": false,
+   "color": "#6b6c6a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "normalMap": "_textures/xpec_hanging_clothes_nml.normal.webp",
+   "specularMap": "_textures/xpec_hanging_clothes_spc-rgb_7a366e9c.specular.webp",
+   "detailScale": [
+    1024.0,
+    256.0,
+    0.0,
+    0.0
+   ],
+   "envMapParms": [
+    3.96,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "detailMap": "_textures/detail_palepink.webp"
+  },
+  {
+   "name": ",mc/lambert1",
+   "texture": null,
+   "textureAlpha": false,
+   "color": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true
+  },
+  {
+   "name": "mc/mtl_wallfan1",
+   "texture": "_textures/wallfan01_col.webp",
+   "textureAlpha": true,
+   "color": "#46463f",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/wallfan01_nml.normal.webp",
+   "specularMap": "_textures/wallfan01_col-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_hanging_clothes_terracotta",
+   "texture": "_textures/xpec_hanging_clothes_col.webp",
+   "textureAlpha": false,
+   "color": "#6b6c6a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "normalMap": "_textures/xpec_hanging_clothes_nml.normal.webp",
+   "specularMap": "_textures/xpec_hanging_clothes_spc-rgb_7a366e9c.specular.webp",
+   "detailScale": [
+    1024.0,
+    256.0,
+    0.0,
+    0.0
+   ],
+   "envMapParms": [
+    3.96,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "detailMap": "_textures/detail_terracotta.webp"
+  },
+  {
+   "name": "mc/mtl_woodcage",
+   "texture": "_textures/woodcage_col.webp",
+   "textureAlpha": true,
+   "color": "#716452",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/woodcage_nml.normal.webp",
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_ex_airconditioner",
+   "texture": "_textures/ex_airconditioner_col__0.webp",
+   "textureAlpha": true,
+   "color": "#5e5c58",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ex_airconditioner_nml.normal.webp",
+   "specularMap": "_textures/ex_airconditioner_spc-rgb_ex_f2e123ab.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_restaurantstainlessteelshelf",
+   "texture": "_textures/restaurant_stainlesssteelshelf_col.webp",
+   "textureAlpha": false,
+   "color": "#797978",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/restaurant_stainlesssteelshelf_nml.normal.webp",
+   "specularMap": "_textures/restaurant_stainlesssteelshe_01afeb18.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_utility_light_on",
+   "texture": "_textures/utility_light_col.webp",
+   "textureAlpha": false,
+   "color": "#a1956a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_utility_light_off",
+   "texture": "_textures/utility_light_col.webp",
+   "textureAlpha": false,
+   "color": "#a1956a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/utility_light_spc-rgb_utilit_b292aeb4.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_scaffold_red",
+   "texture": "_textures/scafoldmetal_red_col.webp",
+   "textureAlpha": false,
+   "color": "#804232",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/scafoldmetal_red_norm.normal.webp",
+   "specularMap": "_textures/scafoldmetal_red_spec-rgb_sc_7eecade5.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_electric_box2",
+   "texture": "_textures/electric_box2_c.webp",
+   "textureAlpha": false,
+   "color": "#9d9891",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/electric_box2_n.normal.webp",
+   "specularMap": "_textures/electric_box2_s-r30g30b30_el_b581c4b0.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_air_duct1",
+   "texture": "_textures/air_duct1_col.webp",
+   "textureAlpha": false,
+   "color": "#80827b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/air_duct1_nml.normal.webp",
+   "specularMap": "_textures/air_duct1_spc-r34g34b34_air__7d327003.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_air_duct2",
+   "texture": "_textures/air_duct2_col.webp",
+   "textureAlpha": false,
+   "color": "#7c7d76",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/air_duct2_nml.normal.webp",
+   "specularMap": "_textures/air_duct2_spc-r-61g-61b-61_a_0fe3105c.specular.webp",
+   "envMapParms": [
+    2.0,
+    4.0,
+    2.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_china_vase",
+   "texture": "_textures/china_vase_col.webp",
+   "textureAlpha": false,
+   "color": "#91979c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/china_vase_nml.normal.webp",
+   "specularMap": "_textures/china_vase_spc-rgb_china_vas_5c4a9049.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_outdoor_switch",
+   "texture": "_textures/outdoor_switch_col.webp",
+   "textureAlpha": false,
+   "color": "#7e8484",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/outdoor_switch_nml.normal.webp",
+   "specularMap": "_textures/outdoor_switch_spc-rgb_outdo_94fd0f03.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_ac_big",
+   "texture": "_textures/ac_big_col.webp",
+   "textureAlpha": false,
+   "color": "#54585a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ac_big_norm.normal.webp",
+   "specularMap": "_textures/ac_big_spec-rgb_ac_big_cp-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_northafrica_tables",
+   "texture": "_textures/northafrica_tables_col.webp",
+   "textureAlpha": false,
+   "color": "#744b33",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/northafrica_tables_normal.normal.webp",
+   "specularMap": "_textures/northafrica_tables_spec-rgb__eadf0665.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_statue_chinese_lion_gold",
+   "texture": "_textures/statue_chinese_lion_gold_col.webp",
+   "textureAlpha": false,
+   "color": "#140c07",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/statue_chinese_lion_gold_nml.normal.webp",
+   "specularMap": "_textures/statue_chinese_lion_gold_spc_d9eceee8.specular.webp",
+   "envMapParms": [
+    4.0,
+    12.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_parasol_open_blue",
+   "texture": "_textures/parasol_open_blue_col.webp",
+   "textureAlpha": true,
+   "color": "#99957d",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/parasol_open_blue_norm.normal.webp",
+   "specularMap": "_textures/parasol_open_blue_spec-rgb_p_3e656610.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_statue_chinese_lion_inside",
+   "texture": "_textures/statue_chinese_lion_col.webp",
+   "textureAlpha": false,
+   "color": "#726e65",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/statue_chinese_lion_nml.normal.webp",
+   "specularMap": "_textures/statue_chinese_lion_col-rgbl-11.specular.webp",
+   "envMapParms": [
+    1.6,
+    5.6,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_parasol_closed_green",
+   "texture": "_textures/parasol_closed_col_green.webp",
+   "textureAlpha": false,
+   "color": "#604521",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/parasol_open_blue_spec-rgb_p_3e656610.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_telegraph_pole",
+   "texture": "_textures/telegraph_pole_c.webp",
+   "textureAlpha": false,
+   "color": "#55544f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/telegraph_pole_n.normal.webp",
+   "specularMap": "_textures/telegraph_pole_s-rgbl99.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_river_birch",
+   "texture": "_textures/tree_river_birch_col.webp",
+   "textureAlpha": true,
+   "color": "#2e3c31",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/tree_river_birch_nml.normal.webp",
+   "specularMap": "_textures/dead_pine_spc-r-71g-71b-71_d_34842d41.specular.webp",
+   "envMapParms": [
+    0.0,
+    6.8,
+    0.05,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_river_birch_canopy",
+   "texture": "_textures/tree_river_birch_col.webp",
+   "textureAlpha": true,
+   "color": "#2e3c31",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_tree_shadow_caster",
+   "texture": "_textures/tree_shadowcaster.webp",
+   "textureAlpha": true,
+   "color": "#000000",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "shadowOnly": true
+  },
+  {
+   "name": "mc/mtl_citrus_box",
+   "texture": "_textures/citrus_boxes.webp",
+   "textureAlpha": false,
+   "color": "#80786b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/banana_boxes_bump.normal.webp",
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_wood_crate",
+   "texture": "_textures/woodcrates_col.webp",
+   "textureAlpha": true,
+   "color": "#716452",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/woodcrates_nml.normal.webp",
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_plastic_crates",
+   "texture": "_textures/plasticcrate_red.webp",
+   "textureAlpha": true,
+   "color": "#623e33",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/plastic_crates_bump.normal.webp",
+   "specularMap": "_textures/plasticcrate_spec-r30g30b30__5ecb3232.specular.webp",
+   "envMapParms": [
+    0.4,
+    10.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_tomato",
+   "texture": "_textures/tomatoes.webp",
+   "textureAlpha": false,
+   "color": "#67301f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/tomatoes_bump.normal.webp",
+   "specularMap": "_textures/tomatoes_spec-rgb__white-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_plasticcrate_yellow",
+   "texture": "_textures/plasticcrate_yellow.webp",
+   "textureAlpha": true,
+   "color": "#a7a357",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/plastic_crates_bump.normal.webp",
+   "specularMap": "_textures/plasticcrate_spec-r30g30b30__5ecb3232.specular.webp",
+   "envMapParms": [
+    0.4,
+    10.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_plasticcrate_brown",
+   "texture": "_textures/plasticcrate_brown.webp",
+   "textureAlpha": true,
+   "color": "#524837",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/plastic_crates_bump.normal.webp",
+   "specularMap": "_textures/plasticcrate_spec-r30g30b30__5ecb3232.specular.webp",
+   "envMapParms": [
+    0.4,
+    10.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_trash",
+   "texture": "_textures/trash_col.webp",
+   "textureAlpha": true,
+   "color": "#7e7e7e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/trash_nml.normal.webp",
+   "specularMap": "_textures/trash_spc-rgb_trash_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_banana_box",
+   "texture": "_textures/banana_boxes.webp",
+   "textureAlpha": false,
+   "color": "#646057",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/banana_boxes_bump.normal.webp",
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_statue_chineselionstonebase",
+   "texture": "_textures/statue_chineselionstonebase_col.webp",
+   "textureAlpha": false,
+   "color": "#67635a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/statue_chineselionstonebase_nml.normal.webp",
+   "specularMap": "_textures/statue_chineselionstonebase__351842be.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_statue_chinese_lion",
+   "texture": "_textures/statue_chinese_lion_col.webp",
+   "textureAlpha": false,
+   "color": "#726e65",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/statue_chinese_lion_nml.normal.webp",
+   "specularMap": "_textures/statue_chinese_lion_spc-rgb__e4082689.specular.webp",
+   "envMapParms": [
+    1.6,
+    4.8,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_street_lamp_off",
+   "texture": "_textures/street_lamp_col.webp",
+   "textureAlpha": false,
+   "color": "#70625c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/street_lamp_nml.normal.webp",
+   "specularMap": "_textures/street_lamp_spc-rgb_street_l_37d3c761.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_street_lamp_on",
+   "texture": "_textures/street_lamp_col.webp",
+   "textureAlpha": false,
+   "color": "#70625c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_fishmarket_props",
+   "texture": "_textures/fishmarket_col.webp",
+   "textureAlpha": false,
+   "color": "#3b3531",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/fishmarket_nml.normal.webp",
+   "specularMap": "_textures/fishmarket_spc-rgb_fishmarke_0aab7842.specular.webp",
+   "envMapParms": [
+    4.0,
+    8.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_fishmarket_lobster",
+   "texture": "_textures/lobster_parts_col.webp",
+   "textureAlpha": true,
+   "color": "#170f0c",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_plasticcrate_green",
+   "texture": "_textures/plasticcrate_green.webp",
+   "textureAlpha": true,
+   "color": "#44462f",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/plastic_crates_bump.normal.webp",
+   "specularMap": "_textures/plasticcrate_spec-r30g30b30__5ecb3232.specular.webp",
+   "envMapParms": [
+    0.4,
+    10.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_soup_can",
+   "texture": "_textures/soup_can_col.webp",
+   "textureAlpha": false,
+   "color": "#696356",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/soup_can_nml.normal.webp",
+   "specularMap": "_textures/soup_can_spc-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_dumpster",
+   "texture": "_textures/dumpster_col.webp",
+   "textureAlpha": false,
+   "color": "#8f8c88",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/dumpster_nml.normal.webp",
+   "specularMap": "_textures/dumpster_spc-r-87g-87b-87_du_872bd7d0.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_dumpster_lid",
+   "texture": "_textures/dumpster_lid_col.webp",
+   "textureAlpha": false,
+   "color": "#2b312e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/dumpster_lid_nml.normal.webp",
+   "specularMap": "_textures/dumpster_lid_spc-r-87g-87b-8_719d834f.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_newgrassgreen",
+   "texture": "_textures/newgrass_col_0.webp",
+   "textureAlpha": true,
+   "color": "#323b24",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_brush_toujanebigbushy",
+   "texture": "_textures/tree_desertbushy_col.webp",
+   "textureAlpha": true,
+   "color": "#403c2a",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_barrier",
+   "texture": "_textures/barrier.webp",
+   "textureAlpha": false,
+   "color": "#90908a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/barrier_norm.normal.webp",
+   "specularMap": "_textures/barrier_spec-rgb_barrier_cp-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_delivery_truck_body",
+   "texture": "_textures/xpec_delivery_truck_body_col.webp",
+   "textureAlpha": false,
+   "color": "#5d5d57",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/xpec_delivery_truck_body_nml.normal.webp",
+   "specularMap": "_textures/xpec_delivery_truck_body_spc_4cdbe93d.specular.webp",
+   "envMapParms": [
+    1.2,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_delivery_truck_glass",
+   "texture": "_textures/xpec_delivery_truck_glass_col.webp",
+   "textureAlpha": true,
+   "color": "#4d4c4b",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "normalMap": "_textures/xpec_delivery_truck_glass_nml.normal.webp",
+   "specularMap": "_textures/xpec_delivery_truck_glass_sp_a87aeb53.specular.webp",
+   "envMapParms": [
+    1.2,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_delivery_truck_tires",
+   "texture": "_textures/xpec_delivery_truck_body_col.webp",
+   "textureAlpha": false,
+   "color": "#5d5d57",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/xpec_delivery_truck_body_nml.normal.webp",
+   "specularMap": "_textures/xpec_delivery_truck_body_spc_4cdbe93d.specular.webp",
+   "envMapParms": [
+    1.2,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_rebar01",
+   "texture": "_textures/rebar01_col.webp",
+   "textureAlpha": false,
+   "color": "#75726b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/rebar01_nml.normal.webp",
+   "specularMap": "_textures/rebar01_spc-rgb_rebar01_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_grey_oak_canopy",
+   "texture": "_textures/tree_grey_oak_col.webp",
+   "textureAlpha": true,
+   "color": "#1b1813",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_grey_oak",
+   "texture": "_textures/tree_grey_oak_col.webp",
+   "textureAlpha": true,
+   "color": "#1b1813",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/tree_grey_oak_nml.normal.webp",
+   "specularMap": "_textures/dead_pine_spc-r-71g-71b-71_d_34842d41.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/ct_sign_side01",
+   "texture": "_textures/ct_sign_side01_col.webp",
+   "textureAlpha": false,
+   "color": "#66767a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/ct_sign_side01_col-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_sign_pacific_holiday",
+   "texture": "_textures/sign_pacific_holiday_col.webp",
+   "textureAlpha": false,
+   "color": "#6f6551",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_sign_atm",
+   "texture": "_textures/ct_sign_bank01_col.webp",
+   "textureAlpha": false,
+   "color": "#7d5c58",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/ct_sign_bank01_col-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_sign_side01",
+   "texture": "_textures/ct_sign_side01_col.webp",
+   "textureAlpha": false,
+   "color": "#66767a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/ct_sign_side01_col-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_sign_atm2",
+   "texture": "_textures/ct_sign_bank01_col.webp",
+   "textureAlpha": false,
+   "color": "#7d5c58",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_plasticcrate_blue",
+   "texture": "_textures/plasticcrate_blue.webp",
+   "textureAlpha": true,
+   "color": "#3b3537",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/plastic_crates_bump.normal.webp",
+   "specularMap": "_textures/plasticcrate_spec-r30g30b30__5ecb3232.specular.webp",
+   "envMapParms": [
+    0.4,
+    10.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/ch_rubble01",
+   "texture": "_textures/ch_rubble01_col.webp",
+   "textureAlpha": false,
+   "color": "#716f6b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ch_rubble01_nml.normal.webp",
+   "specularMap": "_textures/ch_rubble02_spc-r-25g-25b-25_b9e0e09c.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.4,
+    1.1,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/me_concrete_dest1",
+   "texture": "_textures/me_concrete_dest02_col.webp",
+   "textureAlpha": false,
+   "color": "#65645b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_concrete_dest02_nml.normal.webp",
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_panam_facade",
+   "texture": "_textures/panam_facade_clr.webp",
+   "textureAlpha": false,
+   "color": "#625649",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_highrise_facade",
+   "texture": "_textures/ct_highrise_facade_clr.webp",
+   "textureAlpha": true,
+   "color": "#574c43",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_highrise_facade_b",
+   "texture": "_textures/ct_highrise_facade_b_clr.webp",
+   "textureAlpha": true,
+   "color": "#5c5453",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_sign_full_moon",
+   "texture": "_textures/sign_full_moon_col.webp",
+   "textureAlpha": false,
+   "color": "#392d22",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_ch_washer_01",
+   "texture": "_textures/ch_waching_machine_col.webp",
+   "textureAlpha": false,
+   "color": "#6b6257",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ch_waching_machine_nml.normal.webp",
+   "specularMap": "_textures/ch_waching_machine_spc-r-71g_5393bd6c.specular.webp",
+   "envMapParms": [
+    3.2,
+    3.2,
+    1.2,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_drymachine",
+   "texture": "_textures/dry_machine_col.webp",
+   "textureAlpha": true,
+   "color": "#94918a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/dry_machine_spc-rgb_dry_mach_6787bb93.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_prop_bear",
+   "texture": "_textures/bear_c.webp",
+   "textureAlpha": false,
+   "color": "#483d25",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/bear_n.normal.webp",
+   "specularMap": "_textures/bear_s-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_tripodstudiolight_off",
+   "texture": "_textures/tripod_studio_light_col.webp",
+   "textureAlpha": false,
+   "color": "#484642",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/tripod_studio_light_nml.normal.webp",
+   "specularMap": "_textures/tripod_studio_light_spc-rgb__b026d7f1.specular.webp",
+   "envMapParms": [
+    2.0,
+    8.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_tripodstudiolight_on",
+   "texture": "_textures/tripod_studio_light_col.webp",
+   "textureAlpha": false,
+   "color": "#484642",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/gfx_floodlight_beam_godray75",
+   "texture": "_textures/floodlight_beam.webp",
+   "textureAlpha": false,
+   "color": "#2f2f2f",
+   "alphaTest": null,
+   "blend": "invdestcolor/one",
+   "doubleSided": true,
+   "depthWrite": false,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/gfx_spotlight_lenseflare_flare_a",
+   "texture": "_textures/flare_a.webp",
+   "textureAlpha": false,
+   "color": "#161412",
+   "alphaTest": null,
+   "blend": "invdestcolor/one",
+   "doubleSided": false,
+   "depthWrite": false,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/gfx_floodlight_beam_godray85",
+   "texture": "_textures/floodlight_beam.webp",
+   "textureAlpha": false,
+   "color": "#2f2f2f",
+   "alphaTest": null,
+   "blend": "invdestcolor/one",
+   "doubleSided": true,
+   "depthWrite": false,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_fishmarket_boxes",
+   "texture": "_textures/fishmarket_boxes_col.webp",
+   "textureAlpha": false,
+   "color": "#75695f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_saw_rescue",
+   "texture": "_textures/saw_rescue_temp_col.webp",
+   "textureAlpha": false,
+   "color": "#4b4a3d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "models": [
+  {
+   "name": "ch_furniture_couch01",
+   "count": 12,
+   "mins": [
+    -18.98,
+    -39.79,
+    -0.01
+   ],
+   "maxs": [
+    18.98,
+    39.79,
+    38.43
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 0,
+     "vertexCount": 490,
+     "indexStart": 0,
+     "indexCount": 1158,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1158,
+       "material": 0
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 490,
+     "vertexCount": 121,
+     "indexStart": 1158,
+     "indexCount": 186,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 186,
+       "material": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_corkboard_metaltrim_4x8",
+   "count": 4,
+   "mins": [
+    -48.0,
+    -1.0,
+    -24.0
+   ],
+   "maxs": [
+    48.0,
+    0.0,
+    24.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 611,
+     "vertexCount": 86,
+     "indexStart": 1344,
+     "indexCount": 120,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 120,
+       "material": 1
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 697,
+     "vertexCount": 28,
+     "indexStart": 1464,
+     "indexCount": 42,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 42,
+       "material": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ct_dvd_shelf_wood",
+   "count": 21,
+   "mins": [
+    -25.0,
+    0.0,
+    0.0
+   ],
+   "maxs": [
+    25.0,
+    14.0,
+    79.23
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 725,
+     "vertexCount": 300,
+     "indexStart": 1506,
+     "indexCount": 486,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 486,
+       "material": 2
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 1025,
+     "vertexCount": 106,
+     "indexStart": 1992,
+     "indexCount": 186,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 186,
+       "material": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ct_dvd_single_03",
+   "count": 168,
+   "mins": [
+    0.0,
+    -4.99,
+    0.0
+   ],
+   "maxs": [
+    1.0,
+    0.0,
+    7.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 1131,
+     "vertexCount": 48,
+     "indexStart": 2178,
+     "indexCount": 132,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 132,
+       "material": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ct_dvd_single_01",
+   "count": 421,
+   "mins": [
+    0.0,
+    -5.0,
+    -0.0
+   ],
+   "maxs": [
+    1.0,
+    0.0,
+    7.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 1179,
+     "vertexCount": 48,
+     "indexStart": 2310,
+     "indexCount": 132,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 132,
+       "material": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ct_dvd_single_02",
+   "count": 275,
+   "mins": [
+    0.0,
+    -5.0,
+    -0.0
+   ],
+   "maxs": [
+    1.0,
+    0.0,
+    7.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 1227,
+     "vertexCount": 48,
+     "indexStart": 2442,
+     "indexCount": 132,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 132,
+       "material": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ct_dvd_single_04",
+   "count": 217,
+   "mins": [
+    0.0,
+    -5.0,
+    -0.0
+   ],
+   "maxs": [
+    1.0,
+    0.0,
+    7.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 1275,
+     "vertexCount": 48,
+     "indexStart": 2574,
+     "indexCount": 132,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 132,
+       "material": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ct_dvd_threepack_01",
+   "count": 244,
+   "mins": [
+    0.0,
+    -5.0,
+    0.0
+   ],
+   "maxs": [
+    3.0,
+    0.0,
+    7.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 1323,
+     "vertexCount": 48,
+     "indexStart": 2706,
+     "indexCount": 132,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 132,
+       "material": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ct_dvd_threepack_02",
+   "count": 183,
+   "mins": [
+    0.0,
+    -5.0,
+    0.0
+   ],
+   "maxs": [
+    3.0,
+    0.0,
+    7.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 1371,
+     "vertexCount": 48,
+     "indexStart": 2838,
+     "indexCount": 132,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 132,
+       "material": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ct_dvd_threepack_03",
+   "count": 199,
+   "mins": [
+    0.0,
+    -5.0,
+    0.0
+   ],
+   "maxs": [
+    3.0,
+    0.0,
+    7.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 1419,
+     "vertexCount": 48,
+     "indexStart": 2970,
+     "indexCount": 132,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 132,
+       "material": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_lightfluohang_on",
+   "count": 26,
+   "mins": [
+    -6.45,
+    -27.7,
+    -4.36
+   ],
+   "maxs": [
+    6.45,
+    27.7,
+    -0.02
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 250.0,
+     "vertexStart": 1467,
+     "vertexCount": 396,
+     "indexStart": 3102,
+     "indexCount": 1188,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 492,
+       "material": 4
+      },
+      {
+       "indexStart": 492,
+       "indexCount": 696,
+       "material": 5
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 20000.0,
+     "vertexStart": 1863,
+     "vertexCount": 104,
+     "indexStart": 4290,
+     "indexCount": 180,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 132,
+       "material": 4
+      },
+      {
+       "indexStart": 132,
+       "indexCount": 48,
+       "material": 5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_restaurantchair_2",
+   "count": 25,
+   "mins": [
+    -11.6,
+    -11.24,
+    -0.01
+   ],
+   "maxs": [
+    11.6,
+    11.24,
+    40.96
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 100.0,
+     "vertexStart": 1967,
+     "vertexCount": 1180,
+     "indexStart": 4470,
+     "indexCount": 5250,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 5250,
+       "material": 6
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 3147,
+     "vertexCount": 122,
+     "indexStart": 9720,
+     "indexCount": 306,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 306,
+       "material": 6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_bunker_railing_01",
+   "count": 131,
+   "mins": [
+    -5.5,
+    -1.0,
+    0.0
+   ],
+   "maxs": [
+    1.0,
+    1.0,
+    40.5
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1500.0,
+     "vertexStart": 3269,
+     "vertexCount": 152,
+     "indexStart": 10026,
+     "indexCount": 480,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 480,
+       "material": 7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_bunker_railing_02",
+   "count": 18,
+   "mins": [
+    -1.0,
+    -5.5,
+    0.0
+   ],
+   "maxs": [
+    1.0,
+    1.0,
+    44.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1500.0,
+     "vertexStart": 3421,
+     "vertexCount": 161,
+     "indexStart": 10506,
+     "indexCount": 528,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 528,
+       "material": 7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_bunker_railing_03",
+   "count": 24,
+   "mins": [
+    -1.0,
+    -1.0,
+    0.0
+   ],
+   "maxs": [
+    1.0,
+    5.5,
+    44.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1500.0,
+     "vertexStart": 3582,
+     "vertexCount": 159,
+     "indexStart": 11034,
+     "indexCount": 528,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 528,
+       "material": 7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_stove",
+   "count": 9,
+   "mins": [
+    -14.58,
+    -14.58,
+    0.0
+   ],
+   "maxs": [
+    14.58,
+    15.79,
+    48.99
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 3741,
+     "vertexCount": 1043,
+     "indexStart": 11562,
+     "indexCount": 1848,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1848,
+       "material": 8
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 4784,
+     "vertexCount": 56,
+     "indexStart": 13410,
+     "indexCount": 90,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 90,
+       "material": 8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_restaurantsink_2comps",
+   "count": 7,
+   "mins": [
+    -0.0,
+    -40.0,
+    -0.1
+   ],
+   "maxs": [
+    30.0,
+    40.0,
+    44.89
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 4840,
+     "vertexCount": 1843,
+     "indexStart": 13500,
+     "indexCount": 5076,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 5076,
+       "material": 9
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 6683,
+     "vertexCount": 236,
+     "indexStart": 18576,
+     "indexCount": 390,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 390,
+       "material": 9
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ct_chinese_lantern",
+   "count": 82,
+   "mins": [
+    -11.71,
+    -11.68,
+    -46.56
+   ],
+   "maxs": [
+    11.68,
+    11.68,
+    0.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 200.0,
+     "vertexStart": 6919,
+     "vertexCount": 854,
+     "indexStart": 18966,
+     "indexCount": 2088,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2088,
+       "material": 10
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 7773,
+     "vertexCount": 160,
+     "indexStart": 21054,
+     "indexCount": 342,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 342,
+       "material": 10
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_dresser",
+   "count": 5,
+   "mins": [
+    -16.23,
+    -31.76,
+    -0.04
+   ],
+   "maxs": [
+    14.0,
+    32.04,
+    45.97
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 7933,
+     "vertexCount": 234,
+     "indexStart": 21396,
+     "indexCount": 384,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 384,
+       "material": 11
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_tv1_d",
+   "count": 12,
+   "mins": [
+    -11.08,
+    -14.31,
+    -0.03
+   ],
+   "maxs": [
+    11.08,
+    14.3,
+    22.44
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 8167,
+     "vertexCount": 287,
+     "indexStart": 21780,
+     "indexCount": 720,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 648,
+       "material": 12
+      },
+      {
+       "indexStart": 648,
+       "indexCount": 72,
+       "material": 13
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 8454,
+     "vertexCount": 72,
+     "indexStart": 22500,
+     "indexCount": 126,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 120,
+       "material": 12
+      },
+      {
+       "indexStart": 120,
+       "indexCount": 6,
+       "material": 13
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_office_book_shelf",
+   "count": 28,
+   "mins": [
+    -8.0,
+    -26.0,
+    0.0
+   ],
+   "maxs": [
+    8.0,
+    26.0,
+    35.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 650.0,
+     "vertexStart": 8526,
+     "vertexCount": 148,
+     "indexStart": 22626,
+     "indexCount": 276,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 276,
+       "material": 14
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 8674,
+     "vertexCount": 56,
+     "indexStart": 22902,
+     "indexCount": 72,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 72,
+       "material": 14
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_books1",
+   "count": 85,
+   "mins": [
+    -4.46,
+    -4.79,
+    -0.0
+   ],
+   "maxs": [
+    4.35,
+    4.76,
+    14.66
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 8730,
+     "vertexCount": 96,
+     "indexStart": 22974,
+     "indexCount": 144,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 144,
+       "material": 15
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_books2",
+   "count": 53,
+   "mins": [
+    -4.63,
+    -4.63,
+    -0.04
+   ],
+   "maxs": [
+    4.63,
+    4.63,
+    14.66
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 8826,
+     "vertexCount": 72,
+     "indexStart": 23118,
+     "indexCount": 108,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 108,
+       "material": 15
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_books3",
+   "count": 226,
+   "mins": [
+    -0.85,
+    -4.39,
+    -0.0
+   ],
+   "maxs": [
+    0.85,
+    4.39,
+    12.72
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 8898,
+     "vertexCount": 24,
+     "indexStart": 23226,
+     "indexCount": 36,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 36,
+       "material": 15
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_trashcan_metal",
+   "count": 31,
+   "mins": [
+    -12.81,
+    -12.81,
+    0.0
+   ],
+   "maxs": [
+    12.81,
+    12.81,
+    34.76
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 8922,
+     "vertexCount": 429,
+     "indexStart": 23262,
+     "indexCount": 1356,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1356,
+       "material": 16
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 20000.0,
+     "vertexStart": 9351,
+     "vertexCount": 68,
+     "indexStart": 24618,
+     "indexCount": 168,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 168,
+       "material": 16
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_trashcan_metallid",
+   "count": 20,
+   "mins": [
+    -13.12,
+    -13.12,
+    0.15
+   ],
+   "maxs": [
+    13.12,
+    13.12,
+    2.05
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 9419,
+     "vertexCount": 376,
+     "indexStart": 24786,
+     "indexCount": 852,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 852,
+       "material": 16
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 9795,
+     "vertexCount": 60,
+     "indexStart": 25638,
+     "indexCount": 168,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 168,
+       "material": 16
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_cafe_table2",
+   "count": 18,
+   "mins": [
+    -20.11,
+    -20.0,
+    0.0
+   ],
+   "maxs": [
+    20.11,
+    20.0,
+    34.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 9855,
+     "vertexCount": 217,
+     "indexStart": 25806,
+     "indexCount": 678,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 180,
+       "material": 17
+      },
+      {
+       "indexStart": 180,
+       "indexCount": 498,
+       "material": 18
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 10072,
+     "vertexCount": 149,
+     "indexStart": 26484,
+     "indexCount": 282,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 72,
+       "material": 17
+      },
+      {
+       "indexStart": 72,
+       "indexCount": 210,
+       "material": 18
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_refrigerator2",
+   "count": 10,
+   "mins": [
+    0.0,
+    -21.04,
+    -0.0
+   ],
+   "maxs": [
+    35.36,
+    21.04,
+    82.41
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 10221,
+     "vertexCount": 587,
+     "indexStart": 26766,
+     "indexCount": 1344,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1344,
+       "material": 19
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 10808,
+     "vertexCount": 205,
+     "indexStart": 28110,
+     "indexCount": 306,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 306,
+       "material": 19
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_transistor_radio",
+   "count": 1,
+   "mins": [
+    -1.72,
+    -7.48,
+    -5.73
+   ],
+   "maxs": [
+    1.72,
+    7.48,
+    5.73
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 800.0,
+     "vertexStart": 11013,
+     "vertexCount": 343,
+     "indexStart": 28416,
+     "indexCount": 1146,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1146,
+       "material": 20
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 11356,
+     "vertexCount": 24,
+     "indexStart": 29562,
+     "indexCount": 36,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 36,
+       "material": 20
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_cardboardbox04",
+   "count": 62,
+   "mins": [
+    -14.57,
+    -10.18,
+    0.0
+   ],
+   "maxs": [
+    14.57,
+    10.23,
+    19.3
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 3000.0,
+     "vertexStart": 11380,
+     "vertexCount": 32,
+     "indexStart": 29598,
+     "indexCount": 48,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 36,
+       "material": 21
+      },
+      {
+       "indexStart": 36,
+       "indexCount": 12,
+       "material": 22
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_cardboardbox06",
+   "count": 4,
+   "mins": [
+    -14.58,
+    -10.19,
+    0.0
+   ],
+   "maxs": [
+    14.57,
+    10.19,
+    19.24
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 350.0,
+     "vertexStart": 11412,
+     "vertexCount": 120,
+     "indexStart": 29646,
+     "indexCount": 168,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 156,
+       "material": 21
+      },
+      {
+       "indexStart": 156,
+       "indexCount": 12,
+       "material": 22
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 3000.0,
+     "vertexStart": 11532,
+     "vertexCount": 48,
+     "indexStart": 29814,
+     "indexCount": 72,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 60,
+       "material": 21
+      },
+      {
+       "indexStart": 60,
+       "indexCount": 12,
+       "material": 22
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_cardboardbox03",
+   "count": 9,
+   "mins": [
+    -21.02,
+    -9.28,
+    0.03
+   ],
+   "maxs": [
+    17.08,
+    17.78,
+    26.31
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 350.0,
+     "vertexStart": 11580,
+     "vertexCount": 178,
+     "indexStart": 29886,
+     "indexCount": 264,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 240,
+       "material": 21
+      },
+      {
+       "indexStart": 240,
+       "indexCount": 24,
+       "material": 22
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 3000.0,
+     "vertexStart": 11758,
+     "vertexCount": 80,
+     "indexStart": 30150,
+     "indexCount": 114,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 102,
+       "material": 21
+      },
+      {
+       "indexStart": 102,
+       "indexCount": 12,
+       "material": 22
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_doorknob1",
+   "count": 4,
+   "mins": [
+    0.0,
+    -2.06,
+    -6.07
+   ],
+   "maxs": [
+    3.13,
+    2.06,
+    6.07
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 250.0,
+     "vertexStart": 11838,
+     "vertexCount": 143,
+     "indexStart": 30264,
+     "indexCount": 456,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 456,
+       "material": 23
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 11981,
+     "vertexCount": 32,
+     "indexStart": 30720,
+     "indexCount": 54,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 54,
+       "material": 23
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_electricbox4",
+   "count": 54,
+   "mins": [
+    -13.36,
+    -9.45,
+    -13.43
+   ],
+   "maxs": [
+    13.36,
+    0.03,
+    11.85
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 12013,
+     "vertexCount": 180,
+     "indexStart": 30774,
+     "indexCount": 288,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 288,
+       "material": 24
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 3000.0,
+     "vertexStart": 12193,
+     "vertexCount": 36,
+     "indexStart": 31062,
+     "indexCount": 54,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 54,
+       "material": 24
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "icbm_electricpanel7",
+   "count": 4,
+   "mins": [
+    -6.35,
+    -4.86,
+    -11.24
+   ],
+   "maxs": [
+    7.16,
+    -0.04,
+    12.88
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 12229,
+     "vertexCount": 44,
+     "indexStart": 31116,
+     "indexCount": 66,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 66,
+       "material": 25
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_electricbox1",
+   "count": 31,
+   "mins": [
+    0.02,
+    -4.73,
+    -6.83
+   ],
+   "maxs": [
+    4.45,
+    4.73,
+    6.83
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 12273,
+     "vertexCount": 191,
+     "indexStart": 31182,
+     "indexCount": 342,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 342,
+       "material": 26
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 3000.0,
+     "vertexStart": 12464,
+     "vertexCount": 70,
+     "indexStart": 31524,
+     "indexCount": 108,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 108,
+       "material": 26
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_hanging_clothes_tshirt_striped",
+   "count": 79,
+   "mins": [
+    -11.67,
+    -3.53,
+    -30.88
+   ],
+   "maxs": [
+    10.93,
+    2.9,
+    1.98
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 700.0,
+     "vertexStart": 12534,
+     "vertexCount": 157,
+     "indexStart": 31632,
+     "indexCount": 468,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 468,
+       "material": 27
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 3000.0,
+     "vertexStart": 12691,
+     "vertexCount": 48,
+     "indexStart": 32100,
+     "indexCount": 96,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 96,
+       "material": 27
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_hanging_clothes_sheet_white",
+   "count": 63,
+   "mins": [
+    -32.34,
+    -4.27,
+    -40.27
+   ],
+   "maxs": [
+    32.57,
+    4.27,
+    1.98
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000.0,
+     "vertexStart": 12739,
+     "vertexCount": 160,
+     "indexStart": 32196,
+     "indexCount": 600,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 600,
+       "material": 27
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 12899,
+     "vertexCount": 26,
+     "indexStart": 32796,
+     "indexCount": 42,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 42,
+       "material": 27
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_hanging_clothes_tank_blue",
+   "count": 4,
+   "mins": [
+    -5.64,
+    -1.36,
+    -22.02
+   ],
+   "maxs": [
+    5.41,
+    1.36,
+    1.98
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 12925,
+     "vertexCount": 166,
+     "indexStart": 32838,
+     "indexCount": 444,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 444,
+       "material": 28
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 2000.0,
+     "vertexStart": 13091,
+     "vertexCount": 26,
+     "indexStart": 33282,
+     "indexCount": 42,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 42,
+       "material": 28
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_hanging_clothes_tshirt_striped_brown",
+   "count": 15,
+   "mins": [
+    -11.67,
+    -3.53,
+    -30.88
+   ],
+   "maxs": [
+    10.93,
+    2.9,
+    1.98
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 700.0,
+     "vertexStart": 13117,
+     "vertexCount": 157,
+     "indexStart": 33324,
+     "indexCount": 468,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 468,
+       "material": 29
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 3000.0,
+     "vertexStart": 13274,
+     "vertexCount": 48,
+     "indexStart": 33792,
+     "indexCount": 96,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 96,
+       "material": 29
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_hanging_clothes_sweater_natural",
+   "count": 8,
+   "mins": [
+    -10.03,
+    -2.2,
+    -48.36
+   ],
+   "maxs": [
+    10.0,
+    2.09,
+    1.98
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 800.0,
+     "vertexStart": 13322,
+     "vertexCount": 168,
+     "indexStart": 33888,
+     "indexCount": 450,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 450,
+       "material": 29
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 3000.0,
+     "vertexStart": 13490,
+     "vertexCount": 59,
+     "indexStart": 34338,
+     "indexCount": 114,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 114,
+       "material": 29
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cs_wallfan1",
+   "count": 5,
+   "mins": [
+    -20.0,
+    -32.16,
+    -8.94
+   ],
+   "maxs": [
+    20.0,
+    0.0,
+    31.06
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 13549,
+     "vertexCount": 287,
+     "indexStart": 34452,
+     "indexCount": 780,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 18,
+       "material": 30
+      },
+      {
+       "indexStart": 18,
+       "indexCount": 762,
+       "material": 31
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 13836,
+     "vertexCount": 56,
+     "indexStart": 35232,
+     "indexCount": 84,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 84,
+       "material": 31
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_hanging_clothes_tank_pink",
+   "count": 84,
+   "mins": [
+    -5.64,
+    -1.36,
+    -22.02
+   ],
+   "maxs": [
+    5.41,
+    1.36,
+    1.98
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 13892,
+     "vertexCount": 166,
+     "indexStart": 35316,
+     "indexCount": 444,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 444,
+       "material": 27
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 2000.0,
+     "vertexStart": 14058,
+     "vertexCount": 26,
+     "indexStart": 35760,
+     "indexCount": 42,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 42,
+       "material": 27
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_hanging_clothes_sweater_brown",
+   "count": 66,
+   "mins": [
+    -10.03,
+    -2.2,
+    -48.36
+   ],
+   "maxs": [
+    10.0,
+    2.09,
+    1.98
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 800.0,
+     "vertexStart": 14084,
+     "vertexCount": 168,
+     "indexStart": 35802,
+     "indexCount": 450,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 450,
+       "material": 27
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 3000.0,
+     "vertexStart": 14252,
+     "vertexCount": 59,
+     "indexStart": 36252,
+     "indexCount": 114,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 114,
+       "material": 27
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_hanging_clothes_sheet_red",
+   "count": 4,
+   "mins": [
+    -32.34,
+    -4.27,
+    -40.27
+   ],
+   "maxs": [
+    32.57,
+    4.27,
+    1.98
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000.0,
+     "vertexStart": 14311,
+     "vertexCount": 160,
+     "indexStart": 36366,
+     "indexCount": 600,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 600,
+       "material": 32
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 14471,
+     "vertexCount": 26,
+     "indexStart": 36966,
+     "indexCount": 42,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 42,
+       "material": 32
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_wood_cage_large",
+   "count": 43,
+   "mins": [
+    -18.88,
+    -10.49,
+    -0.52
+   ],
+   "maxs": [
+    18.88,
+    10.49,
+    28.63
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 14497,
+     "vertexCount": 712,
+     "indexStart": 37008,
+     "indexCount": 1152,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1152,
+       "material": 33
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 15209,
+     "vertexCount": 64,
+     "indexStart": 38160,
+     "indexCount": 96,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 96,
+       "material": 33
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_ex_airconditioner",
+   "count": 22,
+   "mins": [
+    -15.83,
+    -18.79,
+    -11.27
+   ],
+   "maxs": [
+    15.83,
+    0.13,
+    11.27
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000.0,
+     "vertexStart": 15273,
+     "vertexCount": 611,
+     "indexStart": 38256,
+     "indexCount": 1188,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1188,
+       "material": 34
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 15884,
+     "vertexCount": 370,
+     "indexStart": 39444,
+     "indexCount": 612,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 612,
+       "material": 34
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_restaurantstainlessteelshelf_01",
+   "count": 5,
+   "mins": [
+    0.0,
+    -21.75,
+    -0.0
+   ],
+   "maxs": [
+    19.5,
+    21.75,
+    72.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 800.0,
+     "vertexStart": 16254,
+     "vertexCount": 744,
+     "indexStart": 40056,
+     "indexCount": 1752,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1752,
+       "material": 35
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 16998,
+     "vertexCount": 225,
+     "indexStart": 41808,
+     "indexCount": 360,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 360,
+       "material": 35
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_utility_light_on",
+   "count": 17,
+   "mins": [
+    -1.39,
+    -1.75,
+    -19.03
+   ],
+   "maxs": [
+    2.1,
+    1.75,
+    0.34
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 200.0,
+     "vertexStart": 17223,
+     "vertexCount": 478,
+     "indexStart": 42168,
+     "indexCount": 2256,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 96,
+       "material": 36
+      },
+      {
+       "indexStart": 96,
+       "indexCount": 2160,
+       "material": 37
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 17701,
+     "vertexCount": 64,
+     "indexStart": 44424,
+     "indexCount": 132,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 24,
+       "material": 36
+      },
+      {
+       "indexStart": 24,
+       "indexCount": 108,
+       "material": 37
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_scaffold_red",
+   "count": 20,
+   "mins": [
+    -2.0,
+    -46.0,
+    0.0
+   ],
+   "maxs": [
+    2.0,
+    46.0,
+    128.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 17765,
+     "vertexCount": 302,
+     "indexStart": 44556,
+     "indexCount": 888,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 888,
+       "material": 38
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 18067,
+     "vertexCount": 195,
+     "indexStart": 45444,
+     "indexCount": 432,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 432,
+       "material": 38
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_electricbox2",
+   "count": 35,
+   "mins": [
+    -8.36,
+    -8.47,
+    -19.12
+   ],
+   "maxs": [
+    8.36,
+    0.01,
+    19.12
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 18262,
+     "vertexCount": 166,
+     "indexStart": 45876,
+     "indexCount": 384,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 384,
+       "material": 39
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 3000.0,
+     "vertexStart": 18428,
+     "vertexCount": 64,
+     "indexStart": 46260,
+     "indexCount": 114,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 114,
+       "material": 39
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_airduct_s_90",
+   "count": 29,
+   "mins": [
+    -15.75,
+    -15.75,
+    -6.3
+   ],
+   "maxs": [
+    9.45,
+    9.45,
+    6.3
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 12000.0,
+     "vertexStart": 18492,
+     "vertexCount": 48,
+     "indexStart": 46374,
+     "indexCount": 120,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 120,
+       "material": 40
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_airduct_square",
+   "count": 33,
+   "mins": [
+    -31.5,
+    -10.52,
+    -7.28
+   ],
+   "maxs": [
+    31.5,
+    10.52,
+    7.28
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 20000.0,
+     "vertexStart": 18540,
+     "vertexCount": 64,
+     "indexStart": 46494,
+     "indexCount": 96,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 96,
+       "material": 40
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_airduct_s_short",
+   "count": 35,
+   "mins": [
+    -10.52,
+    -9.45,
+    -7.28
+   ],
+   "maxs": [
+    10.52,
+    9.45,
+    7.28
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 18604,
+     "vertexCount": 64,
+     "indexStart": 46590,
+     "indexCount": 96,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 96,
+       "material": 40
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_airduct_c_t",
+   "count": 12,
+   "mins": [
+    -9.45,
+    -6.3,
+    -6.3
+   ],
+   "maxs": [
+    9.45,
+    9.45,
+    6.3
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 18668,
+     "vertexCount": 106,
+     "indexStart": 46686,
+     "indexCount": 258,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 258,
+       "material": 41
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_airduct_c_90",
+   "count": 22,
+   "mins": [
+    -12.6,
+    -12.6,
+    -6.35
+   ],
+   "maxs": [
+    6.26,
+    6.26,
+    6.45
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 18774,
+     "vertexCount": 182,
+     "indexStart": 46944,
+     "indexCount": 576,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 144,
+       "material": 40
+      },
+      {
+       "indexStart": 144,
+       "indexCount": 432,
+       "material": 41
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_airduct_circle",
+   "count": 20,
+   "mins": [
+    -31.5,
+    -7.28,
+    -7.28
+   ],
+   "maxs": [
+    31.5,
+    7.28,
+    7.28
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 18956,
+     "vertexCount": 234,
+     "indexStart": 47520,
+     "indexCount": 600,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 240,
+       "material": 40
+      },
+      {
+       "indexStart": 240,
+       "indexCount": 360,
+       "material": 41
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_airduct_s_tran_c",
+   "count": 32,
+   "mins": [
+    -3.15,
+    -9.45,
+    -6.29
+   ],
+   "maxs": [
+    3.15,
+    9.45,
+    6.32
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 19190,
+     "vertexCount": 24,
+     "indexStart": 48120,
+     "indexCount": 48,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 48,
+       "material": 40
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_airduct_c_scale",
+   "count": 18,
+   "mins": [
+    -3.15,
+    -6.29,
+    -6.29
+   ],
+   "maxs": [
+    3.15,
+    6.29,
+    6.29
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 19214,
+     "vertexCount": 28,
+     "indexStart": 48168,
+     "indexCount": 72,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 72,
+       "material": 40
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_airduct_c_vent",
+   "count": 30,
+   "mins": [
+    -0.0,
+    -8.46,
+    -8.46
+   ],
+   "maxs": [
+    3.15,
+    8.46,
+    8.46
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 19242,
+     "vertexCount": 270,
+     "indexStart": 48240,
+     "indexCount": 996,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 996,
+       "material": 40
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ct_china_vase",
+   "count": 20,
+   "mins": [
+    -9.77,
+    -9.29,
+    -0.0
+   ],
+   "maxs": [
+    9.77,
+    9.29,
+    61.18
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000.0,
+     "vertexStart": 19512,
+     "vertexCount": 218,
+     "indexStart": 49236,
+     "indexCount": 906,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 906,
+       "material": 42
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 19730,
+     "vertexCount": 51,
+     "indexStart": 50142,
+     "indexCount": 144,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 144,
+       "material": 42
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_outdoor_switch",
+   "count": 3,
+   "mins": [
+    -2.42,
+    -2.01,
+    -0.02
+   ],
+   "maxs": [
+    2.42,
+    1.64,
+    7.84
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 19781,
+     "vertexCount": 72,
+     "indexStart": 50286,
+     "indexCount": 234,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 234,
+       "material": 43
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 19853,
+     "vertexCount": 24,
+     "indexStart": 50520,
+     "indexCount": 36,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 36,
+       "material": 43
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_ac_big",
+   "count": 59,
+   "mins": [
+    -18.86,
+    -18.86,
+    -0.0
+   ],
+   "maxs": [
+    18.82,
+    18.87,
+    36.84
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000.0,
+     "vertexStart": 19877,
+     "vertexCount": 72,
+     "indexStart": 50556,
+     "indexCount": 198,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 198,
+       "material": 44
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 26000.0,
+     "vertexStart": 19949,
+     "vertexCount": 20,
+     "indexStart": 50754,
+     "indexCount": 30,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 30,
+       "material": 44
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_northafrica_coffeetable",
+   "count": 1,
+   "mins": [
+    -27.87,
+    -20.58,
+    -0.01
+   ],
+   "maxs": [
+    27.85,
+    20.58,
+    17.99
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 19969,
+     "vertexCount": 408,
+     "indexStart": 50784,
+     "indexCount": 930,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 930,
+       "material": 45
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 20377,
+     "vertexCount": 64,
+     "indexStart": 51714,
+     "indexCount": 78,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 78,
+       "material": 45
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ct_statue_chinese_lion_gold",
+   "count": 9,
+   "mins": [
+    -12.4,
+    -16.75,
+    0.0
+   ],
+   "maxs": [
+    12.4,
+    13.48,
+    37.71
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 20441,
+     "vertexCount": 448,
+     "indexStart": 51792,
+     "indexCount": 1968,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1968,
+       "material": 46
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 20889,
+     "vertexCount": 127,
+     "indexStart": 53760,
+     "indexCount": 396,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 396,
+       "material": 46
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ct_parasol_open",
+   "count": 28,
+   "mins": [
+    -19.54,
+    -19.46,
+    0.0
+   ],
+   "maxs": [
+    19.54,
+    19.46,
+    24.61
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 250.0,
+     "vertexStart": 21016,
+     "vertexCount": 162,
+     "indexStart": 54156,
+     "indexCount": 240,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 240,
+       "material": 47
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 21178,
+     "vertexCount": 79,
+     "indexStart": 54396,
+     "indexCount": 102,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 102,
+       "material": 47
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ct_statue_chinese_lion_inside",
+   "count": 3,
+   "mins": [
+    -12.4,
+    -16.75,
+    0.0
+   ],
+   "maxs": [
+    12.4,
+    13.48,
+    37.71
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 21257,
+     "vertexCount": 448,
+     "indexStart": 54498,
+     "indexCount": 1968,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1968,
+       "material": 48
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 21705,
+     "vertexCount": 127,
+     "indexStart": 56466,
+     "indexCount": 396,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 396,
+       "material": 48
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ct_parasol_closed",
+   "count": 10,
+   "mins": [
+    -1.52,
+    -1.52,
+    0.0
+   ],
+   "maxs": [
+    1.52,
+    1.52,
+    24.61
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 250.0,
+     "vertexStart": 21832,
+     "vertexCount": 118,
+     "indexStart": 56862,
+     "indexCount": 306,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 306,
+       "material": 49
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 21950,
+     "vertexCount": 39,
+     "indexStart": 57168,
+     "indexCount": 48,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 48,
+       "material": 49
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_telegraphpole2",
+   "count": 11,
+   "mins": [
+    -33.31,
+    -6.43,
+    -1.96
+   ],
+   "maxs": [
+    33.96,
+    4.55,
+    374.43
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 21989,
+     "vertexCount": 648,
+     "indexStart": 57216,
+     "indexCount": 1212,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1212,
+       "material": 50
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 22637,
+     "vertexCount": 221,
+     "indexStart": 58428,
+     "indexCount": 318,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 318,
+       "material": 50
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_tree_river_birch_xl_a",
+   "count": 4,
+   "mins": [
+    -202.72,
+    -173.95,
+    -17.8
+   ],
+   "maxs": [
+    169.59,
+    128.87,
+    662.76
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1200.0,
+     "vertexStart": 22858,
+     "vertexCount": 3367,
+     "indexStart": 58746,
+     "indexCount": 5970,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2772,
+       "material": 51
+      },
+      {
+       "indexStart": 2772,
+       "indexCount": 3138,
+       "material": 52
+      },
+      {
+       "indexStart": 5910,
+       "indexCount": 60,
+       "material": 53
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 26225,
+     "vertexCount": 913,
+     "indexStart": 64716,
+     "indexCount": 1548,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 396,
+       "material": 51
+      },
+      {
+       "indexStart": 396,
+       "indexCount": 1092,
+       "material": 52
+      },
+      {
+       "indexStart": 1488,
+       "indexCount": 60,
+       "material": 53
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_wood_cage_small",
+   "count": 28,
+   "mins": [
+    -14.1,
+    -10.89,
+    -0.53
+   ],
+   "maxs": [
+    14.1,
+    10.89,
+    15.15
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 27138,
+     "vertexCount": 712,
+     "indexStart": 66264,
+     "indexCount": 1152,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1152,
+       "material": 33
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 27850,
+     "vertexCount": 64,
+     "indexStart": 67416,
+     "indexCount": 96,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 96,
+       "material": 33
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_citrus_box2",
+   "count": 14,
+   "mins": [
+    -11.99,
+    -9.51,
+    -0.0
+   ],
+   "maxs": [
+    11.99,
+    9.51,
+    11.98
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 2000.0,
+     "vertexStart": 27914,
+     "vertexCount": 24,
+     "indexStart": 67512,
+     "indexCount": 36,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 36,
+       "material": 54
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_woodcrateclosed",
+   "count": 20,
+   "mins": [
+    -12.52,
+    -7.93,
+    -0.01
+   ],
+   "maxs": [
+    12.52,
+    7.93,
+    16.01
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 27938,
+     "vertexCount": 430,
+     "indexStart": 67548,
+     "indexCount": 648,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 648,
+       "material": 55
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 28368,
+     "vertexCount": 48,
+     "indexStart": 68196,
+     "indexCount": 72,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 72,
+       "material": 55
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_box_citrusfruitopenshort_2",
+   "count": 21,
+   "mins": [
+    -12.65,
+    -10.23,
+    0.0
+   ],
+   "maxs": [
+    12.65,
+    10.23,
+    6.26
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 200.0,
+     "vertexStart": 28416,
+     "vertexCount": 230,
+     "indexStart": 68268,
+     "indexCount": 468,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 468,
+       "material": 54
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 2000.0,
+     "vertexStart": 28646,
+     "vertexCount": 60,
+     "indexStart": 68736,
+     "indexCount": 84,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 84,
+       "material": 54
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_box_citrusfruitopenshort_1",
+   "count": 35,
+   "mins": [
+    -12.65,
+    -10.23,
+    0.0
+   ],
+   "maxs": [
+    12.65,
+    10.23,
+    6.25
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 200.0,
+     "vertexStart": 28706,
+     "vertexCount": 230,
+     "indexStart": 68820,
+     "indexCount": 468,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 468,
+       "material": 54
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 2000.0,
+     "vertexStart": 28936,
+     "vertexCount": 60,
+     "indexStart": 69288,
+     "indexCount": 84,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 84,
+       "material": 54
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_cardboardboxshortopen_1",
+   "count": 7,
+   "mins": [
+    -15.34,
+    -10.92,
+    0.0
+   ],
+   "maxs": [
+    15.34,
+    10.92,
+    8.01
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 28996,
+     "vertexCount": 160,
+     "indexStart": 69372,
+     "indexCount": 300,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 300,
+       "material": 21
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 29156,
+     "vertexCount": 56,
+     "indexStart": 69672,
+     "indexCount": 84,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 84,
+       "material": 21
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_cardboardboxshortclosed_1",
+   "count": 21,
+   "mins": [
+    -14.91,
+    -10.48,
+    0.0
+   ],
+   "maxs": [
+    14.91,
+    10.48,
+    7.99
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 29212,
+     "vertexCount": 48,
+     "indexStart": 69756,
+     "indexCount": 84,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 84,
+       "material": 21
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 29260,
+     "vertexCount": 24,
+     "indexStart": 69840,
+     "indexCount": 36,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 36,
+       "material": 21
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_woodcrateopen",
+   "count": 21,
+   "mins": [
+    -12.51,
+    -7.81,
+    -0.0
+   ],
+   "maxs": [
+    12.51,
+    7.81,
+    16.05
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 29284,
+     "vertexCount": 504,
+     "indexStart": 69876,
+     "indexCount": 756,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 756,
+       "material": 55
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 29788,
+     "vertexCount": 104,
+     "indexStart": 70632,
+     "indexCount": 108,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 108,
+       "material": 55
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_cardboardboxshortopen_3",
+   "count": 7,
+   "mins": [
+    -19.05,
+    -13.53,
+    0.01
+   ],
+   "maxs": [
+    19.05,
+    13.53,
+    11.09
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 29892,
+     "vertexCount": 176,
+     "indexStart": 70740,
+     "indexCount": 240,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 240,
+       "material": 21
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 30068,
+     "vertexCount": 72,
+     "indexStart": 70980,
+     "indexCount": 108,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 108,
+       "material": 21
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_cardboardboxshortclosed_2",
+   "count": 14,
+   "mins": [
+    -15.04,
+    -10.51,
+    0.0
+   ],
+   "maxs": [
+    15.04,
+    10.51,
+    9.32
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 30140,
+     "vertexCount": 126,
+     "indexStart": 71088,
+     "indexCount": 210,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 210,
+       "material": 21
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 30266,
+     "vertexCount": 52,
+     "indexStart": 71298,
+     "indexCount": 78,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 78,
+       "material": 21
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_citrus_box1",
+   "count": 21,
+   "mins": [
+    -11.99,
+    -9.51,
+    -0.0
+   ],
+   "maxs": [
+    11.99,
+    9.51,
+    11.98
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 2000.0,
+     "vertexStart": 30318,
+     "vertexCount": 24,
+     "indexStart": 71376,
+     "indexCount": 36,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 36,
+       "material": 54
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_plastic_crate1",
+   "count": 45,
+   "mins": [
+    -6.0,
+    -8.94,
+    0.02
+   ],
+   "maxs": [
+    6.0,
+    9.0,
+    9.97
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 2000.0,
+     "vertexStart": 30342,
+     "vertexCount": 104,
+     "indexStart": 71412,
+     "indexCount": 180,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 180,
+       "material": 56
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_tomato_crate1",
+   "count": 35,
+   "mins": [
+    -6.01,
+    -8.94,
+    0.02
+   ],
+   "maxs": [
+    6.0,
+    9.0,
+    9.97
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 2000.0,
+     "vertexStart": 30446,
+     "vertexCount": 597,
+     "indexStart": 71592,
+     "indexCount": 1716,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1536,
+       "material": 57
+      },
+      {
+       "indexStart": 1536,
+       "indexCount": 180,
+       "material": 56
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_plastic_crate6",
+   "count": 7,
+   "mins": [
+    -6.0,
+    -8.94,
+    0.02
+   ],
+   "maxs": [
+    6.0,
+    9.0,
+    9.97
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 2000.0,
+     "vertexStart": 31043,
+     "vertexCount": 104,
+     "indexStart": 73308,
+     "indexCount": 180,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 180,
+       "material": 58
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_plastic_crate2",
+   "count": 28,
+   "mins": [
+    -6.0,
+    -6.0,
+    0.0
+   ],
+   "maxs": [
+    5.99,
+    6.0,
+    10.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 2000.0,
+     "vertexStart": 31147,
+     "vertexCount": 48,
+     "indexStart": 73488,
+     "indexCount": 84,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 84,
+       "material": 56
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_plastic_crate8",
+   "count": 14,
+   "mins": [
+    -6.0,
+    -6.0,
+    0.0
+   ],
+   "maxs": [
+    5.99,
+    6.0,
+    10.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 2000.0,
+     "vertexStart": 31195,
+     "vertexCount": 48,
+     "indexStart": 73572,
+     "indexCount": 84,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 84,
+       "material": 59
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_trashcan_metal_with_trash",
+   "count": 7,
+   "mins": [
+    -12.81,
+    -12.81,
+    0.0
+   ],
+   "maxs": [
+    12.81,
+    12.81,
+    34.76
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 31243,
+     "vertexCount": 515,
+     "indexStart": 73656,
+     "indexCount": 1548,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1236,
+       "material": 16
+      },
+      {
+       "indexStart": 1236,
+       "indexCount": 312,
+       "material": 60
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 20000.0,
+     "vertexStart": 31758,
+     "vertexCount": 160,
+     "indexStart": 75204,
+     "indexCount": 480,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 168,
+       "material": 16
+      },
+      {
+       "indexStart": 168,
+       "indexCount": 312,
+       "material": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_cardboardbox01",
+   "count": 7,
+   "mins": [
+    -14.72,
+    -10.22,
+    0.0
+   ],
+   "maxs": [
+    14.88,
+    10.51,
+    22.11
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 350.0,
+     "vertexStart": 31918,
+     "vertexCount": 96,
+     "indexStart": 75684,
+     "indexCount": 150,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 138,
+       "material": 21
+      },
+      {
+       "indexStart": 138,
+       "indexCount": 12,
+       "material": 22
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 3000.0,
+     "vertexStart": 32014,
+     "vertexCount": 48,
+     "indexStart": 75834,
+     "indexCount": 72,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 60,
+       "material": 21
+      },
+      {
+       "indexStart": 60,
+       "indexCount": 12,
+       "material": 22
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_banana_box2",
+   "count": 26,
+   "mins": [
+    -11.99,
+    -9.51,
+    0.0
+   ],
+   "maxs": [
+    11.99,
+    9.51,
+    11.98
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 2000.0,
+     "vertexStart": 32062,
+     "vertexCount": 24,
+     "indexStart": 75906,
+     "indexCount": 36,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 36,
+       "material": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_banana_box1",
+   "count": 10,
+   "mins": [
+    -11.99,
+    -9.51,
+    0.0
+   ],
+   "maxs": [
+    11.99,
+    9.51,
+    11.98
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 2000.0,
+     "vertexStart": 32086,
+     "vertexCount": 24,
+     "indexStart": 75942,
+     "indexCount": 36,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 36,
+       "material": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_plastic_crate4",
+   "count": 7,
+   "mins": [
+    -6.0,
+    -8.94,
+    0.02
+   ],
+   "maxs": [
+    6.0,
+    9.0,
+    9.97
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 2000.0,
+     "vertexStart": 32110,
+     "vertexCount": 104,
+     "indexStart": 75978,
+     "indexCount": 180,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 180,
+       "material": 59
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_box_citrusfruitopen_1",
+   "count": 14,
+   "mins": [
+    -12.65,
+    -10.23,
+    0.0
+   ],
+   "maxs": [
+    12.65,
+    10.23,
+    9.07
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 200.0,
+     "vertexStart": 32214,
+     "vertexCount": 230,
+     "indexStart": 76158,
+     "indexCount": 468,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 468,
+       "material": 54
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 2000.0,
+     "vertexStart": 32444,
+     "vertexCount": 60,
+     "indexStart": 76626,
+     "indexCount": 84,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 84,
+       "material": 54
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ct_statue_chineselionstonebase",
+   "count": 10,
+   "mins": [
+    -15.2,
+    -18.0,
+    -0.0
+   ],
+   "maxs": [
+    15.2,
+    18.0,
+    38.4
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 32504,
+     "vertexCount": 294,
+     "indexStart": 76710,
+     "indexCount": 786,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 786,
+       "material": 62
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 32798,
+     "vertexCount": 164,
+     "indexStart": 77496,
+     "indexCount": 294,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 294,
+       "material": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ct_statue_chinese_lion",
+   "count": 10,
+   "mins": [
+    -12.4,
+    -16.75,
+    0.0
+   ],
+   "maxs": [
+    12.4,
+    13.48,
+    37.71
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 32962,
+     "vertexCount": 448,
+     "indexStart": 77790,
+     "indexCount": 1968,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1968,
+       "material": 63
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 33410,
+     "vertexCount": 127,
+     "indexStart": 79758,
+     "indexCount": 396,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 396,
+       "material": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ct_street_lamp_on",
+   "count": 25,
+   "mins": [
+    -14.36,
+    -12.44,
+    0.0
+   ],
+   "maxs": [
+    14.36,
+    12.44,
+    213.36
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 33537,
+     "vertexCount": 1467,
+     "indexStart": 80154,
+     "indexCount": 4368,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 4320,
+       "material": 64
+      },
+      {
+       "indexStart": 4320,
+       "indexCount": 48,
+       "material": 65
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 35004,
+     "vertexCount": 288,
+     "indexStart": 84522,
+     "indexCount": 720,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 672,
+       "material": 64
+      },
+      {
+       "indexStart": 672,
+       "indexCount": 48,
+       "material": 65
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "prop_fishmarket_lobster",
+   "count": 26,
+   "mins": [
+    -8.0,
+    -11.96,
+    -0.17
+   ],
+   "maxs": [
+    9.01,
+    12.9,
+    2.75
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 35292,
+     "vertexCount": 110,
+     "indexStart": 85242,
+     "indexCount": 420,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 384,
+       "material": 66
+      },
+      {
+       "indexStart": 384,
+       "indexCount": 36,
+       "material": 67
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 35402,
+     "vertexCount": 25,
+     "indexStart": 85662,
+     "indexCount": 96,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 96,
+       "material": 66
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "prop_fishmarket_bass",
+   "count": 14,
+   "mins": [
+    -5.17,
+    -17.76,
+    -2.39
+   ],
+   "maxs": [
+    5.17,
+    17.76,
+    2.39
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 35427,
+     "vertexCount": 47,
+     "indexStart": 85758,
+     "indexCount": 246,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 246,
+       "material": 66
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 35474,
+     "vertexCount": 12,
+     "indexStart": 86004,
+     "indexCount": 60,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 60,
+       "material": 66
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_plastic_crate9",
+   "count": 17,
+   "mins": [
+    -6.0,
+    -6.0,
+    0.0
+   ],
+   "maxs": [
+    5.99,
+    6.0,
+    10.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 2000.0,
+     "vertexStart": 35486,
+     "vertexCount": 48,
+     "indexStart": 86064,
+     "indexCount": 84,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 84,
+       "material": 68
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_soup_can",
+   "count": 2,
+   "mins": [
+    -2.03,
+    -1.96,
+    -0.0
+   ],
+   "maxs": [
+    2.09,
+    1.96,
+    6.03
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 35534,
+     "vertexCount": 69,
+     "indexStart": 86148,
+     "indexCount": 174,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 174,
+       "material": 69
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000.0,
+     "vertexStart": 35603,
+     "vertexCount": 38,
+     "indexStart": 86322,
+     "indexCount": 78,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 78,
+       "material": 69
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_dumpster_close",
+   "count": 8,
+   "mins": [
+    -29.54,
+    -52.36,
+    0.08
+   ],
+   "maxs": [
+    29.35,
+    52.36,
+    67.43
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 35641,
+     "vertexCount": 1100,
+     "indexStart": 86400,
+     "indexCount": 1974,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1374,
+       "material": 70
+      },
+      {
+       "indexStart": 1374,
+       "indexCount": 600,
+       "material": 71
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 36741,
+     "vertexCount": 162,
+     "indexStart": 88374,
+     "indexCount": 240,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 240,
+       "material": 70
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_grass_short_squareclump",
+   "count": 807,
+   "mins": [
+    -30.8,
+    -31.45,
+    -0.11
+   ],
+   "maxs": [
+    32.1,
+    31.45,
+    25.05
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 2000.0,
+     "vertexStart": 36903,
+     "vertexCount": 30,
+     "indexStart": 88614,
+     "indexCount": 30,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 30,
+       "material": 72
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_bush_big",
+   "count": 61,
+   "mins": [
+    -54.43,
+    -54.34,
+    -4.16
+   ],
+   "maxs": [
+    47.37,
+    42.23,
+    75.43
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 36933,
+     "vertexCount": 528,
+     "indexStart": 88644,
+     "indexCount": 858,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 858,
+       "material": 73
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 2000.0,
+     "vertexStart": 37461,
+     "vertexCount": 24,
+     "indexStart": 89502,
+     "indexCount": 36,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 36,
+       "material": 73
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_concrete_barrier",
+   "count": 5,
+   "mins": [
+    -36.0,
+    -11.28,
+    -0.0
+   ],
+   "maxs": [
+    36.0,
+    11.28,
+    41.08
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 37485,
+     "vertexCount": 222,
+     "indexStart": 89538,
+     "indexCount": 612,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 612,
+       "material": 74
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 37707,
+     "vertexCount": 24,
+     "indexStart": 90150,
+     "indexCount": 36,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 36,
+       "material": 74
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "vehicle_delivery_truck",
+   "count": 2,
+   "mins": [
+    -49.66,
+    -58.52,
+    -0.0
+   ],
+   "maxs": [
+    49.66,
+    172.52,
+    110.11
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 37731,
+     "vertexCount": 6083,
+     "indexStart": 90186,
+     "indexCount": 17964,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 15144,
+       "material": 75
+      },
+      {
+       "indexStart": 15144,
+       "indexCount": 120,
+       "material": 76
+      },
+      {
+       "indexStart": 15264,
+       "indexCount": 2700,
+       "material": 77
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 43814,
+     "vertexCount": 278,
+     "indexStart": 108150,
+     "indexCount": 810,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 294,
+       "material": 75
+      },
+      {
+       "indexStart": 294,
+       "indexCount": 36,
+       "material": 76
+      },
+      {
+       "indexStart": 330,
+       "indexCount": 480,
+       "material": 77
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "icbm_electricpanel1",
+   "count": 1,
+   "mins": [
+    -6.8,
+    -8.53,
+    -11.27
+   ],
+   "maxs": [
+    6.71,
+    -0.04,
+    12.85
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 44092,
+     "vertexCount": 132,
+     "indexStart": 108960,
+     "indexCount": 228,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 228,
+       "material": 25
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "icbm_electricpanel2",
+   "count": 1,
+   "mins": [
+    -6.81,
+    -8.55,
+    -11.24
+   ],
+   "maxs": [
+    6.69,
+    -0.04,
+    12.88
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 44224,
+     "vertexCount": 132,
+     "indexStart": 109188,
+     "indexCount": 228,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 228,
+       "material": 25
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_rebar02",
+   "count": 9,
+   "mins": [
+    -38.05,
+    -27.27,
+    -16.87
+   ],
+   "maxs": [
+    32.61,
+    34.37,
+    2.61
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 20000.0,
+     "vertexStart": 44356,
+     "vertexCount": 286,
+     "indexStart": 109416,
+     "indexCount": 624,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 624,
+       "material": 78
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "icbm_electricpanel4",
+   "count": 3,
+   "mins": [
+    -6.75,
+    -6.79,
+    -11.24
+   ],
+   "maxs": [
+    6.75,
+    -0.04,
+    12.88
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 44642,
+     "vertexCount": 80,
+     "indexStart": 110040,
+     "indexCount": 144,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 144,
+       "material": 25
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_tree_grey_oak_xl_a",
+   "count": 13,
+   "mins": [
+    -234.92,
+    -181.15,
+    -20.7
+   ],
+   "maxs": [
+    187.22,
+    161.86,
+    542.43
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000.0,
+     "vertexStart": 44722,
+     "vertexCount": 4299,
+     "indexStart": 110184,
+     "indexCount": 5724,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 3258,
+       "material": 79
+      },
+      {
+       "indexStart": 3258,
+       "indexCount": 2436,
+       "material": 80
+      },
+      {
+       "indexStart": 5694,
+       "indexCount": 30,
+       "material": 53
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 49021,
+     "vertexCount": 1139,
+     "indexStart": 115908,
+     "indexCount": 1836,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1746,
+       "material": 79
+      },
+      {
+       "indexStart": 1746,
+       "indexCount": 60,
+       "material": 80
+      },
+      {
+       "indexStart": 1806,
+       "indexCount": 30,
+       "material": 53
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ct_sign_pacific_holiday",
+   "count": 1,
+   "mins": [
+    -16.78,
+    -122.4,
+    0.0
+   ],
+   "maxs": [
+    1.45,
+    0.0,
+    145.03
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 800.0,
+     "vertexStart": 50160,
+     "vertexCount": 658,
+     "indexStart": 117744,
+     "indexCount": 1704,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 828,
+       "material": 81
+      },
+      {
+       "indexStart": 828,
+       "indexCount": 876,
+       "material": 82
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 50818,
+     "vertexCount": 338,
+     "indexStart": 119448,
+     "indexCount": 744,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 342,
+       "material": 81
+      },
+      {
+       "indexStart": 342,
+       "indexCount": 402,
+       "material": 82
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ct_sign_atm1",
+   "count": 1,
+   "mins": [
+    6.28,
+    -31.26,
+    -58.71
+   ],
+   "maxs": [
+    36.81,
+    30.88,
+    181.13
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 51156,
+     "vertexCount": 530,
+     "indexStart": 120192,
+     "indexCount": 1212,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 426,
+       "material": 83
+      },
+      {
+       "indexStart": 426,
+       "indexCount": 534,
+       "material": 84
+      },
+      {
+       "indexStart": 960,
+       "indexCount": 252,
+       "material": 85
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_plastic_crate7",
+   "count": 8,
+   "mins": [
+    -6.0,
+    -6.0,
+    0.0
+   ],
+   "maxs": [
+    5.99,
+    6.0,
+    10.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 2000.0,
+     "vertexStart": 51686,
+     "vertexCount": 48,
+     "indexStart": 121404,
+     "indexCount": 84,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 84,
+       "material": 86
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_rubble_chunk01",
+   "count": 6,
+   "mins": [
+    -4.32,
+    -7.53,
+    -1.31
+   ],
+   "maxs": [
+    8.72,
+    5.52,
+    4.58
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1150.0,
+     "vertexStart": 51734,
+     "vertexCount": 46,
+     "indexStart": 121488,
+     "indexCount": 108,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 18,
+       "material": 87
+      },
+      {
+       "indexStart": 18,
+       "indexCount": 90,
+       "material": 88
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ct_panam_facade",
+   "count": 1,
+   "mins": [
+    -37.6,
+    -43.28,
+    0.03
+   ],
+   "maxs": [
+    37.6,
+    43.28,
+    392.63
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 51780,
+     "vertexCount": 46,
+     "indexStart": 121596,
+     "indexCount": 84,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 84,
+       "material": 89
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ct_highrise_facade_a",
+   "count": 2,
+   "mins": [
+    -25.0,
+    -25.0,
+    -25.0
+   ],
+   "maxs": [
+    25.0,
+    25.0,
+    220.44
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 51826,
+     "vertexCount": 8,
+     "indexStart": 121680,
+     "indexCount": 12,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 12,
+       "material": 90
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ct_highrise_facade_b",
+   "count": 2,
+   "mins": [
+    -25.0,
+    -25.0,
+    -25.0
+   ],
+   "maxs": [
+    25.0,
+    25.0,
+    220.44
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 51834,
+     "vertexCount": 8,
+     "indexStart": 121692,
+     "indexCount": 12,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 12,
+       "material": 90
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ct_highrise_facade_c",
+   "count": 3,
+   "mins": [
+    -19.1,
+    -19.1,
+    -19.1
+   ],
+   "maxs": [
+    19.1,
+    19.1,
+    168.46
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 51842,
+     "vertexCount": 8,
+     "indexStart": 121704,
+     "indexCount": 12,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 12,
+       "material": 90
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ct_highrise_facade_2_f",
+   "count": 1,
+   "mins": [
+    -19.81,
+    -26.2,
+    -0.06
+   ],
+   "maxs": [
+    45.95,
+    0.06,
+    142.55
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 51850,
+     "vertexCount": 20,
+     "indexStart": 121716,
+     "indexCount": 30,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 30,
+       "material": 91
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ct_highrise_facade_2_b",
+   "count": 2,
+   "mins": [
+    -37.8,
+    0.0,
+    0.36
+   ],
+   "maxs": [
+    37.8,
+    34.53,
+    85.54
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 51870,
+     "vertexCount": 8,
+     "indexStart": 121746,
+     "indexCount": 12,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 12,
+       "material": 91
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ct_highrise_facade_2_c",
+   "count": 2,
+   "mins": [
+    -30.29,
+    0.0,
+    -0.63
+   ],
+   "maxs": [
+    43.71,
+    28.06,
+    76.41
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 51878,
+     "vertexCount": 8,
+     "indexStart": 121758,
+     "indexCount": 12,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 12,
+       "material": 91
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ct_sign_full_moon",
+   "count": 1,
+   "mins": [
+    -0.22,
+    -0.0,
+    -3.62
+   ],
+   "maxs": [
+    0.22,
+    1.0,
+    3.62
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 51886,
+     "vertexCount": 296,
+     "indexStart": 121770,
+     "indexCount": 804,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 396,
+       "material": 92
+      },
+      {
+       "indexStart": 396,
+       "indexCount": 408,
+       "material": 84
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 52182,
+     "vertexCount": 64,
+     "indexStart": 122574,
+     "indexCount": 108,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 48,
+       "material": 92
+      },
+      {
+       "indexStart": 48,
+       "indexCount": 60,
+       "material": 84
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ct_highrise_facade_2_d",
+   "count": 1,
+   "mins": [
+    -16.83,
+    -17.73,
+    0.11
+   ],
+   "maxs": [
+    33.75,
+    0.01,
+    147.06
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 52246,
+     "vertexCount": 14,
+     "indexStart": 122682,
+     "indexCount": 30,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 30,
+       "material": 91
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ct_highrise_facade_2_e",
+   "count": 1,
+   "mins": [
+    -7.56,
+    -26.75,
+    -0.4
+   ],
+   "maxs": [
+    25.0,
+    0.5,
+    132.79
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 52260,
+     "vertexCount": 8,
+     "indexStart": 122712,
+     "indexCount": 12,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 12,
+       "material": 91
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_washer_01",
+   "count": 14,
+   "mins": [
+    -15.74,
+    -13.02,
+    0.09
+   ],
+   "maxs": [
+    15.74,
+    15.74,
+    48.36
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 52268,
+     "vertexCount": 250,
+     "indexStart": 122724,
+     "indexCount": 522,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 522,
+       "material": 93
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 52518,
+     "vertexCount": 62,
+     "indexStart": 123246,
+     "indexCount": 96,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 96,
+       "material": 93
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ct_dry_machine",
+   "count": 7,
+   "mins": [
+    -25.0,
+    -7.23,
+    0.0
+   ],
+   "maxs": [
+    25.0,
+    37.81,
+    84.78
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 52580,
+     "vertexCount": 228,
+     "indexStart": 123342,
+     "indexCount": 684,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 684,
+       "material": 94
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 52808,
+     "vertexCount": 60,
+     "indexStart": 124026,
+     "indexCount": 150,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 150,
+       "material": 94
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_teddy_bear",
+   "count": 2,
+   "mins": [
+    -5.23,
+    -8.79,
+    -13.14
+   ],
+   "maxs": [
+    5.23,
+    8.79,
+    13.14
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 52868,
+     "vertexCount": 226,
+     "indexStart": 124176,
+     "indexCount": 864,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 864,
+       "material": 95
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1550.0,
+     "vertexStart": 53094,
+     "vertexCount": 108,
+     "indexStart": 125040,
+     "indexCount": 216,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 216,
+       "material": 95
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_studiolight_hanging_on",
+   "count": 1,
+   "mins": [
+    -45.71,
+    -75.61,
+    -62.9
+   ],
+   "maxs": [
+    45.61,
+    20.33,
+    28.1
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 53202,
+     "vertexCount": 1013,
+     "indexStart": 125256,
+     "indexCount": 2724,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2640,
+       "material": 96
+      },
+      {
+       "indexStart": 2640,
+       "indexCount": 6,
+       "material": 97
+      },
+      {
+       "indexStart": 2646,
+       "indexCount": 30,
+       "material": 98
+      },
+      {
+       "indexStart": 2676,
+       "indexCount": 36,
+       "material": 99
+      },
+      {
+       "indexStart": 2712,
+       "indexCount": 12,
+       "material": 100
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 54215,
+     "vertexCount": 238,
+     "indexStart": 127980,
+     "indexCount": 498,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 414,
+       "material": 96
+      },
+      {
+       "indexStart": 414,
+       "indexCount": 6,
+       "material": 97
+      },
+      {
+       "indexStart": 420,
+       "indexCount": 30,
+       "material": 98
+      },
+      {
+       "indexStart": 450,
+       "indexCount": 36,
+       "material": 99
+      },
+      {
+       "indexStart": 486,
+       "indexCount": 12,
+       "material": 100
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "prop_fishmarket_bass_box",
+   "count": 4,
+   "mins": [
+    -12.78,
+    -13.61,
+    0.0
+   ],
+   "maxs": [
+    12.52,
+    12.94,
+    14.74
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 54453,
+     "vertexCount": 335,
+     "indexStart": 128478,
+     "indexCount": 1422,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1326,
+       "material": 66
+      },
+      {
+       "indexStart": 1326,
+       "indexCount": 96,
+       "material": 101
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 54788,
+     "vertexCount": 93,
+     "indexStart": 129900,
+     "indexCount": 222,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 144,
+       "material": 66
+      },
+      {
+       "indexStart": 144,
+       "indexCount": 78,
+       "material": 101
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "prop_fishmarket_salmon_box",
+   "count": 3,
+   "mins": [
+    -19.58,
+    -13.58,
+    0.0
+   ],
+   "maxs": [
+    19.7,
+    12.97,
+    12.36
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 54881,
+     "vertexCount": 287,
+     "indexStart": 130122,
+     "indexCount": 1014,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 882,
+       "material": 66
+      },
+      {
+       "indexStart": 882,
+       "indexCount": 132,
+       "material": 101
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 55168,
+     "vertexCount": 103,
+     "indexStart": 131136,
+     "indexCount": 204,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 126,
+       "material": 66
+      },
+      {
+       "indexStart": 126,
+       "indexCount": 78,
+       "material": 101
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "prop_fishmarket_salmon",
+   "count": 7,
+   "mins": [
+    -4.58,
+    -17.37,
+    -2.39
+   ],
+   "maxs": [
+    6.04,
+    21.27,
+    2.39
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 55271,
+     "vertexCount": 46,
+     "indexStart": 131340,
+     "indexCount": 222,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 222,
+       "material": 66
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 55317,
+     "vertexCount": 12,
+     "indexStart": 131562,
+     "indexCount": 60,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 60,
+       "material": 66
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "prop_fishmarket_lobster_box",
+   "count": 2,
+   "mins": [
+    -19.64,
+    -13.27,
+    0.0
+   ],
+   "maxs": [
+    20.37,
+    13.27,
+    10.35
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 55329,
+     "vertexCount": 533,
+     "indexStart": 131622,
+     "indexCount": 1866,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1608,
+       "material": 66
+      },
+      {
+       "indexStart": 1608,
+       "indexCount": 144,
+       "material": 67
+      },
+      {
+       "indexStart": 1752,
+       "indexCount": 114,
+       "material": 101
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 55862,
+     "vertexCount": 65,
+     "indexStart": 133488,
+     "indexCount": 102,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 24,
+       "material": 66
+      },
+      {
+       "indexStart": 24,
+       "indexCount": 78,
+       "material": 101
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_plastic_crate5",
+   "count": 1,
+   "mins": [
+    -6.0,
+    -8.94,
+    0.02
+   ],
+   "maxs": [
+    6.0,
+    9.0,
+    9.97
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 2000.0,
+     "vertexStart": 55927,
+     "vertexCount": 104,
+     "indexStart": 133590,
+     "indexCount": 180,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 180,
+       "material": 68
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "prop_fishmarket_shrimp_box",
+   "count": 11,
+   "mins": [
+    -12.73,
+    -13.62,
+    0.0
+   ],
+   "maxs": [
+    12.58,
+    12.93,
+    14.95
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 200.0,
+     "vertexStart": 56031,
+     "vertexCount": 119,
+     "indexStart": 133770,
+     "indexCount": 228,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 96,
+       "material": 66
+      },
+      {
+       "indexStart": 96,
+       "indexCount": 132,
+       "material": 101
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 56150,
+     "vertexCount": 53,
+     "indexStart": 133998,
+     "indexCount": 84,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 6,
+       "material": 66
+      },
+      {
+       "indexStart": 6,
+       "indexCount": 78,
+       "material": 101
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "prop_fishmarket_oyster_box",
+   "count": 6,
+   "mins": [
+    -19.59,
+    -13.59,
+    0.0
+   ],
+   "maxs": [
+    19.69,
+    12.96,
+    14.64
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 56203,
+     "vertexCount": 159,
+     "indexStart": 134082,
+     "indexCount": 360,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 216,
+       "material": 66
+      },
+      {
+       "indexStart": 216,
+       "indexCount": 144,
+       "material": 101
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 56362,
+     "vertexCount": 64,
+     "indexStart": 134442,
+     "indexCount": 96,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 36,
+       "material": 66
+      },
+      {
+       "indexStart": 36,
+       "indexCount": 60,
+       "material": 101
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "weapon_saw_rescue",
+   "count": 2,
+   "mins": [
+    -17.7,
+    -3.62,
+    -15.05
+   ],
+   "maxs": [
+    14.11,
+    3.93,
+    1.26
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1500.0,
+     "vertexStart": 56426,
+     "vertexCount": 1098,
+     "indexStart": 134538,
+     "indexCount": 2898,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 318,
+       "material": 102
+      },
+      {
+       "indexStart": 318,
+       "indexCount": 2580,
+       "material": 102
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_rubble_woodplank01",
+   "count": 1,
+   "mins": [
+    -19.73,
+    -4.44,
+    -1.83
+   ],
+   "maxs": [
+    5.02,
+    7.07,
+    4.82
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1150.0,
+     "vertexStart": 57524,
+     "vertexCount": 38,
+     "indexStart": 137436,
+     "indexCount": 72,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 72,
+       "material": 87
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_rubble_chunk02",
+   "count": 2,
+   "mins": [
+    -7.44,
+    -3.37,
+    -2.67
+   ],
+   "maxs": [
+    6.47,
+    11.12,
+    4.72
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1150.0,
+     "vertexStart": 57562,
+     "vertexCount": 47,
+     "indexStart": 137508,
+     "indexCount": 126,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 18,
+       "material": 87
+      },
+      {
+       "indexStart": 18,
+       "indexCount": 108,
+       "material": 88
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_rubble_notebook01",
+   "count": 2,
+   "mins": [
+    -11.79,
+    -8.3,
+    -1.93
+   ],
+   "maxs": [
+    4.0,
+    8.25,
+    5.49
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000.0,
+     "vertexStart": 57609,
+     "vertexCount": 36,
+     "indexStart": 137634,
+     "indexCount": 60,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 60,
+       "material": 87
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "stats": {
+  "instances": 5092,
+  "models": 138,
+  "modelsWithGeometry": 138,
+  "instancesWithGeometry": 5092,
+  "fallbackModels": {},
+  "vertices": 57645,
+  "indices": 137694,
+  "lod0InstanceTriangles": 658356,
+  "lowInstanceTriangles": 258378,
+  "materials": 103,
+  "materialsTextured": 102,
+  "lod0SurfacesWithoutMaterial": 0,
+  "materialHandles": {
+   "inline": 170,
+   "resolved": 858,
+   "unresolved": 92,
+   "null": 0,
+   "chains": 29,
+   "rules": {
+    "measured": 19
+   },
+   "shiftedModels": 8,
+   "windowedChains": 3,
+   "known": {
+    "17036": "mc/mtl_ch_couch01",
+    "36576": "mc/mtl_corkboards",
+    "39376": "mc/mtl_dvd_shelf_wood",
+    "47796": "mc/mtl_dvds",
+    "67524": "mc/mtl_lightfluo",
+    "67528": "mc/mtl_lightfluohang_on",
+    "80088": "mc/mtl_restaurant_chair",
+    "134344": "mc/mtl_bunker_railing_01",
+    "162660": "mc/mtl_com_stove",
+    "172128": "mc/mtl_restaurant_sink",
+    "217304": "mc/mtl_chinese_lantern_red",
+    "251428": "mc/mtl_furniture_piano01",
+    "450916": "mc/mtl_television1_d",
+    "450920": "mc/mtl_television1_d_nomarks",
+    "457336": "mc/mtl_office_shelf",
+    "461632": "mc/mtl_books",
+    "468760": "mc/mtl_trashcan_metal",
+    "477032": "mc/mtl_cafe_table2",
+    "477036": "mc/mtl_cafe_table2_base",
+    "484492": "mc/mtl_refrigerator2",
+    "492108": "mc/mtl_transistor_radio",
+    "564552": "mc/mtl_tripodstudiolight_off",
+    "564556": "mc/mtl_tripodstudiolight_on",
+    "564560": "mc/gfx_floodlight_beam_godray75",
+    "564564": "mc/gfx_spotlight_lenseflare_flare_a",
+    "564568": "mc/gfx_floodlight_beam_godray85",
+    "610580": "mc/mtl_ch_washer_01",
+    "613420": "mc/mtl_hanging_clothes",
+    "759888": "mc/mtl_hanging_clothes_aqua",
+    "769020": "mc/mtl_drymachine",
+    "778676": "mc/mtl_hanging_clothes_palepink",
+    "796188": ",mc/lambert1",
+    "796192": "mc/mtl_wallfan1",
+    "811436": "mc/mtl_hanging_clothes_terracotta",
+    "823600": "mc/mtl_woodcage",
+    "844012": "mc/mtl_ex_airconditioner",
+    "855928": "mc/mtl_restaurantstainlessteelshelf",
+    "885104": "mc/mtl_rebar01",
+    "888700": "mc/mtl_weapon_saw_rescue",
+    "893688": "mc/mtl_utility_light_on",
+    "893692": "mc/mtl_utility_light_off",
+    "912724": "mc/mtl_scaffold_red",
+    "921064": "mc/mtl_electric_box2",
+    "923532": "mc/mtl_air_duct1",
+    "929864": "mc/mtl_air_duct2",
+    "975780": "mc/mtl_china_vase",
+    "991148": "mc/mtl_outdoor_switch",
+    "991932": "mc/mtl_ac_big",
+    "994128": "mc/mtl_northafrica_tables",
+    "1004352": "mc/mtl_statue_chinese_lion_gold",
+    "1036812": "mc/mtl_parasol_open_blue",
+    "1041236": "mc/mtl_statue_chinese_lion_inside",
+    "1073896": "mc/mtl_parasol_closed_green",
+    "1084012": "mc/mtl_telegraph_pole",
+    "1133244": "mc/mtl_grey_oak_canopy",
+    "1133248": "mc/mtl_grey_oak",
+    "1133252": "mc/mtl_tree_shadow_caster",
+    "1239112": "mc/mtl_river_birch",
+    "1239116": "mc/mtl_river_birch_canopy",
+    "1356108": "mc/mtl_citrus_box",
+    "1358136": "mc/mtl_wood_crate",
+    "1400204": "mc/mtl_plastic_crates",
+    "1405516": "mc/mtl_tomato",
+    "1433428": "mc/mtl_plasticcrate_yellow",
+    "1438336": "mc/mtl_plasticcrate_brown",
+    "1442328": "mc/mtl_trash",
+    "1454220": "mc/mtl_banana_box",
+    "1466108": "mc/ct_sign_side01",
+    "1466112": "mc/mtl_sign_pacific_holiday",
+    "1467720": "mc/mtl_statue_chineselionstonebase",
+    "1480892": "mc/mtl_statue_chinese_lion",
+    "1514240": "mc/mtl_sign_atm",
+    "1514244": "mc/mtl_sign_side01",
+    "1514248": "mc/mtl_sign_atm2",
+    "1543280": "mc/mtl_street_lamp_off",
+    "1543284": "mc/mtl_street_lamp_on",
+    "1616784": "mc/mtl_fishmarket_props",
+    "1616788": "mc/mtl_fishmarket_boxes",
+    "1618708": "mc/mtl_fishmarket_lobster",
+    "1626944": "mc/mtl_plasticcrate_green",
+    "1634144": "mc/mtl_plasticcrate_blue",
+    "1636236": "mc/mtl_soup_can",
+    "1642060": "mc/mtl_dumpster",
+    "1642064": "mc/mtl_dumpster_lid",
+    "1659180": "mc/mtl_newgrassgreen",
+    "1661136": "mc/mtl_brush_toujanebigbushy",
+    "1661564": "mc/ch_rubble01",
+    "1663496": "mc/me_concrete_dest1",
+    "1669616": "mc/mtl_panam_facade",
+    "1669956": "mc/mtl_highrise_facade",
+    "1670796": "mc/mtl_highrise_facade_b",
+    "1673124": "mc/mtl_sign_full_moon",
+    "1687824": "mc/mtl_barrier",
+    "1728536": "mc/mtl_delivery_truck_body",
+    "1728540": "mc/mtl_delivery_truck_glass",
+    "1728544": "mc/mtl_delivery_truck_tires",
+    "2019992": "mc/mtl_prop_bear",
+    "2035424": "mc/mtl_com_cash_register",
+    "2039232": "mc/mtl_wall_clock",
+    "2042604": "mc/mtl_copperpan_metalpots",
+    "2053048": "mc/mtl_milk_carton",
+    "2055076": "mc/mtl_plasticbottles",
+    "2060776": "mc/mtl_tv_testpattern",
+    "2105044": ",mc/com_glass_shattered_outside",
+    "2130692": "mc/mtl_ct_pictureframes",
+    "2130696": "mc/mtl_ct_pictures",
+    "2140392": "mc/mtl_computer_case",
+    "2144600": "mc/mtl_computer2",
+    "2153744": "mc/mtl_dining_plates",
+    "2162108": "mc/mtl_copypaper_box",
+    "2191256": "mc/mtl_barrel_damaged",
+    "2225344": "mc/mtl_mango_redorange",
+    "2230032": "mc/mtl_mango_green",
+    "2234856": "mc/mtl_orange",
+    "2239612": "mc/mtl_watermelon",
+    "2254128": ",mc/mtl_fx_watermelonchunks",
+    "2285132": "mc/me_cinderblock_wall2",
+    "2291140": "mc/mtl_paint_can",
+    "2300804": "mc/mtl_tire2",
+    "2309940": "mc/mtl_barrel_tan_rust",
+    "2341996": "mc/mtl_plastic_case_bomb_d",
+    "2342000": "mc/mtl_styroform_d",
+    "2342004": "mc/mtl_pallet",
+    "2405420": "mc/mtl_styroform",
+    "2405424": "mc/mtl_plastic_case_bomb",
+    "2405436": "mc/mtl_weapon_stinger",
+    "2471248": "mc/mtl_plastic_case_big",
+    "2534388": "mc/mtl_laptop_envu",
+    "2534392": "mc/mtl_laptop_envu_screen",
+    "2543696": "mc/mtl_cellphone",
+    "2584968": "mc/mtl_80s_econ_silv",
+    "2585016": "mc/mtl_80s_econ_glass_outside",
+    "2585040": "mc/mtl_80s_econdestroy_green",
+    "2585080": "mc/com_glass_shattered_inside",
+    "2585104": "mc/mtl_80s_econ_glass_inside",
+    "2585128": "mc/mtl_engine",
+    "2585136": "mc/mtl_80s_econ_green_rubber",
+    "2816488": "mc/mtl_80s_econ_brn",
+    "2816544": "mc/mtl_80s_econ_glass",
+    "41543892": "mc/mtl_sas_ct_bodies_sp",
+    "41543900": "mc/mtl_sas_ct_head_sp",
+    "41543908": "mc/mtl_sas_ct_goggle_sp",
+    "41543912": "mc/mtl_eye_highlight",
+    "41543932": "mc/mtl_sas_ct_lod_sp",
+    "41574136": "mc/mtl_black_kit_hands",
+    "41574140": "mc/mtl_black_kit_sleeves",
+    "41903484": "mc/mtl_opforce_body_sp",
+    "41903500": "mc/mtl_opforce_lod_sp",
+    "41927828": "mc/mtl_opforce_justin_beanie_sp",
+    "41927836": "mc/mtl_opforce_hands_sp",
+    "41954168": "mc/mtl_op_force_gloves",
+    "41954172": "mc/mtl_op_force_sleeves",
+    "42026692": "mc/mtl_opforce_gear_sp",
+    "42051612": "mc/mtl_opforce_3hole_ski_mask_sp",
+    "42147632": "mc/mtl_opforce_fullwrap_sp",
+    "42243964": "mc/mtl_opforce_gas_mask_lens_sp",
+    "42243976": "mc/mtl_opforce_gas_mask_sp"
+   }
+  },
+  "materialsShared": 4
+ },
+ "note": "Activision's models, extracted from the game files (see maps3d/NOTICE.md). Models without lods are drawn as boxes of their bounds.",
+ "collision": {
+  "file": "props_coll.bin",
+  "triangles": 26930,
+  "models": [
+   [
+    0,
+    386
+   ],
+   [
+    386,
+    32
+   ],
+   [
+    418,
+    162
+   ],
+   [
+    580,
+    44
+   ],
+   [
+    624,
+    44
+   ],
+   [
+    668,
+    44
+   ],
+   [
+    712,
+    44
+   ],
+   [
+    756,
+    44
+   ],
+   [
+    800,
+    44
+   ],
+   [
+    844,
+    44
+   ],
+   [
+    888,
+    60
+   ],
+   [
+    948,
+    1110
+   ],
+   [
+    2058,
+    160
+   ],
+   [
+    2218,
+    176
+   ],
+   [
+    2394,
+    176
+   ],
+   [
+    2570,
+    30
+   ],
+   [
+    2600,
+    736
+   ],
+   [
+    3336,
+    696
+   ],
+   [
+    4032,
+    128
+   ],
+   [
+    4160,
+    103
+   ],
+   [
+    4263,
+    76
+   ],
+   [
+    4339,
+    48
+   ],
+   [
+    4387,
+    36
+   ],
+   [
+    4423,
+    12
+   ],
+   [
+    4435,
+    56
+   ],
+   [
+    4491,
+    56
+   ],
+   [
+    4547,
+    94
+   ],
+   [
+    4641,
+    102
+   ],
+   [
+    4743,
+    381
+   ],
+   [
+    5124,
+    16
+   ],
+   [
+    5140,
+    56
+   ],
+   [
+    5196,
+    88
+   ],
+   [
+    5284,
+    152
+   ],
+   [
+    5436,
+    18
+   ],
+   [
+    5454,
+    22
+   ],
+   [
+    5476,
+    36
+   ],
+   [
+    5512,
+    156
+   ],
+   [
+    5668,
+    200
+   ],
+   [
+    5868,
+    148
+   ],
+   [
+    6016,
+    156
+   ],
+   [
+    6172,
+    150
+   ],
+   null,
+   [
+    6322,
+    148
+   ],
+   [
+    6470,
+    150
+   ],
+   [
+    6620,
+    200
+   ],
+   [
+    6820,
+    384
+   ],
+   [
+    7204,
+    204
+   ],
+   [
+    7408,
+    584
+   ],
+   [
+    7992,
+    358
+   ],
+   [
+    8350,
+    144
+   ],
+   [
+    8494,
+    38
+   ],
+   [
+    8532,
+    40
+   ],
+   [
+    8572,
+    32
+   ],
+   [
+    8604,
+    32
+   ],
+   [
+    8636,
+    86
+   ],
+   [
+    8722,
+    192
+   ],
+   [
+    8914,
+    200
+   ],
+   [
+    9114,
+    16
+   ],
+   [
+    9130,
+    24
+   ],
+   [
+    9154,
+    332
+   ],
+   [
+    9486,
+    302
+   ],
+   null,
+   [
+    9788,
+    10
+   ],
+   [
+    9798,
+    122
+   ],
+   [
+    9920,
+    656
+   ],
+   [
+    10576,
+    80
+   ],
+   [
+    10656,
+    656
+   ],
+   [
+    11312,
+    102
+   ],
+   [
+    11414,
+    105
+   ],
+   [
+    11519,
+    924
+   ],
+   [
+    12443,
+    384
+   ],
+   [
+    12827,
+    12
+   ],
+   [
+    12839,
+    216
+   ],
+   [
+    13055,
+    76
+   ],
+   [
+    13131,
+    76
+   ],
+   [
+    13207,
+    28
+   ],
+   [
+    13235,
+    12
+   ],
+   [
+    13247,
+    252
+   ],
+   [
+    13499,
+    36
+   ],
+   [
+    13535,
+    26
+   ],
+   [
+    13561,
+    12
+   ],
+   [
+    13573,
+    60
+   ],
+   [
+    13633,
+    572
+   ],
+   [
+    14205,
+    60
+   ],
+   [
+    14265,
+    28
+   ],
+   [
+    14293,
+    28
+   ],
+   [
+    14321,
+    160
+   ],
+   [
+    14481,
+    50
+   ],
+   [
+    14531,
+    12
+   ],
+   [
+    14543,
+    12
+   ],
+   [
+    14555,
+    60
+   ],
+   [
+    14615,
+    76
+   ],
+   [
+    14691,
+    262
+   ],
+   [
+    14953,
+    656
+   ],
+   [
+    15609,
+    1456
+   ],
+   null,
+   null,
+   [
+    17065,
+    28
+   ],
+   [
+    17093,
+    26
+   ],
+   [
+    17119,
+    338
+   ],
+   null,
+   null,
+   [
+    17457,
+    204
+   ],
+   [
+    17661,
+    5987
+   ],
+   [
+    23648,
+    76
+   ],
+   [
+    23724,
+    76
+   ],
+   null,
+   [
+    23800,
+    48
+   ],
+   [
+    23848,
+    811
+   ],
+   null,
+   [
+    24659,
+    404
+   ],
+   [
+    25063,
+    28
+   ],
+   [
+    25091,
+    34
+   ],
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   [
+    25125,
+    268
+   ],
+   null,
+   null,
+   [
+    25393,
+    32
+   ],
+   [
+    25425,
+    191
+   ],
+   [
+    25616,
+    288
+   ],
+   [
+    25904,
+    882
+   ],
+   null,
+   null,
+   null,
+   null,
+   [
+    26786,
+    60
+   ],
+   null,
+   null,
+   null,
+   [
+    26846,
+    24
+   ],
+   [
+    26870,
+    40
+   ],
+   [
+    26910,
+    20
+   ]
+  ],
+  "layout": "float32 x 9 per triangle (model space), then uint8 surface type per triangle",
+  "note": "the models' collision surfaces (XModelCollSurf_s), solid and glass contents"
+ }
+}

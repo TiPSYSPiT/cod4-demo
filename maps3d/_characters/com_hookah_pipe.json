@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_hookah_pipe",
+ "kind": "script",
+ "faction": null,
+ "file": "com_hookah_pipe.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 11544
+  },
+  "normal": {
+   "offset": 11544,
+   "length": 3848
+  },
+  "uv": {
+   "offset": 15392,
+   "length": 7696
+  },
+  "skinIndex": {
+   "offset": 23088,
+   "length": 3848
+  },
+  "skinWeight": {
+   "offset": 26936,
+   "length": 3848
+  },
+  "index": {
+   "offset": 30784,
+   "length": 8148
+  },
+  "color": {
+   "offset": 38932,
+   "length": 3848
+  }
+ },
+ "vertexCount": 962,
+ "triangleCount": 1358,
+ "bones": [
+  {
+   "name": "hookah_pipe_lod0",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 4074,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_hookah_pipe",
+   "texture": "_textures/hookah_pipe_col.webp",
+   "textureAlpha": false,
+   "color": "#4f483b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/hookah_pipe_nml.normal.webp",
+   "specularMap": "_textures/hookah_pipe_spc-rgb_hookah_p_290400da.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -3.46,
+   -7.51,
+   -0.0
+  ],
+  "maxs": [
+   5.78,
+   3.46,
+   23.2
+  ]
+ }
+}

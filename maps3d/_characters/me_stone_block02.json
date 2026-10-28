@@ -1,0 +1,94 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "me_stone_block02",
+ "kind": "script",
+ "faction": null,
+ "file": "me_stone_block02.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 516
+  },
+  "normal": {
+   "offset": 516,
+   "length": 172
+  },
+  "uv": {
+   "offset": 688,
+   "length": 344
+  },
+  "skinIndex": {
+   "offset": 1032,
+   "length": 172
+  },
+  "skinWeight": {
+   "offset": 1204,
+   "length": 172
+  },
+  "index": {
+   "offset": 1376,
+   "length": 192
+  },
+  "color": {
+   "offset": 1568,
+   "length": 172
+  }
+ },
+ "vertexCount": 43,
+ "triangleCount": 32,
+ "bones": [
+  {
+   "name": "pcube1",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 96,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_stone_block01",
+   "texture": "_textures/stone_rubble01_col.webp",
+   "textureAlpha": false,
+   "color": "#9d8f80",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/stone_rubble01_nml.normal.webp",
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -6.0,
+   -9.0,
+   -0.0
+  ],
+  "maxs": [
+   6.0,
+   5.68,
+   12.0
+  ]
+ }
+}

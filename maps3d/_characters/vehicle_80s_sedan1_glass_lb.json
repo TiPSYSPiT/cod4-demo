@@ -1,0 +1,128 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "vehicle_80s_sedan1_glass_lb",
+ "kind": "script",
+ "faction": null,
+ "file": "vehicle_80s_sedan1_glass_lb.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 144
+  },
+  "normal": {
+   "offset": 144,
+   "length": 48
+  },
+  "uv": {
+   "offset": 192,
+   "length": 96
+  },
+  "skinIndex": {
+   "offset": 288,
+   "length": 48
+  },
+  "skinWeight": {
+   "offset": 336,
+   "length": 48
+  },
+  "index": {
+   "offset": 384,
+   "length": 48
+  },
+  "color": {
+   "offset": 432,
+   "length": 48
+  }
+ },
+ "vertexCount": 12,
+ "triangleCount": 8,
+ "bones": [
+  {
+   "name": "tag_glass_left_back",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 12,
+   "material": 0
+  },
+  {
+   "indexStart": 12,
+   "indexCount": 12,
+   "material": 1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_80s_econ_glass_outside",
+   "texture": "_textures/80s_econ_glass_col.webp",
+   "textureAlpha": true,
+   "color": "#515856",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "specularMap": "_textures/80s_econ_glass_spc-rgb_80s_e_29444396.specular.webp",
+   "envMapParms": [
+    1.4,
+    4.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_80s_econ_glass_inside",
+   "texture": "_textures/80s_econ_glass_col.webp",
+   "textureAlpha": true,
+   "color": "#515856",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "specularMap": "_textures/80s_econ_glass_spc-rgb_80s_e_29444396.specular.webp",
+   "envMapParms": [
+    1.4,
+    4.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -30.05,
+   -6.71,
+   0.0
+  ],
+  "maxs": [
+   0.2,
+   0.0,
+   17.73
+  ]
+ }
+}

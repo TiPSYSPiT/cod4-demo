@@ -1,0 +1,165 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "weapon_m4m203_mp",
+ "kind": "weapon",
+ "faction": null,
+ "file": "weapon_m4m203_mp.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 14256
+  },
+  "normal": {
+   "offset": 14256,
+   "length": 4752
+  },
+  "uv": {
+   "offset": 19008,
+   "length": 9504
+  },
+  "skinIndex": {
+   "offset": 28512,
+   "length": 4752
+  },
+  "skinWeight": {
+   "offset": 33264,
+   "length": 4752
+  },
+  "index": {
+   "offset": 38016,
+   "length": 4500
+  },
+  "color": {
+   "offset": 42516,
+   "length": 4752
+  }
+ },
+ "vertexCount": 1188,
+ "triangleCount": 750,
+ "bones": [
+  {
+   "name": "tag_weapon",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 0,
+   "pos": [
+    -5.8273,
+    -0.4809,
+    2.2237
+   ],
+   "quat": [
+    -0.624039,
+    0.332497,
+    -0.624039,
+    0.332559
+   ]
+  },
+  {
+   "name": "tag_clip",
+   "parent": 0,
+   "pos": [
+    -5.4327,
+    -0.01,
+    -3.0665
+   ],
+   "quat": [
+    0.0,
+    -0.205328,
+    0.0,
+    0.978693
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    13.4346,
+    0.0,
+    1.4904
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_laser",
+   "parent": 0,
+   "pos": [
+    4.4651,
+    1.2599,
+    0.4776
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 264,
+   "material": 0
+  },
+  {
+   "indexStart": 264,
+   "indexCount": 1986,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_m4_m16",
+   "texture": "_textures/weapon_m4_col.webp",
+   "textureAlpha": false,
+   "color": "#2a2c2d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_m4_spc-r-17g-17b-17_w_aca95990.specular.webp",
+   "envMapParms": [
+    2.0,
+    4.0,
+    0.8,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -22.52,
+   -1.26,
+   -7.67
+  ],
+  "maxs": [
+   13.43,
+   0.98,
+   4.33
+  ]
+ }
+}

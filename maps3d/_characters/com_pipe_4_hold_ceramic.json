@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_pipe_4_hold_ceramic",
+ "kind": "script",
+ "faction": null,
+ "file": "com_pipe_4_hold_ceramic.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 1872
+  },
+  "normal": {
+   "offset": 1872,
+   "length": 624
+  },
+  "uv": {
+   "offset": 2496,
+   "length": 1248
+  },
+  "skinIndex": {
+   "offset": 3744,
+   "length": 624
+  },
+  "skinWeight": {
+   "offset": 4368,
+   "length": 624
+  },
+  "index": {
+   "offset": 4992,
+   "length": 624
+  },
+  "color": {
+   "offset": 5616,
+   "length": 624
+  }
+ },
+ "vertexCount": 156,
+ "triangleCount": 104,
+ "bones": [
+  {
+   "name": "tag_origin",
+   "parent": -1,
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "quat": [
+    0,
+    0,
+    0,
+    1
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 312,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_pipes_ceramic",
+   "texture": "_textures/metal_pipe_ceramic_col.webp",
+   "textureAlpha": false,
+   "color": "#86817f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/metal_pipe_nml.normal.webp",
+   "specularMap": "_textures/metal_pipe_spc-rgb_metal_pip_5c4a9049.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -0.65,
+   -4.37,
+   -6.18
+  ],
+  "maxs": [
+   0.65,
+   4.37,
+   64.0
+  ]
+ }
+}

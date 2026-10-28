@@ -1,0 +1,111 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "weapon_usp",
+ "kind": "weapon",
+ "faction": null,
+ "file": "weapon_usp.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 11964
+  },
+  "normal": {
+   "offset": 11964,
+   "length": 3988
+  },
+  "uv": {
+   "offset": 15952,
+   "length": 7976
+  },
+  "skinIndex": {
+   "offset": 23928,
+   "length": 3988
+  },
+  "skinWeight": {
+   "offset": 27916,
+   "length": 3988
+  },
+  "index": {
+   "offset": 31904,
+   "length": 3996
+  },
+  "color": {
+   "offset": 35900,
+   "length": 3988
+  }
+ },
+ "vertexCount": 997,
+ "triangleCount": 666,
+ "bones": [
+  {
+   "name": "tag_weapon",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 0,
+   "pos": [
+    -8.1432,
+    -0.0273,
+    0.734
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    -0.707107,
+    0.707107
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    -4.4706,
+    0.0,
+    0.2959
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 1464,
+   "material": -1
+  },
+  {
+   "indexStart": 1464,
+   "indexCount": 534,
+   "material": -1
+  }
+ ],
+ "materials": [],
+ "bounds": {
+  "mins": [
+   -12.22,
+   -0.51,
+   -4.52
+  ],
+  "maxs": [
+   -4.32,
+   0.74,
+   1.01
+  ]
+ }
+}

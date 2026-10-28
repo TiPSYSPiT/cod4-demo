@@ -1,0 +1,100 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "me_pictureframesbrushmetal_3",
+ "kind": "script",
+ "faction": null,
+ "file": "me_pictureframesbrushmetal_3.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 576
+  },
+  "normal": {
+   "offset": 576,
+   "length": 192
+  },
+  "uv": {
+   "offset": 768,
+   "length": 384
+  },
+  "skinIndex": {
+   "offset": 1152,
+   "length": 192
+  },
+  "skinWeight": {
+   "offset": 1344,
+   "length": 192
+  },
+  "index": {
+   "offset": 1536,
+   "length": 168
+  },
+  "color": {
+   "offset": 1704,
+   "length": 192
+  }
+ },
+ "vertexCount": 48,
+ "triangleCount": 28,
+ "bones": [
+  {
+   "name": "pictureframebrushmetal_3_lod0",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 84,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_pictureframesbrushmetal",
+   "texture": "_textures/pictureframesbrushmetal_col.webp",
+   "textureAlpha": false,
+   "color": "#898c8b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/pictureframesbrushmetal_spc-_26f94111.specular.webp",
+   "envMapParms": [
+    1.0,
+    4.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -11.0,
+   -1.0,
+   -11.0
+  ],
+  "maxs": [
+   11.0,
+   0.0,
+   11.0
+  ]
+ }
+}

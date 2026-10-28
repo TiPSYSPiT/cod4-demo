@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_wall_clock",
+ "kind": "script",
+ "faction": null,
+ "file": "com_wall_clock.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 1692
+  },
+  "normal": {
+   "offset": 1692,
+   "length": 564
+  },
+  "uv": {
+   "offset": 2256,
+   "length": 1128
+  },
+  "skinIndex": {
+   "offset": 3384,
+   "length": 564
+  },
+  "skinWeight": {
+   "offset": 3948,
+   "length": 564
+  },
+  "index": {
+   "offset": 4512,
+   "length": 1188
+  },
+  "color": {
+   "offset": 5700,
+   "length": 564
+  }
+ },
+ "vertexCount": 141,
+ "triangleCount": 198,
+ "bones": [
+  {
+   "name": "wall_clock_lod0",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 594,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_wall_clock",
+   "texture": "_textures/wall_clock_col.webp",
+   "textureAlpha": false,
+   "color": "#b7b6a7",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/wall_clock_nml.normal.webp",
+   "specularMap": "_textures/wall_clock_spc-rgb_wall_cloc_b44fd8cd.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -7.47,
+   -7.47,
+   -0.54
+  ],
+  "maxs": [
+   7.47,
+   7.47,
+   0.54
+  ]
+ }
+}

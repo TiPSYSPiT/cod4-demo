@@ -1,0 +1,159 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_bomb_objective_d",
+ "kind": "script",
+ "faction": null,
+ "file": "com_bomb_objective_d.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 66816
+  },
+  "normal": {
+   "offset": 66816,
+   "length": 22272
+  },
+  "uv": {
+   "offset": 89088,
+   "length": 44544
+  },
+  "skinIndex": {
+   "offset": 133632,
+   "length": 22272
+  },
+  "skinWeight": {
+   "offset": 155904,
+   "length": 22272
+  },
+  "index": {
+   "offset": 178176,
+   "length": 22548
+  },
+  "color": {
+   "offset": 200724,
+   "length": 22272
+  }
+ },
+ "vertexCount": 5568,
+ "triangleCount": 3758,
+ "bones": [
+  {
+   "name": "",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 9096,
+   "material": 0
+  },
+  {
+   "indexStart": 9096,
+   "indexCount": 1308,
+   "material": 1
+  },
+  {
+   "indexStart": 10404,
+   "indexCount": 870,
+   "material": 2
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_plastic_case_bomb_d",
+   "texture": "_textures/plastic_case_bomb_d_col.webp",
+   "textureAlpha": false,
+   "color": "#353830",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/plastic_case_bomb_d_nml.normal.webp",
+   "specularMap": "_textures/plastic_case_bomb_spc-rgb_pl_0e93e4ab.specular.webp",
+   "envMapParms": [
+    0.4,
+    3.2,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_styroform_d",
+   "texture": "_textures/case_styroform_d_col.webp",
+   "textureAlpha": false,
+   "color": "#2e2f34",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/case_styroform_d_nml.normal.webp",
+   "specularMap": "_textures/case_styroform_d_spc-r-61g-6_2ff135b5.specular.webp",
+   "envMapParms": [
+    0.2,
+    2.0,
+    1.9,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_pallet",
+   "texture": "_textures/pallet_col.webp",
+   "textureAlpha": false,
+   "color": "#5d5142",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/pallet_nml.normal.webp",
+   "specularMap": "_textures/pallet_spc-rgb_pallet_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -35.95,
+   -48.2,
+   -3.02
+  ],
+  "maxs": [
+   47.07,
+   55.01,
+   37.93
+  ]
+ }
+}

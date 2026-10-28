@@ -1,0 +1,114 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_rowboat_3_v2",
+ "kind": "script",
+ "faction": null,
+ "file": "com_rowboat_3_v2.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 90228
+  },
+  "normal": {
+   "offset": 90228,
+   "length": 30076
+  },
+  "uv": {
+   "offset": 120304,
+   "length": 60152
+  },
+  "skinIndex": {
+   "offset": 180456,
+   "length": 30076
+  },
+  "skinWeight": {
+   "offset": 210532,
+   "length": 30076
+  },
+  "index": {
+   "offset": 240608,
+   "length": 18024
+  },
+  "color": {
+   "offset": 258632,
+   "length": 30076
+  }
+ },
+ "vertexCount": 7519,
+ "triangleCount": 3004,
+ "bones": [
+  {
+   "name": "tag_origin",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 8532,
+   "material": 0
+  },
+  {
+   "indexStart": 8532,
+   "indexCount": 480,
+   "material": 1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_com_rowboat_2",
+   "texture": "_textures/mtl_com_rowboat_2.webp",
+   "textureAlpha": false,
+   "color": "#674228",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_com_rowboat_1",
+   "texture": "_textures/mtl_com_rowboat_1.webp",
+   "textureAlpha": false,
+   "color": "#665645",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -113.18,
+   -96.98,
+   -5.69
+  ],
+  "maxs": [
+   112.52,
+   103.07,
+   44.66
+  ]
+ }
+}

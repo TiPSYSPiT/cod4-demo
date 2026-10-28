@@ -1,0 +1,150 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "weapon_m16_mp",
+ "kind": "weapon",
+ "faction": null,
+ "file": "weapon_m16_mp.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 12324
+  },
+  "normal": {
+   "offset": 12324,
+   "length": 4108
+  },
+  "uv": {
+   "offset": 16432,
+   "length": 8216
+  },
+  "skinIndex": {
+   "offset": 24648,
+   "length": 4108
+  },
+  "skinWeight": {
+   "offset": 28756,
+   "length": 4108
+  },
+  "index": {
+   "offset": 32864,
+   "length": 3864
+  },
+  "color": {
+   "offset": 36728,
+   "length": 4108
+  }
+ },
+ "vertexCount": 1027,
+ "triangleCount": 644,
+ "bones": [
+  {
+   "name": "tag_weapon",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 0,
+   "pos": [
+    -5.5946,
+    -0.7866,
+    0.9946
+   ],
+   "quat": [
+    -0.624039,
+    0.332497,
+    -0.624039,
+    0.332559
+   ]
+  },
+  {
+   "name": "tag_clip",
+   "parent": 0,
+   "pos": [
+    -5.4327,
+    -0.01,
+    -3.2194
+   ],
+   "quat": [
+    0.0,
+    -0.205328,
+    0.0,
+    0.978693
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    16.4616,
+    0.0,
+    0.1489
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 192,
+   "material": 0
+  },
+  {
+   "indexStart": 192,
+   "indexCount": 1740,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_m4_m16",
+   "texture": "_textures/weapon_m4_col.webp",
+   "textureAlpha": false,
+   "color": "#2a2c2d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_m4_spc-r-17g-17b-17_w_aca95990.specular.webp",
+   "envMapParms": [
+    2.0,
+    4.0,
+    0.8,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -22.71,
+   -1.15,
+   -7.67
+  ],
+  "maxs": [
+   16.46,
+   1.0,
+   3.02
+  ]
+ }
+}

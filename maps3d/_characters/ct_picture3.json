@@ -1,0 +1,129 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "ct_picture3",
+ "kind": "script",
+ "faction": null,
+ "file": "ct_picture3.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 864
+  },
+  "normal": {
+   "offset": 864,
+   "length": 288
+  },
+  "uv": {
+   "offset": 1152,
+   "length": 576
+  },
+  "skinIndex": {
+   "offset": 1728,
+   "length": 288
+  },
+  "skinWeight": {
+   "offset": 2016,
+   "length": 288
+  },
+  "index": {
+   "offset": 2304,
+   "length": 216
+  },
+  "color": {
+   "offset": 2520,
+   "length": 288
+  }
+ },
+ "vertexCount": 72,
+ "triangleCount": 36,
+ "bones": [
+  {
+   "name": "",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 96,
+   "material": 0
+  },
+  {
+   "indexStart": 96,
+   "indexCount": 12,
+   "material": 1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_ct_pictureframes",
+   "texture": "_textures/chinese_pictureframes.webp",
+   "textureAlpha": false,
+   "color": "#927b5b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/chinese_pictureframes_bump.normal.webp",
+   "specularMap": "_textures/chinese_pictureframes_spec-r_a371169a.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_ct_pictures",
+   "texture": "_textures/chinese_paintings3.webp",
+   "textureAlpha": false,
+   "color": "#bfb19e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/me_paintings3_spc-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    3.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -14.31,
+   -1.74,
+   -20.28
+  ],
+  "maxs": [
+   14.13,
+   0.07,
+   1.04
+  ]
+ }
+}

@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "vehicle_80s_wagon1_green_light_lb_dam",
+ "kind": "script",
+ "faction": null,
+ "file": "vehicle_80s_wagon1_green_light_lb_dam.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 288
+  },
+  "normal": {
+   "offset": 288,
+   "length": 96
+  },
+  "uv": {
+   "offset": 384,
+   "length": 192
+  },
+  "skinIndex": {
+   "offset": 576,
+   "length": 96
+  },
+  "skinWeight": {
+   "offset": 672,
+   "length": 96
+  },
+  "index": {
+   "offset": 768,
+   "length": 72
+  },
+  "color": {
+   "offset": 840,
+   "length": 96
+  }
+ },
+ "vertexCount": 24,
+ "triangleCount": 12,
+ "bones": [
+  {
+   "name": "tag_origin",
+   "parent": -1,
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "quat": [
+    0,
+    0,
+    0,
+    1
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 36,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_80s_econdestroy_green",
+   "texture": "_textures/80s_econdestroy_green_col.webp",
+   "textureAlpha": false,
+   "color": "#41493e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/80s_econdestroy_nml.normal.webp",
+   "specularMap": "_textures/80s_econdestroy_spc-rgb_80s__2838a1ce.specular.webp",
+   "envMapParms": [
+    0.4,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -0.89,
+   -4.65,
+   -3.61
+  ],
+  "maxs": [
+   2.67,
+   4.65,
+   3.61
+  ]
+ }
+}

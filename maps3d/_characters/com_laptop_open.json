@@ -1,0 +1,122 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_laptop_open",
+ "kind": "script",
+ "faction": null,
+ "file": "com_laptop_open.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 4752
+  },
+  "normal": {
+   "offset": 4752,
+   "length": 1584
+  },
+  "uv": {
+   "offset": 6336,
+   "length": 3168
+  },
+  "skinIndex": {
+   "offset": 9504,
+   "length": 1584
+  },
+  "skinWeight": {
+   "offset": 11088,
+   "length": 1584
+  },
+  "index": {
+   "offset": 12672,
+   "length": 1704
+  },
+  "color": {
+   "offset": 14376,
+   "length": 1584
+  }
+ },
+ "vertexCount": 396,
+ "triangleCount": 284,
+ "bones": [
+  {
+   "name": "polysurface37",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 846,
+   "material": 0
+  },
+  {
+   "indexStart": 846,
+   "indexCount": 6,
+   "material": 1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_laptop_envu_black",
+   "texture": "_textures/laptop_envu_blk_col.webp",
+   "textureAlpha": false,
+   "color": "#222729",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/laptop_envu_nml.normal.webp",
+   "specularMap": "_textures/laptop_envu_spc-rgb_laptop_e_352a7025.specular.webp",
+   "envMapParms": [
+    0.8,
+    3.2,
+    2.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_laptop_envu_screen",
+   "texture": "_textures/laptop_envu_col.webp",
+   "textureAlpha": false,
+   "color": "#515b4b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -9.55,
+   -10.02,
+   -0.01
+  ],
+  "maxs": [
+   8.93,
+   10.02,
+   15.0
+  ]
+ }
+}

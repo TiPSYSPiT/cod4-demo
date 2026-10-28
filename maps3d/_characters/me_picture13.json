@@ -1,0 +1,129 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "me_picture13",
+ "kind": "script",
+ "faction": null,
+ "file": "me_picture13.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 864
+  },
+  "normal": {
+   "offset": 864,
+   "length": 288
+  },
+  "uv": {
+   "offset": 1152,
+   "length": 576
+  },
+  "skinIndex": {
+   "offset": 1728,
+   "length": 288
+  },
+  "skinWeight": {
+   "offset": 2016,
+   "length": 288
+  },
+  "index": {
+   "offset": 2304,
+   "length": 216
+  },
+  "color": {
+   "offset": 2520,
+   "length": 288
+  }
+ },
+ "vertexCount": 72,
+ "triangleCount": 36,
+ "bones": [
+  {
+   "name": "",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 96,
+   "material": 0
+  },
+  {
+   "indexStart": 96,
+   "indexCount": 12,
+   "material": 1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_me_pictureframes",
+   "texture": "_textures/me_pictureframes.webp",
+   "textureAlpha": false,
+   "color": "#937c5b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_pictureframes_bump.normal.webp",
+   "specularMap": "_textures/me_pictureframes_spec-rgb__white-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_me_paintings2",
+   "texture": "_textures/me_paintings2.webp",
+   "textureAlpha": false,
+   "color": "#9b9692",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/me_paintings2_cos-rgbl-11.specular.webp",
+   "envMapParms": [
+    2.0,
+    3.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -14.94,
+   -1.74,
+   -22.6
+  ],
+  "maxs": [
+   14.25,
+   0.07,
+   0.97
+  ]
+ }
+}

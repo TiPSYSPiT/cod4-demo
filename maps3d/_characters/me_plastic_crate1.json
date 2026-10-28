@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "me_plastic_crate1",
+ "kind": "script",
+ "faction": null,
+ "file": "me_plastic_crate1.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 1248
+  },
+  "normal": {
+   "offset": 1248,
+   "length": 416
+  },
+  "uv": {
+   "offset": 1664,
+   "length": 832
+  },
+  "skinIndex": {
+   "offset": 2496,
+   "length": 416
+  },
+  "skinWeight": {
+   "offset": 2912,
+   "length": 416
+  },
+  "index": {
+   "offset": 3328,
+   "length": 360
+  },
+  "color": {
+   "offset": 3688,
+   "length": 416
+  }
+ },
+ "vertexCount": 104,
+ "triangleCount": 60,
+ "bones": [
+  {
+   "name": "tag_origin",
+   "parent": -1,
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "quat": [
+    0,
+    0,
+    0,
+    1
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 180,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_plastic_crates",
+   "texture": "_textures/plasticcrate_red.webp",
+   "textureAlpha": true,
+   "color": "#623e33",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/plastic_crates_bump.normal.webp",
+   "specularMap": "_textures/plasticcrate_spec-r30g30b30__5ecb3232.specular.webp",
+   "envMapParms": [
+    0.4,
+    10.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -6.0,
+   -8.94,
+   0.02
+  ],
+  "maxs": [
+   6.0,
+   9.0,
+   9.97
+  ]
+ }
+}

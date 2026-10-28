@@ -1,0 +1,10203 @@
+{
+ "format": "cod4-demo3d-props/2",
+ "file": "props.bin",
+ "stride": 14,
+ "sections": {
+  "instances": {
+   "offset": 0,
+   "length": 201600
+  },
+  "position": {
+   "offset": 201600,
+   "length": 1430844
+  },
+  "normal": {
+   "offset": 1632444,
+   "length": 476948
+  },
+  "uv": {
+   "offset": 2109392,
+   "length": 953896
+  },
+  "index": {
+   "offset": 3063288,
+   "length": 548688
+  },
+  "probe": {
+   "offset": 3611976,
+   "length": 3600
+  },
+  "color": {
+   "offset": 3615576,
+   "length": 476948
+  }
+ },
+ "fields": "instances: model index, origin xyz, axis rows (forward xyz, left xyz, up xyz), scale",
+ "instanceCount": 3600,
+ "materials": [
+  {
+   "name": "mc/mtl_canopy06",
+   "texture": "_textures/canopy3_col.webp",
+   "textureAlpha": true,
+   "color": "#958367",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/canopy3_nml.normal.webp",
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_ex_airconditioner",
+   "texture": "_textures/ex_airconditioner_col__0.webp",
+   "textureAlpha": true,
+   "color": "#5e5c58",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ex_airconditioner_nml.normal.webp",
+   "specularMap": "_textures/ex_airconditioner_spc-rgb_ex_f2e123ab.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_balcony_01",
+   "texture": "_textures/balcony_01_col.webp",
+   "textureAlpha": false,
+   "color": "#685f55",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/balcony_01_nml.normal.webp",
+   "specularMap": "_textures/balcony_01_spc-rgb_balcony_0_60a80488.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_balcony_01_metal",
+   "texture": "_textures/balcony_01_col.webp",
+   "textureAlpha": false,
+   "color": "#685f55",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/balcony_01_nml.normal.webp",
+   "specularMap": "_textures/balcony_01_spc-rgb_balcony_0_60a80488.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_electric_box2",
+   "texture": "_textures/electric_box2_c.webp",
+   "textureAlpha": false,
+   "color": "#9d9891",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/electric_box2_n.normal.webp",
+   "specularMap": "_textures/electric_box2_s-r30g30b30_el_b581c4b0.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_satellitedish",
+   "texture": "_textures/satellitedish_c.webp",
+   "textureAlpha": false,
+   "color": "#72736e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/satellitedish_n.normal.webp",
+   "specularMap": "_textures/satellitedish_s-rgb_satellit_57e9c344.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_corrugated_metal",
+   "texture": "_textures/me_corrugated_metal1_col.webp",
+   "textureAlpha": false,
+   "color": "#746c63",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_corrugated_metal1_nml.normal.webp",
+   "specularMap": "_textures/me_corrugated_metal1_spc-r13_4c39fc33.specular.webp",
+   "envMapParms": [
+    0.0,
+    4.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_lightfluo",
+   "texture": "_textures/lightfluohang_col.webp",
+   "textureAlpha": false,
+   "color": "#c7c5ac",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/lightfluohang_norm.normal.webp",
+   "specularMap": "_textures/lightfluohang_spec-rgb_light_20d8db0f.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_canopy05",
+   "texture": "_textures/canopy2_col.webp",
+   "textureAlpha": false,
+   "color": "#7d6650",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/canopy2_nml.normal.webp",
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_brush_toujanebigbushy",
+   "texture": "_textures/tree_desertbushy_col.webp",
+   "textureAlpha": true,
+   "color": "#403c2a",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_plastic_bucket",
+   "texture": "_textures/plastic_bucket_col.webp",
+   "textureAlpha": false,
+   "color": "#414140",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/plastic_bucket_nml.normal.webp",
+   "specularMap": "_textures/plastic_bucket_spc-rgb_plast_7c97f814.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_plastic_bucket_dirt",
+   "texture": "_textures/plastic_bucket_dirt_col.webp",
+   "textureAlpha": true,
+   "color": "#8e7c69",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "normalMap": "_textures/plastic_bucket_dirt_nml.normal.webp",
+   "specularMap": "_textures/plastic_bucket_dirt_spc-r30g30b30l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_constructionrailingyellow",
+   "texture": "_textures/constructionrailing_yellow_col.webp",
+   "textureAlpha": false,
+   "color": "#dfac21",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/constructionrailing_yellow_norm.normal.webp",
+   "specularMap": "_textures/constructionrailing_yellow_s_15b3d2c0.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_fire_light",
+   "texture": "_textures/fire_light_c.webp",
+   "textureAlpha": false,
+   "color": "#7c2b27",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/fire_light_n.normal.webp",
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_fire_extinguisher",
+   "texture": "_textures/fire_extinguisher_c.webp",
+   "textureAlpha": false,
+   "color": "#72645e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/fire_extinguisher_n.normal.webp",
+   "specularMap": "_textures/fire_extinguisher_s-rgb_fire_935c6a0d.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_barrel_blue_rust",
+   "texture": "_textures/55_gallon_drum_blue_rust.webp",
+   "textureAlpha": false,
+   "color": "#585e6b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/rusty_barrel_bump.normal.webp",
+   "specularMap": "_textures/rusty_barrel_spec-rgb_rusty__96f69cf3.specular.webp",
+   "envMapParms": [
+    0.6,
+    1.6,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_corrosive2",
+   "texture": "_textures/55_gallon_drum_blue_rust.webp",
+   "textureAlpha": false,
+   "color": "#585e6b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_steel_ladder",
+   "texture": "_textures/steel_ladder_col.webp",
+   "textureAlpha": false,
+   "color": "#6a6567",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/steel_ladder_nml.normal.webp",
+   "specularMap": "_textures/steel_ladder_spc-rgb_steel_l_98f7cef4.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_lightfluohang_on",
+   "texture": "_textures/lightfluohang_col.webp",
+   "textureAlpha": false,
+   "color": "#c7c5ac",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/ch_rubble01",
+   "texture": "_textures/ch_rubble01_col.webp",
+   "textureAlpha": false,
+   "color": "#716f6b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ch_rubble01_nml.normal.webp",
+   "specularMap": "_textures/ch_rubble02_spc-r-25g-25b-25_b9e0e09c.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.4,
+    1.1,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/me_concrete_dest1",
+   "texture": "_textures/me_concrete_dest02_col.webp",
+   "textureAlpha": false,
+   "color": "#65645b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_concrete_dest02_nml.normal.webp",
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_electric_box1",
+   "texture": "_textures/electric_box1_c.webp",
+   "textureAlpha": false,
+   "color": "#5e5f5b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/electric_box1_n.normal.webp",
+   "specularMap": "_textures/electric_box1_s-r30g30b30_el_60092dfc.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_electric_box3",
+   "texture": "_textures/electric_box3_c.webp",
+   "textureAlpha": false,
+   "color": "#787976",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/electric_box3_n.normal.webp",
+   "specularMap": "_textures/electric_box3_s-r30g30b30_el_aa01d547.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_electrical_pipe",
+   "texture": "_textures/cargoship_wall_light1_col.webp",
+   "textureAlpha": false,
+   "color": "#5e5a54",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/cargoship_wall_light1_nml.normal.webp",
+   "specularMap": "_textures/bunkerlights_s-rgb__white-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_desertshrubs",
+   "texture": "_textures/desertshrubs_0.webp",
+   "textureAlpha": true,
+   "color": "#776043",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_pallet",
+   "texture": "_textures/pallet_col.webp",
+   "textureAlpha": false,
+   "color": "#5d5142",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/pallet_nml.normal.webp",
+   "specularMap": "_textures/pallet_spc-rgb_pallet_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/me_cinderblock_wall2",
+   "texture": "_textures/me_cinderblock_wall02_col.webp",
+   "textureAlpha": false,
+   "color": "#928c80",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_cinderblock_wall02_nml.normal.webp",
+   "specularMap": "_textures/me_cinderblock_wall02_spc-rg_2e3b23af.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.8,
+    2.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_barrel_white_rust",
+   "texture": "_textures/55_gallon_drum_white_rust.webp",
+   "textureAlpha": false,
+   "color": "#7a7671",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/rusty_barrel_bump.normal.webp",
+   "specularMap": "_textures/rusty_barrel_spec-rgb_rusty__96f69cf3.specular.webp",
+   "envMapParms": [
+    0.4,
+    1.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_chainlink_fence_pole",
+   "texture": "_textures/me_chainlink_fence_pole_color.webp",
+   "textureAlpha": false,
+   "color": "#918f8f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_chainlink_fence_pole_normal.normal.webp",
+   "specularMap": "_textures/me_chainlink_fence_pole_spec_43cef4fb.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_fanceil",
+   "texture": "_textures/fanceil_col.webp",
+   "textureAlpha": false,
+   "color": "#8a8371",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/fanceil_norm.normal.webp",
+   "specularMap": "_textures/fanceil_spec-rgb_fanceil_cp-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_ac_big",
+   "texture": "_textures/ac_big_col.webp",
+   "textureAlpha": false,
+   "color": "#54585a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ac_big_norm.normal.webp",
+   "specularMap": "_textures/ac_big_spec-rgb_ac_big_cp-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_ac_window",
+   "texture": "_textures/ac_win_col.webp",
+   "textureAlpha": false,
+   "color": "#524a42",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ac_win_norm.normal.webp",
+   "specularMap": "_textures/ac_win_spec-rgb_ac_win_cp-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_bed_mattress",
+   "texture": "_textures/bed_mattress_col.webp",
+   "textureAlpha": false,
+   "color": "#645d56",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/bed_mattress_nml.normal.webp",
+   "specularMap": "_textures/bed_mattress_spc-rgb_bed_mat_197334ec.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_restaurantceilinglamp_off",
+   "texture": "_textures/restaurantceilinglamp_1_col.webp",
+   "textureAlpha": false,
+   "color": "#a3a094",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/restaurantceilinglamp_1_spc-_03a0e31d.specular.webp",
+   "envMapParms": [
+    0.6,
+    3.2,
+    2.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_80s_econ_silv",
+   "texture": "_textures/80s_econ_silv_col.webp",
+   "textureAlpha": false,
+   "color": "#54504a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/80s_econ_nml.normal.webp",
+   "specularMap": "_textures/80s_econ_spc-rgb_80s_econ_cos-l-71.specular.webp",
+   "envMapParms": [
+    1.0,
+    3.8,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_80s_econ_yel",
+   "texture": "_textures/80s_econ_yel_col.webp",
+   "textureAlpha": false,
+   "color": "#857e5e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/80s_econ_nml.normal.webp",
+   "specularMap": "_textures/80s_econ_spc-rgb_80s_econ_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.6,
+    3.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_80s_econ_tan",
+   "texture": "_textures/80s_econ_tan_col.webp",
+   "textureAlpha": false,
+   "color": "#7a6040",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/80s_econ_nml.normal.webp",
+   "specularMap": "_textures/80s_econ_spc-rgb_80s_econ_cos-l-11.specular.webp",
+   "envMapParms": [
+    1.04,
+    3.4,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_wheelbarrow",
+   "texture": "_textures/wheelbarrow_c.webp",
+   "textureAlpha": false,
+   "color": "#6f6f65",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/wheelbarrow_n.normal.webp",
+   "specularMap": "_textures/wheelbarrow_s-rgb_wheelbarrow_cp-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_bedframemetal",
+   "texture": "_textures/bed_mattress_frame_col.webp",
+   "textureAlpha": true,
+   "color": "#4e4c4b",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/bed_mattress_frame_nml.normal.webp",
+   "specularMap": "_textures/bed_mattress_frame_spc-rgb_b_4f3be6fc.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_refrigerator2",
+   "texture": "_textures/refrigerator2_col.webp",
+   "textureAlpha": false,
+   "color": "#555a5d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/refrigerator2_nml.normal.webp",
+   "specularMap": "_textures/refrigerator2_spec-rgb_refri_bef6e359.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_restaurantstainlessteelshelf",
+   "texture": "_textures/restaurant_stainlesssteelshelf_col.webp",
+   "textureAlpha": false,
+   "color": "#797978",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/restaurant_stainlesssteelshelf_nml.normal.webp",
+   "specularMap": "_textures/restaurant_stainlesssteelshe_01afeb18.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_sign_shakar",
+   "texture": "_textures/me_sign_shakar.webp",
+   "textureAlpha": false,
+   "color": "#575743",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_sign_shakar_bump.normal.webp",
+   "specularMap": "_textures/me_sign_shakar_spec-rgb__white-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "textureFrom": "mp_bog"
+  },
+  {
+   "name": "mc/mtl_dumpster",
+   "texture": "_textures/dumpster_col.webp",
+   "textureAlpha": false,
+   "color": "#8f8c88",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/dumpster_nml.normal.webp",
+   "specularMap": "_textures/dumpster_spc-r-87g-87b-87_du_872bd7d0.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_dumpster_lid",
+   "texture": "_textures/dumpster_lid_col.webp",
+   "textureAlpha": false,
+   "color": "#2b312e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/dumpster_lid_nml.normal.webp",
+   "specularMap": "_textures/dumpster_lid_spc-r-87g-87b-8_719d834f.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_me_streetsigns",
+   "texture": "_textures/me_streetsigns.webp",
+   "textureAlpha": true,
+   "color": "#6a6362",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_streetsigns_bump.normal.webp",
+   "specularMap": "_textures/me_streetsigns_spec-rgb__white-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_ch_couch01",
+   "texture": "_textures/ch_couch_col.webp",
+   "textureAlpha": false,
+   "color": "#5f4438",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ch_couch_nml.normal.webp",
+   "specularMap": "_textures/ch_couch_spc-rgb_ch_couch_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.0,
+    8.0,
+    2.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_barrel_d",
+   "texture": "_textures/barrel_d.webp",
+   "textureAlpha": false,
+   "color": "#3a3c3b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/me_brick_01",
+   "texture": "_textures/me_brick_01.webp",
+   "textureAlpha": false,
+   "color": "#6d6a5d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_brick_01_n.normal.webp",
+   "specularMap": "_textures/me_brick_01_s-rgb_me_brick_0_60a80488.specular.webp",
+   "textureFrom": "fx_me_brick_01"
+  },
+  {
+   "name": "mc/mtl_oil_pump",
+   "texture": "_textures/gas_pump_col.webp",
+   "textureAlpha": false,
+   "color": "#64635e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/gas_pump_nml.normal.webp",
+   "specularMap": "_textures/gas_pump_spc-rgb_gas_pump_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/me_metal_rust_02",
+   "texture": "_textures/me_metal_rusty02_col.webp",
+   "textureAlpha": false,
+   "color": "#58493d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_metal_rusty02_nml.normal.webp",
+   "specularMap": "_textures/me_metal_rusty02_spc-rgb_me__7892a531.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cafe_wall_light_off",
+   "texture": "_textures/cafe_wall_light_col.webp",
+   "textureAlpha": false,
+   "color": "#6c6b61",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/cafe_wall_light_nml.normal.webp",
+   "specularMap": "_textures/cafe_wall_light_spc-rgb_cafe_78678ede.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_bike",
+   "texture": "_textures/bike_col.webp",
+   "textureAlpha": true,
+   "color": "#575041",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "normalMap": "_textures/bike_normal.normal.webp",
+   "specularMap": "_textures/bike_spec-rgbl-79.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_lightgrass",
+   "texture": "_textures/light_grass_col_0.webp",
+   "textureAlpha": true,
+   "color": "#575736",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_com_water_heater",
+   "texture": "_textures/com_water_heater_col.webp",
+   "textureAlpha": false,
+   "color": "#554f42",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/com_water_heater_spc-r-49g-4_fade6a7d.specular.webp",
+   "envMapParms": [
+    3.6,
+    3.6,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_folding_chair",
+   "texture": "_textures/folding_chair_color.webp",
+   "textureAlpha": false,
+   "color": "#6c6a69",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/folding_chair_normal.normal.webp",
+   "specularMap": "_textures/folding_chair_spec-rgb__white-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_ch_washer_01",
+   "texture": "_textures/ch_waching_machine_col.webp",
+   "textureAlpha": false,
+   "color": "#6b6257",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ch_waching_machine_nml.normal.webp",
+   "specularMap": "_textures/ch_waching_machine_spc-r-71g_5393bd6c.specular.webp",
+   "envMapParms": [
+    3.2,
+    3.2,
+    1.2,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_dinerboothchair",
+   "texture": "_textures/diner_booth_chair_col.webp",
+   "textureAlpha": false,
+   "color": "#513f34",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/diner_booth_chair_nml.normal.webp",
+   "specularMap": "_textures/diner_booth_chair_spc-rgb_di_8497285f.specular.webp",
+   "envMapParms": [
+    0.4,
+    3.0,
+    4.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_dinerboothtable",
+   "texture": "_textures/diner_booth_table_col.webp",
+   "textureAlpha": false,
+   "color": "#7a776e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/diner_booth_table_spc-rgb_di_5dc50711.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_dinercounterchair",
+   "texture": "_textures/dinercounterchair_col.webp",
+   "textureAlpha": false,
+   "color": "#51422c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/dinercounterchair_nml.normal.webp",
+   "specularMap": "_textures/dinercounterchair_spc-rgb_di_10ae0022.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_barrier",
+   "texture": "_textures/barrier.webp",
+   "textureAlpha": false,
+   "color": "#90908a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/barrier_norm.normal.webp",
+   "specularMap": "_textures/barrier_spec-rgb_barrier_cp-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_utility_light_off",
+   "texture": "_textures/utility_light_col.webp",
+   "textureAlpha": false,
+   "color": "#a1956a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/utility_light_spc-rgb_utilit_b292aeb4.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_trashbag_green",
+   "texture": "_textures/trashbag_green_col.webp",
+   "textureAlpha": false,
+   "color": "#2e3931",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/trashbag_nml.normal.webp",
+   "specularMap": "_textures/trashbag_spc-r-25g-25b-25_tr_b1b521a2.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_trashcan_metal",
+   "texture": "_textures/trashcan_metal_col.webp",
+   "textureAlpha": false,
+   "color": "#75736c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/trashcan_metal_n.normal.webp",
+   "specularMap": "_textures/trashcan_metal_s-rgb_trashca_07688e36.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_80s_econdestroy_red",
+   "texture": "_textures/80s_econdestroy_red_col.webp",
+   "textureAlpha": false,
+   "color": "#483731",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/80s_econdestroy_nml.normal.webp",
+   "specularMap": "_textures/80s_econdestroy_spc-rgb_80s__2838a1ce.specular.webp",
+   "envMapParms": [
+    0.4,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_80s_edestroy_glass",
+   "texture": "_textures/80s_destglass_col.webp",
+   "textureAlpha": true,
+   "color": "#505c5b",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "specularMap": "_textures/80s_destglass_spc-rgb_80s_de_0f42539d.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_80s_econdestroy_yel",
+   "texture": "_textures/80s_econdestroy_yel_col.webp",
+   "textureAlpha": false,
+   "color": "#676350",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/80s_econdestroy_nml.normal.webp",
+   "specularMap": "_textures/80s_econdestroy_spc-rgb_80s__2838a1ce.specular.webp",
+   "envMapParms": [
+    0.4,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_canopy03",
+   "texture": "_textures/canopy03_col.webp",
+   "textureAlpha": true,
+   "color": "#afb197",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/canopy03_nml.normal.webp",
+   "specularMap": "_textures/canopy03_spc-r30g30b30_canop_7e3237bd.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_canopy_metal",
+   "texture": "_textures/canopy_metal_col.webp",
+   "textureAlpha": false,
+   "color": "#8d8e8d",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/canopy_metal_spc-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_antenna",
+   "texture": "_textures/antenna_c.webp",
+   "textureAlpha": false,
+   "color": "#545552",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/antenna_n.normal.webp",
+   "specularMap": "_textures/antenna_s-rgb_antenna_cp-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_marketumbrella03",
+   "texture": "_textures/market_umbrella03_col.webp",
+   "textureAlpha": false,
+   "color": "#977c4c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/market_umbrella03_nml.normal.webp",
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/me_metal_grey_01",
+   "texture": "_textures/me_metal_grey01_col.webp",
+   "textureAlpha": false,
+   "color": "#7b7b7a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_metal_grey01_nml.normal.webp",
+   "specularMap": "_textures/me_metal_grey01_spc-rgb_me_m_a98149b3.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_canopy_folded_01",
+   "texture": "_textures/canopy_folded_01_col.webp",
+   "textureAlpha": true,
+   "color": "#74726c",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/canopy_folded_01_nml.normal.webp",
+   "specularMap": "_textures/canopy_folded_01_spc-r-25g-25b-25l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_palmtree_fronds",
+   "texture": "_textures/palmtrees_col.webp",
+   "textureAlpha": true,
+   "color": "#514e46",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "normalMap": "_textures/palmtrees_nml.normal.webp",
+   "specularMap": "_textures/palmtrees_spc-rgb_palmtrees_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.0,
+    4.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_palmtree_bark",
+   "texture": "_textures/palmtrees_col.webp",
+   "textureAlpha": true,
+   "color": "#514e46",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/palmtrees_nml.normal.webp",
+   "specularMap": "_textures/palmtrees_spc-rgb_palmtrees_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.0,
+    8.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_vehicle_bmp_dsty",
+   "texture": "_textures/vehicle_bmp_dsty_col.webp",
+   "textureAlpha": false,
+   "color": "#4e4640",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/vehicle_bmp_dsty_nml.normal.webp",
+   "specularMap": "_textures/vehicle_bmp_dsty_spc-r-25g-2_8174e958.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_vehicle_bmp_track_dsty",
+   "texture": "_textures/vehicle_bmp_track_dsty_col.webp",
+   "textureAlpha": true,
+   "color": "#4f4640",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "normalMap": "_textures/vehicle_bmp_track_dsty_nml.normal.webp",
+   "specularMap": "_textures/vehicle_bmp_track_dsty_spc-r_812afdb2.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_drygrass",
+   "texture": "_textures/dry_grass_col_0.webp",
+   "textureAlpha": true,
+   "color": "#514631",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_river_birch",
+   "texture": "_textures/tree_river_birch_col.webp",
+   "textureAlpha": true,
+   "color": "#2e3c31",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/tree_river_birch_nml.normal.webp",
+   "specularMap": "_textures/dead_pine_spc-r-71g-71b-71_d_34842d41.specular.webp",
+   "envMapParms": [
+    0.0,
+    6.8,
+    0.05,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_river_birch_canopy",
+   "texture": "_textures/tree_river_birch_col.webp",
+   "textureAlpha": true,
+   "color": "#2e3c31",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_tree_shadow_caster",
+   "texture": "_textures/tree_shadowcaster.webp",
+   "textureAlpha": true,
+   "color": "#000000",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "shadowOnly": true
+  },
+  {
+   "name": "mc/mtl_lightbox_off",
+   "texture": "_textures/lightbox_c.webp",
+   "textureAlpha": false,
+   "color": "#3a3736",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/lightbox_n.normal.webp",
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_stone_block01",
+   "texture": "_textures/stone_rubble01_col.webp",
+   "textureAlpha": false,
+   "color": "#9d8f80",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/stone_rubble01_nml.normal.webp",
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_water_tower",
+   "texture": "_textures/water_tower_col.webp",
+   "textureAlpha": false,
+   "color": "#5a564e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/water_tower_nml.normal.webp",
+   "specularMap": "_textures/water_tower_spc-r34g34b34_wa_7e65d1c9.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_marketumbrella06",
+   "texture": "_textures/market_umbrella06_col.webp",
+   "textureAlpha": false,
+   "color": "#9b786c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/market_umbrella03_nml.normal.webp",
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_streetlight",
+   "texture": "_textures/streetlight_col.webp",
+   "textureAlpha": false,
+   "color": "#787a78",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/streetlight_norm.normal.webp",
+   "specularMap": "_textures/streetlight_spec-rgb_streetl_8002b549.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_canopy_support",
+   "texture": "_textures/canopy_support.webp",
+   "textureAlpha": false,
+   "color": "#836744",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/canopy_support_bump.normal.webp",
+   "specularMap": "_textures/canopy_support_spec-rgb__white-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_market_canopy2",
+   "texture": "_textures/large_canopy2.webp",
+   "textureAlpha": false,
+   "color": "#958363",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/large_canopy_bump.normal.webp",
+   "specularMap": "_textures/large_canopy_spec-rgb__white-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cafe_table2",
+   "texture": "_textures/cafe_table2_col.webp",
+   "textureAlpha": false,
+   "color": "#746154",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/cafe_table2_nml.normal.webp",
+   "specularMap": "_textures/cafe_table2_spc-rgb_cafe_tab_988aa013.specular.webp",
+   "envMapParms": [
+    4.0,
+    4.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cafe_table2_base",
+   "texture": "_textures/cafe_table2_col.webp",
+   "textureAlpha": false,
+   "color": "#746154",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/cafe_table2_nml.normal.webp",
+   "specularMap": "_textures/cafe_table2_spc-rgb_cafe_tab_988aa013.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cafe_chair",
+   "texture": "_textures/chair_col.webp",
+   "textureAlpha": false,
+   "color": "#775e4e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/chair_nml.normal.webp",
+   "specularMap": "_textures/chair_spc-rgb_chair_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.0,
+    4.0,
+    4.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_plastic_crates",
+   "texture": "_textures/plasticcrate_red.webp",
+   "textureAlpha": true,
+   "color": "#623e33",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/plastic_crates_bump.normal.webp",
+   "specularMap": "_textures/plasticcrate_spec-r30g30b30__5ecb3232.specular.webp",
+   "envMapParms": [
+    0.4,
+    10.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_soup_can",
+   "texture": "_textures/soup_can_col.webp",
+   "textureAlpha": false,
+   "color": "#696356",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/soup_can_nml.normal.webp",
+   "specularMap": "_textures/soup_can_spc-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_plasticbottles",
+   "texture": "_textures/plastic_bottles_col.webp",
+   "textureAlpha": false,
+   "color": "#716750",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/plastic_bottles_nml.normal.webp",
+   "specularMap": "_textures/plastic_bottles_spc-rgb_plas_dfda3ded.specular.webp",
+   "envMapParms": [
+    0.4,
+    12.0,
+    0.9,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cobra_town_2story_motel",
+   "texture": "_textures/2story_motel.webp",
+   "textureAlpha": false,
+   "color": "#90897a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_bulldozer",
+   "texture": "_textures/bulldozer_col.webp",
+   "textureAlpha": false,
+   "color": "#69583d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/bulldozer_nml.normal.webp",
+   "specularMap": "_textures/bulldozer_spc-rgb_bulldozer_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_bulldozer_tread",
+   "texture": "_textures/bulldozer_tread_col.webp",
+   "textureAlpha": false,
+   "color": "#726855",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/bulldozer_tread_nml.normal.webp",
+   "specularMap": "_textures/bulldozer_tread_spc-rgb_bull_24268a85.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cargocontainerlockingbar",
+   "texture": "_textures/cargocontainerlockingbar_col.webp",
+   "textureAlpha": false,
+   "color": "#92826d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/cargocontainerlockingbar_nml.normal.webp",
+   "specularMap": "_textures/cargocontainerlockingbar_spc_2ff803ff.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cargocontainerdoorhinge",
+   "texture": "_textures/cargocontainerdoorhinge_col.webp",
+   "textureAlpha": false,
+   "color": "#645040",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/cargocontainerdoorhinge_nml.normal.webp",
+   "specularMap": "_textures/cargocontainerdoorhinge_spc-_224e98d5.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_tire",
+   "texture": "_textures/junktire_col.webp",
+   "textureAlpha": false,
+   "color": "#343233",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/junktire_nml.normal.webp",
+   "specularMap": "_textures/junktire_spc-rgb_junktire_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_russian_table",
+   "texture": "_textures/russian_table_col.webp",
+   "textureAlpha": false,
+   "color": "#725e48",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/russian_table_nml.normal.webp",
+   "specularMap": "_textures/russian_table_spc-rgb_russia_2ec501dc.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_industrial_lamp_off",
+   "texture": "_textures/mtl_industrial_lamp_off.webp",
+   "textureAlpha": false,
+   "color": "#a6a59f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/industrial_lamp_spec-rgb__white-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_me_magazinestand",
+   "texture": "_textures/me_magazinestand.webp",
+   "textureAlpha": false,
+   "color": "#86878a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_magazinestand_bump.normal.webp",
+   "specularMap": "_textures/me_magazinestand_spec-rgb_me_6344abc6.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_hesco_barrier",
+   "texture": "_textures/hesco_barrier_col.webp",
+   "textureAlpha": false,
+   "color": "#6c6758",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/hesco_barrier_nml.normal.webp",
+   "specularMap": "_textures/hesco_barrier_spc-r-87g-87b-_a35dbf00.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/me_ground_sand1",
+   "texture": "_textures/me_ground_sand1_color.webp",
+   "textureAlpha": false,
+   "color": "#807264",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_ground_sand1_normal.normal.webp",
+   "specularMap": "_textures/me_ground_sand1_spec-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_me_orangesign",
+   "texture": "_textures/me_orangesign.webp",
+   "textureAlpha": false,
+   "color": "#9a823d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_orangesign_bump.normal.webp",
+   "specularMap": "_textures/me_orangesign_spec-rgb__white-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_tire2",
+   "texture": "_textures/junktire2_col.webp",
+   "textureAlpha": false,
+   "color": "#353334",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/junktire2_nml.normal.webp",
+   "specularMap": "_textures/junktire2_spc-rgb_junktire2_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cobra_town_2story_house_01",
+   "texture": "_textures/2story_house_01.webp",
+   "textureAlpha": false,
+   "color": "#7d786d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_market_canopy1",
+   "texture": "_textures/large_canopy1.webp",
+   "textureAlpha": false,
+   "color": "#9f8e6d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/large_canopy_bump.normal.webp",
+   "specularMap": "_textures/large_canopy_spec-rgb__white-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_newgrassgreen",
+   "texture": "_textures/newgrass_col_0.webp",
+   "textureAlpha": true,
+   "color": "#323b24",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_me_cafesign",
+   "texture": "_textures/me_cafe.webp",
+   "textureAlpha": false,
+   "color": "#4d4c4e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_cafe_bump.normal.webp",
+   "specularMap": "_textures/me_cafe_spec-rgb__white-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_brick_wall_dest",
+   "texture": "_textures/me_brick_dest_col.webp",
+   "textureAlpha": false,
+   "color": "#a59986",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_brick_dest_nml.normal.webp",
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_com_door_01_handleright",
+   "texture": "_textures/com_door_01_handleright_col.webp",
+   "textureAlpha": true,
+   "color": "#615843",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/com_door_01_handleright_nml.normal.webp",
+   "specularMap": "_textures/com_door_01_handleright_spc-_9354d8c9.specular.webp",
+   "envMapParms": [
+    0.4,
+    4.0,
+    2.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_furniture_piano01_d",
+   "texture": "_textures/furniture_piano01_d.webp",
+   "textureAlpha": false,
+   "color": "#45382c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/furniture_piano01_d_n.normal.webp",
+   "specularMap": "_textures/furniture_piano01_d_s-rgb_fu_0be34944.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cafe_light_off",
+   "texture": "_textures/cafe_light_col.webp",
+   "textureAlpha": false,
+   "color": "#615a49",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/cafe_light_nml.normal.webp",
+   "specularMap": "_textures/cafe_light_spc-rgb_cafe_ligh_0aab7842.specular.webp",
+   "envMapParms": [
+    4.0,
+    4.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cafe_light_on",
+   "texture": "_textures/cafe_light_col.webp",
+   "textureAlpha": false,
+   "color": "#615a49",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_floodlight",
+   "texture": "_textures/floodlight_col.webp",
+   "textureAlpha": false,
+   "color": "#917935",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/floodlight_norm.normal.webp",
+   "specularMap": "_textures/floodlight_spec-rgb_floodlig_4ed6cf7a.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/me_corrugated_metal01",
+   "texture": "_textures/me_corrugated_metal01_col.webp",
+   "textureAlpha": false,
+   "color": "#7b6d64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_corrugated_metal01_nml.normal.webp",
+   "specularMap": "_textures/me_corrugated_metal01_spc-r3_fad2d67a.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cafe_chair2",
+   "texture": "_textures/chair2_col.webp",
+   "textureAlpha": false,
+   "color": "#674d32",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/chair2_nml.normal.webp",
+   "specularMap": "_textures/chair2_spc-rgb_chair2_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cafe_chair2_metal",
+   "texture": "_textures/chair2_col.webp",
+   "textureAlpha": false,
+   "color": "#674d32",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/chair2_nml.normal.webp",
+   "specularMap": "_textures/chair2_spc-rgb_chair2_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_iron_gate",
+   "texture": "_textures/me_metal_rusty03_col.webp",
+   "textureAlpha": false,
+   "color": "#57453a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_metal_rusty03_nml.normal.webp",
+   "specularMap": "_textures/me_metal_rusty03_spc-rgb_me__16796c42.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_misc_rock_large_02_ch_ground_dirt_02",
+   "texture": "_textures/misc_rock_large_02_col.webp",
+   "textureAlpha": false,
+   "color": "#6a6157",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/misc_rock_large_02_nml.normal.webp",
+   "specularMap": "_textures/misc_rock_large_02_spc-rgb_m_d167b122.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_ch_streetsigns",
+   "texture": "_textures/ch_traffic_signs.webp",
+   "textureAlpha": true,
+   "color": "#8d6e6c",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ch_traffic_signs_bump.normal.webp",
+   "specularMap": "_textures/ch_traffic_signs_spec-rgb__white-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_80s_econdestroy_silv",
+   "texture": "_textures/80s_econdestroy_silv_col.webp",
+   "textureAlpha": false,
+   "color": "#494540",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/80s_econdestroy_nml.normal.webp",
+   "specularMap": "_textures/80s_econdestroy_spc-rgb_80s__2838a1ce.specular.webp",
+   "envMapParms": [
+    0.4,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "models": [
+  {
+   "name": "me_canopy_3x4_2",
+   "count": 24,
+   "mins": [
+    -2.17,
+    -25.89,
+    -0.06
+   ],
+   "maxs": [
+    23.91,
+    25.89,
+    36.51
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 3000.0,
+     "vertexStart": 0,
+     "vertexCount": 208,
+     "indexStart": 0,
+     "indexCount": 444,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 444,
+       "material": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_ex_airconditioner",
+   "count": 73,
+   "mins": [
+    -15.83,
+    -18.79,
+    -11.27
+   ],
+   "maxs": [
+    15.83,
+    0.13,
+    11.27
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000.0,
+     "vertexStart": 208,
+     "vertexCount": 611,
+     "indexStart": 444,
+     "indexCount": 1188,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1188,
+       "material": 1
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 819,
+     "vertexCount": 370,
+     "indexStart": 1632,
+     "indexCount": 612,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 612,
+       "material": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_balcony_01",
+   "count": 19,
+   "mins": [
+    -3.01,
+    -3.0,
+    -6.0
+   ],
+   "maxs": [
+    90.98,
+    31.98,
+    27.98
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 1189,
+     "vertexCount": 1289,
+     "indexStart": 2244,
+     "indexCount": 3000,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 132,
+       "material": 2
+      },
+      {
+       "indexStart": 132,
+       "indexCount": 2868,
+       "material": 3
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 2478,
+     "vertexCount": 629,
+     "indexStart": 5244,
+     "indexCount": 858,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 54,
+       "material": 2
+      },
+      {
+       "indexStart": 54,
+       "indexCount": 804,
+       "material": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_electricbox2",
+   "count": 13,
+   "mins": [
+    -8.36,
+    -8.47,
+    -19.12
+   ],
+   "maxs": [
+    8.36,
+    0.01,
+    19.12
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 3107,
+     "vertexCount": 166,
+     "indexStart": 6102,
+     "indexCount": 384,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 384,
+       "material": 4
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 3000.0,
+     "vertexStart": 3273,
+     "vertexCount": 64,
+     "indexStart": 6486,
+     "indexCount": 114,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 114,
+       "material": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_satellitedish",
+   "count": 20,
+   "mins": [
+    -40.39,
+    -39.63,
+    0.07
+   ],
+   "maxs": [
+    35.14,
+    39.63,
+    103.75
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 800.0,
+     "vertexStart": 3337,
+     "vertexCount": 1141,
+     "indexStart": 6600,
+     "indexCount": 2478,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2478,
+       "material": 5
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 4478,
+     "vertexCount": 445,
+     "indexStart": 9078,
+     "indexCount": 672,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 672,
+       "material": 5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_corrugated_metal4x8",
+   "count": 39,
+   "mins": [
+    -23.97,
+    -0.97,
+    -48.0
+   ],
+   "maxs": [
+    24.04,
+    0.49,
+    48.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 4923,
+     "vertexCount": 228,
+     "indexStart": 9750,
+     "indexCount": 636,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 636,
+       "material": 6
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 30000.0,
+     "vertexStart": 5151,
+     "vertexCount": 8,
+     "indexStart": 10386,
+     "indexCount": 12,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 12,
+       "material": 6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_lightfluohang",
+   "count": 23,
+   "mins": [
+    -6.45,
+    -27.7,
+    -4.35
+   ],
+   "maxs": [
+    6.45,
+    27.7,
+    -0.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 250.0,
+     "vertexStart": 5159,
+     "vertexCount": 554,
+     "indexStart": 10398,
+     "indexCount": 1776,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1776,
+       "material": 7
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 15000.0,
+     "vertexStart": 5713,
+     "vertexCount": 104,
+     "indexStart": 12174,
+     "indexCount": 180,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 180,
+       "material": 7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_canopy_large2",
+   "count": 6,
+   "mins": [
+    -0.01,
+    -120.14,
+    -10.61
+   ],
+   "maxs": [
+    36.9,
+    120.14,
+    30.49
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 5817,
+     "vertexCount": 660,
+     "indexStart": 12354,
+     "indexCount": 1710,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1710,
+       "material": 8
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 6477,
+     "vertexCount": 474,
+     "indexStart": 14064,
+     "indexCount": 912,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 912,
+       "material": 8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_bush_big",
+   "count": 29,
+   "mins": [
+    -54.43,
+    -54.34,
+    -4.16
+   ],
+   "maxs": [
+    47.37,
+    42.23,
+    75.43
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 6951,
+     "vertexCount": 528,
+     "indexStart": 14976,
+     "indexCount": 858,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 858,
+       "material": 9
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 2000.0,
+     "vertexStart": 7479,
+     "vertexCount": 24,
+     "indexStart": 15834,
+     "indexCount": 36,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 36,
+       "material": 9
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_plastic_bucket",
+   "count": 13,
+   "mins": [
+    -7.93,
+    -7.56,
+    -0.0
+   ],
+   "maxs": [
+    7.9,
+    7.39,
+    14.98
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 200.0,
+     "vertexStart": 7503,
+     "vertexCount": 495,
+     "indexStart": 15870,
+     "indexCount": 1182,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1080,
+       "material": 10
+      },
+      {
+       "indexStart": 1080,
+       "indexCount": 102,
+       "material": 11
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1200.0,
+     "vertexStart": 7998,
+     "vertexCount": 62,
+     "indexStart": 17052,
+     "indexCount": 180,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 174,
+       "material": 10
+      },
+      {
+       "indexStart": 174,
+       "indexCount": 6,
+       "material": 11
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_canopy_2x4_1",
+   "count": 10,
+   "mins": [
+    -0.16,
+    -27.84,
+    0.05
+   ],
+   "maxs": [
+    23.91,
+    27.64,
+    38.85
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 8060,
+     "vertexCount": 276,
+     "indexStart": 17232,
+     "indexCount": 654,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 654,
+       "material": 8
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 3000.0,
+     "vertexStart": 8336,
+     "vertexCount": 220,
+     "indexStart": 17886,
+     "indexCount": 438,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 438,
+       "material": 8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_canopy_2x4_2",
+   "count": 21,
+   "mins": [
+    -0.16,
+    -28.05,
+    0.05
+   ],
+   "maxs": [
+    23.91,
+    27.43,
+    38.85
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 8556,
+     "vertexCount": 288,
+     "indexStart": 18324,
+     "indexCount": 702,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 702,
+       "material": 8
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 3000.0,
+     "vertexStart": 8844,
+     "vertexCount": 228,
+     "indexStart": 19026,
+     "indexCount": 462,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 462,
+       "material": 8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_constructionrailingendleft",
+   "count": 4,
+   "mins": [
+    -1.0,
+    -1.0,
+    -0.0
+   ],
+   "maxs": [
+    4.0,
+    9.0,
+    40.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 9072,
+     "vertexCount": 90,
+     "indexStart": 19488,
+     "indexCount": 432,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 432,
+       "material": 12
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 9162,
+     "vertexCount": 41,
+     "indexStart": 19920,
+     "indexCount": 120,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 120,
+       "material": 12
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_constructionrailingendright",
+   "count": 3,
+   "mins": [
+    -4.0,
+    -1.0,
+    -0.0
+   ],
+   "maxs": [
+    1.0,
+    9.0,
+    40.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 9203,
+     "vertexCount": 90,
+     "indexStart": 20040,
+     "indexCount": 432,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 432,
+       "material": 12
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 9293,
+     "vertexCount": 42,
+     "indexStart": 20472,
+     "indexCount": 120,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 120,
+       "material": 12
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_constructionrailinglong",
+   "count": 3,
+   "mins": [
+    -96.0,
+    -1.0,
+    0.0
+   ],
+   "maxs": [
+    96.0,
+    5.0,
+    40.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 9335,
+     "vertexCount": 234,
+     "indexStart": 20592,
+     "indexCount": 1008,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1008,
+       "material": 12
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 9569,
+     "vertexCount": 121,
+     "indexStart": 21600,
+     "indexCount": 312,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 312,
+       "material": 12
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_constructionrailingcornerbendout",
+   "count": 1,
+   "mins": [
+    0.0,
+    -0.0,
+    0.0
+   ],
+   "maxs": [
+    26.0,
+    26.0,
+    40.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 9690,
+     "vertexCount": 135,
+     "indexStart": 21912,
+     "indexCount": 624,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 624,
+       "material": 12
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 9825,
+     "vertexCount": 60,
+     "indexStart": 22536,
+     "indexCount": 168,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 168,
+       "material": 12
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_constructionrailingmedium",
+   "count": 2,
+   "mins": [
+    -48.0,
+    -1.0,
+    0.0
+   ],
+   "maxs": [
+    48.0,
+    5.0,
+    40.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 9885,
+     "vertexCount": 126,
+     "indexStart": 22704,
+     "indexCount": 528,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 528,
+       "material": 12
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 10011,
+     "vertexCount": 60,
+     "indexStart": 23232,
+     "indexCount": 168,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 168,
+       "material": 12
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_constructionrailingshort",
+   "count": 3,
+   "mins": [
+    -23.0,
+    -1.0,
+    0.0
+   ],
+   "maxs": [
+    25.0,
+    5.0,
+    40.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 10071,
+     "vertexCount": 72,
+     "indexStart": 23400,
+     "indexCount": 288,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 288,
+       "material": 12
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 10143,
+     "vertexCount": 35,
+     "indexStart": 23688,
+     "indexCount": 96,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 96,
+       "material": 12
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_fire_light",
+   "count": 2,
+   "mins": [
+    0.01,
+    -3.44,
+    -3.42
+   ],
+   "maxs": [
+    4.56,
+    3.44,
+    3.42
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 10178,
+     "vertexCount": 200,
+     "indexStart": 23784,
+     "indexCount": 570,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 570,
+       "material": 13
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1800.0,
+     "vertexStart": 10378,
+     "vertexCount": 64,
+     "indexStart": 24354,
+     "indexCount": 102,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 102,
+       "material": 13
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_fire_extinguisher",
+   "count": 2,
+   "mins": [
+    -3.89,
+    -2.67,
+    -0.01
+   ],
+   "maxs": [
+    3.89,
+    2.67,
+    20.17
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 10442,
+     "vertexCount": 554,
+     "indexStart": 24456,
+     "indexCount": 1644,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1644,
+       "material": 14
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_barrel_corrosive_rust",
+   "count": 11,
+   "mins": [
+    -14.63,
+    -14.64,
+    0.0
+   ],
+   "maxs": [
+    14.59,
+    14.57,
+    44.01
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 256.0,
+     "vertexStart": 10996,
+     "vertexCount": 420,
+     "indexStart": 26100,
+     "indexCount": 1548,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1524,
+       "material": 15
+      },
+      {
+       "indexStart": 1524,
+       "indexCount": 24,
+       "material": 16
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 11416,
+     "vertexCount": 38,
+     "indexStart": 27648,
+     "indexCount": 84,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 60,
+       "material": 15
+      },
+      {
+       "indexStart": 60,
+       "indexCount": 24,
+       "material": 16
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_steel_ladder_top",
+   "count": 3,
+   "mins": [
+    -6.82,
+    -15.51,
+    -0.06
+   ],
+   "maxs": [
+    8.19,
+    15.5,
+    35.38
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 11454,
+     "vertexCount": 324,
+     "indexStart": 27732,
+     "indexCount": 684,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 684,
+       "material": 17
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 20000.0,
+     "vertexStart": 11778,
+     "vertexCount": 62,
+     "indexStart": 28416,
+     "indexCount": 90,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 90,
+       "material": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_lightfluohang_on",
+   "count": 11,
+   "mins": [
+    -6.45,
+    -27.7,
+    -4.36
+   ],
+   "maxs": [
+    6.45,
+    27.7,
+    -0.02
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 250.0,
+     "vertexStart": 11840,
+     "vertexCount": 396,
+     "indexStart": 28506,
+     "indexCount": 1188,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 492,
+       "material": 7
+      },
+      {
+       "indexStart": 492,
+       "indexCount": 696,
+       "material": 18
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 20000.0,
+     "vertexStart": 12236,
+     "vertexCount": 104,
+     "indexStart": 29694,
+     "indexCount": 180,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 132,
+       "material": 7
+      },
+      {
+       "indexStart": 132,
+       "indexCount": 48,
+       "material": 18
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_rubble_chunk02",
+   "count": 90,
+   "mins": [
+    -7.44,
+    -3.37,
+    -2.67
+   ],
+   "maxs": [
+    6.47,
+    11.12,
+    4.72
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1150.0,
+     "vertexStart": 12340,
+     "vertexCount": 47,
+     "indexStart": 29874,
+     "indexCount": 126,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 18,
+       "material": 19
+      },
+      {
+       "indexStart": 18,
+       "indexCount": 108,
+       "material": 20
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_electricbox1",
+   "count": 21,
+   "mins": [
+    0.02,
+    -4.73,
+    -6.83
+   ],
+   "maxs": [
+    4.45,
+    4.73,
+    6.83
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 12387,
+     "vertexCount": 191,
+     "indexStart": 30000,
+     "indexCount": 342,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 342,
+       "material": 21
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 3000.0,
+     "vertexStart": 12578,
+     "vertexCount": 70,
+     "indexStart": 30342,
+     "indexCount": 108,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 108,
+       "material": 21
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_electricbox4",
+   "count": 43,
+   "mins": [
+    -13.36,
+    -9.45,
+    -13.43
+   ],
+   "maxs": [
+    13.36,
+    0.03,
+    11.85
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 12648,
+     "vertexCount": 180,
+     "indexStart": 30450,
+     "indexCount": 288,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 288,
+       "material": 22
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 3000.0,
+     "vertexStart": 12828,
+     "vertexCount": 36,
+     "indexStart": 30738,
+     "indexCount": 54,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 54,
+       "material": 22
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_electrical_pipe",
+   "count": 48,
+   "mins": [
+    -2.41,
+    -0.0,
+    0.0
+   ],
+   "maxs": [
+    2.41,
+    76.0,
+    1.67
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 12864,
+     "vertexCount": 156,
+     "indexStart": 30792,
+     "indexCount": 312,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 312,
+       "material": 23
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 13020,
+     "vertexCount": 84,
+     "indexStart": 31104,
+     "indexCount": 156,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 156,
+       "material": 23
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_shrub_brownmid",
+   "count": 923,
+   "mins": [
+    -13.48,
+    -7.4,
+    -3.05
+   ],
+   "maxs": [
+    13.49,
+    8.82,
+    30.87
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 2000.0,
+     "vertexStart": 13104,
+     "vertexCount": 24,
+     "indexStart": 31260,
+     "indexCount": 36,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 36,
+       "material": 24
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_pallet_2",
+   "count": 7,
+   "mins": [
+    -33.0,
+    -28.0,
+    -0.0
+   ],
+   "maxs": [
+    31.6,
+    27.87,
+    8.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 900.0,
+     "vertexStart": 13128,
+     "vertexCount": 546,
+     "indexStart": 31296,
+     "indexCount": 858,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 858,
+       "material": 25
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 13674,
+     "vertexCount": 114,
+     "indexStart": 32154,
+     "indexCount": 156,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 156,
+       "material": 25
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bog_b_cinderblock_clutter",
+   "count": 41,
+   "mins": [
+    -8.0,
+    -4.0,
+    0.01
+   ],
+   "maxs": [
+    8.0,
+    4.0,
+    7.99
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 6000.0,
+     "vertexStart": 13788,
+     "vertexCount": 120,
+     "indexStart": 32310,
+     "indexCount": 252,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 252,
+       "material": 26
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_barrel_white_rust",
+   "count": 14,
+   "mins": [
+    -14.63,
+    -14.64,
+    0.0
+   ],
+   "maxs": [
+    14.59,
+    14.57,
+    44.01
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 256.0,
+     "vertexStart": 13908,
+     "vertexCount": 408,
+     "indexStart": 32562,
+     "indexCount": 1524,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1524,
+       "material": 27
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 14316,
+     "vertexCount": 26,
+     "indexStart": 34086,
+     "indexCount": 60,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 60,
+       "material": 27
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_chainlink_fence_pole",
+   "count": 16,
+   "mins": [
+    -1.72,
+    -1.63,
+    0.02
+   ],
+   "maxs": [
+    1.72,
+    1.63,
+    92.06
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 250.0,
+     "vertexStart": 14342,
+     "vertexCount": 239,
+     "indexStart": 34146,
+     "indexCount": 678,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 678,
+       "material": 28
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 2500.0,
+     "vertexStart": 14581,
+     "vertexCount": 64,
+     "indexStart": 34824,
+     "indexCount": 102,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 102,
+       "material": 28
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_corrugated_metal4x4",
+   "count": 12,
+   "mins": [
+    -23.97,
+    -0.97,
+    -24.01
+   ],
+   "maxs": [
+    24.04,
+    0.49,
+    24.01
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 14645,
+     "vertexCount": 228,
+     "indexStart": 34926,
+     "indexCount": 636,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 636,
+       "material": 6
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 25000.0,
+     "vertexStart": 14873,
+     "vertexCount": 8,
+     "indexStart": 35562,
+     "indexCount": 12,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 12,
+       "material": 6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_fanceil1",
+   "count": 7,
+   "mins": [
+    -37.69,
+    -37.33,
+    -26.31
+   ],
+   "maxs": [
+    28.06,
+    28.99,
+    0.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 14881,
+     "vertexCount": 246,
+     "indexStart": 35574,
+     "indexCount": 636,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 636,
+       "material": 29
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 15127,
+     "vertexCount": 64,
+     "indexStart": 36210,
+     "indexCount": 102,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 102,
+       "material": 29
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_canopy_large1",
+   "count": 3,
+   "mins": [
+    -0.08,
+    -91.32,
+    -10.98
+   ],
+   "maxs": [
+    36.83,
+    90.23,
+    30.12
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 15191,
+     "vertexCount": 360,
+     "indexStart": 36312,
+     "indexCount": 912,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 912,
+       "material": 8
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 15551,
+     "vertexCount": 261,
+     "indexStart": 37224,
+     "indexCount": 474,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 474,
+       "material": 8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_ac_big",
+   "count": 11,
+   "mins": [
+    -18.86,
+    -18.86,
+    -0.0
+   ],
+   "maxs": [
+    18.82,
+    18.87,
+    36.84
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000.0,
+     "vertexStart": 15812,
+     "vertexCount": 72,
+     "indexStart": 37698,
+     "indexCount": 198,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 198,
+       "material": 30
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 26000.0,
+     "vertexStart": 15884,
+     "vertexCount": 20,
+     "indexStart": 37896,
+     "indexCount": 30,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 30,
+       "material": 30
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_ac_window",
+   "count": 41,
+   "mins": [
+    -17.82,
+    -19.54,
+    0.72
+   ],
+   "maxs": [
+    17.82,
+    17.96,
+    24.48
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000.0,
+     "vertexStart": 15904,
+     "vertexCount": 92,
+     "indexStart": 37926,
+     "indexCount": 168,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 168,
+       "material": 31
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 20000.0,
+     "vertexStart": 15996,
+     "vertexCount": 24,
+     "indexStart": 38094,
+     "indexCount": 36,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 36,
+       "material": 31
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_mattress_boxspring",
+   "count": 2,
+   "mins": [
+    -47.88,
+    -9.73,
+    -0.03
+   ],
+   "maxs": [
+    47.89,
+    -0.26,
+    61.14
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 16020,
+     "vertexCount": 254,
+     "indexStart": 38130,
+     "indexCount": 852,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 852,
+       "material": 32
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 16274,
+     "vertexCount": 58,
+     "indexStart": 38982,
+     "indexCount": 156,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 156,
+       "material": 32
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_restaurantceilinglamp_off",
+   "count": 3,
+   "mins": [
+    -7.11,
+    -7.11,
+    -38.55
+   ],
+   "maxs": [
+    7.11,
+    7.11,
+    0.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 200.0,
+     "vertexStart": 16332,
+     "vertexCount": 499,
+     "indexStart": 39138,
+     "indexCount": 2124,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2124,
+       "material": 33
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 16831,
+     "vertexCount": 62,
+     "indexStart": 41262,
+     "indexCount": 156,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 156,
+       "material": 33
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "vehicle_80s_sedan1_silv_door_lf",
+   "count": 1,
+   "mins": [
+    -41.97,
+    -10.69,
+    -16.0
+   ],
+   "maxs": [
+    0.02,
+    0.01,
+    28.75
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 16893,
+     "vertexCount": 135,
+     "indexStart": 41418,
+     "indexCount": 282,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 282,
+       "material": 34
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 17028,
+     "vertexCount": 74,
+     "indexStart": 41700,
+     "indexCount": 108,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 108,
+       "material": 34
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "vehicle_80s_sedan1_yel_door_lf",
+   "count": 1,
+   "mins": [
+    -41.97,
+    -10.69,
+    -16.0
+   ],
+   "maxs": [
+    0.02,
+    0.01,
+    28.75
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 17102,
+     "vertexCount": 135,
+     "indexStart": 41808,
+     "indexCount": 282,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 282,
+       "material": 35
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 17237,
+     "vertexCount": 74,
+     "indexStart": 42090,
+     "indexCount": 108,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 108,
+       "material": 35
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "vehicle_80s_wagon1_tan_door_rf",
+   "count": 1,
+   "mins": [
+    -41.98,
+    0.0,
+    -16.0
+   ],
+   "maxs": [
+    0.0,
+    10.64,
+    28.35
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 17311,
+     "vertexCount": 155,
+     "indexStart": 42198,
+     "indexCount": 324,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 324,
+       "material": 36
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 17466,
+     "vertexCount": 82,
+     "indexStart": 42522,
+     "indexCount": 120,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 120,
+       "material": 36
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_wheelbarrow",
+   "count": 1,
+   "mins": [
+    -37.24,
+    -17.26,
+    -0.03
+   ],
+   "maxs": [
+    37.66,
+    17.26,
+    25.36
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 150.0,
+     "vertexStart": 17548,
+     "vertexCount": 762,
+     "indexStart": 42642,
+     "indexCount": 2460,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2460,
+       "material": 37
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 18310,
+     "vertexCount": 199,
+     "indexStart": 45102,
+     "indexCount": 444,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 444,
+       "material": 37
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_shrub_group01",
+   "count": 223,
+   "mins": [
+    -37.65,
+    -26.04,
+    -7.37
+   ],
+   "maxs": [
+    44.15,
+    27.04,
+    38.29
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 18509,
+     "vertexCount": 204,
+     "indexStart": 45546,
+     "indexCount": 306,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 306,
+       "material": 24
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 2000.0,
+     "vertexStart": 18713,
+     "vertexCount": 102,
+     "indexStart": 45852,
+     "indexCount": 126,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 126,
+       "material": 24
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_canopy_2x4_3",
+   "count": 9,
+   "mins": [
+    -0.16,
+    -27.89,
+    0.05
+   ],
+   "maxs": [
+    23.91,
+    27.62,
+    38.85
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 18815,
+     "vertexCount": 468,
+     "indexStart": 45978,
+     "indexCount": 1128,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1128,
+       "material": 8
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 3000.0,
+     "vertexStart": 19283,
+     "vertexCount": 230,
+     "indexStart": 47106,
+     "indexCount": 468,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 468,
+       "material": 8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_electricbox3",
+   "count": 1,
+   "mins": [
+    -4.17,
+    -4.66,
+    -5.97
+   ],
+   "maxs": [
+    4.17,
+    0.01,
+    5.97
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 19513,
+     "vertexCount": 126,
+     "indexStart": 47574,
+     "indexCount": 312,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 312,
+       "material": 4
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 3000.0,
+     "vertexStart": 19639,
+     "vertexCount": 48,
+     "indexStart": 47886,
+     "indexCount": 96,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 96,
+       "material": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_bedframemetal_gray",
+   "count": 3,
+   "mins": [
+    -20.54,
+    -42.81,
+    0.0
+   ],
+   "maxs": [
+    20.54,
+    42.81,
+    31.95
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 19687,
+     "vertexCount": 624,
+     "indexStart": 47982,
+     "indexCount": 2100,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2100,
+       "material": 38
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 20311,
+     "vertexCount": 124,
+     "indexStart": 50082,
+     "indexCount": 276,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 276,
+       "material": 38
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_refrigerator2",
+   "count": 4,
+   "mins": [
+    0.0,
+    -21.04,
+    -0.0
+   ],
+   "maxs": [
+    35.36,
+    21.04,
+    82.41
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 20435,
+     "vertexCount": 587,
+     "indexStart": 50358,
+     "indexCount": 1344,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1344,
+       "material": 39
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 21022,
+     "vertexCount": 205,
+     "indexStart": 51702,
+     "indexCount": 306,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 306,
+       "material": 39
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_restaurantstainlessteelshelf_02",
+   "count": 3,
+   "mins": [
+    0.0,
+    -27.75,
+    -0.0
+   ],
+   "maxs": [
+    19.5,
+    27.75,
+    72.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 800.0,
+     "vertexStart": 21227,
+     "vertexCount": 744,
+     "indexStart": 52008,
+     "indexCount": 1752,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1752,
+       "material": 40
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 21971,
+     "vertexCount": 228,
+     "indexStart": 53760,
+     "indexCount": 360,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 360,
+       "material": 40
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_corrugated_metal2x8",
+   "count": 17,
+   "mins": [
+    -11.95,
+    -0.73,
+    -48.0
+   ],
+   "maxs": [
+    11.95,
+    0.73,
+    48.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 22199,
+     "vertexCount": 120,
+     "indexStart": 54120,
+     "indexCount": 324,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 324,
+       "material": 6
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 22000.0,
+     "vertexStart": 22319,
+     "vertexCount": 8,
+     "indexStart": 54444,
+     "indexCount": 12,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 12,
+       "material": 6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_sign_shakar",
+   "count": 7,
+   "mins": [
+    -59.88,
+    -15.08,
+    -25.01
+   ],
+   "maxs": [
+    59.9,
+    0.41,
+    2.75
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 22327,
+     "vertexCount": 136,
+     "indexStart": 54456,
+     "indexCount": 204,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 204,
+       "material": 41
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_dumpster_close",
+   "count": 6,
+   "mins": [
+    -29.54,
+    -52.36,
+    0.08
+   ],
+   "maxs": [
+    29.35,
+    52.36,
+    67.43
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 22463,
+     "vertexCount": 1100,
+     "indexStart": 54660,
+     "indexCount": 1974,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1374,
+       "material": 42
+      },
+      {
+       "indexStart": 1374,
+       "indexCount": 600,
+       "material": 43
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 23563,
+     "vertexCount": 162,
+     "indexStart": 56634,
+     "indexCount": 240,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 240,
+       "material": 42
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_barrel_blue_rust",
+   "count": 2,
+   "mins": [
+    -14.63,
+    -14.64,
+    0.0
+   ],
+   "maxs": [
+    14.59,
+    14.57,
+    44.01
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 256.0,
+     "vertexStart": 23725,
+     "vertexCount": 408,
+     "indexStart": 56874,
+     "indexCount": 1524,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1524,
+       "material": 15
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 24133,
+     "vertexCount": 26,
+     "indexStart": 58398,
+     "indexCount": 60,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 60,
+       "material": 15
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_sign_deadend",
+   "count": 2,
+   "mins": [
+    -6.56,
+    -0.88,
+    -0.5
+   ],
+   "maxs": [
+    6.56,
+    1.09,
+    83.75
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 24159,
+     "vertexCount": 40,
+     "indexStart": 58458,
+     "indexCount": 60,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 60,
+       "material": 44
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_furniture_couch02",
+   "count": 2,
+   "mins": [
+    -19.34,
+    -48.57,
+    0.0
+   ],
+   "maxs": [
+    20.77,
+    48.42,
+    40.91
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 24199,
+     "vertexCount": 638,
+     "indexStart": 58518,
+     "indexCount": 2388,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2388,
+       "material": 45
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 24837,
+     "vertexCount": 124,
+     "indexStart": 60906,
+     "indexCount": 276,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 276,
+       "material": 45
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_barrel_piece2",
+   "count": 7,
+   "mins": [
+    -24.64,
+    -19.86,
+    -0.33
+   ],
+   "maxs": [
+    24.64,
+    19.86,
+    3.68
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 24961,
+     "vertexCount": 711,
+     "indexStart": 61182,
+     "indexCount": 1320,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1320,
+       "material": 46
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 18000.0,
+     "vertexStart": 25672,
+     "vertexCount": 257,
+     "indexStart": 62502,
+     "indexCount": 438,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 438,
+       "material": 46
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "fx_me_brick_01",
+   "count": 80,
+   "mins": [
+    -5.83,
+    -1.68,
+    -2.95
+   ],
+   "maxs": [
+    5.83,
+    1.68,
+    2.95
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 200.0,
+     "vertexStart": 25929,
+     "vertexCount": 48,
+     "indexStart": 62940,
+     "indexCount": 132,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 132,
+       "material": 47
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 2000.0,
+     "vertexStart": 25977,
+     "vertexCount": 18,
+     "indexStart": 63072,
+     "indexCount": 24,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 24,
+       "material": -1
+      }
+     ]
+    }
+   ],
+   "source": "common_mp.ff"
+  },
+  {
+   "name": "me_gas_pump",
+   "count": 1,
+   "mins": [
+    -24.58,
+    -9.63,
+    -0.08
+   ],
+   "maxs": [
+    24.58,
+    9.63,
+    60.14
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 25995,
+     "vertexCount": 1167,
+     "indexStart": 63096,
+     "indexCount": 2880,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2880,
+       "material": 48
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 27162,
+     "vertexCount": 414,
+     "indexStart": 65976,
+     "indexCount": 654,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 654,
+       "material": 48
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_window_bars_02",
+   "count": 66,
+   "mins": [
+    0.0,
+    -0.0,
+    0.0
+   ],
+   "maxs": [
+    72.0,
+    4.0,
+    68.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 27576,
+     "vertexCount": 384,
+     "indexStart": 66630,
+     "indexCount": 600,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 600,
+       "material": 49
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_cafe_wall_light_off",
+   "count": 22,
+   "mins": [
+    -0.0,
+    -2.37,
+    -3.68
+   ],
+   "maxs": [
+    2.26,
+    2.37,
+    3.68
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 27960,
+     "vertexCount": 202,
+     "indexStart": 67230,
+     "indexCount": 498,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 498,
+       "material": 50
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_bike",
+   "count": 11,
+   "mins": [
+    -31.79,
+    -16.6,
+    -0.1
+   ],
+   "maxs": [
+    34.2,
+    9.42,
+    41.49
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 28162,
+     "vertexCount": 2331,
+     "indexStart": 67728,
+     "indexCount": 6726,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 6726,
+       "material": 51
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 5000.0,
+     "vertexStart": 30493,
+     "vertexCount": 227,
+     "indexStart": 74454,
+     "indexCount": 408,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 408,
+       "material": 51
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_litegrass_squareclump",
+   "count": 587,
+   "mins": [
+    -41.07,
+    -41.94,
+    -0.18
+   ],
+   "maxs": [
+    42.81,
+    41.94,
+    41.76
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 2000.0,
+     "vertexStart": 30720,
+     "vertexCount": 30,
+     "indexStart": 74862,
+     "indexCount": 30,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 30,
+       "material": 52
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_water_heater",
+   "count": 3,
+   "mins": [
+    -14.32,
+    -16.37,
+    0.01
+   ],
+   "maxs": [
+    12.56,
+    18.01,
+    88.12
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 30750,
+     "vertexCount": 990,
+     "indexStart": 74892,
+     "indexCount": 1950,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1950,
+       "material": 53
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 31740,
+     "vertexCount": 185,
+     "indexStart": 76842,
+     "indexCount": 348,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 348,
+       "material": 53
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_folding_chair",
+   "count": 1,
+   "mins": [
+    -11.47,
+    -10.27,
+    -0.05
+   ],
+   "maxs": [
+    11.42,
+    10.27,
+    37.01
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 200.0,
+     "vertexStart": 31925,
+     "vertexCount": 574,
+     "indexStart": 77190,
+     "indexCount": 1530,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 504,
+       "material": 54
+      },
+      {
+       "indexStart": 504,
+       "indexCount": 522,
+       "material": 54
+      },
+      {
+       "indexStart": 1026,
+       "indexCount": 504,
+       "material": 54
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 32499,
+     "vertexCount": 160,
+     "indexStart": 78720,
+     "indexCount": 294,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 294,
+       "material": 54
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_washer_01",
+   "count": 4,
+   "mins": [
+    -15.74,
+    -13.02,
+    0.09
+   ],
+   "maxs": [
+    15.74,
+    15.74,
+    48.36
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 32659,
+     "vertexCount": 250,
+     "indexStart": 79014,
+     "indexCount": 522,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 522,
+       "material": 55
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 32909,
+     "vertexCount": 62,
+     "indexStart": 79536,
+     "indexCount": 96,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 96,
+       "material": 55
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_canopy_2x4_4",
+   "count": 8,
+   "mins": [
+    -0.16,
+    -27.91,
+    0.05
+   ],
+   "maxs": [
+    23.91,
+    27.57,
+    38.85
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 32971,
+     "vertexCount": 288,
+     "indexStart": 79632,
+     "indexCount": 702,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 702,
+       "material": 8
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 3000.0,
+     "vertexStart": 33259,
+     "vertexCount": 228,
+     "indexStart": 80334,
+     "indexCount": 462,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 462,
+       "material": 8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_dinerboothchair",
+   "count": 10,
+   "mins": [
+    -13.91,
+    -30.24,
+    -0.05
+   ],
+   "maxs": [
+    13.91,
+    31.66,
+    44.19
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 33487,
+     "vertexCount": 340,
+     "indexStart": 80796,
+     "indexCount": 1134,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1134,
+       "material": 56
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 33827,
+     "vertexCount": 62,
+     "indexStart": 81930,
+     "indexCount": 120,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 120,
+       "material": 56
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_dinerboothtable",
+   "count": 5,
+   "mins": [
+    -16.71,
+    -27.0,
+    -0.01
+   ],
+   "maxs": [
+    16.71,
+    27.0,
+    32.4
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 33889,
+     "vertexCount": 385,
+     "indexStart": 82050,
+     "indexCount": 984,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 984,
+       "material": 57
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 34274,
+     "vertexCount": 63,
+     "indexStart": 83034,
+     "indexCount": 90,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 90,
+       "material": 57
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_dinercounterchair",
+   "count": 4,
+   "mins": [
+    -10.72,
+    -11.06,
+    -0.03
+   ],
+   "maxs": [
+    10.77,
+    18.05,
+    46.4
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 34337,
+     "vertexCount": 955,
+     "indexStart": 83124,
+     "indexCount": 3648,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 3648,
+       "material": 58
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 35292,
+     "vertexCount": 125,
+     "indexStart": 86772,
+     "indexCount": 216,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 216,
+       "material": 58
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_concrete_barrier",
+   "count": 3,
+   "mins": [
+    -36.0,
+    -11.28,
+    -0.0
+   ],
+   "maxs": [
+    36.0,
+    11.28,
+    41.08
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 35417,
+     "vertexCount": 222,
+     "indexStart": 86988,
+     "indexCount": 612,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 612,
+       "material": 59
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 35639,
+     "vertexCount": 24,
+     "indexStart": 87600,
+     "indexCount": 36,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 36,
+       "material": 59
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_corrugated_metal8x8_v2",
+   "count": 45,
+   "mins": [
+    -48.03,
+    -0.73,
+    -54.68
+   ],
+   "maxs": [
+    48.03,
+    0.73,
+    48.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 35663,
+     "vertexCount": 424,
+     "indexStart": 87636,
+     "indexCount": 1248,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1248,
+       "material": 6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_utility_light_off",
+   "count": 21,
+   "mins": [
+    -1.39,
+    -1.75,
+    -19.03
+   ],
+   "maxs": [
+    2.1,
+    1.75,
+    0.34
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 200.0,
+     "vertexStart": 36087,
+     "vertexCount": 478,
+     "indexStart": 88884,
+     "indexCount": 2256,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2256,
+       "material": 60
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 12000.0,
+     "vertexStart": 36565,
+     "vertexCount": 59,
+     "indexStart": 91140,
+     "indexCount": 144,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 144,
+       "material": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_rubble_chunk01",
+   "count": 27,
+   "mins": [
+    -4.32,
+    -7.53,
+    -1.31
+   ],
+   "maxs": [
+    8.72,
+    5.52,
+    4.58
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1150.0,
+     "vertexStart": 36624,
+     "vertexCount": 46,
+     "indexStart": 91284,
+     "indexCount": 108,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 18,
+       "material": 19
+      },
+      {
+       "indexStart": 18,
+       "indexCount": 90,
+       "material": 20
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_rubble_woodplank01",
+   "count": 33,
+   "mins": [
+    -19.73,
+    -4.44,
+    -1.83
+   ],
+   "maxs": [
+    5.02,
+    7.07,
+    4.82
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1150.0,
+     "vertexStart": 36670,
+     "vertexCount": 38,
+     "indexStart": 91392,
+     "indexCount": 72,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 72,
+       "material": 19
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_rubble_particleboard01",
+   "count": 8,
+   "mins": [
+    -10.29,
+    -12.96,
+    -1.78
+   ],
+   "maxs": [
+    8.37,
+    4.62,
+    2.97
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1100.0,
+     "vertexStart": 36708,
+     "vertexCount": 54,
+     "indexStart": 91464,
+     "indexCount": 96,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 96,
+       "material": 19
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_trashbag2_green",
+   "count": 2,
+   "mins": [
+    -16.88,
+    -14.7,
+    -0.8
+   ],
+   "maxs": [
+    16.88,
+    14.7,
+    22.67
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 440.0,
+     "vertexStart": 36762,
+     "vertexCount": 267,
+     "indexStart": 91560,
+     "indexCount": 1236,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1236,
+       "material": 61
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1500.0,
+     "vertexStart": 37029,
+     "vertexCount": 100,
+     "indexStart": 92796,
+     "indexCount": 300,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 300,
+       "material": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_trashcan_metal",
+   "count": 8,
+   "mins": [
+    -12.81,
+    -12.81,
+    0.0
+   ],
+   "maxs": [
+    12.81,
+    12.81,
+    34.76
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 37129,
+     "vertexCount": 429,
+     "indexStart": 93096,
+     "indexCount": 1356,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1356,
+       "material": 62
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 20000.0,
+     "vertexStart": 37558,
+     "vertexCount": 68,
+     "indexStart": 94452,
+     "indexCount": 168,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 168,
+       "material": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_bike_destroyed",
+   "count": 1,
+   "mins": [
+    -34.42,
+    -17.41,
+    -1.13
+   ],
+   "maxs": [
+    34.11,
+    25.02,
+    16.09
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 37626,
+     "vertexCount": 2375,
+     "indexStart": 94620,
+     "indexCount": 7014,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 7014,
+       "material": 51
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 5000.0,
+     "vertexStart": 40001,
+     "vertexCount": 225,
+     "indexStart": 101634,
+     "indexCount": 396,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 396,
+       "material": 51
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "vehicle_80s_sedan1_reddest",
+   "count": 6,
+   "mins": [
+    -82.27,
+    -31.06,
+    -3.85
+   ],
+   "maxs": [
+    83.1,
+    40.11,
+    64.25
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 40226,
+     "vertexCount": 2794,
+     "indexStart": 102030,
+     "indexCount": 6696,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 6522,
+       "material": 63
+      },
+      {
+       "indexStart": 6522,
+       "indexCount": 174,
+       "material": 64
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "vehicle_80s_sedan1_yeldest",
+   "count": 7,
+   "mins": [
+    -82.27,
+    -31.06,
+    -3.85
+   ],
+   "maxs": [
+    83.1,
+    40.11,
+    64.25
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 43020,
+     "vertexCount": 2794,
+     "indexStart": 108726,
+     "indexCount": 6696,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 6522,
+       "material": 65
+      },
+      {
+       "indexStart": 6522,
+       "indexCount": 174,
+       "material": 64
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_corrugated_metal4x8_v2",
+   "count": 9,
+   "mins": [
+    -23.97,
+    -0.97,
+    -54.68
+   ],
+   "maxs": [
+    24.04,
+    0.49,
+    48.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 45814,
+     "vertexCount": 220,
+     "indexStart": 115422,
+     "indexCount": 624,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 624,
+       "material": 6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_canopy_04",
+   "count": 4,
+   "mins": [
+    -49.19,
+    -77.05,
+    -46.67
+   ],
+   "maxs": [
+    0.0,
+    77.05,
+    0.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 150.0,
+     "vertexStart": 46034,
+     "vertexCount": 256,
+     "indexStart": 116046,
+     "indexCount": 540,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 288,
+       "material": 66
+      },
+      {
+       "indexStart": 288,
+       "indexCount": 252,
+       "material": 67
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 46290,
+     "vertexCount": 124,
+     "indexStart": 116586,
+     "indexCount": 270,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 162,
+       "material": 66
+      },
+      {
+       "indexStart": 162,
+       "indexCount": 108,
+       "material": 67
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_antenna",
+   "count": 18,
+   "mins": [
+    -49.11,
+    -40.47,
+    0.0
+   ],
+   "maxs": [
+    48.12,
+    37.04,
+    122.76
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 46414,
+     "vertexCount": 656,
+     "indexStart": 116856,
+     "indexCount": 954,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 954,
+       "material": 68
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 47070,
+     "vertexCount": 360,
+     "indexStart": 117810,
+     "indexCount": 534,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 534,
+       "material": 68
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_corrugated_metal8x8",
+   "count": 25,
+   "mins": [
+    -48.03,
+    -0.73,
+    -48.0
+   ],
+   "maxs": [
+    48.03,
+    0.73,
+    48.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 47430,
+     "vertexCount": 432,
+     "indexStart": 118344,
+     "indexCount": 1260,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1260,
+       "material": 6
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 47862,
+     "vertexCount": 8,
+     "indexStart": 119604,
+     "indexCount": 12,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 12,
+       "material": 6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_market_umbrella_3",
+   "count": 5,
+   "mins": [
+    -53.18,
+    -51.43,
+    0.0
+   ],
+   "maxs": [
+    53.18,
+    54.29,
+    128.85
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 800.0,
+     "vertexStart": 47870,
+     "vertexCount": 508,
+     "indexStart": 119616,
+     "indexCount": 1278,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 432,
+       "material": 69
+      },
+      {
+       "indexStart": 432,
+       "indexCount": 846,
+       "material": 70
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 48378,
+     "vertexCount": 132,
+     "indexStart": 120894,
+     "indexCount": 336,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 246,
+       "material": 69
+      },
+      {
+       "indexStart": 246,
+       "indexCount": 90,
+       "material": 70
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_canopy_folded_01",
+   "count": 4,
+   "mins": [
+    0.02,
+    -70.0,
+    -16.25
+   ],
+   "maxs": [
+    24.62,
+    69.98,
+    18.85
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 48510,
+     "vertexCount": 487,
+     "indexStart": 121230,
+     "indexCount": 1434,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1434,
+       "material": 71
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 48997,
+     "vertexCount": 62,
+     "indexStart": 122664,
+     "indexCount": 114,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 114,
+       "material": 71
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_tree_palm_bushy_3_static",
+   "count": 50,
+   "mins": [
+    -158.48,
+    -155.34,
+    -1.97
+   ],
+   "maxs": [
+    171.1,
+    162.04,
+    516.46
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000.0,
+     "vertexStart": 49059,
+     "vertexCount": 2578,
+     "indexStart": 122778,
+     "indexCount": 8076,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 6888,
+       "material": 72
+      },
+      {
+       "indexStart": 6888,
+       "indexCount": 144,
+       "material": 73
+      },
+      {
+       "indexStart": 7032,
+       "indexCount": 1044,
+       "material": 73
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 51637,
+     "vertexCount": 507,
+     "indexStart": 130854,
+     "indexCount": 1104,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 402,
+       "material": 72
+      },
+      {
+       "indexStart": 402,
+       "indexCount": 432,
+       "material": 72
+      },
+      {
+       "indexStart": 834,
+       "indexCount": 270,
+       "material": 73
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "vehicle_bmp_dsty_static",
+   "count": 2,
+   "mins": [
+    -166.86,
+    -102.04,
+    -4.06
+   ],
+   "maxs": [
+    170.25,
+    77.97,
+    116.1
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 800.0,
+     "vertexStart": 52144,
+     "vertexCount": 9575,
+     "indexStart": 131958,
+     "indexCount": 19290,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 4758,
+       "material": 74
+      },
+      {
+       "indexStart": 4758,
+       "indexCount": 5706,
+       "material": 74
+      },
+      {
+       "indexStart": 10464,
+       "indexCount": 7650,
+       "material": 74
+      },
+      {
+       "indexStart": 18114,
+       "indexCount": 1176,
+       "material": 75
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 61719,
+     "vertexCount": 999,
+     "indexStart": 151248,
+     "indexCount": 1926,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 270,
+       "material": 74
+      },
+      {
+       "indexStart": 270,
+       "indexCount": 1404,
+       "material": 74
+      },
+      {
+       "indexStart": 1674,
+       "indexCount": 252,
+       "material": 75
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_steel_ladder",
+   "count": 2,
+   "mins": [
+    -0.04,
+    -15.52,
+    -200.0
+   ],
+   "maxs": [
+    8.19,
+    15.52,
+    -0.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 62718,
+     "vertexCount": 422,
+     "indexStart": 153174,
+     "indexCount": 888,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 888,
+       "material": 17
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 63140,
+     "vertexCount": 128,
+     "indexStart": 154062,
+     "indexCount": 192,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 192,
+       "material": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_antenna3",
+   "count": 10,
+   "mins": [
+    -46.11,
+    -35.77,
+    0.0
+   ],
+   "maxs": [
+    62.09,
+    34.8,
+    104.32
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 63268,
+     "vertexCount": 684,
+     "indexStart": 154254,
+     "indexCount": 972,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 972,
+       "material": 68
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 63952,
+     "vertexCount": 392,
+     "indexStart": 155226,
+     "indexCount": 558,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 558,
+       "material": 68
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_electrical_pipe_elbow",
+   "count": 4,
+   "mins": [
+    -3.0,
+    -0.66,
+    0.01
+   ],
+   "maxs": [
+    0.71,
+    3.0,
+    1.47
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 64344,
+     "vertexCount": 99,
+     "indexStart": 155784,
+     "indexCount": 228,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 228,
+       "material": 23
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 64443,
+     "vertexCount": 43,
+     "indexStart": 156012,
+     "indexCount": 96,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 96,
+       "material": 23
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_drygrass_squareclump",
+   "count": 258,
+   "mins": [
+    -41.07,
+    -41.94,
+    -0.18
+   ],
+   "maxs": [
+    42.81,
+    41.94,
+    41.76
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 2000.0,
+     "vertexStart": 64486,
+     "vertexCount": 30,
+     "indexStart": 156108,
+     "indexCount": 30,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 30,
+       "material": 76
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_tree_river_birch_xl_a",
+   "count": 4,
+   "mins": [
+    -202.72,
+    -173.95,
+    -17.8
+   ],
+   "maxs": [
+    169.59,
+    128.87,
+    662.76
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1200.0,
+     "vertexStart": 64516,
+     "vertexCount": 3367,
+     "indexStart": 156138,
+     "indexCount": 5970,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2772,
+       "material": 77
+      },
+      {
+       "indexStart": 2772,
+       "indexCount": 3138,
+       "material": 78
+      },
+      {
+       "indexStart": 5910,
+       "indexCount": 60,
+       "material": 79
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 67883,
+     "vertexCount": 913,
+     "indexStart": 162108,
+     "indexCount": 1548,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 396,
+       "material": 77
+      },
+      {
+       "indexStart": 396,
+       "indexCount": 1092,
+       "material": 78
+      },
+      {
+       "indexStart": 1488,
+       "indexCount": 60,
+       "material": 79
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_lightbox",
+   "count": 10,
+   "mins": [
+    -9.85,
+    -10.19,
+    -7.22
+   ],
+   "maxs": [
+    9.85,
+    -0.06,
+    7.22
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 68796,
+     "vertexCount": 1112,
+     "indexStart": 163656,
+     "indexCount": 2730,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2730,
+       "material": 80
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 9000.0,
+     "vertexStart": 69908,
+     "vertexCount": 120,
+     "indexStart": 166386,
+     "indexCount": 204,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 204,
+       "material": 80
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_canopy_2x5_1",
+   "count": 1,
+   "mins": [
+    -0.16,
+    -33.8,
+    0.05
+   ],
+   "maxs": [
+    23.91,
+    34.11,
+    38.85
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 70028,
+     "vertexCount": 292,
+     "indexStart": 166590,
+     "indexCount": 702,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 702,
+       "material": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_stone_block01",
+   "count": 123,
+   "mins": [
+    -6.0,
+    -9.0,
+    -0.0
+   ],
+   "maxs": [
+    6.0,
+    9.0,
+    12.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 8000.0,
+     "vertexStart": 70320,
+     "vertexCount": 30,
+     "indexStart": 167292,
+     "indexCount": 48,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 48,
+       "material": 81
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_corrugated_metal2x4",
+   "count": 16,
+   "mins": [
+    -12.06,
+    -0.73,
+    -24.01
+   ],
+   "maxs": [
+    12.06,
+    0.73,
+    24.01
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 70350,
+     "vertexCount": 120,
+     "indexStart": 167340,
+     "indexCount": 324,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 324,
+       "material": 6
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 20000.0,
+     "vertexStart": 70470,
+     "vertexCount": 8,
+     "indexStart": 167664,
+     "indexCount": 12,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 12,
+       "material": 6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_water_tank1_ladder",
+   "count": 3,
+   "mins": [
+    -14.95,
+    -1.59,
+    -0.01
+   ],
+   "maxs": [
+    14.97,
+    1.59,
+    214.8
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1200.0,
+     "vertexStart": 70478,
+     "vertexCount": 240,
+     "indexStart": 167676,
+     "indexCount": 360,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 360,
+       "material": 82
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 70718,
+     "vertexCount": 120,
+     "indexStart": 168036,
+     "indexCount": 180,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 180,
+       "material": 82
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_water_tank1_stand",
+   "count": 3,
+   "mins": [
+    -38.58,
+    -44.09,
+    0.02
+   ],
+   "maxs": [
+    37.8,
+    44.88,
+    88.36
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1200.0,
+     "vertexStart": 70838,
+     "vertexCount": 672,
+     "indexStart": 168216,
+     "indexCount": 960,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 960,
+       "material": 82
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 71510,
+     "vertexCount": 168,
+     "indexStart": 169176,
+     "indexCount": 216,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 216,
+       "material": 82
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_water_tank1",
+   "count": 3,
+   "mins": [
+    -50.44,
+    -50.65,
+    0.0
+   ],
+   "maxs": [
+    50.36,
+    50.45,
+    214.17
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1200.0,
+     "vertexStart": 71678,
+     "vertexCount": 267,
+     "indexStart": 169392,
+     "indexCount": 702,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 702,
+       "material": 82
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 71945,
+     "vertexCount": 92,
+     "indexStart": 170094,
+     "indexCount": 186,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 186,
+       "material": 82
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_market_umbrella_6",
+   "count": 2,
+   "mins": [
+    -53.18,
+    -51.43,
+    0.0
+   ],
+   "maxs": [
+    53.18,
+    54.29,
+    128.85
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 800.0,
+     "vertexStart": 72037,
+     "vertexCount": 508,
+     "indexStart": 170280,
+     "indexCount": 1278,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 432,
+       "material": 83
+      },
+      {
+       "indexStart": 432,
+       "indexCount": 846,
+       "material": 70
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 72545,
+     "vertexCount": 132,
+     "indexStart": 171558,
+     "indexCount": 336,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 246,
+       "material": 83
+      },
+      {
+       "indexStart": 246,
+       "indexCount": 90,
+       "material": 70
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_canopy_3x4_1",
+   "count": 13,
+   "mins": [
+    -0.22,
+    -25.48,
+    -4.94
+   ],
+   "maxs": [
+    36.86,
+    25.6,
+    26.49
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 3000.0,
+     "vertexStart": 72677,
+     "vertexCount": 264,
+     "indexStart": 171894,
+     "indexCount": 528,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 528,
+       "material": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_antenna2",
+   "count": 4,
+   "mins": [
+    -6.05,
+    -43.15,
+    0.0
+   ],
+   "maxs": [
+    74.3,
+    39.91,
+    137.84
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 72941,
+     "vertexCount": 696,
+     "indexStart": 172422,
+     "indexCount": 1050,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1050,
+       "material": 68
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 73637,
+     "vertexCount": 388,
+     "indexStart": 173472,
+     "indexCount": 630,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 630,
+       "material": 68
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_streetlight",
+   "count": 4,
+   "mins": [
+    -70.96,
+    -7.61,
+    0.09
+   ],
+   "maxs": [
+    5.81,
+    7.61,
+    538.9
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 750.0,
+     "vertexStart": 74025,
+     "vertexCount": 285,
+     "indexStart": 174102,
+     "indexCount": 846,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 846,
+       "material": 84
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 74310,
+     "vertexCount": 91,
+     "indexStart": 174948,
+     "indexCount": 156,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 156,
+       "material": 84
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_canopy_large4",
+   "count": 1,
+   "mins": [
+    0.01,
+    -186.64,
+    -10.56
+   ],
+   "maxs": [
+    36.92,
+    186.64,
+    30.53
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 74401,
+     "vertexCount": 660,
+     "indexStart": 175104,
+     "indexCount": 1710,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1710,
+       "material": 8
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 75061,
+     "vertexCount": 474,
+     "indexStart": 176814,
+     "indexCount": 864,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 864,
+       "material": 8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_market_canopy7",
+   "count": 4,
+   "mins": [
+    -39.63,
+    -73.13,
+    -36.72
+   ],
+   "maxs": [
+    39.83,
+    0.81,
+    0.19
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 75535,
+     "vertexCount": 154,
+     "indexStart": 177678,
+     "indexCount": 264,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 156,
+       "material": 85
+      },
+      {
+       "indexStart": 156,
+       "indexCount": 108,
+       "material": 86
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_cafe_table2",
+   "count": 2,
+   "mins": [
+    -20.11,
+    -20.0,
+    0.0
+   ],
+   "maxs": [
+    20.11,
+    20.0,
+    34.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 75689,
+     "vertexCount": 217,
+     "indexStart": 177942,
+     "indexCount": 678,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 180,
+       "material": 87
+      },
+      {
+       "indexStart": 180,
+       "indexCount": 498,
+       "material": 88
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 75906,
+     "vertexCount": 149,
+     "indexStart": 178620,
+     "indexCount": 282,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 72,
+       "material": 87
+      },
+      {
+       "indexStart": 72,
+       "indexCount": 210,
+       "material": 88
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_cafe_chair",
+   "count": 4,
+   "mins": [
+    -9.72,
+    -10.65,
+    -0.01
+   ],
+   "maxs": [
+    9.72,
+    10.65,
+    42.33
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 76055,
+     "vertexCount": 288,
+     "indexStart": 178902,
+     "indexCount": 480,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 480,
+       "material": 89
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 76343,
+     "vertexCount": 152,
+     "indexStart": 179382,
+     "indexCount": 198,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 198,
+       "material": 89
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_steel_ladder_v2",
+   "count": 1,
+   "mins": [
+    -0.04,
+    -15.52,
+    -186.62
+   ],
+   "maxs": [
+    8.19,
+    15.52,
+    -0.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 76495,
+     "vertexCount": 315,
+     "indexStart": 179580,
+     "indexCount": 684,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 684,
+       "material": 17
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 76810,
+     "vertexCount": 96,
+     "indexStart": 180264,
+     "indexCount": 144,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 144,
+       "material": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_plastic_crate1",
+   "count": 1,
+   "mins": [
+    -6.0,
+    -8.94,
+    0.02
+   ],
+   "maxs": [
+    6.0,
+    9.0,
+    9.97
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 2000.0,
+     "vertexStart": 76906,
+     "vertexCount": 104,
+     "indexStart": 180408,
+     "indexCount": 180,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 180,
+       "material": 90
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_soup_can",
+   "count": 2,
+   "mins": [
+    -2.03,
+    -1.96,
+    -0.0
+   ],
+   "maxs": [
+    2.09,
+    1.96,
+    6.03
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 77010,
+     "vertexCount": 69,
+     "indexStart": 180588,
+     "indexCount": 174,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 174,
+       "material": 91
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000.0,
+     "vertexStart": 77079,
+     "vertexCount": 38,
+     "indexStart": 180762,
+     "indexCount": 78,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 78,
+       "material": 91
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_bottle1",
+   "count": 1,
+   "mins": [
+    -1.55,
+    -1.55,
+    0.0
+   ],
+   "maxs": [
+    1.55,
+    1.55,
+    11.09
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 77117,
+     "vertexCount": 154,
+     "indexStart": 180840,
+     "indexCount": 468,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 468,
+       "material": 92
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000.0,
+     "vertexStart": 77271,
+     "vertexCount": 58,
+     "indexStart": 181308,
+     "indexCount": 108,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 108,
+       "material": 92
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cobra_town_2story_motel",
+   "count": 1,
+   "mins": [
+    -324.85,
+    -486.27,
+    -8.0
+   ],
+   "maxs": [
+    251.15,
+    537.73,
+    319.33
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 20000.0,
+     "vertexStart": 77329,
+     "vertexCount": 824,
+     "indexStart": 181416,
+     "indexCount": 1500,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1500,
+       "material": 93
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 60000.0,
+     "vertexStart": 78153,
+     "vertexCount": 20,
+     "indexStart": 182916,
+     "indexCount": 30,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 30,
+       "material": 93
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "vehicle_bulldozer",
+   "count": 1,
+   "mins": [
+    -98.81,
+    -49.2,
+    0.17
+   ],
+   "maxs": [
+    107.39,
+    49.2,
+    110.08
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 800.0,
+     "vertexStart": 78173,
+     "vertexCount": 7332,
+     "indexStart": 182946,
+     "indexCount": 17400,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 3534,
+       "material": 94
+      },
+      {
+       "indexStart": 3534,
+       "indexCount": 10914,
+       "material": 94
+      },
+      {
+       "indexStart": 14448,
+       "indexCount": 2952,
+       "material": 95
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 85505,
+     "vertexCount": 3083,
+     "indexStart": 200346,
+     "indexCount": 5430,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 4386,
+       "material": 94
+      },
+      {
+       "indexStart": 4386,
+       "indexCount": 1044,
+       "material": 95
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_sign_noentry",
+   "count": 1,
+   "mins": [
+    -6.48,
+    -0.88,
+    -0.53
+   ],
+   "maxs": [
+    6.64,
+    1.09,
+    84.57
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 88588,
+     "vertexCount": 41,
+     "indexStart": 205776,
+     "indexCount": 66,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 66,
+       "material": 44
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_shrub_browntall",
+   "count": 6,
+   "mins": [
+    -19.93,
+    -23.89,
+    -7.49
+   ],
+   "maxs": [
+    23.83,
+    20.73,
+    38.17
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 2000.0,
+     "vertexStart": 88629,
+     "vertexCount": 32,
+     "indexStart": 205842,
+     "indexCount": 48,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 48,
+       "material": 24
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_cargocontainersingleface",
+   "count": 2,
+   "mins": [
+    -49.0,
+    -0.9,
+    2.78
+   ],
+   "maxs": [
+    49.0,
+    2.08,
+    103.14
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 200.0,
+     "vertexStart": 88661,
+     "vertexCount": 5832,
+     "indexStart": 205890,
+     "indexCount": 15360,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 12672,
+       "material": 96
+      },
+      {
+       "indexStart": 12672,
+       "indexCount": 2688,
+       "material": 97
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 94493,
+     "vertexCount": 616,
+     "indexStart": 221250,
+     "indexCount": 1056,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 768,
+       "material": 96
+      },
+      {
+       "indexStart": 768,
+       "indexCount": 288,
+       "material": 97
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_canopy_large1_dmgleft",
+   "count": 1,
+   "mins": [
+    -0.08,
+    -91.32,
+    -70.02
+   ],
+   "maxs": [
+    36.83,
+    90.23,
+    30.12
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 95109,
+     "vertexCount": 358,
+     "indexStart": 222306,
+     "indexCount": 948,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 948,
+       "material": 8
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 95467,
+     "vertexCount": 261,
+     "indexStart": 223254,
+     "indexCount": 474,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 474,
+       "material": 8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_junktire",
+   "count": 1,
+   "mins": [
+    -12.07,
+    -3.44,
+    -12.07
+   ],
+   "maxs": [
+    12.07,
+    3.44,
+    12.07
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 200.0,
+     "vertexStart": 95728,
+     "vertexCount": 692,
+     "indexStart": 223728,
+     "indexCount": 1536,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1536,
+       "material": 98
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 8000.0,
+     "vertexStart": 96420,
+     "vertexCount": 146,
+     "indexStart": 225264,
+     "indexCount": 360,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 360,
+       "material": 98
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_furniture_couch01",
+   "count": 1,
+   "mins": [
+    -18.98,
+    -39.79,
+    -0.01
+   ],
+   "maxs": [
+    18.98,
+    39.79,
+    38.43
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 96566,
+     "vertexCount": 490,
+     "indexStart": 225624,
+     "indexCount": 1158,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1158,
+       "material": 45
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 97056,
+     "vertexCount": 121,
+     "indexStart": 226782,
+     "indexCount": 186,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 186,
+       "material": 45
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_russian_table",
+   "count": 1,
+   "mins": [
+    -37.5,
+    -19.55,
+    0.02
+   ],
+   "maxs": [
+    37.5,
+    19.55,
+    35.96
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 97177,
+     "vertexCount": 531,
+     "indexStart": 226968,
+     "indexCount": 1860,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1860,
+       "material": 99
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 97708,
+     "vertexCount": 200,
+     "indexStart": 228828,
+     "indexCount": 264,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 264,
+       "material": 99
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_industrial_lamp_wall_off",
+   "count": 2,
+   "mins": [
+    -0.04,
+    -8.0,
+    -14.82
+   ],
+   "maxs": [
+    26.77,
+    7.99,
+    0.47
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 256.0,
+     "vertexStart": 97908,
+     "vertexCount": 363,
+     "indexStart": 229092,
+     "indexCount": 1092,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1092,
+       "material": 100
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 15000.0,
+     "vertexStart": 98271,
+     "vertexCount": 66,
+     "indexStart": 230184,
+     "indexCount": 144,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 144,
+       "material": 100
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_canopy_large3",
+   "count": 1,
+   "mins": [
+    -0.12,
+    -120.14,
+    -11.07
+   ],
+   "maxs": [
+    36.78,
+    120.14,
+    32.64
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 98337,
+     "vertexCount": 672,
+     "indexStart": 230328,
+     "indexCount": 1710,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1710,
+       "material": 8
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 99009,
+     "vertexCount": 464,
+     "indexStart": 232038,
+     "indexCount": 858,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 858,
+       "material": 8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_sign_magazinestand",
+   "count": 1,
+   "mins": [
+    -0.14,
+    -1.41,
+    -24.45
+   ],
+   "maxs": [
+    35.65,
+    1.41,
+    24.12
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 22000.0,
+     "vertexStart": 99473,
+     "vertexCount": 136,
+     "indexStart": 232896,
+     "indexCount": 240,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 240,
+       "material": 101
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bc_hesco_barrier_med",
+   "count": 13,
+   "mins": [
+    -25.51,
+    -25.28,
+    0.0
+   ],
+   "maxs": [
+    25.51,
+    24.77,
+    56.56
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 99609,
+     "vertexCount": 301,
+     "indexStart": 233136,
+     "indexCount": 1008,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 888,
+       "material": 102
+      },
+      {
+       "indexStart": 888,
+       "indexCount": 120,
+       "material": 103
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 5000.0,
+     "vertexStart": 99910,
+     "vertexCount": 20,
+     "indexStart": 234144,
+     "indexCount": 30,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 24,
+       "material": 102
+      },
+      {
+       "indexStart": 24,
+       "indexCount": 6,
+       "material": 103
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_canopy_large5",
+   "count": 2,
+   "mins": [
+    0.08,
+    -186.64,
+    -10.59
+   ],
+   "maxs": [
+    36.99,
+    186.64,
+    30.5
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 99930,
+     "vertexCount": 660,
+     "indexStart": 234174,
+     "indexCount": 1710,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1710,
+       "material": 8
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 100590,
+     "vertexCount": 476,
+     "indexStart": 235884,
+     "indexCount": 870,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 870,
+       "material": 8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_sign_miscshopsign",
+   "count": 1,
+   "mins": [
+    -39.37,
+    -39.87,
+    -0.56
+   ],
+   "maxs": [
+    39.15,
+    1.44,
+    23.39
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 25000.0,
+     "vertexStart": 101066,
+     "vertexCount": 184,
+     "indexStart": 236754,
+     "indexCount": 276,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 276,
+       "material": 104
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_junktire2",
+   "count": 10,
+   "mins": [
+    -12.07,
+    -3.44,
+    -12.07
+   ],
+   "maxs": [
+    12.07,
+    3.44,
+    12.07
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 200.0,
+     "vertexStart": 101250,
+     "vertexCount": 692,
+     "indexStart": 237030,
+     "indexCount": 1536,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1536,
+       "material": 105
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 101942,
+     "vertexCount": 146,
+     "indexStart": 238566,
+     "indexCount": 360,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 360,
+       "material": 105
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cobra_town_2story_house_01",
+   "count": 4,
+   "mins": [
+    -288.0,
+    -103.16,
+    0.0
+   ],
+   "maxs": [
+    224.0,
+    248.0,
+    288.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 60000.0,
+     "vertexStart": 102088,
+     "vertexCount": 186,
+     "indexStart": 238926,
+     "indexCount": 366,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 366,
+       "material": 106
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 102274,
+     "vertexCount": 90,
+     "indexStart": 239292,
+     "indexCount": 174,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 174,
+       "material": 106
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_market_canopy3",
+   "count": 1,
+   "mins": [
+    -39.63,
+    -73.13,
+    -36.72
+   ],
+   "maxs": [
+    39.83,
+    0.81,
+    0.19
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 102364,
+     "vertexCount": 154,
+     "indexStart": 239466,
+     "indexCount": 264,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 156,
+       "material": 85
+      },
+      {
+       "indexStart": 156,
+       "indexCount": 108,
+       "material": 107
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_grass_short_squareclumpshort",
+   "count": 42,
+   "mins": [
+    -21.8,
+    -22.26,
+    -0.01
+   ],
+   "maxs": [
+    22.79,
+    22.26,
+    19.28
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 2000.0,
+     "vertexStart": 102518,
+     "vertexCount": 30,
+     "indexStart": 239730,
+     "indexCount": 30,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 30,
+       "material": 108
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_cafesign",
+   "count": 1,
+   "mins": [
+    -0.22,
+    -3.91,
+    -40.3
+   ],
+   "maxs": [
+    32.61,
+    3.89,
+    40.18
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 3200.0,
+     "vertexStart": 102548,
+     "vertexCount": 227,
+     "indexStart": 239760,
+     "indexCount": 450,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 450,
+       "material": 109
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_brick_wall_dest2",
+   "count": 1,
+   "mins": [
+    -0.0,
+    -4.0,
+    -0.0
+   ],
+   "maxs": [
+    64.0,
+    4.07,
+    64.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 102775,
+     "vertexCount": 314,
+     "indexStart": 240210,
+     "indexCount": 672,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 672,
+       "material": 110
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_brick_wall_dest",
+   "count": 2,
+   "mins": [
+    0.01,
+    -3.77,
+    -0.03
+   ],
+   "maxs": [
+    59.31,
+    5.43,
+    63.97
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 103089,
+     "vertexCount": 316,
+     "indexStart": 240882,
+     "indexCount": 612,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 612,
+       "material": 110
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_brickwallvert_dest2",
+   "count": 1,
+   "mins": [
+    0.0,
+    -3.82,
+    0.0
+   ],
+   "maxs": [
+    22.09,
+    3.5,
+    64.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 103405,
+     "vertexCount": 287,
+     "indexStart": 241494,
+     "indexCount": 564,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 564,
+       "material": 110
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_door_01_handleleft",
+   "count": 1,
+   "mins": [
+    -2.74,
+    -55.88,
+    0.0
+   ],
+   "maxs": [
+    4.74,
+    0.0,
+    96.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 103692,
+     "vertexCount": 106,
+     "indexStart": 242058,
+     "indexCount": 276,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 276,
+       "material": 111
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_mattress_2",
+   "count": 1,
+   "mins": [
+    -19.89,
+    -41.64,
+    0.18
+   ],
+   "maxs": [
+    19.88,
+    41.58,
+    7.31
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 103798,
+     "vertexCount": 506,
+     "indexStart": 242334,
+     "indexCount": 1500,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1500,
+       "material": 32
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 104304,
+     "vertexCount": 50,
+     "indexStart": 243834,
+     "indexCount": 132,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 132,
+       "material": 32
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_dresser_d",
+   "count": 1,
+   "mins": [
+    -16.23,
+    -30.39,
+    -0.02
+   ],
+   "maxs": [
+    14.0,
+    33.67,
+    46.1
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 104354,
+     "vertexCount": 244,
+     "indexStart": 243966,
+     "indexCount": 384,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 384,
+       "material": 112
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_cafe_light_part1_on",
+   "count": 1,
+   "mins": [
+    -7.38,
+    -7.38,
+    -81.88
+   ],
+   "maxs": [
+    7.38,
+    7.38,
+    -0.01
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 104598,
+     "vertexCount": 381,
+     "indexStart": 244350,
+     "indexCount": 954,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 444,
+       "material": 113
+      },
+      {
+       "indexStart": 444,
+       "indexCount": 510,
+       "material": 114
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_floodlight",
+   "count": 3,
+   "mins": [
+    -4.68,
+    -5.97,
+    0.03
+   ],
+   "maxs": [
+    5.14,
+    5.57,
+    14.51
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 104979,
+     "vertexCount": 2038,
+     "indexStart": 245304,
+     "indexCount": 5940,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 5940,
+       "material": 115
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 107017,
+     "vertexCount": 257,
+     "indexStart": 251244,
+     "indexCount": 516,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 516,
+       "material": 115
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_corrugated_metal4x8_v3",
+   "count": 1,
+   "mins": [
+    -68.42,
+    -0.97,
+    -48.0
+   ],
+   "maxs": [
+    -11.19,
+    1.03,
+    48.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 107274,
+     "vertexCount": 334,
+     "indexStart": 251760,
+     "indexCount": 756,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 756,
+       "material": 6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_corrugated_metal4x8_v4",
+   "count": 1,
+   "mins": [
+    -53.78,
+    -0.97,
+    -48.0
+   ],
+   "maxs": [
+    -11.19,
+    1.03,
+    48.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 107608,
+     "vertexCount": 244,
+     "indexStart": 252516,
+     "indexCount": 558,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 558,
+       "material": 6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "aftermath_rebar_group_02",
+   "count": 2,
+   "mins": [
+    -1.91,
+    -49.21,
+    0.0
+   ],
+   "maxs": [
+    29.56,
+    32.39,
+    53.8
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 107852,
+     "vertexCount": 468,
+     "indexStart": 253074,
+     "indexCount": 1074,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1074,
+       "material": 49
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "aftermath_rebar_group_03",
+   "count": 5,
+   "mins": [
+    -2.91,
+    -49.21,
+    0.0
+   ],
+   "maxs": [
+    11.41,
+    32.21,
+    60.81
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 108320,
+     "vertexCount": 413,
+     "indexStart": 254148,
+     "indexCount": 1002,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1002,
+       "material": 49
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_window_bars_05",
+   "count": 7,
+   "mins": [
+    -2.0,
+    -22.0,
+    0.0
+   ],
+   "maxs": [
+    2.0,
+    22.0,
+    78.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 108733,
+     "vertexCount": 280,
+     "indexStart": 255150,
+     "indexCount": 492,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 492,
+       "material": 116
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_cafe_chair2",
+   "count": 1,
+   "mins": [
+    -9.97,
+    -11.88,
+    0.03
+   ],
+   "maxs": [
+    10.03,
+    11.96,
+    43.16
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 109013,
+     "vertexCount": 488,
+     "indexStart": 255642,
+     "indexCount": 996,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 396,
+       "material": 117
+      },
+      {
+       "indexStart": 396,
+       "indexCount": 600,
+       "material": 118
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 109501,
+     "vertexCount": 202,
+     "indexStart": 256638,
+     "indexCount": 258,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 72,
+       "material": 117
+      },
+      {
+       "indexStart": 72,
+       "indexCount": 186,
+       "material": 118
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_iron_gate",
+   "count": 1,
+   "mins": [
+    -2.0,
+    -64.0,
+    0.0
+   ],
+   "maxs": [
+    0.0,
+    66.0,
+    164.5
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 2500.0,
+     "vertexStart": 109703,
+     "vertexCount": 2520,
+     "indexStart": 256896,
+     "indexCount": 3780,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 3780,
+       "material": 119
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_pallet_stack",
+   "count": 1,
+   "mins": [
+    -34.17,
+    -29.94,
+    0.0
+   ],
+   "maxs": [
+    34.17,
+    29.94,
+    32.19
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 900.0,
+     "vertexStart": 112223,
+     "vertexCount": 1920,
+     "indexStart": 260676,
+     "indexCount": 2880,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2880,
+       "material": 25
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 114143,
+     "vertexCount": 1396,
+     "indexStart": 263556,
+     "indexCount": 2064,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2064,
+       "material": 25
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_pallet",
+   "count": 2,
+   "mins": [
+    -24.01,
+    -31.96,
+    0.0
+   ],
+   "maxs": [
+    24.01,
+    31.96,
+    9.01
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 900.0,
+     "vertexStart": 115539,
+     "vertexCount": 496,
+     "indexStart": 265620,
+     "indexCount": 780,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 780,
+       "material": 25
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 116035,
+     "vertexCount": 112,
+     "indexStart": 266400,
+     "indexCount": 168,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 168,
+       "material": 25
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "prop_misc_rock_large_02_ch_ground_dirt_02",
+   "count": 4,
+   "mins": [
+    -17.24,
+    -17.41,
+    -0.58
+   ],
+   "maxs": [
+    22.39,
+    15.47,
+    19.18
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 296.0,
+     "vertexStart": 116147,
+     "vertexCount": 118,
+     "indexStart": 266568,
+     "indexCount": 618,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 618,
+       "material": 120
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 6500.0,
+     "vertexStart": 116265,
+     "vertexCount": 26,
+     "indexStart": 267186,
+     "indexCount": 90,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 90,
+       "material": 120
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_sign_noentry",
+   "count": 1,
+   "mins": [
+    -7.07,
+    -0.7,
+    -0.14
+   ],
+   "maxs": [
+    6.59,
+    1.35,
+    84.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 116291,
+     "vertexCount": 40,
+     "indexStart": 267276,
+     "indexCount": 60,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 60,
+       "material": 121
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "vehicle_80s_sedan1_silvdest",
+   "count": 4,
+   "mins": [
+    -82.27,
+    -31.06,
+    -3.85
+   ],
+   "maxs": [
+    83.1,
+    40.11,
+    64.25
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 116331,
+     "vertexCount": 2794,
+     "indexStart": 267336,
+     "indexCount": 6696,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 6522,
+       "material": 122
+      },
+      {
+       "indexStart": 6522,
+       "indexCount": 174,
+       "material": 64
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_corrugated_metal2x8_v2",
+   "count": 3,
+   "mins": [
+    -11.95,
+    -0.73,
+    -54.68
+   ],
+   "maxs": [
+    11.95,
+    0.73,
+    48.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 119125,
+     "vertexCount": 112,
+     "indexStart": 274032,
+     "indexCount": 312,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 312,
+       "material": 6
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "stats": {
+  "instances": 3600,
+  "models": 153,
+  "modelsWithGeometry": 153,
+  "instancesWithGeometry": 3600,
+  "fallbackModels": {},
+  "vertices": 119237,
+  "indices": 274344,
+  "lod0InstanceTriangles": 633758,
+  "lowInstanceTriangles": 224872,
+  "materials": 123,
+  "materialsTextured": 122,
+  "lod0SurfacesWithoutMaterial": 0,
+  "materialHandles": {
+   "inline": 184,
+   "resolved": 1258,
+   "unresolved": 267,
+   "null": 0,
+   "chains": 31,
+   "rules": {
+    "measured": 17,
+    "cod4ff": 1
+   },
+   "shiftedModels": 12,
+   "windowedChains": 3,
+   "known": {
+    "218652": "mc/mtl_ex_airconditioner",
+    "233708": "mc/mtl_balcony_01",
+    "233712": "mc/mtl_balcony_01_metal",
+    "283460": "mc/mtl_canopy03",
+    "283464": "mc/mtl_canopy_metal",
+    "293816": "mc/mtl_electric_box2",
+    "300368": "mc/mtl_satellitedish",
+    "312956": "mc/mtl_antenna",
+    "323204": "mc/mtl_corrugated_metal",
+    "357712": "mc/mtl_lightfluo",
+    "364552": "mc/mtl_canopy05",
+    "420560": "mc/mtl_brush_toujanebigbushy",
+    "424228": "mc/mtl_plastic_bucket",
+    "424232": "mc/mtl_plastic_bucket_dirt",
+    "446656": "mc/mtl_marketumbrella03",
+    "446660": "mc/me_metal_grey_01",
+    "469372": "mc/mtl_canopy_folded_01",
+    "634924": "mc/mtl_palmtree_fronds",
+    "634928": "mc/mtl_palmtree_bark",
+    "704612": "mc/mtl_vehicle_bmp_dsty",
+    "704624": "mc/mtl_vehicle_bmp_track_dsty",
+    "886236": "mc/mtl_constructionrailingyellow",
+    "946056": "mc/mtl_fire_light",
+    "951180": "mc/mtl_fire_extinguisher",
+    "981576": "mc/mtl_barrel_blue_rust",
+    "981580": "mc/mtl_corrosive2",
+    "996800": "mc/mtl_steel_ladder",
+    "1026232": "mc/mtl_lightfluohang_on",
+    "1029792": "mc/ch_rubble01",
+    "1029796": "mc/me_concrete_dest1",
+    "1032920": "mc/mtl_electric_box1",
+    "1035812": "mc/mtl_electric_box3",
+    "1048308": "mc/mtl_electrical_pipe",
+    "1049484": "mc/mtl_desertshrubs",
+    "1049868": "mc/mtl_drygrass",
+    "1065144": "mc/mtl_river_birch",
+    "1065148": "mc/mtl_river_birch_canopy",
+    "1065152": "mc/mtl_tree_shadow_caster",
+    "1165456": "mc/mtl_lightbox_off",
+    "1181268": "mc/mtl_stone_block01",
+    "1183772": "mc/mtl_pallet",
+    "1198204": "mc/me_cinderblock_wall2",
+    "1205508": "mc/mtl_barrel_white_rust",
+    "1219940": "mc/mtl_chainlink_fence_pole",
+    "1243324": "mc/mtl_water_tower",
+    "1264996": "mc/mtl_fanceil",
+    "1275876": "mc/mtl_marketumbrella06",
+    "1310188": "mc/mtl_ac_big",
+    "1323584": "mc/mtl_ac_window",
+    "1326148": "mc/mtl_bed_mattress",
+    "1335516": "mc/mtl_restaurantceilinglamp_off",
+    "1351244": "mc/mtl_80s_econ_silv",
+    "1356428": "mc/mtl_80s_econ_yel",
+    "1362532": "mc/mtl_80s_econ_tan",
+    "1374756": "mc/mtl_wheelbarrow",
+    "1414744": "mc/mtl_streetlight",
+    "1449972": "mc/mtl_canopy_support",
+    "1449976": "mc/mtl_market_canopy2",
+    "1475864": "mc/mtl_cafe_table2",
+    "1475868": "mc/mtl_cafe_table2_base",
+    "1482124": "mc/mtl_cafe_chair",
+    "1492836": "mc/mtl_bedframemetal",
+    "1505916": "mc/mtl_refrigerator2",
+    "1512920": "mc/mtl_restaurantstainlessteelshelf",
+    "1547844": "mc/mtl_sign_shakar",
+    "1563932": "mc/mtl_plastic_crates",
+    "1567644": "mc/mtl_soup_can",
+    "1570008": "mc/mtl_plasticbottles",
+    "1576348": "mc/mtl_dumpster",
+    "1576352": "mc/mtl_dumpster_lid",
+    "1595100": "mc/mtl_cobra_town_2story_motel",
+    "1633812": "mc/mtl_bulldozer",
+    "1633820": "mc/mtl_bulldozer_tread",
+    "1847480": "mc/mtl_me_streetsigns",
+    "1877536": "mc/mtl_cargocontainerlockingbar",
+    "1877540": "mc/mtl_cargocontainerdoorhinge",
+    "2042436": "mc/mtl_ch_couch01",
+    "2101060": "mc/mtl_tire",
+    "2109864": "mc/mtl_barrel_d",
+    "2149076": "mc/mtl_russian_table",
+    "2155880": "mc/mtl_industrial_lamp_off",
+    "2196388": "mc/mtl_me_magazinestand",
+    "2202516": "mc/mtl_hesco_barrier",
+    "2202520": "mc/me_ground_sand1",
+    "2235164": "mc/mtl_me_orangesign",
+    "2240132": "mc/mtl_tire2",
+    "2251316": "mc/mtl_oil_pump",
+    "2276136": "mc/me_metal_rust_02",
+    "2286728": "mc/mtl_cafe_wall_light_off",
+    "2306648": "mc/mtl_bike",
+    "2361628": "mc/mtl_cobra_town_2story_house_01",
+    "2367844": "mc/mtl_lightgrass",
+    "2370856": "mc/mtl_com_water_heater",
+    "2380428": "mc/mtl_folding_chair",
+    "2395108": "mc/mtl_ch_washer_01",
+    "2397156": "mc/mtl_market_canopy1",
+    "2401932": "mc/mtl_newgrassgreen",
+    "2415248": "mc/mtl_me_cafesign",
+    "2425216": "mc/mtl_dinerboothchair",
+    "2438452": "mc/mtl_dinerboothtable",
+    "2455288": "mc/mtl_brick_wall_dest",
+    "2487228": "mc/mtl_com_door_01_handleright",
+    "2502824": "mc/mtl_furniture_piano01_d",
+    "2515648": "mc/mtl_dinercounterchair",
+    "2542024": "mc/mtl_cafe_light_off",
+    "2542028": "mc/mtl_cafe_light_on",
+    "2566760": "mc/mtl_floodlight",
+    "2685872": "mc/mtl_barrier",
+    "2698612": "mc/me_corrugated_metal01",
+    "2729988": "mc/mtl_cafe_chair2",
+    "2729992": "mc/mtl_cafe_chair2_metal",
+    "2742140": "mc/mtl_iron_gate",
+    "2806872": "mc/mtl_utility_light_off",
+    "2832568": "mc/mtl_trashbag_green",
+    "2912696": "mc/mtl_trashcan_metal",
+    "2917604": "mc/mtl_misc_rock_large_02_ch_ground_dirt_02",
+    "2986180": "mc/mtl_ch_streetsigns",
+    "2994524": "mc/mtl_80s_econdestroy_red",
+    "2994528": "mc/mtl_80s_edestroy_glass",
+    "3102412": "mc/mtl_80s_econdestroy_yel",
+    "3209988": "mc/mtl_80s_econdestroy_silv",
+    "3338196": "mc/mtl_paint_can",
+    "3345960": "mc/mtl_barrel_damaged",
+    "3353320": "mc/mtl_milk_carton",
+    "3354828": "mc/mtl_plasticcrate_yellow",
+    "3363472": "mc/mtl_hub_caps",
+    "3418596": "mc/mtl_cardboardbox",
+    "3418600": "mc/mtl_cardboardbox_decal",
+    "3553176": "mc/mtl_copperpan_metalpots",
+    "3576528": "mc/mtl_tin_boxes",
+    "3594508": "mc/mtl_vcr_tape_plastic_blue",
+    "3596256": "mc/mtl_red_toolbox",
+    "3606760": "mc/mtl_plasticcrate_green",
+    "3608488": "mc/mtl_plasticcrate_brown",
+    "3626672": "mc/mtl_plastic_case_big",
+    "3689860": "mc/mtl_laptop_envu",
+    "3689864": "mc/mtl_laptop_envu_screen",
+    "3699168": "mc/mtl_cellphone",
+    "3722204": "mc/mtl_plastic_case_bomb_d",
+    "3722208": "mc/mtl_styroform_d",
+    "3785388": "mc/mtl_styroform",
+    "3785392": "mc/mtl_plastic_case_bomb",
+    "3785404": "mc/mtl_weapon_stinger",
+    "3875544": "mc/mtl_80s_econ_glass_outside",
+    "3875568": "mc/mtl_80s_econdestroy_green",
+    "3875584": ",mc/com_glass_shattered_outside",
+    "3875608": "mc/com_glass_shattered_inside",
+    "3875632": "mc/mtl_80s_econ_glass_inside",
+    "3875656": "mc/mtl_engine",
+    "3875664": "mc/mtl_80s_econ_green_rubber",
+    "4305528": "mc/mtl_80s_econ_brn",
+    "4305584": "mc/mtl_80s_econ_glass",
+    "29930836": "mc/mtl_usmc_body_mp",
+    "29930852": "mc/mtl_usmc_lod_mp",
+    "29964216": "mc/mtl_usmc_tactical_mich_stripes_nomex",
+    "29964224": "mc/mtl_accessories_mp",
+    "29964236": "mc/mtl_accessories_alpha_mp",
+    "30034716": "mc/mtl_usmc_tactical_baseball_cap",
+    "30034728": "mc/mtl_eye_highlight",
+    "30208180": "mc/mtl_usmc_tactical_mich",
+    "30208200": "mc/mtl_usmc_tactical_cap",
+    "30208208": ",mc/lambert1",
+    "30299988": "mc/mtl_usmc_shaved_head",
+    "30366920": "mc/mtl_bodies_arab_regular",
+    "30366928": "mc/mtl_arab_regular_lod_sp",
+    "30386764": "mc/mtl_arab_regular_mowrap_sp",
+    "30417744": "mc/mtl_desert_op_force_gloves",
+    "30417748": "mc/mtl_desert_op_force_sleeves",
+    "30417752": "mc/mtl_desert_op_force_arms",
+    "30480800": "mc/mtl_arab_regular_helmet_hands_sp",
+    "30506676": "mc/mtl_arab_regular_sadiq_sp",
+    "30581648": "mc/mtl_arab_regular_backpack"
+   }
+  },
+  "materialsShared": 2
+ },
+ "note": "Activision's models, extracted from the game files (see maps3d/NOTICE.md). Models without lods are drawn as boxes of their bounds.",
+ "collision": {
+  "file": "props_coll.bin",
+  "triangles": 51266,
+  "models": [
+   [
+    0,
+    148
+   ],
+   [
+    148,
+    204
+   ],
+   [
+    352,
+    1000
+   ],
+   [
+    1352,
+    38
+   ],
+   [
+    1390,
+    224
+   ],
+   [
+    1614,
+    212
+   ],
+   [
+    1826,
+    60
+   ],
+   [
+    1886,
+    570
+   ],
+   null,
+   [
+    2456,
+    360
+   ],
+   [
+    2816,
+    218
+   ],
+   [
+    3034,
+    234
+   ],
+   [
+    3268,
+    144
+   ],
+   [
+    3412,
+    144
+   ],
+   [
+    3556,
+    336
+   ],
+   [
+    3892,
+    208
+   ],
+   [
+    4100,
+    176
+   ],
+   [
+    4276,
+    96
+   ],
+   [
+    4372,
+    64
+   ],
+   [
+    4436,
+    548
+   ],
+   [
+    4984,
+    276
+   ],
+   [
+    5260,
+    228
+   ],
+   [
+    5488,
+    60
+   ],
+   [
+    5548,
+    40
+   ],
+   [
+    5588,
+    36
+   ],
+   [
+    5624,
+    18
+   ],
+   null,
+   null,
+   [
+    5642,
+    286
+   ],
+   [
+    5928,
+    84
+   ],
+   [
+    6012,
+    268
+   ],
+   [
+    6280,
+    103
+   ],
+   [
+    6383,
+    212
+   ],
+   [
+    6595,
+    212
+   ],
+   [
+    6807,
+    304
+   ],
+   [
+    7111,
+    10
+   ],
+   [
+    7121,
+    12
+   ],
+   [
+    7133,
+    108
+   ],
+   [
+    7241,
+    298
+   ],
+   [
+    7539,
+    93
+   ],
+   [
+    7632,
+    93
+   ],
+   [
+    7725,
+    107
+   ],
+   [
+    7832,
+    790
+   ],
+   null,
+   [
+    8622,
+    376
+   ],
+   [
+    8998,
+    32
+   ],
+   [
+    9030,
+    216
+   ],
+   [
+    9246,
+    102
+   ],
+   [
+    9348,
+    584
+   ],
+   [
+    9932,
+    108
+   ],
+   [
+    10040,
+    68
+   ],
+   [
+    10108,
+    338
+   ],
+   [
+    10446,
+    268
+   ],
+   [
+    10714,
+    20
+   ],
+   [
+    10734,
+    796
+   ],
+   [
+    11530,
+    303
+   ],
+   [
+    11833,
+    12
+   ],
+   [
+    11845,
+    498
+   ],
+   [
+    12343,
+    200
+   ],
+   [
+    12543,
+    166
+   ],
+   [
+    12709,
+    1123
+   ],
+   null,
+   [
+    13832,
+    115
+   ],
+   [
+    13947,
+    274
+   ],
+   [
+    14221,
+    32
+   ],
+   [
+    14253,
+    234
+   ],
+   [
+    14487,
+    226
+   ],
+   [
+    14713,
+    328
+   ],
+   [
+    15041,
+    516
+   ],
+   [
+    15557,
+    204
+   ],
+   [
+    15761,
+    416
+   ],
+   [
+    16177,
+    358
+   ],
+   [
+    16535,
+    34
+   ],
+   [
+    16569,
+    24
+   ],
+   [
+    16593,
+    32
+   ],
+   [
+    16625,
+    246
+   ],
+   [
+    16871,
+    56
+   ],
+   [
+    16927,
+    972
+   ],
+   [
+    17899,
+    2231
+   ],
+   [
+    20130,
+    2231
+   ],
+   [
+    22361,
+    208
+   ],
+   [
+    22569,
+    180
+   ],
+   [
+    22749,
+    178
+   ],
+   [
+    22927,
+    420
+   ],
+   [
+    23347,
+    157
+   ],
+   [
+    23504,
+    478
+   ],
+   [
+    23982,
+    90
+   ],
+   [
+    24072,
+    3700
+   ],
+   [
+    27772,
+    296
+   ],
+   [
+    28068,
+    186
+   ],
+   null,
+   null,
+   [
+    28254,
+    924
+   ],
+   [
+    29178,
+    68
+   ],
+   [
+    29246,
+    234
+   ],
+   [
+    29480,
+    16
+   ],
+   [
+    29496,
+    108
+   ],
+   [
+    29604,
+    60
+   ],
+   [
+    29664,
+    176
+   ],
+   [
+    29840,
+    114
+   ],
+   [
+    29954,
+    157
+   ],
+   [
+    30111,
+    176
+   ],
+   [
+    30287,
+    210
+   ],
+   [
+    30497,
+    52
+   ],
+   [
+    30549,
+    570
+   ],
+   [
+    31119,
+    88
+   ],
+   [
+    31207,
+    94
+   ],
+   [
+    31301,
+    110
+   ],
+   [
+    31411,
+    228
+   ],
+   [
+    31639,
+    60
+   ],
+   [
+    31699,
+    26
+   ],
+   [
+    31725,
+    36
+   ],
+   [
+    31761,
+    10
+   ],
+   [
+    31771,
+    4157
+   ],
+   [
+    35928,
+    21
+   ],
+   null,
+   [
+    35949,
+    3312
+   ],
+   [
+    39261,
+    316
+   ],
+   [
+    39577,
+    120
+   ],
+   [
+    39697,
+    386
+   ],
+   [
+    40083,
+    88
+   ],
+   [
+    40171,
+    178
+   ],
+   [
+    40349,
+    570
+   ],
+   [
+    40919,
+    80
+   ],
+   [
+    40999,
+    10
+   ],
+   [
+    41009,
+    570
+   ],
+   [
+    41579,
+    92
+   ],
+   [
+    41671,
+    120
+   ],
+   [
+    41791,
+    122
+   ],
+   [
+    41913,
+    88
+   ],
+   null,
+   [
+    42001,
+    149
+   ],
+   [
+    42150,
+    224
+   ],
+   [
+    42374,
+    204
+   ],
+   [
+    42578,
+    188
+   ],
+   [
+    42766,
+    92
+   ],
+   [
+    42858,
+    164
+   ],
+   [
+    43022,
+    128
+   ],
+   [
+    43150,
+    318
+   ],
+   [
+    43468,
+    1980
+   ],
+   [
+    45448,
+    252
+   ],
+   [
+    45700,
+    186
+   ],
+   null,
+   null,
+   [
+    45886,
+    164
+   ],
+   [
+    46050,
+    176
+   ],
+   [
+    46226,
+    1260
+   ],
+   [
+    47486,
+    960
+   ],
+   [
+    48446,
+    260
+   ],
+   [
+    48706,
+    205
+   ],
+   [
+    48911,
+    20
+   ],
+   [
+    48931,
+    2231
+   ],
+   [
+    51162,
+    104
+   ]
+  ],
+  "layout": "float32 x 9 per triangle (model space), then uint8 surface type per triangle",
+  "note": "the models' collision surfaces (XModelCollSurf_s), solid and glass contents"
+ }
+}

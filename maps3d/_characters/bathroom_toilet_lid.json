@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "bathroom_toilet_lid",
+ "kind": "script",
+ "faction": null,
+ "file": "bathroom_toilet_lid.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 864
+  },
+  "normal": {
+   "offset": 864,
+   "length": 288
+  },
+  "uv": {
+   "offset": 1152,
+   "length": 576
+  },
+  "skinIndex": {
+   "offset": 1728,
+   "length": 288
+  },
+  "skinWeight": {
+   "offset": 2016,
+   "length": 288
+  },
+  "index": {
+   "offset": 2304,
+   "length": 456
+  },
+  "color": {
+   "offset": 2760,
+   "length": 288
+  }
+ },
+ "vertexCount": 72,
+ "triangleCount": 76,
+ "bones": [
+  {
+   "name": "polysurface143",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 228,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_bathroom_porcelain",
+   "texture": "_textures/bathroom_porcelain_clr.webp",
+   "textureAlpha": false,
+   "color": "#817f7b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/bathroom_porcelain_nml.normal.webp",
+   "specularMap": "_textures/bathroom_porcelain_spc-rgb_b_12d0b377.specular.webp",
+   "envMapParms": [
+    1.8,
+    3.8,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -5.89,
+   -12.32,
+   -1.31
+  ],
+  "maxs": [
+   5.89,
+   12.32,
+   1.31
+  ]
+ }
+}

@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_computer_keyboard",
+ "kind": "script",
+ "faction": null,
+ "file": "com_computer_keyboard.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 2544
+  },
+  "normal": {
+   "offset": 2544,
+   "length": 848
+  },
+  "uv": {
+   "offset": 3392,
+   "length": 1696
+  },
+  "skinIndex": {
+   "offset": 5088,
+   "length": 848
+  },
+  "skinWeight": {
+   "offset": 5936,
+   "length": 848
+  },
+  "index": {
+   "offset": 6784,
+   "length": 720
+  },
+  "color": {
+   "offset": 7504,
+   "length": 848
+  }
+ },
+ "vertexCount": 212,
+ "triangleCount": 120,
+ "bones": [
+  {
+   "name": "computer_keyboard_lod0",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 360,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_computer2",
+   "texture": "_textures/computer_monitor_col.webp",
+   "textureAlpha": false,
+   "color": "#969282",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/computer_monitor_nml.normal.webp",
+   "specularMap": "_textures/computer_monitor_spc-rgb_com_7e136350.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -3.92,
+   -12.49,
+   0.02
+  ],
+  "maxs": [
+   4.01,
+   12.49,
+   1.41
+  ]
+ }
+}

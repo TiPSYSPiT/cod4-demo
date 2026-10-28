@@ -1,0 +1,206 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "weapon_m14_mp",
+ "kind": "weapon",
+ "faction": null,
+ "file": "weapon_m14_mp.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 14736
+  },
+  "normal": {
+   "offset": 14736,
+   "length": 4912
+  },
+  "uv": {
+   "offset": 19648,
+   "length": 9824
+  },
+  "skinIndex": {
+   "offset": 29472,
+   "length": 4912
+  },
+  "skinWeight": {
+   "offset": 34384,
+   "length": 4912
+  },
+  "index": {
+   "offset": 39296,
+   "length": 5040
+  },
+  "color": {
+   "offset": 44336,
+   "length": 4912
+  }
+ },
+ "vertexCount": 1228,
+ "triangleCount": 840,
+ "bones": [
+  {
+   "name": "tag_weapon",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 0,
+   "pos": [
+    -4.1953,
+    -0.6922,
+    0.6248
+   ],
+   "quat": [
+    -0.212622,
+    -0.212622,
+    -0.674367,
+    0.674398
+   ]
+  },
+  {
+   "name": "tag_clip",
+   "parent": 0,
+   "pos": [
+    -4.3399,
+    -0.01,
+    -1.8646
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    20.0121,
+    0.0,
+    0.6726
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 36,
+   "material": 0
+  },
+  {
+   "indexStart": 36,
+   "indexCount": 1374,
+   "material": 0
+  },
+  {
+   "indexStart": 1410,
+   "indexCount": 1092,
+   "material": 1
+  },
+  {
+   "indexStart": 2502,
+   "indexCount": 18,
+   "material": 2
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_m14_mp",
+   "texture": "_textures/m14_mp_col.webp",
+   "textureAlpha": false,
+   "color": "#43413f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/m14_spec-rgb_m14_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_m14_scope",
+   "texture": "_textures/m14_scope_col.webp",
+   "textureAlpha": false,
+   "color": "#1d2021",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/m14_scope_spec-rgb_m14_scope_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.4,
+    6.0,
+    2.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_red_scope",
+   "texture": "_textures/weapon_red_scope_col.webp",
+   "textureAlpha": false,
+   "color": "#4e2210",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_red_scope_spc-r65g65b_d4364490.specular.webp",
+   "envMapParms": [
+    2.8,
+    3.6,
+    1.2,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -22.19,
+   -1.43,
+   -5.68
+  ],
+  "maxs": [
+   17.95,
+   1.14,
+   2.91
+  ]
+ }
+}

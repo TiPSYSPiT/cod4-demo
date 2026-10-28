@@ -1,0 +1,8740 @@
+{
+ "format": "cod4-demo3d-props/2",
+ "file": "props.bin",
+ "stride": 14,
+ "sections": {
+  "instances": {
+   "offset": 0,
+   "length": 1249416
+  },
+  "position": {
+   "offset": 1249416,
+   "length": 1858236
+  },
+  "normal": {
+   "offset": 3107652,
+   "length": 619412
+  },
+  "uv": {
+   "offset": 3727064,
+   "length": 1238824
+  },
+  "index": {
+   "offset": 4965888,
+   "length": 651828
+  },
+  "probe": {
+   "offset": 5617716,
+   "length": 22311
+  },
+  "color": {
+   "offset": 5640028,
+   "length": 619412
+  }
+ },
+ "fields": "instances: model index, origin xyz, axis rows (forward xyz, left xyz, up xyz), scale",
+ "instanceCount": 22311,
+ "materials": [
+  {
+   "name": "mc/mtl_river_birch",
+   "texture": "_textures/tree_river_birch_col.webp",
+   "textureAlpha": true,
+   "color": "#2e3c31",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/tree_river_birch_nml.normal.webp",
+   "specularMap": "_textures/dead_pine_spc-r-71g-71b-71_d_34842d41.specular.webp",
+   "envMapParms": [
+    0.0,
+    6.8,
+    0.05,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_river_birch_canopy",
+   "texture": "_textures/tree_river_birch_col.webp",
+   "textureAlpha": true,
+   "color": "#2e3c31",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_lightgrass",
+   "texture": "_textures/light_grass_col_0.webp",
+   "textureAlpha": true,
+   "color": "#575736",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_brush_toujanebigbushy",
+   "texture": "_textures/tree_desertbushy_col.webp",
+   "textureAlpha": true,
+   "color": "#403c2a",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_misc_literock_small01",
+   "texture": "_textures/misc_literock_small_01_col.webp",
+   "textureAlpha": false,
+   "color": "#6c6760",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/misc_rock_small_01_nml.normal.webp",
+   "specularMap": "_textures/misc_rock_small_01_spc-rgb_m_912c6ca5.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_misc_rock_small01",
+   "texture": "_textures/misc_rock_small_01_col.webp",
+   "textureAlpha": false,
+   "color": "#555654",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/misc_rock_small_01_nml.normal.webp",
+   "specularMap": "_textures/misc_rock_small_01_spc-rgb_m_912c6ca5.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_destroyed_trees",
+   "texture": "_textures/tree_destroyed_col.webp",
+   "textureAlpha": true,
+   "color": "#504e46",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/tree_destroyed_nml.normal.webp",
+   "specularMap": "_textures/dead_pine_spc-r-71g-71b-71_d_34842d41.specular.webp",
+   "envMapParms": [
+    0.0,
+    6.4,
+    0.05,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/ch_wallpaintchipped_4",
+   "texture": "_textures/ch_wallpaintchipped_4_col.webp",
+   "textureAlpha": false,
+   "color": "#76726d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ch_wallpaintchipped_4_nml.normal.webp",
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_bathroom_porcelain",
+   "texture": "_textures/bathroom_porcelain_clr.webp",
+   "textureAlpha": false,
+   "color": "#817f7b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/bathroom_porcelain_nml.normal.webp",
+   "specularMap": "_textures/bathroom_porcelain_spc-rgb_b_12d0b377.specular.webp",
+   "envMapParms": [
+    1.8,
+    3.8,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_bathroom_chrome",
+   "texture": "_textures/bathroom_chrome_clr.webp",
+   "textureAlpha": false,
+   "color": "#2e302e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/bathroom_chrome_nml.normal.webp",
+   "specularMap": "_textures/bathroom_chrome_spc-rgb_bath_03806b1d.specular.webp",
+   "envMapParms": [
+    4.0,
+    4.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_refrigerator",
+   "texture": "_textures/refrigerator_col.webp",
+   "textureAlpha": false,
+   "color": "#80817d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/refrigerator_nml.normal.webp",
+   "specularMap": "_textures/refrigerator_spec-rgb_refrig_e65ac661.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_radiator",
+   "texture": "_textures/ch_radiator01_col.webp",
+   "textureAlpha": false,
+   "color": "#7c7874",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ch_radiator01_norm.normal.webp",
+   "specularMap": "_textures/ch_radiator01_spec-rgb_ch_ra_ff839829.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_com_stove",
+   "texture": "_textures/com_stove_col.webp",
+   "textureAlpha": false,
+   "color": "#6b665d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/com_stove_spc-r-49g-49b-49_c_e6a15fbe.specular.webp",
+   "envMapParms": [
+    3.2,
+    3.2,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_ch_couch01",
+   "texture": "_textures/ch_couch_col.webp",
+   "textureAlpha": false,
+   "color": "#5f4438",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ch_couch_nml.normal.webp",
+   "specularMap": "_textures/ch_couch_spc-rgb_ch_couch_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.0,
+    8.0,
+    2.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_bed_mattress",
+   "texture": "_textures/bed_mattress_col.webp",
+   "textureAlpha": false,
+   "color": "#645d56",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/bed_mattress_nml.normal.webp",
+   "specularMap": "_textures/bed_mattress_spc-rgb_bed_mat_197334ec.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_bedframemetal",
+   "texture": "_textures/bed_mattress_frame_col.webp",
+   "textureAlpha": true,
+   "color": "#4e4c4b",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/bed_mattress_frame_nml.normal.webp",
+   "specularMap": "_textures/bed_mattress_frame_spc-rgb_b_4f3be6fc.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_restaurantstainlessteelshelf",
+   "texture": "_textures/restaurant_stainlesssteelshelf_col.webp",
+   "textureAlpha": false,
+   "color": "#797978",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/restaurant_stainlesssteelshelf_nml.normal.webp",
+   "specularMap": "_textures/restaurant_stainlesssteelshe_01afeb18.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_russian_table",
+   "texture": "_textures/russian_table_col.webp",
+   "textureAlpha": false,
+   "color": "#725e48",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/russian_table_nml.normal.webp",
+   "specularMap": "_textures/russian_table_spc-rgb_russia_2ec501dc.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_furniture_piano01",
+   "texture": "_textures/furniture_piano01_c.webp",
+   "textureAlpha": false,
+   "color": "#4b3d32",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/furniture_piano01_n.normal.webp",
+   "specularMap": "_textures/furniture_piano01_s-rgb_furn_1d1aa102.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_lamp_ornate_off",
+   "texture": "_textures/lamp_ornate_c.webp",
+   "textureAlpha": true,
+   "color": "#a7997c",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/lamp_ornate_n.normal.webp",
+   "specularMap": "_textures/lamp_ornate_s-rgb_lamp_ornate_cp-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_ivy",
+   "texture": "_textures/ivy_col_1.webp",
+   "textureAlpha": true,
+   "color": "#565a2a",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ivy_nml.normal.webp",
+   "specularMap": "_textures/ivy_spc-rgb_ivy_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/me_asphalt_01",
+   "texture": "_textures/me_asphalt_01.webp",
+   "textureAlpha": false,
+   "color": "#898074",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_asphalt_01_n.normal.webp",
+   "specularMap": "_textures/me_asphalt_01_s-r-25g-25b-25l-11.specular.webp",
+   "detailScale": [
+    32.0,
+    32.0,
+    0.0,
+    0.0
+   ],
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "detailMap": "_textures/concrete_wall_01.webp"
+  },
+  {
+   "name": "mc/mtl_desertshrubs",
+   "texture": "_textures/desertshrubs_0.webp",
+   "textureAlpha": true,
+   "color": "#776043",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_barrel_black_rust",
+   "texture": "_textures/55_gallon_drum_black_rust.webp",
+   "textureAlpha": false,
+   "color": "#484343",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/rusty_barrel_bump.normal.webp",
+   "specularMap": "_textures/rusty_barrel_spec-rgb_rusty__96f69cf3.specular.webp",
+   "envMapParms": [
+    1.2,
+    4.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_restaurant_sink",
+   "texture": "_textures/restaurant_sink_col.webp",
+   "textureAlpha": false,
+   "color": "#7c7970",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/restaurant_sink_nml.normal.webp",
+   "specularMap": "_textures/restaurant_sink_spc-rgb_rest_93f2ca17.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_russian_table_cloth3",
+   "texture": "_textures/russian_table_cloth3_col.webp",
+   "textureAlpha": false,
+   "color": "#727b73",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "normalMap": "_textures/russian_table_cloth_nml.normal.webp",
+   "specularMap": "_textures/russian_table_cloth_spc-rgb__1a08bcf9.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_dumpster",
+   "texture": "_textures/dumpster_col.webp",
+   "textureAlpha": false,
+   "color": "#8f8c88",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/dumpster_nml.normal.webp",
+   "specularMap": "_textures/dumpster_spc-r-87g-87b-87_du_872bd7d0.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_dumpster_lid",
+   "texture": "_textures/dumpster_lid_col.webp",
+   "textureAlpha": false,
+   "color": "#2b312e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/dumpster_lid_nml.normal.webp",
+   "specularMap": "_textures/dumpster_lid_spc-r-87g-87b-8_719d834f.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_flashlight_off",
+   "texture": "_textures/flashlight_off_col.webp",
+   "textureAlpha": false,
+   "color": "#363632",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/flashlight_nml.normal.webp",
+   "specularMap": "_textures/flashlight_spc-rgb_flashligh_0aab7842.specular.webp",
+   "envMapParms": [
+    1.6,
+    6.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_flashlight_on",
+   "texture": "_textures/flashlight_on_col.webp",
+   "textureAlpha": false,
+   "color": "#4f4f4b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_enemy_bedroll",
+   "texture": "_textures/broll_col.webp",
+   "textureAlpha": false,
+   "color": "#4c4c3c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/broll_nml.normal.webp",
+   "specularMap": "_textures/broll_spc-rgb_broll_cos-l-11.specular.webp",
+   "envMapParms": [
+    2.0,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_80s_econdestroy_red",
+   "texture": "_textures/80s_econdestroy_red_col.webp",
+   "textureAlpha": false,
+   "color": "#483731",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/80s_econdestroy_nml.normal.webp",
+   "specularMap": "_textures/80s_econdestroy_spc-rgb_80s__2838a1ce.specular.webp",
+   "envMapParms": [
+    0.4,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_80s_edestroy_glass",
+   "texture": "_textures/80s_destglass_col.webp",
+   "textureAlpha": true,
+   "color": "#505c5b",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "specularMap": "_textures/80s_destglass_spc-rgb_80s_de_0f42539d.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_refrigerator_d",
+   "texture": "_textures/refrigerator_d_col.webp",
+   "textureAlpha": false,
+   "color": "#403e3b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/refrigerator_d_nml.normal.webp",
+   "specularMap": "_textures/refrigerator_d_spc-rgb_refri_a6c9d9f5.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_com_stove_d",
+   "texture": "_textures/com_stove_d_col.webp",
+   "textureAlpha": false,
+   "color": "#5c574f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/com_stove_d_nml.normal.webp",
+   "specularMap": "_textures/com_stove_d_spc-r-49g-49b-49_803b8823.specular.webp",
+   "envMapParms": [
+    3.2,
+    3.2,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cardboardbox",
+   "texture": "_textures/cardboard_box_color.webp",
+   "textureAlpha": false,
+   "color": "#8b7560",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/cardboard_box_normal.normal.webp",
+   "specularMap": "_textures/cardboard_box_spec-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cardboardbox_decal",
+   "texture": "_textures/cardboard_box_decal.webp",
+   "textureAlpha": true,
+   "color": "#bd9c8b",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_pallet",
+   "texture": "_textures/pallet_col.webp",
+   "textureAlpha": false,
+   "color": "#5d5142",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/pallet_nml.normal.webp",
+   "specularMap": "_textures/pallet_spc-rgb_pallet_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_trashbag_white",
+   "texture": "_textures/trashbag_white_col.webp",
+   "textureAlpha": false,
+   "color": "#979ba0",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/trashbag_nml.normal.webp",
+   "specularMap": "_textures/trashbag_spc-r-71g-71b-71_tr_3f62c4c5.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_military_tires02",
+   "texture": "_textures/tires02_col.webp",
+   "textureAlpha": false,
+   "color": "#30302c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/tires02_nml.normal.webp",
+   "specularMap": "_textures/tires02_spc-r-49g-49b-49_tir_3fdd549f.specular.webp",
+   "envMapParms": [
+    0.4,
+    3.2,
+    3.3,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_river_birch_canopy_2",
+   "texture": "_textures/tree_river_birch2_col.webp",
+   "textureAlpha": true,
+   "color": "#343c36",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_tree_shadow_caster",
+   "texture": "_textures/tree_shadowcaster.webp",
+   "textureAlpha": true,
+   "color": "#000000",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "shadowOnly": true
+  },
+  {
+   "name": "mc/mtl_red_pine_canopy",
+   "texture": "_textures/red_pine_col.webp",
+   "textureAlpha": true,
+   "color": "#211e1b",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_red_pine",
+   "texture": "_textures/red_pine_col.webp",
+   "textureAlpha": true,
+   "color": "#211e1b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/red_pine_nml.normal.webp",
+   "specularMap": "_textures/dead_pine_spc-r-71g-71b-71_d_34842d41.specular.webp",
+   "envMapParms": [
+    0.0,
+    5.2,
+    0.05,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/jeepride_shrubgroup_mtl_02",
+   "texture": "_textures/jeepride_shrubgroup_02.webp",
+   "textureAlpha": true,
+   "color": "#5a6744",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_grey_oak_canopy",
+   "texture": "_textures/tree_grey_oak_col.webp",
+   "textureAlpha": true,
+   "color": "#1b1813",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_tire",
+   "texture": "_textures/junktire_col.webp",
+   "textureAlpha": false,
+   "color": "#343233",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/junktire_nml.normal.webp",
+   "specularMap": "_textures/junktire_spc-rgb_junktire_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_wheelbarrow",
+   "texture": "_textures/wheelbarrow_c.webp",
+   "textureAlpha": false,
+   "color": "#6f6f65",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/wheelbarrow_n.normal.webp",
+   "specularMap": "_textures/wheelbarrow_s-rgb_wheelbarrow_cp-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_vehicle_truck",
+   "texture": "_textures/pickup_col.webp",
+   "textureAlpha": false,
+   "color": "#453f3b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/pickup_nml.normal.webp",
+   "specularMap": "_textures/pickup_spc-rgb_pickup_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_vehicle_pickup_glass",
+   "texture": "_textures/pickup_glass_col.webp",
+   "textureAlpha": true,
+   "color": "#2e2f2d",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "specularMap": "_textures/pickup_glass_spec-rgb_pickup_9471e152.specular.webp",
+   "envMapParms": [
+    1.0,
+    1.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_vehicle_truck_tires",
+   "texture": "_textures/pickup_col.webp",
+   "textureAlpha": false,
+   "color": "#453f3b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/pickup_nml.normal.webp",
+   "specularMap": "_textures/pickup_spc-rgb_pickup_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_chainlink_fence_pole",
+   "texture": "_textures/me_chainlink_fence_pole_color.webp",
+   "textureAlpha": false,
+   "color": "#918f8f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_chainlink_fence_pole_normal.normal.webp",
+   "specularMap": "_textures/me_chainlink_fence_pole_spec_43cef4fb.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/ch_trim_stone01",
+   "texture": "_textures/ch_trim_stone01_col.webp",
+   "textureAlpha": false,
+   "color": "#70706b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ch_trim_stone01_nml.normal.webp",
+   "specularMap": "_textures/ch_trim_stone01_spc-r-2g-2b-_ea111ed9.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/ch_plaster_corner_01",
+   "texture": "_textures/ch_plastercorner01_col.webp",
+   "textureAlpha": false,
+   "color": "#b5b2a4",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ch_plastercorner01_nml.normal.webp",
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cafe_table1",
+   "texture": "_textures/cafe_table1_col.webp",
+   "textureAlpha": false,
+   "color": "#625851",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/cafe_table1_nml.normal.webp",
+   "specularMap": "_textures/cafe_table1_spc-rgb_cafe_tab_89c1bc16.specular.webp",
+   "envMapParms": [
+    2.0,
+    4.0,
+    0.1,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cafe_table1_base",
+   "texture": "_textures/cafe_table1_col.webp",
+   "textureAlpha": false,
+   "color": "#625851",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/cafe_table1_nml.normal.webp",
+   "specularMap": "_textures/cafe_table1_spc-rgb_cafe_tab_89c1bc16.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_ladder_wood",
+   "texture": "_textures/canopy2_col.webp",
+   "textureAlpha": false,
+   "color": "#7d6650",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/canopy2_nml.normal.webp",
+   "detailScale": [
+    32.0,
+    32.0,
+    0.0,
+    0.0
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "detailMap": "_textures/metal_01.webp"
+  },
+  {
+   "name": "mc/mtl_ch_gas_pump",
+   "texture": "_textures/ch_gas_pump_col.webp",
+   "textureAlpha": false,
+   "color": "#463928",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ch_gas_pump_nml.normal.webp",
+   "specularMap": "_textures/ch_gas_pump_spc-rgb_ch_gas_p_51c4927a.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_ch_gas_pump_glass",
+   "texture": "_textures/ch_gas_pump_glass_col.webp",
+   "textureAlpha": true,
+   "color": "#767c75",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "specularMap": "_textures/ch_gas_pump_glass_spc-r-61g-_8f20da0c.specular.webp",
+   "envMapParms": [
+    0.8,
+    3.96,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_propane_tank02",
+   "texture": "_textures/propane_tank2_col.webp",
+   "textureAlpha": false,
+   "color": "#716c64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/propane_tank2_nml.normal.webp",
+   "specularMap": "_textures/propane_tank2_spc-rgb_propan_1d2f3436.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/me_trim_metal_01",
+   "texture": "_textures/me_trim_metal01_col.webp",
+   "textureAlpha": false,
+   "color": "#858274",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_trim_metal01_norm.normal.webp",
+   "specularMap": "_textures/me_trim_metal01_spec-rgb_me__b8a3caad.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_corrugated_metal",
+   "texture": "_textures/me_corrugated_metal1_col.webp",
+   "textureAlpha": false,
+   "color": "#746c63",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_corrugated_metal1_nml.normal.webp",
+   "specularMap": "_textures/me_corrugated_metal1_spc-r13_4c39fc33.specular.webp",
+   "envMapParms": [
+    0.0,
+    4.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_electric_box3",
+   "texture": "_textures/electric_box3_c.webp",
+   "textureAlpha": false,
+   "color": "#787976",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/electric_box3_n.normal.webp",
+   "specularMap": "_textures/electric_box3_s-r30g30b30_el_aa01d547.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_barrier",
+   "texture": "_textures/barrier.webp",
+   "textureAlpha": false,
+   "color": "#90908a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/barrier_norm.normal.webp",
+   "specularMap": "_textures/barrier_spec-rgb_barrier_cp-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_vehicle_uaz_dsr_int",
+   "texture": "_textures/vehicle_uaz_dsr_int_col.webp",
+   "textureAlpha": false,
+   "color": "#252622",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/vehicle_uaz_int_nml.normal.webp",
+   "specularMap": "_textures/vehicle_uaz_int_spc-r-61g-61_47d1ec3e.specular.webp",
+   "envMapParms": [
+    1.2,
+    3.2,
+    3.52,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_vehicle_uaz_dsr_tire",
+   "texture": "_textures/vehicle_uaz_dsr_tire_col.webp",
+   "textureAlpha": false,
+   "color": "#393a3a",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/vehicle_uaz_tire_nml.normal.webp",
+   "specularMap": "_textures/vehicle_uaz_tire_spc-r-61g-6_d23037ac.specular.webp",
+   "envMapParms": [
+    1.2,
+    3.2,
+    3.52,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_vehicle_uaz_dsr",
+   "texture": "_textures/vehicle_uaz_dsr_col.webp",
+   "textureAlpha": false,
+   "color": "#3b3a33",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/vehicle_uaz_dsr_nml.normal.webp",
+   "specularMap": "_textures/vehicle_uaz_dsr_spc-r-59g-59_a812e2fe.specular.webp",
+   "envMapParms": [
+    1.2,
+    2.4,
+    4.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/me_metal_rust_02",
+   "texture": "_textures/me_metal_rusty02_col.webp",
+   "textureAlpha": false,
+   "color": "#58493d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_metal_rusty02_nml.normal.webp",
+   "specularMap": "_textures/me_metal_rusty02_spc-rgb_me__7892a531.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/ch_plaster01",
+   "texture": "_textures/plaster01_col.webp",
+   "textureAlpha": false,
+   "color": "#b3a993",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/plaster01_nml.normal.webp",
+   "specularMap": "_textures/plaster01_spc-r-25g-25b-25_p_8596eed9.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_grey_oak",
+   "texture": "_textures/tree_grey_oak_col.webp",
+   "textureAlpha": true,
+   "color": "#1b1813",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/tree_grey_oak_nml.normal.webp",
+   "specularMap": "_textures/dead_pine_spc-r-71g-71b-71_d_34842d41.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_chechnya_trunk",
+   "texture": "_textures/tree_chechnya_trunk_col.webp",
+   "textureAlpha": true,
+   "color": "#54504c",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/tree_chechnya_trunk_nml.normal.webp",
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_newgrassgreen",
+   "texture": "_textures/newgrass_col_0.webp",
+   "textureAlpha": true,
+   "color": "#323b24",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/wood_fence",
+   "texture": "_textures/fence_wood.webp",
+   "textureAlpha": true,
+   "color": "#575755",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/fence_wood_normal.normal.webp",
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_dead_pine",
+   "texture": "_textures/dead_pine_col.webp",
+   "textureAlpha": true,
+   "color": "#2f2d2c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/dead_pine_nml.normal.webp",
+   "specularMap": "_textures/dead_pine_spc-r-71g-71b-71_d_34842d41.specular.webp",
+   "envMapParms": [
+    0.0,
+    6.4,
+    0.05,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_dead_pine_canopy",
+   "texture": "_textures/dead_pine_col.webp",
+   "textureAlpha": true,
+   "color": "#2f2d2c",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_vehicle_tractor",
+   "texture": "_textures/tractor_col.webp",
+   "textureAlpha": false,
+   "color": "#4b372f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/tractor_nml.normal.webp",
+   "specularMap": "_textures/tractor_spc-r30g30b30_tracto_b29f56f1.specular.webp",
+   "envMapParms": [
+    1.8,
+    6.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_vehicle_tractor_glass",
+   "texture": "_textures/tractor_glass_col.webp",
+   "textureAlpha": true,
+   "color": "#68504a",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "normalMap": "_textures/tractor_glass_nml.normal.webp",
+   "specularMap": "_textures/tractor_glass_spc-r-17g-17b-_f8c179ff.specular.webp",
+   "envMapParms": [
+    1.2,
+    9.2,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_vehicle_tractor_tire",
+   "texture": "_textures/tractor_col.webp",
+   "textureAlpha": false,
+   "color": "#4b372f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/tractor_nml.normal.webp",
+   "specularMap": "_textures/tractor_spc-r30g30b30_tracto_b29f56f1.specular.webp",
+   "envMapParms": [
+    1.8,
+    6.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/ch_woodwall01",
+   "texture": "_textures/ch_woodwall01_col.webp",
+   "textureAlpha": false,
+   "color": "#524e41",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ch_woodwall01_nml.normal.webp",
+   "specularMap": "_textures/ch_woodwall01_spc-r29g29b29__9eeac44b.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_grassflowerplants",
+   "texture": "_textures/grassflowerplants_col_0.webp",
+   "textureAlpha": true,
+   "color": "#323b24",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_sandbags",
+   "texture": "_textures/ch_sandbags_coler.webp",
+   "textureAlpha": false,
+   "color": "#6b604f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ch_sandbag_normals.normal.webp",
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_streetlight",
+   "texture": "_textures/streetlight_col.webp",
+   "textureAlpha": false,
+   "color": "#787a78",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/streetlight_norm.normal.webp",
+   "specularMap": "_textures/streetlight_spec-rgb_streetl_8002b549.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_telegraph_pole",
+   "texture": "_textures/telegraph_pole_c.webp",
+   "textureAlpha": false,
+   "color": "#55544f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/telegraph_pole_n.normal.webp",
+   "specularMap": "_textures/telegraph_pole_s-rgbl99.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_ch_streetsigns",
+   "texture": "_textures/ch_traffic_signs.webp",
+   "textureAlpha": true,
+   "color": "#8d6e6c",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ch_traffic_signs_bump.normal.webp",
+   "specularMap": "_textures/ch_traffic_signs_spec-rgb__white-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_vehicle_bmp_dsty_wood",
+   "texture": "_textures/vehicle_bmp_wood_dsty_col.webp",
+   "textureAlpha": false,
+   "color": "#3d3c35",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/vehicle_bmp_dsty_nml.normal.webp",
+   "specularMap": "_textures/vehicle_bmp_dsty_spc-r-25g-2_8174e958.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_vehicle_bmp_track_dsty",
+   "texture": "_textures/vehicle_bmp_track_dsty_col.webp",
+   "textureAlpha": true,
+   "color": "#4f4640",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "normalMap": "_textures/vehicle_bmp_track_dsty_nml.normal.webp",
+   "specularMap": "_textures/vehicle_bmp_track_dsty_spc-r_812afdb2.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_rowboat_and_paddles",
+   "texture": "_textures/xpec_rowboat_and_paddles_col.webp",
+   "textureAlpha": false,
+   "color": "#3f3831",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/xpec_rowboat_and_paddles_nml.normal.webp",
+   "specularMap": "_textures/xpec_rowboat_and_paddles_spc_13fc7792.specular.webp",
+   "envMapParms": [
+    2.04,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_frenchbathtub",
+   "texture": "_textures/frenchbathtub_col.webp",
+   "textureAlpha": false,
+   "color": "#b5b1a4",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/frenchbathtub_normal.normal.webp",
+   "specularMap": "_textures/frenchbathtub_spec-rgb_frenc_11490a71.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_com_water_heater",
+   "texture": "_textures/com_water_heater_col.webp",
+   "textureAlpha": false,
+   "color": "#554f42",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/com_water_heater_spc-r-49g-4_fade6a7d.specular.webp",
+   "envMapParms": [
+    3.6,
+    3.6,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_ch_washer_01",
+   "texture": "_textures/ch_waching_machine_col.webp",
+   "textureAlpha": false,
+   "color": "#6b6257",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ch_waching_machine_nml.normal.webp",
+   "specularMap": "_textures/ch_waching_machine_spc-r-71g_5393bd6c.specular.webp",
+   "envMapParms": [
+    3.2,
+    3.2,
+    1.2,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_roofvent",
+   "texture": "_textures/com_roofvent.webp",
+   "textureAlpha": false,
+   "color": "#737575",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "normalMap": "_textures/com_roofvent_nml.normal.webp",
+   "specularMap": "_textures/com_roofvent_spec-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_frenchbathshowerhead",
+   "texture": "_textures/frenchbath_showerhead_col.webp",
+   "textureAlpha": false,
+   "color": "#88857a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/frenchbath_showerhead_normal.normal.webp",
+   "specularMap": "_textures/frenchbath_showerhead_spec-r_45df671e.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_french_sink",
+   "texture": "_textures/french_sink_col.webp",
+   "textureAlpha": false,
+   "color": "#c7c7bb",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/frenchbath_showerhead_normal.normal.webp",
+   "specularMap": "_textures/french_sink_spec-rgb_french__48b37dec.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_barrel_blue_rust",
+   "texture": "_textures/55_gallon_drum_blue_rust.webp",
+   "textureAlpha": false,
+   "color": "#585e6b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/rusty_barrel_bump.normal.webp",
+   "specularMap": "_textures/rusty_barrel_spec-rgb_rusty__96f69cf3.specular.webp",
+   "envMapParms": [
+    0.6,
+    1.6,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_barrel_white_rust",
+   "texture": "_textures/55_gallon_drum_white_rust.webp",
+   "textureAlpha": false,
+   "color": "#7a7671",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/rusty_barrel_bump.normal.webp",
+   "specularMap": "_textures/rusty_barrel_spec-rgb_rusty__96f69cf3.specular.webp",
+   "envMapParms": [
+    0.4,
+    1.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_industrial_lamp_off",
+   "texture": "_textures/mtl_industrial_lamp_off.webp",
+   "textureAlpha": false,
+   "color": "#a6a59f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/industrial_lamp_spec-rgb__white-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_electric_box1",
+   "texture": "_textures/electric_box1_c.webp",
+   "textureAlpha": false,
+   "color": "#5e5f5b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/electric_box1_n.normal.webp",
+   "specularMap": "_textures/electric_box1_s-r30g30b30_el_60092dfc.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_ch_crates",
+   "texture": "_textures/ch_crates_col.webp",
+   "textureAlpha": false,
+   "color": "#6f604b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/ch_crates_nml.normal.webp",
+   "specularMap": "_textures/ch_crates_spc-rgb_ch_crates_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    6.0,
+    2.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_campfire_equipment",
+   "texture": "_textures/xpec_russian_campfire_equipment_col.webp",
+   "textureAlpha": true,
+   "color": "#2a2726",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/xpec_russian_campfire_equipment_nml.normal.webp",
+   "specularMap": "_textures/xpec_russian_campfire_equipm_43005838.specular.webp",
+   "envMapParms": [
+    1.2,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_uaz_van",
+   "texture": "_textures/mtl_uaz_van_col.webp",
+   "textureAlpha": true,
+   "color": "#4f504c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/mtl_uaz_van_nml.normal.webp",
+   "specularMap": "_textures/mtl_uaz_van_spc-rgb_mtl_uaz__33d7dc5f.specular.webp",
+   "envMapParms": [
+    2.4,
+    4.76,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_uaz_van_glass",
+   "texture": "_textures/mtl_uaz_van_glass_col.webp",
+   "textureAlpha": true,
+   "color": "#887460",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "specularMap": "_textures/mtl_uaz_van_glass_spc-rgb_mt_07e5d17a.specular.webp",
+   "envMapParms": [
+    0.8,
+    3.96,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_uaz_van_2sided",
+   "texture": "_textures/mtl_uaz_van_col.webp",
+   "textureAlpha": true,
+   "color": "#4f504c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "normalMap": "_textures/mtl_uaz_van_nml.normal.webp",
+   "specularMap": "_textures/mtl_uaz_van_spc-rgb_mtl_uaz__33d7dc5f.specular.webp",
+   "envMapParms": [
+    2.4,
+    4.76,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_pine_canopy",
+   "texture": "_textures/tree_pine_col.webp",
+   "textureAlpha": true,
+   "color": "#29362d",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_pine",
+   "texture": "_textures/tree_pine_col.webp",
+   "textureAlpha": true,
+   "color": "#29362d",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/tree_pine_nml.normal.webp",
+   "specularMap": "_textures/dead_pine_spc-r-71g-71b-71_d_34842d41.specular.webp",
+   "envMapParms": [
+    0.0,
+    6.0,
+    0.05,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "models": [
+  {
+   "name": "wetwork_tree_root_dlc",
+   "count": 118,
+   "mins": [
+    -28.16,
+    -94.16,
+    -115.11
+   ],
+   "maxs": [
+    41.97,
+    2.4,
+    27.91
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000.0,
+     "vertexStart": 0,
+     "vertexCount": 325,
+     "indexStart": 0,
+     "indexCount": 720,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 564,
+       "material": 0
+      },
+      {
+       "indexStart": 564,
+       "indexCount": 156,
+       "material": 1
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 5000.0,
+     "vertexStart": 325,
+     "vertexCount": 145,
+     "indexStart": 720,
+     "indexCount": 354,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 354,
+       "material": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_litegrass_smallsquareclump",
+   "count": 12665,
+   "mins": [
+    -30.8,
+    -31.45,
+    -0.11
+   ],
+   "maxs": [
+    32.1,
+    31.45,
+    25.05
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 2000.0,
+     "vertexStart": 470,
+     "vertexCount": 30,
+     "indexStart": 1074,
+     "indexCount": 30,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 30,
+       "material": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_bush_big",
+   "count": 159,
+   "mins": [
+    -54.43,
+    -54.34,
+    -4.16
+   ],
+   "maxs": [
+    47.37,
+    42.23,
+    75.43
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 500,
+     "vertexCount": 528,
+     "indexStart": 1104,
+     "indexCount": 858,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 858,
+       "material": 3
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 2000.0,
+     "vertexStart": 1028,
+     "vertexCount": 24,
+     "indexStart": 1962,
+     "indexCount": 36,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 36,
+       "material": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wetwork_creekrock_01",
+   "count": 2179,
+   "mins": [
+    -4.11,
+    -5.91,
+    -3.32
+   ],
+   "maxs": [
+    4.11,
+    5.91,
+    3.32
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 1052,
+     "vertexCount": 75,
+     "indexStart": 1998,
+     "indexCount": 288,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 288,
+       "material": 4
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1800.0,
+     "vertexStart": 1127,
+     "vertexCount": 90,
+     "indexStart": 2286,
+     "indexCount": 90,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 90,
+       "material": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wetwork_creekrock_02",
+   "count": 2753,
+   "mins": [
+    -5.03,
+    -8.45,
+    -4.27
+   ],
+   "maxs": [
+    5.03,
+    8.45,
+    4.27
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 1217,
+     "vertexCount": 286,
+     "indexStart": 2376,
+     "indexCount": 288,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 288,
+       "material": 5
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1800.0,
+     "vertexStart": 1503,
+     "vertexCount": 90,
+     "indexStart": 2664,
+     "indexCount": 90,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 90,
+       "material": 5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_tree_destroyed_fallen_log_a",
+   "count": 58,
+   "mins": [
+    -16.78,
+    -89.9,
+    -0.45
+   ],
+   "maxs": [
+    19.89,
+    84.31,
+    25.51
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 800.0,
+     "vertexStart": 1593,
+     "vertexCount": 744,
+     "indexStart": 2754,
+     "indexCount": 1518,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1518,
+       "material": 6
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 2337,
+     "vertexCount": 208,
+     "indexStart": 4272,
+     "indexCount": 336,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 336,
+       "material": 6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wetwork_house_handrailing_dlc",
+   "count": 66,
+   "mins": [
+    -4.96,
+    -1.96,
+    0.0
+   ],
+   "maxs": [
+    -1.04,
+    1.96,
+    26.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000.0,
+     "vertexStart": 2545,
+     "vertexCount": 82,
+     "indexStart": 4608,
+     "indexCount": 384,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 384,
+       "material": 7
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 2627,
+     "vertexCount": 56,
+     "indexStart": 4992,
+     "indexCount": 192,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 192,
+       "material": 7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bathroom_tub",
+   "count": 1,
+   "mins": [
+    -44.47,
+    -18.71,
+    -10.71
+   ],
+   "maxs": [
+    44.47,
+    18.71,
+    10.71
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 2683,
+     "vertexCount": 71,
+     "indexStart": 5184,
+     "indexCount": 210,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 210,
+       "material": 8
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1300.0,
+     "vertexStart": 2754,
+     "vertexCount": 32,
+     "indexStart": 5394,
+     "indexCount": 54,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 54,
+       "material": 8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_kitchen_faucet01",
+   "count": 1,
+   "mins": [
+    -5.07,
+    -7.25,
+    -1.02
+   ],
+   "maxs": [
+    7.13,
+    7.16,
+    4.33
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 250.0,
+     "vertexStart": 2786,
+     "vertexCount": 238,
+     "indexStart": 5448,
+     "indexCount": 582,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 582,
+       "material": 9
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 3024,
+     "vertexCount": 82,
+     "indexStart": 6030,
+     "indexCount": 126,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 126,
+       "material": 9
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_refrigerator",
+   "count": 2,
+   "mins": [
+    0.01,
+    -19.17,
+    -0.0
+   ],
+   "maxs": [
+    35.32,
+    19.17,
+    76.5
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 3106,
+     "vertexCount": 591,
+     "indexStart": 6156,
+     "indexCount": 1398,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1398,
+       "material": 10
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 3697,
+     "vertexCount": 165,
+     "indexStart": 7554,
+     "indexCount": 288,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 288,
+       "material": 10
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_radiator01",
+   "count": 1,
+   "mins": [
+    -23.08,
+    -3.65,
+    -0.27
+   ],
+   "maxs": [
+    4.77,
+    3.65,
+    31.03
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 3862,
+     "vertexCount": 1039,
+     "indexStart": 7842,
+     "indexCount": 4224,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 4224,
+       "material": 11
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 4901,
+     "vertexCount": 204,
+     "indexStart": 12066,
+     "indexCount": 696,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 696,
+       "material": 11
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_stove",
+   "count": 2,
+   "mins": [
+    -14.58,
+    -14.58,
+    0.0
+   ],
+   "maxs": [
+    14.58,
+    15.79,
+    48.99
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 5105,
+     "vertexCount": 1043,
+     "indexStart": 12762,
+     "indexCount": 1848,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1848,
+       "material": 12
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 6148,
+     "vertexCount": 56,
+     "indexStart": 14610,
+     "indexCount": 90,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 90,
+       "material": 12
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_furniture_couch02",
+   "count": 2,
+   "mins": [
+    -19.34,
+    -48.57,
+    0.0
+   ],
+   "maxs": [
+    20.77,
+    48.42,
+    40.91
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 6204,
+     "vertexCount": 638,
+     "indexStart": 14700,
+     "indexCount": 2388,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2388,
+       "material": 13
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 6842,
+     "vertexCount": 124,
+     "indexStart": 17088,
+     "indexCount": 276,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 276,
+       "material": 13
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_mattress_boxspring",
+   "count": 2,
+   "mins": [
+    -47.88,
+    -9.73,
+    -0.03
+   ],
+   "maxs": [
+    47.89,
+    -0.26,
+    61.14
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 6966,
+     "vertexCount": 254,
+     "indexStart": 17364,
+     "indexCount": 852,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 852,
+       "material": 14
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 7220,
+     "vertexCount": 58,
+     "indexStart": 18216,
+     "indexCount": 156,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 156,
+       "material": 14
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_bedframemetal_gray",
+   "count": 2,
+   "mins": [
+    -20.54,
+    -42.81,
+    0.0
+   ],
+   "maxs": [
+    20.54,
+    42.81,
+    31.95
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 7278,
+     "vertexCount": 624,
+     "indexStart": 18372,
+     "indexCount": 2100,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2100,
+       "material": 15
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 7902,
+     "vertexCount": 124,
+     "indexStart": 20472,
+     "indexCount": 276,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 276,
+       "material": 15
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_mattress_bent_1",
+   "count": 2,
+   "mins": [
+    -52.57,
+    -48.46,
+    -33.06
+   ],
+   "maxs": [
+    53.37,
+    1.25,
+    33.72
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 800.0,
+     "vertexStart": 8026,
+     "vertexCount": 237,
+     "indexStart": 20748,
+     "indexCount": 1128,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1128,
+       "material": 14
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 8263,
+     "vertexCount": 60,
+     "indexStart": 21876,
+     "indexCount": 192,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 192,
+       "material": 14
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_restaurantstainlessteelshelf_02",
+   "count": 2,
+   "mins": [
+    0.0,
+    -27.75,
+    -0.0
+   ],
+   "maxs": [
+    19.5,
+    27.75,
+    72.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 800.0,
+     "vertexStart": 8323,
+     "vertexCount": 744,
+     "indexStart": 22068,
+     "indexCount": 1752,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1752,
+       "material": 16
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 9067,
+     "vertexCount": 228,
+     "indexStart": 23820,
+     "indexCount": 360,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 360,
+       "material": 16
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_russian_table",
+   "count": 2,
+   "mins": [
+    -37.5,
+    -19.55,
+    0.02
+   ],
+   "maxs": [
+    37.5,
+    19.55,
+    35.96
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 9295,
+     "vertexCount": 531,
+     "indexStart": 24180,
+     "indexCount": 1860,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1860,
+       "material": 17
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 9826,
+     "vertexCount": 200,
+     "indexStart": 26040,
+     "indexCount": 264,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 264,
+       "material": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_dresser",
+   "count": 3,
+   "mins": [
+    -16.23,
+    -31.76,
+    -0.04
+   ],
+   "maxs": [
+    14.0,
+    32.04,
+    45.97
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 10026,
+     "vertexCount": 234,
+     "indexStart": 26304,
+     "indexCount": 384,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 384,
+       "material": 18
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_dining_cabinet",
+   "count": 1,
+   "mins": [
+    -30.51,
+    -17.66,
+    0.0
+   ],
+   "maxs": [
+    30.53,
+    11.42,
+    106.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 10260,
+     "vertexCount": 728,
+     "indexStart": 26688,
+     "indexCount": 1506,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1506,
+       "material": 18
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 10988,
+     "vertexCount": 50,
+     "indexStart": 28194,
+     "indexCount": 78,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 78,
+       "material": 18
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_walltable2",
+   "count": 3,
+   "mins": [
+    -11.98,
+    -26.99,
+    -0.04
+   ],
+   "maxs": [
+    11.02,
+    27.06,
+    35.96
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 11038,
+     "vertexCount": 200,
+     "indexStart": 28272,
+     "indexCount": 336,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 336,
+       "material": 18
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_lamp_ornate_off",
+   "count": 3,
+   "mins": [
+    -9.93,
+    -9.93,
+    0.0
+   ],
+   "maxs": [
+    9.93,
+    9.93,
+    25.9
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 11238,
+     "vertexCount": 418,
+     "indexStart": 28608,
+     "indexCount": 918,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 918,
+       "material": 19
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 11656,
+     "vertexCount": 273,
+     "indexStart": 29526,
+     "indexCount": 510,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 510,
+       "material": 19
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_ivy_bottom01",
+   "count": 8,
+   "mins": [
+    0.23,
+    -70.47,
+    -12.64
+   ],
+   "maxs": [
+    7.3,
+    69.43,
+    68.65
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 11929,
+     "vertexCount": 164,
+     "indexStart": 30036,
+     "indexCount": 228,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 228,
+       "material": 20
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 12093,
+     "vertexCount": 64,
+     "indexStart": 30264,
+     "indexCount": 96,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 96,
+       "material": 20
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mp_creek_grave5",
+   "count": 53,
+   "mins": [
+    -8.0,
+    -28.0,
+    0.0
+   ],
+   "maxs": [
+    8.0,
+    28.0,
+    64.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 4300.0,
+     "vertexStart": 12157,
+     "vertexCount": 78,
+     "indexStart": 30360,
+     "indexCount": 162,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 162,
+       "material": 7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wetwork_grave3",
+   "count": 2,
+   "mins": [
+    -36.0,
+    -66.0,
+    -1.0
+   ],
+   "maxs": [
+    36.0,
+    67.0,
+    70.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 12235,
+     "vertexCount": 732,
+     "indexStart": 30522,
+     "indexCount": 1410,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1410,
+       "material": 21
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_shrub_group01",
+   "count": 1288,
+   "mins": [
+    -37.65,
+    -26.04,
+    -7.37
+   ],
+   "maxs": [
+    44.15,
+    27.04,
+    38.29
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 12967,
+     "vertexCount": 204,
+     "indexStart": 31932,
+     "indexCount": 306,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 306,
+       "material": 22
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 2000.0,
+     "vertexStart": 13171,
+     "vertexCount": 102,
+     "indexStart": 32238,
+     "indexCount": 126,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 126,
+       "material": 22
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_barrel_black_rust",
+   "count": 19,
+   "mins": [
+    -14.63,
+    -14.64,
+    0.0
+   ],
+   "maxs": [
+    14.59,
+    14.57,
+    44.01
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 256.0,
+     "vertexStart": 13273,
+     "vertexCount": 408,
+     "indexStart": 32364,
+     "indexCount": 1524,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1524,
+       "material": 23
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 13681,
+     "vertexCount": 26,
+     "indexStart": 33888,
+     "indexCount": 60,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 60,
+       "material": 23
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wetwork_tree_root_left_dlc",
+   "count": 46,
+   "mins": [
+    -45.44,
+    -29.6,
+    -62.77
+   ],
+   "maxs": [
+    4.81,
+    76.01,
+    7.46
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000.0,
+     "vertexStart": 13707,
+     "vertexCount": 706,
+     "indexStart": 33948,
+     "indexCount": 1518,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1266,
+       "material": 0
+      },
+      {
+       "indexStart": 1266,
+       "indexCount": 252,
+       "material": 1
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 5000.0,
+     "vertexStart": 14413,
+     "vertexCount": 339,
+     "indexStart": 35466,
+     "indexCount": 684,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 684,
+       "material": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wetwork_tree_root_whole_dlc",
+   "count": 45,
+   "mins": [
+    -54.05,
+    -76.25,
+    -95.32
+   ],
+   "maxs": [
+    7.65,
+    76.01,
+    10.3
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000.0,
+     "vertexStart": 14752,
+     "vertexCount": 1365,
+     "indexStart": 36150,
+     "indexCount": 2988,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2574,
+       "material": 0
+      },
+      {
+       "indexStart": 2574,
+       "indexCount": 414,
+       "material": 1
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 5000.0,
+     "vertexStart": 16117,
+     "vertexCount": 641,
+     "indexStart": 39138,
+     "indexCount": 1320,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1320,
+       "material": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wetwork_tree_root_straight_dlc",
+   "count": 47,
+   "mins": [
+    -56.89,
+    -28.51,
+    -96.04
+   ],
+   "maxs": [
+    4.81,
+    17.8,
+    7.46
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000.0,
+     "vertexStart": 16758,
+     "vertexCount": 328,
+     "indexStart": 40458,
+     "indexCount": 744,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 672,
+       "material": 0
+      },
+      {
+       "indexStart": 672,
+       "indexCount": 72,
+       "material": 1
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 5000.0,
+     "vertexStart": 17086,
+     "vertexCount": 141,
+     "indexStart": 41202,
+     "indexCount": 300,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 300,
+       "material": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wetwork_tree_root_right_dlc",
+   "count": 45,
+   "mins": [
+    -41.27,
+    -74.56,
+    -77.02
+   ],
+   "maxs": [
+    4.66,
+    10.97,
+    7.46
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000.0,
+     "vertexStart": 17227,
+     "vertexCount": 331,
+     "indexStart": 41502,
+     "indexCount": 732,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 636,
+       "material": 0
+      },
+      {
+       "indexStart": 636,
+       "indexCount": 96,
+       "material": 1
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 5000.0,
+     "vertexStart": 17558,
+     "vertexCount": 162,
+     "indexStart": 42234,
+     "indexCount": 336,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 336,
+       "material": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wetwork_tree_root_left_sm_dlc",
+   "count": 32,
+   "mins": [
+    -27.26,
+    -17.76,
+    -37.66
+   ],
+   "maxs": [
+    2.89,
+    45.61,
+    4.47
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 700.0,
+     "vertexStart": 17720,
+     "vertexCount": 706,
+     "indexStart": 42570,
+     "indexCount": 1518,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1266,
+       "material": 0
+      },
+      {
+       "indexStart": 1266,
+       "indexCount": 252,
+       "material": 1
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 2700.0,
+     "vertexStart": 18426,
+     "vertexCount": 339,
+     "indexStart": 44088,
+     "indexCount": 684,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 684,
+       "material": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_restaurantsink_1comp",
+   "count": 1,
+   "mins": [
+    0.0,
+    -18.0,
+    -0.1
+   ],
+   "maxs": [
+    30.0,
+    18.0,
+    44.89
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 18765,
+     "vertexCount": 1730,
+     "indexStart": 44772,
+     "indexCount": 4848,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 4848,
+       "material": 24
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 20495,
+     "vertexCount": 190,
+     "indexStart": 49620,
+     "indexCount": 318,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 318,
+       "material": 24
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_russian_table_no_top",
+   "count": 1,
+   "mins": [
+    -37.5,
+    -19.55,
+    0.02
+   ],
+   "maxs": [
+    37.5,
+    19.55,
+    34.28
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 20685,
+     "vertexCount": 475,
+     "indexStart": 49938,
+     "indexCount": 1746,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1746,
+       "material": 17
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 21160,
+     "vertexCount": 180,
+     "indexStart": 51684,
+     "indexCount": 234,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 234,
+       "material": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_russian_table_cloth3",
+   "count": 1,
+   "mins": [
+    -38.85,
+    -20.71,
+    18.88
+   ],
+   "maxs": [
+    38.53,
+    21.18,
+    36.25
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 21340,
+     "vertexCount": 134,
+     "indexStart": 51918,
+     "indexCount": 378,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 378,
+       "material": 25
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 21474,
+     "vertexCount": 141,
+     "indexStart": 52296,
+     "indexCount": 186,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 186,
+       "material": 25
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_dumpster_close",
+   "count": 2,
+   "mins": [
+    -29.54,
+    -52.36,
+    0.08
+   ],
+   "maxs": [
+    29.35,
+    52.36,
+    67.43
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 21615,
+     "vertexCount": 1100,
+     "indexStart": 52482,
+     "indexCount": 1974,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1374,
+       "material": 26
+      },
+      {
+       "indexStart": 1374,
+       "indexCount": 600,
+       "material": 27
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 22715,
+     "vertexCount": 162,
+     "indexStart": 54456,
+     "indexCount": 240,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 240,
+       "material": 26
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_flashlight_on",
+   "count": 2,
+   "mins": [
+    -1.25,
+    -1.25,
+    -6.48
+   ],
+   "maxs": [
+    1.25,
+    1.25,
+    6.48
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 22877,
+     "vertexCount": 197,
+     "indexStart": 54696,
+     "indexCount": 888,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 858,
+       "material": 28
+      },
+      {
+       "indexStart": 858,
+       "indexCount": 30,
+       "material": 29
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 23074,
+     "vertexCount": 21,
+     "indexStart": 55584,
+     "indexCount": 36,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 30,
+       "material": 28
+      },
+      {
+       "indexStart": 30,
+       "indexCount": 6,
+       "material": 29
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_bedroll",
+   "count": 5,
+   "mins": [
+    -18.15,
+    -44.47,
+    0.1
+   ],
+   "maxs": [
+    18.15,
+    44.47,
+    10.45
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 501.0,
+     "vertexStart": 23095,
+     "vertexCount": 542,
+     "indexStart": 55620,
+     "indexCount": 2412,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2412,
+       "material": 30
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 2000.0,
+     "vertexStart": 23637,
+     "vertexCount": 88,
+     "indexStart": 58032,
+     "indexCount": 252,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 252,
+       "material": 30
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "vehicle_80s_hatch1_reddest",
+   "count": 2,
+   "mins": [
+    -70.72,
+    -35.91,
+    -0.66
+   ],
+   "maxs": [
+    78.78,
+    50.8,
+    55.47
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 23725,
+     "vertexCount": 3098,
+     "indexStart": 58284,
+     "indexCount": 7506,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 7416,
+       "material": 31
+      },
+      {
+       "indexStart": 7416,
+       "indexCount": 90,
+       "material": 32
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_refrigerator_d",
+   "count": 1,
+   "mins": [
+    0.01,
+    -22.45,
+    0.01
+   ],
+   "maxs": [
+    36.17,
+    18.97,
+    76.54
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 26823,
+     "vertexCount": 491,
+     "indexStart": 65790,
+     "indexCount": 1182,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1182,
+       "material": 33
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 27314,
+     "vertexCount": 125,
+     "indexStart": 66972,
+     "indexCount": 240,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 240,
+       "material": 33
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_stove_d",
+   "count": 1,
+   "mins": [
+    -14.58,
+    -14.43,
+    0.0
+   ],
+   "maxs": [
+    14.58,
+    15.79,
+    48.99
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 27439,
+     "vertexCount": 810,
+     "indexStart": 67212,
+     "indexCount": 1332,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1332,
+       "material": 34
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 28249,
+     "vertexCount": 130,
+     "indexStart": 68544,
+     "indexCount": 234,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 234,
+       "material": 34
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_cardboardbox04",
+   "count": 5,
+   "mins": [
+    -14.57,
+    -10.18,
+    0.0
+   ],
+   "maxs": [
+    14.57,
+    10.23,
+    19.3
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 3000.0,
+     "vertexStart": 28379,
+     "vertexCount": 32,
+     "indexStart": 68778,
+     "indexCount": 48,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 36,
+       "material": 35
+      },
+      {
+       "indexStart": 36,
+       "indexCount": 12,
+       "material": 36
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_pallet_destroyed",
+   "count": 2,
+   "mins": [
+    -24.65,
+    -32.42,
+    -0.16
+   ],
+   "maxs": [
+    24.47,
+    32.49,
+    9.38
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 900.0,
+     "vertexStart": 28411,
+     "vertexCount": 554,
+     "indexStart": 68826,
+     "indexCount": 870,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 870,
+       "material": 37
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 28965,
+     "vertexCount": 101,
+     "indexStart": 69696,
+     "indexCount": 156,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 156,
+       "material": 37
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_trashbag2_white",
+   "count": 1,
+   "mins": [
+    -16.88,
+    -14.7,
+    -0.8
+   ],
+   "maxs": [
+    16.88,
+    14.7,
+    22.67
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 440.0,
+     "vertexStart": 29066,
+     "vertexCount": 267,
+     "indexStart": 69852,
+     "indexCount": 1236,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1236,
+       "material": 38
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1500.0,
+     "vertexStart": 29333,
+     "vertexCount": 100,
+     "indexStart": 71088,
+     "indexCount": 300,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 300,
+       "material": 38
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bc_military_tire04_big",
+   "count": 6,
+   "mins": [
+    -22.7,
+    -22.72,
+    -8.19
+   ],
+   "maxs": [
+    22.7,
+    22.72,
+    8.23
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000.0,
+     "vertexStart": 29433,
+     "vertexCount": 1004,
+     "indexStart": 71388,
+     "indexCount": 2052,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2052,
+       "material": 39
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 30437,
+     "vertexCount": 94,
+     "indexStart": 73440,
+     "indexCount": 168,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 168,
+       "material": 39
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_tree_river_birch_lg_c",
+   "count": 264,
+   "mins": [
+    -102.88,
+    -125.9,
+    -17.83
+   ],
+   "maxs": [
+    145.66,
+    143.22,
+    459.04
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1200.0,
+     "vertexStart": 30531,
+     "vertexCount": 2832,
+     "indexStart": 73608,
+     "indexCount": 5388,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1812,
+       "material": 40
+      },
+      {
+       "indexStart": 1812,
+       "indexCount": 3486,
+       "material": 0
+      },
+      {
+       "indexStart": 5298,
+       "indexCount": 90,
+       "material": 41
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 33363,
+     "vertexCount": 529,
+     "indexStart": 78996,
+     "indexCount": 954,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 612,
+       "material": 40
+      },
+      {
+       "indexStart": 612,
+       "indexCount": 252,
+       "material": 0
+      },
+      {
+       "indexStart": 864,
+       "indexCount": 90,
+       "material": 41
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_red_pine_xl",
+   "count": 36,
+   "mins": [
+    -185.52,
+    -126.17,
+    -26.73
+   ],
+   "maxs": [
+    114.48,
+    163.61,
+    561.02
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 2000.0,
+     "vertexStart": 33892,
+     "vertexCount": 3952,
+     "indexStart": 79950,
+     "indexCount": 5424,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 3450,
+       "material": 42
+      },
+      {
+       "indexStart": 3450,
+       "indexCount": 1914,
+       "material": 43
+      },
+      {
+       "indexStart": 5364,
+       "indexCount": 60,
+       "material": 41
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 37844,
+     "vertexCount": 1088,
+     "indexStart": 85374,
+     "indexCount": 1212,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1116,
+       "material": 42
+      },
+      {
+       "indexStart": 1116,
+       "indexCount": 36,
+       "material": 43
+      },
+      {
+       "indexStart": 1152,
+       "indexCount": 60,
+       "material": 41
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_red_pine_xxl",
+   "count": 105,
+   "mins": [
+    -182.96,
+    -125.31,
+    -20.97
+   ],
+   "maxs": [
+    118.59,
+    164.47,
+    776.99
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 2000.0,
+     "vertexStart": 38932,
+     "vertexCount": 3463,
+     "indexStart": 86586,
+     "indexCount": 4992,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 3018,
+       "material": 42
+      },
+      {
+       "indexStart": 3018,
+       "indexCount": 1944,
+       "material": 43
+      },
+      {
+       "indexStart": 4962,
+       "indexCount": 30,
+       "material": 41
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 42395,
+     "vertexCount": 970,
+     "indexStart": 91578,
+     "indexCount": 1056,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 990,
+       "material": 42
+      },
+      {
+       "indexStart": 990,
+       "indexCount": 36,
+       "material": 43
+      },
+      {
+       "indexStart": 1026,
+       "indexCount": 30,
+       "material": 41
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "jeepride_shrubgroup_01",
+   "count": 197,
+   "mins": [
+    -99.46,
+    -211.49,
+    -20.38
+   ],
+   "maxs": [
+    80.08,
+    231.66,
+    162.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 4000.0,
+     "vertexStart": 43365,
+     "vertexCount": 92,
+     "indexStart": 92634,
+     "indexCount": 102,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 102,
+       "material": 44
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 12000.0,
+     "vertexStart": 43457,
+     "vertexCount": 41,
+     "indexStart": 92736,
+     "indexCount": 54,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 54,
+       "material": 44
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_red_pine_med",
+   "count": 4,
+   "mins": [
+    -149.57,
+    -144.76,
+    -20.65
+   ],
+   "maxs": [
+    121.23,
+    122.78,
+    451.13
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 2000.0,
+     "vertexStart": 43498,
+     "vertexCount": 3617,
+     "indexStart": 92790,
+     "indexCount": 5214,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2688,
+       "material": 42
+      },
+      {
+       "indexStart": 2688,
+       "indexCount": 2466,
+       "material": 43
+      },
+      {
+       "indexStart": 5154,
+       "indexCount": 60,
+       "material": 41
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 47115,
+     "vertexCount": 925,
+     "indexStart": 98004,
+     "indexCount": 1056,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 912,
+       "material": 42
+      },
+      {
+       "indexStart": 912,
+       "indexCount": 84,
+       "material": 43
+      },
+      {
+       "indexStart": 996,
+       "indexCount": 60,
+       "material": 41
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_tree_river_birch_xl_c",
+   "count": 162,
+   "mins": [
+    -202.72,
+    -173.95,
+    -17.8
+   ],
+   "maxs": [
+    169.59,
+    128.87,
+    662.76
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1200.0,
+     "vertexStart": 48040,
+     "vertexCount": 3367,
+     "indexStart": 99060,
+     "indexCount": 5970,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2772,
+       "material": 0
+      },
+      {
+       "indexStart": 2772,
+       "indexCount": 3138,
+       "material": 40
+      },
+      {
+       "indexStart": 5910,
+       "indexCount": 60,
+       "material": 41
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 51407,
+     "vertexCount": 913,
+     "indexStart": 105030,
+     "indexCount": 1548,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 396,
+       "material": 0
+      },
+      {
+       "indexStart": 396,
+       "indexCount": 1092,
+       "material": 40
+      },
+      {
+       "indexStart": 1488,
+       "indexCount": 60,
+       "material": 41
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wetwork_fallen_oakbranch_01",
+   "count": 134,
+   "mins": [
+    -61.9,
+    -24.32,
+    0.0
+   ],
+   "maxs": [
+    1.13,
+    50.13,
+    15.55
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 52320,
+     "vertexCount": 9,
+     "indexStart": 106578,
+     "indexCount": 18,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 18,
+       "material": 45
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wetwork_fallen_oakbranch_02_dlc",
+   "count": 85,
+   "mins": [
+    -46.43,
+    -49.61,
+    -24.8
+   ],
+   "maxs": [
+    71.8,
+    21.31,
+    29.52
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 52329,
+     "vertexCount": 46,
+     "indexStart": 106596,
+     "indexCount": 84,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 84,
+       "material": 45
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_junktire",
+   "count": 3,
+   "mins": [
+    -12.07,
+    -3.44,
+    -12.07
+   ],
+   "maxs": [
+    12.07,
+    3.44,
+    12.07
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 200.0,
+     "vertexStart": 52375,
+     "vertexCount": 692,
+     "indexStart": 106680,
+     "indexCount": 1536,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1536,
+       "material": 46
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 8000.0,
+     "vertexStart": 53067,
+     "vertexCount": 146,
+     "indexStart": 108216,
+     "indexCount": 360,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 360,
+       "material": 46
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_wheelbarrow",
+   "count": 2,
+   "mins": [
+    -37.24,
+    -17.26,
+    -0.03
+   ],
+   "maxs": [
+    37.66,
+    17.26,
+    25.36
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 150.0,
+     "vertexStart": 53213,
+     "vertexCount": 762,
+     "indexStart": 108576,
+     "indexCount": 2460,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2460,
+       "material": 47
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 53975,
+     "vertexCount": 199,
+     "indexStart": 111036,
+     "indexCount": 444,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 444,
+       "material": 47
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "vehicle_pickup_nodoor_static",
+   "count": 1,
+   "mins": [
+    -104.39,
+    -40.77,
+    -0.08
+   ],
+   "maxs": [
+    100.37,
+    44.95,
+    76.11
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 54174,
+     "vertexCount": 6118,
+     "indexStart": 111480,
+     "indexCount": 17916,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 348,
+       "material": 48
+      },
+      {
+       "indexStart": 348,
+       "indexCount": 14688,
+       "material": 48
+      },
+      {
+       "indexStart": 15036,
+       "indexCount": 504,
+       "material": 48
+      },
+      {
+       "indexStart": 15540,
+       "indexCount": 96,
+       "material": 49
+      },
+      {
+       "indexStart": 15636,
+       "indexCount": 570,
+       "material": 50
+      },
+      {
+       "indexStart": 16206,
+       "indexCount": 570,
+       "material": 50
+      },
+      {
+       "indexStart": 16776,
+       "indexCount": 570,
+       "material": 50
+      },
+      {
+       "indexStart": 17346,
+       "indexCount": 570,
+       "material": 50
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 60292,
+     "vertexCount": 532,
+     "indexStart": 129396,
+     "indexCount": 1026,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 336,
+       "material": 48
+      },
+      {
+       "indexStart": 336,
+       "indexCount": 678,
+       "material": 48
+      },
+      {
+       "indexStart": 1014,
+       "indexCount": 12,
+       "material": 49
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_chainlink_fence_pole",
+   "count": 40,
+   "mins": [
+    -1.72,
+    -1.63,
+    0.02
+   ],
+   "maxs": [
+    1.72,
+    1.63,
+    92.06
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 250.0,
+     "vertexStart": 60824,
+     "vertexCount": 239,
+     "indexStart": 130422,
+     "indexCount": 678,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 678,
+       "material": 51
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 2500.0,
+     "vertexStart": 61063,
+     "vertexCount": 64,
+     "indexStart": 131100,
+     "indexCount": 102,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 102,
+       "material": 51
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wetwork_house_vent",
+   "count": 4,
+   "mins": [
+    12.0,
+    0.0,
+    4.0
+   ],
+   "maxs": [
+    52.0,
+    8.0,
+    60.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 61127,
+     "vertexCount": 180,
+     "indexStart": 131202,
+     "indexCount": 264,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 72,
+       "material": 52
+      },
+      {
+       "indexStart": 72,
+       "indexCount": 192,
+       "material": 53
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_cafe_table1",
+   "count": 2,
+   "mins": [
+    -27.36,
+    -27.36,
+    0.08
+   ],
+   "maxs": [
+    27.36,
+    27.36,
+    34.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 61307,
+     "vertexCount": 262,
+     "indexStart": 131466,
+     "indexCount": 702,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 288,
+       "material": 54
+      },
+      {
+       "indexStart": 288,
+       "indexCount": 414,
+       "material": 55
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 61569,
+     "vertexCount": 154,
+     "indexStart": 132168,
+     "indexCount": 306,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 144,
+       "material": 54
+      },
+      {
+       "indexStart": 144,
+       "indexCount": 162,
+       "material": 55
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_ladder_wood",
+   "count": 3,
+   "mins": [
+    -2.62,
+    -14.07,
+    -0.47
+   ],
+   "maxs": [
+    1.67,
+    14.13,
+    167.73
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1024.0,
+     "vertexStart": 61723,
+     "vertexCount": 232,
+     "indexStart": 132474,
+     "indexCount": 384,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 384,
+       "material": 56
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 61955,
+     "vertexCount": 144,
+     "indexStart": 132858,
+     "indexCount": 192,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 192,
+       "material": 56
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_gas_pump",
+   "count": 2,
+   "mins": [
+    -13.46,
+    -16.4,
+    -12.24
+   ],
+   "maxs": [
+    17.85,
+    13.7,
+    53.05
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 62099,
+     "vertexCount": 542,
+     "indexStart": 133050,
+     "indexCount": 1344,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1338,
+       "material": 57
+      },
+      {
+       "indexStart": 1338,
+       "indexCount": 6,
+       "material": 58
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 3500.0,
+     "vertexStart": 62641,
+     "vertexCount": 118,
+     "indexStart": 134394,
+     "indexCount": 264,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 264,
+       "material": 57
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_propane_tank02",
+   "count": 2,
+   "mins": [
+    -161.25,
+    -63.54,
+    -80.5
+   ],
+   "maxs": [
+    161.5,
+    63.75,
+    80.5
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1800.0,
+     "vertexStart": 62759,
+     "vertexCount": 1908,
+     "indexStart": 134658,
+     "indexCount": 5046,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 5046,
+       "material": 59
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 64667,
+     "vertexCount": 1173,
+     "indexStart": 139704,
+     "indexCount": 2550,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2550,
+       "material": 59
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wetwork_house_downspout",
+   "count": 7,
+   "mins": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "maxs": [
+    12.0,
+    6.0,
+    152.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 65840,
+     "vertexCount": 20,
+     "indexStart": 142254,
+     "indexCount": 72,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 72,
+       "material": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_ivy_corner02",
+   "count": 10,
+   "mins": [
+    -0.38,
+    -84.08,
+    -86.35
+   ],
+   "maxs": [
+    3.32,
+    5.31,
+    1.07
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 65860,
+     "vertexCount": 228,
+     "indexStart": 142326,
+     "indexCount": 270,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 270,
+       "material": 20
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 66088,
+     "vertexCount": 27,
+     "indexStart": 142596,
+     "indexCount": 54,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 54,
+       "material": 20
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_ivy_corner01",
+   "count": 10,
+   "mins": [
+    -2.51,
+    -5.97,
+    -102.61
+   ],
+   "maxs": [
+    4.02,
+    115.18,
+    3.03
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 66115,
+     "vertexCount": 359,
+     "indexStart": 142650,
+     "indexCount": 444,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 444,
+       "material": 20
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 66474,
+     "vertexCount": 55,
+     "indexStart": 143094,
+     "indexCount": 102,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 102,
+       "material": 20
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_corrugated_metal8x8",
+   "count": 36,
+   "mins": [
+    -48.03,
+    -0.73,
+    -48.0
+   ],
+   "maxs": [
+    48.03,
+    0.73,
+    48.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 66529,
+     "vertexCount": 432,
+     "indexStart": 143196,
+     "indexCount": 1260,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1260,
+       "material": 61
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 66961,
+     "vertexCount": 8,
+     "indexStart": 144456,
+     "indexCount": 12,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 12,
+       "material": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_corrugated_metal2x8",
+   "count": 9,
+   "mins": [
+    -11.95,
+    -0.73,
+    -48.0
+   ],
+   "maxs": [
+    11.95,
+    0.73,
+    48.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 66969,
+     "vertexCount": 120,
+     "indexStart": 144468,
+     "indexCount": 324,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 324,
+       "material": 61
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 22000.0,
+     "vertexStart": 67089,
+     "vertexCount": 8,
+     "indexStart": 144792,
+     "indexCount": 12,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 12,
+       "material": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_electricbox4",
+   "count": 1,
+   "mins": [
+    -13.36,
+    -9.45,
+    -13.43
+   ],
+   "maxs": [
+    13.36,
+    0.03,
+    11.85
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 67097,
+     "vertexCount": 180,
+     "indexStart": 144804,
+     "indexCount": 288,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 288,
+       "material": 62
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 3000.0,
+     "vertexStart": 67277,
+     "vertexCount": 36,
+     "indexStart": 145092,
+     "indexCount": 54,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 54,
+       "material": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_concrete_barrier",
+   "count": 18,
+   "mins": [
+    -36.0,
+    -11.28,
+    -0.0
+   ],
+   "maxs": [
+    36.0,
+    11.28,
+    41.08
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 67313,
+     "vertexCount": 222,
+     "indexStart": 145146,
+     "indexCount": 612,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 612,
+       "material": 63
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 67535,
+     "vertexCount": 24,
+     "indexStart": 145758,
+     "indexCount": 36,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 36,
+       "material": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "vehicle_uaz_hardtop_dsr",
+   "count": 7,
+   "mins": [
+    -92.25,
+    -58.55,
+    -5.82
+   ],
+   "maxs": [
+    110.69,
+    53.78,
+    88.24
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 700.0,
+     "vertexStart": 67559,
+     "vertexCount": 8613,
+     "indexStart": 145794,
+     "indexCount": 19722,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2598,
+       "material": 64
+      },
+      {
+       "indexStart": 2598,
+       "indexCount": 1818,
+       "material": 65
+      },
+      {
+       "indexStart": 4416,
+       "indexCount": 8208,
+       "material": 66
+      },
+      {
+       "indexStart": 12624,
+       "indexCount": 7098,
+       "material": 66
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 76172,
+     "vertexCount": 834,
+     "indexStart": 165516,
+     "indexCount": 1746,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 288,
+       "material": 64
+      },
+      {
+       "indexStart": 288,
+       "indexCount": 258,
+       "material": 65
+      },
+      {
+       "indexStart": 546,
+       "indexCount": 1200,
+       "material": 66
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wetwork_iron_fence",
+   "count": 21,
+   "mins": [
+    -1.0,
+    -128.0,
+    138.0
+   ],
+   "maxs": [
+    1.0,
+    120.0,
+    215.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 77006,
+     "vertexCount": 552,
+     "indexStart": 167262,
+     "indexCount": 828,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 828,
+       "material": 67
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mp_creek_grave3",
+   "count": 19,
+   "mins": [
+    -36.0,
+    -66.0,
+    -1.0
+   ],
+   "maxs": [
+    36.0,
+    67.0,
+    70.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 4300.0,
+     "vertexStart": 77558,
+     "vertexCount": 732,
+     "indexStart": 168090,
+     "indexCount": 1410,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1410,
+       "material": 7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mp_creek_grave2",
+   "count": 14,
+   "mins": [
+    -36.0,
+    -66.0,
+    -1.0
+   ],
+   "maxs": [
+    36.0,
+    67.0,
+    109.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 4300.0,
+     "vertexStart": 78290,
+     "vertexCount": 1008,
+     "indexStart": 169500,
+     "indexCount": 1722,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1074,
+       "material": 7
+      },
+      {
+       "indexStart": 1074,
+       "indexCount": 648,
+       "material": 68
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mp_creek_grave4",
+   "count": 21,
+   "mins": [
+    -20.0,
+    -20.0,
+    0.0
+   ],
+   "maxs": [
+    18.0,
+    18.0,
+    143.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 4300.0,
+     "vertexStart": 79298,
+     "vertexCount": 1022,
+     "indexStart": 171222,
+     "indexCount": 1704,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1704,
+       "material": 7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wetwork_iron_gate",
+   "count": 6,
+   "mins": [
+    -1.29,
+    0.0,
+    -0.18
+   ],
+   "maxs": [
+    1.29,
+    152.49,
+    152.09
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 80320,
+     "vertexCount": 2184,
+     "indexStart": 172926,
+     "indexCount": 5664,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 5664,
+       "material": 67
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wetwork_tree_oak_root",
+   "count": 10,
+   "mins": [
+    -26.17,
+    -27.82,
+    -5.58
+   ],
+   "maxs": [
+    71.94,
+    14.12,
+    9.88
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000.0,
+     "vertexStart": 82504,
+     "vertexCount": 160,
+     "indexStart": 178590,
+     "indexCount": 720,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 720,
+       "material": 69
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wetwork_iron_gate_hinge",
+   "count": 12,
+   "mins": [
+    -3.0,
+    -0.12,
+    1.0
+   ],
+   "maxs": [
+    3.0,
+    6.88,
+    10.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 82664,
+     "vertexCount": 96,
+     "indexStart": 179310,
+     "indexCount": 156,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 156,
+       "material": 67
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_red_pine_stump_xl",
+   "count": 7,
+   "mins": [
+    -27.38,
+    -58.64,
+    -20.97
+   ],
+   "maxs": [
+    56.49,
+    24.21,
+    64.96
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000.0,
+     "vertexStart": 82760,
+     "vertexCount": 285,
+     "indexStart": 179466,
+     "indexCount": 828,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 762,
+       "material": 43
+      },
+      {
+       "indexStart": 762,
+       "indexCount": 66,
+       "material": 70
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 83045,
+     "vertexCount": 20,
+     "indexStart": 180294,
+     "indexCount": 30,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 24,
+       "material": 43
+      },
+      {
+       "indexStart": 24,
+       "indexCount": 6,
+       "material": 70
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_red_pine_stump_sm",
+   "count": 3,
+   "mins": [
+    -38.14,
+    -22.51,
+    -20.65
+   ],
+   "maxs": [
+    26.65,
+    9.51,
+    33.93
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000.0,
+     "vertexStart": 83065,
+     "vertexCount": 324,
+     "indexStart": 180324,
+     "indexCount": 852,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 720,
+       "material": 43
+      },
+      {
+       "indexStart": 720,
+       "indexCount": 132,
+       "material": 70
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 83389,
+     "vertexCount": 58,
+     "indexStart": 181176,
+     "indexCount": 114,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 102,
+       "material": 43
+      },
+      {
+       "indexStart": 102,
+       "indexCount": 12,
+       "material": 70
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_grass_short_squareclumpshort",
+   "count": 307,
+   "mins": [
+    -21.8,
+    -22.26,
+    -0.01
+   ],
+   "maxs": [
+    22.79,
+    22.26,
+    19.28
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 2000.0,
+     "vertexStart": 83447,
+     "vertexCount": 30,
+     "indexStart": 181290,
+     "indexCount": 30,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 30,
+       "material": 71
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_tree_grey_oak_thin_lg_a",
+   "count": 46,
+   "mins": [
+    -184.59,
+    -141.55,
+    -24.03
+   ],
+   "maxs": [
+    201.51,
+    146.53,
+    459.37
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000.0,
+     "vertexStart": 83477,
+     "vertexCount": 4209,
+     "indexStart": 181320,
+     "indexCount": 6312,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2982,
+       "material": 45
+      },
+      {
+       "indexStart": 2982,
+       "indexCount": 3306,
+       "material": 69
+      },
+      {
+       "indexStart": 6288,
+       "indexCount": 24,
+       "material": 41
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 87686,
+     "vertexCount": 1192,
+     "indexStart": 187632,
+     "indexCount": 2016,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1644,
+       "material": 45
+      },
+      {
+       "indexStart": 1644,
+       "indexCount": 348,
+       "material": 69
+      },
+      {
+       "indexStart": 1992,
+       "indexCount": 24,
+       "material": 41
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_tree_grey_oak_thin_xl_a",
+   "count": 42,
+   "mins": [
+    -234.92,
+    -196.62,
+    -20.7
+   ],
+   "maxs": [
+    187.22,
+    161.86,
+    547.58
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000.0,
+     "vertexStart": 88878,
+     "vertexCount": 4294,
+     "indexStart": 189648,
+     "indexCount": 5718,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 3258,
+       "material": 45
+      },
+      {
+       "indexStart": 3258,
+       "indexCount": 2436,
+       "material": 69
+      },
+      {
+       "indexStart": 5694,
+       "indexCount": 24,
+       "material": 41
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 93172,
+     "vertexCount": 1134,
+     "indexStart": 195366,
+     "indexCount": 1830,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1746,
+       "material": 45
+      },
+      {
+       "indexStart": 1746,
+       "indexCount": 60,
+       "material": 69
+      },
+      {
+       "indexStart": 1806,
+       "indexCount": 24,
+       "material": 41
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "unknown",
+   "count": 1,
+   "mins": null,
+   "maxs": null,
+   "lods": [],
+   "fallback": "model name unknown"
+  },
+  {
+   "name": "foliage_red_pine_stump_lg",
+   "count": 8,
+   "mins": [
+    -65.55,
+    -47.8,
+    -26.73
+   ],
+   "maxs": [
+    48.27,
+    50.13,
+    50.05
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000.0,
+     "vertexStart": 94306,
+     "vertexCount": 358,
+     "indexStart": 197196,
+     "indexCount": 1038,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 972,
+       "material": 43
+      },
+      {
+       "indexStart": 972,
+       "indexCount": 66,
+       "material": 70
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 94664,
+     "vertexCount": 20,
+     "indexStart": 198234,
+     "indexCount": 30,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 24,
+       "material": 43
+      },
+      {
+       "indexStart": 24,
+       "indexCount": 6,
+       "material": 70
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_woodfence02",
+   "count": 26,
+   "mins": [
+    -47.19,
+    -8.04,
+    -0.03
+   ],
+   "maxs": [
+    46.68,
+    3.86,
+    52.64
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 94684,
+     "vertexCount": 800,
+     "indexStart": 198264,
+     "indexCount": 1806,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1806,
+       "material": 72
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 6000.0,
+     "vertexStart": 95484,
+     "vertexCount": 198,
+     "indexStart": 200070,
+     "indexCount": 318,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 318,
+       "material": 72
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_dead_pine_xl",
+   "count": 1,
+   "mins": [
+    -201.99,
+    -206.81,
+    -24.3
+   ],
+   "maxs": [
+    237.39,
+    221.56,
+    421.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 800.0,
+     "vertexStart": 95682,
+     "vertexCount": 1704,
+     "indexStart": 200388,
+     "indexCount": 3312,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2370,
+       "material": 73
+      },
+      {
+       "indexStart": 2370,
+       "indexCount": 942,
+       "material": 74
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 97386,
+     "vertexCount": 718,
+     "indexStart": 203700,
+     "indexCount": 1062,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 426,
+       "material": 73
+      },
+      {
+       "indexStart": 426,
+       "indexCount": 636,
+       "material": 74
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wetwork_tree_root_whole_sm_dlc",
+   "count": 52,
+   "mins": [
+    -40.72,
+    -53.25,
+    -70.56
+   ],
+   "maxs": [
+    3.7,
+    55.17,
+    3.96
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 700.0,
+     "vertexStart": 98104,
+     "vertexCount": 1358,
+     "indexStart": 204762,
+     "indexCount": 2988,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2574,
+       "material": 0
+      },
+      {
+       "indexStart": 2574,
+       "indexCount": 414,
+       "material": 1
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 2700.0,
+     "vertexStart": 99462,
+     "vertexCount": 631,
+     "indexStart": 207750,
+     "indexCount": 1320,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1320,
+       "material": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wetwork_tree_root_straight_sm_dlc",
+   "count": 38,
+   "mins": [
+    -34.14,
+    -17.1,
+    -57.62
+   ],
+   "maxs": [
+    2.89,
+    10.68,
+    4.47
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 700.0,
+     "vertexStart": 100093,
+     "vertexCount": 328,
+     "indexStart": 209070,
+     "indexCount": 744,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 672,
+       "material": 0
+      },
+      {
+       "indexStart": 672,
+       "indexCount": 72,
+       "material": 1
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 2700.0,
+     "vertexStart": 100421,
+     "vertexCount": 139,
+     "indexStart": 209814,
+     "indexCount": 300,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 300,
+       "material": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wetwork_tree_root_right_sm_dlc",
+   "count": 37,
+   "mins": [
+    -24.76,
+    -44.74,
+    -46.21
+   ],
+   "maxs": [
+    2.8,
+    6.58,
+    4.47
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 700.0,
+     "vertexStart": 100560,
+     "vertexCount": 331,
+     "indexStart": 210114,
+     "indexCount": 732,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 636,
+       "material": 0
+      },
+      {
+       "indexStart": 636,
+       "indexCount": 96,
+       "material": 1
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 2700.0,
+     "vertexStart": 100891,
+     "vertexCount": 160,
+     "indexStart": 210846,
+     "indexCount": 336,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 336,
+       "material": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "vehicle_tractor",
+   "count": 2,
+   "mins": [
+    -63.09,
+    -46.06,
+    -0.02
+   ],
+   "maxs": [
+    131.04,
+    46.19,
+    104.97
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 800.0,
+     "vertexStart": 101051,
+     "vertexCount": 5502,
+     "indexStart": 211182,
+     "indexCount": 12810,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 7242,
+       "material": 75
+      },
+      {
+       "indexStart": 7242,
+       "indexCount": 120,
+       "material": 76
+      },
+      {
+       "indexStart": 7362,
+       "indexCount": 5448,
+       "material": 77
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 106553,
+     "vertexCount": 861,
+     "indexStart": 223992,
+     "indexCount": 1722,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1122,
+       "material": 75
+      },
+      {
+       "indexStart": 1122,
+       "indexCount": 60,
+       "material": 76
+      },
+      {
+       "indexStart": 1182,
+       "indexCount": 540,
+       "material": 77
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_tree_grey_oak_thin_med_a",
+   "count": 3,
+   "mins": [
+    -141.48,
+    -161.46,
+    -19.0
+   ],
+   "maxs": [
+    161.8,
+    165.23,
+    438.43
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 800.0,
+     "vertexStart": 107414,
+     "vertexCount": 2577,
+     "indexStart": 225714,
+     "indexCount": 3756,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1728,
+       "material": 45
+      },
+      {
+       "indexStart": 1728,
+       "indexCount": 2004,
+       "material": 69
+      },
+      {
+       "indexStart": 3732,
+       "indexCount": 24,
+       "material": 41
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 109991,
+     "vertexCount": 582,
+     "indexStart": 229470,
+     "indexCount": 930,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 816,
+       "material": 45
+      },
+      {
+       "indexStart": 816,
+       "indexCount": 114,
+       "material": 69
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_wood_fence_128b",
+   "count": 3,
+   "mins": [
+    -68.0,
+    -2.0,
+    0.0
+   ],
+   "maxs": [
+    66.0,
+    2.0,
+    88.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 110573,
+     "vertexCount": 168,
+     "indexStart": 230400,
+     "indexCount": 252,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 252,
+       "material": 78
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_wood_fence_128a",
+   "count": 2,
+   "mins": [
+    -68.0,
+    -2.0,
+    0.0
+   ],
+   "maxs": [
+    66.0,
+    2.0,
+    88.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 110741,
+     "vertexCount": 192,
+     "indexStart": 230652,
+     "indexCount": 288,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 288,
+       "material": 78
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_wood_fence_128",
+   "count": 16,
+   "mins": [
+    -68.0,
+    -2.0,
+    0.0
+   ],
+   "maxs": [
+    66.0,
+    2.0,
+    88.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 110933,
+     "vertexCount": 264,
+     "indexStart": 230940,
+     "indexCount": 396,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 396,
+       "material": 78
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_grass_flowerplants_squareclump",
+   "count": 762,
+   "mins": [
+    -41.07,
+    -41.94,
+    -0.18
+   ],
+   "maxs": [
+    42.81,
+    41.94,
+    41.76
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 2000.0,
+     "vertexStart": 111197,
+     "vertexCount": 30,
+     "indexStart": 231336,
+     "indexCount": 30,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 30,
+       "material": 79
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_tree_river_birch_xl_a",
+   "count": 1,
+   "mins": [
+    -202.72,
+    -173.95,
+    -17.8
+   ],
+   "maxs": [
+    169.59,
+    128.87,
+    662.76
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1200.0,
+     "vertexStart": 111227,
+     "vertexCount": 3367,
+     "indexStart": 231366,
+     "indexCount": 5970,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2772,
+       "material": 0
+      },
+      {
+       "indexStart": 2772,
+       "indexCount": 3138,
+       "material": 1
+      },
+      {
+       "indexStart": 5910,
+       "indexCount": 60,
+       "material": 41
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 114594,
+     "vertexCount": 913,
+     "indexStart": 237336,
+     "indexCount": 1548,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 396,
+       "material": 0
+      },
+      {
+       "indexStart": 396,
+       "indexCount": 1092,
+       "material": 1
+      },
+      {
+       "indexStart": 1488,
+       "indexCount": 60,
+       "material": 41
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mil_sandbag_desert_curved",
+   "count": 3,
+   "mins": [
+    -29.25,
+    -76.77,
+    0.01
+   ],
+   "maxs": [
+    29.74,
+    76.99,
+    33.54
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 115507,
+     "vertexCount": 1374,
+     "indexStart": 238884,
+     "indexCount": 5106,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 5106,
+       "material": 80
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 116881,
+     "vertexCount": 503,
+     "indexStart": 243990,
+     "indexCount": 1572,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1572,
+       "material": 80
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_streetlight",
+   "count": 3,
+   "mins": [
+    -70.96,
+    -7.61,
+    0.09
+   ],
+   "maxs": [
+    5.81,
+    7.61,
+    538.9
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 750.0,
+     "vertexStart": 117384,
+     "vertexCount": 285,
+     "indexStart": 245562,
+     "indexCount": 846,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 846,
+       "material": 81
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 117669,
+     "vertexCount": 91,
+     "indexStart": 246408,
+     "indexCount": 156,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 156,
+       "material": 81
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_telegraphpole2",
+   "count": 8,
+   "mins": [
+    -33.31,
+    -6.43,
+    -1.96
+   ],
+   "maxs": [
+    33.96,
+    4.55,
+    374.43
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 117760,
+     "vertexCount": 648,
+     "indexStart": 246564,
+     "indexCount": 1212,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1212,
+       "material": 82
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 118408,
+     "vertexCount": 221,
+     "indexStart": 247776,
+     "indexCount": 318,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 318,
+       "material": 82
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_sign_stopsign",
+   "count": 2,
+   "mins": [
+    -10.51,
+    -0.66,
+    0.04
+   ],
+   "maxs": [
+    10.79,
+    1.35,
+    85.14
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 118629,
+     "vertexCount": 48,
+     "indexStart": 248094,
+     "indexCount": 84,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 84,
+       "material": 83
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_sign_parking",
+   "count": 2,
+   "mins": [
+    -6.77,
+    -0.7,
+    -0.14
+   ],
+   "maxs": [
+    6.88,
+    1.35,
+    84.11
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000000.0,
+     "vertexStart": 118677,
+     "vertexCount": 40,
+     "indexStart": 248178,
+     "indexCount": 60,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 60,
+       "material": 83
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "vehicle_bmp_woodland_dsty_static",
+   "count": 2,
+   "mins": [
+    -166.86,
+    -102.04,
+    -4.06
+   ],
+   "maxs": [
+    170.25,
+    77.97,
+    116.1
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 800.0,
+     "vertexStart": 118717,
+     "vertexCount": 9575,
+     "indexStart": 248238,
+     "indexCount": 19290,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 4758,
+       "material": 84
+      },
+      {
+       "indexStart": 4758,
+       "indexCount": 5706,
+       "material": 84
+      },
+      {
+       "indexStart": 10464,
+       "indexCount": 7650,
+       "material": 84
+      },
+      {
+       "indexStart": 18114,
+       "indexCount": 1176,
+       "material": 85
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 128292,
+     "vertexCount": 999,
+     "indexStart": 267528,
+     "indexCount": 1926,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 270,
+       "material": 84
+      },
+      {
+       "indexStart": 270,
+       "indexCount": 1404,
+       "material": 84
+      },
+      {
+       "indexStart": 1674,
+       "indexCount": 252,
+       "material": 85
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_rowboat_oar",
+   "count": 2,
+   "mins": [
+    -1.23,
+    -2.76,
+    -0.2
+   ],
+   "maxs": [
+    1.32,
+    2.72,
+    69.93
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 250.0,
+     "vertexStart": 129291,
+     "vertexCount": 146,
+     "indexStart": 269454,
+     "indexCount": 444,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 444,
+       "material": 86
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 2500.0,
+     "vertexStart": 129437,
+     "vertexCount": 43,
+     "indexStart": 269898,
+     "indexCount": 66,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 66,
+       "material": 86
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_rowboat",
+   "count": 1,
+   "mins": [
+    -22.1,
+    -58.39,
+    -0.28
+   ],
+   "maxs": [
+    21.57,
+    57.68,
+    25.18
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 129480,
+     "vertexCount": 830,
+     "indexStart": 269964,
+     "indexCount": 2442,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2442,
+       "material": 86
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 10000.0,
+     "vertexStart": 130310,
+     "vertexCount": 75,
+     "indexStart": 272406,
+     "indexCount": 180,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 180,
+       "material": 86
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bathroom_toilet",
+   "count": 1,
+   "mins": [
+    -26.7,
+    -12.18,
+    0.4
+   ],
+   "maxs": [
+    14.36,
+    12.35,
+    38.55
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 130385,
+     "vertexCount": 716,
+     "indexStart": 272586,
+     "indexCount": 2208,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 108,
+       "material": 9
+      },
+      {
+       "indexStart": 108,
+       "indexCount": 2100,
+       "material": 8
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1300.0,
+     "vertexStart": 131101,
+     "vertexCount": 105,
+     "indexStart": 274794,
+     "indexCount": 210,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 210,
+       "material": 8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_french_bathtub_metal",
+   "count": 1,
+   "mins": [
+    -43.66,
+    -19.81,
+    0.05
+   ],
+   "maxs": [
+    43.66,
+    19.81,
+    28.95
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 131206,
+     "vertexCount": 382,
+     "indexStart": 275004,
+     "indexCount": 1194,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1194,
+       "material": 87
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 131588,
+     "vertexCount": 118,
+     "indexStart": 276198,
+     "indexCount": 222,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 222,
+       "material": 87
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_water_heater",
+   "count": 1,
+   "mins": [
+    -14.32,
+    -16.37,
+    0.01
+   ],
+   "maxs": [
+    12.56,
+    18.01,
+    88.12
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 131706,
+     "vertexCount": 990,
+     "indexStart": 276420,
+     "indexCount": 1950,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1950,
+       "material": 88
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 132696,
+     "vertexCount": 185,
+     "indexStart": 278370,
+     "indexCount": 348,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 348,
+       "material": 88
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_washer_01",
+   "count": 1,
+   "mins": [
+    -15.74,
+    -13.02,
+    0.09
+   ],
+   "maxs": [
+    15.74,
+    15.74,
+    48.36
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 600.0,
+     "vertexStart": 132881,
+     "vertexCount": 250,
+     "indexStart": 278718,
+     "indexCount": 522,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 522,
+       "material": 89
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 1000000.0,
+     "vertexStart": 133131,
+     "vertexCount": 62,
+     "indexStart": 279240,
+     "indexCount": 96,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 96,
+       "material": 89
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_roofvent1",
+   "count": 1,
+   "mins": [
+    -6.98,
+    -6.98,
+    0.0
+   ],
+   "maxs": [
+    6.98,
+    6.98,
+    20.9
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 133193,
+     "vertexCount": 176,
+     "indexStart": 279336,
+     "indexCount": 492,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 492,
+       "material": 90
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1200.0,
+     "vertexStart": 133369,
+     "vertexCount": 58,
+     "indexStart": 279828,
+     "indexCount": 156,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 156,
+       "material": 90
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_french_sink2",
+   "count": 1,
+   "mins": [
+    -12.74,
+    -22.83,
+    0.08
+   ],
+   "maxs": [
+    12.45,
+    0.0,
+    41.12
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 300.0,
+     "vertexStart": 133427,
+     "vertexCount": 999,
+     "indexStart": 279984,
+     "indexCount": 3228,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2028,
+       "material": 91
+      },
+      {
+       "indexStart": 2028,
+       "indexCount": 1200,
+       "material": 92
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 134426,
+     "vertexCount": 255,
+     "indexStart": 283212,
+     "indexCount": 504,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 246,
+       "material": 91
+      },
+      {
+       "indexStart": 246,
+       "indexCount": 258,
+       "material": 92
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_pallet_stack",
+   "count": 3,
+   "mins": [
+    -34.17,
+    -29.94,
+    0.0
+   ],
+   "maxs": [
+    34.17,
+    29.94,
+    32.19
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 900.0,
+     "vertexStart": 134681,
+     "vertexCount": 1920,
+     "indexStart": 283716,
+     "indexCount": 2880,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2880,
+       "material": 37
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 136601,
+     "vertexCount": 1396,
+     "indexStart": 286596,
+     "indexCount": 2064,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2064,
+       "material": 37
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_pallet",
+   "count": 8,
+   "mins": [
+    -24.01,
+    -31.96,
+    0.0
+   ],
+   "maxs": [
+    24.01,
+    31.96,
+    9.01
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 900.0,
+     "vertexStart": 137997,
+     "vertexCount": 496,
+     "indexStart": 288660,
+     "indexCount": 780,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 780,
+       "material": 37
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 138493,
+     "vertexCount": 112,
+     "indexStart": 289440,
+     "indexCount": 168,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 168,
+       "material": 37
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_red_pine_lg",
+   "count": 5,
+   "mins": [
+    -154.97,
+    -133.95,
+    -18.0
+   ],
+   "maxs": [
+    146.58,
+    107.08,
+    530.45
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 2000.0,
+     "vertexStart": 138605,
+     "vertexCount": 2965,
+     "indexStart": 289608,
+     "indexCount": 4122,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2430,
+       "material": 42
+      },
+      {
+       "indexStart": 2430,
+       "indexCount": 1662,
+       "material": 43
+      },
+      {
+       "indexStart": 4092,
+       "indexCount": 30,
+       "material": 41
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 141570,
+     "vertexCount": 837,
+     "indexStart": 293730,
+     "indexCount": 918,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 852,
+       "material": 42
+      },
+      {
+       "indexStart": 852,
+       "indexCount": 36,
+       "material": 43
+      },
+      {
+       "indexStart": 888,
+       "indexCount": 30,
+       "material": 41
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_barrel_blue_rust",
+   "count": 3,
+   "mins": [
+    -14.63,
+    -14.64,
+    0.0
+   ],
+   "maxs": [
+    14.59,
+    14.57,
+    44.01
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 256.0,
+     "vertexStart": 142407,
+     "vertexCount": 408,
+     "indexStart": 294648,
+     "indexCount": 1524,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1524,
+       "material": 93
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 142815,
+     "vertexCount": 26,
+     "indexStart": 296172,
+     "indexCount": 60,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 60,
+       "material": 93
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "com_barrel_white_rust",
+   "count": 2,
+   "mins": [
+    -14.63,
+    -14.64,
+    0.0
+   ],
+   "maxs": [
+    14.59,
+    14.57,
+    44.01
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 256.0,
+     "vertexStart": 142841,
+     "vertexCount": 408,
+     "indexStart": 296232,
+     "indexCount": 1524,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1524,
+       "material": 94
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 143249,
+     "vertexCount": 26,
+     "indexStart": 297756,
+     "indexCount": 60,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 60,
+       "material": 94
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_industrial_lamp_wall_off",
+   "count": 2,
+   "mins": [
+    -0.04,
+    -8.0,
+    -14.82
+   ],
+   "maxs": [
+    26.77,
+    7.99,
+    0.47
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 256.0,
+     "vertexStart": 143275,
+     "vertexCount": 363,
+     "indexStart": 297816,
+     "indexCount": 1092,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1092,
+       "material": 95
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 15000.0,
+     "vertexStart": 143638,
+     "vertexCount": 66,
+     "indexStart": 298908,
+     "indexCount": 144,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 144,
+       "material": 95
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_electricbox1",
+   "count": 1,
+   "mins": [
+    0.02,
+    -4.73,
+    -6.83
+   ],
+   "maxs": [
+    4.45,
+    4.73,
+    6.83
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 143704,
+     "vertexCount": 191,
+     "indexStart": 299052,
+     "indexCount": 342,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 342,
+       "material": 96
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 3000.0,
+     "vertexStart": 143895,
+     "vertexCount": 70,
+     "indexStart": 299394,
+     "indexCount": 108,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 108,
+       "material": 96
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "me_corrugated_metal4x8",
+   "count": 3,
+   "mins": [
+    -23.97,
+    -0.97,
+    -48.0
+   ],
+   "maxs": [
+    24.04,
+    0.49,
+    48.0
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 400.0,
+     "vertexStart": 143965,
+     "vertexCount": 228,
+     "indexStart": 299502,
+     "indexCount": 636,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 636,
+       "material": 61
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 30000.0,
+     "vertexStart": 144193,
+     "vertexCount": 8,
+     "indexStart": 300138,
+     "indexCount": 12,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 12,
+       "material": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_crate48x64",
+   "count": 4,
+   "mins": [
+    -24.12,
+    -32.35,
+    0.07
+   ],
+   "maxs": [
+    23.97,
+    32.35,
+    47.93
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 144201,
+     "vertexCount": 696,
+     "indexStart": 300150,
+     "indexCount": 1044,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 1044,
+       "material": 97
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 144897,
+     "vertexCount": 126,
+     "indexStart": 301194,
+     "indexCount": 180,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 180,
+       "material": 97
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_crate64x64",
+   "count": 2,
+   "mins": [
+    -33.07,
+    -33.07,
+    0.07
+   ],
+   "maxs": [
+    33.07,
+    33.07,
+    64.03
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 750.0,
+     "vertexStart": 145023,
+     "vertexCount": 473,
+     "indexStart": 301374,
+     "indexCount": 702,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 702,
+       "material": 97
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 145496,
+     "vertexCount": 121,
+     "indexStart": 302076,
+     "indexCount": 174,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 174,
+       "material": 97
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ch_campfire_equipment",
+   "count": 1,
+   "mins": [
+    -39.76,
+    -12.55,
+    0.01
+   ],
+   "maxs": [
+    48.82,
+    16.79,
+    65.3
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 145617,
+     "vertexCount": 1325,
+     "indexStart": 302250,
+     "indexCount": 3222,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 3222,
+       "material": 98
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 5000.0,
+     "vertexStart": 146942,
+     "vertexCount": 195,
+     "indexStart": 305472,
+     "indexCount": 324,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 324,
+       "material": 98
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "vehicle_uaz_van",
+   "count": 1,
+   "mins": [
+    -102.71,
+    -53.78,
+    -0.4
+   ],
+   "maxs": [
+    102.71,
+    53.78,
+    97.22
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 500.0,
+     "vertexStart": 147137,
+     "vertexCount": 6143,
+     "indexStart": 305796,
+     "indexCount": 17802,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 456,
+       "material": 99
+      },
+      {
+       "indexStart": 456,
+       "indexCount": 456,
+       "material": 99
+      },
+      {
+       "indexStart": 912,
+       "indexCount": 456,
+       "material": 99
+      },
+      {
+       "indexStart": 1368,
+       "indexCount": 498,
+       "material": 99
+      },
+      {
+       "indexStart": 1866,
+       "indexCount": 15870,
+       "material": 99
+      },
+      {
+       "indexStart": 17736,
+       "indexCount": 66,
+       "material": 100
+      }
+     ]
+    },
+    {
+     "lod": 3,
+     "dist": 1000000.0,
+     "vertexStart": 153280,
+     "vertexCount": 401,
+     "indexStart": 323598,
+     "indexCount": 888,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 36,
+       "material": 100
+      },
+      {
+       "indexStart": 36,
+       "indexCount": 192,
+       "material": 101
+      },
+      {
+       "indexStart": 228,
+       "indexCount": 660,
+       "material": 101
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foliage_tree_pine_lg_b",
+   "count": 1,
+   "mins": [
+    -129.4,
+    -140.91,
+    -17.76
+   ],
+   "maxs": [
+    130.38,
+    119.99,
+    630.05
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 1000.0,
+     "vertexStart": 153681,
+     "vertexCount": 680,
+     "indexStart": 324486,
+     "indexCount": 888,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 450,
+       "material": 102
+      },
+      {
+       "indexStart": 450,
+       "indexCount": 408,
+       "material": 103
+      },
+      {
+       "indexStart": 858,
+       "indexCount": 30,
+       "material": 41
+      }
+     ]
+    },
+    {
+     "lod": 2,
+     "dist": 1000000.0,
+     "vertexStart": 154361,
+     "vertexCount": 492,
+     "indexStart": 325374,
+     "indexCount": 540,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 426,
+       "material": 102
+      },
+      {
+       "indexStart": 426,
+       "indexCount": 84,
+       "material": 103
+      },
+      {
+       "indexStart": 510,
+       "indexCount": 30,
+       "material": 41
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "stats": {
+  "instances": 22311,
+  "models": 123,
+  "modelsWithGeometry": 122,
+  "instancesWithGeometry": 22310,
+  "fallbackModels": {
+   "unknown": "model name unknown"
+  },
+  "vertices": 154853,
+  "indices": 325914,
+  "lod0InstanceTriangles": 2538706,
+  "lowInstanceTriangles": 819222,
+  "materials": 104,
+  "materialsTextured": 104,
+  "lod0SurfacesWithoutMaterial": 0,
+  "materialHandles": {
+   "inline": 150,
+   "resolved": 523,
+   "unresolved": 71,
+   "null": 0,
+   "chains": 18,
+   "rules": {
+    "measured": 15
+   },
+   "shiftedModels": 9,
+   "windowedChains": 2,
+   "known": {
+    "246236": "mc/mtl_river_birch_canopy_2",
+    "246240": "mc/mtl_river_birch",
+    "246244": "mc/mtl_tree_shadow_caster",
+    "349688": "mc/mtl_red_pine_canopy",
+    "349692": "mc/mtl_red_pine",
+    "531712": "mc/jeepride_shrubgroup_mtl_02",
+    "740196": "mc/mtl_river_birch_canopy",
+    "746236": "mc/mtl_lightgrass",
+    "748192": "mc/mtl_brush_toujanebigbushy",
+    "749152": "mc/mtl_misc_literock_small01",
+    "754916": "mc/mtl_misc_rock_small01",
+    "760040": "mc/mtl_grey_oak_canopy",
+    "765312": "mc/mtl_destroyed_trees",
+    "792452": "mc/mtl_tire",
+    "805364": "mc/mtl_wheelbarrow",
+    "878420": "mc/mtl_vehicle_truck",
+    "878432": "mc/mtl_vehicle_pickup_glass",
+    "878436": "mc/mtl_vehicle_truck_tires",
+    "933252": "mc/mtl_chainlink_fence_pole",
+    "939088": "mc/ch_trim_stone01",
+    "939092": "mc/ch_plaster_corner_01",
+    "944744": "mc/ch_wallpaintchipped_4",
+    "951956": "mc/mtl_bathroom_porcelain",
+    "954560": "mc/mtl_bathroom_chrome",
+    "957264": "mc/mtl_refrigerator",
+    "968976": "mc/mtl_radiator",
+    "1002772": "mc/mtl_com_stove",
+    "1009700": "mc/mtl_ch_couch01",
+    "1049764": "mc/mtl_bed_mattress",
+    "1058196": "mc/mtl_bedframemetal",
+    "1080040": "mc/mtl_restaurantstainlessteelshelf",
+    "1111540": "mc/mtl_russian_table",
+    "1117044": "mc/mtl_furniture_piano01",
+    "1147236": "mc/mtl_lamp_ornate_off",
+    "1157120": "mc/mtl_cafe_table1",
+    "1157124": "mc/mtl_cafe_table1_base",
+    "1243552": "mc/mtl_ladder_wood",
+    "1249700": "mc/mtl_ch_gas_pump",
+    "1249704": "mc/mtl_ch_gas_pump_glass",
+    "1261328": "mc/mtl_propane_tank02",
+    "1342652": "mc/me_trim_metal_01",
+    "1344852": "mc/mtl_ivy",
+    "1363060": "mc/mtl_corrugated_metal",
+    "1390724": "mc/mtl_electric_box3",
+    "1393056": "mc/mtl_barrier",
+    "1436532": "mc/mtl_vehicle_uaz_dsr_int",
+    "1436536": "mc/mtl_vehicle_uaz_dsr_tire",
+    "1436540": "mc/mtl_vehicle_uaz_dsr",
+    "1539956": "mc/me_metal_rust_02",
+    "1543180": "mc/ch_plaster01",
+    "1595256": "mc/me_asphalt_01",
+    "1714084": "mc/mtl_grey_oak",
+    "1729452": "mc/mtl_desertshrubs",
+    "1731816": "mc/mtl_chechnya_trunk",
+    "1761884": "mc/mtl_newgrassgreen",
+    "1995076": "mc/mtl_barrel_black_rust",
+    "2030468": "mc/wood_fence",
+    "2107968": "mc/mtl_dead_pine",
+    "2107972": "mc/mtl_dead_pine_canopy",
+    "2212444": "mc/mtl_vehicle_tractor",
+    "2212448": "mc/mtl_vehicle_tractor_glass",
+    "2212452": "mc/mtl_vehicle_tractor_tire",
+    "2318676": "mc/mtl_restaurant_sink",
+    "2359064": "mc/mtl_russian_table_cloth3",
+    "2362724": "mc/ch_woodwall01",
+    "2379276": "mc/mtl_grassflowerplants",
+    "2480044": "mc/mtl_dumpster",
+    "2480048": "mc/mtl_dumpster_lid",
+    "2509272": "mc/mtl_sandbags",
+    "2592952": "mc/mtl_streetlight",
+    "2598060": "mc/mtl_telegraph_pole",
+    "2603676": "mc/mtl_ch_streetsigns",
+    "2645380": "mc/mtl_vehicle_bmp_dsty_wood",
+    "2645392": "mc/mtl_vehicle_bmp_track_dsty",
+    "2828884": "mc/mtl_flashlight_off",
+    "2828888": "mc/mtl_flashlight_on",
+    "2841644": "mc/mtl_enemy_bedroll",
+    "2858908": "mc/mtl_rowboat_and_paddles",
+    "2884488": "mc/mtl_80s_econdestroy_red",
+    "2884492": "mc/mtl_80s_edestroy_glass",
+    "3033276": "mc/mtl_frenchbathtub",
+    "3047224": "mc/mtl_com_water_heater",
+    "3053956": "mc/mtl_ch_washer_01",
+    "3057932": "mc/mtl_refrigerator_d",
+    "3078940": "mc/mtl_com_stove_d",
+    "3084244": "mc/mtl_roofvent",
+    "3092508": "mc/mtl_frenchbathshowerhead",
+    "3092512": "mc/mtl_french_sink",
+    "3122940": "mc/mtl_pallet",
+    "3261632": "mc/mtl_barrel_blue_rust",
+    "3275060": "mc/mtl_barrel_white_rust",
+    "3290040": "mc/mtl_industrial_lamp_off",
+    "3299576": "mc/mtl_electric_box1",
+    "3315456": "mc/mtl_ch_crates",
+    "3330764": "mc/mtl_campfire_equipment",
+    "3383060": "mc/mtl_cardboardbox",
+    "3383064": "mc/mtl_cardboardbox_decal",
+    "3402472": "mc/mtl_trashbag_white",
+    "3417536": "mc/mtl_military_tires02",
+    "3449724": "mc/mtl_uaz_van",
+    "3449744": "mc/mtl_uaz_van_glass",
+    "3449756": "mc/mtl_uaz_van_tires",
+    "3449776": "mc/mtl_uaz_van_2sided",
+    "3546588": "mc/mtl_pine_canopy",
+    "3546592": "mc/mtl_pine",
+    "3557692": "mc/mtl_soup_can",
+    "3559764": "mc/mtl_me_pictureframes",
+    "3559768": "mc/mtl_me_paintings2",
+    "3566952": "mc/mtl_me_paintings3",
+    "3577732": "mc/mtl_paint_can",
+    "3597552": "mc/mtl_plastic_case_big",
+    "3660740": "mc/mtl_laptop_envu",
+    "3660744": "mc/mtl_laptop_envu_screen",
+    "3670064": "mc/mtl_cellphone",
+    "3695084": "mc/mtl_styroform",
+    "3695088": "mc/mtl_plastic_case_bomb",
+    "3695100": "mc/mtl_weapon_stinger",
+    "3766972": "mc/mtl_plastic_case_bomb_d",
+    "3766976": "mc/mtl_styroform_d",
+    "29376456": "mc/mtl_usmc_woodland_body_mp",
+    "29376488": "mc/mtl_usmc_woodland_lod_mp",
+    "29409156": "mc/mtl_usmc_tactical_mich",
+    "29409164": "mc/mtl_accessories_mp",
+    "29409172": "mc/mtl_accessories_alpha_mp",
+    "29409176": "mc/mtl_usmc_tactical_cap",
+    "29409180": "mc/mtl_eye_highlight",
+    "29409184": ",mc/lambert1",
+    "29409212": "mc/mtl_usmc_lod_mp",
+    "30069584": "mc/mtl_opforce_fullwrap_sp",
+    "30095416": "mc/mtl_op_force_gloves",
+    "30095420": "mc/mtl_op_force_sleeves",
+    "30185852": "mc/mtl_opforce_gas_mask_lens_sp",
+    "30185864": "mc/mtl_opforce_gas_mask_sp",
+    "30257672": "mc/mtl_opforce_gear_sp",
+    "30282588": "mc/mtl_opforce_3hole_ski_mask_sp"
+   }
+  }
+ },
+ "note": "Activision's models, extracted from the game files (see maps3d/NOTICE.md). Models without lods are drawn as boxes of their bounds.",
+ "collision": {
+  "file": "props_coll.bin",
+  "triangles": 43636,
+  "models": [
+   [
+    0,
+    117
+   ],
+   null,
+   null,
+   [
+    117,
+    96
+   ],
+   [
+    213,
+    96
+   ],
+   [
+    309,
+    505
+   ],
+   [
+    814,
+    128
+   ],
+   [
+    942,
+    26
+   ],
+   null,
+   [
+    968,
+    96
+   ],
+   [
+    1064,
+    656
+   ],
+   [
+    1720,
+    30
+   ],
+   [
+    1750,
+    796
+   ],
+   [
+    2546,
+    108
+   ],
+   [
+    2654,
+    216
+   ],
+   [
+    2870,
+    152
+   ],
+   [
+    3022,
+    584
+   ],
+   [
+    3606,
+    88
+   ],
+   [
+    3694,
+    128
+   ],
+   [
+    3822,
+    282
+   ],
+   [
+    4104,
+    112
+   ],
+   [
+    4216,
+    169
+   ],
+   null,
+   null,
+   [
+    4385,
+    470
+   ],
+   null,
+   [
+    4855,
+    268
+   ],
+   [
+    5123,
+    227
+   ],
+   [
+    5350,
+    439
+   ],
+   [
+    5789,
+    100
+   ],
+   [
+    5889,
+    112
+   ],
+   [
+    6001,
+    227
+   ],
+   [
+    6228,
+    671
+   ],
+   [
+    6899,
+    78
+   ],
+   [
+    6977,
+    61
+   ],
+   [
+    7038,
+    338
+   ],
+   [
+    7376,
+    170
+   ],
+   [
+    7546,
+    330
+   ],
+   [
+    7876,
+    2502
+   ],
+   [
+    10378,
+    393
+   ],
+   [
+    10771,
+    78
+   ],
+   [
+    10849,
+    16
+   ],
+   [
+    10865,
+    290
+   ],
+   [
+    11155,
+    246
+   ],
+   [
+    11401,
+    56
+   ],
+   [
+    11457,
+    1161
+   ],
+   [
+    12618,
+    637
+   ],
+   [
+    13255,
+    647
+   ],
+   null,
+   [
+    13902,
+    822
+   ],
+   [
+    14724,
+    924
+   ],
+   null,
+   null,
+   [
+    15648,
+    120
+   ],
+   [
+    15768,
+    790
+   ],
+   [
+    16558,
+    1067
+   ],
+   [
+    17625,
+    103
+   ],
+   [
+    17728,
+    88
+   ],
+   [
+    17816,
+    102
+   ],
+   [
+    17918,
+    64
+   ],
+   [
+    17982,
+    87
+   ],
+   [
+    18069,
+    1682
+   ],
+   [
+    19751,
+    24
+   ],
+   null,
+   null,
+   [
+    19775,
+    420
+   ],
+   [
+    20195,
+    108
+   ],
+   [
+    20303,
+    18
+   ],
+   [
+    20321,
+    204
+   ],
+   [
+    20525,
+    2060
+   ],
+   null,
+   null,
+   null,
+   null,
+   [
+    22585,
+    1888
+   ],
+   [
+    24473,
+    240
+   ],
+   [
+    24713,
+    52
+   ],
+   [
+    24765,
+    276
+   ],
+   [
+    25041,
+    284
+   ],
+   null,
+   [
+    25325,
+    1102
+   ],
+   [
+    26427,
+    811
+   ],
+   null,
+   [
+    27238,
+    346
+   ],
+   [
+    27584,
+    602
+   ],
+   [
+    28186,
+    789
+   ],
+   null,
+   null,
+   null,
+   [
+    28975,
+    573
+   ],
+   [
+    29548,
+    668
+   ],
+   [
+    30216,
+    84
+   ],
+   [
+    30300,
+    96
+   ],
+   [
+    30396,
+    132
+   ],
+   null,
+   [
+    30528,
+    924
+   ],
+   [
+    31452,
+    1702
+   ],
+   [
+    33154,
+    52
+   ],
+   [
+    33206,
+    105
+   ],
+   [
+    33311,
+    28
+   ],
+   [
+    33339,
+    20
+   ],
+   [
+    33359,
+    3700
+   ],
+   [
+    37059,
+    84
+   ],
+   [
+    37143,
+    212
+   ],
+   [
+    37355,
+    440
+   ],
+   [
+    37795,
+    224
+   ],
+   [
+    38019,
+    115
+   ],
+   [
+    38134,
+    32
+   ],
+   [
+    38166,
+    52
+   ],
+   [
+    38218,
+    486
+   ],
+   [
+    38704,
+    960
+   ],
+   [
+    39664,
+    260
+   ],
+   [
+    39924,
+    554
+   ],
+   [
+    40478,
+    268
+   ],
+   [
+    40746,
+    268
+   ],
+   [
+    41014,
+    178
+   ],
+   [
+    41192,
+    36
+   ],
+   [
+    41228,
+    212
+   ],
+   [
+    41440,
+    128
+   ],
+   [
+    41568,
+    58
+   ],
+   [
+    41626,
+    1074
+   ],
+   [
+    42700,
+    884
+   ],
+   [
+    43584,
+    52
+   ]
+  ],
+  "layout": "float32 x 9 per triangle (model space), then uint8 surface type per triangle",
+  "note": "the models' collision surfaces (XModelCollSurf_s), solid and glass contents"
+ }
+}

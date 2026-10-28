@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "giftbox_04",
+ "kind": "script",
+ "faction": null,
+ "file": "giftbox_04.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 2568
+  },
+  "normal": {
+   "offset": 2568,
+   "length": 856
+  },
+  "uv": {
+   "offset": 3424,
+   "length": 1712
+  },
+  "skinIndex": {
+   "offset": 5136,
+   "length": 856
+  },
+  "skinWeight": {
+   "offset": 5992,
+   "length": 856
+  },
+  "index": {
+   "offset": 6848,
+   "length": 960
+  },
+  "color": {
+   "offset": 7808,
+   "length": 856
+  }
+ },
+ "vertexCount": 214,
+ "triangleCount": 160,
+ "bones": [
+  {
+   "name": "tag_origin",
+   "parent": -1,
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "quat": [
+    0,
+    0,
+    0,
+    1
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 480,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_giftbox_4",
+   "texture": "_textures/giftbox_4_col.webp",
+   "textureAlpha": false,
+   "color": "#173975",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/giftbox_4_nml.normal.webp",
+   "specularMap": "_textures/giftbox_4_spc-rgb_giftbox_4_cos-l-11.specular.webp",
+   "envMapParms": [
+    3.2,
+    12.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -3.3,
+   -3.61,
+   0.03
+  ],
+  "maxs": [
+   3.38,
+   3.56,
+   4.44
+  ]
+ }
+}

@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_bottle3",
+ "kind": "script",
+ "faction": null,
+ "file": "com_bottle3.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 1968
+  },
+  "normal": {
+   "offset": 1968,
+   "length": 656
+  },
+  "uv": {
+   "offset": 2624,
+   "length": 1312
+  },
+  "skinIndex": {
+   "offset": 3936,
+   "length": 656
+  },
+  "skinWeight": {
+   "offset": 4592,
+   "length": 656
+  },
+  "index": {
+   "offset": 5248,
+   "length": 1032
+  },
+  "color": {
+   "offset": 6280,
+   "length": 656
+  }
+ },
+ "vertexCount": 164,
+ "triangleCount": 172,
+ "bones": [
+  {
+   "name": "plasticbottle_3_lod1",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 516,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_plasticbottles",
+   "texture": "_textures/plastic_bottles_col.webp",
+   "textureAlpha": false,
+   "color": "#716750",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/plastic_bottles_nml.normal.webp",
+   "specularMap": "_textures/plastic_bottles_spc-rgb_plas_dfda3ded.specular.webp",
+   "envMapParms": [
+    0.4,
+    12.0,
+    0.9,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -2.0,
+   -2.0,
+   0.0
+  ],
+  "maxs": [
+   2.0,
+   2.0,
+   11.0
+  ]
+ }
+}

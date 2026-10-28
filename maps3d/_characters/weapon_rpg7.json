@@ -1,0 +1,141 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "weapon_rpg7",
+ "kind": "weapon",
+ "faction": null,
+ "file": "weapon_rpg7.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 17940
+  },
+  "normal": {
+   "offset": 17940,
+   "length": 5980
+  },
+  "uv": {
+   "offset": 23920,
+   "length": 11960
+  },
+  "skinIndex": {
+   "offset": 35880,
+   "length": 5980
+  },
+  "skinWeight": {
+   "offset": 41860,
+   "length": 5980
+  },
+  "index": {
+   "offset": 47840,
+   "length": 5892
+  },
+  "color": {
+   "offset": 53732,
+   "length": 5980
+  }
+ },
+ "vertexCount": 1495,
+ "triangleCount": 982,
+ "bones": [
+  {
+   "name": "tag_weapon",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    -2.7259,
+    0.0,
+    -0.2385
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_origin",
+   "parent": 0,
+   "pos": [
+    4.3491,
+    0.0,
+    -0.2424
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_rocket",
+   "parent": 2,
+   "pos": [
+    4.3491,
+    0.0,
+    -0.2424
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_fx",
+   "parent": 3,
+   "pos": [
+    -12.0151,
+    0.0,
+    -0.2385
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 252,
+   "material": -1
+  },
+  {
+   "indexStart": 252,
+   "indexCount": 2694,
+   "material": -1
+  }
+ ],
+ "materials": [],
+ "bounds": {
+  "mins": [
+   -39.5,
+   -2.36,
+   -6.53
+  ],
+  "maxs": [
+   12.02,
+   2.36,
+   3.81
+  ]
+ }
+}

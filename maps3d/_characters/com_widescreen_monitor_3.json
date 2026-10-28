@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_widescreen_monitor_3",
+ "kind": "script",
+ "faction": null,
+ "file": "com_widescreen_monitor_3.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 3060
+  },
+  "normal": {
+   "offset": 3060,
+   "length": 1020
+  },
+  "uv": {
+   "offset": 4080,
+   "length": 2040
+  },
+  "skinIndex": {
+   "offset": 6120,
+   "length": 1020
+  },
+  "skinWeight": {
+   "offset": 7140,
+   "length": 1020
+  },
+  "index": {
+   "offset": 8160,
+   "length": 1296
+  },
+  "color": {
+   "offset": 9456,
+   "length": 1020
+  }
+ },
+ "vertexCount": 255,
+ "triangleCount": 216,
+ "bones": [
+  {
+   "name": "widescreenmonitor_3_lod0",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 648,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_widescreen_monitor",
+   "texture": "_textures/com_pc_monitor_col.webp",
+   "textureAlpha": false,
+   "color": "#54504e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/com_pc_monitor_nml.normal.webp",
+   "specularMap": "_textures/com_pc_monitor_spc-rgb_com_p_1522d618.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -10.2,
+   -4.86,
+   0.0
+  ],
+  "maxs": [
+   10.2,
+   7.95,
+   31.85
+  ]
+ }
+}

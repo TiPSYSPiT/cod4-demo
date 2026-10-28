@@ -1,0 +1,93 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_barrel_piece",
+ "kind": "script",
+ "faction": null,
+ "file": "com_barrel_piece.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 12036
+  },
+  "normal": {
+   "offset": 12036,
+   "length": 4012
+  },
+  "uv": {
+   "offset": 16048,
+   "length": 8024
+  },
+  "skinIndex": {
+   "offset": 24072,
+   "length": 4012
+  },
+  "skinWeight": {
+   "offset": 28084,
+   "length": 4012
+  },
+  "index": {
+   "offset": 32096,
+   "length": 3648
+  },
+  "color": {
+   "offset": 35744,
+   "length": 4012
+  }
+ },
+ "vertexCount": 1003,
+ "triangleCount": 608,
+ "bones": [
+  {
+   "name": "",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 1824,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_barrel_d",
+   "texture": "_textures/barrel_d.webp",
+   "textureAlpha": false,
+   "color": "#3a3c3b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -22.0,
+   -42.64,
+   -0.34
+  ],
+  "maxs": [
+   38.02,
+   42.18,
+   3.68
+  ]
+ }
+}

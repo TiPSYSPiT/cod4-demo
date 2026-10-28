@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_computer_case",
+ "kind": "script",
+ "faction": null,
+ "file": "com_computer_case.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 972
+  },
+  "normal": {
+   "offset": 972,
+   "length": 324
+  },
+  "uv": {
+   "offset": 1296,
+   "length": 648
+  },
+  "skinIndex": {
+   "offset": 1944,
+   "length": 324
+  },
+  "skinWeight": {
+   "offset": 2268,
+   "length": 324
+  },
+  "index": {
+   "offset": 2592,
+   "length": 348
+  },
+  "color": {
+   "offset": 2940,
+   "length": 324
+  }
+ },
+ "vertexCount": 81,
+ "triangleCount": 58,
+ "bones": [
+  {
+   "name": "computer_case_lod0",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 174,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_computer_case",
+   "texture": "_textures/computer_case_col.webp",
+   "textureAlpha": false,
+   "color": "#97968f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/computer_case_nml.normal.webp",
+   "specularMap": "_textures/computer_case_spc-rgb_comput_eefb9933.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -15.0,
+   -7.0,
+   0.0
+  ],
+  "maxs": [
+   18.65,
+   7.0,
+   26.0
+  ]
+ }
+}

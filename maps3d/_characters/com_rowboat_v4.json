@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_rowboat_v4",
+ "kind": "script",
+ "faction": null,
+ "file": "com_rowboat_v4.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 13476
+  },
+  "normal": {
+   "offset": 13476,
+   "length": 4492
+  },
+  "uv": {
+   "offset": 17968,
+   "length": 8984
+  },
+  "skinIndex": {
+   "offset": 26952,
+   "length": 4492
+  },
+  "skinWeight": {
+   "offset": 31444,
+   "length": 4492
+  },
+  "index": {
+   "offset": 35936,
+   "length": 6660
+  },
+  "color": {
+   "offset": 42596,
+   "length": 4492
+  }
+ },
+ "vertexCount": 1123,
+ "triangleCount": 1110,
+ "bones": [
+  {
+   "name": "tag_origin",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 3330,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_rowboat_and_paddles",
+   "texture": "_textures/xpec_rowboat_and_paddles_col.webp",
+   "textureAlpha": false,
+   "color": "#3f3831",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/xpec_rowboat_and_paddles_nml.normal.webp",
+   "specularMap": "_textures/xpec_rowboat_and_paddles_spc_13fc7792.specular.webp",
+   "envMapParms": [
+    2.04,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -39.78,
+   -105.11,
+   -7.9
+  ],
+  "maxs": [
+   38.83,
+   119.05,
+   45.32
+  ]
+ }
+}

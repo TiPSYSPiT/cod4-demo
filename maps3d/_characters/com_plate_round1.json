@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_plate_round1",
+ "kind": "script",
+ "faction": null,
+ "file": "com_plate_round1.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 1464
+  },
+  "normal": {
+   "offset": 1464,
+   "length": 488
+  },
+  "uv": {
+   "offset": 1952,
+   "length": 976
+  },
+  "skinIndex": {
+   "offset": 2928,
+   "length": 488
+  },
+  "skinWeight": {
+   "offset": 3416,
+   "length": 488
+  },
+  "index": {
+   "offset": 3904,
+   "length": 1008
+  },
+  "color": {
+   "offset": 4912,
+   "length": 488
+  }
+ },
+ "vertexCount": 122,
+ "triangleCount": 168,
+ "bones": [
+  {
+   "name": "plate_roundplain_lod1",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 504,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_dining_plates",
+   "texture": "_textures/dining_plates_col.webp",
+   "textureAlpha": false,
+   "color": "#7d817a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/dining_plates_normal.normal.webp",
+   "specularMap": "_textures/dining_plates_spec-rgb__white-l-11.specular.webp",
+   "envMapParms": [
+    0.4,
+    4.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -6.67,
+   -6.67,
+   0.0
+  ],
+  "maxs": [
+   6.67,
+   6.67,
+   1.01
+  ]
+ }
+}

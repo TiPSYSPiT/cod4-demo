@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_fire_extinguisher",
+ "kind": "script",
+ "faction": null,
+ "file": "com_fire_extinguisher.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 6648
+  },
+  "normal": {
+   "offset": 6648,
+   "length": 2216
+  },
+  "uv": {
+   "offset": 8864,
+   "length": 4432
+  },
+  "skinIndex": {
+   "offset": 13296,
+   "length": 2216
+  },
+  "skinWeight": {
+   "offset": 15512,
+   "length": 2216
+  },
+  "index": {
+   "offset": 17728,
+   "length": 3288
+  },
+  "color": {
+   "offset": 21016,
+   "length": 2216
+  }
+ },
+ "vertexCount": 554,
+ "triangleCount": 548,
+ "bones": [
+  {
+   "name": "fire_extinguisher_lod1",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 1644,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_fire_extinguisher",
+   "texture": "_textures/fire_extinguisher_c.webp",
+   "textureAlpha": false,
+   "color": "#72645e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/fire_extinguisher_n.normal.webp",
+   "specularMap": "_textures/fire_extinguisher_s-rgb_fire_935c6a0d.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -3.89,
+   -2.67,
+   -0.01
+  ],
+  "maxs": [
+   3.89,
+   2.67,
+   20.17
+  ]
+ }
+}

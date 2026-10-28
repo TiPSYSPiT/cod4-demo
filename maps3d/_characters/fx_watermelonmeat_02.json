@@ -1,0 +1,76 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "fx_watermelonmeat_02",
+ "kind": "fx",
+ "faction": null,
+ "file": "fx_watermelonmeat_02.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 552
+  },
+  "normal": {
+   "offset": 552,
+   "length": 184
+  },
+  "uv": {
+   "offset": 736,
+   "length": 368
+  },
+  "skinIndex": {
+   "offset": 1104,
+   "length": 184
+  },
+  "skinWeight": {
+   "offset": 1288,
+   "length": 184
+  },
+  "index": {
+   "offset": 1472,
+   "length": 396
+  },
+  "color": {
+   "offset": 1868,
+   "length": 184
+  }
+ },
+ "vertexCount": 46,
+ "triangleCount": 66,
+ "bones": [
+  {
+   "name": "watermelon_meat_2_lod0",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 198,
+   "material": -1
+  }
+ ],
+ "materials": [],
+ "bounds": {
+  "mins": [
+   -0.89,
+   -0.65,
+   -0.42
+  ],
+  "maxs": [
+   0.89,
+   0.65,
+   0.42
+  ]
+ }
+}

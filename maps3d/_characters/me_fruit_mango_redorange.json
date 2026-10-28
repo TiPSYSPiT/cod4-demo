@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "me_fruit_mango_redorange",
+ "kind": "script",
+ "faction": null,
+ "file": "me_fruit_mango_redorange.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 1944
+  },
+  "normal": {
+   "offset": 1944,
+   "length": 648
+  },
+  "uv": {
+   "offset": 2592,
+   "length": 1296
+  },
+  "skinIndex": {
+   "offset": 3888,
+   "length": 648
+  },
+  "skinWeight": {
+   "offset": 4536,
+   "length": 648
+  },
+  "index": {
+   "offset": 5184,
+   "length": 1584
+  },
+  "color": {
+   "offset": 6768,
+   "length": 648
+  }
+ },
+ "vertexCount": 162,
+ "triangleCount": 264,
+ "bones": [
+  {
+   "name": "mango_redorange_lod0",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 792,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_mango_redorange",
+   "texture": "_textures/mango_redorange_col.webp",
+   "textureAlpha": false,
+   "color": "#705837",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/mango_redorange_nml.normal.webp",
+   "specularMap": "_textures/mango_redorange_spc-rgb_mang_d811f4a6.specular.webp",
+   "envMapParms": [
+    0.0,
+    12.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -3.39,
+   -2.4,
+   0.0
+  ],
+  "maxs": [
+   3.39,
+   2.4,
+   4.29
+  ]
+ }
+}

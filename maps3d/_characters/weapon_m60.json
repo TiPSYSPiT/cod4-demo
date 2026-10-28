@@ -1,0 +1,173 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "weapon_m60",
+ "kind": "weapon",
+ "faction": null,
+ "file": "weapon_m60.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 15300
+  },
+  "normal": {
+   "offset": 15300,
+   "length": 5100
+  },
+  "uv": {
+   "offset": 20400,
+   "length": 10200
+  },
+  "skinIndex": {
+   "offset": 30600,
+   "length": 5100
+  },
+  "skinWeight": {
+   "offset": 35700,
+   "length": 5100
+  },
+  "index": {
+   "offset": 40800,
+   "length": 4308
+  },
+  "color": {
+   "offset": 45108,
+   "length": 5100
+  }
+ },
+ "vertexCount": 1275,
+ "triangleCount": 718,
+ "bones": [
+  {
+   "name": "tag_weapon",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 0,
+   "pos": [
+    -9.509,
+    -0.8994,
+    2.518
+   ],
+   "quat": [
+    -0.092288,
+    -0.092288,
+    -0.701074,
+    0.701043
+   ]
+  },
+  {
+   "name": "tag_clip",
+   "parent": 0,
+   "pos": [
+    -9.1289,
+    4.4967,
+    0.2654
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    20.232,
+    0.0,
+    1.8453
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 1950,
+   "material": 0
+  },
+  {
+   "indexStart": 1950,
+   "indexCount": 204,
+   "material": 1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_m60",
+   "texture": "_textures/m60_col.webp",
+   "textureAlpha": false,
+   "color": "#4b433b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/m60_spec-rgb_m60_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.0,
+    4.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_m60_misc_nocamo",
+   "texture": "_textures/m60_col.webp",
+   "textureAlpha": false,
+   "color": "#4b433b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/m60_spec-rgb_m60_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.0,
+    4.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -23.22,
+   -2.58,
+   -3.67
+  ],
+  "maxs": [
+   20.23,
+   6.83,
+   6.04
+  ]
+ }
+}

@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_cafe_chair",
+ "kind": "script",
+ "faction": null,
+ "file": "com_cafe_chair.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 3456
+  },
+  "normal": {
+   "offset": 3456,
+   "length": 1152
+  },
+  "uv": {
+   "offset": 4608,
+   "length": 2304
+  },
+  "skinIndex": {
+   "offset": 6912,
+   "length": 1152
+  },
+  "skinWeight": {
+   "offset": 8064,
+   "length": 1152
+  },
+  "index": {
+   "offset": 9216,
+   "length": 960
+  },
+  "color": {
+   "offset": 10176,
+   "length": 1152
+  }
+ },
+ "vertexCount": 288,
+ "triangleCount": 160,
+ "bones": [
+  {
+   "name": "cafe_chair_lod4",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 480,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_cafe_chair",
+   "texture": "_textures/chair_col.webp",
+   "textureAlpha": false,
+   "color": "#775e4e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/chair_nml.normal.webp",
+   "specularMap": "_textures/chair_spc-rgb_chair_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.0,
+    4.0,
+    4.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -9.72,
+   -10.65,
+   -0.01
+  ],
+  "maxs": [
+   9.72,
+   10.65,
+   42.33
+  ]
+ }
+}

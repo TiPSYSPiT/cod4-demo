@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "bog_b_cinderblock_clutter",
+ "kind": "script",
+ "faction": null,
+ "file": "bog_b_cinderblock_clutter.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 1440
+  },
+  "normal": {
+   "offset": 1440,
+   "length": 480
+  },
+  "uv": {
+   "offset": 1920,
+   "length": 960
+  },
+  "skinIndex": {
+   "offset": 2880,
+   "length": 480
+  },
+  "skinWeight": {
+   "offset": 3360,
+   "length": 480
+  },
+  "index": {
+   "offset": 3840,
+   "length": 504
+  },
+  "color": {
+   "offset": 4344,
+   "length": 480
+  }
+ },
+ "vertexCount": 120,
+ "triangleCount": 84,
+ "bones": [
+  {
+   "name": "polysurface131",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 252,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/me_cinderblock_wall2",
+   "texture": "_textures/me_cinderblock_wall02_col.webp",
+   "textureAlpha": false,
+   "color": "#928c80",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_cinderblock_wall02_nml.normal.webp",
+   "specularMap": "_textures/me_cinderblock_wall02_spc-rg_2e3b23af.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.8,
+    2.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -8.0,
+   -4.0,
+   0.01
+  ],
+  "maxs": [
+   8.0,
+   4.0,
+   7.99
+  ]
+ }
+}

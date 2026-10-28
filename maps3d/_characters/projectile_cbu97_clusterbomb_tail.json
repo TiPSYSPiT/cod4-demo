@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "projectile_cbu97_clusterbomb_tail",
+ "kind": "fx",
+ "faction": null,
+ "file": "projectile_cbu97_clusterbomb_tail.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 7200
+  },
+  "normal": {
+   "offset": 7200,
+   "length": 2400
+  },
+  "uv": {
+   "offset": 9600,
+   "length": 4800
+  },
+  "skinIndex": {
+   "offset": 14400,
+   "length": 2400
+  },
+  "skinWeight": {
+   "offset": 16800,
+   "length": 2400
+  },
+  "index": {
+   "offset": 19200,
+   "length": 2640
+  },
+  "color": {
+   "offset": 21840,
+   "length": 2400
+  }
+ },
+ "vertexCount": 600,
+ "triangleCount": 440,
+ "bones": [
+  {
+   "name": "tail",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 1320,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_cbu97_clusterbomb",
+   "texture": "_textures/cbu97_clusterbomb_col.webp",
+   "textureAlpha": false,
+   "color": "#404636",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/cbu97_clusterbomb_nml.normal.webp",
+   "specularMap": "_textures/cbu97_clusterbomb_spc-r-87g-_8fad2ddd.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -9.58,
+   -14.01,
+   -14.23
+  ],
+  "maxs": [
+   8.3,
+   14.01,
+   13.8
+  ]
+ }
+}

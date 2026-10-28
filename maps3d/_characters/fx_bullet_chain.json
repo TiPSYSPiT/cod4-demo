@@ -1,0 +1,100 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "fx_bullet_chain",
+ "kind": "fx",
+ "faction": null,
+ "file": "fx_bullet_chain.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 648
+  },
+  "normal": {
+   "offset": 648,
+   "length": 216
+  },
+  "uv": {
+   "offset": 864,
+   "length": 432
+  },
+  "skinIndex": {
+   "offset": 1296,
+   "length": 216
+  },
+  "skinWeight": {
+   "offset": 1512,
+   "length": 216
+  },
+  "index": {
+   "offset": 1728,
+   "length": 288
+  },
+  "color": {
+   "offset": 2016,
+   "length": 216
+  }
+ },
+ "vertexCount": 54,
+ "triangleCount": 48,
+ "bones": [
+  {
+   "name": "polysurface80488",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 144,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_fx_bullet_chain",
+   "texture": "_textures/fx_bullet_chain_col.webp",
+   "textureAlpha": false,
+   "color": "#303032",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "specularMap": "_textures/fx_bullet_chain_spc-rgb_fx_b_df2c7c4a.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -0.46,
+   -0.43,
+   -0.23
+  ],
+  "maxs": [
+   0.46,
+   0.43,
+   0.22
+  ]
+ }
+}

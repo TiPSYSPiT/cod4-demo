@@ -1,0 +1,122 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_cardboardbox04",
+ "kind": "script",
+ "faction": null,
+ "file": "com_cardboardbox04.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 384
+  },
+  "normal": {
+   "offset": 384,
+   "length": 128
+  },
+  "uv": {
+   "offset": 512,
+   "length": 256
+  },
+  "skinIndex": {
+   "offset": 768,
+   "length": 128
+  },
+  "skinWeight": {
+   "offset": 896,
+   "length": 128
+  },
+  "index": {
+   "offset": 1024,
+   "length": 96
+  },
+  "color": {
+   "offset": 1120,
+   "length": 128
+  }
+ },
+ "vertexCount": 32,
+ "triangleCount": 16,
+ "bones": [
+  {
+   "name": "cardboardbox_4_lod0",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 36,
+   "material": 0
+  },
+  {
+   "indexStart": 36,
+   "indexCount": 12,
+   "material": 1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_cardboardbox",
+   "texture": "_textures/cardboard_box_color.webp",
+   "textureAlpha": false,
+   "color": "#8b7560",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/cardboard_box_normal.normal.webp",
+   "specularMap": "_textures/cardboard_box_spec-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_cardboardbox_decal",
+   "texture": "_textures/cardboard_box_decal.webp",
+   "textureAlpha": true,
+   "color": "#bd9c8b",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -14.57,
+   -10.18,
+   0.0
+  ],
+  "maxs": [
+   14.57,
+   10.23,
+   19.3
+  ]
+ }
+}

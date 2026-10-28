@@ -1,0 +1,618 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "vehicle_pickup_nodoor",
+ "kind": "script",
+ "faction": null,
+ "file": "vehicle_pickup_nodoor.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 73416
+  },
+  "normal": {
+   "offset": 73416,
+   "length": 24472
+  },
+  "uv": {
+   "offset": 97888,
+   "length": 48944
+  },
+  "skinIndex": {
+   "offset": 146832,
+   "length": 24472
+  },
+  "skinWeight": {
+   "offset": 171304,
+   "length": 24472
+  },
+  "index": {
+   "offset": 195776,
+   "length": 35832
+  },
+  "color": {
+   "offset": 231608,
+   "length": 24472
+  }
+ },
+ "vertexCount": 6118,
+ "triangleCount": 5972,
+ "bones": [
+  {
+   "name": "tag_origin",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_body",
+   "parent": 0,
+   "pos": [
+    7.9321,
+    0.0,
+    20.9024
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_wheel_back_left",
+   "parent": 0,
+   "pos": [
+    -52.6132,
+    35.4085,
+    -0.0371
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_wheel_back_right",
+   "parent": 0,
+   "pos": [
+    -52.6134,
+    -35.4085,
+    -0.0817
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_wheel_front_left",
+   "parent": 0,
+   "pos": [
+    73.3901,
+    27.6814,
+    -0.0371
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_wheel_front_right",
+   "parent": 0,
+   "pos": [
+    73.3901,
+    -27.6814,
+    -0.0371
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "body_animate_jnt",
+   "parent": 1,
+   "pos": [
+    7.9321,
+    0.0,
+    20.9024
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "left_wheel_01_jnt",
+   "parent": 4,
+   "pos": [
+    73.3901,
+    29.6499,
+    17.4875
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "left_wheel_02_jnt",
+   "parent": 2,
+   "pos": [
+    -52.6132,
+    31.9509,
+    17.3171
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "right_wheel_01_jnt",
+   "parent": 5,
+   "pos": [
+    73.3901,
+    -29.6499,
+    17.4875
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "right_wheel_02_jnt",
+   "parent": 3,
+   "pos": [
+    -52.6134,
+    -31.8673,
+    17.3171
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "door_open_l_jnt",
+   "parent": 6,
+   "pos": [
+    50.8806,
+    36.3312,
+    46.5087
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "door_open_r_jnt",
+   "parent": 6,
+   "pos": [
+    50.8806,
+    -36.3312,
+    46.5087
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_brakelight_left",
+   "parent": 6,
+   "pos": [
+    -96.397,
+    33.8483,
+    42.0706
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "name": "tag_breaklight_right",
+   "parent": 6,
+   "pos": [
+    -95.6819,
+    -34.2192,
+    34.5586
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "name": "tag_deathfx",
+   "parent": 6,
+   "pos": [
+    0.0,
+    0.0,
+    51.5293
+   ],
+   "quat": [
+    0.0,
+    -0.707107,
+    0.0,
+    0.707107
+   ]
+  },
+  {
+   "name": "tag_detach",
+   "parent": 6,
+   "pos": [
+    22.8542,
+    50.2182,
+    40.131
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_driver",
+   "parent": 6,
+   "pos": [
+    11.2041,
+    15.1193,
+    42.038
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_engine_left",
+   "parent": 6,
+   "pos": [
+    84.2654,
+    21.8323,
+    40.1804
+   ],
+   "quat": [
+    0.0,
+    -0.707107,
+    0.0,
+    0.707107
+   ]
+  },
+  {
+   "name": "tag_engine_right",
+   "parent": 6,
+   "pos": [
+    75.6717,
+    -24.2902,
+    49.9551
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_fx_cab",
+   "parent": 6,
+   "pos": [
+    22.3893,
+    -14.9134,
+    28.4262
+   ],
+   "quat": [
+    -0.055757,
+    -0.70101,
+    0.056368,
+    0.708731
+   ]
+  },
+  {
+   "name": "tag_fx_tire_right_r",
+   "parent": 6,
+   "pos": [
+    -64.046,
+    -32.3331,
+    7.8029
+   ],
+   "quat": [
+    -0.055757,
+    -0.70101,
+    0.056368,
+    0.708731
+   ]
+  },
+  {
+   "name": "tag_guy0",
+   "parent": 6,
+   "pos": [
+    -33.7228,
+    15.1632,
+    35.8149
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_guy1",
+   "parent": 6,
+   "pos": [
+    -33.7228,
+    -10.9306,
+    33.2673
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_guy2",
+   "parent": 6,
+   "pos": [
+    -66.9869,
+    15.1565,
+    35.9761
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_guy3",
+   "parent": 6,
+   "pos": [
+    -66.9869,
+    -11.5323,
+    33.3139
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_headlight_left",
+   "parent": 6,
+   "pos": [
+    95.0484,
+    24.0,
+    39.6229
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_headlight_right",
+   "parent": 6,
+   "pos": [
+    95.0484,
+    -24.0,
+    39.6229
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_passenger",
+   "parent": 6,
+   "pos": [
+    13.3919,
+    -16.3866,
+    39.044
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_player",
+   "parent": 6,
+   "pos": [
+    13.3919,
+    15.1193,
+    39.044
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 348,
+   "material": 0
+  },
+  {
+   "indexStart": 348,
+   "indexCount": 14688,
+   "material": 0
+  },
+  {
+   "indexStart": 15036,
+   "indexCount": 504,
+   "material": 0
+  },
+  {
+   "indexStart": 15540,
+   "indexCount": 96,
+   "material": 1
+  },
+  {
+   "indexStart": 15636,
+   "indexCount": 570,
+   "material": 2
+  },
+  {
+   "indexStart": 16206,
+   "indexCount": 570,
+   "material": 2
+  },
+  {
+   "indexStart": 16776,
+   "indexCount": 570,
+   "material": 2
+  },
+  {
+   "indexStart": 17346,
+   "indexCount": 570,
+   "material": 2
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_vehicle_truck",
+   "texture": "_textures/pickup_col.webp",
+   "textureAlpha": false,
+   "color": "#453f3b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/pickup_nml.normal.webp",
+   "specularMap": "_textures/pickup_spc-rgb_pickup_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_vehicle_pickup_glass",
+   "texture": "_textures/pickup_glass_col.webp",
+   "textureAlpha": true,
+   "color": "#2e2f2d",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "specularMap": "_textures/pickup_glass_spec-rgb_pickup_9471e152.specular.webp",
+   "envMapParms": [
+    1.0,
+    1.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_vehicle_truck_tires",
+   "texture": "_textures/pickup_col.webp",
+   "textureAlpha": false,
+   "color": "#453f3b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/pickup_nml.normal.webp",
+   "specularMap": "_textures/pickup_spc-rgb_pickup_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -104.39,
+   -40.77,
+   -0.08
+  ],
+  "maxs": [
+   100.37,
+   44.95,
+   76.11
+  ]
+ }
+}

@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "fx_pistol_shell",
+ "kind": "fx",
+ "faction": null,
+ "file": "fx_pistol_shell.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 540
+  },
+  "normal": {
+   "offset": 540,
+   "length": 180
+  },
+  "uv": {
+   "offset": 720,
+   "length": 360
+  },
+  "skinIndex": {
+   "offset": 1080,
+   "length": 180
+  },
+  "skinWeight": {
+   "offset": 1260,
+   "length": 180
+  },
+  "index": {
+   "offset": 1440,
+   "length": 228
+  },
+  "color": {
+   "offset": 1668,
+   "length": 180
+  }
+ },
+ "vertexCount": 45,
+ "triangleCount": 38,
+ "bones": [
+  {
+   "name": "polysurface919",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 114,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_fx_shell",
+   "texture": "_textures/fx_shell_col.webp",
+   "textureAlpha": false,
+   "color": "#897b5f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/fx_shell_nml.normal.webp",
+   "specularMap": "_textures/fx_shell_spc-rgb_fx_shell_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -0.28,
+   -0.49,
+   -0.27
+  ],
+  "maxs": [
+   0.28,
+   0.48,
+   0.27
+  ]
+ }
+}

@@ -1,0 +1,3462 @@
+{
+ "map": "mp_cargoship",
+ "models": {
+  "cs_cargoship_door_push_edge": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists"
+   ]
+  },
+  "cs_cargoship_door_push": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 5 rigid vertex lists"
+   ]
+  },
+  "com_restaurantsink_2comps": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists"
+   ]
+  },
+  "com_restaurantstainlessteelshelf_02": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_folding_chair": {
+   "status": "ok",
+   "issues": [
+    "5 bones, 12 rigid vertex lists"
+   ]
+  },
+  "mil_bunker_bed2": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 6 rigid vertex lists",
+    "mc/mtl_bed_bunker2: image reference resolved"
+   ]
+  },
+  "com_folding_table": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 7 rigid vertex lists",
+    "mc/mtl_folding_table_metal: image reference resolved"
+   ]
+  },
+  "cs_cargoship_wall_light_on": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists",
+    "mc/mtl_cargoship_wall_light_off: image reference resolved"
+   ]
+  },
+  "com_lightbox_on": {
+   "status": "ok",
+   "issues": [
+    "2 bones, 12 rigid vertex lists",
+    "mc/gfx_floodlight_beam_godray75: blend invdestcolor/one",
+    "mc/gfx_floodlight_beam_godray75: technique set: emissive",
+    "mc/gfx_floodlight_beam_godray85: blend invdestcolor/one",
+    "mc/gfx_floodlight_beam_godray85: image reference resolved",
+    "mc/gfx_floodlight_beam_godray85: technique set: emissive",
+    "mc/gfx_spotlight_lensflare_godray80: blend one/one",
+    "mc/gfx_spotlight_lensflare_godray80: technique set: emissive",
+    "vertex colours (48 of 1856 not white, rgb down to 61, alpha down to 255)"
+   ]
+  },
+  "com_lightbox": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "cs_handrail_short_stair_wet": {
+   "status": "ok",
+   "issues": []
+  },
+  "cs_handrail_90_left_wet": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "cs_handrail_90_right_wet": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "cs_handrail_64_double_wet": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "cs_handrail_90_wet": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "cs_handrail_128_double_wet": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "cs_cargoship_spotlight_part1": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "cs_cargoship_spotlight_on": {
+   "status": "ok",
+   "issues": [
+    "2 bones, 6 rigid vertex lists",
+    "mc/mtl_cargoship_spotlight_on: image reference resolved"
+   ]
+  },
+  "cs_handrail_single_left_45_wet": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "com_pipe_coupling_ceramic": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_pipe_4_coupling_ceramic": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_pipe_8_90angle_ceramic": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_pipe_4_90angle_ceramic": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_pipe_4_45angle_ceramic": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_pipe_8_45angle_ceramic": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_pipe_8_45angle_metal": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_pipe_coupling_metal": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_pipe_8_fit_metal": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_pipe_4_fit_ceramic": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_pipe_8_fit_ceramic": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "me_ac_window": {
+   "status": "ok",
+   "issues": [
+    "2 bones, 3 rigid vertex lists"
+   ]
+  },
+  "com_pipe_4_hold_gas": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists",
+    "vertex colours (146 of 312 not white, rgb down to 204, alpha down to 255)"
+   ]
+  },
+  "com_pipe_4_coupling_metal": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_pipe_8_4_t_metal": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_pipe_8_holder_gas": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists",
+    "vertex colours (158 of 338 not white, rgb down to 204, alpha down to 255)"
+   ]
+  },
+  "com_pipe_4_90angle_metal": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_pipe_4_fit_metal": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_airduct_s_short": {
+   "status": "ok",
+   "issues": [
+    "vertex colours (12 of 64 not white, rgb down to 149, alpha down to 255)"
+   ]
+  },
+  "com_airduct_square": {
+   "status": "ok",
+   "issues": [
+    "vertex colours (14 of 64 not white, rgb down to 149, alpha down to 255)"
+   ]
+  },
+  "com_airduct_s_up_down": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "me_electricbox1": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists",
+    "vertex colours (132 of 261 not white, rgb down to 227, alpha down to 255)"
+   ]
+  },
+  "me_electricbox4": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists",
+    "vertex colours (126 of 306 not white, rgb down to 212, alpha down to 255)"
+   ]
+  },
+  "com_electrical_pipe": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists",
+    "mc/mtl_electrical_pipe: image reference resolved",
+    "vertex colours (84 of 240 not white, rgb down to 0, alpha down to 255)"
+   ]
+  },
+  "cs_handrail_long_stair_wet": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "me_electricbox3": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists",
+    "vertex colours (68 of 174 not white, rgb down to 210, alpha down to 255)"
+   ]
+  },
+  "cs_cargoship_door_pull_edge": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists"
+   ]
+  },
+  "cs_cargoship_door_pull": {
+   "status": "ok",
+   "issues": [
+    "3 bones, 8 rigid vertex lists"
+   ]
+  },
+  "com_electrical_pipe_short": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists",
+    "mc/mtl_electrical_pipe: image reference resolved",
+    "vertex colours (56 of 156 not white, rgb down to 0, alpha down to 255)"
+   ]
+  },
+  "com_electrical_pipe_elbow": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists",
+    "mc/mtl_electrical_pipe: image reference resolved",
+    "vertex colours (43 of 142 not white, rgb down to 0, alpha down to 255)"
+   ]
+  },
+  "com_restaurantkitchenvent": {
+   "status": "ok",
+   "issues": []
+  },
+  "ch_radiator01": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists",
+    "vertex colours (21 of 1766 not white, rgb down to 97, alpha down to 255)"
+   ]
+  },
+  "com_locker_double": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_computer_keyboard": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "cs_monitor1": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists",
+    "mc/mtl_cs_radarscreen01: blend one/one"
+   ]
+  },
+  "cs_receiver1": {
+   "status": "ok",
+   "issues": []
+  },
+  "cs_wallfan1": {
+   "status": "ok",
+   "issues": [
+    ",mc/lambert1: material not in the zone extraction",
+    ",mc/lambert1: technique set: none",
+    "1 bones, 4 rigid vertex lists",
+    "vertex colours (12 of 535 not white, rgb down to 0, alpha down to 255)"
+   ]
+  },
+  "com_fire_extinguisher": {
+   "status": "ok",
+   "issues": []
+  },
+  "cs_console_rail": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "cs_periscope1": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists",
+    "vertex colours (3 of 147 not white, rgb down to 0, alpha down to 255)"
+   ]
+  },
+  "cs_monitor_wall2": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists",
+    "mc/mtl_cs_radarscreen02: blend one/one"
+   ]
+  },
+  "cs_monitor_wall": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists",
+    "mc/mtl_cs_radarscreen01: blend one/one"
+   ]
+  },
+  "cs_handrail_256_double_wet": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "cs_handrail_256_damage_wet": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "cs_handrail_64_end_wet": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "cs_deck_tie_bar": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "cs_handrail_coupling_wet": {
+   "status": "ok",
+   "issues": []
+  },
+  "me_cargocontainersingleface": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 8 rigid vertex lists"
+   ]
+  },
+  "me_cargocontainerdoorhinge_green": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "me_cargocontainerdoorhinge_blue": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_barrel_white_rust": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists"
+   ]
+  },
+  "me_cargocontainerleftface_blue": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 8 rigid vertex lists"
+   ]
+  },
+  "me_cargocontainersingleface_white": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 8 rigid vertex lists"
+   ]
+  },
+  "me_cargocontainersingleface_green": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 8 rigid vertex lists"
+   ]
+  },
+  "me_cargocontainersingleface_blue": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 8 rigid vertex lists"
+   ]
+  },
+  "cs_handrail_256_single_wet": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "cs_handrail_256_single_curve_wet": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "cs_handrail_64_single_curve_wet": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "cs_handrail_256_single_damage_wet": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "cs_handrail_128_single_wet": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "cs_handrail_64_single_damage_wet": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "cs_handrail_256_single_short_wet": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "cs_handrail_128_single_short_wet": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "cs_handrail_64_single_short_wet": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "cs_handrail_128_curve_short_wet": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "cs_handrail_64_damage_wet": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "cs_handrail_single_right_45_wet": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "cs_monitor2": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists",
+    "mc/mtl_cs_radarscreen02: blend one/one"
+   ]
+  },
+  "com_restaurantchair_2": {
+   "status": "ok",
+   "issues": [
+    "2 bones, 4 rigid vertex lists"
+   ]
+  },
+  "com_tv1": {
+   "status": "ok",
+   "issues": [
+    "2 bones, 3 rigid vertex lists",
+    "vertex colours (232 of 510 not white, rgb down to 191, alpha down to 255)"
+   ]
+  },
+  "cs_tow_hook": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_pipe_4_hold_ceramic": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists",
+    "vertex colours (128 of 268 not white, rgb down to 204, alpha down to 255)"
+   ]
+  },
+  "cs_handrail_64_single_wet": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "com_barrel_blue_rust": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists"
+   ]
+  },
+  "com_pipe_4x64_metal": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_pipe_8x32_metal": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_pipe_4x256_metal": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "me_electricbox2": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists",
+    "vertex colours (100 of 352 not white, rgb down to 210, alpha down to 255)"
+   ]
+  },
+  "com_pipe_4x32_metal": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "vehicle_semi_trailer_axle": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 7 rigid vertex lists",
+    "mc/mtl_truck_cab: image reference resolved"
+   ]
+  },
+  "vehicle_uaz_hardtop": {
+   "status": "ok",
+   "issues": [
+    "27 bones, 82 rigid vertex lists"
+   ]
+  },
+  "cs_cargoship_wall_light_red_on": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists",
+    "mc/mtl_cargoship_wall_light_off: image reference resolved"
+   ]
+  },
+  "com_pipe_8_90angle_metal": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_fire_extinguisher_incase": {
+   "status": "ok",
+   "issues": []
+  },
+  "cs_steeringwheel": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "cs_console_rail2": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  }
+ },
+ "world": {
+  "wc/ap_tile_kitchen": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/caulk_shadow": {
+   "status": "ok",
+   "issues": [
+    "technique set: unlit - no colour pass in the game; hidden"
+   ]
+  },
+  "wc/ch_godray01": {
+   "status": "ok",
+   "issues": [
+    "blend invdestcolor/one"
+   ]
+  },
+  "wc/ch_hotspot02": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "wc/ch_kitchenstainlessteelpanels": {
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/ch_metal_diamondplating": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_trim_stainlessteel_1_wet": {
+   "status": "ok",
+   "issues": [
+    "colour map guessed by name (material mc/ch_trim_stainlessteel_1_wet)",
+    "image reference NOT resolved"
+   ]
+  },
+  "wc/com_blue_tarp": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/com_stain_01": {
+   "status": "ok",
+   "issues": [
+    "blend zero/srccolor"
+   ]
+  },
+  "wc/me_cargocontainer_exteriordoor_wet": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_exteriorwall_wet": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_exttrimcorner01_wet": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_exttrimcorner02_wet": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_exttrimtall_wet": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_exttrimwide_wet": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_interiordoor": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_interiorfloor": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_interiorfloor_wet": {
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_cargocontainer_interiorwall": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_top_wet": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_usmc_ext_door_wet": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_usmc_roof_wet": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerblue_ext_door_wet": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerblue_ext_wall_wet": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerblue_roof_wet": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerblue_trimcorner1_wet": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerblue_trimcorner2_wet": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerblue_trimtall_wet": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerblue_trimwide_wet": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainergreen_ext_door_wet": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainergreen_ext_wall_wet": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainergreen_roof_wet": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainergreen_trimcorner1_wet": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainergreen_trimcorner2_wet": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainergreen_trimtall_wet": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainergreen_trimwide_wet": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerwhite_ext_door": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerwhite_ext_door_wet": {
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_cargocontainerwhite_ext_wall_wet": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerwhite_roof_flat": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerwhite_roof_wet": {
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_cargocontainerwhite_trimcorner1_wet": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerwhite_trimcorner2_wet": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerwhite_trimtall_wet": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerwhite_trimwide_wet": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_decal_adobe_top_01": {
+   "status": "ok",
+   "issues": [
+    "blend zero/srccolor"
+   ]
+  },
+  "wc/me_fence_chainlink": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_floor_metalgratingparallel": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_i_beam": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_metal_grey_01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_metal_rust_03": {
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_trim_metal_01_wet": {
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_trim_metal_conduit_wet": {
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_windowfence": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/shadowcaster": {
+   "status": "ok",
+   "issues": [
+    "shadow caster only (no colour pass); hidden"
+   ]
+  },
+  "wc/ship_body_wall": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_boxes01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_cables01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_cables02": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_cables03": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_ceiling01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_controlpanel01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_inside_wall": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_map01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_outside_wall": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_plaster01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_rubbermat01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_stairsmetal01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_transceiver01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_trim_metal_black1": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_wall_stain2": {
+   "status": "ok",
+   "issues": [
+    "blend zero/srccolor"
+   ]
+  },
+  "wc/ship_wall_stain3": {
+   "status": "ok",
+   "issues": [
+    "blend zero/srccolor"
+   ]
+  },
+  "wc/ship_wall_stain5": {
+   "status": "ok",
+   "issues": [
+    "blend zero/srccolor"
+   ]
+  },
+  "wc/ship_wallmetal_painted01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_wallmetal_painted_wet01": {
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/water_cargoship": {
+   "status": "ok",
+   "issues": [
+    "alpha from the vertex colours (down to 0)",
+    "blend srcalpha/invsrcalpha",
+    "water (own shader)"
+   ]
+  },
+  "wc/water_cargoship_mp": {
+   "status": "ok",
+   "issues": [
+    "image reference resolved",
+    "water (own shader)"
+   ]
+  },
+  "wc/ap_signage_interior_set_2": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_factory_ruststain1": {
+   "status": "ok",
+   "issues": [
+    "alpha from the vertex colours (down to 0)"
+   ]
+  },
+  "wc/com_light_switch_socket_01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_decal_cargocontainernumbers_01": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "wc/me_decal_cargocontainernumbers_04": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "wc/me_decal_cargocontainersignage01": {
+   "status": "ok",
+   "issues": [
+    "alpha from the vertex colours (down to 75)"
+   ]
+  },
+  "wc/me_decal_cargocontainertext_03": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "wc/me_decal_cargocontainertext_05": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "wc/me_decal_darkstain_02": {
+   "status": "ok",
+   "issues": [
+    "blend zero/srccolor"
+   ]
+  },
+  "wc/me_decal_darkstain_03": {
+   "status": "ok",
+   "issues": [
+    "blend zero/srccolor"
+   ]
+  },
+  "wc/me_decal_darkstain_04": {
+   "status": "ok",
+   "issues": [
+    "blend zero/srccolor"
+   ]
+  },
+  "wc/me_decal_darkstain_05": {
+   "status": "ok",
+   "issues": [
+    "blend zero/srccolor"
+   ]
+  },
+  "wc/me_glassdirt": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_vent01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_wall_stain4": {
+   "status": "ok",
+   "issues": [
+    "blend zero/srccolor"
+   ]
+  }
+ },
+ "script": {
+  "com_barrel_black_rust": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_bomb_objective": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_bomb_objective_d": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_cellphone_on": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_laptop_2_open": {
+   "status": "ok",
+   "issues": [
+    "mc/mtl_laptop_envu_screen: image reference resolved"
+   ]
+  },
+  "com_lightbox_on": {
+   "status": "ok",
+   "issues": [
+    "mc/gfx_floodlight_beam_godray75: blend invdestcolor/one",
+    "mc/gfx_floodlight_beam_godray75: technique set: emissive",
+    "mc/gfx_floodlight_beam_godray85: blend invdestcolor/one",
+    "mc/gfx_floodlight_beam_godray85: image reference resolved",
+    "mc/gfx_floodlight_beam_godray85: technique set: emissive",
+    "mc/gfx_spotlight_lensflare_godray80: blend one/one",
+    "mc/gfx_spotlight_lensflare_godray80: technique set: emissive",
+    "vertex colours (48 of 1856 not white)"
+   ]
+  },
+  "com_pipe_4_hold_ceramic": {
+   "status": "ok",
+   "issues": [
+    "vertex colours (128 of 268 not white)"
+   ]
+  },
+  "com_pipe_4x128_ceramic": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_pipe_4x128_metal": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_pipe_4x256_ceramic": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_pipe_4x256_metal": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_pipe_4x32_ceramic": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_pipe_4x32_metal": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_pipe_4x64_ceramic": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_pipe_4x64_metal": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_pipe_4x96_ceramic": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_pipe_4x96_metal": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_pipe_8x128_ceramic": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_pipe_8x128_metal": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_pipe_8x256_ceramic": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_pipe_8x32_ceramic": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_pipe_8x32_metal": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_pipe_8x64_ceramic": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_pipe_8x64_metal": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_pipe_8x96_ceramic": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_pipe_8x96_metal": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_plasticcase_beige_big": {
+   "status": "ok",
+   "issues": []
+  },
+  "cs_cargohold_panel_high_center": {
+   "status": "ok",
+   "issues": []
+  },
+  "cs_cargohold_panel_high_left": {
+   "status": "no-material",
+   "issues": [
+    "surface without material"
+   ]
+  },
+  "cs_cargohold_panel_high_right": {
+   "status": "no-material",
+   "issues": [
+    "surface without material"
+   ]
+  },
+  "cs_cargohold_panel_mid_center": {
+   "status": "no-material",
+   "issues": [
+    "surface without material"
+   ]
+  },
+  "cs_cargohold_panel_mid_left": {
+   "status": "no-material",
+   "issues": [
+    "surface without material"
+   ]
+  },
+  "cs_cargohold_panel_mid_right": {
+   "status": "no-material",
+   "issues": [
+    "surface without material"
+   ]
+  },
+  "mil_tntbomb_mp": {
+   "status": "ok",
+   "issues": [
+    "mc/mtl_tntbomb: material not in the zone extraction",
+    "mc/mtl_tntbomb: technique set: none"
+   ]
+  },
+  "perc_doubletap": {
+   "status": "ok",
+   "issues": []
+  },
+  "perc_martyrdom": {
+   "status": "ok",
+   "issues": []
+  },
+  "prop_flag_neutral": {
+   "status": "ok",
+   "issues": [
+    "mc/mtl_flag_neutral: colour map guessed by name (name)",
+    "mc/mtl_flag_neutral: material not in the zone extraction",
+    "mc/mtl_flag_neutral: technique set: none"
+   ]
+  }
+ },
+ "materials": {
+  "mc/mtl_cargoship_door": {
+   "name": "mc/mtl_cargoship_door",
+   "class": "lit",
+   "texture": "cargoship_door_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cargoship_door_interior": {
+   "name": "mc/mtl_cargoship_door_interior",
+   "class": "lit",
+   "texture": "cargoship_door_interior_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cargoship_door_glass": {
+   "name": "mc/mtl_cargoship_door_glass",
+   "class": "lit",
+   "texture": "cargoship_door_glass",
+   "format": "DXT5 64x64",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": true,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_restaurant_sink": {
+   "name": "mc/mtl_restaurant_sink",
+   "class": "lit",
+   "texture": "restaurant_sink_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_restaurantstainlessteelshelf": {
+   "name": "mc/mtl_restaurantstainlessteelshelf",
+   "class": "lit",
+   "texture": "restaurant_stainlesssteelshelf_col",
+   "format": "DXT1 256x512",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_folding_chair": {
+   "name": "mc/mtl_folding_chair",
+   "class": "lit",
+   "texture": "folding_chair_color",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_bed_bunker": {
+   "name": "mc/mtl_bed_bunker",
+   "class": "lit",
+   "texture": "bunker_bed_c",
+   "format": "DXT3 256x256",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_bed_bunker2": {
+   "name": "mc/mtl_bed_bunker2",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "mc/mtl_folding_table": {
+   "name": "mc/mtl_folding_table",
+   "class": "lit",
+   "texture": "folding_table_color",
+   "format": "DXT1 512x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_folding_table_metal": {
+   "name": "mc/mtl_folding_table_metal",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "mc/mtl_cargoship_wall_light_on": {
+   "name": "mc/mtl_cargoship_wall_light_on",
+   "class": "lit",
+   "texture": "cargoship_wall_light1_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cargoship_wall_light_off": {
+   "name": "mc/mtl_cargoship_wall_light_off",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "mc/mtl_lightbox_on": {
+   "name": "mc/mtl_lightbox_on",
+   "class": "lit",
+   "texture": "lightbox_on_c",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/gfx_floodlight_beam_godray75": {
+   "name": "mc/gfx_floodlight_beam_godray75",
+   "class": "emissive",
+   "texture": "floodlight_beam",
+   "format": "R8G8B8 128x128",
+   "alphaTest": null,
+   "blend": "invdestcolor/one",
+   "doubleSided": true,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "technique set: emissive",
+    "blend invdestcolor/one"
+   ]
+  },
+  "mc/gfx_spotlight_lensflare_godray80": {
+   "name": "mc/gfx_spotlight_lensflare_godray80",
+   "class": "emissive",
+   "texture": ",spotlight_lensflare",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": "one/one",
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "technique set: emissive",
+    "blend one/one"
+   ]
+  },
+  "mc/gfx_floodlight_beam_godray85": {
+   "name": "mc/gfx_floodlight_beam_godray85",
+   "class": "emissive",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": "invdestcolor/one",
+   "doubleSided": true,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "technique set: emissive",
+    "image reference resolved",
+    "blend invdestcolor/one"
+   ]
+  },
+  "mc/mtl_lightbox_off": {
+   "name": "mc/mtl_lightbox_off",
+   "class": "lit",
+   "texture": "lightbox_c",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_hand_rail_wet": {
+   "name": "mc/mtl_hand_rail_wet",
+   "class": "lit",
+   "texture": "hand_rail_col",
+   "format": "DXT1 512x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cargoship_spotlight_off": {
+   "name": "mc/mtl_cargoship_spotlight_off",
+   "class": "lit",
+   "texture": "cargoship_spotlight_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cargoship_spotlight_on": {
+   "name": "mc/mtl_cargoship_spotlight_on",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "mc/mtl_pipes_ceramic": {
+   "name": "mc/mtl_pipes_ceramic",
+   "class": "lit",
+   "texture": "metal_pipe_ceramic_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_pipes": {
+   "name": "mc/mtl_pipes",
+   "class": "lit",
+   "texture": "metal_pipe_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_ac_window": {
+   "name": "mc/mtl_ac_window",
+   "class": "lit",
+   "texture": "ac_win_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_pipes_gas": {
+   "name": "mc/mtl_pipes_gas",
+   "class": "lit",
+   "texture": "metal_pipe_red_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_air_duct1": {
+   "name": "mc/mtl_air_duct1",
+   "class": "lit",
+   "texture": "air_duct1_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_air_duct2": {
+   "name": "mc/mtl_air_duct2",
+   "class": "lit",
+   "texture": "air_duct2_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_electric_box1": {
+   "name": "mc/mtl_electric_box1",
+   "class": "lit",
+   "texture": "electric_box1_c",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_electric_box3": {
+   "name": "mc/mtl_electric_box3",
+   "class": "lit",
+   "texture": "electric_box3_c",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_electrical_pipe": {
+   "name": "mc/mtl_electrical_pipe",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "mc/mtl_electric_box2": {
+   "name": "mc/mtl_electric_box2",
+   "class": "lit",
+   "texture": "electric_box2_c",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_restaurantkitchenvent": {
+   "name": "mc/mtl_restaurantkitchenvent",
+   "class": "lit",
+   "texture": "restaurantkitchenvent_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_radiator": {
+   "name": "mc/mtl_radiator",
+   "class": "lit",
+   "texture": "ch_radiator01_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/locker": {
+   "name": "mc/locker",
+   "class": "lit",
+   "texture": "bunkerlocker_col",
+   "format": "DXT1 256x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_computer2": {
+   "name": "mc/mtl_computer2",
+   "class": "lit",
+   "texture": "computer_monitor_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cs_monitor01": {
+   "name": "mc/mtl_cs_monitor01",
+   "class": "lit",
+   "texture": "cs_monitor01_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cs_monitorscreen1": {
+   "name": "mc/mtl_cs_monitorscreen1",
+   "class": "lit",
+   "texture": "cs_monitorscreen01_col",
+   "format": "DXT1 64x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cs_radarscreen01": {
+   "name": "mc/mtl_cs_radarscreen01",
+   "class": "lit",
+   "texture": "cs_radarscreen01",
+   "format": "DXT1 64x64",
+   "alphaTest": null,
+   "blend": "one/one",
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "mc/mtl_cs_receiverblue": {
+   "name": "mc/mtl_cs_receiverblue",
+   "class": "lit",
+   "texture": "cs_receiver01_col",
+   "format": "DXT1 128x128",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  ",mc/lambert1": {
+   "name": ",mc/lambert1",
+   "class": "none",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "material not in the zone extraction",
+    "technique set: none"
+   ]
+  },
+  "mc/mtl_wallfan1": {
+   "name": "mc/mtl_wallfan1",
+   "class": "lit",
+   "texture": "wallfan01_col",
+   "format": "DXT5 128x128",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_fire_extinguisher": {
+   "name": "mc/mtl_fire_extinguisher",
+   "class": "lit",
+   "texture": "fire_extinguisher_c",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_console_rail": {
+   "name": "mc/mtl_console_rail",
+   "class": "lit",
+   "texture": "cs_console_rail_col",
+   "format": "DXT1 128x32",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cs_radarscreen02": {
+   "name": "mc/mtl_cs_radarscreen02",
+   "class": "lit",
+   "texture": "cs_radarscreen02",
+   "format": "DXT1 64x64",
+   "alphaTest": null,
+   "blend": "one/one",
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "mc/me_trim_metal_conduit_wet": {
+   "name": "mc/me_trim_metal_conduit_wet",
+   "class": "lit",
+   "texture": "me_trim_metal_conduit_col",
+   "format": "DXT1 128x1024",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/me_trim_metal_01_wet": {
+   "name": "mc/me_trim_metal_01_wet",
+   "class": "lit",
+   "texture": "me_trim_metal01_col",
+   "format": "DXT1 128x1024",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cargocontainerlockingbar": {
+   "name": "mc/mtl_cargocontainerlockingbar",
+   "class": "lit",
+   "texture": "cargocontainerlockingbar_col",
+   "format": "DXT1 128x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cargocontainerdoorhinge": {
+   "name": "mc/mtl_cargocontainerdoorhinge",
+   "class": "lit",
+   "texture": "cargocontainerdoorhinge_col",
+   "format": "DXT1 64x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cargocontainerdoorhinge_green": {
+   "name": "mc/mtl_cargocontainerdoorhinge_green",
+   "class": "lit",
+   "texture": "cargocontainerdoorhingegreen_col",
+   "format": "DXT1 64x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cargocontainerdoorhinge_blue": {
+   "name": "mc/mtl_cargocontainerdoorhinge_blue",
+   "class": "lit",
+   "texture": "cargocontainerdoorhingeblue_col",
+   "format": "DXT1 64x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_barrel_white_rust": {
+   "name": "mc/mtl_barrel_white_rust",
+   "class": "lit",
+   "texture": "55_gallon_drum_white_rust",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cargocontainerdoorhinge_white": {
+   "name": "mc/mtl_cargocontainerdoorhinge_white",
+   "class": "lit",
+   "texture": "cargocontainerdoorhingewhite_col",
+   "format": "DXT1 64x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_restaurant_chair": {
+   "name": "mc/mtl_restaurant_chair",
+   "class": "lit",
+   "texture": "restaurant_chair_1_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_television1": {
+   "name": "mc/mtl_television1",
+   "class": "lit",
+   "texture": "television1_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/ch_trim_stainlessteel_1_wet": {
+   "name": "mc/ch_trim_stainlessteel_1_wet",
+   "class": "lit",
+   "texture": "ch_trim_stainlessteel_1_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_barrel_blue_rust": {
+   "name": "mc/mtl_barrel_blue_rust",
+   "class": "lit",
+   "texture": "55_gallon_drum_blue_rust",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_truck_tires": {
+   "name": "mc/mtl_truck_tires",
+   "class": "lit",
+   "texture": "mtl_truck_cab_col",
+   "format": "DXT1 1024x1024",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_truck_cab": {
+   "name": "mc/mtl_truck_cab",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "mc/mtl_vehicle_uaz": {
+   "name": "mc/mtl_vehicle_uaz",
+   "class": "lit",
+   "texture": "vehicle_uaz_col",
+   "format": "DXT1 1024x1024",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_vehicle_uaz_glass": {
+   "name": "mc/mtl_vehicle_uaz_glass",
+   "class": "lit",
+   "texture": "vehicle_uaz_glass_col",
+   "format": "DXT5 256x128",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_vehicle_uaz_int": {
+   "name": "mc/mtl_vehicle_uaz_int",
+   "class": "lit",
+   "texture": "vehicle_uaz_int_col",
+   "format": "DXT1 512x256",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_vehicle_uaz_tire": {
+   "name": "mc/mtl_vehicle_uaz_tire",
+   "class": "lit",
+   "texture": "vehicle_uaz_tire_col",
+   "format": "DXT1 512x128",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cargoship_wall_light_red_on": {
+   "name": "mc/mtl_cargoship_wall_light_red_on",
+   "class": "lit",
+   "texture": "cargoship_wall_light_red_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cs_steeringwheel": {
+   "name": "mc/mtl_cs_steeringwheel",
+   "class": "lit",
+   "texture": "cs_steeringwheel_col",
+   "format": "DXT1 128x128",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ap_tile_kitchen": {
+   "name": "wc/ap_tile_kitchen",
+   "class": "lit",
+   "texture": "ap_tile_floor_kitchen_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/caulk_shadow": {
+   "name": "wc/caulk_shadow",
+   "class": "unlit",
+   "texture": "caulk_shadow",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "technique set: unlit - no colour pass in the game; hidden"
+   ]
+  },
+  "wc/ch_godray01": {
+   "name": "wc/ch_godray01",
+   "class": "lit",
+   "texture": "ch_godray01",
+   "format": "DXT1 128x512",
+   "alphaTest": null,
+   "blend": "invdestcolor/one",
+   "doubleSided": true,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "blend invdestcolor/one"
+   ]
+  },
+  "wc/ch_hotspot02": {
+   "name": "wc/ch_hotspot02",
+   "class": "lit",
+   "texture": "ch_hotspot01",
+   "format": "DXT1 128x256",
+   "alphaTest": null,
+   "blend": "one/one",
+   "doubleSided": true,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "wc/ch_kitchenstainlessteelpanels": {
+   "name": "wc/ch_kitchenstainlessteelpanels",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/ch_metal_diamondplating": {
+   "name": "wc/ch_metal_diamondplating",
+   "class": "lit",
+   "texture": "ch_metal_diamondplating_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_trim_stainlessteel_1_wet": {
+   "name": "wc/ch_trim_stainlessteel_1_wet",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference NOT resolved",
+    "colour map guessed by name (material mc/ch_trim_stainlessteel_1_wet)"
+   ]
+  },
+  "wc/com_blue_tarp": {
+   "name": "wc/com_blue_tarp",
+   "class": "lit",
+   "texture": "com_bluetarp_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/com_stain_01": {
+   "name": "wc/com_stain_01",
+   "class": "lit",
+   "texture": "com_stain_01",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": "zero/srccolor",
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "blend zero/srccolor"
+   ]
+  },
+  "wc/me_cargocontainer_exteriordoor_wet": {
+   "name": "wc/me_cargocontainer_exteriordoor_wet",
+   "class": "lit",
+   "texture": "me_cargocontainerexteriordoor_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_exteriorwall_wet": {
+   "name": "wc/me_cargocontainer_exteriorwall_wet",
+   "class": "lit",
+   "texture": "me_cargocontainerexteriorwall_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_exttrimcorner01_wet": {
+   "name": "wc/me_cargocontainer_exttrimcorner01_wet",
+   "class": "lit",
+   "texture": "me_cargocontainer_exttrimcorner01_col",
+   "format": "DXT1 64x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_exttrimcorner02_wet": {
+   "name": "wc/me_cargocontainer_exttrimcorner02_wet",
+   "class": "lit",
+   "texture": "me_cargocontainer_exttrimcorner02_col",
+   "format": "DXT1 64x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_exttrimtall_wet": {
+   "name": "wc/me_cargocontainer_exttrimtall_wet",
+   "class": "lit",
+   "texture": "me_cargocontainer_exttrimtall01_col",
+   "format": "DXT1 64x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_exttrimwide_wet": {
+   "name": "wc/me_cargocontainer_exttrimwide_wet",
+   "class": "lit",
+   "texture": "me_cargocontainer_exttrimwide01_col",
+   "format": "DXT1 512x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_interiordoor": {
+   "name": "wc/me_cargocontainer_interiordoor",
+   "class": "lit",
+   "texture": "me_cargocontainerinteriordoor_col",
+   "format": "DXT5 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_interiorfloor": {
+   "name": "wc/me_cargocontainer_interiorfloor",
+   "class": "lit",
+   "texture": "me_cargocontainerinteriorfloor_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_interiorfloor_wet": {
+   "name": "wc/me_cargocontainer_interiorfloor_wet",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_cargocontainer_interiorwall": {
+   "name": "wc/me_cargocontainer_interiorwall",
+   "class": "lit",
+   "texture": "me_cargocontainerinteriorwall_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_top_wet": {
+   "name": "wc/me_cargocontainer_top_wet",
+   "class": "lit",
+   "texture": "me_cargocontainertop_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_usmc_ext_door_wet": {
+   "name": "wc/me_cargocontainer_usmc_ext_door_wet",
+   "class": "lit",
+   "texture": "me_cargocontainer_usmc_ext_door_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_usmc_roof_wet": {
+   "name": "wc/me_cargocontainer_usmc_roof_wet",
+   "class": "lit",
+   "texture": "me_cargocontainer_usmc_ext_roof_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerblue_ext_door_wet": {
+   "name": "wc/me_cargocontainerblue_ext_door_wet",
+   "class": "lit",
+   "texture": "me_cargocontainerblue_ext_door_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerblue_ext_wall_wet": {
+   "name": "wc/me_cargocontainerblue_ext_wall_wet",
+   "class": "lit",
+   "texture": "me_cargocontainerblue_ext_wall_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerblue_roof_wet": {
+   "name": "wc/me_cargocontainerblue_roof_wet",
+   "class": "lit",
+   "texture": "me_cargocontainerblue_ext_roof_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerblue_trimcorner1_wet": {
+   "name": "wc/me_cargocontainerblue_trimcorner1_wet",
+   "class": "lit",
+   "texture": "me_cargocontainerblue_trim01_col",
+   "format": "DXT1 64x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerblue_trimcorner2_wet": {
+   "name": "wc/me_cargocontainerblue_trimcorner2_wet",
+   "class": "lit",
+   "texture": "me_cargocontainerblue_trim02_col",
+   "format": "DXT1 64x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerblue_trimtall_wet": {
+   "name": "wc/me_cargocontainerblue_trimtall_wet",
+   "class": "lit",
+   "texture": "me_cargocontainerblue_trimtall_col",
+   "format": "DXT1 64x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerblue_trimwide_wet": {
+   "name": "wc/me_cargocontainerblue_trimwide_wet",
+   "class": "lit",
+   "texture": "me_cargocontainerblue_trimwide_col",
+   "format": "DXT1 512x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainergreen_ext_door_wet": {
+   "name": "wc/me_cargocontainergreen_ext_door_wet",
+   "class": "lit",
+   "texture": "me_cargocontainergreen_ext_door_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainergreen_ext_wall_wet": {
+   "name": "wc/me_cargocontainergreen_ext_wall_wet",
+   "class": "lit",
+   "texture": "me_cargocontainergreen_ext_wall_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainergreen_roof_wet": {
+   "name": "wc/me_cargocontainergreen_roof_wet",
+   "class": "lit",
+   "texture": "me_cargocontainergreen_ext_roof_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainergreen_trimcorner1_wet": {
+   "name": "wc/me_cargocontainergreen_trimcorner1_wet",
+   "class": "lit",
+   "texture": "me_cargocontainergreen_trim01_col",
+   "format": "DXT1 64x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainergreen_trimcorner2_wet": {
+   "name": "wc/me_cargocontainergreen_trimcorner2_wet",
+   "class": "lit",
+   "texture": "me_cargocontainergreen_trim02_col",
+   "format": "DXT1 64x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainergreen_trimtall_wet": {
+   "name": "wc/me_cargocontainergreen_trimtall_wet",
+   "class": "lit",
+   "texture": "me_cargocontainergreen_trimtall_col",
+   "format": "DXT1 64x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainergreen_trimwide_wet": {
+   "name": "wc/me_cargocontainergreen_trimwide_wet",
+   "class": "lit",
+   "texture": "me_cargocontainergreen_trimwide_col",
+   "format": "DXT1 512x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerwhite_ext_door": {
+   "name": "wc/me_cargocontainerwhite_ext_door",
+   "class": "lit",
+   "texture": "me_cargocontainerwhite_ext_door_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerwhite_ext_door_wet": {
+   "name": "wc/me_cargocontainerwhite_ext_door_wet",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_cargocontainerwhite_ext_wall_wet": {
+   "name": "wc/me_cargocontainerwhite_ext_wall_wet",
+   "class": "lit",
+   "texture": "me_cargocontainerwhite_ext_wall_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerwhite_roof_flat": {
+   "name": "wc/me_cargocontainerwhite_roof_flat",
+   "class": "lit",
+   "texture": "me_cargocontainerwhite_ext_roof_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerwhite_roof_wet": {
+   "name": "wc/me_cargocontainerwhite_roof_wet",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_cargocontainerwhite_trimcorner1_wet": {
+   "name": "wc/me_cargocontainerwhite_trimcorner1_wet",
+   "class": "lit",
+   "texture": "me_cargocontainerwhite_trim01_col",
+   "format": "DXT1 64x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerwhite_trimcorner2_wet": {
+   "name": "wc/me_cargocontainerwhite_trimcorner2_wet",
+   "class": "lit",
+   "texture": "me_cargocontainerwhite_trim02_col",
+   "format": "DXT1 64x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerwhite_trimtall_wet": {
+   "name": "wc/me_cargocontainerwhite_trimtall_wet",
+   "class": "lit",
+   "texture": "me_cargocontainerwhite_trimtall_col",
+   "format": "DXT1 64x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerwhite_trimwide_wet": {
+   "name": "wc/me_cargocontainerwhite_trimwide_wet",
+   "class": "lit",
+   "texture": "me_cargocontainerwhite_trimwide_col",
+   "format": "DXT1 512x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_decal_adobe_top_01": {
+   "name": "wc/me_decal_adobe_top_01",
+   "class": "lit",
+   "texture": "me_adobe_top",
+   "format": "DXT5 1024x128",
+   "alphaTest": null,
+   "blend": "zero/srccolor",
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": [
+    "blend zero/srccolor"
+   ]
+  },
+  "wc/me_fence_chainlink": {
+   "name": "wc/me_fence_chainlink",
+   "class": "lit",
+   "texture": "me_chainlink_fence_color#0",
+   "format": "DXT5 256x256",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_floor_metalgratingparallel": {
+   "name": "wc/me_floor_metalgratingparallel",
+   "class": "lit",
+   "texture": "me_floor_metalgratingparallel_col#0",
+   "format": "DXT3 512x512",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_i_beam": {
+   "name": "wc/me_i_beam",
+   "class": "lit",
+   "texture": "me_i_beam_col",
+   "format": "DXT1 128x1024",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_metal_grey_01": {
+   "name": "wc/me_metal_grey_01",
+   "class": "lit",
+   "texture": "me_metal_grey01_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_metal_rust_03": {
+   "name": "wc/me_metal_rust_03",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_trim_metal_01_wet": {
+   "name": "wc/me_trim_metal_01_wet",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_trim_metal_conduit_wet": {
+   "name": "wc/me_trim_metal_conduit_wet",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_windowfence": {
+   "name": "wc/me_windowfence",
+   "class": "lit",
+   "texture": "me_windowfence",
+   "format": "DXT3 256x512",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/shadowcaster": {
+   "name": "wc/shadowcaster",
+   "class": "shadowcaster",
+   "texture": ",shadow",
+   "format": "DXT3 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": [
+    "shadow caster only (no colour pass); hidden"
+   ]
+  },
+  "wc/ship_body_wall": {
+   "name": "wc/ship_body_wall",
+   "class": "lit",
+   "texture": "body_wall1_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_boxes01": {
+   "name": "wc/ship_boxes01",
+   "class": "lit",
+   "texture": "cs_boxes01_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_cables01": {
+   "name": "wc/ship_cables01",
+   "class": "lit",
+   "texture": "cs_cables01_col",
+   "format": "DXT3 256x512",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_cables02": {
+   "name": "wc/ship_cables02",
+   "class": "lit",
+   "texture": "cs_cables02_col",
+   "format": "DXT3 512x64",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_cables03": {
+   "name": "wc/ship_cables03",
+   "class": "lit",
+   "texture": "cs_cables03_col",
+   "format": "DXT5 256x512",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_ceiling01": {
+   "name": "wc/ship_ceiling01",
+   "class": "lit",
+   "texture": "cs_ceiling1_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_controlpanel01": {
+   "name": "wc/ship_controlpanel01",
+   "class": "lit",
+   "texture": "cs_controlpanel1_col",
+   "format": "DXT1 512x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_inside_wall": {
+   "name": "wc/ship_inside_wall",
+   "class": "lit",
+   "texture": "inside_wall_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_map01": {
+   "name": "wc/ship_map01",
+   "class": "lit",
+   "texture": "cs_map01_col",
+   "format": "DXT1 256x128",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_outside_wall": {
+   "name": "wc/ship_outside_wall",
+   "class": "lit",
+   "texture": "outside_wall_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_plaster01": {
+   "name": "wc/ship_plaster01",
+   "class": "lit",
+   "texture": "cs_plaster01_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_rubbermat01": {
+   "name": "wc/ship_rubbermat01",
+   "class": "lit",
+   "texture": "cs_rubbermat01_col",
+   "format": "DXT1 128x128",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_stairsmetal01": {
+   "name": "wc/ship_stairsmetal01",
+   "class": "lit",
+   "texture": "cs_stairsmetal01",
+   "format": "DXT1 256x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_transceiver01": {
+   "name": "wc/ship_transceiver01",
+   "class": "lit",
+   "texture": "cs_transceiver_col",
+   "format": "DXT1 128x128",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_trim_metal_black1": {
+   "name": "wc/ship_trim_metal_black1",
+   "class": "lit",
+   "texture": "cs_trim_metal01_col",
+   "format": "DXT1 256x32",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_wall_stain2": {
+   "name": "wc/ship_wall_stain2",
+   "class": "lit",
+   "texture": "wall_stain2_col",
+   "format": "DXT1 256x512",
+   "alphaTest": null,
+   "blend": "zero/srccolor",
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "blend zero/srccolor"
+   ]
+  },
+  "wc/ship_wall_stain3": {
+   "name": "wc/ship_wall_stain3",
+   "class": "lit",
+   "texture": "wall_stain3_col",
+   "format": "DXT1 512x64",
+   "alphaTest": null,
+   "blend": "zero/srccolor",
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "blend zero/srccolor"
+   ]
+  },
+  "wc/ship_wall_stain5": {
+   "name": "wc/ship_wall_stain5",
+   "class": "lit",
+   "texture": "wall_stain5_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": "zero/srccolor",
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "blend zero/srccolor"
+   ]
+  },
+  "wc/ship_wallmetal_painted01": {
+   "name": "wc/ship_wallmetal_painted01",
+   "class": "lit",
+   "texture": "cs_metalwall_paint01_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_wallmetal_painted_wet01": {
+   "name": "wc/ship_wallmetal_painted_wet01",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/water_cargoship": {
+   "name": "wc/water_cargoship",
+   "class": "lit",
+   "texture": "case64blue",
+   "format": "DXT1 64x64",
+   "alphaTest": "gt0",
+   "blend": "srcalpha/invsrcalpha",
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "blend srcalpha/invsrcalpha",
+    "water (own shader)"
+   ]
+  },
+  "wc/water_cargoship_mp": {
+   "name": "wc/water_cargoship_mp",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved",
+    "water (own shader)"
+   ]
+  },
+  "wc/ap_signage_interior_set_2": {
+   "name": "wc/ap_signage_interior_set_2",
+   "class": "lit",
+   "texture": "ap_signage_interior_set_2_col",
+   "format": "DXT5 512x512",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_factory_ruststain1": {
+   "name": "wc/ch_factory_ruststain1",
+   "class": "lit",
+   "texture": "ch_factory_ruststain1",
+   "format": "DXT5 512x512",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/com_light_switch_socket_01": {
+   "name": "wc/com_light_switch_socket_01",
+   "class": "lit",
+   "texture": "com_light_switch_socket_01_col",
+   "format": "DXT3 64x64",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_decal_cargocontainernumbers_01": {
+   "name": "wc/me_decal_cargocontainernumbers_01",
+   "class": "lit",
+   "texture": "me_cargocontainer_decalnumbers01_col",
+   "format": "DXT1 32x256",
+   "alphaTest": null,
+   "blend": "one/one",
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "wc/me_decal_cargocontainernumbers_04": {
+   "name": "wc/me_decal_cargocontainernumbers_04",
+   "class": "lit",
+   "texture": "me_cargocontainer_decalnumbers04_col",
+   "format": "DXT1 32x256",
+   "alphaTest": null,
+   "blend": "one/one",
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "wc/me_decal_cargocontainersignage01": {
+   "name": "wc/me_decal_cargocontainersignage01",
+   "class": "lit",
+   "texture": "me_cargocontainer_decalsignage01_col",
+   "format": "DXT5 64x64",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_decal_cargocontainertext_03": {
+   "name": "wc/me_decal_cargocontainertext_03",
+   "class": "lit",
+   "texture": "me_cargocontainer_decal_text03_col",
+   "format": "DXT1 64x512",
+   "alphaTest": null,
+   "blend": "one/one",
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "wc/me_decal_cargocontainertext_05": {
+   "name": "wc/me_decal_cargocontainertext_05",
+   "class": "lit",
+   "texture": "me_cargocontainer_decal_text05_col",
+   "format": "DXT1 64x512",
+   "alphaTest": null,
+   "blend": "one/one",
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "wc/me_decal_darkstain_02": {
+   "name": "wc/me_decal_darkstain_02",
+   "class": "lit",
+   "texture": "me_decal_darkstain_04",
+   "format": "DXT1 256x64",
+   "alphaTest": null,
+   "blend": "zero/srccolor",
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "blend zero/srccolor"
+   ]
+  },
+  "wc/me_decal_darkstain_03": {
+   "name": "wc/me_decal_darkstain_03",
+   "class": "lit",
+   "texture": "me_decal_darkstain_05",
+   "format": "DXT1 256x64",
+   "alphaTest": null,
+   "blend": "zero/srccolor",
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "blend zero/srccolor"
+   ]
+  },
+  "wc/me_decal_darkstain_04": {
+   "name": "wc/me_decal_darkstain_04",
+   "class": "lit",
+   "texture": "me_decal_darkstain_06",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": "zero/srccolor",
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "blend zero/srccolor"
+   ]
+  },
+  "wc/me_decal_darkstain_05": {
+   "name": "wc/me_decal_darkstain_05",
+   "class": "lit",
+   "texture": "me_decal_darkstain_07",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": "zero/srccolor",
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "blend zero/srccolor"
+   ]
+  },
+  "wc/me_glassdirt": {
+   "name": "wc/me_glassdirt",
+   "class": "lit",
+   "texture": "me_dirty_glass",
+   "format": "DXT5 256x256",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_vent01": {
+   "name": "wc/ship_vent01",
+   "class": "lit",
+   "texture": "cs_vent01_col",
+   "format": "DXT1 256x128",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_wall_stain4": {
+   "name": "wc/ship_wall_stain4",
+   "class": "lit",
+   "texture": "wall_stain4_col",
+   "format": "DXT1 128x512",
+   "alphaTest": null,
+   "blend": "zero/srccolor",
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "blend zero/srccolor"
+   ]
+  },
+  "mc/mtl_barrel_black_rust": {
+   "name": "mc/mtl_barrel_black_rust",
+   "class": "lit",
+   "texture": "55_gallon_drum_black_rust",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_styroform": {
+   "name": "mc/mtl_styroform",
+   "class": "lit",
+   "texture": "case_styroform_col",
+   "format": "DXT1 128x128",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_plastic_case_bomb": {
+   "name": "mc/mtl_plastic_case_bomb",
+   "class": "lit",
+   "texture": "plastic_case_bomb_col",
+   "format": "DXT1 512x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_pallet": {
+   "name": "mc/mtl_pallet",
+   "class": "lit",
+   "texture": "pallet_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_weapon_stinger": {
+   "name": "mc/mtl_weapon_stinger",
+   "class": "lit",
+   "texture": "weapon_stinger_col",
+   "format": "DXT1 2048x1024",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_plastic_case_bomb_d": {
+   "name": "mc/mtl_plastic_case_bomb_d",
+   "class": "lit",
+   "texture": "plastic_case_bomb_d_col",
+   "format": "DXT1 512x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_styroform_d": {
+   "name": "mc/mtl_styroform_d",
+   "class": "lit",
+   "texture": "case_styroform_d_col",
+   "format": "DXT1 128x128",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cellphone": {
+   "name": "mc/mtl_cellphone",
+   "class": "lit",
+   "texture": "cellphone_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_laptop_envu": {
+   "name": "mc/mtl_laptop_envu",
+   "class": "lit",
+   "texture": "laptop_envu_col",
+   "format": "DXT1 512x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_laptop_envu_screen": {
+   "name": "mc/mtl_laptop_envu_screen",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "mc/mtl_plastic_case_big": {
+   "name": "mc/mtl_plastic_case_big",
+   "class": "lit",
+   "texture": "plastic_case_big_beige_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/ch_kitchenstainlessteelpanels": {
+   "name": "mc/ch_kitchenstainlessteelpanels",
+   "class": "lit",
+   "texture": "ch_kitchenstainlessteelpanels_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/me_metal_rust_03": {
+   "name": "mc/me_metal_rust_03",
+   "class": "lit",
+   "texture": "me_metal_rusty03_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_tntbomb": {
+   "name": "mc/mtl_tntbomb",
+   "class": "none",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "material not in the zone extraction",
+    "technique set: none"
+   ]
+  },
+  "mc/mtl_perc_doubletap": {
+   "name": "mc/mtl_perc_doubletap",
+   "class": "lit",
+   "texture": "specialty_rof_256",
+   "format": "6 256x256",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_perc_martyrdom": {
+   "name": "mc/mtl_perc_martyrdom",
+   "class": "lit",
+   "texture": "specialty_grenadepulldeath_256",
+   "format": "6 256x256",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_flag_neutral": {
+   "name": "mc/mtl_flag_neutral",
+   "class": "none",
+   "texture": null,
+   "format": null,
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": [
+    "material not in the zone extraction",
+    "technique set: none",
+    "colour map guessed by name (name)"
+   ]
+  }
+ },
+ "effects": [],
+ "summary": {
+  "map": "mp_cargoship",
+  "props": 1669,
+  "propModels": 105,
+  "propTriangles": 629950,
+  "worldTriangles": 131876,
+  "worldMaterials": 92,
+  "scriptModels": 37,
+  "imageRefs": {
+   "references": 54,
+   "resolved": 44,
+   "semanticMismatch": 1,
+   "fromModels": 234,
+   "materialChains": 83,
+   "calibratedChains": 2
+  },
+  "colourMapRefs": 21,
+  "colourMapRefsUnresolved": 4,
+  "normalMapsUnswizzled": 0,
+  "alphaTexturesWithoutExact": 0,
+  "seconds": 13.1
+ }
+}

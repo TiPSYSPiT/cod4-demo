@@ -1,0 +1,76 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "fx_rifle_shell",
+ "kind": "fx",
+ "faction": null,
+ "file": "fx_rifle_shell.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 756
+  },
+  "normal": {
+   "offset": 756,
+   "length": 252
+  },
+  "uv": {
+   "offset": 1008,
+   "length": 504
+  },
+  "skinIndex": {
+   "offset": 1512,
+   "length": 252
+  },
+  "skinWeight": {
+   "offset": 1764,
+   "length": 252
+  },
+  "index": {
+   "offset": 2016,
+   "length": 348
+  },
+  "color": {
+   "offset": 2364,
+   "length": 252
+  }
+ },
+ "vertexCount": 63,
+ "triangleCount": 58,
+ "bones": [
+  {
+   "name": "shell2",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 174,
+   "material": -1
+  }
+ ],
+ "materials": [],
+ "bounds": {
+  "mins": [
+   -0.25,
+   -1.28,
+   -0.24
+  ],
+  "maxs": [
+   0.25,
+   1.17,
+   0.24
+  ]
+ }
+}

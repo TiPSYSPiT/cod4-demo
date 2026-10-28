@@ -1,0 +1,100 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_milk_carton",
+ "kind": "script",
+ "faction": null,
+ "file": "com_milk_carton.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 1248
+  },
+  "normal": {
+   "offset": 1248,
+   "length": 416
+  },
+  "uv": {
+   "offset": 1664,
+   "length": 832
+  },
+  "skinIndex": {
+   "offset": 2496,
+   "length": 416
+  },
+  "skinWeight": {
+   "offset": 2912,
+   "length": 416
+  },
+  "index": {
+   "offset": 3328,
+   "length": 276
+  },
+  "color": {
+   "offset": 3604,
+   "length": 416
+  }
+ },
+ "vertexCount": 104,
+ "triangleCount": 46,
+ "bones": [
+  {
+   "name": "milkcarton_lod0",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 138,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_milk_carton",
+   "texture": "_textures/milk_carton_col.webp",
+   "textureAlpha": false,
+   "color": "#8c8c8c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "specularMap": "_textures/milk_carton_spc-rgb_milk_car_33deef45.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -2.7,
+   -4.45,
+   0.0
+  ],
+  "maxs": [
+   2.7,
+   2.7,
+   15.83
+  ]
+ }
+}

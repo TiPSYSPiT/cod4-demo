@@ -1,0 +1,116 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "vehicle_80s_sedan1_glass_f_dam",
+ "kind": "script",
+ "faction": null,
+ "file": "vehicle_80s_sedan1_glass_f_dam.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 360
+  },
+  "normal": {
+   "offset": 360,
+   "length": 120
+  },
+  "uv": {
+   "offset": 480,
+   "length": 240
+  },
+  "skinIndex": {
+   "offset": 720,
+   "length": 120
+  },
+  "skinWeight": {
+   "offset": 840,
+   "length": 120
+  },
+  "index": {
+   "offset": 960,
+   "length": 192
+  },
+  "color": {
+   "offset": 1152,
+   "length": 120
+  }
+ },
+ "vertexCount": 30,
+ "triangleCount": 32,
+ "bones": [
+  {
+   "name": "tag_glass_front",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 48,
+   "material": 0
+  },
+  {
+   "indexStart": 48,
+   "indexCount": 48,
+   "material": 1
+  }
+ ],
+ "materials": [
+  {
+   "name": ",mc/com_glass_shattered_outside",
+   "texture": null,
+   "textureAlpha": false,
+   "color": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true
+  },
+  {
+   "name": "mc/com_glass_shattered_inside",
+   "texture": "_textures/glass_shattered_col.webp",
+   "textureAlpha": true,
+   "color": "#687575",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "normalMap": "_textures/glass_shattered_nml.normal.webp",
+   "specularMap": "_textures/glass_shattered_spc-rgb_glas_36dd5f9b.specular.webp",
+   "envMapParms": [
+    2.0,
+    12.0,
+    10.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -24.99,
+   -26.07,
+   -1.71
+  ],
+  "maxs": [
+   0.0,
+   26.07,
+   15.25
+  ]
+ }
+}

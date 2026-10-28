@@ -1,0 +1,123 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "vehicle_80s_wagon1_brn_hood",
+ "kind": "script",
+ "faction": null,
+ "file": "vehicle_80s_wagon1_brn_hood.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 1116
+  },
+  "normal": {
+   "offset": 1116,
+   "length": 372
+  },
+  "uv": {
+   "offset": 1488,
+   "length": 744
+  },
+  "skinIndex": {
+   "offset": 2232,
+   "length": 372
+  },
+  "skinWeight": {
+   "offset": 2604,
+   "length": 372
+  },
+  "index": {
+   "offset": 2976,
+   "length": 516
+  },
+  "color": {
+   "offset": 3492,
+   "length": 372
+  }
+ },
+ "vertexCount": 93,
+ "triangleCount": 86,
+ "bones": [
+  {
+   "name": "tag_hood",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 162,
+   "material": 0
+  },
+  {
+   "indexStart": 162,
+   "indexCount": 96,
+   "material": 1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_80s_econ_brn",
+   "texture": "_textures/80s_econ_brn_col.webp",
+   "textureAlpha": false,
+   "color": "#5b4a3a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/80s_econ_nml.normal.webp",
+   "specularMap": "_textures/80s_econ_spc-rgb_80s_econ_cos-l-11.specular.webp",
+   "envMapParms": [
+    1.0,
+    3.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_engine",
+   "texture": "_textures/car_engine_col.webp",
+   "textureAlpha": false,
+   "color": "#433e3c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/car_engine_nml.normal.webp",
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -4.72,
+   -27.14,
+   -7.13
+  ],
+  "maxs": [
+   41.59,
+   27.14,
+   -0.13
+  ]
+ }
+}

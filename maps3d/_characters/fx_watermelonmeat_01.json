@@ -1,0 +1,93 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "fx_watermelonmeat_01",
+ "kind": "fx",
+ "faction": null,
+ "file": "fx_watermelonmeat_01.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 696
+  },
+  "normal": {
+   "offset": 696,
+   "length": 232
+  },
+  "uv": {
+   "offset": 928,
+   "length": 464
+  },
+  "skinIndex": {
+   "offset": 1392,
+   "length": 232
+  },
+  "skinWeight": {
+   "offset": 1624,
+   "length": 232
+  },
+  "index": {
+   "offset": 1856,
+   "length": 504
+  },
+  "color": {
+   "offset": 2360,
+   "length": 232
+  }
+ },
+ "vertexCount": 58,
+ "triangleCount": 84,
+ "bones": [
+  {
+   "name": "watermelon_meat_1_lod0",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 252,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_fx_watermelonchunks",
+   "texture": "_textures/fx_watermelonchunks_col.webp",
+   "textureAlpha": false,
+   "color": "#c25e5c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -0.97,
+   -0.87,
+   -0.45
+  ],
+  "maxs": [
+   0.97,
+   0.87,
+   0.45
+  ]
+ }
+}

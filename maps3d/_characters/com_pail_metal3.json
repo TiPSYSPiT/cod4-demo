@@ -1,0 +1,108 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_pail_metal3",
+ "kind": "script",
+ "faction": null,
+ "file": "com_pail_metal3.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 4308
+  },
+  "normal": {
+   "offset": 4308,
+   "length": 1436
+  },
+  "uv": {
+   "offset": 5744,
+   "length": 2872
+  },
+  "skinIndex": {
+   "offset": 8616,
+   "length": 1436
+  },
+  "skinWeight": {
+   "offset": 10052,
+   "length": 1436
+  },
+  "index": {
+   "offset": 11488,
+   "length": 2064
+  },
+  "color": {
+   "offset": 13552,
+   "length": 1436
+  }
+ },
+ "vertexCount": 359,
+ "triangleCount": 344,
+ "bones": [
+  {
+   "name": "",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 1032,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_metal_pail",
+   "texture": "_textures/pail.webp",
+   "textureAlpha": false,
+   "color": "#69675c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/pail_bump.normal.webp",
+   "specularMap": "_textures/pail_spec-rgb__white-l-11.specular.webp",
+   "detailScale": [
+    4.0,
+    4.0,
+    0.0,
+    0.0
+   ],
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "detailMap": "_textures/metal_01.webp"
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -8.81,
+   -7.6,
+   -0.12
+  ],
+  "maxs": [
+   10.17,
+   7.0,
+   14.42
+  ]
+ }
+}

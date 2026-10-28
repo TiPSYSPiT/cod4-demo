@@ -1,0 +1,76 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "weapon_m67_grenade",
+ "kind": "weapon",
+ "faction": null,
+ "file": "weapon_m67_grenade.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 6624
+  },
+  "normal": {
+   "offset": 6624,
+   "length": 2208
+  },
+  "uv": {
+   "offset": 8832,
+   "length": 4416
+  },
+  "skinIndex": {
+   "offset": 13248,
+   "length": 2208
+  },
+  "skinWeight": {
+   "offset": 15456,
+   "length": 2208
+  },
+  "index": {
+   "offset": 17664,
+   "length": 3708
+  },
+  "color": {
+   "offset": 21372,
+   "length": 2208
+  }
+ },
+ "vertexCount": 552,
+ "triangleCount": 618,
+ "bones": [
+  {
+   "name": "tag_weapon",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 1854,
+   "material": -1
+  }
+ ],
+ "materials": [],
+ "bounds": {
+  "mins": [
+   -1.48,
+   -1.76,
+   -1.25
+  ],
+  "maxs": [
+   1.47,
+   1.44,
+   2.52
+  ]
+ }
+}

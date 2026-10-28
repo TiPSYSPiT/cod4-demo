@@ -1,0 +1,87 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "mil_tntbomb_mp",
+ "kind": "script",
+ "faction": null,
+ "file": "mil_tntbomb_mp.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 8064
+  },
+  "normal": {
+   "offset": 8064,
+   "length": 2688
+  },
+  "uv": {
+   "offset": 10752,
+   "length": 5376
+  },
+  "skinIndex": {
+   "offset": 16128,
+   "length": 2688
+  },
+  "skinWeight": {
+   "offset": 18816,
+   "length": 2688
+  },
+  "index": {
+   "offset": 21504,
+   "length": 3432
+  },
+  "color": {
+   "offset": 24936,
+   "length": 2688
+  }
+ },
+ "vertexCount": 672,
+ "triangleCount": 572,
+ "bones": [
+  {
+   "name": "",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 1716,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_tntbomb",
+   "texture": null,
+   "textureAlpha": false,
+   "color": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -3.02,
+   -6.31,
+   -0.02
+  ],
+  "maxs": [
+   3.49,
+   6.14,
+   7.03
+  ]
+ }
+}

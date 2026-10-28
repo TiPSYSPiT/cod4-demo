@@ -1,0 +1,191 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_bomb_objective",
+ "kind": "script",
+ "faction": null,
+ "file": "com_bomb_objective.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 90024
+  },
+  "normal": {
+   "offset": 90024,
+   "length": 30008
+  },
+  "uv": {
+   "offset": 120032,
+   "length": 60016
+  },
+  "skinIndex": {
+   "offset": 180048,
+   "length": 30008
+  },
+  "skinWeight": {
+   "offset": 210056,
+   "length": 30008
+  },
+  "index": {
+   "offset": 240064,
+   "length": 27768
+  },
+  "color": {
+   "offset": 267832,
+   "length": 30008
+  }
+ },
+ "vertexCount": 7502,
+ "triangleCount": 4628,
+ "bones": [
+  {
+   "name": "",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 432,
+   "material": 0
+  },
+  {
+   "indexStart": 432,
+   "indexCount": 3270,
+   "material": 1
+  },
+  {
+   "indexStart": 3702,
+   "indexCount": 8244,
+   "material": 1
+  },
+  {
+   "indexStart": 11946,
+   "indexCount": 780,
+   "material": 2
+  },
+  {
+   "indexStart": 12726,
+   "indexCount": 1158,
+   "material": 3
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_styroform",
+   "texture": "_textures/case_styroform_col.webp",
+   "textureAlpha": false,
+   "color": "#4f545d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/case_styroform_nml.normal.webp",
+   "specularMap": "_textures/case_styroform_spc-r-61g-61b_39bd8a7e.specular.webp",
+   "envMapParms": [
+    0.2,
+    2.0,
+    1.9,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_plastic_case_bomb",
+   "texture": "_textures/plastic_case_bomb_col.webp",
+   "textureAlpha": false,
+   "color": "#4f5b48",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/plastic_case_bomb_spc-rgb_pl_a1aa1cc9.specular.webp",
+   "envMapParms": [
+    0.4,
+    3.2,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_pallet",
+   "texture": "_textures/pallet_col.webp",
+   "textureAlpha": false,
+   "color": "#5d5142",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/pallet_nml.normal.webp",
+   "specularMap": "_textures/pallet_spc-rgb_pallet_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_stinger",
+   "texture": "_textures/weapon_stinger_col.webp",
+   "textureAlpha": false,
+   "color": "#444434",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_stinger_spc-rgb_weapo_5a9d5e03.specular.webp",
+   "envMapParms": [
+    0.4,
+    4.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -22.24,
+   -37.22,
+   0.0
+  ],
+  "maxs": [
+   22.22,
+   38.2,
+   58.17
+  ]
+ }
+}

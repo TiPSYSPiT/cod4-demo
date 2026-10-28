@@ -1,0 +1,116 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "vehicle_80s_wagon1_glass_f_dam",
+ "kind": "script",
+ "faction": null,
+ "file": "vehicle_80s_wagon1_glass_f_dam.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 744
+  },
+  "normal": {
+   "offset": 744,
+   "length": 248
+  },
+  "uv": {
+   "offset": 992,
+   "length": 496
+  },
+  "skinIndex": {
+   "offset": 1488,
+   "length": 248
+  },
+  "skinWeight": {
+   "offset": 1736,
+   "length": 248
+  },
+  "index": {
+   "offset": 1984,
+   "length": 288
+  },
+  "color": {
+   "offset": 2272,
+   "length": 248
+  }
+ },
+ "vertexCount": 62,
+ "triangleCount": 48,
+ "bones": [
+  {
+   "name": "tag_glass_front",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 72,
+   "material": 0
+  },
+  {
+   "indexStart": 72,
+   "indexCount": 72,
+   "material": 1
+  }
+ ],
+ "materials": [
+  {
+   "name": ",mc/com_glass_shattered_outside",
+   "texture": null,
+   "textureAlpha": false,
+   "color": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true
+  },
+  {
+   "name": "mc/com_glass_shattered_inside",
+   "texture": "_textures/glass_shattered_col.webp",
+   "textureAlpha": true,
+   "color": "#687575",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "normalMap": "_textures/glass_shattered_nml.normal.webp",
+   "specularMap": "_textures/glass_shattered_spc-rgb_glas_36dd5f9b.specular.webp",
+   "envMapParms": [
+    2.0,
+    12.0,
+    10.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -17.65,
+   -24.6,
+   -1.1
+  ],
+  "maxs": [
+   0.0,
+   24.6,
+   14.39
+  ]
+ }
+}

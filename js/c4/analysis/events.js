@@ -1,0 +1,325 @@
+/* Event list, chat and console lines. All times in ms since the first snapshot. */
+C4.define('events', function (C4) {
+  'use strict';
+  const { stripColors } = C4.text;
+
+  const EVENT_TYPES = [
+    // [key, label, default visible, requested by the brief]
+    ['ready', 'Player ready', true],
+    ['connected', 'Player connected', true],
+    ['disconnected', 'Player disconnected', true],
+    ['joined', 'Joined the server', true],
+    ['left', 'Left the server', true],
+    ['attack_eliminated', 'Attack eliminated', true],
+    ['defence_eliminated', 'Defence eliminated', true],
+    ['bomb_planted', 'Bomb planted', true],
+    ['bomb_defused', 'Bomb defused', true],
+    ['kill', 'Kill', true],
+    ['halftime', 'Halftime', true],
+    ['timeout', 'Timeout called', true],
+    ['team_join', 'Joined team', false],
+    ['bomb_pickup', 'Bomb picked up', false],
+    ['bomb_drop', 'Bomb dropped', false]
+  ];
+
+  /**
+   * THE bomb event detection (the only one - rounds, events, scoreboard and map use its result):
+   * server message f "MP_EXPLOSIVES_<PLANTED|DEFUSED|RECOVERED|DROPPED>_BY<name>".
+   * -> [{t, action: planted|defused|recovered|dropped, name, raw, seq}]
+   * The commands must be the executed ones (each sequence number once - demo.js). There is no
+   * message for the explosion: it is derived from the round win (rounds.js, "Bomb exploded").
+   */
+  const BOMB_RE = /^MP_EXPLOSIVES_(PLANTED|DEFUSED|RECOVERED|DROPPED)_BY(.*)$/;
+  function bombEvents(commands) {
+    const out = [];
+    for (const c of commands) {
+      if (c.d.verb !== 'f') continue;
+      const m = stripColors(c.d.text).match(BOMB_RE);
+      if (m) out.push({ t: c.t, action: m[1].toLowerCase(), name: m[2].trim(), raw: c.text, seq: c.seq });
+    }
+    return out;
+  }
+  /**
+   * THE bomb position over time (Search & Destroy; docs/ANALYSIS.md 3.11) - DemoData.bombTrack.
+   * Sources, in this order:
+   *   1. the accepted plant / defuse events of the round (bombEvents + the S&D rule of rounds.js)
+   *      and the explosion (round won by "Bomb exploded", at the round end)
+   *   2. the compass objective of the bomb (player state): carrier or position - attacking side only
+   *   3. the bomb model (entity) lying on the ground or planted - both sides, while it is sent
+   *   4. the objective at the planted bomb (defend / defuse, both sides): plant position and site
+   * Without 2 and 3 (defending POV while the bomb is carried) the state is 'unknown' - with the last
+   * known position, never a guessed one. Every round starts from scratch (segStart).
+   * obs: collector bombObs with relative times; rounds: analyzeRounds().rounds.
+   * -> [{t, state, x, y, z, carrier, site, source}], each entry valid until the next one;
+   *    state: base | dropped | carried | planted | defused | exploded | unknown | none
+   */
+  function bombTrack(obs, rounds, isSD) {
+    if (!isSD) return [];
+    const out = [];
+    const push = e => {
+      const p = out[out.length - 1];
+      if (p && p.t === e.t) out.pop();
+      const q = out[out.length - 1];
+      if (q && q.state === e.state && q.carrier === e.carrier && q.x === e.x && q.y === e.y && q.site === e.site && q.source === e.source) return;
+      out.push(e);
+    };
+    const none = t => ({ t, state: 'none', x: null, y: null, z: null, carrier: null, site: null, source: null });
+    let oi = 0;
+    for (const r of rounds) {
+      if (r.kind !== 'round') continue;
+      const a = r.segStart, b = r.segEnd;
+      const ev = action => { const e = (r.bomb || []).find(x => x.action === action); return e ? e.t : null; };
+      const plantT = ev('planted'), defuseT = ev('defused');
+      const explodeT = r.reason === 'Bomb exploded' && r.end != null ? r.end : null;
+      // observations: the one valid at the round start, then every change in the round
+      while (oi < obs.length && obs[oi].t <= a) oi++;
+      const first = oi > 0 ? oi - 1 : oi;
+      let last = first;
+      while (last < obs.length && obs[last].t < b) last++;
+      const roundObs = obs.slice(first, last);
+      const times = new Set([a]);
+      for (const o of roundObs) if (o.t > a) times.add(o.t);
+      for (const x of [plantT, defuseT, explodeT]) if (x != null && x >= a && x < b) times.add(x);
+      let left = false, known = null, plantPos = null;
+      let k = 0;
+      for (const t of [...times].sort((x, y) => x - y)) {
+        while (k + 1 < roundObs.length && roundObs[k + 1].t <= t) k++;
+        const o = roundObs.length && roundObs[k].t <= t ? roundObs[k] : null;
+        let e;
+        if (plantT != null && t >= plantT) {
+          if (o && o.site && o.t >= plantT - 1000) plantPos = { x: o.site[1], y: o.site[2], z: o.site[3], site: o.site[0], source: 'objective' };
+          else if (!plantPos && o && o.ent) plantPos = { x: o.ent[0], y: o.ent[1], z: o.ent[2], site: null, source: 'model' };
+          const p = plantPos || (known ? { x: known.x, y: known.y, z: known.z, site: null, source: 'last known' } : null);
+          const state = explodeT != null && t >= explodeT ? 'exploded' : defuseT != null && t >= defuseT ? 'defused' : 'planted';
+          e = p ? { t, state, x: p.x, y: p.y, z: p.z, carrier: null, site: p.site, source: p.source }
+            : { t, state, x: null, y: null, z: null, carrier: null, site: null, source: 'message' };
+        } else if (o && o.obj && o.obj[0] >= 0) {
+          left = true;
+          e = { t, state: 'carried', x: null, y: null, z: null, carrier: o.obj[0], site: null, source: 'objective' };
+        } else if (o && (o.obj || o.ent)) {
+          const p = o.obj ? o.obj.slice(1) : o.ent;
+          if (known && known.state !== 'unknown' && known.state !== 'carried' && Math.hypot(p[0] - known.x, p[1] - known.y) > 48) left = true;
+          e = { t, state: left ? 'dropped' : 'base', x: p[0], y: p[1], z: p[2], carrier: null, site: null, source: o.obj ? 'objective' : 'model' };
+        } else if (known) {
+          left = true;
+          e = { t, state: 'unknown', x: known.x, y: known.y, z: known.z, carrier: known.carrier, site: null, source: null };
+        } else {
+          e = none(t);
+        }
+        if (e.state !== 'none' && e.state !== 'unknown') known = e;
+        push(e);
+      }
+      push(none(b));
+    }
+    return out;
+  }
+
+  const BOMB_TYPE = { planted: 'bomb_planted', defused: 'bomb_defused', recovered: 'bomb_pickup', dropped: 'bomb_drop' };
+  const BOMB_VERB = { planted: 'planted the bomb', defused: 'defused the bomb', recovered: 'picked up the bomb', dropped: 'dropped the bomb' };
+
+  /** name -> client resolver over every name a client ever had */
+  function nameResolver(nameHistory, names) {
+    const all = [];
+    for (const h of nameHistory) all.push([stripColors(h.name).trim(), h.client]);
+    for (const [cl, v] of names) {
+      all.push([stripColors(v.name).trim(), cl]);
+      // CoD4X clan tag: server messages can carry it in front of the name ("[TAG]name")
+      if (v.clantag) all.push(['[' + stripColors(v.clantag).trim() + ']' + stripColors(v.name).trim(), cl]);
+    }
+    all.sort((a, b) => b[0].length - a[0].length);
+    const exact = new Map();
+    for (const [n, cl] of all) if (n && !exact.has(n)) exact.set(n, cl);
+    return {
+      exact(text) { const n = stripColors(text).trim(); return exact.has(n) ? exact.get(n) : null; },
+      /** longest known name the text starts with; returns [client, rest] */
+      prefix(text) {
+        for (const [n, cl] of all) if (n && text.startsWith(n)) return [cl, text.slice(n.length)];
+        return [null, text];
+      },
+      /** first known name contained in the text */
+      contained(text) {
+        for (const [n, cl] of all) if (n.length >= 3 && text.includes(n)) return cl;
+        return null;
+      }
+    };
+  }
+
+  function buildEvents(ctx) {
+    const { commands, rounds, kills, slotEvents, resolver, povClient, playerName, endTime } = ctx;
+    const ev = [];
+    const add = (t, type, text, clients = [], extra = {}) => ev.push(Object.assign({ t, type, text, clients }, extra));
+
+    for (const s of slotEvents) {
+      if (s.t <= 0) continue;                       // already connected when the demo started
+      add(s.t, s.kind, playerName(s.client) + (s.kind === 'connected' ? ' connected (client slot ' + s.client + ' appears)' : ' disconnected (client slot ' + s.client + ' freed)'), [s.client]);
+    }
+    let lastReadyWaiting = null, lastSelfReady = null;
+    for (const c of commands) {
+      const d = c.d;
+      if (d.verb === 'f' || d.verb === 'e' || d.verb === 'c' || d.verb === 'g') {
+        const text = stripColors(d.text).trim();
+        let m;
+        if ((m = text.match(/^MP_CONNECTED(.+)$/))) {
+          const cl = resolver.exact(m[1]);
+          add(c.t, 'joined', m[1].trim() + ' joined the server', cl != null ? [cl] : []);
+        } else if ((m = text.match(/^(.+?) EXE_LEFTGAME$/))) {
+          const cl = resolver.exact(m[1]);
+          add(c.t, 'left', m[1].trim() + ' left the server', cl != null ? [cl] : []);
+        } else if ((m = text.match(/^(.+) Joined (Attack|Defence|Defense|Shoutcaster|Spectators?)$/i))) {
+          const cl = resolver.exact(m[1]);
+          add(c.t, 'team_join', m[1].trim() + ' joined ' + m[2], cl != null ? [cl] : []);
+        } else if ((m = text.match(/^Timeout called by (.+)$/i))) {
+          const cl = resolver.exact(m[1]);
+          add(c.t, 'timeout', 'Timeout called by ' + m[1].trim(), cl != null ? [cl] : []);
+        }
+      } else if (d.verb === 'v') {
+        for (const [name, value] of d.dvars) {
+          if (name === 'self_ready') {
+            if (value === '1' && lastSelfReady !== '1') add(c.t, 'ready', playerName(povClient) + ' is ready (demo POV)', [povClient], { pov: true });
+            lastSelfReady = value;
+          } else if (name === 'waiting_on') {
+            const n = parseInt(value, 10);
+            if (Number.isFinite(n) && lastReadyWaiting != null && n < lastReadyWaiting) {
+              const k = lastReadyWaiting - n;
+              add(c.t, 'ready', (k === 1 ? 'A player is' : k + ' players are') + ' ready - waiting on ' + n + ' more', [], { anonymous: true });
+            }
+            if (Number.isFinite(n)) lastReadyWaiting = n;
+          }
+        }
+      }
+    }
+    // status lines: "All Players are Ready!", "Attack eliminated", "Defence eliminated"
+    const seen = new Map();
+    for (const s of ctx.status) {
+      let type = null;
+      if (/^all players are ready/i.test(s.text)) type = 'ready';
+      else if (/^attack eliminated/i.test(s.text)) type = 'attack_eliminated';
+      else if (/^defen[cs]e eliminated/i.test(s.text)) type = 'defence_eliminated';
+      if (!type) continue;
+      const key = type + s.text;
+      if (seen.has(key) && s.t - seen.get(key) < 3000) continue;
+      seen.set(key, s.t);
+      add(s.t, type, s.text, [], type === 'ready' ? { all: true } : {});
+    }
+    // bomb events: the accepted ones of the central detection (bombEvents + the S&D rule in rounds.js)
+    for (const b of ctx.bomb || []) {
+      const cl = resolver.exact(b.name);
+      add(b.t, BOMB_TYPE[b.action], b.name + ' ' + BOMB_VERB[b.action], cl != null ? [cl] : []);
+    }
+    for (const h of ctx.halftimes) add(h, 'halftime', 'Halftime - teams switch sides', [], { heuristic: !ctx.halftimeFromSound });
+    for (const k of kills) add(k.t, 'kill', '', [k.attacker, k.victim].filter(x => x != null && x < 64), { kill: k.index });
+
+    ev.sort((a, b) => a.t - b.t || EVENT_TYPES.findIndex(x => x[0] === a.type) - EVENT_TYPES.findIndex(x => x[0] === b.type));
+    const phaseOf = ctx.phaseAt || (() => 'live');
+    for (const e of ev) { e.t = Math.max(0, Math.min(e.t, endTime)); e.round = roundAt(rounds, e.t); e.phase = phaseOf(e.t); }
+    return ev;
+  }
+
+  /** index of the round a time belongs to (by segment), or -1 */
+  function roundAt(rounds, t) {
+    for (let i = 0; i < rounds.length; i++) if (t >= rounds[i].segStart && t < rounds[i].segEnd + 1) return i;
+    return -1;
+  }
+
+  /* ---- chat ---- */
+  function buildChat(ctx) {
+    const { commands, resolver, rounds } = ctx;
+    const phaseOf = ctx.phaseAt || (() => 'live');
+    const out = [];
+    for (const c of commands) {
+      if (c.d.verb !== 'h' && c.d.verb !== 'i') continue;
+      const raw = c.d.text || '';
+      let clean = stripColors(raw);
+      const prefixes = [];
+      while (/^[([]/.test(clean)) {
+        const close = clean.indexOf(clean[0] === '(' ? ')' : ']');
+        if (close < 0 || close > 40) break;
+        prefixes.push(clean.slice(1, close));
+        clean = clean.slice(close + 1).trimStart();
+      }
+      let [client, rest] = resolver.prefix(clean);
+      let message;
+      if (client != null && rest.startsWith(':')) message = rest.slice(1).trim();
+      else {
+        client = null;
+        const i = clean.indexOf(': ');
+        message = i >= 0 ? clean.slice(i + 2) : clean;
+      }
+      const dead = prefixes.some(p => /dead/i.test(p));
+      out.push({ t: c.t, round: roundAt(rounds, c.t), phase: phaseOf(c.t), scope: c.d.scope, client, dead,
+        senderRaw: client == null ? (clean.indexOf(':') > 0 ? clean.slice(0, clean.indexOf(':')) : '') : null,
+        text: quickMessage(message), raw });
+    }
+    return out;
+  }
+
+  const QUICK = {
+    QUICKMESSAGE_FOLLOW_ME: 'Follow me!', QUICKMESSAGE_MOVE_IN: 'Move in!', QUICKMESSAGE_FALL_BACK: 'Fall back!',
+    QUICKMESSAGE_SUPPRESSING_FIRE: 'Suppressing fire!', QUICKMESSAGE_ATTACK_LEFT_FLANK: 'Attack left flank!',
+    QUICKMESSAGE_ATTACK_RIGHT_FLANK: 'Attack right flank!', QUICKMESSAGE_HOLD_THIS_POSITION: 'Hold this position!',
+    QUICKMESSAGE_REGROUP: 'Regroup!', QUICKMESSAGE_ENEMY_SPOTTED: 'Enemy spotted!', QUICKMESSAGE_ENEMIES_SPOTTED: 'Enemies spotted!',
+    QUICKMESSAGE_IM_IN_POSITION: "I'm in position.", QUICKMESSAGE_AREA_SECURE: 'Area secure!', QUICKMESSAGE_GRENADE: 'Grenade!',
+    QUICKMESSAGE_SNIPER: 'Sniper!', QUICKMESSAGE_NEED_REINFORCEMENTS: 'Need reinforcements!', QUICKMESSAGE_HOLD_YOUR_FIRE: 'Hold your fire!',
+    QUICKMESSAGE_YES_SIR: 'Yes sir!', QUICKMESSAGE_NO_SIR: 'No sir!', QUICKMESSAGE_IM_ON_MY_WAY: "I'm on my way.",
+    QUICKMESSAGE_SORRY: 'Sorry.', QUICKMESSAGE_GREAT_SHOT: 'Great shot!', QUICKMESSAGE_TOOK_LONG_ENOUGH: 'Took long enough!',
+    QUICKMESSAGE_ARE_YOU_CRAZY: 'Are you crazy?', QUICKMESSAGE_COME_ON: 'Come on.', QUICKMESSAGE_WATCH_SIX: 'Watch your six!'
+  };
+  function quickMessage(text) {
+    const k = String(text || '').trim();
+    return QUICK[k] ? QUICK[k] + ' [quick message]' : text;
+  }
+
+  /* ---- console ---- */
+  function consoleType(v) {
+    if (v === 'e') return 'print';
+    if (v === 'f') return 'message';
+    if (v === 'c' || v === 'g') return 'announcement';
+    if (v === 'h' || v === 'i') return 'chat';
+    if (v === 'd' || v === 'x' || v === 'y' || v === 'z') return 'configstring';
+    if (v === 'v') return 'dvar';
+    if (v === 'b' || v === 'G' || v === 'H' || v === 'I') return 'score';
+    if (v === 'n' || v === 'B' || v === 'm') return 'restart';
+    return 'command';
+  }
+
+  function buildConsole(ctx) {
+    const { commands, resolver, rounds, gamestate, issues, csCategory, csOld } = ctx;
+    const out = [];
+    if (gamestate) {
+      out.push({ t: 0, type: 'system', text: 'Gamestate: ' + gamestate.configstrings.size + ' config strings, ' + gamestate.baselines.size + ' entity baselines, recording client ' + gamestate.clientNum });
+      for (const idx of [0, 1, 2]) {
+        const v = gamestate.configstrings.get(idx);
+        if (v) out.push({ t: 0, type: 'system', text: ['serverinfo', 'systeminfo', 'game version'][idx] + ': ' + v });
+      }
+    }
+    for (const i of issues) out.push({ t: i.t || 0, type: 'warning', text: i.text });
+    for (const c of commands) {
+      const d = c.d;
+      const type = consoleType(d.verb);
+      let text;
+      if (type === 'configstring') {
+        const old = csOld.get(c);
+        text = 'config string ' + d.index + ' (' + csCategory(d.index) + ') = "' + stripColors(d.value) + '"' + (old != null ? '   (was "' + stripColors(old) + '")' : '');
+        if (d.verb !== 'd') text = '[' + d.name + '] ' + text;
+      } else if (type === 'dvar') {
+        text = 'dvars: ' + d.dvars.map(([n, v]) => n + '=' + stripColors(v)).join('  ');
+      } else if (d.verb === 'b') {
+        text = 'scoreboard: axis ' + d.scoreAxis + ' - allies ' + d.scoreAllies + ', ' + d.entries.length + ' players, limit ' + d.scorelimit;
+      } else if (d.verb === 'G' || d.verb === 'H') {
+        text = 'team score ' + d.team + ' = ' + d.score;
+      } else if (d.text != null) {
+        text = stripColors(d.text);
+      } else {
+        text = c.text;
+      }
+      const plain = stripColors(c.text);
+      out.push({ t: c.t, type, verb: d.verb, text, raw: c.text, client: type === 'chat' || type === 'message' || type === 'print' || type === 'announcement' ? resolver.contained(plain) : null });
+    }
+    out.sort((a, b) => a.t - b.t);
+    const phaseOf = ctx.phaseAt || (() => 'live');
+    for (const o of out) { o.round = roundAt(rounds, o.t); o.phase = phaseOf(o.t); }
+    return out;
+  }
+
+  C4.events = { EVENT_TYPES, nameResolver, bombEvents, bombTrack, buildEvents, buildChat, buildConsole, roundAt };
+});

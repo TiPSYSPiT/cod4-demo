@@ -1,0 +1,94 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "fx_rock_small",
+ "kind": "fx",
+ "faction": null,
+ "file": "fx_rock_small.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 336
+  },
+  "normal": {
+   "offset": 336,
+   "length": 112
+  },
+  "uv": {
+   "offset": 448,
+   "length": 224
+  },
+  "skinIndex": {
+   "offset": 672,
+   "length": 112
+  },
+  "skinWeight": {
+   "offset": 784,
+   "length": 112
+  },
+  "index": {
+   "offset": 896,
+   "length": 144
+  },
+  "color": {
+   "offset": 1040,
+   "length": 112
+  }
+ },
+ "vertexCount": 28,
+ "triangleCount": 24,
+ "bones": [
+  {
+   "name": "polysurface1",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 72,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_fx_rock01",
+   "texture": "_textures/fx_rock01_col.webp",
+   "textureAlpha": false,
+   "color": "#615c4f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/fx_rock01_nml.normal.webp",
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -8.06,
+   -7.46,
+   -5.74
+  ],
+  "maxs": [
+   8.06,
+   7.75,
+   5.74
+  ]
+ }
+}

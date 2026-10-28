@@ -1,0 +1,129 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "me_picture24",
+ "kind": "script",
+ "faction": null,
+ "file": "me_picture24.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 864
+  },
+  "normal": {
+   "offset": 864,
+   "length": 288
+  },
+  "uv": {
+   "offset": 1152,
+   "length": 576
+  },
+  "skinIndex": {
+   "offset": 1728,
+   "length": 288
+  },
+  "skinWeight": {
+   "offset": 2016,
+   "length": 288
+  },
+  "index": {
+   "offset": 2304,
+   "length": 216
+  },
+  "color": {
+   "offset": 2520,
+   "length": 288
+  }
+ },
+ "vertexCount": 72,
+ "triangleCount": 36,
+ "bones": [
+  {
+   "name": "",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 96,
+   "material": 0
+  },
+  {
+   "indexStart": 96,
+   "indexCount": 12,
+   "material": 1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_me_pictureframes",
+   "texture": "_textures/me_pictureframes.webp",
+   "textureAlpha": false,
+   "color": "#937c5b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/me_pictureframes_bump.normal.webp",
+   "specularMap": "_textures/me_pictureframes_spec-rgb__white-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_me_paintings",
+   "texture": "_textures/me_paintings.webp",
+   "textureAlpha": false,
+   "color": "#868273",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/me_paintings_cos-rgbl-11.specular.webp",
+   "envMapParms": [
+    2.0,
+    3.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -8.78,
+   -1.02,
+   -16.75
+  ],
+  "maxs": [
+   8.85,
+   0.04,
+   0.62
+  ]
+ }
+}

@@ -1,0 +1,158 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "weapon_benelli_super_90",
+ "kind": "weapon",
+ "faction": null,
+ "file": "weapon_benelli_super_90.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 15348
+  },
+  "normal": {
+   "offset": 15348,
+   "length": 5116
+  },
+  "uv": {
+   "offset": 20464,
+   "length": 10232
+  },
+  "skinIndex": {
+   "offset": 30696,
+   "length": 5116
+  },
+  "skinWeight": {
+   "offset": 35812,
+   "length": 5116
+  },
+  "index": {
+   "offset": 40928,
+   "length": 5112
+  },
+  "color": {
+   "offset": 46040,
+   "length": 5116
+  }
+ },
+ "vertexCount": 1279,
+ "triangleCount": 852,
+ "bones": [
+  {
+   "name": "tag_weapon",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 0,
+   "pos": [
+    -3.7487,
+    -0.4699,
+    -0.0815
+   ],
+   "quat": [
+    -0.212622,
+    -0.212622,
+    -0.674367,
+    0.674398
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    16.7076,
+    0.0,
+    0.0408
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 1752,
+   "material": 0
+  },
+  {
+   "indexStart": 1752,
+   "indexCount": 804,
+   "material": 1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_benelli_super_90",
+   "texture": "_textures/weapon_benelli_super_90_col.webp",
+   "textureAlpha": false,
+   "color": "#35312e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_benelli_super_90_spc-_9c97d471.specular.webp",
+   "envMapParms": [
+    1.2,
+    5.0,
+    3.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_benelli_super_90_misc_nocamo",
+   "texture": "_textures/weapon_benelli_super_90_col.webp",
+   "textureAlpha": false,
+   "color": "#35312e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_benelli_super_90_spc-_9c97d471.specular.webp",
+   "envMapParms": [
+    1.2,
+    5.0,
+    3.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -23.93,
+   -2.0,
+   -6.51
+  ],
+  "maxs": [
+   16.79,
+   1.64,
+   1.63
+  ]
+ }
+}

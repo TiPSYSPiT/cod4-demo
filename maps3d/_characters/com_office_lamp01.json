@@ -1,0 +1,94 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_office_lamp01",
+ "kind": "script",
+ "faction": null,
+ "file": "com_office_lamp01.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 3096
+  },
+  "normal": {
+   "offset": 3096,
+   "length": 1032
+  },
+  "uv": {
+   "offset": 4128,
+   "length": 2064
+  },
+  "skinIndex": {
+   "offset": 6192,
+   "length": 1032
+  },
+  "skinWeight": {
+   "offset": 7224,
+   "length": 1032
+  },
+  "index": {
+   "offset": 8256,
+   "length": 1872
+  },
+  "color": {
+   "offset": 10128,
+   "length": 1032
+  }
+ },
+ "vertexCount": 258,
+ "triangleCount": 312,
+ "bones": [
+  {
+   "name": "office_lamp01_lod1",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 936,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_office_lamp",
+   "texture": "_textures/office_lamp_c.webp",
+   "textureAlpha": false,
+   "color": "#aaaaa9",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/office_lamp_n.normal.webp",
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -7.65,
+   -7.65,
+   0.0
+  ],
+  "maxs": [
+   7.65,
+   7.65,
+   22.22
+  ]
+ }
+}

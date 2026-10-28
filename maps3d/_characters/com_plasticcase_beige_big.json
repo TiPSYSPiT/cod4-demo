@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_plasticcase_beige_big",
+ "kind": "script",
+ "faction": null,
+ "file": "com_plasticcase_beige_big.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 36384
+  },
+  "normal": {
+   "offset": 36384,
+   "length": 12128
+  },
+  "uv": {
+   "offset": 48512,
+   "length": 24256
+  },
+  "skinIndex": {
+   "offset": 72768,
+   "length": 12128
+  },
+  "skinWeight": {
+   "offset": 84896,
+   "length": 12128
+  },
+  "index": {
+   "offset": 97024,
+   "length": 14328
+  },
+  "color": {
+   "offset": 111352,
+   "length": 12128
+  }
+ },
+ "vertexCount": 3032,
+ "triangleCount": 2388,
+ "bones": [
+  {
+   "name": "tag_origin",
+   "parent": -1,
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "quat": [
+    0,
+    0,
+    0,
+    1
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 7164,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_plastic_case_big",
+   "texture": "_textures/plastic_case_big_beige_col.webp",
+   "textureAlpha": false,
+   "color": "#454135",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/plastic_big_case_nml.normal.webp",
+   "specularMap": "_textures/plastic_case_big_spc-rgbl-11.specular.webp",
+   "envMapParms": [
+    1.4,
+    2.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -29.57,
+   -16.28,
+   0.01
+  ],
+  "maxs": [
+   29.57,
+   16.65,
+   29.77
+  ]
+ }
+}

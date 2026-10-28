@@ -1,0 +1,100 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_cash_register",
+ "kind": "script",
+ "faction": null,
+ "file": "com_cash_register.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 5088
+  },
+  "normal": {
+   "offset": 5088,
+   "length": 1696
+  },
+  "uv": {
+   "offset": 6784,
+   "length": 3392
+  },
+  "skinIndex": {
+   "offset": 10176,
+   "length": 1696
+  },
+  "skinWeight": {
+   "offset": 11872,
+   "length": 1696
+  },
+  "index": {
+   "offset": 13568,
+   "length": 1452
+  },
+  "color": {
+   "offset": 15020,
+   "length": 1696
+  }
+ },
+ "vertexCount": 424,
+ "triangleCount": 242,
+ "bones": [
+  {
+   "name": "polysurface30",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 726,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_com_cash_register",
+   "texture": "_textures/com_cash_register_col.webp",
+   "textureAlpha": false,
+   "color": "#777457",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/com_cash_register_spc-r-49g-_6a04fa85.specular.webp",
+   "envMapParms": [
+    3.6,
+    3.6,
+    0.8,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -9.34,
+   -11.46,
+   -0.02
+  ],
+  "maxs": [
+   9.34,
+   11.05,
+   12.31
+  ]
+ }
+}

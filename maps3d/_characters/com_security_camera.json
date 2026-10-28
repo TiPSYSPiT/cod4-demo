@@ -1,0 +1,129 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_security_camera",
+ "kind": "script",
+ "faction": null,
+ "file": "com_security_camera.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 15816
+  },
+  "normal": {
+   "offset": 15816,
+   "length": 5272
+  },
+  "uv": {
+   "offset": 21088,
+   "length": 10544
+  },
+  "skinIndex": {
+   "offset": 31632,
+   "length": 5272
+  },
+  "skinWeight": {
+   "offset": 36904,
+   "length": 5272
+  },
+  "index": {
+   "offset": 42176,
+   "length": 4860
+  },
+  "color": {
+   "offset": 47036,
+   "length": 5272
+  }
+ },
+ "vertexCount": 1318,
+ "triangleCount": 810,
+ "bones": [
+  {
+   "name": "tag_origin",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_camera",
+   "parent": 0,
+   "pos": [
+    -0.8329,
+    -7.2961,
+    3.5694
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_deathfx",
+   "parent": 1,
+   "pos": [
+    7.3177,
+    -7.4227,
+    5.4518
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 270,
+   "material": 0
+  },
+  {
+   "indexStart": 270,
+   "indexCount": 2160,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_security",
+   "texture": "_textures/security_camera_c.webp",
+   "textureAlpha": false,
+   "color": "#9d9f9d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/security_camera_n.normal.webp",
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -9.8,
+   -10.28,
+   -4.21
+  ],
+  "maxs": [
+   8.94,
+   0.74,
+   7.74
+  ]
+ }
+}

@@ -1,0 +1,163 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "prop_suitcase_bomb",
+ "kind": "script",
+ "faction": null,
+ "file": "prop_suitcase_bomb.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 32820
+  },
+  "normal": {
+   "offset": 32820,
+   "length": 10940
+  },
+  "uv": {
+   "offset": 43760,
+   "length": 21880
+  },
+  "skinIndex": {
+   "offset": 65640,
+   "length": 10940
+  },
+  "skinWeight": {
+   "offset": 76580,
+   "length": 10940
+  },
+  "index": {
+   "offset": 87520,
+   "length": 11136
+  },
+  "color": {
+   "offset": 98656,
+   "length": 10940
+  }
+ },
+ "vertexCount": 2735,
+ "triangleCount": 1856,
+ "bones": [
+  {
+   "name": "tag_weapon",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 870,
+   "material": 0
+  },
+  {
+   "indexStart": 870,
+   "indexCount": 1296,
+   "material": 1
+  },
+  {
+   "indexStart": 2166,
+   "indexCount": 6,
+   "material": 2
+  },
+  {
+   "indexStart": 2172,
+   "indexCount": 24,
+   "material": 3
+  },
+  {
+   "indexStart": 2196,
+   "indexCount": 24,
+   "material": 4
+  },
+  {
+   "indexStart": 2220,
+   "indexCount": 3348,
+   "material": 5
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_plexi_middle_front",
+   "texture": null,
+   "textureAlpha": false,
+   "color": null,
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false
+  },
+  {
+   "name": "mc/mtl_suitcase",
+   "texture": "_textures/suitcase_col.webp",
+   "textureAlpha": false,
+   "color": "#483e38",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "textureGuess": "name"
+  },
+  {
+   "name": "mc/mtl_plexi_bottom",
+   "texture": null,
+   "textureAlpha": false,
+   "color": null,
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false
+  },
+  {
+   "name": "mc/mtl_plexi_front",
+   "texture": null,
+   "textureAlpha": false,
+   "color": null,
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false
+  },
+  {
+   "name": "mc/mtl_plexi_middle_behind",
+   "texture": null,
+   "textureAlpha": false,
+   "color": null,
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false
+  },
+  {
+   "name": "mc/mtl_suitcase_bomb",
+   "texture": null,
+   "textureAlpha": false,
+   "color": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -10.0,
+   -9.48,
+   0.0
+  ],
+  "maxs": [
+   10.0,
+   8.3,
+   18.02
+  ]
+ }
+}

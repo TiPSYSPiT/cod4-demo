@@ -1,0 +1,122 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_widescreen_monitor_on_3",
+ "kind": "script",
+ "faction": null,
+ "file": "com_widescreen_monitor_on_3.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 3108
+  },
+  "normal": {
+   "offset": 3108,
+   "length": 1036
+  },
+  "uv": {
+   "offset": 4144,
+   "length": 2072
+  },
+  "skinIndex": {
+   "offset": 6216,
+   "length": 1036
+  },
+  "skinWeight": {
+   "offset": 7252,
+   "length": 1036
+  },
+  "index": {
+   "offset": 8288,
+   "length": 1296
+  },
+  "color": {
+   "offset": 9584,
+   "length": 1036
+  }
+ },
+ "vertexCount": 259,
+ "triangleCount": 216,
+ "bones": [
+  {
+   "name": "widescreenmonitor_on_3_lod0",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 642,
+   "material": 0
+  },
+  {
+   "indexStart": 642,
+   "indexCount": 6,
+   "material": 1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_widescreen_monitor",
+   "texture": "_textures/com_pc_monitor_col.webp",
+   "textureAlpha": false,
+   "color": "#54504e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/com_pc_monitor_nml.normal.webp",
+   "specularMap": "_textures/com_pc_monitor_spc-rgb_com_p_1522d618.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_desktop_wallpaper",
+   "texture": "_textures/desktop_wallpaper_col.webp",
+   "textureAlpha": false,
+   "color": "#7c8183",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -10.2,
+   -4.86,
+   0.0
+  ],
+  "maxs": [
+   10.2,
+   7.95,
+   31.85
+  ]
+ }
+}

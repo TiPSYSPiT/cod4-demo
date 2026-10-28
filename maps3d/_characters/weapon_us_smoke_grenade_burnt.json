@@ -1,0 +1,100 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "weapon_us_smoke_grenade_burnt",
+ "kind": "fx",
+ "faction": null,
+ "file": "weapon_us_smoke_grenade_burnt.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 3648
+  },
+  "normal": {
+   "offset": 3648,
+   "length": 1216
+  },
+  "uv": {
+   "offset": 4864,
+   "length": 2432
+  },
+  "skinIndex": {
+   "offset": 7296,
+   "length": 1216
+  },
+  "skinWeight": {
+   "offset": 8512,
+   "length": 1216
+  },
+  "index": {
+   "offset": 9728,
+   "length": 1800
+  },
+  "color": {
+   "offset": 11528,
+   "length": 1216
+  }
+ },
+ "vertexCount": 304,
+ "triangleCount": 300,
+ "bones": [
+  {
+   "name": "tag_origin",
+   "parent": -1,
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "quat": [
+    0,
+    0,
+    0,
+    1
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 900,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_us_smoke_grenade_burnt",
+   "texture": "_textures/us_smoke_grenade_burnt_c.webp",
+   "textureAlpha": false,
+   "color": "#4d4b43",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/us_smoke_grenade_burnt_s-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -1.08,
+   -1.08,
+   -2.85
+  ],
+  "maxs": [
+   1.08,
+   1.08,
+   2.85
+  ]
+ }
+}

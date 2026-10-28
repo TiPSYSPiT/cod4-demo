@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_speaker",
+ "kind": "script",
+ "faction": null,
+ "file": "com_speaker.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 2004
+  },
+  "normal": {
+   "offset": 2004,
+   "length": 668
+  },
+  "uv": {
+   "offset": 2672,
+   "length": 1336
+  },
+  "skinIndex": {
+   "offset": 4008,
+   "length": 668
+  },
+  "skinWeight": {
+   "offset": 4676,
+   "length": 668
+  },
+  "index": {
+   "offset": 5344,
+   "length": 1548
+  },
+  "color": {
+   "offset": 6892,
+   "length": 668
+  }
+ },
+ "vertexCount": 167,
+ "triangleCount": 258,
+ "bones": [
+  {
+   "name": "speaker_01",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 774,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_speaker",
+   "texture": "_textures/speaker_col.webp",
+   "textureAlpha": false,
+   "color": "#2d2e2f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/speaker_nml.normal.webp",
+   "specularMap": "_textures/speaker_spc-rgb_speaker_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    4.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -6.0,
+   -6.0,
+   0.0
+  ],
+  "maxs": [
+   6.02,
+   6.0,
+   18.73
+  ]
+ }
+}

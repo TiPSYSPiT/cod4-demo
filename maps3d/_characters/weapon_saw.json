@@ -1,0 +1,178 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "weapon_saw",
+ "kind": "weapon",
+ "faction": null,
+ "file": "weapon_saw.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 22104
+  },
+  "normal": {
+   "offset": 22104,
+   "length": 7368
+  },
+  "uv": {
+   "offset": 29472,
+   "length": 14736
+  },
+  "skinIndex": {
+   "offset": 44208,
+   "length": 7368
+  },
+  "skinWeight": {
+   "offset": 51576,
+   "length": 7368
+  },
+  "index": {
+   "offset": 58944,
+   "length": 7020
+  },
+  "color": {
+   "offset": 65964,
+   "length": 7368
+  }
+ },
+ "vertexCount": 1842,
+ "triangleCount": 1170,
+ "bones": [
+  {
+   "name": "tag_weapon",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 0,
+   "pos": [
+    -5.9997,
+    -0.8322,
+    2.1644
+   ],
+   "quat": [
+    -0.212622,
+    -0.212622,
+    -0.674367,
+    0.674398
+   ]
+  },
+  {
+   "name": "tag_clip",
+   "parent": 0,
+   "pos": [
+    -6.0432,
+    0.637,
+    -1.4011
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    16.146,
+    0.0,
+    0.7156
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 2604,
+   "material": 0
+  },
+  {
+   "indexStart": 2604,
+   "indexCount": 138,
+   "material": 1
+  },
+  {
+   "indexStart": 2742,
+   "indexCount": 768,
+   "material": 1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_saw",
+   "texture": "_textures/weapon_saw_col.webp",
+   "textureAlpha": false,
+   "color": "#32312f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_saw_spc-r65g65b65_wea_fbd00e22.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_saw_misc_nocamo",
+   "texture": "_textures/weapon_saw_col.webp",
+   "textureAlpha": false,
+   "color": "#32312f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_saw_spc-r65g65b65_wea_fbd00e22.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -22.71,
+   -5.56,
+   -10.24
+  ],
+  "maxs": [
+   16.15,
+   5.56,
+   3.91
+  ]
+ }
+}

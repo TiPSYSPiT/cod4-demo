@@ -1,0 +1,7218 @@
+{
+ "map": "mp_marketcenter",
+ "models": {
+  "me_canopy_2x4_1": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "me_canopy_5x11": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "me_balcony_01": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 6 rigid vertex lists",
+    "mc/mtl_balcony_01_metal: image reference resolved"
+   ]
+  },
+  "me_ac_window": {
+   "status": "ok",
+   "issues": [
+    "2 bones, 3 rigid vertex lists"
+   ]
+  },
+  "com_ex_airconditioner": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists",
+    "vertex colours (124 of 981 not white, rgb down to 197, alpha down to 255)"
+   ]
+  },
+  "me_canopy_large4": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "me_canopy_2x4_4": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "me_canopy_large3": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "me_corrugated_metal8x8": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "me_concrete_barrier": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "com_cardboardbox05": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_cardboardbox04": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists",
+    "vertex colours (4 of 32 not white, rgb down to 199, alpha down to 255)"
+   ]
+  },
+  "com_cardboardboxshortclosed_1": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_pallet_2": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists",
+    "vertex colours (240 of 892 not white, rgb down to 179, alpha down to 255)"
+   ]
+  },
+  "com_pallet_stack": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists",
+    "vertex colours (3086 of 5195 not white, rgb down to 177, alpha down to 255)"
+   ]
+  },
+  "ch_dinerboothchair": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists"
+   ]
+  },
+  "ch_dinerboothtable": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists"
+   ]
+  },
+  "ch_radiator01": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists",
+    "vertex colours (21 of 1766 not white, rgb down to 97, alpha down to 255)"
+   ]
+  },
+  "com_cafe_chair": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "com_cafe_table2": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists",
+    "mc/mtl_cafe_table2_base: image reference resolved",
+    "vertex colours (201 of 366 not white, rgb down to 165, alpha down to 255)"
+   ]
+  },
+  "com_flower_pot03": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 6 rigid vertex lists"
+   ]
+  },
+  "com_gas_pipes02": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists"
+   ]
+  },
+  "com_potted_plant01": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "com_potted_plant03": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "com_powerpole3": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists",
+    "vertex colours (52 of 776 not white, rgb down to 113, alpha down to 255)"
+   ]
+  },
+  "com_trashcan_metal_with_trash": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists",
+    "vertex colours (86 of 675 not white, rgb down to 166, alpha down to 255)"
+   ]
+  },
+  "com_vending_can_new2_lit": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 6 rigid vertex lists",
+    "mc/mtl_can_machine4_lit: image reference resolved"
+   ]
+  },
+  "com_vending_can_old2_lit": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 6 rigid vertex lists",
+    "mc/mtl_can_machine2_lit: image reference resolved"
+   ]
+  },
+  "me_electricbox4": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists",
+    "vertex colours (126 of 306 not white, rgb down to 212, alpha down to 255)"
+   ]
+  },
+  "me_fanceil1": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "me_phonebooth": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "me_phonebooth_phone": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "ch_industrial_lamp_wall_off": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "ch_industrial_lamp_wall_on": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 14 rigid vertex lists",
+    "mc/gfx_floodlight_beam_godray75: blend invdestcolor/one",
+    "mc/gfx_floodlight_beam_godray75: technique set: emissive",
+    "mc/gfx_floodlight_beam_godray85: blend invdestcolor/one",
+    "mc/gfx_floodlight_beam_godray85: image reference resolved",
+    "mc/gfx_floodlight_beam_godray85: technique set: emissive",
+    "mc/gfx_spotlight_lensflare_eye15_godray50: blend one/one",
+    "mc/gfx_spotlight_lensflare_eye15_godray50: technique set: emissive",
+    "vertex colours (100 of 738 not white, rgb down to 94, alpha down to 255)"
+   ]
+  },
+  "com_cafe_light_part1_off": {
+   "status": "ok",
+   "issues": [
+    "vertex colours (93 of 373 not white, rgb down to 165, alpha down to 255)"
+   ]
+  },
+  "com_cafe_light_part2": {
+   "status": "ok",
+   "issues": [
+    "vertex colours (10 of 70 not white, rgb down to 216, alpha down to 255)"
+   ]
+  },
+  "com_doorknob2": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "com_propane_tank02": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_restaurantchair_1": {
+   "status": "ok",
+   "issues": [
+    "2 bones, 4 rigid vertex lists"
+   ]
+  },
+  "com_restaurantchair_2": {
+   "status": "ok",
+   "issues": [
+    "2 bones, 4 rigid vertex lists"
+   ]
+  },
+  "me_gas_pump": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists",
+    "vertex colours (32 of 2477 not white, rgb down to 153, alpha down to 255)"
+   ]
+  },
+  "com_cafe_light_part1_on": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists",
+    "mc/mtl_cafe_light_on: image reference resolved",
+    "vertex colours (95 of 381 not white, rgb down to 165, alpha down to 255)"
+   ]
+  },
+  "com_cafe_wall_light_off": {
+   "status": "ok",
+   "issues": [
+    "vertex colours (48 of 202 not white, rgb down to 191, alpha down to 255)"
+   ]
+  },
+  "com_flower_pot02": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 8 rigid vertex lists"
+   ]
+  },
+  "com_potted_plant02": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists"
+   ]
+  },
+  "com_trashcan_metal": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists",
+    "vertex colours (88 of 497 not white, rgb down to 92, alpha down to 255)"
+   ]
+  },
+  "com_flower_pot01": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 6 rigid vertex lists"
+   ]
+  },
+  "com_restaurantstainlessteelshelf_01": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_restaurantstainlessteelshelf_02": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "me_dumpster_close": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 6 rigid vertex lists",
+    "vertex colours (283 of 2208 not white, rgb down to 80, alpha down to 255)"
+   ]
+  },
+  "me_lightfluohang": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "me_lightfluohang_on": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 6 rigid vertex lists",
+    "mc/mtl_lightfluohang_on: image reference resolved"
+   ]
+  },
+  "ch_industrial_light_01_on": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 6 rigid vertex lists"
+   ]
+  },
+  "me_basket_wicker06": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists"
+   ]
+  },
+  "me_canopy_2x4_2": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "me_canopy_large1": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "ch_sign_travelagency": {
+   "status": "ok",
+   "issues": [
+    "mc/mtl_ch_sign_travelagency: image reference resolved"
+   ]
+  },
+  "com_computer_case": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "com_computer_keyboard": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "com_computer_monitor": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "com_computer_mouse": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "com_copypaper_box": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_copypaper_package1": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_filecabinetblackclosed": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_office_chair_black": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists"
+   ]
+  },
+  "com_photocopier": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "com_office_book_black_open": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists"
+   ]
+  },
+  "com_office_book_blue_paper_folder": {
+   "status": "ok",
+   "issues": []
+  },
+  "ch_furniture_teachers_desk1": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_coffee_machine": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "com_telephone_desk": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists"
+   ]
+  },
+  "com_bookshelves1": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_books2": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_books3": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_books1": {
+   "status": "ok",
+   "issues": []
+  },
+  "ch_industrial_light_02_on": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 6 rigid vertex lists"
+   ]
+  },
+  "com_plasticcase_green_big": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists"
+   ]
+  },
+  "com_plasticcase_green_rifle": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists"
+   ]
+  },
+  "ch_furniture_couch01": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists",
+    "vertex colours (433 of 1228 not white, rgb down to 170, alpha down to 255)"
+   ]
+  },
+  "com_electrical_pipe_short": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists",
+    "vertex colours (56 of 156 not white, rgb down to 0, alpha down to 255)"
+   ]
+  },
+  "com_water_heater": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "me_box_citrusfruitopen_2": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "vehicle_80s_sedan1_green": {
+   "status": "ok",
+   "issues": [
+    "37 bones, 68 rigid vertex lists",
+    "mc/mtl_80s_econ_glass_inside: image reference resolved",
+    "mc/mtl_80s_econ_green_rubber: image reference resolved",
+    "vertex colours (1101 of 8369 not white, rgb down to 0, alpha down to 255)"
+   ]
+  },
+  "com_clothing_rack_1": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "ch_furniture_couch02": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists",
+    "vertex colours (325 of 1462 not white, rgb down to 170, alpha down to 255)"
+   ]
+  },
+  "com_lamp_ornate_off": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "ap_table_square01": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists",
+    "mc/mtl_cafe_table2_base: image reference resolved"
+   ]
+  },
+  "ch_corkboard_woodtrim_4x8": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "ch_russian_table": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "me_picture10": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_bench": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_bike": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists"
+   ]
+  },
+  "com_fire_extinguisher_incase": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_dressform1": {
+   "status": "ok",
+   "issues": [
+    "vertex colours (662 of 662 not white, rgb down to 0, alpha down to 255)"
+   ]
+  },
+  "com_mannequin1": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_mannequin2": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_mannequin3": {
+   "status": "ok",
+   "issues": []
+  },
+  "ch_corkboard_metaltrim_4x8": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "me_picture23": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "me_picture19": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "me_picture16": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "me_picture11": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "me_picture14": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "me_picture24": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "ch_crate64x64": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists",
+    "vertex colours (72 of 845 not white, rgb down to 238, alpha down to 255)"
+   ]
+  },
+  "ch_crate48x64": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists",
+    "vertex colours (96 of 1574 not white, rgb down to 238, alpha down to 255)"
+   ]
+  },
+  "ch_crate24x36": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists",
+    "vertex colours (96 of 1496 not white, rgb down to 238, alpha down to 255)"
+   ]
+  },
+  "ch_crate24x24": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists",
+    "vertex colours (96 of 1490 not white, rgb down to 238, alpha down to 255)"
+   ]
+  },
+  "com_barrel_black_rust": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists"
+   ]
+  },
+  "com_barrel_green_rust": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists"
+   ]
+  },
+  "com_barrel_white_rust": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists"
+   ]
+  },
+  "com_barrel_blue_rust": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists"
+   ]
+  },
+  "vehicle_80s_sedan1_silvdest": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists",
+    "vertex colours (625 of 2794 not white, rgb down to 27, alpha down to 255)"
+   ]
+  },
+  "cs_cargoship_wall_light_on": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists",
+    "mc/mtl_cargoship_wall_light_off: image reference resolved",
+    "mc/mtl_cargoship_wall_light_on: image reference resolved"
+   ]
+  },
+  "vehicle_80s_sedan1_yel": {
+   "status": "ok",
+   "issues": [
+    "37 bones, 68 rigid vertex lists",
+    "mc/mtl_80s_econ_glass_inside: image reference resolved",
+    "mc/mtl_80s_econ_green_rubber: image reference resolved",
+    "vertex colours (1101 of 8369 not white, rgb down to 0, alpha down to 255)"
+   ]
+  },
+  "com_electrical_pipe": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists",
+    "vertex colours (84 of 240 not white, rgb down to 0, alpha down to 255)"
+   ]
+  },
+  "com_electrical_pipe_elbow": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists",
+    "vertex colours (43 of 142 not white, rgb down to 0, alpha down to 255)"
+   ]
+  },
+  "com_junktire": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists",
+    "vertex colours (438 of 1110 not white, rgb down to 181, alpha down to 255)"
+   ]
+  },
+  "com_paintcan": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists",
+    "vertex colours (196 of 668 not white, rgb down to 211, alpha down to 255)"
+   ]
+  },
+  "com_bottle2": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_bottle1": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_bottle4": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_spray_can01": {
+   "status": "ok",
+   "issues": [
+    "2 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_spray_can02": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "foliage_tree_desertpalm02": {
+   "status": "ok",
+   "issues": [
+    "4 bones, 12 rigid vertex lists",
+    "mc/mtl_desertpalmfronds: image reference resolved"
+   ]
+  },
+  "me_statue": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 8 rigid vertex lists"
+   ]
+  },
+  "me_cargocontainersingleface_blue": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 8 rigid vertex lists"
+   ]
+  },
+  "me_cargocontainersingleface_usmc": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 8 rigid vertex lists"
+   ]
+  },
+  "me_cargocontainersingleface": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 8 rigid vertex lists"
+   ]
+  },
+  "me_corrugated_metal2x8": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "com_wall_fan": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "me_corrugated_metal4x4": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "me_corrugated_metal4x8": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "com_cafe_chair2": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 6 rigid vertex lists",
+    "mc/mtl_cafe_chair2_metal: image reference resolved",
+    "vertex colours (2 of 975 not white, rgb down to 224, alpha down to 255)"
+   ]
+  },
+  "com_cafe_table1": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists",
+    "mc/mtl_cafe_table1_base: image reference resolved"
+   ]
+  },
+  "com_cash_register": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists",
+    "vertex colours (500 of 500 not white, rgb down to 143, alpha down to 255)"
+   ]
+  },
+  "com_gas_pipes01": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists"
+   ]
+  },
+  "com_water_tank2": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "com_water_tank1": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists",
+    "vertex colours (68 of 510 not white, rgb down to 194, alpha down to 255)"
+   ]
+  },
+  "com_water_tank1_stand": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists",
+    "vertex colours (257 of 1224 not white, rgb down to 175, alpha down to 255)"
+   ]
+  },
+  "com_water_tank2_stand": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_water_tank1_ladder": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_water_tank2_ladder": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "me_antenna": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists",
+    "vertex colours (60 of 1016 not white, rgb down to 161, alpha down to 255)"
+   ]
+  },
+  "me_antenna3": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists",
+    "vertex colours (40 of 1076 not white, rgb down to 179, alpha down to 255)"
+   ]
+  },
+  "me_iron_gate": {
+   "status": "ok",
+   "issues": []
+  },
+  "me_market_umbrella_1": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 8 rigid vertex lists"
+   ]
+  },
+  "me_sign_locksmith1": {
+   "status": "ok",
+   "issues": []
+  },
+  "me_sign_magazinestand": {
+   "status": "ok",
+   "issues": []
+  },
+  "ch_sign_highvoltage": {
+   "status": "ok",
+   "issues": [
+    "vertex colours (4 of 12 not white, rgb down to 0, alpha down to 255)"
+   ]
+  },
+  "com_doorknob1": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists"
+   ]
+  },
+  "com_satellite_dish_big": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 6 rigid vertex lists"
+   ]
+  },
+  "com_security_camera": {
+   "status": "ok",
+   "issues": [
+    "2 skinned / deformed surfaces (drawn in the bind pose)",
+    "3 bones, 3 rigid vertex lists"
+   ]
+  },
+  "com_two_light_fixture_off": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "me_sign_stop": {
+   "status": "ok",
+   "issues": []
+  },
+  "me_streetlightdual": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "ch_sign_casino": {
+   "status": "ok",
+   "issues": [
+    "mc/mtl_ch_casinosign: image reference resolved"
+   ]
+  },
+  "me_sign_pastryshop": {
+   "status": "ok",
+   "issues": [
+    "vertex colours (32 of 312 not white, rgb down to 207, alpha down to 255)"
+   ]
+  },
+  "me_rooftop_tank_01": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "me_market_umbrella_2": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 6 rigid vertex lists"
+   ]
+  },
+  "me_market_umbrella_6": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 6 rigid vertex lists"
+   ]
+  },
+  "me_antenna2": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists",
+    "vertex colours (146 of 1084 not white, rgb down to 161, alpha down to 255)"
+   ]
+  },
+  "me_balcony_railing_02": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_pallet": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists",
+    "vertex colours (314 of 816 not white, rgb down to 189, alpha down to 255)"
+   ]
+  },
+  "me_roof_sign_01": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "me_lightfluohang_onebulb": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists",
+    "vertex colours (18 of 562 not white, rgb down to 111, alpha down to 255)"
+   ]
+  },
+  "me_sign_miscshopsign": {
+   "status": "ok",
+   "issues": []
+  },
+  "cobra_town_garage_sign": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "ch_sign_taxi": {
+   "status": "ok",
+   "issues": [
+    "mc/mtl_ch_sign_taxi: image reference resolved"
+   ]
+  },
+  "bog_b_cinderblock_clutter": {
+   "status": "ok",
+   "issues": [
+    "vertex colours (64 of 120 not white, rgb down to 157, alpha down to 255)"
+   ]
+  },
+  "me_market_umbrella_3": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 6 rigid vertex lists"
+   ]
+  },
+  "me_roof_sign_03": {
+   "status": "ok",
+   "issues": []
+  },
+  "me_satellitedish": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "foliage_tree_palm_bushy_3_static": {
+   "status": "ok",
+   "issues": [
+    "4 bones, 12 rigid vertex lists",
+    "mc/mtl_palmtree_bark: image reference resolved",
+    "vertex colours (3980 of 5174 not white, rgb down to 133, alpha down to 255)"
+   ]
+  },
+  "foliage_bush_big": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "me_sign_shakar": {
+   "status": "ok",
+   "issues": [
+    "mc/mtl_sign_shakar: image reference resolved"
+   ]
+  },
+  "me_cafesign": {
+   "status": "ok",
+   "issues": [
+    "vertex colours (32 of 227 not white, rgb down to 166, alpha down to 255)"
+   ]
+  },
+  "foliage_tree_desertpalm03": {
+   "status": "ok",
+   "issues": [
+    "4 bones, 10 rigid vertex lists",
+    "mc/mtl_desertpalmfronds: image reference resolved"
+   ]
+  },
+  "ch_furniture_school_lunch_table": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists",
+    "vertex colours (157 of 1636 not white, rgb down to 224, alpha down to 255)"
+   ]
+  },
+  "me_corrugated_metal2x4": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "me_electricbox1": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists",
+    "vertex colours (132 of 261 not white, rgb down to 227, alpha down to 255)"
+   ]
+  },
+  "com_newspaperbox_blue": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "com_newspaperbox_red": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "me_sign_parking": {
+   "status": "ok",
+   "issues": []
+  },
+  "me_ac_big": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "ch_sign_appliancestore2": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_tower_crane": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_wagon_donkey": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 12 rigid vertex lists",
+    "mc/mtl_wagon_donkey_metal: image reference resolved",
+    "mc/mtl_wagon_donkey_rubber: image reference resolved"
+   ]
+  },
+  "me_wood_cage_small": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists"
+   ]
+  },
+  "bc_militarytent_wood_table": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists",
+    "vertex colours (96 of 368 not white, rgb down to 197, alpha down to 255)"
+   ]
+  },
+  "me_basket_rattan03": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists"
+   ]
+  },
+  "vehicle_delivery_truck": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 12 rigid vertex lists",
+    "mc/mtl_delivery_truck_tires: image reference resolved"
+   ]
+  },
+  "vehicle_bus": {
+   "status": "ok",
+   "issues": [
+    ",mc/lambert1: material not in the zone extraction",
+    ",mc/lambert1: technique set: none",
+    "15 bones, 35 rigid vertex lists",
+    "vertex colours (2645 of 25364 not white, rgb down to 141, alpha down to 255)"
+   ]
+  },
+  "com_chalkboard": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "ch_bulletinpaperdecals_1": {
+   "status": "ok",
+   "issues": []
+  },
+  "ch_bulletinpaperdecals_3": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_barrel_white": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 4 rigid vertex lists"
+   ]
+  },
+  "me_roof_sign_02": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "ch_sign_noentry": {
+   "status": "ok",
+   "issues": []
+  },
+  "me_woodcrateopen": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "me_woodcrateclosed": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "me_citrus_box2": {
+   "status": "ok",
+   "issues": []
+  },
+  "me_citrus_box1": {
+   "status": "ok",
+   "issues": []
+  },
+  "me_plastic_crate4": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_northafrica_armoire_short": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "com_tableclock1": {
+   "status": "ok",
+   "issues": []
+  },
+  "me_hanging_clothes_tank_blue": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "ch_mattress_bent_2": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "ch_russian_table_cloth2": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists",
+    "vertex colours (67 of 275 not white, rgb down to 189, alpha down to 255)"
+   ]
+  },
+  "vehicle_80s_sedan1_red": {
+   "status": "ok",
+   "issues": [
+    "37 bones, 68 rigid vertex lists",
+    "mc/mtl_80s_econ_glass_inside: image reference resolved",
+    "mc/mtl_80s_econ_green_rubber: image reference resolved",
+    "vertex colours (1101 of 8369 not white, rgb down to 0, alpha down to 255)"
+   ]
+  },
+  "com_plastic_bucket": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 8 rigid vertex lists",
+    "vertex colours (151 of 1000 not white, rgb down to 31, alpha down to 255)"
+   ]
+  },
+  "me_box_citrusfruitopenshort_2": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  },
+  "com_bottle3": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 2 rigid vertex lists"
+   ]
+  },
+  "me_box_citrusfruitopenshort_1": {
+   "status": "ok",
+   "issues": [
+    "1 bones, 3 rigid vertex lists"
+   ]
+  }
+ },
+ "world": {
+  "wc/ac_building_roof01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ad_sign128x256": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ad_sign256x256": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ap_office_carpet": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ap_wood_smalltile_brown": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ap_wood_tile_big": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ap_wood_tile_brown": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_asphalt01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_brick_wall_07": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_ceiling01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_ceilingtiles_1": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_church_brick_trim": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_concrete_03": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_concrete_04": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_concrete_05": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_concrete_ceiling_01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_concrete_floor01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_concretewall01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_concretewall02": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_concretewall03": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_concretewall04": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_concretewall06": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_concretewall15": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_concretewall17": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_concretewall_trim": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_corrugated_02": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_counter_linoleum01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_countertop_sidetrim": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_decal_mural": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_door_02": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_door_10": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_door_13": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_door_14": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_door_18": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_factory_corrugatedsiding1": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_factory_corrugatedsiding2": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_factory_corrugatedsiding3": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_grass_02": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_ground_dirt02_footprint": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_ground_road_concrete01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_metal_diamondplating": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_metal_rusty_01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_metal_rusty_02": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_metal_rusty_03": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_plaster01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_plaster04": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_plaster_corner_01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_poster_beer1": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_sigh_24hour_store": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_tile_floor03": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_tile_floor05": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_tin_roof02": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_trim_stainlessteel_1": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_trim_stone01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_trim_woodlong01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_trimplaster01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_wallpaintchipped_1": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_wallpaintchipped_4": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_wallpaintchipped_5": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_wallpaintchipped_5dark": {
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/ch_wallwhitegreen01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_woodpaint_white01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_woodplank01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_woodwall01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/com_black": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/com_glass_clear": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/com_guardrail": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/decal_porterjustice8": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/icbm_bunkermural2": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/icbm_conc_stripedwall": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/icbm_decal_ak47poster": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/icbm_decal_mural1": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/icbm_doortrack": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/icbm_greymetal": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/icbm_metal_vent": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/icbm_rollupdoor": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/icbm_tunnelfloor": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/icbm_tunnelwall": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_asphalt_01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_brick_01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_brickwall_01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_exteriordoor": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_exteriorwall": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_exttrimcorner01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_exttrimcorner02": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_exttrimtall": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_exttrimwide": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_interiordoor": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_top": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_usmc_ext_door": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_usmc_ext_wall": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_usmc_roof": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_usmc_trimcorner1": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_usmc_trimwide": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerblue_ext_door": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerblue_ext_wall": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerblue_roof": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerblue_trimcorner1": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerblue_trimwide": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerwhite_roof_wet": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cinderblock_wall2": {
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_cinderblock_wall2_top": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_corrugated_metal01": {
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_cube_base": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_curtains_1": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_door_01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_door_03": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_door_04": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_door_06": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_door_11": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_door_rollup1": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_fence_chainlink": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_floor_concrete": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_graffiti08": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_ground_sand1": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_i_beam": {
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_marketstall_canopy2": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_marketstall_canopy3": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_metal_grey_01": {
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_metal_rust_02": {
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_metal_rust_03": {
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_metal_rust_03_wet": {
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_office_ceiling_tiles": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_pinewood": {
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_plaster_01": {
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_plaster_02": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_plaster_02_interior": {
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_plaster_brown": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_plaster_white": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_railing_plaster": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_railing_plaster2": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_roof_01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_sidewalk_01": {
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_sidewalk_02": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_sidewalk_curb": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_sidewalk_curb_whiteorange": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_sidewalk_dogbone": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_sign_roseshop": {
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_trim_metal_01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_trim_metalplate_1": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_wallpaper2": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_wallpaper3": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_wallpaper_4": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_wallpaper_5": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_wallpaper_7": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_warehouse_corrogated": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_window_05": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_window_06": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_window_greendirty": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_window_shutters_01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_window_shutters_02": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_windowfence": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_windowfence_02": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_woodbeam_01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_woodboard_01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_woodboard_02": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_woodboard_03": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_woodplanks01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/office_tilefloor": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/shadowcaster": {
+   "status": "ok",
+   "issues": [
+    "shadow caster only (no colour pass); hidden"
+   ]
+  },
+  "wc/ship_wallmetal_painted01": {
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_wallmetal_painted_blu01": {
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/ch_asphaltcracks01_dec": {
+   "status": "ok",
+   "issues": [
+    "alpha from the vertex colours (down to 8)"
+   ]
+  },
+  "wc/me_asphalt_01_blend": {
+   "status": "ok",
+   "issues": [
+    "alpha from the vertex colours (down to 8)",
+    "image reference resolved"
+   ]
+  },
+  "wc/me_decal_cargocontainernumbers_03": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "wc/me_decal_cargocontainersignage01": {
+   "status": "ok",
+   "issues": [
+    "alpha from the vertex colours (down to 75)"
+   ]
+  },
+  "wc/me_decal_cargocontainertext_01": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "wc/me_decal_papers": {
+   "status": "ok",
+   "issues": [
+    "alpha from the vertex colours (down to 8)"
+   ]
+  }
+ },
+ "script": {
+  "com_bomb_objective": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_bomb_objective_d": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_cellphone_on": {
+   "status": "ok",
+   "issues": []
+  },
+  "com_laptop_2_open": {
+   "status": "ok",
+   "issues": [
+    "mc/mtl_laptop_envu_screen: image reference resolved"
+   ]
+  },
+  "com_plasticcase_beige_big": {
+   "status": "ok",
+   "issues": []
+  },
+  "mil_tntbomb_mp": {
+   "status": "ok",
+   "issues": [
+    "mc/mtl_tntbomb: material not in the zone extraction",
+    "mc/mtl_tntbomb: technique set: none"
+   ]
+  },
+  "prop_flag_neutral": {
+   "status": "ok",
+   "issues": [
+    "mc/mtl_flag_neutral: colour map guessed by name (name)",
+    "mc/mtl_flag_neutral: material not in the zone extraction",
+    "mc/mtl_flag_neutral: technique set: none"
+   ]
+  },
+  "vehicle_80s_sedan1_green_bumper_b": {
+   "status": "ok",
+   "issues": [
+    "mc/mtl_80s_econ_green_rubber: image reference resolved"
+   ]
+  },
+  "vehicle_80s_sedan1_green_bumper_f": {
+   "status": "ok",
+   "issues": [
+    "mc/mtl_80s_econ_green_rubber: image reference resolved"
+   ]
+  },
+  "vehicle_80s_sedan1_green_destroyed": {
+   "status": "ok",
+   "issues": [
+    "mc/mtl_80s_econdestroy_green_metal: image reference resolved",
+    "mc/mtl_80s_econdestroy_green_rubber: image reference resolved",
+    "vertex colours (1697 of 6164 not white)"
+   ]
+  },
+  "vehicle_80s_sedan1_green_destructible_mp": {
+   "status": "ok",
+   "issues": [
+    ",mc/com_glass_shattered_outside: material not in the zone extraction",
+    ",mc/com_glass_shattered_outside: technique set: none",
+    "mc/mtl_80s_econ_glass_inside: image reference resolved",
+    "mc/mtl_80s_econ_green_rubber: image reference resolved",
+    "vertex colours (1102 of 9190 not white)"
+   ]
+  },
+  "vehicle_80s_sedan1_green_door_lb": {
+   "status": "ok",
+   "issues": [
+    "vertex colours (69 of 326 not white)"
+   ]
+  },
+  "vehicle_80s_sedan1_green_door_lf": {
+   "status": "ok",
+   "issues": [
+    "vertex colours (9 of 312 not white)"
+   ]
+  },
+  "vehicle_80s_sedan1_green_door_rb": {
+   "status": "ok",
+   "issues": [
+    "vertex colours (72 of 324 not white)"
+   ]
+  },
+  "vehicle_80s_sedan1_green_door_rf": {
+   "status": "ok",
+   "issues": [
+    "vertex colours (6 of 332 not white)"
+   ]
+  },
+  "vehicle_80s_sedan1_green_hood": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_green_light_lb": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_green_light_lb_dam": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_green_light_lf": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_green_light_lf_dam": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_green_light_rb": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_green_light_rb_dam": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_green_light_rf": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_green_light_rf_dam": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_green_mirror_l": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_green_mirror_r": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_green_trunk": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_green_wheel_lf": {
+   "status": "ok",
+   "issues": [
+    "mc/mtl_80s_econ_green_rubber: image reference resolved"
+   ]
+  },
+  "vehicle_80s_sedan1_red_bumper_b": {
+   "status": "ok",
+   "issues": [
+    "mc/mtl_80s_econ_green_rubber: image reference resolved"
+   ]
+  },
+  "vehicle_80s_sedan1_red_bumper_f": {
+   "status": "ok",
+   "issues": [
+    "mc/mtl_80s_econ_green_rubber: image reference resolved"
+   ]
+  },
+  "vehicle_80s_sedan1_red_destroyed": {
+   "status": "ok",
+   "issues": [
+    "mc/mtl_80s_econdestroy_green_metal: image reference resolved",
+    "mc/mtl_80s_econdestroy_green_rubber: image reference resolved",
+    "vertex colours (1697 of 6164 not white)"
+   ]
+  },
+  "vehicle_80s_sedan1_red_destructible_mp": {
+   "status": "ok",
+   "issues": [
+    ",mc/com_glass_shattered_outside: material not in the zone extraction",
+    ",mc/com_glass_shattered_outside: technique set: none",
+    "mc/mtl_80s_econ_glass_inside: image reference resolved",
+    "mc/mtl_80s_econ_green_rubber: image reference resolved",
+    "vertex colours (1102 of 9190 not white)"
+   ]
+  },
+  "vehicle_80s_sedan1_red_door_lb": {
+   "status": "ok",
+   "issues": [
+    "vertex colours (69 of 326 not white)"
+   ]
+  },
+  "vehicle_80s_sedan1_red_door_lf": {
+   "status": "ok",
+   "issues": [
+    "vertex colours (9 of 312 not white)"
+   ]
+  },
+  "vehicle_80s_sedan1_red_door_rb": {
+   "status": "ok",
+   "issues": [
+    "vertex colours (72 of 324 not white)"
+   ]
+  },
+  "vehicle_80s_sedan1_red_door_rf": {
+   "status": "ok",
+   "issues": [
+    "vertex colours (6 of 332 not white)"
+   ]
+  },
+  "vehicle_80s_sedan1_red_hood": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_red_light_lb": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_red_light_lb_dam": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_red_light_lf": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_red_light_lf_dam": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_red_light_rb": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_red_light_rb_dam": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_red_light_rf": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_red_light_rf_dam": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_red_mirror_l": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_red_mirror_r": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_red_trunk": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_red_wheel_lf": {
+   "status": "ok",
+   "issues": [
+    "mc/mtl_80s_econ_green_rubber: image reference resolved"
+   ]
+  },
+  "vehicle_80s_sedan1_tan_bumper_b": {
+   "status": "ok",
+   "issues": [
+    "mc/mtl_80s_econ_green_rubber: image reference resolved"
+   ]
+  },
+  "vehicle_80s_sedan1_tan_bumper_f": {
+   "status": "ok",
+   "issues": [
+    "mc/mtl_80s_econ_green_rubber: image reference resolved"
+   ]
+  },
+  "vehicle_80s_sedan1_tan_destroyed": {
+   "status": "ok",
+   "issues": [
+    "mc/mtl_80s_econdestroy_green_metal: image reference resolved",
+    "mc/mtl_80s_econdestroy_green_rubber: image reference resolved",
+    "vertex colours (1697 of 6164 not white)"
+   ]
+  },
+  "vehicle_80s_sedan1_tan_destructible_mp": {
+   "status": "ok",
+   "issues": [
+    ",mc/com_glass_shattered_outside: material not in the zone extraction",
+    ",mc/com_glass_shattered_outside: technique set: none",
+    "mc/mtl_80s_econ_glass_inside: image reference resolved",
+    "mc/mtl_80s_econ_green_rubber: image reference resolved",
+    "vertex colours (1102 of 9190 not white)"
+   ]
+  },
+  "vehicle_80s_sedan1_tan_door_lb": {
+   "status": "ok",
+   "issues": [
+    "vertex colours (69 of 326 not white)"
+   ]
+  },
+  "vehicle_80s_sedan1_tan_door_lf": {
+   "status": "ok",
+   "issues": [
+    "vertex colours (9 of 312 not white)"
+   ]
+  },
+  "vehicle_80s_sedan1_tan_door_rb": {
+   "status": "ok",
+   "issues": [
+    "vertex colours (72 of 324 not white)"
+   ]
+  },
+  "vehicle_80s_sedan1_tan_door_rf": {
+   "status": "ok",
+   "issues": [
+    "vertex colours (6 of 332 not white)"
+   ]
+  },
+  "vehicle_80s_sedan1_tan_hood": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_tan_light_lb": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_tan_light_lb_dam": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_tan_light_lf": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_tan_light_lf_dam": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_tan_light_rb": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_tan_light_rb_dam": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_tan_light_rf": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_tan_light_rf_dam": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_tan_mirror_l": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_tan_mirror_r": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_tan_trunk": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_tan_wheel_lf": {
+   "status": "ok",
+   "issues": [
+    "mc/mtl_80s_econ_green_rubber: image reference resolved"
+   ]
+  },
+  "vehicle_80s_sedan1_yel_bumper_b": {
+   "status": "ok",
+   "issues": [
+    "mc/mtl_80s_econ_green_rubber: image reference resolved"
+   ]
+  },
+  "vehicle_80s_sedan1_yel_bumper_f": {
+   "status": "ok",
+   "issues": [
+    "mc/mtl_80s_econ_green_rubber: image reference resolved"
+   ]
+  },
+  "vehicle_80s_sedan1_yel_destroyed": {
+   "status": "ok",
+   "issues": [
+    "mc/mtl_80s_econdestroy_green_metal: image reference resolved",
+    "mc/mtl_80s_econdestroy_green_rubber: image reference resolved",
+    "vertex colours (1697 of 6164 not white)"
+   ]
+  },
+  "vehicle_80s_sedan1_yel_destructible_mp": {
+   "status": "ok",
+   "issues": [
+    ",mc/com_glass_shattered_outside: material not in the zone extraction",
+    ",mc/com_glass_shattered_outside: technique set: none",
+    "mc/mtl_80s_econ_glass_inside: image reference resolved",
+    "mc/mtl_80s_econ_green_rubber: image reference resolved",
+    "vertex colours (1102 of 9190 not white)"
+   ]
+  },
+  "vehicle_80s_sedan1_yel_door_lb": {
+   "status": "ok",
+   "issues": [
+    "vertex colours (69 of 326 not white)"
+   ]
+  },
+  "vehicle_80s_sedan1_yel_door_lf": {
+   "status": "ok",
+   "issues": [
+    "vertex colours (9 of 312 not white)"
+   ]
+  },
+  "vehicle_80s_sedan1_yel_door_rb": {
+   "status": "ok",
+   "issues": [
+    "vertex colours (72 of 324 not white)"
+   ]
+  },
+  "vehicle_80s_sedan1_yel_door_rf": {
+   "status": "ok",
+   "issues": [
+    "vertex colours (6 of 332 not white)"
+   ]
+  },
+  "vehicle_80s_sedan1_yel_hood": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_yel_light_lb": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_yel_light_lb_dam": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_yel_light_lf": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_yel_light_lf_dam": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_yel_light_rb": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_yel_light_rb_dam": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_yel_light_rf": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_yel_light_rf_dam": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_yel_mirror_l": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_yel_mirror_r": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_yel_trunk": {
+   "status": "ok",
+   "issues": []
+  },
+  "vehicle_80s_sedan1_yel_wheel_lf": {
+   "status": "ok",
+   "issues": [
+    "mc/mtl_80s_econ_green_rubber: image reference resolved"
+   ]
+  }
+ },
+ "materials": {
+  "mc/mtl_canopy05": {
+   "name": "mc/mtl_canopy05",
+   "class": "lit",
+   "texture": "canopy2_col",
+   "format": "DXT1 1024x1024",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_balcony_01": {
+   "name": "mc/mtl_balcony_01",
+   "class": "lit",
+   "texture": "balcony_01_col",
+   "format": "DXT1 512x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_balcony_01_metal": {
+   "name": "mc/mtl_balcony_01_metal",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "mc/mtl_ac_window": {
+   "name": "mc/mtl_ac_window",
+   "class": "lit",
+   "texture": "ac_win_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_ex_airconditioner": {
+   "name": "mc/mtl_ex_airconditioner",
+   "class": "lit",
+   "texture": "ex_airconditioner_col_#0",
+   "format": "DXT3 512x512",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_corrugated_metal": {
+   "name": "mc/mtl_corrugated_metal",
+   "class": "lit",
+   "texture": "me_corrugated_metal1_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_barrier": {
+   "name": "mc/mtl_barrier",
+   "class": "lit",
+   "texture": "barrier",
+   "format": "DXT1 512x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cardboardbox": {
+   "name": "mc/mtl_cardboardbox",
+   "class": "lit",
+   "texture": "cardboard_box_color",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cardboardbox_decal": {
+   "name": "mc/mtl_cardboardbox_decal",
+   "class": "lit",
+   "texture": "cardboard_box_decal",
+   "format": "DXT5 64x128",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_pallet": {
+   "name": "mc/mtl_pallet",
+   "class": "lit",
+   "texture": "pallet_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_dinerboothchair": {
+   "name": "mc/mtl_dinerboothchair",
+   "class": "lit",
+   "texture": "diner_booth_chair_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_dinerboothtable": {
+   "name": "mc/mtl_dinerboothtable",
+   "class": "lit",
+   "texture": "diner_booth_table_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_radiator": {
+   "name": "mc/mtl_radiator",
+   "class": "lit",
+   "texture": "ch_radiator01_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cafe_chair": {
+   "name": "mc/mtl_cafe_chair",
+   "class": "lit",
+   "texture": "chair_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cafe_table2": {
+   "name": "mc/mtl_cafe_table2",
+   "class": "lit",
+   "texture": "cafe_table2_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cafe_table2_base": {
+   "name": "mc/mtl_cafe_table2_base",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "mc/mtl_flower_pot_dirt": {
+   "name": "mc/mtl_flower_pot_dirt",
+   "class": "lit",
+   "texture": "flower_pot_dirt_col",
+   "format": "DXT1 128x128",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_flower_pot_small": {
+   "name": "mc/mtl_flower_pot_small",
+   "class": "lit",
+   "texture": "flower_pot_small_col",
+   "format": "DXT1 256x128",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_gas_pipes": {
+   "name": "mc/mtl_gas_pipes",
+   "class": "lit",
+   "texture": "gas_pipes_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_potted_plant01": {
+   "name": "mc/mtl_potted_plant01",
+   "class": "lit",
+   "texture": "potted_plant01_col",
+   "format": "DXT5 256x512",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_potted_plant03": {
+   "name": "mc/mtl_potted_plant03",
+   "class": "lit",
+   "texture": "potted_plant03_col",
+   "format": "DXT3 128x256",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_stalingradpowerpole": {
+   "name": "mc/mtl_stalingradpowerpole",
+   "class": "lit",
+   "texture": "power_pole_col",
+   "format": "DXT5 512x512",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_trashcan_metal": {
+   "name": "mc/mtl_trashcan_metal",
+   "class": "lit",
+   "texture": "trashcan_metal_col",
+   "format": "DXT1 256x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_trash": {
+   "name": "mc/mtl_trash",
+   "class": "lit",
+   "texture": "trash_col",
+   "format": "DXT5 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_can_machine4": {
+   "name": "mc/mtl_can_machine4",
+   "class": "lit",
+   "texture": "mtl_soda_can_04_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_can_machine4_lit": {
+   "name": "mc/mtl_can_machine4_lit",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "mc/mtl_can_machine2": {
+   "name": "mc/mtl_can_machine2",
+   "class": "lit",
+   "texture": "mtl_soda_can_02_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_can_machine2_lit": {
+   "name": "mc/mtl_can_machine2_lit",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "mc/mtl_electric_box3": {
+   "name": "mc/mtl_electric_box3",
+   "class": "lit",
+   "texture": "electric_box3_c",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_fanceil": {
+   "name": "mc/mtl_fanceil",
+   "class": "lit",
+   "texture": "fanceil_col",
+   "format": "DXT1 128x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_phonebooth": {
+   "name": "mc/mtl_phonebooth",
+   "class": "lit",
+   "texture": "phonebooth_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_phonebooth_phone": {
+   "name": "mc/mtl_phonebooth_phone",
+   "class": "lit",
+   "texture": "phonebooth_phone_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_industrial_lamp_off": {
+   "name": "mc/mtl_industrial_lamp_off",
+   "class": "lit",
+   "texture": "mtl_industrial_lamp_off",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_industrial_lamp_on": {
+   "name": "mc/mtl_industrial_lamp_on",
+   "class": "lit",
+   "texture": "mtl_industrial_lamp_on",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/gfx_floodlight_beam_godray75": {
+   "name": "mc/gfx_floodlight_beam_godray75",
+   "class": "emissive",
+   "texture": "floodlight_beam",
+   "format": "R8G8B8 128x128",
+   "alphaTest": null,
+   "blend": "invdestcolor/one",
+   "doubleSided": true,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "technique set: emissive",
+    "blend invdestcolor/one"
+   ]
+  },
+  "mc/gfx_spotlight_lensflare_eye15_godray50": {
+   "name": "mc/gfx_spotlight_lensflare_eye15_godray50",
+   "class": "emissive",
+   "texture": ",spotlight_lensflare",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": "one/one",
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "technique set: emissive",
+    "blend one/one"
+   ]
+  },
+  "mc/gfx_floodlight_beam_godray85": {
+   "name": "mc/gfx_floodlight_beam_godray85",
+   "class": "emissive",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": "invdestcolor/one",
+   "doubleSided": true,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "technique set: emissive",
+    "image reference resolved",
+    "blend invdestcolor/one"
+   ]
+  },
+  "mc/mtl_cafe_light_off": {
+   "name": "mc/mtl_cafe_light_off",
+   "class": "lit",
+   "texture": "cafe_light_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_doorknob": {
+   "name": "mc/mtl_doorknob",
+   "class": "lit",
+   "texture": "doorknob_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_propane_tank02": {
+   "name": "mc/mtl_propane_tank02",
+   "class": "lit",
+   "texture": "propane_tank2_col",
+   "format": "DXT1 1024x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_restaurant_chair": {
+   "name": "mc/mtl_restaurant_chair",
+   "class": "lit",
+   "texture": "restaurant_chair_1_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_oil_pump": {
+   "name": "mc/mtl_oil_pump",
+   "class": "lit",
+   "texture": "gas_pump_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cafe_light_on": {
+   "name": "mc/mtl_cafe_light_on",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "mc/mtl_cafe_wall_light_off": {
+   "name": "mc/mtl_cafe_wall_light_off",
+   "class": "lit",
+   "texture": "cafe_wall_light_col",
+   "format": "DXT1 256x128",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_flower_pot_medium": {
+   "name": "mc/mtl_flower_pot_medium",
+   "class": "lit",
+   "texture": "flower_pot_medium_col",
+   "format": "DXT1 512x128",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_potted_plant02": {
+   "name": "mc/mtl_potted_plant02",
+   "class": "lit",
+   "texture": "potted_plant02_col",
+   "format": "DXT3 128x512",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_flower_pot_large": {
+   "name": "mc/mtl_flower_pot_large",
+   "class": "lit",
+   "texture": "flower_pot_large_col",
+   "format": "DXT1 512x128",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_restaurantstainlessteelshelf": {
+   "name": "mc/mtl_restaurantstainlessteelshelf",
+   "class": "lit",
+   "texture": "restaurant_stainlesssteelshelf_col",
+   "format": "DXT1 256x512",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_dumpster": {
+   "name": "mc/mtl_dumpster",
+   "class": "lit",
+   "texture": "dumpster_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_dumpster_lid": {
+   "name": "mc/mtl_dumpster_lid",
+   "class": "lit",
+   "texture": "dumpster_lid_col",
+   "format": "DXT1 128x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_lightfluo": {
+   "name": "mc/mtl_lightfluo",
+   "class": "lit",
+   "texture": "lightfluohang_col",
+   "format": "DXT1 256x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_lightfluohang_on": {
+   "name": "mc/mtl_lightfluohang_on",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "mc/mtl_industrial_light_01": {
+   "name": "mc/mtl_industrial_light_01",
+   "class": "lit",
+   "texture": "industrial_light_01_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": true,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_industrial_light_bulb_01": {
+   "name": "mc/mtl_industrial_light_bulb_01",
+   "class": "lit",
+   "texture": "industrial_light_bulb_01_on_col",
+   "format": "DXT1 128x128",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_basket_wicker": {
+   "name": "mc/mtl_basket_wicker",
+   "class": "lit",
+   "texture": "basket_wicker_col",
+   "format": "DXT1 256x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_ch_sign_travelagency": {
+   "name": "mc/mtl_ch_sign_travelagency",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "mc/mtl_computer_case": {
+   "name": "mc/mtl_computer_case",
+   "class": "lit",
+   "texture": "computer_case_col",
+   "format": "DXT1 512x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_computer2": {
+   "name": "mc/mtl_computer2",
+   "class": "lit",
+   "texture": "computer_monitor_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_copypaper_box": {
+   "name": "mc/mtl_copypaper_box",
+   "class": "lit",
+   "texture": "copy_paper_box_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_filecabinetblack": {
+   "name": "mc/mtl_filecabinetblack",
+   "class": "lit",
+   "texture": "filecabinetblack_c",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_office_chair_black": {
+   "name": "mc/mtl_office_chair_black",
+   "class": "lit",
+   "texture": "office_chair_black_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_photocopier": {
+   "name": "mc/mtl_photocopier",
+   "class": "lit",
+   "texture": "photocopier_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_office_books": {
+   "name": "mc/mtl_office_books",
+   "class": "lit",
+   "texture": "office_books_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_furniture_desk_and_chairs": {
+   "name": "mc/mtl_furniture_desk_and_chairs",
+   "class": "lit",
+   "texture": "school_desk_and_chairs_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_coffee_machine": {
+   "name": "mc/mtl_coffee_machine",
+   "class": "lit",
+   "texture": "coffee_machine_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_telephone_desk": {
+   "name": "mc/mtl_telephone_desk",
+   "class": "lit",
+   "texture": "telephone_desk_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_furniture_piano01": {
+   "name": "mc/mtl_furniture_piano01",
+   "class": "lit",
+   "texture": "furniture_piano01_c",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_books": {
+   "name": "mc/mtl_books",
+   "class": "lit",
+   "texture": "books_c",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_plastic_case_green_big": {
+   "name": "mc/mtl_plastic_case_green_big",
+   "class": "lit",
+   "texture": "plastic_case_big_green_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_green_plastic_case_rifle": {
+   "name": "mc/mtl_green_plastic_case_rifle",
+   "class": "lit",
+   "texture": "plastic_case_rifle_green_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_ch_couch01": {
+   "name": "mc/mtl_ch_couch01",
+   "class": "lit",
+   "texture": "ch_couch_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_electrical_pipe": {
+   "name": "mc/mtl_electrical_pipe",
+   "class": "lit",
+   "texture": "cargoship_wall_light1_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_com_water_heater": {
+   "name": "mc/mtl_com_water_heater",
+   "class": "lit",
+   "texture": "com_water_heater_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_citrus_box": {
+   "name": "mc/mtl_citrus_box",
+   "class": "lit",
+   "texture": "citrus_boxes",
+   "format": "DXT1 256x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_80s_econ_green": {
+   "name": "mc/mtl_80s_econ_green",
+   "class": "lit",
+   "texture": "80s_econ_green_col",
+   "format": "DXT1 2048x1024",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_80s_econ_glass_outside": {
+   "name": "mc/mtl_80s_econ_glass_outside",
+   "class": "lit",
+   "texture": "80s_econ_glass_col",
+   "format": "DXT5 256x256",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_80s_econdestroy_green": {
+   "name": "mc/mtl_80s_econdestroy_green",
+   "class": "lit",
+   "texture": "80s_econdestroy_green_col",
+   "format": "DXT1 2048x1024",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_80s_econ_glass_inside": {
+   "name": "mc/mtl_80s_econ_glass_inside",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "mc/mtl_80s_econ_green_rubber": {
+   "name": "mc/mtl_80s_econ_green_rubber",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "mc/mtl_clothing_rack": {
+   "name": "mc/mtl_clothing_rack",
+   "class": "lit",
+   "texture": "clothing_rack_col",
+   "format": "DXT1 512x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_lamp_ornate_off": {
+   "name": "mc/mtl_lamp_ornate_off",
+   "class": "lit",
+   "texture": "lamp_ornate_c",
+   "format": "DXT5 256x256",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_airplane_desk01": {
+   "name": "mc/mtl_airplane_desk01",
+   "class": "lit",
+   "texture": "table01_col",
+   "format": "DXT1 512x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_corkboards": {
+   "name": "mc/mtl_corkboards",
+   "class": "lit",
+   "texture": "corkboard_1_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_russian_table": {
+   "name": "mc/mtl_russian_table",
+   "class": "lit",
+   "texture": "russian_table_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_me_pictureframes": {
+   "name": "mc/mtl_me_pictureframes",
+   "class": "lit",
+   "texture": "me_pictureframes",
+   "format": "DXT1 256x128",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_me_paintings2": {
+   "name": "mc/mtl_me_paintings2",
+   "class": "lit",
+   "texture": "me_paintings2",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_bench_posts": {
+   "name": "mc/mtl_bench_posts",
+   "class": "lit",
+   "texture": "mtl_bench_posts",
+   "format": "DXT5 512x512",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_bike": {
+   "name": "mc/mtl_bike",
+   "class": "lit",
+   "texture": "bike_col",
+   "format": "DXT5 256x256",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_fire_extinguisher": {
+   "name": "mc/mtl_fire_extinguisher",
+   "class": "lit",
+   "texture": "fire_extinguisher_c",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_mannequin": {
+   "name": "mc/mtl_mannequin",
+   "class": "lit",
+   "texture": "mannequin_c",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_me_paintings": {
+   "name": "mc/mtl_me_paintings",
+   "class": "lit",
+   "texture": "me_paintings",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_ch_crates": {
+   "name": "mc/mtl_ch_crates",
+   "class": "lit",
+   "texture": "ch_crates_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_barrel_black_rust": {
+   "name": "mc/mtl_barrel_black_rust",
+   "class": "lit",
+   "texture": "55_gallon_drum_black_rust",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_barrel_green_rust": {
+   "name": "mc/mtl_barrel_green_rust",
+   "class": "lit",
+   "texture": "55_gallon_drum_green_rust",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_barrel_white_rust": {
+   "name": "mc/mtl_barrel_white_rust",
+   "class": "lit",
+   "texture": "55_gallon_drum_white_rust",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_barrel_blue_rust": {
+   "name": "mc/mtl_barrel_blue_rust",
+   "class": "lit",
+   "texture": "55_gallon_drum_blue_rust",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_80s_econdestroy_silv": {
+   "name": "mc/mtl_80s_econdestroy_silv",
+   "class": "lit",
+   "texture": "80s_econdestroy_silv_col",
+   "format": "DXT1 2048x1024",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_80s_edestroy_glass": {
+   "name": "mc/mtl_80s_edestroy_glass",
+   "class": "lit",
+   "texture": "80s_destglass_col",
+   "format": "DXT5 256x128",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cargoship_wall_light_on": {
+   "name": "mc/mtl_cargoship_wall_light_on",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "mc/mtl_cargoship_wall_light_off": {
+   "name": "mc/mtl_cargoship_wall_light_off",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "mc/mtl_80s_econ_yel": {
+   "name": "mc/mtl_80s_econ_yel",
+   "class": "lit",
+   "texture": "80s_econ_yel_col",
+   "format": "DXT1 2048x1024",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_tire": {
+   "name": "mc/mtl_tire",
+   "class": "lit",
+   "texture": "junktire_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_paint_can": {
+   "name": "mc/mtl_paint_can",
+   "class": "lit",
+   "texture": "paint_can_col",
+   "format": "DXT1 128x128",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_plasticbottles": {
+   "name": "mc/mtl_plasticbottles",
+   "class": "lit",
+   "texture": "plastic_bottles_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_spray_can_01": {
+   "name": "mc/mtl_spray_can_01",
+   "class": "lit",
+   "texture": "com_spray_can01_col",
+   "format": "DXT1 128x128",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_spray_can_02": {
+   "name": "mc/mtl_spray_can_02",
+   "class": "lit",
+   "texture": "com_spray_can02_col",
+   "format": "DXT1 128x128",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_desertpalm": {
+   "name": "mc/mtl_desertpalm",
+   "class": "lit",
+   "texture": "tree_desertpalm_col",
+   "format": "DXT3 512x512",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_desertpalmfronds": {
+   "name": "mc/mtl_desertpalmfronds",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "mc/mtl_me_statue": {
+   "name": "mc/mtl_me_statue",
+   "class": "lit",
+   "texture": "statue_col",
+   "format": "DXT1 1024x1024",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_me_statue_gun": {
+   "name": "mc/mtl_me_statue_gun",
+   "class": "lit",
+   "texture": "statue_gun_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cargocontainerlockingbar": {
+   "name": "mc/mtl_cargocontainerlockingbar",
+   "class": "lit",
+   "texture": "cargocontainerlockingbar_col",
+   "format": "DXT1 128x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cargocontainerdoorhinge_blue": {
+   "name": "mc/mtl_cargocontainerdoorhinge_blue",
+   "class": "lit",
+   "texture": "cargocontainerdoorhingeblue_col",
+   "format": "DXT1 64x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cargocontainerdoorhinge_usmc": {
+   "name": "mc/mtl_cargocontainerdoorhinge_usmc",
+   "class": "lit",
+   "texture": "cargocontainerdoorhinge_usmc_col",
+   "format": "DXT1 64x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cargocontainerdoorhinge": {
+   "name": "mc/mtl_cargocontainerdoorhinge",
+   "class": "lit",
+   "texture": "cargocontainerdoorhinge_col",
+   "format": "DXT1 64x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_wallfan": {
+   "name": "mc/mtl_wallfan",
+   "class": "lit",
+   "texture": "fan_col",
+   "format": "DXT1 512x256",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cafe_chair2": {
+   "name": "mc/mtl_cafe_chair2",
+   "class": "lit",
+   "texture": "chair2_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cafe_chair2_metal": {
+   "name": "mc/mtl_cafe_chair2_metal",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "mc/mtl_cafe_table1": {
+   "name": "mc/mtl_cafe_table1",
+   "class": "lit",
+   "texture": "cafe_table1_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cafe_table1_base": {
+   "name": "mc/mtl_cafe_table1_base",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "mc/mtl_com_cash_register": {
+   "name": "mc/mtl_com_cash_register",
+   "class": "lit",
+   "texture": "com_cash_register_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_water_tank": {
+   "name": "mc/mtl_water_tank",
+   "class": "lit",
+   "texture": "water_tank1_col",
+   "format": "DXT1 1024x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_water_tower": {
+   "name": "mc/mtl_water_tower",
+   "class": "lit",
+   "texture": "water_tower_col",
+   "format": "DXT1 1024x1024",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_antenna": {
+   "name": "mc/mtl_antenna",
+   "class": "lit",
+   "texture": "antenna_c",
+   "format": "DXT1 128x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_iron_gate": {
+   "name": "mc/mtl_iron_gate",
+   "class": "lit",
+   "texture": "me_metal_rusty03_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_marketumbrella01": {
+   "name": "mc/mtl_marketumbrella01",
+   "class": "lit",
+   "texture": "market_umbrella01_col",
+   "format": "DXT1 256x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/me_metal_grey_01": {
+   "name": "mc/me_metal_grey_01",
+   "class": "lit",
+   "texture": "me_metal_grey01_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_me_locksmith": {
+   "name": "mc/mtl_me_locksmith",
+   "class": "lit",
+   "texture": "me_locksmith",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_me_magazinestand": {
+   "name": "mc/mtl_me_magazinestand",
+   "class": "lit",
+   "texture": "me_magazinestand",
+   "format": "DXT1 128x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_ch_sign_highvoltage": {
+   "name": "mc/mtl_ch_sign_highvoltage",
+   "class": "lit",
+   "texture": "mtl_ch_sign_highvoltage",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_satellite_dish_big": {
+   "name": "mc/mtl_satellite_dish_big",
+   "class": "lit",
+   "texture": "satellite_dish_big_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_satellite_dish_big_decal": {
+   "name": "mc/mtl_satellite_dish_big_decal",
+   "class": "lit",
+   "texture": "satellite_dish_big_col_decal#0",
+   "format": "DXT5 512x256",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_security": {
+   "name": "mc/mtl_security",
+   "class": "lit",
+   "texture": "security_camera_c",
+   "format": "DXT1 1024x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_twolightsfixture_off": {
+   "name": "mc/mtl_twolightsfixture_off",
+   "class": "lit",
+   "texture": "twolightsfixture_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_me_streetsigns": {
+   "name": "mc/mtl_me_streetsigns",
+   "class": "lit",
+   "texture": "me_streetsigns",
+   "format": "DXT5 256x256",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_streetlight": {
+   "name": "mc/mtl_streetlight",
+   "class": "lit",
+   "texture": "streetlight_col",
+   "format": "DXT1 256x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_ch_casinosign": {
+   "name": "mc/mtl_ch_casinosign",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "mc/mtl_me_pastryshop": {
+   "name": "mc/mtl_me_pastryshop",
+   "class": "lit",
+   "texture": "me_pastryshop",
+   "format": "DXT1 256x128",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_rooftop_tank": {
+   "name": "mc/mtl_rooftop_tank",
+   "class": "lit",
+   "texture": "rooftop_tank_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_marketumbrella02": {
+   "name": "mc/mtl_marketumbrella02",
+   "class": "lit",
+   "texture": "market_umbrella02_col",
+   "format": "DXT1 256x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_marketumbrella06": {
+   "name": "mc/mtl_marketumbrella06",
+   "class": "lit",
+   "texture": "market_umbrella06_col",
+   "format": "DXT1 256x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/me_corrugated_metal01": {
+   "name": "mc/me_corrugated_metal01",
+   "class": "lit",
+   "texture": "me_corrugated_metal01_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/me_i_beam": {
+   "name": "mc/me_i_beam",
+   "class": "lit",
+   "texture": "me_i_beam_col",
+   "format": "DXT1 128x1024",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/me_pinewood": {
+   "name": "mc/me_pinewood",
+   "class": "lit",
+   "texture": "me_pinewood_col",
+   "format": "DXT1 256x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/me_sign_hairsalon": {
+   "name": "mc/me_sign_hairsalon",
+   "class": "lit",
+   "texture": "me_hair_salon",
+   "format": "DXT5 256x128",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_me_orangesign": {
+   "name": "mc/mtl_me_orangesign",
+   "class": "lit",
+   "texture": "me_orangesign",
+   "format": "DXT1 512x128",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cobra_town_garage_sign": {
+   "name": "mc/mtl_cobra_town_garage_sign",
+   "class": "lit",
+   "texture": "garage_sign",
+   "format": "DXT5 512x256",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_ch_sign_taxi": {
+   "name": "mc/mtl_ch_sign_taxi",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "mc/me_cinderblock_wall2": {
+   "name": "mc/me_cinderblock_wall2",
+   "class": "lit",
+   "texture": "me_cinderblock_wall02_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_marketumbrella03": {
+   "name": "mc/mtl_marketumbrella03",
+   "class": "lit",
+   "texture": "market_umbrella03_col",
+   "format": "DXT1 256x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_satellitedish": {
+   "name": "mc/mtl_satellitedish",
+   "class": "lit",
+   "texture": "satellitedish_c",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_palmtree_fronds": {
+   "name": "mc/mtl_palmtree_fronds",
+   "class": "lit",
+   "texture": "palmtrees_col",
+   "format": "DXT3 1024x512",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_palmtree_bark": {
+   "name": "mc/mtl_palmtree_bark",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "mc/mtl_brush_toujanebigbushy": {
+   "name": "mc/mtl_brush_toujanebigbushy",
+   "class": "lit",
+   "texture": "tree_desertbushy_col",
+   "format": "DXT3 512x512",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_sign_shakar": {
+   "name": "mc/mtl_sign_shakar",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "mc/mtl_me_cafesign": {
+   "name": "mc/mtl_me_cafesign",
+   "class": "lit",
+   "texture": "me_cafe",
+   "format": "DXT1 256x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_furniture_lunch_table": {
+   "name": "mc/mtl_furniture_lunch_table",
+   "class": "lit",
+   "texture": "ch_furniture_lunch_table_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_electric_box1": {
+   "name": "mc/mtl_electric_box1",
+   "class": "lit",
+   "texture": "electric_box1_c",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_newspaperboxblue": {
+   "name": "mc/mtl_newspaperboxblue",
+   "class": "lit",
+   "texture": "newspaperboxblue_c",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_newspaperbox_red": {
+   "name": "mc/mtl_newspaperbox_red",
+   "class": "lit",
+   "texture": "newspaperbox_red_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_ac_big": {
+   "name": "mc/mtl_ac_big",
+   "class": "lit",
+   "texture": "ac_big_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_ch_sign_appliancestore": {
+   "name": "mc/mtl_ch_sign_appliancestore",
+   "class": "lit",
+   "texture": "ch_sign_appliancestore",
+   "format": "DXT1 1024x128",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_com_tower_crane": {
+   "name": "mc/mtl_com_tower_crane",
+   "class": "lit",
+   "texture": "com_tower_crane_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_wagon_donkey": {
+   "name": "mc/mtl_wagon_donkey",
+   "class": "lit",
+   "texture": "wagon_donkey_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_wagon_donkey_metal": {
+   "name": "mc/mtl_wagon_donkey_metal",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "mc/mtl_wagon_donkey_rubber": {
+   "name": "mc/mtl_wagon_donkey_rubber",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "mc/mtl_woodcage": {
+   "name": "mc/mtl_woodcage",
+   "class": "lit",
+   "texture": "woodcage_col",
+   "format": "DXT5 512x512",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_outhouse": {
+   "name": "mc/mtl_outhouse",
+   "class": "lit",
+   "texture": "pine02_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_basket_rattan": {
+   "name": "mc/mtl_basket_rattan",
+   "class": "lit",
+   "texture": "baskets_rattan_col",
+   "format": "DXT1 256x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_delivery_truck_body": {
+   "name": "mc/mtl_delivery_truck_body",
+   "class": "lit",
+   "texture": "xpec_delivery_truck_body_col",
+   "format": "DXT1 1024x1024",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_delivery_truck_glass": {
+   "name": "mc/mtl_delivery_truck_glass",
+   "class": "lit",
+   "texture": "xpec_delivery_truck_glass_col",
+   "format": "DXT5 512x512",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_delivery_truck_tires": {
+   "name": "mc/mtl_delivery_truck_tires",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  ",mc/lambert1": {
+   "name": ",mc/lambert1",
+   "class": "none",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "material not in the zone extraction",
+    "technique set: none"
+   ]
+  },
+  "mc/mtl_bus_c": {
+   "name": "mc/mtl_bus_c",
+   "class": "lit",
+   "texture": "bus1_col",
+   "format": "DXT1 2048x1024",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_bus_window_c": {
+   "name": "mc/mtl_bus_window_c",
+   "class": "lit",
+   "texture": "bus_windows_col",
+   "format": "DXT5 512x512",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": true,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_bus_bottom": {
+   "name": "mc/mtl_bus_bottom",
+   "class": "lit",
+   "texture": "bus_bottom_col",
+   "format": "DXT1 256x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_chalkboard": {
+   "name": "mc/mtl_chalkboard",
+   "class": "lit",
+   "texture": "chalkboard_col",
+   "format": "DXT1 512x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/ch_bulletinboardpaperdecals_2": {
+   "name": "mc/ch_bulletinboardpaperdecals_2",
+   "class": "lit",
+   "texture": "ch_bulletinboardpaperdecals_2_col",
+   "format": "DXT5 512x512",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_barrel_white": {
+   "name": "mc/mtl_barrel_white",
+   "class": "lit",
+   "texture": "55_gallon_drum_white",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/me_metal_rust_02": {
+   "name": "mc/me_metal_rust_02",
+   "class": "lit",
+   "texture": "me_metal_rusty02_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/me_sign_roseshop": {
+   "name": "mc/me_sign_roseshop",
+   "class": "lit",
+   "texture": "me_roseshop",
+   "format": "DXT1 256x128",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_ch_streetsigns": {
+   "name": "mc/mtl_ch_streetsigns",
+   "class": "lit",
+   "texture": "ch_traffic_signs",
+   "format": "DXT5 256x256",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_wood_crate": {
+   "name": "mc/mtl_wood_crate",
+   "class": "lit",
+   "texture": "woodcrates_col",
+   "format": "DXT5 512x512",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_plasticcrate_brown": {
+   "name": "mc/mtl_plasticcrate_brown",
+   "class": "lit",
+   "texture": "plasticcrate_brown",
+   "format": "DXT5 256x512",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_northafrica_armoire": {
+   "name": "mc/mtl_northafrica_armoire",
+   "class": "lit",
+   "texture": "northafrica_armoire_col",
+   "format": "DXT1 256x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_grandfatherclocktall": {
+   "name": "mc/mtl_grandfatherclocktall",
+   "class": "lit",
+   "texture": "grandfatherclocktall",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_hanging_clothes_aqua": {
+   "name": "mc/mtl_hanging_clothes_aqua",
+   "class": "lit",
+   "texture": "xpec_hanging_clothes_col",
+   "format": "DXT1 1024x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": true,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_bed_mattress": {
+   "name": "mc/mtl_bed_mattress",
+   "class": "lit",
+   "texture": "bed_mattress_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_russian_table_cloth2": {
+   "name": "mc/mtl_russian_table_cloth2",
+   "class": "lit",
+   "texture": "russian_table_cloth2_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": true,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_80s_econ_red": {
+   "name": "mc/mtl_80s_econ_red",
+   "class": "lit",
+   "texture": "80s_econ_red_col",
+   "format": "DXT1 2048x1024",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_plastic_bucket": {
+   "name": "mc/mtl_plastic_bucket",
+   "class": "lit",
+   "texture": "plastic_bucket_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_plastic_bucket_dirt": {
+   "name": "mc/mtl_plastic_bucket_dirt",
+   "class": "lit",
+   "texture": "plastic_bucket_dirt_col",
+   "format": "DXT5 128x128",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ac_building_roof01": {
+   "name": "wc/ac_building_roof01",
+   "class": "lit",
+   "texture": "ac_roof01",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ad_sign128x256": {
+   "name": "wc/ad_sign128x256",
+   "class": "lit",
+   "texture": "ad_sign128x256",
+   "format": "DXT5 256x128",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ad_sign256x256": {
+   "name": "wc/ad_sign256x256",
+   "class": "lit",
+   "texture": "ad_sign256x256",
+   "format": "DXT5 256x256",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ap_office_carpet": {
+   "name": "wc/ap_office_carpet",
+   "class": "lit",
+   "texture": "ap_officecarpet_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ap_wood_smalltile_brown": {
+   "name": "wc/ap_wood_smalltile_brown",
+   "class": "lit",
+   "texture": "ap_wood_smalltile_brown_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ap_wood_tile_big": {
+   "name": "wc/ap_wood_tile_big",
+   "class": "lit",
+   "texture": "ap_wood_tile_big_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ap_wood_tile_brown": {
+   "name": "wc/ap_wood_tile_brown",
+   "class": "lit",
+   "texture": "ap_wood_tile_brown_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_asphalt01": {
+   "name": "wc/ch_asphalt01",
+   "class": "lit",
+   "texture": "ch_asphalt01_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_brick_wall_07": {
+   "name": "wc/ch_brick_wall_07",
+   "class": "lit",
+   "texture": "ch_brickwall07_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_ceiling01": {
+   "name": "wc/ch_ceiling01",
+   "class": "lit",
+   "texture": "ch_ceiling01_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_ceilingtiles_1": {
+   "name": "wc/ch_ceilingtiles_1",
+   "class": "lit",
+   "texture": "ch_ceilingtiles_1_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_church_brick_trim": {
+   "name": "wc/ch_church_brick_trim",
+   "class": "lit",
+   "texture": "ch_church_wall_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_concrete_03": {
+   "name": "wc/ch_concrete_03",
+   "class": "lit",
+   "texture": "ch_concrete03_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_concrete_04": {
+   "name": "wc/ch_concrete_04",
+   "class": "lit",
+   "texture": "ch_concrete04_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_concrete_05": {
+   "name": "wc/ch_concrete_05",
+   "class": "lit",
+   "texture": "ch_concrete_05_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_concrete_ceiling_01": {
+   "name": "wc/ch_concrete_ceiling_01",
+   "class": "lit",
+   "texture": "ch_concrete_ceiling01_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_concrete_floor01": {
+   "name": "wc/ch_concrete_floor01",
+   "class": "lit",
+   "texture": "ch_concrete_floor01_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_concretewall01": {
+   "name": "wc/ch_concretewall01",
+   "class": "lit",
+   "texture": "ch_concretewall01_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_concretewall02": {
+   "name": "wc/ch_concretewall02",
+   "class": "lit",
+   "texture": "ch_concretewall02_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_concretewall03": {
+   "name": "wc/ch_concretewall03",
+   "class": "lit",
+   "texture": "ch_concretewall03_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_concretewall04": {
+   "name": "wc/ch_concretewall04",
+   "class": "lit",
+   "texture": "ch_concretewall04_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_concretewall06": {
+   "name": "wc/ch_concretewall06",
+   "class": "lit",
+   "texture": "ch_concretewall06_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_concretewall15": {
+   "name": "wc/ch_concretewall15",
+   "class": "lit",
+   "texture": "ch_concretewall15_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_concretewall17": {
+   "name": "wc/ch_concretewall17",
+   "class": "lit",
+   "texture": "ch_concretewall17_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_concretewall_trim": {
+   "name": "wc/ch_concretewall_trim",
+   "class": "lit",
+   "texture": "ch_concretewall_trim_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_corrugated_02": {
+   "name": "wc/ch_corrugated_02",
+   "class": "lit",
+   "texture": "ch_corrugated_02_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_counter_linoleum01": {
+   "name": "wc/ch_counter_linoleum01",
+   "class": "lit",
+   "texture": "ch_counter_linoleum01_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_countertop_sidetrim": {
+   "name": "wc/ch_countertop_sidetrim",
+   "class": "lit",
+   "texture": "ch_countertop_sidetrim_col",
+   "format": "DXT1 1024x32",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_decal_mural": {
+   "name": "wc/ch_decal_mural",
+   "class": "lit",
+   "texture": "ch_decal_mural",
+   "format": "DXT5 2048x512",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_door_02": {
+   "name": "wc/ch_door_02",
+   "class": "lit",
+   "texture": "ch_door_02_col",
+   "format": "DXT1 256x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_door_10": {
+   "name": "wc/ch_door_10",
+   "class": "lit",
+   "texture": "ch_door_10_col",
+   "format": "DXT1 256x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_door_13": {
+   "name": "wc/ch_door_13",
+   "class": "lit",
+   "texture": "ch_door_13_col#0",
+   "format": "DXT1 256x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_door_14": {
+   "name": "wc/ch_door_14",
+   "class": "lit",
+   "texture": "ch_door_14_col",
+   "format": "DXT1 256x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_door_18": {
+   "name": "wc/ch_door_18",
+   "class": "lit",
+   "texture": "ch_door_18_col",
+   "format": "DXT1 256x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_factory_corrugatedsiding1": {
+   "name": "wc/ch_factory_corrugatedsiding1",
+   "class": "lit",
+   "texture": "ch_factory_corrugatedsiding1",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_factory_corrugatedsiding2": {
+   "name": "wc/ch_factory_corrugatedsiding2",
+   "class": "lit",
+   "texture": "ch_factory_corrugatedsiding2",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_factory_corrugatedsiding3": {
+   "name": "wc/ch_factory_corrugatedsiding3",
+   "class": "lit",
+   "texture": "ch_factory_corrugatedsiding3",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_grass_02": {
+   "name": "wc/ch_grass_02",
+   "class": "lit",
+   "texture": "ch_grass_02_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_ground_dirt02_footprint": {
+   "name": "wc/ch_ground_dirt02_footprint",
+   "class": "lit",
+   "texture": "ch_ground_dirt02_col",
+   "format": "DXT1 512x512",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_ground_road_concrete01": {
+   "name": "wc/ch_ground_road_concrete01",
+   "class": "lit",
+   "texture": "ch_ground_roadconcrete01_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_metal_diamondplating": {
+   "name": "wc/ch_metal_diamondplating",
+   "class": "lit",
+   "texture": "ch_metal_diamondplating_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_metal_rusty_01": {
+   "name": "wc/ch_metal_rusty_01",
+   "class": "lit",
+   "texture": "ch_metal_rusty_01_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_metal_rusty_02": {
+   "name": "wc/ch_metal_rusty_02",
+   "class": "lit",
+   "texture": "ch_metal_rusty_02_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_metal_rusty_03": {
+   "name": "wc/ch_metal_rusty_03",
+   "class": "lit",
+   "texture": "ch_metal_rusty_03_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_plaster01": {
+   "name": "wc/ch_plaster01",
+   "class": "lit",
+   "texture": "plaster01_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_plaster04": {
+   "name": "wc/ch_plaster04",
+   "class": "lit",
+   "texture": "ch_plaster04_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_plaster_corner_01": {
+   "name": "wc/ch_plaster_corner_01",
+   "class": "lit",
+   "texture": "ch_plastercorner01_col",
+   "format": "DXT1 512x128",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_poster_beer1": {
+   "name": "wc/ch_poster_beer1",
+   "class": "lit",
+   "texture": "ch_poster_beer1",
+   "format": "DXT5 256x256",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_sigh_24hour_store": {
+   "name": "wc/ch_sigh_24hour_store",
+   "class": "lit",
+   "texture": "ch_sign_24hour_store",
+   "format": "DXT1 512x128",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_tile_floor03": {
+   "name": "wc/ch_tile_floor03",
+   "class": "lit",
+   "texture": "ch_tile_floor03_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_tile_floor05": {
+   "name": "wc/ch_tile_floor05",
+   "class": "lit",
+   "texture": "ch_tile_floor05_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_tin_roof02": {
+   "name": "wc/ch_tin_roof02",
+   "class": "lit",
+   "texture": "ch_tingold_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_trim_stainlessteel_1": {
+   "name": "wc/ch_trim_stainlessteel_1",
+   "class": "lit",
+   "texture": "ch_trim_stainlessteel_1_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_trim_stone01": {
+   "name": "wc/ch_trim_stone01",
+   "class": "lit",
+   "texture": "ch_trim_stone01_col",
+   "format": "DXT1 512x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_trim_woodlong01": {
+   "name": "wc/ch_trim_woodlong01",
+   "class": "lit",
+   "texture": "ch_trim_wood01_col",
+   "format": "DXT1 1024x32",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_trimplaster01": {
+   "name": "wc/ch_trimplaster01",
+   "class": "lit",
+   "texture": "ch_plastertrim01_col",
+   "format": "DXT1 512x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_wallpaintchipped_1": {
+   "name": "wc/ch_wallpaintchipped_1",
+   "class": "lit",
+   "texture": "ch_wallpaintchipped_1_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_wallpaintchipped_4": {
+   "name": "wc/ch_wallpaintchipped_4",
+   "class": "lit",
+   "texture": "ch_wallpaintchipped_4_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_wallpaintchipped_5": {
+   "name": "wc/ch_wallpaintchipped_5",
+   "class": "lit",
+   "texture": "ch_wallpaintchipped_5_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_wallpaintchipped_5dark": {
+   "name": "wc/ch_wallpaintchipped_5dark",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/ch_wallwhitegreen01": {
+   "name": "wc/ch_wallwhitegreen01",
+   "class": "lit",
+   "texture": "ch_wallwhitegreen01_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_woodpaint_white01": {
+   "name": "wc/ch_woodpaint_white01",
+   "class": "lit",
+   "texture": "ch_woodpaint_white_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_woodplank01": {
+   "name": "wc/ch_woodplank01",
+   "class": "lit",
+   "texture": "ch_woodplank01_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ch_woodwall01": {
+   "name": "wc/ch_woodwall01",
+   "class": "lit",
+   "texture": "ch_woodwall01_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/com_black": {
+   "name": "wc/com_black",
+   "class": "lit",
+   "texture": "com_black",
+   "format": "DXT1 4x4",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/com_glass_clear": {
+   "name": "wc/com_glass_clear",
+   "class": "lit",
+   "texture": "transparent_dirty",
+   "format": "DXT5 256x256",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/com_guardrail": {
+   "name": "wc/com_guardrail",
+   "class": "lit",
+   "texture": "com_rail",
+   "format": "DXT1 512x128",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/decal_porterjustice8": {
+   "name": "wc/decal_porterjustice8",
+   "class": "lit",
+   "texture": "porter_justice8",
+   "format": "DXT5 256x512",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/icbm_bunkermural2": {
+   "name": "wc/icbm_bunkermural2",
+   "class": "lit",
+   "texture": "icbm_bunkermural2",
+   "format": "DXT3 512x512",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/icbm_conc_stripedwall": {
+   "name": "wc/icbm_conc_stripedwall",
+   "class": "lit",
+   "texture": "icbm_stripedwall",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/icbm_decal_ak47poster": {
+   "name": "wc/icbm_decal_ak47poster",
+   "class": "lit",
+   "texture": "icbm_decal_ak47poster",
+   "format": "DXT3 512x256",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/icbm_decal_mural1": {
+   "name": "wc/icbm_decal_mural1",
+   "class": "lit",
+   "texture": "icbm_decal_mural1",
+   "format": "DXT3 512x512",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/icbm_doortrack": {
+   "name": "wc/icbm_doortrack",
+   "class": "lit",
+   "texture": "icbm_doortrack",
+   "format": "DXT1 32x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/icbm_greymetal": {
+   "name": "wc/icbm_greymetal",
+   "class": "lit",
+   "texture": "icbm_greymetal",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/icbm_metal_vent": {
+   "name": "wc/icbm_metal_vent",
+   "class": "lit",
+   "texture": "icbm_metal_vent",
+   "format": "DXT1 256x128",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/icbm_rollupdoor": {
+   "name": "wc/icbm_rollupdoor",
+   "class": "lit",
+   "texture": "icbm_rollupdoor#0",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/icbm_tunnelfloor": {
+   "name": "wc/icbm_tunnelfloor",
+   "class": "lit",
+   "texture": "icbm_tunnelfloor",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/icbm_tunnelwall": {
+   "name": "wc/icbm_tunnelwall",
+   "class": "lit",
+   "texture": "icbm_tunnelwall1",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_asphalt_01": {
+   "name": "wc/me_asphalt_01",
+   "class": "lit",
+   "texture": "me_asphalt_01",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_brick_01": {
+   "name": "wc/me_brick_01",
+   "class": "lit",
+   "texture": ",me_brick_01",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_brickwall_01": {
+   "name": "wc/me_brickwall_01",
+   "class": "lit",
+   "texture": "me_brickwall_01",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_exteriordoor": {
+   "name": "wc/me_cargocontainer_exteriordoor",
+   "class": "lit",
+   "texture": "me_cargocontainerexteriordoor_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_exteriorwall": {
+   "name": "wc/me_cargocontainer_exteriorwall",
+   "class": "lit",
+   "texture": "me_cargocontainerexteriorwall_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_exttrimcorner01": {
+   "name": "wc/me_cargocontainer_exttrimcorner01",
+   "class": "lit",
+   "texture": "me_cargocontainer_exttrimcorner01_col",
+   "format": "DXT1 64x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_exttrimcorner02": {
+   "name": "wc/me_cargocontainer_exttrimcorner02",
+   "class": "lit",
+   "texture": "me_cargocontainer_exttrimcorner02_col",
+   "format": "DXT1 64x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_exttrimtall": {
+   "name": "wc/me_cargocontainer_exttrimtall",
+   "class": "lit",
+   "texture": "me_cargocontainer_exttrimtall01_col",
+   "format": "DXT1 64x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_exttrimwide": {
+   "name": "wc/me_cargocontainer_exttrimwide",
+   "class": "lit",
+   "texture": "me_cargocontainer_exttrimwide01_col",
+   "format": "DXT1 512x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_interiordoor": {
+   "name": "wc/me_cargocontainer_interiordoor",
+   "class": "lit",
+   "texture": "me_cargocontainerinteriordoor_col",
+   "format": "DXT5 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_top": {
+   "name": "wc/me_cargocontainer_top",
+   "class": "lit",
+   "texture": "me_cargocontainertop_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_usmc_ext_door": {
+   "name": "wc/me_cargocontainer_usmc_ext_door",
+   "class": "lit",
+   "texture": "me_cargocontainer_usmc_ext_door_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_usmc_ext_wall": {
+   "name": "wc/me_cargocontainer_usmc_ext_wall",
+   "class": "lit",
+   "texture": "me_cargocontainer_usmc_ext_wall_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_usmc_roof": {
+   "name": "wc/me_cargocontainer_usmc_roof",
+   "class": "lit",
+   "texture": "me_cargocontainer_usmc_ext_roof_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_usmc_trimcorner1": {
+   "name": "wc/me_cargocontainer_usmc_trimcorner1",
+   "class": "lit",
+   "texture": "me_cargocontainer_usmc_trim01_col",
+   "format": "DXT1 64x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainer_usmc_trimwide": {
+   "name": "wc/me_cargocontainer_usmc_trimwide",
+   "class": "lit",
+   "texture": "me_cargocontainer_usmc_trimwide_col",
+   "format": "DXT1 512x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerblue_ext_door": {
+   "name": "wc/me_cargocontainerblue_ext_door",
+   "class": "lit",
+   "texture": "me_cargocontainerblue_ext_door_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerblue_ext_wall": {
+   "name": "wc/me_cargocontainerblue_ext_wall",
+   "class": "lit",
+   "texture": "me_cargocontainerblue_ext_wall_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerblue_roof": {
+   "name": "wc/me_cargocontainerblue_roof",
+   "class": "lit",
+   "texture": "me_cargocontainerblue_ext_roof_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerblue_trimcorner1": {
+   "name": "wc/me_cargocontainerblue_trimcorner1",
+   "class": "lit",
+   "texture": "me_cargocontainerblue_trim01_col",
+   "format": "DXT1 64x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerblue_trimwide": {
+   "name": "wc/me_cargocontainerblue_trimwide",
+   "class": "lit",
+   "texture": "me_cargocontainerblue_trimwide_col",
+   "format": "DXT1 512x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cargocontainerwhite_roof_wet": {
+   "name": "wc/me_cargocontainerwhite_roof_wet",
+   "class": "lit",
+   "texture": "me_cargocontainerwhite_ext_roof_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_cinderblock_wall2": {
+   "name": "wc/me_cinderblock_wall2",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_cinderblock_wall2_top": {
+   "name": "wc/me_cinderblock_wall2_top",
+   "class": "lit",
+   "texture": "me_cinderblock_wall02_t_col",
+   "format": "DXT1 128x32",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_corrugated_metal01": {
+   "name": "wc/me_corrugated_metal01",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_cube_base": {
+   "name": "wc/me_cube_base",
+   "class": "lit",
+   "texture": "me_cubicle_base",
+   "format": "DXT1 256x32",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_curtains_1": {
+   "name": "wc/me_curtains_1",
+   "class": "lit",
+   "texture": "me_curtains_1_col",
+   "format": "DXT5 512x512",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_door_01": {
+   "name": "wc/me_door_01",
+   "class": "lit",
+   "texture": "me_door_01",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_door_03": {
+   "name": "wc/me_door_03",
+   "class": "lit",
+   "texture": "me_door_narrow03",
+   "format": "DXT1 256x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_door_04": {
+   "name": "wc/me_door_04",
+   "class": "lit",
+   "texture": "me_door_narrow05",
+   "format": "DXT1 256x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_door_06": {
+   "name": "wc/me_door_06",
+   "class": "lit",
+   "texture": "me_door_06_col",
+   "format": "DXT1 256x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_door_11": {
+   "name": "wc/me_door_11",
+   "class": "lit",
+   "texture": "me_door_11_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_door_rollup1": {
+   "name": "wc/me_door_rollup1",
+   "class": "lit",
+   "texture": "me_garagedoor1",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_fence_chainlink": {
+   "name": "wc/me_fence_chainlink",
+   "class": "lit",
+   "texture": "me_chainlink_fence_color#0",
+   "format": "DXT5 256x256",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_floor_concrete": {
+   "name": "wc/me_floor_concrete",
+   "class": "lit",
+   "texture": "me_floor_concrete_c",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_graffiti08": {
+   "name": "wc/me_graffiti08",
+   "class": "lit",
+   "texture": "me_graffiti08",
+   "format": "DXT5 512x256",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_ground_sand1": {
+   "name": "wc/me_ground_sand1",
+   "class": "lit",
+   "texture": "me_ground_sand1_color",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_i_beam": {
+   "name": "wc/me_i_beam",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_marketstall_canopy2": {
+   "name": "wc/me_marketstall_canopy2",
+   "class": "lit",
+   "texture": "me_marketstall_canopy2_col",
+   "format": "DXT1 512x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_marketstall_canopy3": {
+   "name": "wc/me_marketstall_canopy3",
+   "class": "lit",
+   "texture": "me_marketstall_canopy3_col",
+   "format": "DXT1 512x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_metal_grey_01": {
+   "name": "wc/me_metal_grey_01",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_metal_rust_02": {
+   "name": "wc/me_metal_rust_02",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_metal_rust_03": {
+   "name": "wc/me_metal_rust_03",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_metal_rust_03_wet": {
+   "name": "wc/me_metal_rust_03_wet",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_office_ceiling_tiles": {
+   "name": "wc/me_office_ceiling_tiles",
+   "class": "lit",
+   "texture": "me_office_ceiling_tiles_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_pinewood": {
+   "name": "wc/me_pinewood",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_plaster_01": {
+   "name": "wc/me_plaster_01",
+   "class": "lit",
+   "texture": "me_plaster_01",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_plaster_02": {
+   "name": "wc/me_plaster_02",
+   "class": "lit",
+   "texture": "me_plaster_02",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_plaster_02_interior": {
+   "name": "wc/me_plaster_02_interior",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_plaster_brown": {
+   "name": "wc/me_plaster_brown",
+   "class": "lit",
+   "texture": "me_brown_plaster",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_plaster_white": {
+   "name": "wc/me_plaster_white",
+   "class": "lit",
+   "texture": "me_white_plaster",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_railing_plaster": {
+   "name": "wc/me_railing_plaster",
+   "class": "lit",
+   "texture": "me_railing_plaster",
+   "format": "DXT3 256x128",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_railing_plaster2": {
+   "name": "wc/me_railing_plaster2",
+   "class": "lit",
+   "texture": "me_railing_plaster2",
+   "format": "DXT3 256x128",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_roof_01": {
+   "name": "wc/me_roof_01",
+   "class": "lit",
+   "texture": "me_roof",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_sidewalk_01": {
+   "name": "wc/me_sidewalk_01",
+   "class": "lit",
+   "texture": "me_sidewalk1",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_sidewalk_02": {
+   "name": "wc/me_sidewalk_02",
+   "class": "lit",
+   "texture": "me_sidewalk_02",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_sidewalk_curb": {
+   "name": "wc/me_sidewalk_curb",
+   "class": "lit",
+   "texture": "me_sidewalk_curb_color",
+   "format": "DXT1 512x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_sidewalk_curb_whiteorange": {
+   "name": "wc/me_sidewalk_curb_whiteorange",
+   "class": "lit",
+   "texture": "me_sidewalk_curb_whiteorange_color",
+   "format": "DXT1 512x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_sidewalk_dogbone": {
+   "name": "wc/me_sidewalk_dogbone",
+   "class": "lit",
+   "texture": "me_dogbone_walk",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_sign_roseshop": {
+   "name": "wc/me_sign_roseshop",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_trim_metal_01": {
+   "name": "wc/me_trim_metal_01",
+   "class": "lit",
+   "texture": "me_trim_metal01_col",
+   "format": "DXT1 128x1024",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_trim_metalplate_1": {
+   "name": "wc/me_trim_metalplate_1",
+   "class": "lit",
+   "texture": "me_trim_metalplate_1_col",
+   "format": "DXT1 512x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_wallpaper2": {
+   "name": "wc/me_wallpaper2",
+   "class": "lit",
+   "texture": "me_wallpaper2_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_wallpaper3": {
+   "name": "wc/me_wallpaper3",
+   "class": "lit",
+   "texture": "me_wallpaper3_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_wallpaper_4": {
+   "name": "wc/me_wallpaper_4",
+   "class": "lit",
+   "texture": "me_wallpaper_4_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_wallpaper_5": {
+   "name": "wc/me_wallpaper_5",
+   "class": "lit",
+   "texture": "me_wallpaper_5_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_wallpaper_7": {
+   "name": "wc/me_wallpaper_7",
+   "class": "lit",
+   "texture": "me_wallpaper_7_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_warehouse_corrogated": {
+   "name": "wc/me_warehouse_corrogated",
+   "class": "lit",
+   "texture": "me_warehouse_corrogated_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_window_05": {
+   "name": "wc/me_window_05",
+   "class": "lit",
+   "texture": "me_window5",
+   "format": "DXT1 256x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_window_06": {
+   "name": "wc/me_window_06",
+   "class": "lit",
+   "texture": "me_window_06_col",
+   "format": "DXT1 256x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_window_greendirty": {
+   "name": "wc/me_window_greendirty",
+   "class": "lit",
+   "texture": "me_window_greendirty",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_window_shutters_01": {
+   "name": "wc/me_window_shutters_01",
+   "class": "lit",
+   "texture": "me_window_shutters_01_col",
+   "format": "DXT1 256x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_window_shutters_02": {
+   "name": "wc/me_window_shutters_02",
+   "class": "lit",
+   "texture": "me_window_shutters_02_col",
+   "format": "DXT1 256x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_windowfence": {
+   "name": "wc/me_windowfence",
+   "class": "lit",
+   "texture": "me_windowfence",
+   "format": "DXT3 256x512",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_windowfence_02": {
+   "name": "wc/me_windowfence_02",
+   "class": "lit",
+   "texture": "me_window_fence_col",
+   "format": "DXT1 256x128",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_woodbeam_01": {
+   "name": "wc/me_woodbeam_01",
+   "class": "lit",
+   "texture": "me_wood_beam",
+   "format": "DXT1 1024x64",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_woodboard_01": {
+   "name": "wc/me_woodboard_01",
+   "class": "lit",
+   "texture": "me_woodboard_01_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_woodboard_02": {
+   "name": "wc/me_woodboard_02",
+   "class": "lit",
+   "texture": "me_woodboard_02_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_woodboard_03": {
+   "name": "wc/me_woodboard_03",
+   "class": "lit",
+   "texture": "me_woodboard_03_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_woodplanks01": {
+   "name": "wc/me_woodplanks01",
+   "class": "lit",
+   "texture": "me_wood_01_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/office_tilefloor": {
+   "name": "wc/office_tilefloor",
+   "class": "lit",
+   "texture": "office_floor",
+   "format": "DXT5 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/shadowcaster": {
+   "name": "wc/shadowcaster",
+   "class": "shadowcaster",
+   "texture": ",shadow",
+   "format": "DXT3 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": [
+    "shadow caster only (no colour pass); hidden"
+   ]
+  },
+  "wc/ship_wallmetal_painted01": {
+   "name": "wc/ship_wallmetal_painted01",
+   "class": "lit",
+   "texture": "cs_metalwall_paint01_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/ship_wallmetal_painted_blu01": {
+   "name": "wc/ship_wallmetal_painted_blu01",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/ch_asphaltcracks01_dec": {
+   "name": "wc/ch_asphaltcracks01_dec",
+   "class": "lit",
+   "texture": "ch_asphaltcracks01_col",
+   "format": "DXT1 512x512",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_asphalt_01_blend": {
+   "name": "wc/me_asphalt_01_blend",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "wc/me_decal_cargocontainernumbers_03": {
+   "name": "wc/me_decal_cargocontainernumbers_03",
+   "class": "lit",
+   "texture": "me_cargocontainer_decalnumbers03_col",
+   "format": "DXT1 32x256",
+   "alphaTest": null,
+   "blend": "one/one",
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "wc/me_decal_cargocontainersignage01": {
+   "name": "wc/me_decal_cargocontainersignage01",
+   "class": "lit",
+   "texture": "me_cargocontainer_decalsignage01_col",
+   "format": "DXT5 64x64",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "wc/me_decal_cargocontainertext_01": {
+   "name": "wc/me_decal_cargocontainertext_01",
+   "class": "lit",
+   "texture": "me_cargocontainer_decal_text01_col",
+   "format": "DXT1 64x512",
+   "alphaTest": null,
+   "blend": "one/one",
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "wc/me_decal_papers": {
+   "name": "wc/me_decal_papers",
+   "class": "lit",
+   "texture": "me_paper_debris_c",
+   "format": "DXT5 512x512",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_styroform": {
+   "name": "mc/mtl_styroform",
+   "class": "lit",
+   "texture": "case_styroform_col",
+   "format": "DXT1 128x128",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_plastic_case_bomb": {
+   "name": "mc/mtl_plastic_case_bomb",
+   "class": "lit",
+   "texture": "plastic_case_bomb_col",
+   "format": "DXT1 512x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_weapon_stinger": {
+   "name": "mc/mtl_weapon_stinger",
+   "class": "lit",
+   "texture": "weapon_stinger_col",
+   "format": "DXT1 2048x1024",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_plastic_case_bomb_d": {
+   "name": "mc/mtl_plastic_case_bomb_d",
+   "class": "lit",
+   "texture": "plastic_case_bomb_d_col",
+   "format": "DXT1 512x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_styroform_d": {
+   "name": "mc/mtl_styroform_d",
+   "class": "lit",
+   "texture": "case_styroform_d_col",
+   "format": "DXT1 128x128",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_cellphone": {
+   "name": "mc/mtl_cellphone",
+   "class": "lit",
+   "texture": "cellphone_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_laptop_envu": {
+   "name": "mc/mtl_laptop_envu",
+   "class": "lit",
+   "texture": "laptop_envu_col",
+   "format": "DXT1 512x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_laptop_envu_screen": {
+   "name": "mc/mtl_laptop_envu_screen",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "mc/mtl_plastic_case_big": {
+   "name": "mc/mtl_plastic_case_big",
+   "class": "lit",
+   "texture": "plastic_case_big_beige_col",
+   "format": "DXT1 512x512",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_tntbomb": {
+   "name": "mc/mtl_tntbomb",
+   "class": "none",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "material not in the zone extraction",
+    "technique set: none"
+   ]
+  },
+  "mc/mtl_flag_neutral": {
+   "name": "mc/mtl_flag_neutral",
+   "class": "none",
+   "texture": null,
+   "format": null,
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": [
+    "material not in the zone extraction",
+    "technique set: none",
+    "colour map guessed by name (name)"
+   ]
+  },
+  "mc/mtl_engine": {
+   "name": "mc/mtl_engine",
+   "class": "lit",
+   "texture": "car_engine_col",
+   "format": "DXT1 256x256",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_80s_econdestroy_green_rubber": {
+   "name": "mc/mtl_80s_econdestroy_green_rubber",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  "mc/mtl_80s_econdestroy_green_metal": {
+   "name": "mc/mtl_80s_econdestroy_green_metal",
+   "class": "lit",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "image reference resolved"
+   ]
+  },
+  ",mc/com_glass_shattered_outside": {
+   "name": ",mc/com_glass_shattered_outside",
+   "class": "none",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "material not in the zone extraction",
+    "technique set: none"
+   ]
+  },
+  "mc/com_glass_shattered_inside": {
+   "name": "mc/com_glass_shattered_inside",
+   "class": "lit",
+   "texture": ",glass_shattered_col",
+   "format": "DXT5 256x256",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "textureAlpha": true,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_80s_econdestroy_red": {
+   "name": "mc/mtl_80s_econdestroy_red",
+   "class": "lit",
+   "texture": "80s_econdestroy_red_col",
+   "format": "DXT1 2048x1024",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_80s_econdestroy_tan": {
+   "name": "mc/mtl_80s_econdestroy_tan",
+   "class": "lit",
+   "texture": "80s_econdestroy_tan_col",
+   "format": "DXT1 2048x1024",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_80s_econ_tan": {
+   "name": "mc/mtl_80s_econ_tan",
+   "class": "lit",
+   "texture": "80s_econ_tan_col",
+   "format": "DXT1 2048x1024",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
+  "mc/mtl_80s_econdestroy_yel": {
+   "name": "mc/mtl_80s_econdestroy_yel",
+   "class": "lit",
+   "texture": "80s_econdestroy_yel_col",
+   "format": "DXT1 2048x1024",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  }
+ },
+ "effects": [],
+ "fxMaterials": {
+  "gfx_whisp_spiral": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_spotlight_lensflare_glwz20": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_exp_igc": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_fire_roar_pm": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_smk_white_atlas": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_wind_hl_atlas": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_smk_white_atlas_add": {
+   "status": "missing-texture",
+   "issues": [
+    "blend one/one",
+    "no colour map exported (drawn as a soft round sprite)"
+   ]
+  },
+  "cloud_glass": {
+   "status": "ok",
+   "issues": []
+  }
+ },
+ "summary": {
+  "map": "mp_marketcenter",
+  "props": 1248,
+  "propModels": 214,
+  "propTriangles": 513120,
+  "worldTriangles": 77829,
+  "worldMaterials": 168,
+  "scriptModels": 91,
+  "imageRefs": {
+   "references": 111,
+   "resolved": 105,
+   "semanticMismatch": 1,
+   "fromModels": 508,
+   "materialChains": 184,
+   "calibratedChains": 8
+  },
+  "colourMapRefs": 43,
+  "colourMapRefsUnresolved": 3,
+  "normalMapsUnswizzled": 0,
+  "alphaTexturesWithoutExact": 0,
+  "seconds": 7.9
+ }
+}

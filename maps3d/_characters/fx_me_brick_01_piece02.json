@@ -1,0 +1,76 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "fx_me_brick_01_piece02",
+ "kind": "fx",
+ "faction": null,
+ "file": "fx_me_brick_01_piece02.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 576
+  },
+  "normal": {
+   "offset": 576,
+   "length": 192
+  },
+  "uv": {
+   "offset": 768,
+   "length": 384
+  },
+  "skinIndex": {
+   "offset": 1152,
+   "length": 192
+  },
+  "skinWeight": {
+   "offset": 1344,
+   "length": 192
+  },
+  "index": {
+   "offset": 1536,
+   "length": 240
+  },
+  "color": {
+   "offset": 1776,
+   "length": 192
+  }
+ },
+ "vertexCount": 48,
+ "triangleCount": 40,
+ "bones": [
+  {
+   "name": "polysurface16",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 120,
+   "material": -1
+  }
+ ],
+ "materials": [],
+ "bounds": {
+  "mins": [
+   -3.62,
+   -1.68,
+   -2.95
+  ],
+  "maxs": [
+   3.62,
+   1.68,
+   2.95
+  ]
+ }
+}

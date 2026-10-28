@@ -1,0 +1,93 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "perc_slieghtofhand",
+ "kind": "script",
+ "faction": null,
+ "file": "perc_slieghtofhand.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 48
+  },
+  "normal": {
+   "offset": 48,
+   "length": 16
+  },
+  "uv": {
+   "offset": 64,
+   "length": 32
+  },
+  "skinIndex": {
+   "offset": 96,
+   "length": 16
+  },
+  "skinWeight": {
+   "offset": 112,
+   "length": 16
+  },
+  "index": {
+   "offset": 128,
+   "length": 12
+  },
+  "color": {
+   "offset": 140,
+   "length": 16
+  }
+ },
+ "vertexCount": 4,
+ "triangleCount": 2,
+ "bones": [
+  {
+   "name": "tag_origin",
+   "parent": -1,
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "quat": [
+    0,
+    0,
+    0,
+    1
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 6,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_perc_slieghtofhand",
+   "texture": "_textures/specialty_fastreload_256.webp",
+   "textureAlpha": true,
+   "color": "#9b6b6b",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -15.98,
+   0.0,
+   -10.44
+  ],
+  "maxs": [
+   15.98,
+   0.0,
+   10.44
+  ]
+ }
+}

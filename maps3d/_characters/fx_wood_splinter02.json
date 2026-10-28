@@ -1,0 +1,76 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "fx_wood_splinter02",
+ "kind": "fx",
+ "faction": null,
+ "file": "fx_wood_splinter02.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 624
+  },
+  "normal": {
+   "offset": 624,
+   "length": 208
+  },
+  "uv": {
+   "offset": 832,
+   "length": 416
+  },
+  "skinIndex": {
+   "offset": 1248,
+   "length": 208
+  },
+  "skinWeight": {
+   "offset": 1456,
+   "length": 208
+  },
+  "index": {
+   "offset": 1664,
+   "length": 132
+  },
+  "color": {
+   "offset": 1796,
+   "length": 208
+  }
+ },
+ "vertexCount": 52,
+ "triangleCount": 22,
+ "bones": [
+  {
+   "name": "polysurface155",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 66,
+   "material": -1
+  }
+ ],
+ "materials": [],
+ "bounds": {
+  "mins": [
+   -2.83,
+   -0.75,
+   -10.95
+  ],
+  "maxs": [
+   2.83,
+   0.75,
+   8.6
+  ]
+ }
+}

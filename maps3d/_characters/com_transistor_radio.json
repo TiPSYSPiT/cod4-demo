@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_transistor_radio",
+ "kind": "script",
+ "faction": null,
+ "file": "com_transistor_radio.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 4116
+  },
+  "normal": {
+   "offset": 4116,
+   "length": 1372
+  },
+  "uv": {
+   "offset": 5488,
+   "length": 2744
+  },
+  "skinIndex": {
+   "offset": 8232,
+   "length": 1372
+  },
+  "skinWeight": {
+   "offset": 9604,
+   "length": 1372
+  },
+  "index": {
+   "offset": 10976,
+   "length": 2292
+  },
+  "color": {
+   "offset": 13268,
+   "length": 1372
+  }
+ },
+ "vertexCount": 343,
+ "triangleCount": 382,
+ "bones": [
+  {
+   "name": "transistor_radio_lod0",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 1146,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_transistor_radio",
+   "texture": "_textures/transistor_radio_col.webp",
+   "textureAlpha": false,
+   "color": "#4d4844",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/transistor_radio_nml.normal.webp",
+   "specularMap": "_textures/transistor_radio_spc-rgb_tra_f5a20699.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -1.72,
+   -7.48,
+   -5.73
+  ],
+  "maxs": [
+   1.72,
+   7.48,
+   5.73
+  ]
+ }
+}

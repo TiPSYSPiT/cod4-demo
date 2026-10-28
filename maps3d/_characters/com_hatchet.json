@@ -1,0 +1,100 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_hatchet",
+ "kind": "script",
+ "faction": null,
+ "file": "com_hatchet.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 2544
+  },
+  "normal": {
+   "offset": 2544,
+   "length": 848
+  },
+  "uv": {
+   "offset": 3392,
+   "length": 1696
+  },
+  "skinIndex": {
+   "offset": 5088,
+   "length": 848
+  },
+  "skinWeight": {
+   "offset": 5936,
+   "length": 848
+  },
+  "index": {
+   "offset": 6784,
+   "length": 1176
+  },
+  "color": {
+   "offset": 7960,
+   "length": 848
+  }
+ },
+ "vertexCount": 212,
+ "triangleCount": 196,
+ "bones": [
+  {
+   "name": "polysurface101",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 588,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_com_hatchet",
+   "texture": "_textures/com_hatchet_col.webp",
+   "textureAlpha": false,
+   "color": "#352718",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/com_hatchet_spc-r-49g-49b-49_7adfe77b.specular.webp",
+   "envMapParms": [
+    3.2,
+    3.2,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   0.0,
+   -1.01,
+   -0.27
+  ],
+  "maxs": [
+   25.1,
+   0.86,
+   8.88
+  ]
+ }
+}

@@ -1,0 +1,5027 @@
+{
+ "spawns": [
+  {
+   "classname": "mp_ctf_spawn_allies_start",
+   "origin": [
+    6016.0,
+    768.0,
+    36.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "allies",
+   "start": true
+  },
+  {
+   "classname": "mp_ctf_spawn_axis_start",
+   "origin": [
+    2328.0,
+    -248.0,
+    12.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "axis",
+   "start": true
+  },
+  {
+   "classname": "mp_dm_spawn",
+   "origin": [
+    2572.0,
+    18.0,
+    8.0
+   ],
+   "angles": [
+    0.0,
+    202.0,
+    0.0
+   ],
+   "mode": "dm",
+   "start": false
+  },
+  {
+   "classname": "mp_dm_spawn",
+   "origin": [
+    5962.0,
+    880.0,
+    60.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "dm",
+   "start": false
+  },
+  {
+   "classname": "mp_ctf_spawn_allies",
+   "origin": [
+    5962.0,
+    880.0,
+    68.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "allies",
+   "start": false
+  },
+  {
+   "classname": "mp_dom_spawn",
+   "origin": [
+    2572.0,
+    18.0,
+    0.0
+   ],
+   "angles": [
+    0.0,
+    202.0,
+    0.0
+   ],
+   "mode": "dom",
+   "start": false
+  },
+  {
+   "classname": "mp_dom_spawn",
+   "origin": [
+    5962.0,
+    880.0,
+    52.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "dom",
+   "start": false
+  },
+  {
+   "classname": "mp_dom_spawn_allies_start",
+   "origin": [
+    6016.0,
+    768.0,
+    44.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "dom",
+   "team": "allies",
+   "start": true
+  },
+  {
+   "classname": "mp_dom_spawn_axis_start",
+   "origin": [
+    2328.0,
+    -248.0,
+    20.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "dom",
+   "team": "axis",
+   "start": true
+  },
+  {
+   "classname": "mp_ctf_spawn_axis",
+   "origin": [
+    2572.0,
+    18.0,
+    16.0
+   ],
+   "angles": [
+    0.0,
+    202.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "axis",
+   "start": false
+  },
+  {
+   "classname": "mp_sab_spawn_axis",
+   "origin": [
+    2572.0,
+    18.0,
+    24.0
+   ],
+   "angles": [
+    0.0,
+    202.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "axis",
+   "start": false
+  },
+  {
+   "classname": "mp_sab_spawn_allies_start",
+   "origin": [
+    6016.0,
+    768.0,
+    52.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "allies",
+   "start": true
+  },
+  {
+   "classname": "mp_sab_spawn_allies",
+   "origin": [
+    5962.0,
+    880.0,
+    76.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "allies",
+   "start": false
+  },
+  {
+   "classname": "mp_sab_spawn_axis_start",
+   "origin": [
+    2328.0,
+    -248.0,
+    28.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "axis",
+   "start": true
+  },
+  {
+   "classname": "mp_tdm_spawn_allies_start",
+   "origin": [
+    6016.0,
+    768.0,
+    60.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "team": "allies",
+   "start": true
+  },
+  {
+   "classname": "mp_tdm_spawn_axis_start",
+   "origin": [
+    2328.0,
+    -248.0,
+    36.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "team": "axis",
+   "start": true
+  },
+  {
+   "classname": "mp_tdm_spawn",
+   "origin": [
+    2572.0,
+    18.0,
+    32.0
+   ],
+   "angles": [
+    0.0,
+    202.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "start": false
+  },
+  {
+   "classname": "mp_tdm_spawn",
+   "origin": [
+    5962.0,
+    880.0,
+    84.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "start": false
+  },
+  {
+   "classname": "mp_ctf_spawn_allies_start",
+   "origin": [
+    6080.0,
+    768.0,
+    36.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "allies",
+   "start": true
+  },
+  {
+   "classname": "mp_dom_spawn_allies_start",
+   "origin": [
+    6080.0,
+    768.0,
+    44.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "dom",
+   "team": "allies",
+   "start": true
+  },
+  {
+   "classname": "mp_sab_spawn_allies_start",
+   "origin": [
+    6080.0,
+    768.0,
+    52.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "allies",
+   "start": true
+  },
+  {
+   "classname": "mp_tdm_spawn_allies_start",
+   "origin": [
+    6080.0,
+    768.0,
+    60.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "team": "allies",
+   "start": true
+  },
+  {
+   "classname": "mp_ctf_spawn_allies_start",
+   "origin": [
+    6144.0,
+    768.0,
+    36.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "allies",
+   "start": true
+  },
+  {
+   "classname": "mp_dom_spawn_allies_start",
+   "origin": [
+    6144.0,
+    768.0,
+    44.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "dom",
+   "team": "allies",
+   "start": true
+  },
+  {
+   "classname": "mp_sab_spawn_allies_start",
+   "origin": [
+    6144.0,
+    768.0,
+    52.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "allies",
+   "start": true
+  },
+  {
+   "classname": "mp_tdm_spawn_allies_start",
+   "origin": [
+    6144.0,
+    768.0,
+    60.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "team": "allies",
+   "start": true
+  },
+  {
+   "classname": "mp_ctf_spawn_allies_start",
+   "origin": [
+    6208.0,
+    768.0,
+    36.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "allies",
+   "start": true
+  },
+  {
+   "classname": "mp_dom_spawn_allies_start",
+   "origin": [
+    6208.0,
+    768.0,
+    44.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "dom",
+   "team": "allies",
+   "start": true
+  },
+  {
+   "classname": "mp_sab_spawn_allies_start",
+   "origin": [
+    6208.0,
+    768.0,
+    52.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "allies",
+   "start": true
+  },
+  {
+   "classname": "mp_tdm_spawn_allies_start",
+   "origin": [
+    6208.0,
+    768.0,
+    60.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "team": "allies",
+   "start": true
+  },
+  {
+   "classname": "mp_ctf_spawn_allies_start",
+   "origin": [
+    6208.0,
+    880.0,
+    52.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "allies",
+   "start": true
+  },
+  {
+   "classname": "mp_dom_spawn_allies_start",
+   "origin": [
+    6208.0,
+    880.0,
+    60.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "dom",
+   "team": "allies",
+   "start": true
+  },
+  {
+   "classname": "mp_sab_spawn_allies_start",
+   "origin": [
+    6208.0,
+    880.0,
+    68.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "allies",
+   "start": true
+  },
+  {
+   "classname": "mp_tdm_spawn_allies_start",
+   "origin": [
+    6208.0,
+    880.0,
+    76.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "team": "allies",
+   "start": true
+  },
+  {
+   "classname": "mp_ctf_spawn_allies_start",
+   "origin": [
+    6144.0,
+    880.0,
+    36.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "allies",
+   "start": true
+  },
+  {
+   "classname": "mp_dom_spawn_allies_start",
+   "origin": [
+    6144.0,
+    880.0,
+    44.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "dom",
+   "team": "allies",
+   "start": true
+  },
+  {
+   "classname": "mp_sab_spawn_allies_start",
+   "origin": [
+    6144.0,
+    880.0,
+    52.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "allies",
+   "start": true
+  },
+  {
+   "classname": "mp_tdm_spawn_allies_start",
+   "origin": [
+    6144.0,
+    880.0,
+    60.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "team": "allies",
+   "start": true
+  },
+  {
+   "classname": "mp_ctf_spawn_allies_start",
+   "origin": [
+    6080.0,
+    880.0,
+    36.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "allies",
+   "start": true
+  },
+  {
+   "classname": "mp_dom_spawn_allies_start",
+   "origin": [
+    6080.0,
+    880.0,
+    44.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "dom",
+   "team": "allies",
+   "start": true
+  },
+  {
+   "classname": "mp_sab_spawn_allies_start",
+   "origin": [
+    6080.0,
+    880.0,
+    52.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "allies",
+   "start": true
+  },
+  {
+   "classname": "mp_tdm_spawn_allies_start",
+   "origin": [
+    6080.0,
+    880.0,
+    60.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "team": "allies",
+   "start": true
+  },
+  {
+   "classname": "mp_ctf_spawn_allies_start",
+   "origin": [
+    6016.0,
+    880.0,
+    40.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "allies",
+   "start": true
+  },
+  {
+   "classname": "mp_dom_spawn_allies_start",
+   "origin": [
+    6016.0,
+    880.0,
+    44.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "dom",
+   "team": "allies",
+   "start": true
+  },
+  {
+   "classname": "mp_sab_spawn_allies_start",
+   "origin": [
+    6016.0,
+    880.0,
+    52.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "allies",
+   "start": true
+  },
+  {
+   "classname": "mp_tdm_spawn_allies_start",
+   "origin": [
+    6016.0,
+    880.0,
+    60.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "team": "allies",
+   "start": true
+  },
+  {
+   "classname": "mp_ctf_spawn_axis_start",
+   "origin": [
+    2384.0,
+    -288.0,
+    12.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "axis",
+   "start": true
+  },
+  {
+   "classname": "mp_dom_spawn_axis_start",
+   "origin": [
+    2384.0,
+    -288.0,
+    20.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "dom",
+   "team": "axis",
+   "start": true
+  },
+  {
+   "classname": "mp_sab_spawn_axis_start",
+   "origin": [
+    2384.0,
+    -288.0,
+    28.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "axis",
+   "start": true
+  },
+  {
+   "classname": "mp_tdm_spawn_axis_start",
+   "origin": [
+    2384.0,
+    -288.0,
+    36.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "team": "axis",
+   "start": true
+  },
+  {
+   "classname": "mp_ctf_spawn_axis_start",
+   "origin": [
+    2440.0,
+    -328.0,
+    12.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "axis",
+   "start": true
+  },
+  {
+   "classname": "mp_dom_spawn_axis_start",
+   "origin": [
+    2440.0,
+    -328.0,
+    20.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "dom",
+   "team": "axis",
+   "start": true
+  },
+  {
+   "classname": "mp_sab_spawn_axis_start",
+   "origin": [
+    2440.0,
+    -328.0,
+    28.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "axis",
+   "start": true
+  },
+  {
+   "classname": "mp_tdm_spawn_axis_start",
+   "origin": [
+    2440.0,
+    -328.0,
+    36.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "team": "axis",
+   "start": true
+  },
+  {
+   "classname": "mp_ctf_spawn_axis_start",
+   "origin": [
+    2496.0,
+    -360.0,
+    12.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "axis",
+   "start": true
+  },
+  {
+   "classname": "mp_dom_spawn_axis_start",
+   "origin": [
+    2496.0,
+    -360.0,
+    20.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "dom",
+   "team": "axis",
+   "start": true
+  },
+  {
+   "classname": "mp_sab_spawn_axis_start",
+   "origin": [
+    2496.0,
+    -360.0,
+    28.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "axis",
+   "start": true
+  },
+  {
+   "classname": "mp_tdm_spawn_axis_start",
+   "origin": [
+    2496.0,
+    -360.0,
+    36.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "team": "axis",
+   "start": true
+  },
+  {
+   "classname": "mp_ctf_spawn_axis_start",
+   "origin": [
+    2528.0,
+    -296.0,
+    12.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "axis",
+   "start": true
+  },
+  {
+   "classname": "mp_dom_spawn_axis_start",
+   "origin": [
+    2528.0,
+    -296.0,
+    20.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "dom",
+   "team": "axis",
+   "start": true
+  },
+  {
+   "classname": "mp_sab_spawn_axis_start",
+   "origin": [
+    2528.0,
+    -296.0,
+    28.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "axis",
+   "start": true
+  },
+  {
+   "classname": "mp_tdm_spawn_axis_start",
+   "origin": [
+    2528.0,
+    -296.0,
+    36.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "team": "axis",
+   "start": true
+  },
+  {
+   "classname": "mp_ctf_spawn_axis_start",
+   "origin": [
+    2480.0,
+    -256.0,
+    12.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "axis",
+   "start": true
+  },
+  {
+   "classname": "mp_dom_spawn_axis_start",
+   "origin": [
+    2480.0,
+    -256.0,
+    20.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "dom",
+   "team": "axis",
+   "start": true
+  },
+  {
+   "classname": "mp_sab_spawn_axis_start",
+   "origin": [
+    2480.0,
+    -256.0,
+    28.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "axis",
+   "start": true
+  },
+  {
+   "classname": "mp_tdm_spawn_axis_start",
+   "origin": [
+    2480.0,
+    -256.0,
+    36.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "team": "axis",
+   "start": true
+  },
+  {
+   "classname": "mp_ctf_spawn_axis_start",
+   "origin": [
+    2424.0,
+    -232.0,
+    12.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "axis",
+   "start": true
+  },
+  {
+   "classname": "mp_dom_spawn_axis_start",
+   "origin": [
+    2424.0,
+    -232.0,
+    20.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "dom",
+   "team": "axis",
+   "start": true
+  },
+  {
+   "classname": "mp_sab_spawn_axis_start",
+   "origin": [
+    2424.0,
+    -232.0,
+    28.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "axis",
+   "start": true
+  },
+  {
+   "classname": "mp_tdm_spawn_axis_start",
+   "origin": [
+    2424.0,
+    -232.0,
+    36.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "team": "axis",
+   "start": true
+  },
+  {
+   "classname": "mp_ctf_spawn_axis_start",
+   "origin": [
+    2360.0,
+    -192.0,
+    12.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "axis",
+   "start": true
+  },
+  {
+   "classname": "mp_dom_spawn_axis_start",
+   "origin": [
+    2360.0,
+    -192.0,
+    20.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "dom",
+   "team": "axis",
+   "start": true
+  },
+  {
+   "classname": "mp_sab_spawn_axis_start",
+   "origin": [
+    2360.0,
+    -192.0,
+    28.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "axis",
+   "start": true
+  },
+  {
+   "classname": "mp_tdm_spawn_axis_start",
+   "origin": [
+    2360.0,
+    -192.0,
+    36.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "team": "axis",
+   "start": true
+  },
+  {
+   "classname": "mp_dm_spawn",
+   "origin": [
+    2912.0,
+    1286.0,
+    -20.0
+   ],
+   "angles": [
+    0.0,
+    110.0,
+    0.0
+   ],
+   "mode": "dm",
+   "start": false
+  },
+  {
+   "classname": "mp_dom_spawn",
+   "origin": [
+    2912.0,
+    1286.0,
+    -28.0
+   ],
+   "angles": [
+    0.0,
+    110.0,
+    0.0
+   ],
+   "mode": "dom",
+   "start": false
+  },
+  {
+   "classname": "mp_ctf_spawn_axis",
+   "origin": [
+    2912.0,
+    1286.0,
+    -12.0
+   ],
+   "angles": [
+    0.0,
+    110.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "axis",
+   "start": false
+  },
+  {
+   "classname": "mp_sab_spawn_axis",
+   "origin": [
+    2912.0,
+    1286.0,
+    -4.0
+   ],
+   "angles": [
+    0.0,
+    110.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "axis",
+   "start": false
+  },
+  {
+   "classname": "mp_tdm_spawn",
+   "origin": [
+    2912.0,
+    1286.0,
+    4.0
+   ],
+   "angles": [
+    0.0,
+    110.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "start": false
+  },
+  {
+   "classname": "mp_dm_spawn",
+   "origin": [
+    3150.0,
+    1842.0,
+    24.0
+   ],
+   "angles": [
+    0.0,
+    270.0,
+    0.0
+   ],
+   "mode": "dm",
+   "start": false
+  },
+  {
+   "classname": "mp_dom_spawn",
+   "origin": [
+    3150.0,
+    1842.0,
+    16.0
+   ],
+   "angles": [
+    0.0,
+    270.0,
+    0.0
+   ],
+   "mode": "dom",
+   "start": false
+  },
+  {
+   "classname": "mp_ctf_spawn_axis",
+   "origin": [
+    3150.0,
+    1842.0,
+    32.0
+   ],
+   "angles": [
+    0.0,
+    270.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "axis",
+   "start": false
+  },
+  {
+   "classname": "mp_sab_spawn_axis",
+   "origin": [
+    3150.0,
+    1842.0,
+    40.0
+   ],
+   "angles": [
+    0.0,
+    270.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "axis",
+   "start": false
+  },
+  {
+   "classname": "mp_tdm_spawn",
+   "origin": [
+    3150.0,
+    1842.0,
+    48.0
+   ],
+   "angles": [
+    0.0,
+    270.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "start": false
+  },
+  {
+   "classname": "mp_dm_spawn",
+   "origin": [
+    3262.0,
+    888.0,
+    24.0
+   ],
+   "angles": [
+    0.0,
+    106.0,
+    0.0
+   ],
+   "mode": "dm",
+   "start": false
+  },
+  {
+   "classname": "mp_dom_spawn",
+   "origin": [
+    3262.0,
+    888.0,
+    16.0
+   ],
+   "angles": [
+    0.0,
+    106.0,
+    0.0
+   ],
+   "mode": "dom",
+   "start": false
+  },
+  {
+   "classname": "mp_ctf_spawn_axis",
+   "origin": [
+    3262.0,
+    888.0,
+    32.0
+   ],
+   "angles": [
+    0.0,
+    106.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "axis",
+   "start": false
+  },
+  {
+   "classname": "mp_sab_spawn_axis",
+   "origin": [
+    3262.0,
+    888.0,
+    40.0
+   ],
+   "angles": [
+    0.0,
+    106.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "axis",
+   "start": false
+  },
+  {
+   "classname": "mp_tdm_spawn",
+   "origin": [
+    3262.0,
+    888.0,
+    48.0
+   ],
+   "angles": [
+    0.0,
+    106.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "start": false
+  },
+  {
+   "classname": "mp_dm_spawn",
+   "origin": [
+    2878.0,
+    -254.0,
+    24.0
+   ],
+   "angles": [
+    0.0,
+    106.0,
+    0.0
+   ],
+   "mode": "dm",
+   "start": false
+  },
+  {
+   "classname": "mp_dom_spawn",
+   "origin": [
+    2878.0,
+    -254.0,
+    16.0
+   ],
+   "angles": [
+    0.0,
+    106.0,
+    0.0
+   ],
+   "mode": "dom",
+   "start": false
+  },
+  {
+   "classname": "mp_ctf_spawn_axis",
+   "origin": [
+    2878.0,
+    -254.0,
+    32.0
+   ],
+   "angles": [
+    0.0,
+    106.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "axis",
+   "start": false
+  },
+  {
+   "classname": "mp_sab_spawn_axis",
+   "origin": [
+    2878.0,
+    -254.0,
+    40.0
+   ],
+   "angles": [
+    0.0,
+    106.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "axis",
+   "start": false
+  },
+  {
+   "classname": "mp_tdm_spawn",
+   "origin": [
+    2878.0,
+    -254.0,
+    48.0
+   ],
+   "angles": [
+    0.0,
+    106.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "start": false
+  },
+  {
+   "classname": "mp_dm_spawn",
+   "origin": [
+    2280.0,
+    1490.0,
+    10.0
+   ],
+   "angles": [
+    0.0,
+    302.0,
+    0.0
+   ],
+   "mode": "dm",
+   "start": false
+  },
+  {
+   "classname": "mp_dom_spawn",
+   "origin": [
+    2280.0,
+    1490.0,
+    2.0
+   ],
+   "angles": [
+    0.0,
+    302.0,
+    0.0
+   ],
+   "mode": "dom",
+   "start": false
+  },
+  {
+   "classname": "mp_ctf_spawn_axis",
+   "origin": [
+    2280.0,
+    1490.0,
+    18.0
+   ],
+   "angles": [
+    0.0,
+    302.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "axis",
+   "start": false
+  },
+  {
+   "classname": "mp_sab_spawn_axis",
+   "origin": [
+    2280.0,
+    1490.0,
+    26.0
+   ],
+   "angles": [
+    0.0,
+    302.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "axis",
+   "start": false
+  },
+  {
+   "classname": "mp_tdm_spawn",
+   "origin": [
+    2280.0,
+    1490.0,
+    34.0
+   ],
+   "angles": [
+    0.0,
+    302.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "start": false
+  },
+  {
+   "classname": "mp_dm_spawn",
+   "origin": [
+    5412.0,
+    698.0,
+    20.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "dm",
+   "start": false
+  },
+  {
+   "classname": "mp_ctf_spawn_allies",
+   "origin": [
+    5412.0,
+    698.0,
+    28.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "allies",
+   "start": false
+  },
+  {
+   "classname": "mp_dom_spawn",
+   "origin": [
+    5412.0,
+    698.0,
+    12.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "dom",
+   "start": false
+  },
+  {
+   "classname": "mp_sab_spawn_allies",
+   "origin": [
+    5412.0,
+    698.0,
+    36.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "allies",
+   "start": false
+  },
+  {
+   "classname": "mp_tdm_spawn",
+   "origin": [
+    5412.0,
+    698.0,
+    44.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "start": false
+  },
+  {
+   "classname": "mp_dm_spawn",
+   "origin": [
+    4850.0,
+    -82.0,
+    36.0
+   ],
+   "angles": [
+    0.0,
+    64.0,
+    0.0
+   ],
+   "mode": "dm",
+   "start": false
+  },
+  {
+   "classname": "mp_ctf_spawn_allies",
+   "origin": [
+    4850.0,
+    -82.0,
+    44.0
+   ],
+   "angles": [
+    0.0,
+    64.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "allies",
+   "start": false
+  },
+  {
+   "classname": "mp_dom_spawn",
+   "origin": [
+    4850.0,
+    -82.0,
+    28.0
+   ],
+   "angles": [
+    0.0,
+    64.0,
+    0.0
+   ],
+   "mode": "dom",
+   "start": false
+  },
+  {
+   "classname": "mp_sab_spawn_allies",
+   "origin": [
+    4850.0,
+    -82.0,
+    52.0
+   ],
+   "angles": [
+    0.0,
+    64.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "allies",
+   "start": false
+  },
+  {
+   "classname": "mp_tdm_spawn",
+   "origin": [
+    4850.0,
+    -82.0,
+    60.0
+   ],
+   "angles": [
+    0.0,
+    64.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "start": false
+  },
+  {
+   "classname": "mp_dm_spawn",
+   "origin": [
+    4312.0,
+    490.0,
+    16.0
+   ],
+   "angles": [
+    0.0,
+    284.0,
+    0.0
+   ],
+   "mode": "dm",
+   "start": false
+  },
+  {
+   "classname": "mp_ctf_spawn_allies",
+   "origin": [
+    4312.0,
+    490.0,
+    24.0
+   ],
+   "angles": [
+    0.0,
+    284.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "allies",
+   "start": false
+  },
+  {
+   "classname": "mp_dom_spawn",
+   "origin": [
+    4312.0,
+    490.0,
+    8.0
+   ],
+   "angles": [
+    0.0,
+    284.0,
+    0.0
+   ],
+   "mode": "dom",
+   "start": false
+  },
+  {
+   "classname": "mp_sab_spawn_allies",
+   "origin": [
+    4312.0,
+    490.0,
+    32.0
+   ],
+   "angles": [
+    0.0,
+    284.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "allies",
+   "start": false
+  },
+  {
+   "classname": "mp_tdm_spawn",
+   "origin": [
+    4312.0,
+    490.0,
+    40.0
+   ],
+   "angles": [
+    0.0,
+    284.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "start": false
+  },
+  {
+   "classname": "mp_dm_spawn",
+   "origin": [
+    4284.0,
+    78.0,
+    16.0
+   ],
+   "angles": [
+    0.0,
+    100.0,
+    0.0
+   ],
+   "mode": "dm",
+   "start": false
+  },
+  {
+   "classname": "mp_ctf_spawn_allies",
+   "origin": [
+    4284.0,
+    78.0,
+    24.0
+   ],
+   "angles": [
+    0.0,
+    100.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "allies",
+   "start": false
+  },
+  {
+   "classname": "mp_dom_spawn",
+   "origin": [
+    4284.0,
+    78.0,
+    8.0
+   ],
+   "angles": [
+    0.0,
+    100.0,
+    0.0
+   ],
+   "mode": "dom",
+   "start": false
+  },
+  {
+   "classname": "mp_sab_spawn_allies",
+   "origin": [
+    4284.0,
+    78.0,
+    32.0
+   ],
+   "angles": [
+    0.0,
+    100.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "allies",
+   "start": false
+  },
+  {
+   "classname": "mp_tdm_spawn",
+   "origin": [
+    4284.0,
+    78.0,
+    40.0
+   ],
+   "angles": [
+    0.0,
+    100.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "start": false
+  },
+  {
+   "classname": "mp_dm_spawn",
+   "origin": [
+    4418.0,
+    1854.0,
+    12.0
+   ],
+   "angles": [
+    0.0,
+    112.0,
+    0.0
+   ],
+   "mode": "dm",
+   "start": false
+  },
+  {
+   "classname": "mp_ctf_spawn_allies",
+   "origin": [
+    4418.0,
+    1854.0,
+    20.0
+   ],
+   "angles": [
+    0.0,
+    112.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "allies",
+   "start": false
+  },
+  {
+   "classname": "mp_dom_spawn",
+   "origin": [
+    4418.0,
+    1854.0,
+    4.0
+   ],
+   "angles": [
+    0.0,
+    112.0,
+    0.0
+   ],
+   "mode": "dom",
+   "start": false
+  },
+  {
+   "classname": "mp_sab_spawn_allies",
+   "origin": [
+    4418.0,
+    1854.0,
+    28.0
+   ],
+   "angles": [
+    0.0,
+    112.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "allies",
+   "start": false
+  },
+  {
+   "classname": "mp_tdm_spawn",
+   "origin": [
+    4418.0,
+    1854.0,
+    36.0
+   ],
+   "angles": [
+    0.0,
+    112.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "start": false
+  },
+  {
+   "classname": "mp_dm_spawn",
+   "origin": [
+    5220.0,
+    1726.0,
+    8.0
+   ],
+   "angles": [
+    0.0,
+    300.0,
+    0.0
+   ],
+   "mode": "dm",
+   "start": false
+  },
+  {
+   "classname": "mp_ctf_spawn_allies",
+   "origin": [
+    5220.0,
+    1726.0,
+    16.0
+   ],
+   "angles": [
+    0.0,
+    300.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "allies",
+   "start": false
+  },
+  {
+   "classname": "mp_dom_spawn",
+   "origin": [
+    5220.0,
+    1726.0,
+    0.0
+   ],
+   "angles": [
+    0.0,
+    300.0,
+    0.0
+   ],
+   "mode": "dom",
+   "start": false
+  },
+  {
+   "classname": "mp_sab_spawn_allies",
+   "origin": [
+    5220.0,
+    1726.0,
+    24.0
+   ],
+   "angles": [
+    0.0,
+    300.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "allies",
+   "start": false
+  },
+  {
+   "classname": "mp_tdm_spawn",
+   "origin": [
+    5220.0,
+    1726.0,
+    32.0
+   ],
+   "angles": [
+    0.0,
+    300.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "start": false
+  },
+  {
+   "classname": "mp_dm_spawn",
+   "origin": [
+    3918.0,
+    2218.0,
+    28.0
+   ],
+   "angles": [
+    0.0,
+    177.0,
+    0.0
+   ],
+   "mode": "dm",
+   "start": false
+  },
+  {
+   "classname": "mp_ctf_spawn_allies",
+   "origin": [
+    3918.0,
+    2218.0,
+    36.0
+   ],
+   "angles": [
+    0.0,
+    177.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "allies",
+   "start": false
+  },
+  {
+   "classname": "mp_dom_spawn",
+   "origin": [
+    3918.0,
+    2218.0,
+    20.0
+   ],
+   "angles": [
+    0.0,
+    177.0,
+    0.0
+   ],
+   "mode": "dom",
+   "start": false
+  },
+  {
+   "classname": "mp_sab_spawn_allies",
+   "origin": [
+    3918.0,
+    2218.0,
+    44.0
+   ],
+   "angles": [
+    0.0,
+    177.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "allies",
+   "start": false
+  },
+  {
+   "classname": "mp_tdm_spawn",
+   "origin": [
+    3918.0,
+    2218.0,
+    52.0
+   ],
+   "angles": [
+    0.0,
+    177.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "start": false
+  },
+  {
+   "classname": "mp_dm_spawn",
+   "origin": [
+    5482.0,
+    302.0,
+    32.0
+   ],
+   "angles": [
+    0.0,
+    74.0,
+    0.0
+   ],
+   "mode": "dm",
+   "start": false
+  },
+  {
+   "classname": "mp_ctf_spawn_allies",
+   "origin": [
+    5482.0,
+    302.0,
+    40.0
+   ],
+   "angles": [
+    0.0,
+    74.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "allies",
+   "start": false
+  },
+  {
+   "classname": "mp_dom_spawn",
+   "origin": [
+    5482.0,
+    302.0,
+    24.0
+   ],
+   "angles": [
+    0.0,
+    74.0,
+    0.0
+   ],
+   "mode": "dom",
+   "start": false
+  },
+  {
+   "classname": "mp_sab_spawn_allies",
+   "origin": [
+    5482.0,
+    302.0,
+    48.0
+   ],
+   "angles": [
+    0.0,
+    74.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "allies",
+   "start": false
+  },
+  {
+   "classname": "mp_tdm_spawn",
+   "origin": [
+    5482.0,
+    302.0,
+    56.0
+   ],
+   "angles": [
+    0.0,
+    74.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "start": false
+  },
+  {
+   "classname": "mp_global_intermission",
+   "origin": [
+    5688.0,
+    1608.0,
+    288.0
+   ],
+   "angles": [
+    0.0,
+    195.0,
+    0.0
+   ],
+   "mode": "intermission",
+   "start": false
+  },
+  {
+   "classname": "mp_sd_spawn_attacker",
+   "origin": [
+    6000.0,
+    848.0,
+    48.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "sd",
+   "team": "attacker",
+   "start": false
+  },
+  {
+   "classname": "mp_sd_spawn_attacker",
+   "origin": [
+    6064.0,
+    848.0,
+    48.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "sd",
+   "team": "attacker",
+   "start": false
+  },
+  {
+   "classname": "mp_sd_spawn_attacker",
+   "origin": [
+    6128.0,
+    848.0,
+    48.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "sd",
+   "team": "attacker",
+   "start": false
+  },
+  {
+   "classname": "mp_sd_spawn_attacker",
+   "origin": [
+    6192.0,
+    848.0,
+    48.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "sd",
+   "team": "attacker",
+   "start": false
+  },
+  {
+   "classname": "mp_sd_spawn_attacker",
+   "origin": [
+    6000.0,
+    784.0,
+    48.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "sd",
+   "team": "attacker",
+   "start": false
+  },
+  {
+   "classname": "mp_sd_spawn_attacker",
+   "origin": [
+    6064.0,
+    784.0,
+    48.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "sd",
+   "team": "attacker",
+   "start": false
+  },
+  {
+   "classname": "mp_sd_spawn_attacker",
+   "origin": [
+    6128.0,
+    784.0,
+    48.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "sd",
+   "team": "attacker",
+   "start": false
+  },
+  {
+   "classname": "mp_sd_spawn_attacker",
+   "origin": [
+    6192.0,
+    784.0,
+    48.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "sd",
+   "team": "attacker",
+   "start": false
+  },
+  {
+   "classname": "mp_sd_spawn_defender",
+   "origin": [
+    2512.0,
+    -368.0,
+    32.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "sd",
+   "team": "defender",
+   "start": false
+  },
+  {
+   "classname": "mp_sd_spawn_defender",
+   "origin": [
+    2464.0,
+    -336.0,
+    32.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "sd",
+   "team": "defender",
+   "start": false
+  },
+  {
+   "classname": "mp_sd_spawn_defender",
+   "origin": [
+    2416.0,
+    -304.0,
+    32.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "sd",
+   "team": "defender",
+   "start": false
+  },
+  {
+   "classname": "mp_sd_spawn_defender",
+   "origin": [
+    2368.0,
+    -272.0,
+    32.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "sd",
+   "team": "defender",
+   "start": false
+  },
+  {
+   "classname": "mp_sd_spawn_defender",
+   "origin": [
+    2544.0,
+    -320.0,
+    32.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "sd",
+   "team": "defender",
+   "start": false
+  },
+  {
+   "classname": "mp_sd_spawn_defender",
+   "origin": [
+    2496.0,
+    -288.0,
+    32.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "sd",
+   "team": "defender",
+   "start": false
+  },
+  {
+   "classname": "mp_sd_spawn_defender",
+   "origin": [
+    2448.0,
+    -256.0,
+    32.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "sd",
+   "team": "defender",
+   "start": false
+  },
+  {
+   "classname": "mp_sd_spawn_defender",
+   "origin": [
+    2400.0,
+    -224.0,
+    32.0
+   ],
+   "angles": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "mode": "sd",
+   "team": "defender",
+   "start": false
+  },
+  {
+   "classname": "mp_dm_spawn",
+   "origin": [
+    5884.0,
+    1652.0,
+    60.0
+   ],
+   "angles": [
+    0.0,
+    270.0,
+    0.0
+   ],
+   "mode": "dm",
+   "start": false
+  },
+  {
+   "classname": "mp_ctf_spawn_allies",
+   "origin": [
+    5884.0,
+    1652.0,
+    68.0
+   ],
+   "angles": [
+    0.0,
+    270.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "allies",
+   "start": false
+  },
+  {
+   "classname": "mp_dom_spawn",
+   "origin": [
+    5884.0,
+    1652.0,
+    52.0
+   ],
+   "angles": [
+    0.0,
+    270.0,
+    0.0
+   ],
+   "mode": "dom",
+   "start": false
+  },
+  {
+   "classname": "mp_sab_spawn_allies",
+   "origin": [
+    5884.0,
+    1652.0,
+    76.0
+   ],
+   "angles": [
+    0.0,
+    270.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "allies",
+   "start": false
+  },
+  {
+   "classname": "mp_tdm_spawn",
+   "origin": [
+    5884.0,
+    1652.0,
+    84.0
+   ],
+   "angles": [
+    0.0,
+    270.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "start": false
+  },
+  {
+   "classname": "mp_dm_spawn",
+   "origin": [
+    5884.0,
+    1916.0,
+    60.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "dm",
+   "start": false
+  },
+  {
+   "classname": "mp_ctf_spawn_allies",
+   "origin": [
+    5884.0,
+    1916.0,
+    68.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "ctf",
+   "team": "allies",
+   "start": false
+  },
+  {
+   "classname": "mp_dom_spawn",
+   "origin": [
+    5884.0,
+    1916.0,
+    52.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "dom",
+   "start": false
+  },
+  {
+   "classname": "mp_sab_spawn_allies",
+   "origin": [
+    5884.0,
+    1916.0,
+    76.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "sab",
+   "team": "allies",
+   "start": false
+  },
+  {
+   "classname": "mp_tdm_spawn",
+   "origin": [
+    5884.0,
+    1916.0,
+    84.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "mode": "tdm",
+   "start": false
+  }
+ ],
+ "objectives": [
+  {
+   "classname": "trigger_radius",
+   "origin": [
+    5297.2,
+    1506.8,
+    -2.0
+   ],
+   "angles": [
+    0.0,
+    308.0,
+    0.0
+   ],
+   "targetname": "ctf_trig_allies",
+   "gameobject": "ctf"
+  },
+  {
+   "classname": "script_model",
+   "origin": [
+    5297.2,
+    1506.8,
+    -18.0
+   ],
+   "angles": [
+    0.0,
+    308.0,
+    0.0
+   ],
+   "targetname": "ctf_flag_allies",
+   "gameobject": "ctf"
+  },
+  {
+   "classname": "trigger_radius",
+   "origin": [
+    5297.2,
+    1506.8,
+    -2.0
+   ],
+   "angles": [
+    0.0,
+    308.0,
+    0.0
+   ],
+   "targetname": "ctf_zone_allies",
+   "gameobject": "ctf"
+  },
+  {
+   "classname": "trigger_radius",
+   "origin": [
+    2253.5,
+    821.3,
+    -2.0
+   ],
+   "angles": [
+    0.0,
+    315.0,
+    0.0
+   ],
+   "targetname": "ctf_trig_axis",
+   "gameobject": "ctf"
+  },
+  {
+   "classname": "script_model",
+   "origin": [
+    2253.5,
+    821.3,
+    -18.0
+   ],
+   "angles": [
+    0.0,
+    315.0,
+    0.0
+   ],
+   "targetname": "ctf_flag_axis",
+   "gameobject": "ctf"
+  },
+  {
+   "classname": "trigger_radius",
+   "origin": [
+    2253.5,
+    821.3,
+    -2.0
+   ],
+   "angles": [
+    0.0,
+    315.0,
+    0.0
+   ],
+   "targetname": "ctf_zone_axis",
+   "gameobject": "ctf"
+  },
+  {
+   "classname": "trigger_use_touch",
+   "origin": [
+    4104.0,
+    352.0,
+    2.0
+   ],
+   "targetname": "bombzone",
+   "label": "_a",
+   "gameobject": "bombzone"
+  },
+  {
+   "classname": "trigger_use_touch",
+   "origin": [
+    4104.0,
+    352.0,
+    2.0
+   ],
+   "targetname": "pf4521_auto2",
+   "gameobject": "bombzone"
+  },
+  {
+   "classname": "script_brushmodel",
+   "origin": [
+    4104.0,
+    352.0,
+    22.0
+   ],
+   "gameobject": "bombzone"
+  },
+  {
+   "classname": "script_model",
+   "origin": [
+    4104.2,
+    352.2,
+    -5.9
+   ],
+   "angles": [
+    0.0,
+    190.0,
+    0.0
+   ],
+   "targetname": "pf4521_auto1",
+   "gameobject": "bombzone"
+  },
+  {
+   "classname": "trigger_use_touch",
+   "origin": [
+    3816.0,
+    2144.0,
+    34.0
+   ],
+   "targetname": "bombzone",
+   "label": "_b",
+   "gameobject": "bombzone"
+  },
+  {
+   "classname": "trigger_use_touch",
+   "origin": [
+    3816.0,
+    2144.0,
+    34.0
+   ],
+   "targetname": "pf4526_auto2",
+   "gameobject": "bombzone"
+  },
+  {
+   "classname": "script_model",
+   "origin": [
+    3815.5,
+    2144.0,
+    26.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "targetname": "pf4526_auto1",
+   "gameobject": "bombzone"
+  },
+  {
+   "classname": "script_brushmodel",
+   "origin": [
+    3815.0,
+    2145.0,
+    54.0
+   ],
+   "gameobject": "bombzone"
+  },
+  {
+   "classname": "trigger_use_touch",
+   "origin": [
+    -6896.0,
+    10896.0,
+    2576.0
+   ],
+   "targetname": "bombtrigger",
+   "gameobject": "bombzone"
+  },
+  {
+   "classname": "script_model",
+   "origin": [
+    3768.0,
+    1320.0,
+    25.5
+   ],
+   "targetname": "sab_bomb",
+   "gameobject": "sab"
+  },
+  {
+   "classname": "trigger_multiple",
+   "origin": [
+    3768.0,
+    1320.0,
+    26.0
+   ],
+   "targetname": "sab_bomb_pickup_trig",
+   "gameobject": "sab"
+  },
+  {
+   "classname": "script_model",
+   "origin": [
+    6064.0,
+    1144.0,
+    19.0
+   ],
+   "angles": [
+    355.896,
+    0.305217,
+    -0.907396
+   ],
+   "targetname": "sd_bomb",
+   "gameobject": "sd"
+  },
+  {
+   "classname": "trigger_multiple",
+   "origin": [
+    6064.0,
+    1144.0,
+    19.0
+   ],
+   "targetname": "sd_bomb_pickup_trig",
+   "gameobject": "sd"
+  },
+  {
+   "classname": "trigger_radius",
+   "origin": [
+    4449.0,
+    1365.0,
+    86.5
+   ],
+   "targetname": "flag_primary",
+   "label": "_b",
+   "gameobject": "dom onslaught"
+  },
+  {
+   "classname": "script_origin",
+   "origin": [
+    4441.0,
+    1332.0,
+    219.0
+   ],
+   "targetname": "flag_descriptor"
+  },
+  {
+   "classname": "trigger_radius",
+   "origin": [
+    2512.1,
+    1562.9,
+    -6.0
+   ],
+   "angles": [
+    0.0,
+    25.0,
+    0.0
+   ],
+   "targetname": "flag_primary",
+   "label": "_c",
+   "gameobject": "dom onslaught"
+  },
+  {
+   "classname": "script_origin",
+   "origin": [
+    2545.8,
+    1535.6,
+    58.0
+   ],
+   "angles": [
+    0.0,
+    295.0,
+    0.0
+   ],
+   "targetname": "flag_descriptor"
+  },
+  {
+   "classname": "script_origin",
+   "origin": [
+    6037.1,
+    1764.5,
+    110.4
+   ],
+   "angles": [
+    0.0,
+    48.0,
+    0.0
+   ],
+   "targetname": "flag_descriptor"
+  },
+  {
+   "classname": "script_model",
+   "origin": [
+    2724.1,
+    -376.2,
+    -10.6
+   ],
+   "angles": [
+    3.2984,
+    225.108,
+    1.16511
+   ],
+   "targetname": "pf4737_auto1",
+   "gameobject": "hq"
+  },
+  {
+   "classname": "script_model",
+   "origin": [
+    2716.8,
+    -376.995,
+    19.0328
+   ],
+   "angles": [
+    1.16318,
+    135.041,
+    -3.29908
+   ],
+   "targetname": "hq_hardpoint",
+   "gameobject": "hq"
+  },
+  {
+   "classname": "script_model",
+   "origin": [
+    2703.12,
+    -384.072,
+    18.0916
+   ],
+   "angles": [
+    1.77799,
+    265.121,
+    -86.9869
+   ],
+   "targetname": "pf4737_auto1",
+   "gameobject": "hq"
+  },
+  {
+   "classname": "script_brushmodel",
+   "origin": [
+    2724.0,
+    -376.0,
+    5.0
+   ],
+   "targetname": "pf4737_auto1",
+   "gameobject": "hq"
+  },
+  {
+   "classname": "script_brushmodel",
+   "origin": [
+    2722.0,
+    -383.0,
+    28.0
+   ],
+   "targetname": "pf4737_auto1",
+   "gameobject": "hq"
+  },
+  {
+   "classname": "trigger_multiple",
+   "origin": [
+    2519.0,
+    -223.0,
+    84.0
+   ],
+   "targetname": "radiotrigger"
+  },
+  {
+   "classname": "script_model",
+   "origin": [
+    4188.4,
+    39.4,
+    -6.0
+   ],
+   "angles": [
+    0.0,
+    195.108,
+    0.0
+   ],
+   "targetname": "pf4743_auto1",
+   "gameobject": "hq"
+  },
+  {
+   "classname": "script_model",
+   "origin": [
+    4183.5,
+    42.2192,
+    24.0
+   ],
+   "angles": [
+    0.0,
+    105.108,
+    0.0
+   ],
+   "targetname": "hq_hardpoint",
+   "gameobject": "hq"
+  },
+  {
+   "classname": "script_model",
+   "origin": [
+    4168.08,
+    42.9253,
+    24.0
+   ],
+   "angles": [
+    1.00179e-05,
+    235.108,
+    -89.9997
+   ],
+   "targetname": "pf4743_auto1",
+   "gameobject": "hq"
+  },
+  {
+   "classname": "script_brushmodel",
+   "origin": [
+    4189.0,
+    40.0,
+    10.0
+   ],
+   "targetname": "pf4743_auto1",
+   "gameobject": "hq"
+  },
+  {
+   "classname": "script_brushmodel",
+   "origin": [
+    4185.0,
+    35.0,
+    33.0
+   ],
+   "targetname": "pf4743_auto1",
+   "gameobject": "hq"
+  },
+  {
+   "classname": "trigger_multiple",
+   "origin": [
+    3992.0,
+    88.0,
+    60.0
+   ],
+   "targetname": "radiotrigger"
+  },
+  {
+   "classname": "script_model",
+   "origin": [
+    3816.8,
+    2174.1,
+    25.9
+   ],
+   "angles": [
+    0.0,
+    0.108014,
+    0.0
+   ],
+   "targetname": "pf4749_auto1",
+   "gameobject": "hq"
+  },
+  {
+   "classname": "script_model",
+   "origin": [
+    3820.81,
+    2170.11,
+    55.9
+   ],
+   "angles": [
+    0.0,
+    270.108,
+    0.0
+   ],
+   "targetname": "hq_hardpoint",
+   "gameobject": "hq"
+  },
+  {
+   "classname": "script_model",
+   "origin": [
+    3835.52,
+    2165.44,
+    55.9
+   ],
+   "angles": [
+    1.00179e-05,
+    40.108,
+    -89.9997
+   ],
+   "targetname": "pf4749_auto1",
+   "gameobject": "hq"
+  },
+  {
+   "classname": "script_brushmodel",
+   "origin": [
+    3816.0,
+    2174.0,
+    42.0
+   ],
+   "targetname": "pf4749_auto1",
+   "gameobject": "hq"
+  },
+  {
+   "classname": "script_brushmodel",
+   "origin": [
+    3821.0,
+    2178.0,
+    64.0
+   ],
+   "targetname": "pf4749_auto1",
+   "gameobject": "hq"
+  },
+  {
+   "classname": "trigger_multiple",
+   "origin": [
+    3816.0,
+    2148.0,
+    68.0
+   ],
+   "targetname": "radiotrigger"
+  },
+  {
+   "classname": "script_model",
+   "origin": [
+    5869.1,
+    1774.0,
+    37.4
+   ],
+   "angles": [
+    0.822525,
+    90.2621,
+    10.6098
+   ],
+   "targetname": "pf4755_auto1",
+   "gameobject": "hq"
+  },
+  {
+   "classname": "script_model",
+   "origin": [
+    5878.54,
+    1778.46,
+    66.0903
+   ],
+   "angles": [
+    10.6087,
+    0.108027,
+    -0.836829
+   ],
+   "targetname": "hq_hardpoint",
+   "gameobject": "hq"
+  },
+  {
+   "classname": "script_model",
+   "origin": [
+    5883.09,
+    1793.16,
+    65.014
+   ],
+   "angles": [
+    353.838,
+    129.717,
+    -81.3073
+   ],
+   "targetname": "pf4755_auto1",
+   "gameobject": "hq"
+  },
+  {
+   "classname": "script_brushmodel",
+   "origin": [
+    5872.0,
+    1774.0,
+    53.0
+   ],
+   "targetname": "pf4755_auto1",
+   "gameobject": "hq"
+  },
+  {
+   "classname": "script_brushmodel",
+   "origin": [
+    5873.0,
+    1779.0,
+    76.0
+   ],
+   "targetname": "pf4755_auto1",
+   "gameobject": "hq"
+  },
+  {
+   "classname": "trigger_multiple",
+   "origin": [
+    6070.0,
+    1828.0,
+    90.0
+   ],
+   "targetname": "radiotrigger"
+  },
+  {
+   "classname": "trigger_radius",
+   "origin": [
+    6067.0,
+    1808.3,
+    16.1
+   ],
+   "targetname": "flag_primary",
+   "label": "_a",
+   "gameobject": "dom onslaught"
+  },
+  {
+   "classname": "trigger_use_touch",
+   "origin": [
+    6031.0,
+    1768.0,
+    26.0
+   ],
+   "targetname": "sab_bomb_allies",
+   "gameobject": "sab"
+  },
+  {
+   "classname": "trigger_use_touch",
+   "origin": [
+    6031.0,
+    1768.0,
+    26.0
+   ],
+   "targetname": "sab_bomb_defuse_allies",
+   "gameobject": "sab"
+  },
+  {
+   "classname": "script_brushmodel",
+   "origin": [
+    6030.0,
+    1767.0,
+    46.0
+   ],
+   "gameobject": "sab"
+  },
+  {
+   "classname": "script_model",
+   "origin": [
+    6030.5,
+    1768.0,
+    18.1
+   ],
+   "angles": [
+    0.0,
+    195.0,
+    0.0
+   ],
+   "targetname": "pf4785_auto1",
+   "gameobject": "sab"
+  },
+  {
+   "classname": "trigger_use_touch",
+   "origin": [
+    2624.0,
+    -176.0,
+    -3.0
+   ],
+   "targetname": "sab_bomb_axis",
+   "gameobject": "sab"
+  },
+  {
+   "classname": "trigger_use_touch",
+   "origin": [
+    2624.0,
+    -176.0,
+    -3.0
+   ],
+   "targetname": "sab_bomb_defuse_axis",
+   "gameobject": "sab"
+  },
+  {
+   "classname": "script_model",
+   "origin": [
+    2624.0,
+    -176.0,
+    -11.0
+   ],
+   "angles": [
+    0.0,
+    195.0,
+    0.0
+   ],
+   "targetname": "pf4807_auto1",
+   "gameobject": "sab"
+  },
+  {
+   "classname": "script_brushmodel",
+   "origin": [
+    2624.0,
+    -177.0,
+    17.0
+   ],
+   "gameobject": "sab"
+  }
+ ],
+ "scriptModels": [
+  {
+   "model": "vehicle_80s_sedan1_silv_destructible_mp",
+   "origin": [
+    6211.8,
+    663.2,
+    27.7
+   ],
+   "angles": [
+    358.771,
+    275.301,
+    10.8587
+   ],
+   "targetname": "destructible",
+   "destructible": "vehicle_80s_sedan1_silv",
+   "mins": [
+    -85.71,
+    -37.88,
+    0.0
+   ],
+   "maxs": [
+    85.7,
+    38.14,
+    59.43
+   ]
+  },
+  {
+   "model": "vehicle_80s_sedan1_silv_destructible_mp",
+   "origin": [
+    4483.9,
+    761.5,
+    1.7
+   ],
+   "angles": [
+    0.89163,
+    76.1952,
+    2.00279
+   ],
+   "targetname": "destructible",
+   "destructible": "vehicle_80s_sedan1_silv",
+   "mins": [
+    -85.71,
+    -37.88,
+    0.0
+   ],
+   "maxs": [
+    85.7,
+    38.14,
+    59.43
+   ]
+  },
+  {
+   "model": "vehicle_80s_sedan1_silv_destructible_mp",
+   "origin": [
+    4143.0,
+    1997.8,
+    1.0
+   ],
+   "angles": [
+    355.733,
+    53.0482,
+    4.36488
+   ],
+   "targetname": "destructible",
+   "destructible": "vehicle_80s_sedan1_silv",
+   "mins": [
+    -85.71,
+    -37.88,
+    0.0
+   ],
+   "maxs": [
+    85.7,
+    38.14,
+    59.43
+   ]
+  },
+  {
+   "model": "vehicle_80s_sedan1_silv_destructible_mp",
+   "origin": [
+    5866.6,
+    1276.8,
+    6.9
+   ],
+   "angles": [
+    358.678,
+    323.103,
+    3.08585
+   ],
+   "targetname": "destructible",
+   "destructible": "vehicle_80s_sedan1_silv",
+   "mins": [
+    -85.71,
+    -37.88,
+    0.0
+   ],
+   "maxs": [
+    85.7,
+    38.14,
+    59.43
+   ]
+  },
+  {
+   "model": "vehicle_80s_sedan1_silv_destructible_mp",
+   "origin": [
+    2658.7,
+    583.3,
+    -21.0
+   ],
+   "angles": [
+    2.42372,
+    264.883,
+    1.35395
+   ],
+   "targetname": "destructible",
+   "destructible": "vehicle_80s_sedan1_silv",
+   "mins": [
+    -85.71,
+    -37.88,
+    0.0
+   ],
+   "maxs": [
+    85.7,
+    38.14,
+    59.43
+   ]
+  },
+  {
+   "model": "prop_flag_neutral",
+   "origin": [
+    5297.2,
+    1506.8,
+    -18.0
+   ],
+   "angles": [
+    0.0,
+    308.0,
+    0.0
+   ],
+   "targetname": "ctf_flag_allies",
+   "script_gameobjectname": "ctf",
+   "mins": [
+    -1.06,
+    -6.6,
+    0.92
+   ],
+   "maxs": [
+    53.69,
+    15.42,
+    98.11
+   ]
+  },
+  {
+   "model": "prop_flag_neutral",
+   "origin": [
+    2253.5,
+    821.3,
+    -18.0
+   ],
+   "angles": [
+    0.0,
+    315.0,
+    0.0
+   ],
+   "targetname": "ctf_flag_axis",
+   "script_gameobjectname": "ctf",
+   "mins": [
+    -1.06,
+    -6.6,
+    0.92
+   ],
+   "maxs": [
+    53.69,
+    15.42,
+    98.11
+   ]
+  },
+  {
+   "model": "com_bomb_objective_d",
+   "origin": [
+    4104.2,
+    352.2,
+    -5.9
+   ],
+   "angles": [
+    0.0,
+    10.0,
+    0.0
+   ],
+   "targetname": "exploder",
+   "mins": [
+    -35.95,
+    -48.2,
+    -3.02
+   ],
+   "maxs": [
+    47.07,
+    55.01,
+    37.93
+   ]
+  },
+  {
+   "model": "com_bomb_objective",
+   "origin": [
+    4104.2,
+    352.2,
+    -5.9
+   ],
+   "angles": [
+    0.0,
+    190.0,
+    0.0
+   ],
+   "targetname": "pf4521_auto1",
+   "script_gameobjectname": "bombzone",
+   "mins": [
+    -22.24,
+    -37.22,
+    0.0
+   ],
+   "maxs": [
+    22.22,
+    38.2,
+    58.17
+   ]
+  },
+  {
+   "model": "com_bomb_objective",
+   "origin": [
+    3815.5,
+    2144.0,
+    26.0
+   ],
+   "angles": [
+    0.0,
+    90.0,
+    0.0
+   ],
+   "targetname": "pf4526_auto1",
+   "script_gameobjectname": "bombzone",
+   "mins": [
+    -22.24,
+    -37.22,
+    0.0
+   ],
+   "maxs": [
+    22.22,
+    38.2,
+    58.17
+   ]
+  },
+  {
+   "model": "com_bomb_objective_d",
+   "origin": [
+    3815.5,
+    2144.0,
+    26.0
+   ],
+   "angles": [
+    0.0,
+    270.0,
+    0.0
+   ],
+   "targetname": "exploder",
+   "mins": [
+    -35.95,
+    -48.2,
+    -3.02
+   ],
+   "maxs": [
+    47.07,
+    55.01,
+    37.93
+   ]
+  },
+  {
+   "model": "perc_doubletap",
+   "origin": [
+    2144.0,
+    180.0,
+    1.9
+   ],
+   "angles": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "targetname": "oldschool_pickup",
+   "mins": [
+    -15.98,
+    0.0,
+    -10.44
+   ],
+   "maxs": [
+    15.98,
+    0.0,
+    10.44
+   ]
+  },
+  {
+   "model": "perc_last_stand",
+   "origin": [
+    5240.0,
+    1944.0,
+    16.4
+   ],
+   "angles": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "targetname": "oldschool_pickup",
+   "mins": [
+    -15.98,
+    0.0,
+    -10.44
+   ],
+   "maxs": [
+    15.98,
+    0.0,
+    10.44
+   ]
+  },
+  {
+   "model": "mil_tntbomb_mp",
+   "origin": [
+    3768.0,
+    1320.0,
+    25.5
+   ],
+   "angles": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "targetname": "sab_bomb",
+   "script_gameobjectname": "sab",
+   "mins": [
+    -3.02,
+    -6.31,
+    -0.02
+   ],
+   "maxs": [
+    3.49,
+    6.14,
+    7.03
+   ]
+  },
+  {
+   "model": "mil_tntbomb_mp",
+   "origin": [
+    6064.0,
+    1144.0,
+    19.0
+   ],
+   "angles": [
+    355.896,
+    0.305217,
+    -0.907396
+   ],
+   "targetname": "sd_bomb",
+   "script_gameobjectname": "sd",
+   "mins": [
+    -3.02,
+    -6.31,
+    -0.02
+   ],
+   "maxs": [
+    3.49,
+    6.14,
+    7.03
+   ]
+  },
+  {
+   "model": "com_plasticcase_beige_big",
+   "origin": [
+    2724.1,
+    -376.2,
+    -10.6
+   ],
+   "angles": [
+    3.2984,
+    225.108,
+    1.16511
+   ],
+   "targetname": "pf4737_auto1",
+   "script_gameobjectname": "hq",
+   "mins": [
+    -29.57,
+    -16.28,
+    0.01
+   ],
+   "maxs": [
+    29.57,
+    16.65,
+    29.77
+   ]
+  },
+  {
+   "model": "com_laptop_2_open",
+   "origin": [
+    2716.8,
+    -376.995,
+    19.0328
+   ],
+   "angles": [
+    1.16318,
+    135.041,
+    -3.29908
+   ],
+   "targetname": "hq_hardpoint",
+   "script_gameobjectname": "hq",
+   "mins": [
+    -9.55,
+    -10.02,
+    -0.01
+   ],
+   "maxs": [
+    8.93,
+    10.02,
+    15.0
+   ]
+  },
+  {
+   "model": "com_cellphone_on",
+   "origin": [
+    2703.12,
+    -384.072,
+    18.0916
+   ],
+   "angles": [
+    1.77799,
+    265.121,
+    -86.9869
+   ],
+   "targetname": "pf4737_auto1",
+   "script_gameobjectname": "hq",
+   "mins": [
+    -1.26,
+    -1.18,
+    0.02
+   ],
+   "maxs": [
+    1.26,
+    0.03,
+    7.06
+   ]
+  },
+  {
+   "model": "com_plasticcase_beige_big",
+   "origin": [
+    4188.4,
+    39.4,
+    -6.0
+   ],
+   "angles": [
+    0.0,
+    195.108,
+    0.0
+   ],
+   "targetname": "pf4743_auto1",
+   "script_gameobjectname": "hq",
+   "mins": [
+    -29.57,
+    -16.28,
+    0.01
+   ],
+   "maxs": [
+    29.57,
+    16.65,
+    29.77
+   ]
+  },
+  {
+   "model": "com_laptop_2_open",
+   "origin": [
+    4183.5,
+    42.2192,
+    24.0
+   ],
+   "angles": [
+    0.0,
+    105.108,
+    0.0
+   ],
+   "targetname": "hq_hardpoint",
+   "script_gameobjectname": "hq",
+   "mins": [
+    -9.55,
+    -10.02,
+    -0.01
+   ],
+   "maxs": [
+    8.93,
+    10.02,
+    15.0
+   ]
+  },
+  {
+   "model": "com_cellphone_on",
+   "origin": [
+    4168.08,
+    42.9253,
+    24.0
+   ],
+   "angles": [
+    1.00179e-05,
+    235.108,
+    -89.9997
+   ],
+   "targetname": "pf4743_auto1",
+   "script_gameobjectname": "hq",
+   "mins": [
+    -1.26,
+    -1.18,
+    0.02
+   ],
+   "maxs": [
+    1.26,
+    0.03,
+    7.06
+   ]
+  },
+  {
+   "model": "com_plasticcase_beige_big",
+   "origin": [
+    3816.8,
+    2174.1,
+    25.9
+   ],
+   "angles": [
+    0.0,
+    0.108014,
+    0.0
+   ],
+   "targetname": "pf4749_auto1",
+   "script_gameobjectname": "hq",
+   "mins": [
+    -29.57,
+    -16.28,
+    0.01
+   ],
+   "maxs": [
+    29.57,
+    16.65,
+    29.77
+   ]
+  },
+  {
+   "model": "com_laptop_2_open",
+   "origin": [
+    3820.81,
+    2170.11,
+    55.9
+   ],
+   "angles": [
+    0.0,
+    270.108,
+    0.0
+   ],
+   "targetname": "hq_hardpoint",
+   "script_gameobjectname": "hq",
+   "mins": [
+    -9.55,
+    -10.02,
+    -0.01
+   ],
+   "maxs": [
+    8.93,
+    10.02,
+    15.0
+   ]
+  },
+  {
+   "model": "com_cellphone_on",
+   "origin": [
+    3835.52,
+    2165.44,
+    55.9
+   ],
+   "angles": [
+    1.00179e-05,
+    40.108,
+    -89.9997
+   ],
+   "targetname": "pf4749_auto1",
+   "script_gameobjectname": "hq",
+   "mins": [
+    -1.26,
+    -1.18,
+    0.02
+   ],
+   "maxs": [
+    1.26,
+    0.03,
+    7.06
+   ]
+  },
+  {
+   "model": "com_plasticcase_beige_big",
+   "origin": [
+    5869.1,
+    1774.0,
+    37.4
+   ],
+   "angles": [
+    0.822525,
+    90.2621,
+    10.6098
+   ],
+   "targetname": "pf4755_auto1",
+   "script_gameobjectname": "hq",
+   "mins": [
+    -29.57,
+    -16.28,
+    0.01
+   ],
+   "maxs": [
+    29.57,
+    16.65,
+    29.77
+   ]
+  },
+  {
+   "model": "com_laptop_2_open",
+   "origin": [
+    5878.54,
+    1778.46,
+    66.0903
+   ],
+   "angles": [
+    10.6087,
+    0.108027,
+    -0.836829
+   ],
+   "targetname": "hq_hardpoint",
+   "script_gameobjectname": "hq",
+   "mins": [
+    -9.55,
+    -10.02,
+    -0.01
+   ],
+   "maxs": [
+    8.93,
+    10.02,
+    15.0
+   ]
+  },
+  {
+   "model": "com_cellphone_on",
+   "origin": [
+    5883.09,
+    1793.16,
+    65.014
+   ],
+   "angles": [
+    353.838,
+    129.717,
+    -81.3073
+   ],
+   "targetname": "pf4755_auto1",
+   "script_gameobjectname": "hq",
+   "mins": [
+    -1.26,
+    -1.18,
+    0.02
+   ],
+   "maxs": [
+    1.26,
+    0.03,
+    7.06
+   ]
+  },
+  {
+   "model": "com_bomb_objective",
+   "origin": [
+    6030.5,
+    1768.0,
+    18.1
+   ],
+   "angles": [
+    0.0,
+    195.0,
+    0.0
+   ],
+   "targetname": "pf4785_auto1",
+   "script_gameobjectname": "sab",
+   "mins": [
+    -22.24,
+    -37.22,
+    0.0
+   ],
+   "maxs": [
+    22.22,
+    38.2,
+    58.17
+   ]
+  },
+  {
+   "model": "com_bomb_objective_d",
+   "origin": [
+    6030.5,
+    1768.0,
+    18.1
+   ],
+   "angles": [
+    0.0,
+    15.0,
+    0.0
+   ],
+   "targetname": "exploder",
+   "mins": [
+    -35.95,
+    -48.2,
+    -3.02
+   ],
+   "maxs": [
+    47.07,
+    55.01,
+    37.93
+   ]
+  },
+  {
+   "model": "com_bomb_objective",
+   "origin": [
+    2624.0,
+    -176.0,
+    -11.0
+   ],
+   "angles": [
+    0.0,
+    195.0,
+    0.0
+   ],
+   "targetname": "pf4807_auto1",
+   "script_gameobjectname": "sab",
+   "mins": [
+    -22.24,
+    -37.22,
+    0.0
+   ],
+   "maxs": [
+    22.22,
+    38.2,
+    58.17
+   ]
+  },
+  {
+   "model": "com_bomb_objective_d",
+   "origin": [
+    2624.0,
+    -176.0,
+    -11.0
+   ],
+   "angles": [
+    0.0,
+    15.0,
+    0.0
+   ],
+   "targetname": "exploder",
+   "mins": [
+    -35.95,
+    -48.2,
+    -3.02
+   ],
+   "maxs": [
+    47.07,
+    55.01,
+    37.93
+   ]
+  }
+ ],
+ "modelBounds": {
+  "bog_b_cinderblock_clutter": [
+   [
+    -8.0,
+    -4.0,
+    0.01
+   ],
+   [
+    8.0,
+    4.0,
+    7.99
+   ]
+  ],
+  "com_bomb_objective": [
+   [
+    -22.24,
+    -37.22,
+    0.0
+   ],
+   [
+    22.22,
+    38.2,
+    58.17
+   ]
+  ],
+  "com_bomb_objective_d": [
+   [
+    -35.95,
+    -48.2,
+    -3.02
+   ],
+   [
+    47.07,
+    55.01,
+    37.93
+   ]
+  ],
+  "com_bottle1": [
+   [
+    -1.55,
+    -1.55,
+    0.0
+   ],
+   [
+    1.55,
+    1.55,
+    11.09
+   ]
+  ],
+  "com_cafe_chair": [
+   [
+    -9.72,
+    -10.65,
+    -0.01
+   ],
+   [
+    9.72,
+    10.65,
+    42.33
+   ]
+  ],
+  "com_cash_register": [
+   [
+    -9.34,
+    -11.46,
+    -0.02
+   ],
+   [
+    9.34,
+    11.05,
+    12.31
+   ]
+  ],
+  "com_cellphone_on": [
+   [
+    -1.26,
+    -1.18,
+    0.02
+   ],
+   [
+    1.26,
+    0.03,
+    7.06
+   ]
+  ],
+  "com_laptop_2_open": [
+   [
+    -9.55,
+    -10.02,
+    -0.01
+   ],
+   [
+    8.93,
+    10.02,
+    15.0
+   ]
+  ],
+  "com_milk_carton": [
+   [
+    -2.7,
+    -4.45,
+    0.0
+   ],
+   [
+    2.7,
+    2.7,
+    15.83
+   ]
+  ],
+  "com_pail_metal1": [
+   [
+    -7.58,
+    -8.22,
+    0.02
+   ],
+   [
+    7.44,
+    7.67,
+    16.74
+   ]
+  ],
+  "com_pail_metal2": [
+   [
+    -7.86,
+    -7.44,
+    0.02
+   ],
+   [
+    8.03,
+    7.41,
+    20.65
+   ]
+  ],
+  "com_paintcan": [
+   [
+    -5.36,
+    -6.05,
+    0.02
+   ],
+   [
+    5.95,
+    6.13,
+    12.95
+   ]
+  ],
+  "com_plasticcase_beige_big": [
+   [
+    -29.57,
+    -16.28,
+    0.01
+   ],
+   [
+    29.57,
+    16.65,
+    29.77
+   ]
+  ],
+  "com_red_toolbox": [
+   [
+    -4.84,
+    -13.0,
+    0.0
+   ],
+   [
+    4.99,
+    12.99,
+    10.46
+   ]
+  ],
+  "com_soup_can": [
+   [
+    -2.03,
+    -1.96,
+    -0.0
+   ],
+   [
+    2.09,
+    1.96,
+    6.03
+   ]
+  ],
+  "me_fruit_mango_green": [
+   [
+    -3.39,
+    -2.4,
+    0.0
+   ],
+   [
+    3.39,
+    2.4,
+    4.29
+   ]
+  ],
+  "me_fruit_mango_redorange": [
+   [
+    -3.39,
+    -2.4,
+    0.0
+   ],
+   [
+    3.39,
+    2.4,
+    4.29
+   ]
+  ],
+  "me_fruit_orange": [
+   [
+    -1.92,
+    -2.52,
+    -0.03
+   ],
+   [
+    2.07,
+    1.48,
+    3.54
+   ]
+  ],
+  "me_fruit_watermelon_oblong": [
+   [
+    -9.62,
+    -6.21,
+    -6.21
+   ],
+   [
+    9.62,
+    6.21,
+    6.21
+   ]
+  ],
+  "me_fruit_watermelon_round": [
+   [
+    -5.88,
+    -5.9,
+    -5.69
+   ],
+   [
+    5.88,
+    5.9,
+    5.69
+   ]
+  ],
+  "me_picture10": [
+   [
+    -16.9,
+    -1.33,
+    -25.64
+   ],
+   [
+    16.94,
+    0.05,
+    0.61
+   ]
+  ],
+  "me_picture12": [
+   [
+    -12.04,
+    -1.74,
+    -18.21
+   ],
+   [
+    11.85,
+    0.07,
+    0.78
+   ]
+  ],
+  "me_picture15": [
+   [
+    -19.75,
+    -1.74,
+    -28.11
+   ],
+   [
+    19.78,
+    0.07,
+    0.12
+   ]
+  ],
+  "me_picture18": [
+   [
+    -18.01,
+    -1.31,
+    -27.57
+   ],
+   [
+    18.01,
+    0.05,
+    1.56
+   ]
+  ],
+  "me_picture22": [
+   [
+    -17.66,
+    -1.31,
+    -22.23
+   ],
+   [
+    17.67,
+    0.05,
+    1.3
+   ]
+  ],
+  "me_plastic_crate10": [
+   [
+    -6.0,
+    -6.0,
+    0.0
+   ],
+   [
+    5.99,
+    6.0,
+    10.0
+   ]
+  ],
+  "me_plastic_crate7": [
+   [
+    -6.0,
+    -6.0,
+    0.0
+   ],
+   [
+    5.99,
+    6.0,
+    10.0
+   ]
+  ],
+  "me_plastic_crate9": [
+   [
+    -6.0,
+    -6.0,
+    0.0
+   ],
+   [
+    5.99,
+    6.0,
+    10.0
+   ]
+  ],
+  "mil_tntbomb_mp": [
+   [
+    -3.02,
+    -6.31,
+    -0.02
+   ],
+   [
+    3.49,
+    6.14,
+    7.03
+   ]
+  ],
+  "perc_doubletap": [
+   [
+    -15.98,
+    0.0,
+    -10.44
+   ],
+   [
+    15.98,
+    0.0,
+    10.44
+   ]
+  ],
+  "perc_last_stand": [
+   [
+    -15.98,
+    0.0,
+    -10.44
+   ],
+   [
+    15.98,
+    0.0,
+    10.44
+   ]
+  ],
+  "prop_flag_neutral": [
+   [
+    -1.06,
+    -6.6,
+    0.92
+   ],
+   [
+    53.69,
+    15.42,
+    98.11
+   ]
+  ],
+  "prop_suitcase_bomb": [
+   [
+    -10.0,
+    -9.48,
+    0.0
+   ],
+   [
+    10.0,
+    8.3,
+    18.02
+   ]
+  ],
+  "vehicle_80s_sedan1_glass_b": [
+   [
+    -0.06,
+    -26.08,
+    -1.02
+   ],
+   [
+    18.37,
+    26.08,
+    16.62
+   ]
+  ],
+  "vehicle_80s_sedan1_glass_b_dam": [
+   [
+    -0.06,
+    -26.08,
+    -1.02
+   ],
+   [
+    18.37,
+    26.08,
+    16.62
+   ]
+  ],
+  "vehicle_80s_sedan1_glass_f": [
+   [
+    -24.99,
+    -26.07,
+    -1.71
+   ],
+   [
+    0.0,
+    26.07,
+    15.25
+   ]
+  ],
+  "vehicle_80s_sedan1_glass_f_dam": [
+   [
+    -24.99,
+    -26.07,
+    -1.71
+   ],
+   [
+    0.0,
+    26.07,
+    15.25
+   ]
+  ],
+  "vehicle_80s_sedan1_glass_lb": [
+   [
+    -30.05,
+    -6.71,
+    0.0
+   ],
+   [
+    0.2,
+    0.0,
+    17.73
+   ]
+  ],
+  "vehicle_80s_sedan1_glass_lb_dam": [
+   [
+    -30.05,
+    -6.71,
+    0.0
+   ],
+   [
+    0.2,
+    0.0,
+    17.73
+   ]
+  ],
+  "vehicle_80s_sedan1_glass_lf": [
+   [
+    -36.39,
+    -6.44,
+    0.0
+   ],
+   [
+    0.0,
+    0.43,
+    16.77
+   ]
+  ],
+  "vehicle_80s_sedan1_glass_lf_dam": [
+   [
+    -36.45,
+    -6.15,
+    0.0
+   ],
+   [
+    0.0,
+    0.89,
+    16.81
+   ]
+  ],
+  "vehicle_80s_sedan1_glass_rb": [
+   [
+    -30.05,
+    -0.0,
+    0.0
+   ],
+   [
+    0.2,
+    6.71,
+    17.73
+   ]
+  ],
+  "vehicle_80s_sedan1_glass_rb_dam": [
+   [
+    -30.05,
+    -0.0,
+    0.0
+   ],
+   [
+    0.2,
+    6.71,
+    17.73
+   ]
+  ],
+  "vehicle_80s_sedan1_glass_rf": [
+   [
+    -36.35,
+    -0.28,
+    0.0
+   ],
+   [
+    0.0,
+    6.53,
+    16.81
+   ]
+  ],
+  "vehicle_80s_sedan1_glass_rf_dam": [
+   [
+    -36.35,
+    -0.28,
+    0.0
+   ],
+   [
+    0.0,
+    6.53,
+    16.81
+   ]
+  ],
+  "vehicle_80s_sedan1_silv_bumper_b": [
+   [
+    -3.59,
+    -31.37,
+    -5.48
+   ],
+   [
+    4.94,
+    31.37,
+    4.38
+   ]
+  ],
+  "vehicle_80s_sedan1_silv_bumper_f": [
+   [
+    -4.66,
+    -31.0,
+    -4.24
+   ],
+   [
+    4.66,
+    31.0,
+    4.24
+   ]
+  ],
+  "vehicle_80s_sedan1_silv_destroyed": [
+   [
+    -78.59,
+    -32.52,
+    -0.0
+   ],
+   [
+    79.0,
+    36.59,
+    63.7
+   ]
+  ],
+  "vehicle_80s_sedan1_silv_destructible_mp": [
+   [
+    -85.71,
+    -37.88,
+    0.0
+   ],
+   [
+    85.7,
+    38.14,
+    59.43
+   ]
+  ],
+  "vehicle_80s_sedan1_silv_door_lb": [
+   [
+    -31.18,
+    -10.54,
+    -15.9
+   ],
+   [
+    0.34,
+    0.04,
+    28.32
+   ]
+  ],
+  "vehicle_80s_sedan1_silv_door_lf": [
+   [
+    -41.97,
+    -10.69,
+    -16.0
+   ],
+   [
+    0.02,
+    0.01,
+    28.75
+   ]
+  ],
+  "vehicle_80s_sedan1_silv_door_rb": [
+   [
+    -31.18,
+    -0.04,
+    -15.9
+   ],
+   [
+    0.34,
+    10.54,
+    28.32
+   ]
+  ],
+  "vehicle_80s_sedan1_silv_door_rf": [
+   [
+    -41.97,
+    0.0,
+    -16.0
+   ],
+   [
+    0.02,
+    10.8,
+    28.79
+   ]
+  ],
+  "vehicle_80s_sedan1_silv_hood": [
+   [
+    -2.93,
+    -24.83,
+    -8.37
+   ],
+   [
+    41.14,
+    24.64,
+    -0.0
+   ]
+  ],
+  "vehicle_80s_sedan1_silv_hood_dam": [
+   [
+    -2.93,
+    -24.83,
+    -6.83
+   ],
+   [
+    41.1,
+    24.64,
+    0.28
+   ]
+  ],
+  "vehicle_80s_sedan1_silv_light_lb": [
+   [
+    -0.35,
+    -9.47,
+    -4.02
+   ],
+   [
+    2.96,
+    11.08,
+    2.7
+   ]
+  ],
+  "vehicle_80s_sedan1_silv_light_lb_dam": [
+   [
+    -0.27,
+    -9.47,
+    -4.02
+   ],
+   [
+    2.96,
+    11.08,
+    2.7
+   ]
+  ],
+  "vehicle_80s_sedan1_silv_light_lf": [
+   [
+    -5.01,
+    -4.16,
+    -2.98
+   ],
+   [
+    0.0,
+    4.16,
+    3.0
+   ]
+  ],
+  "vehicle_80s_sedan1_silv_light_lf_dam": [
+   [
+    -5.01,
+    -4.16,
+    -2.98
+   ],
+   [
+    -0.62,
+    4.16,
+    3.0
+   ]
+  ],
+  "vehicle_80s_sedan1_silv_light_rb": [
+   [
+    -0.35,
+    -10.77,
+    -3.73
+   ],
+   [
+    2.96,
+    9.78,
+    3.0
+   ]
+  ],
+  "vehicle_80s_sedan1_silv_light_rb_dam": [
+   [
+    -0.27,
+    -10.77,
+    -3.73
+   ],
+   [
+    2.96,
+    9.78,
+    3.0
+   ]
+  ],
+  "vehicle_80s_sedan1_silv_light_rf": [
+   [
+    -5.01,
+    -4.16,
+    -2.98
+   ],
+   [
+    0.0,
+    4.16,
+    3.0
+   ]
+  ],
+  "vehicle_80s_sedan1_silv_light_rf_dam": [
+   [
+    -4.6,
+    -4.16,
+    -2.98
+   ],
+   [
+    -0.2,
+    4.16,
+    3.0
+   ]
+  ],
+  "vehicle_80s_sedan1_silv_mirror_l": [
+   [
+    -2.77,
+    -1.33,
+    -1.26
+   ],
+   [
+    1.66,
+    7.36,
+    5.06
+   ]
+  ],
+  "vehicle_80s_sedan1_silv_mirror_r": [
+   [
+    -2.3,
+    -7.4,
+    -1.23
+   ],
+   [
+    2.16,
+    1.28,
+    5.09
+   ]
+  ],
+  "vehicle_80s_sedan1_silv_trunk": [
+   [
+    -25.85,
+    -25.36,
+    -5.48
+   ],
+   [
+    2.15,
+    25.37,
+    -0.05
+   ]
+  ],
+  "vehicle_80s_sedan1_silv_trunk_dam": [
+   [
+    -25.34,
+    -25.36,
+    -5.36
+   ],
+   [
+    2.7,
+    25.37,
+    1.32
+   ]
+  ],
+  "vehicle_80s_sedan1_silv_wheel_lf": [
+   [
+    -11.81,
+    -4.34,
+    -11.81
+   ],
+   [
+    11.81,
+    4.34,
+    11.81
+   ]
+  ],
+  "vehicle_mig29_desert": [
+   [
+    -314.99,
+    -222.65,
+    -15.26
+   ],
+   [
+    336.12,
+    222.65,
+    127.61
+   ]
+  ]
+ },
+ "collision": {
+  "file": "script_coll.bin",
+  "triangles": 10802,
+  "models": {
+   "com_bomb_objective": [
+    0,
+    1084
+   ],
+   "com_bomb_objective_d": [
+    1084,
+    867
+   ],
+   "com_cellphone_on": [
+    1951,
+    80
+   ],
+   "com_laptop_2_open": [
+    2031,
+    156
+   ],
+   "com_plasticcase_beige_big": [
+    2187,
+    1262
+   ],
+   "mil_tntbomb_mp": [
+    3449,
+    12
+   ],
+   "vehicle_80s_sedan1_silv_bumper_b": [
+    3461,
+    110
+   ],
+   "vehicle_80s_sedan1_silv_bumper_f": [
+    3571,
+    94
+   ],
+   "vehicle_80s_sedan1_silv_destroyed": [
+    3665,
+    2140
+   ],
+   "vehicle_80s_sedan1_silv_destructible_mp": [
+    5805,
+    3889
+   ],
+   "vehicle_80s_sedan1_silv_door_lb": [
+    9694,
+    86
+   ],
+   "vehicle_80s_sedan1_silv_door_lf": [
+    9780,
+    93
+   ],
+   "vehicle_80s_sedan1_silv_door_rb": [
+    9873,
+    80
+   ],
+   "vehicle_80s_sedan1_silv_door_rf": [
+    9953,
+    93
+   ],
+   "vehicle_80s_sedan1_silv_hood": [
+    10046,
+    80
+   ],
+   "vehicle_80s_sedan1_silv_hood_dam": [
+    10126,
+    80
+   ],
+   "vehicle_80s_sedan1_silv_light_lb": [
+    10206,
+    20
+   ],
+   "vehicle_80s_sedan1_silv_light_lb_dam": [
+    10226,
+    20
+   ],
+   "vehicle_80s_sedan1_silv_light_lf": [
+    10246,
+    16
+   ],
+   "vehicle_80s_sedan1_silv_light_lf_dam": [
+    10262,
+    14
+   ],
+   "vehicle_80s_sedan1_silv_light_rb": [
+    10276,
+    20
+   ],
+   "vehicle_80s_sedan1_silv_light_rb_dam": [
+    10296,
+    20
+   ],
+   "vehicle_80s_sedan1_silv_light_rf": [
+    10316,
+    16
+   ],
+   "vehicle_80s_sedan1_silv_light_rf_dam": [
+    10332,
+    14
+   ],
+   "vehicle_80s_sedan1_silv_mirror_l": [
+    10346,
+    50
+   ],
+   "vehicle_80s_sedan1_silv_mirror_r": [
+    10396,
+    50
+   ],
+   "vehicle_80s_sedan1_silv_trunk": [
+    10446,
+    110
+   ],
+   "vehicle_80s_sedan1_silv_trunk_dam": [
+    10556,
+    110
+   ],
+   "vehicle_80s_sedan1_silv_wheel_lf": [
+    10666,
+    136
+   ]
+  }
+ }
+}

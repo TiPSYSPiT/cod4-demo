@@ -1,0 +1,128 @@
+{
+ "format": "cod4-demo3d-weapons/1",
+ "source": "common_mp.ff",
+ "attachTo": "tag_weapon_right",
+ "weapons": {
+  "ak47": {
+   "model": "weapon_ak47",
+   "silencer": "weapon_ak47_silencer",
+   "gl": "weapon_ak47_grenadier"
+  },
+  "ak74u": {
+   "model": "weapon_ak74u",
+   "silencer": "weapon_ak74u_supressed"
+  },
+  "m16": {
+   "model": "weapon_m16_mp",
+   "silencer": "weapon_m16_silencer_mp",
+   "gl": "weapon_m16gr_sp"
+  },
+  "m4": {
+   "model": "weapon_m4_mp",
+   "silencer": "weapon_m4_silencer_mp",
+   "gl": "weapon_m4m203_mp"
+  },
+  "g3": {
+   "model": "weapon_g3",
+   "silencer": "weapon_g3_silencer",
+   "gl": "weapon_g3m203"
+  },
+  "g36c": {
+   "model": "weapon_g36_mp",
+   "silencer": "weapon_g36csd_mp",
+   "gl": "weapon_g36m203"
+  },
+  "m14": {
+   "model": "weapon_m14_mp",
+   "gl": "weapon_m14_gl_scout_mp"
+  },
+  "mp44": {
+   "model": "weapon_mp44"
+  },
+  "mp5": {
+   "model": "weapon_mp5",
+   "silencer": "weapon_mp5sd"
+  },
+  "skorpion": {
+   "model": "weapon_skorpion",
+   "silencer": "weapon_skorpion_sd"
+  },
+  "uzi": {
+   "model": "weapon_mini_uzi",
+   "silencer": "weapon_mini_uzi_silencer"
+  },
+  "p90": {
+   "model": "weapon_p90",
+   "silencer": "weapon_p90_sd"
+  },
+  "m1014": {
+   "model": "weapon_benelli_super_90"
+  },
+  "winchester1200": {
+   "model": "weapon_winchest1200"
+  },
+  "rpd": {
+   "model": "weapon_rpd"
+  },
+  "saw": {
+   "model": "weapon_saw"
+  },
+  "m60e4": {
+   "model": "weapon_m60"
+  },
+  "dragunov": {
+   "model": "weapon_dragunov"
+  },
+  "m40a3": {
+   "model": "weapon_m40a3"
+  },
+  "barrett": {
+   "model": "weapon_m82"
+  },
+  "remington700": {
+   "model": "weapon_remington700"
+  },
+  "m21": {
+   "model": "weapon_m14_scout_mp",
+   "silencer": "weapon_m14sd_scout"
+  },
+  "beretta": {
+   "model": "weapon_beretta",
+   "silencer": "weapon_beretta_silencer"
+  },
+  "usp": {
+   "model": "weapon_usp",
+   "silencer": "weapon_usp_silencer"
+  },
+  "colt45": {
+   "model": "weapon_colt1911_black",
+   "silencer": "weapon_colt1911_silencer"
+  },
+  "deserteagle": {
+   "model": "weapon_desert_eagle_silver"
+  },
+  "rpg": {
+   "model": "weapon_rpg7"
+  },
+  "c4": {
+   "model": "weapon_c4"
+  },
+  "claymore": {
+   "model": "weapon_claymore"
+  },
+  "frag_grenade": {
+   "model": "weapon_m67_grenade"
+  },
+  "smoke_grenade": {
+   "model": "weapon_us_smoke_grenade"
+  },
+  "concussion_grenade": {
+   "model": "weapon_concussion_grenade"
+  }
+ },
+ "missing": [
+  "weapon_desert_eagle_gold",
+  "weapon_m84_flashbang_grenade"
+ ],
+ "note": "base weapon (C4.weapons.baseWeapon) -> world models: model, silencer, gl"
+}

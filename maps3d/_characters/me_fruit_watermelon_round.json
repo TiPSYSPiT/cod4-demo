@@ -1,0 +1,101 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "me_fruit_watermelon_round",
+ "kind": "script",
+ "faction": null,
+ "file": "me_fruit_watermelon_round.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 2112
+  },
+  "normal": {
+   "offset": 2112,
+   "length": 704
+  },
+  "uv": {
+   "offset": 2816,
+   "length": 1408
+  },
+  "skinIndex": {
+   "offset": 4224,
+   "length": 704
+  },
+  "skinWeight": {
+   "offset": 4928,
+   "length": 704
+  },
+  "index": {
+   "offset": 5632,
+   "length": 1584
+  },
+  "color": {
+   "offset": 7216,
+   "length": 704
+  }
+ },
+ "vertexCount": 176,
+ "triangleCount": 264,
+ "bones": [
+  {
+   "name": "watermelon_round_lod0",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 792,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_watermelon",
+   "texture": "_textures/watermelon_col.webp",
+   "textureAlpha": false,
+   "color": "#465142",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/watermelon_nml.normal.webp",
+   "specularMap": "_textures/watermelon_spc-rgb_watermelo_fd5a929b.specular.webp",
+   "envMapParms": [
+    0.0,
+    12.0,
+    1.2,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -5.88,
+   -5.9,
+   -5.69
+  ],
+  "maxs": [
+   5.88,
+   5.9,
+   5.69
+  ]
+ }
+}

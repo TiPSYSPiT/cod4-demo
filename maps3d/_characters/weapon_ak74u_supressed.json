@@ -1,0 +1,178 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "weapon_ak74u_supressed",
+ "kind": "weapon",
+ "faction": null,
+ "file": "weapon_ak74u_supressed.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 17904
+  },
+  "normal": {
+   "offset": 17904,
+   "length": 5968
+  },
+  "uv": {
+   "offset": 23872,
+   "length": 11936
+  },
+  "skinIndex": {
+   "offset": 35808,
+   "length": 5968
+  },
+  "skinWeight": {
+   "offset": 41776,
+   "length": 5968
+  },
+  "index": {
+   "offset": 47744,
+   "length": 5916
+  },
+  "color": {
+   "offset": 53660,
+   "length": 5968
+  }
+ },
+ "vertexCount": 1492,
+ "triangleCount": 986,
+ "bones": [
+  {
+   "name": "tag_weapon",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 0,
+   "pos": [
+    -5.9083,
+    -1.0615,
+    0.1472
+   ],
+   "quat": [
+    -0.212622,
+    -0.212622,
+    -0.674367,
+    0.674398
+   ]
+  },
+  {
+   "name": "tag_clip",
+   "parent": 0,
+   "pos": [
+    -6.271,
+    -0.01,
+    -3.3489
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    11.166,
+    0.0,
+    -0.4073
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 2574,
+   "material": 0
+  },
+  {
+   "indexStart": 2574,
+   "indexCount": 90,
+   "material": -1
+  },
+  {
+   "indexStart": 2664,
+   "indexCount": 294,
+   "material": 1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_ak74u",
+   "texture": "_textures/weapon_ak74u_col.webp",
+   "textureAlpha": false,
+   "color": "#36312f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_ak74u_spec-rgb_weapon_8d98e74a.specular.webp",
+   "envMapParms": [
+    3.0,
+    4.0,
+    4.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_ak74u_misc_nocamo",
+   "texture": "_textures/weapon_ak74u_col.webp",
+   "textureAlpha": false,
+   "color": "#36312f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_ak74u_spec-rgb_weapon_8d98e74a.specular.webp",
+   "envMapParms": [
+    3.0,
+    4.0,
+    4.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -23.27,
+   -2.2,
+   -10.61
+  ],
+  "maxs": [
+   11.17,
+   1.36,
+   2.34
+  ]
+ }
+}

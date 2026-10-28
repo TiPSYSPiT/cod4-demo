@@ -1,0 +1,131 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "vehicle_80s_wagon1_brn_door_lb",
+ "kind": "script",
+ "faction": null,
+ "file": "vehicle_80s_wagon1_brn_door_lb.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 1692
+  },
+  "normal": {
+   "offset": 1692,
+   "length": 564
+  },
+  "uv": {
+   "offset": 2256,
+   "length": 1128
+  },
+  "skinIndex": {
+   "offset": 3384,
+   "length": 564
+  },
+  "skinWeight": {
+   "offset": 3948,
+   "length": 564
+  },
+  "index": {
+   "offset": 4512,
+   "length": 528
+  },
+  "color": {
+   "offset": 5040,
+   "length": 564
+  }
+ },
+ "vertexCount": 141,
+ "triangleCount": 88,
+ "bones": [
+  {
+   "name": "tag_door_left_back",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_left_back",
+   "parent": 0,
+   "pos": [
+    -0.9895,
+    -4.2506,
+    10.9954
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_glass_left_back_fx",
+   "parent": 0,
+   "pos": [
+    -13.1293,
+    -5.8216,
+    18.4421
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.707107,
+    0.707107
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 264,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_80s_econ_brn",
+   "texture": "_textures/80s_econ_brn_col.webp",
+   "textureAlpha": false,
+   "color": "#5b4a3a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/80s_econ_nml.normal.webp",
+   "specularMap": "_textures/80s_econ_spc-rgb_80s_econ_cos-l-11.specular.webp",
+   "envMapParms": [
+    1.0,
+    3.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -31.18,
+   -10.54,
+   -15.9
+  ],
+  "maxs": [
+   0.35,
+   0.0,
+   27.89
+  ]
+ }
+}

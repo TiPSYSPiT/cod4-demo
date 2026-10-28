@@ -1,0 +1,130 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "com_plastic_bucket",
+ "kind": "script",
+ "faction": null,
+ "file": "com_plastic_bucket.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 5940
+  },
+  "normal": {
+   "offset": 5940,
+   "length": 1980
+  },
+  "uv": {
+   "offset": 7920,
+   "length": 3960
+  },
+  "skinIndex": {
+   "offset": 11880,
+   "length": 1980
+  },
+  "skinWeight": {
+   "offset": 13860,
+   "length": 1980
+  },
+  "index": {
+   "offset": 15840,
+   "length": 2364
+  },
+  "color": {
+   "offset": 18204,
+   "length": 1980
+  }
+ },
+ "vertexCount": 495,
+ "triangleCount": 394,
+ "bones": [
+  {
+   "name": "plastic_bucket_lod0",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 1080,
+   "material": 0
+  },
+  {
+   "indexStart": 1080,
+   "indexCount": 102,
+   "material": 1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_plastic_bucket",
+   "texture": "_textures/plastic_bucket_col.webp",
+   "textureAlpha": false,
+   "color": "#414140",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/plastic_bucket_nml.normal.webp",
+   "specularMap": "_textures/plastic_bucket_spc-rgb_plast_7c97f814.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_plastic_bucket_dirt",
+   "texture": "_textures/plastic_bucket_dirt_col.webp",
+   "textureAlpha": true,
+   "color": "#8e7c69",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "normalMap": "_textures/plastic_bucket_dirt_nml.normal.webp",
+   "specularMap": "_textures/plastic_bucket_dirt_spc-r30g30b30l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -7.93,
+   -7.56,
+   -0.0
+  ],
+  "maxs": [
+   7.9,
+   7.39,
+   14.98
+  ]
+ }
+}
