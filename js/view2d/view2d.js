@@ -179,7 +179,10 @@ export class View2D {
     } else {
       if (e.x == null) return;
       pos = [e.x, e.y];
-      if (e.state === 'planted') opts = { pulse: ((t - e.t) % B.pulseMs) / B.pulseMs };
+      if (e.state === 'planted') {
+        const bt = M.bombTimer(t);
+        opts = { pulse: ((t - e.t) % B.pulseMs) / B.pulseMs, label: bt ? (bt.heuristic ? '≈' : '') + Math.ceil(bt.left / 1000) + 's' : null };
+      }
       if (e.state === 'defused') opts = { color: B.defusedColor };
       text = BOMB_TEXT[e.state] + (e.site ? ' - site ' + e.site : '');
     }

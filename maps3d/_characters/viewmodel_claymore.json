@@ -1,0 +1,186 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "viewmodel_claymore",
+ "kind": "viewmodel",
+ "faction": null,
+ "file": "viewmodel_claymore.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 8388
+  },
+  "normal": {
+   "offset": 8388,
+   "length": 2796
+  },
+  "uv": {
+   "offset": 11184,
+   "length": 5592
+  },
+  "skinIndex": {
+   "offset": 16776,
+   "length": 2796
+  },
+  "skinWeight": {
+   "offset": 19572,
+   "length": 2796
+  },
+  "index": {
+   "offset": 22368,
+   "length": 3096
+  },
+  "color": {
+   "offset": 25464,
+   "length": 2796
+  }
+ },
+ "vertexCount": 699,
+ "triangleCount": 516,
+ "bones": [
+  {
+   "name": "j_gun",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "j_leg_left0",
+   "parent": 0,
+   "pos": [
+    -0.0868,
+    4.3504,
+    -2.9996
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -0.0868,
+    4.3504,
+    -2.9996
+   ]
+  },
+  {
+   "name": "j_leg_left1",
+   "parent": 0,
+   "pos": [
+    -0.0868,
+    4.1697,
+    -2.9996
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -0.0868,
+    4.1697,
+    -2.9996
+   ]
+  },
+  {
+   "name": "j_leg_right0",
+   "parent": 0,
+   "pos": [
+    -0.0868,
+    -4.3504,
+    -2.9996
+   ],
+   "quat": [
+    0.0,
+    1.0,
+    0.0,
+    0.0
+   ],
+   "trans": [
+    -0.0868,
+    -4.3504,
+    -2.9996
+   ]
+  },
+  {
+   "name": "j_leg_right1",
+   "parent": 0,
+   "pos": [
+    -0.0868,
+    -4.1697,
+    -2.9996
+   ],
+   "quat": [
+    0.0,
+    1.0,
+    0.0,
+    0.0
+   ],
+   "trans": [
+    -0.0868,
+    -4.1697,
+    -2.9996
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 120,
+   "material": 0
+  },
+  {
+   "indexStart": 120,
+   "indexCount": 1428,
+   "material": -1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_claymore",
+   "texture": "_textures/weapon_claymore_col.webp",
+   "textureAlpha": false,
+   "color": "#6e6646",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/weapon_claymore_nml.normal.webp",
+   "specularMap": "_textures/weapon_claymore_spec-r-61g-6_7ad315ae.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -1.38,
+   -5.52,
+   -8.16
+  ],
+  "maxs": [
+   1.38,
+   5.52,
+   4.66
+  ]
+ }
+}

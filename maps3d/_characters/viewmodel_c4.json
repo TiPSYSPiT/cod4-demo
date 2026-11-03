@@ -1,0 +1,278 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "viewmodel_c4",
+ "kind": "viewmodel",
+ "faction": null,
+ "file": "viewmodel_c4.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 32388
+  },
+  "normal": {
+   "offset": 32388,
+   "length": 10796
+  },
+  "uv": {
+   "offset": 43184,
+   "length": 21592
+  },
+  "skinIndex": {
+   "offset": 64776,
+   "length": 10796
+  },
+  "skinWeight": {
+   "offset": 75572,
+   "length": 10796
+  },
+  "index": {
+   "offset": 86368,
+   "length": 12828
+  },
+  "color": {
+   "offset": 99196,
+   "length": 10796
+  }
+ },
+ "vertexCount": 2699,
+ "triangleCount": 2138,
+ "bones": [
+  {
+   "name": "j_gun",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_clip",
+   "parent": 0,
+   "pos": [
+    0.0,
+    0.0,
+    -1.2401
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    0.0,
+    0.0,
+    -1.2401
+   ]
+  },
+  {
+   "name": "tag_clip2",
+   "parent": 0,
+   "pos": [
+    5.3076,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    5.3076,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "j_bar",
+   "parent": 2,
+   "pos": [
+    4.7841,
+    0.0,
+    -2.8002
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -0.5235,
+    0.0,
+    -2.8002
+   ]
+  },
+  {
+   "name": "j_button",
+   "parent": 2,
+   "pos": [
+    4.5622,
+    0.0,
+    -1.3387
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -0.7454,
+    0.0,
+    -1.3387
+   ]
+  },
+  {
+   "name": "j_handle_on",
+   "parent": 2,
+   "pos": [
+    4.2218,
+    0.0,
+    -0.4494
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -1.0858,
+    0.0,
+    -0.4494
+   ]
+  },
+  {
+   "name": "j_rubber_base",
+   "parent": 2,
+   "pos": [
+    5.9728,
+    0.0,
+    -0.0002
+   ],
+   "quat": [
+    0.0,
+    -0.849546,
+    0.0,
+    0.527514
+   ],
+   "trans": [
+    0.6651,
+    0.0,
+    -0.0002
+   ]
+  },
+  {
+   "name": "j_rubber_tip",
+   "parent": 6,
+   "pos": [
+    5.7944,
+    0.0,
+    0.6222
+   ],
+   "quat": [
+    0.0,
+    -0.849546,
+    0.0,
+    0.527514
+   ],
+   "trans": [
+    0.6369,
+    0.0,
+    -0.1161
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 4116,
+   "material": 0
+  },
+  {
+   "indexStart": 4116,
+   "indexCount": 846,
+   "material": 1
+  },
+  {
+   "indexStart": 4962,
+   "indexCount": 1008,
+   "material": -1
+  },
+  {
+   "indexStart": 5970,
+   "indexCount": 444,
+   "material": -1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_c4",
+   "texture": "_textures/weapon_c4_col.webp",
+   "textureAlpha": false,
+   "color": "#4b412d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_c4_spec-rgb_weapon_c4_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_claymore_detonator",
+   "texture": "_textures/weapon_claymore_detonator_col.webp",
+   "textureAlpha": false,
+   "color": "#63583d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_claymore_detonator_sp_0756aea3.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -1.3,
+   -3.71,
+   -8.7
+  ],
+  "maxs": [
+   6.16,
+   4.33,
+   2.0
+  ]
+ }
+}

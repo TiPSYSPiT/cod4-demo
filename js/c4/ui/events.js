@@ -6,7 +6,8 @@
   const COLORS = {
     ready: '#58d68d', connected: '#7fd1b9', disconnected: '#a3a3ab', joined: '#3ea8ff', left: '#ff8f8f',
     attack_eliminated: '#ff9f9f', defence_eliminated: '#9fd4ff', bomb_planted: '#f5c451', bomb_defused: '#b0e57c',
-    kill: '#ff6a3d', halftime: '#ffb35c', timeout: '#b48cff', team_join: '#8d8d95', bomb_pickup: '#d9c27a', bomb_drop: '#c9a45a'
+    kill: '#ff6a3d', halftime: '#ffb35c', timeout: '#b48cff', team_join: '#8d8d95', bomb_pickup: '#d9c27a', bomb_drop: '#c9a45a',
+    weapon_pickup: '#8fb8de', ammo_pickup: '#7fa7c9', out_of_ammo: '#e0a070', no_grenades: '#d08f6a'
   };
 
   function render(root, app) {

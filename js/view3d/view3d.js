@@ -3,9 +3,9 @@
 import * as THREE from 'three';
 import '../c4/ui/killfeed.js';                     // C4.killfeed (a classic script, loaded here: see the file)
 import { loadWorld, groundPlane, resolveMap, loadTexture } from './mapLoader.js';
-import { Actors, EYE, stanceOf } from './actors.js';
+import { Actors, EYE, stanceOf, forward } from './actors.js';
 import { Effects } from './effects.js';
-import { Cameras, MODES } from './cameras.js';
+import { Cameras, MODES, FP_FOV } from './cameras.js';
 import { AuditView } from './audit.js';
 import { CharacterLibrary, AnimationLibrary } from './characters.js';
 import { SUN, PROBES, installGameFog } from './lighting.js';
@@ -13,9 +13,13 @@ import { SunShadows, castShadows } from './shadows.js';
 import { GRAPHICS, graphics, urlGraphics, setGraphics } from './graphics.js';
 import { XRay, XRAY_MODES } from './xray.js';
 import { Sky } from './sky.js';
-import { FxSystem } from './fx.js';
+import { FxSystem, shotTracer } from './fx.js';
 import { ScriptModels } from './scriptModels.js';
 import { SoundSystem } from './sound.js';
+import { ViewModel, isPromod } from './viewmodel.js';
+import { WorldWeapons } from './worldWeapons.js';
+import { Tracers } from './tracers.js';
+import { GameHud } from './hud.js';
 import { InfoHint, fadeHint, holdHint } from '../app/infoHint.js';
 
 const C4 = window.C4;
@@ -41,9 +45,12 @@ const MODE_HELP = { orbit: 'Left drag: rotate · right drag: pan · wheel: zoom 
   fp: 'Eyes of the selected player (their real view angles)' };
 const stored = key => { try { return localStorage.getItem(key); } catch (err) { return null; } };
 const store = (key, v) => { try { localStorage.setItem(key, v); } catch (err) { /* not stored */ } };
-const SOUND_KEY = 'cod4demo3d.sound';
+const SOUND_KEY = 'cod4demo3d.sound';              // 'on' / 'off' (default on); .volume 0-1 (default SOUND_VOLUME)
+const SOUND_VOLUME = 0.3;
 const KILLFEED_KEY = 'cod4demo3d.killfeed';      // 'on' / 'off' (default on)
 const KILL_ICONS_KEY = 'cod4demo3d.killIcons';    // 'on' / 'off' (default off)
+const TRACERS_KEY = 'cod4demo3d.tracers';          // 'on' / 'off' (default off): the bullet tracers
+const HUD_KEY = 'cod4demo3d.hud';                  // 'on' / 'off' (default on): the game's HUD in first person
 const XRAY_KEY = 'cod4demo3d.xray';              // 'off' / 'players' / 'names' (default off)
 
 export class View3D {
@@ -82,6 +89,13 @@ export class View3D {
     this.animations = new AnimationLibrary();
     this.actors = new Actors(scene, this.labels, this.M, this.characters, failed => this.showPlayerNotice(failed), this.animations);
     this.actors.onLoaded = () => { this.R.invalidate(); this.needsRender = true; };
+    // the first-person weapon (viewmodel.js; graphics: First-person weapon)
+    this.viewmodel = new ViewModel(this.characters);
+    this.viewmodel.setSceneLights(hemi, this.sun);
+    this.viewmodel.enabled = graphics().viewmodel !== 'off';
+    this.viewmodel.crosshair = graphics().crosshair !== 'off';
+    this.viewmodel.setMatch(this.M, this.animations);
+    this.viewmodel.onLoaded = () => { this.needsRender = true; };
     this.playerNotice = el('div', { class: 'player-notice', hidden: true });
     this.stage.append(this.playerNotice);
     this.effects = new Effects(scene, this.labels, this.M);
@@ -94,6 +108,26 @@ export class View3D {
     this.setXray(stored(XRAY_KEY));
     this.setKillfeed(stored(KILLFEED_KEY) !== 'off');
     this.setKillIcons(stored(KILL_ICONS_KEY) === 'on');
+    // the bullet tracers (tracers.js)
+    this.tracers = new Tracers(this.scene, this.M);
+    this.setTracers(stored(TRACERS_KEY) === 'on');
+    // the game's HUD in first person (hud.js): a 2D canvas over the view; Tab (held) shows the scoreboard
+    this.hud = new GameHud(this.M, null);
+    this.hud.onChange = () => { this.needsRender = true; };
+    this.characters.viewModels().then(t => { this.hud.table = t; this.needsRender = true; }).catch(() => null);
+    this.hudCanvas = el('canvas', { class: 'hud-canvas', 'aria-hidden': 'true' });
+    this.stage.append(this.hudCanvas);
+    this.setHud(stored(HUD_KEY) !== 'off');
+    const tab = on => e => {
+      if (e.code !== 'Tab' || !this.visible || this.cams.mode !== 'fp' || !this.hud.enabled) return;
+      const ae = document.activeElement, tag = ae && ae.tagName;
+      if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
+      e.preventDefault();
+      if (this.hud.scoreboard !== on) { this.hud.scoreboard = on; this.needsRender = true; }
+    };
+    this.onTabDown = tab(true); this.onTabUp = tab(false);
+    window.addEventListener('keydown', this.onTabDown);
+    window.addEventListener('keyup', this.onTabUp);
     let mode = 'orbit';
     try { const v = localStorage.getItem(CAM_KEY); if (MODES.some(m => m[0] === v)) mode = v; } catch (err) { /* default */ }
     this.setMode(mode);
@@ -171,6 +205,9 @@ export class View3D {
         this.scriptModels = new ScriptModels(this.M, w.scriptModels, this.characters, w.lightGrid, () => { this.needsRender = true; }, w.props);
         this.scriptModels.setCollision(w.scriptCollision);
         this.scene.add(this.scriptModels.group);
+        // the dropped weapons and the grenades in flight (worldWeapons.js)
+        this.worldWeapons = new WorldWeapons(this.M, this.characters, w.lightGrid, () => this.actors.weaponTable, () => { this.needsRender = true; });
+        this.scene.add(this.worldWeapons.group);
         // ?audit=1: the assets coloured by the audit's status (audit.js, tools/audit/asset_audit.py)
         if (new URLSearchParams(location.search).get('audit')) {
           AuditView.load('maps3d/' + name + '/').then(a => {
@@ -199,13 +236,18 @@ export class View3D {
             snd.setDemo(this.M, this.fx);
             snd.setVolume(this.soundVolume);
             this.soundRows.hidden = false;
-            if (this.soundWanted && navigator.userActivation && navigator.userActivation.hasBeenActive) this.setSound(true);
-            else if (this.soundWanted) this.soundNote.textContent = 'click to start';
+            this.soundBtn.checked = this.soundWanted;
+            const active = !navigator.userActivation || navigator.userActivation.hasBeenActive;
+            if (this.soundWanted && active) this.setSound(true);
+            else if (this.soundWanted) this.soundNote.textContent = 'starts with the first click';
           }).catch(err => console.warn('sounds not loaded:', err));
         }
         if (fxOpt !== 'off') {
-          FxSystem.load('maps3d/' + name + '/', w.lightGrid, w.info.lights, w.info.sun && w.info.sun.index != null ? w.info.sun.index : 1).then(fx => {
+          // (a Promod demo: the effects of Promod's weapon files - viewmodels.json, before the demo's effects are set up)
+          Promise.all([FxSystem.load('maps3d/' + name + '/', w.lightGrid, w.info.lights, w.info.sun && w.info.sun.index != null ? w.info.sun.index : 1),
+            isPromod(this.M) ? this.characters.viewModels() : null]).then(([fx, vmt]) => {
             if (!fx || this.world !== w) return;
+            if (vmt && vmt.promod) fx.setWeaponOverrides(vmt.promod.weapons);
             fx.setModels(this.characters, () => { this.needsRender = true; });   // a debris model loaded
             fx.setDemo(this.M);
             fx.scripts = this.scriptModels;            // the cars stop bullets and debris (scriptModels.js trace)
@@ -227,6 +269,7 @@ export class View3D {
         PROBES.on.value = 0;
         if (w.probes) w.probes.activate(gfx.reflections !== 'off');
         this.actors.setProbes(w.probes);
+        if (gameLighting) this.viewmodel.setLighting(w.lightGrid, w.probes);
         // the game's sun shadow map (shadows.js): world, props and players cast (graphics: sun shadows)
         if (w.lightGrid && gfx.shadows !== 'off') {
           this.shadows = this.shadows || new SunShadows(this.renderer);
@@ -278,9 +321,14 @@ export class View3D {
     this.propsRow.hidden = true;
     this.playersSel = el('select', { onchange: e => this.setPlayersMode(e.target.value) },
       el('option', { value: 'simple' }, 'Simple'), el('option', { value: 'models' }, 'Models'));
-    // sound: off until switched on (the browsers start audio only after a click); remembered
-    this.soundWanted = false; this.soundVolume = 0.8;
-    try { this.soundWanted = localStorage.getItem(SOUND_KEY) === 'on'; const v = Number(localStorage.getItem(SOUND_KEY + '.volume')); if (v >= 0 && v <= 1 && localStorage.getItem(SOUND_KEY + '.volume') != null) this.soundVolume = v; } catch (err) { /* default */ }
+    // sound: on at 30 % unless the user chose otherwise (remembered); the browsers start audio only
+    // after a click or key in the page - until then it waits (armed below), without an error
+    this.soundWanted = true; this.soundVolume = SOUND_VOLUME;
+    try {
+      this.soundWanted = localStorage.getItem(SOUND_KEY) !== 'off';
+      const saved = localStorage.getItem(SOUND_KEY + '.volume'), v = Number(saved);
+      if (saved != null && saved !== '' && v >= 0 && v <= 1) this.soundVolume = v;
+    } catch (err) { /* default */ }
     this.soundBtn = el('input', { type: 'checkbox', onchange: e => this.setSound(e.target.checked, true) });
     this.soundNote = el('span');
     this.soundVol = el('input', { type: 'range', min: '0', max: '1', step: '0.05', value: String(this.soundVolume), title: 'Volume', 'aria-label': 'Volume',
@@ -291,16 +339,22 @@ export class View3D {
     this.xraySel = el('select', { onchange: e => this.setXray(e.target.value, true) }, ...XRAY_MODES.map(([v, label]) => el('option', { value: v }, label)));
     this.killfeedBox = el('input', { type: 'checkbox', onchange: e => this.setKillfeed(e.target.checked, true) });
     this.killIconsBox = el('input', { type: 'checkbox', onchange: e => this.setKillIcons(e.target.checked, true) });
-    // a remembered "on" starts with the first click / key in the page
-    const arm = () => { if (this.soundWanted && this.sound && this.visible && (!this.sound.enabled || this.sound.ctx.state !== 'running')) this.setSound(true); };
-    window.addEventListener('pointerdown', arm, { capture: true });
-    window.addEventListener('keydown', arm, { capture: true });
-    this.offArm = () => { window.removeEventListener('pointerdown', arm, { capture: true }); window.removeEventListener('keydown', arm, { capture: true }); };
+    this.tracersBox = el('input', { type: 'checkbox', onchange: e => this.setTracers(e.target.checked, true) });
+    this.hudBox = el('input', { type: 'checkbox', onchange: e => this.setHud(e.target.checked, true) });
+    // sound wanted (the default) starts with the first click / key / touch in the page - opening a demo,
+    // play, the timeline (a dropped file is no user gesture for the browsers: then the next click)
+    const arm = () => { if (this.soundWanted && this.sound && this.visible && (!this.sound.enabled || !this.sound.ctx || this.sound.ctx.state !== 'running')) this.setSound(true); };
+    const ARM_EVENTS = ['pointerdown', 'pointerup', 'keydown', 'touchend'];
+    for (const ev of ARM_EVENTS) window.addEventListener(ev, arm, { capture: true });
+    this.offArm = () => { for (const ev of ARM_EVENTS) window.removeEventListener(ev, arm, { capture: true }); };
     // graphics (graphics.js): applied when the map loads - a change rebuilds the 3D view
     const gNow = graphics(), gRows = [];
     for (const g of GRAPHICS) {
       const fixed = urlGraphics(g.key);
-      const sel = el('select', { disabled: fixed ? 'disabled' : null, onchange: e => { setGraphics(g.key, e.target.value); this.R.app.reload3d && this.R.app.reload3d('graphics'); } },
+      const sel = el('select', { disabled: fixed ? 'disabled' : null, onchange: e => {
+        setGraphics(g.key, e.target.value);
+        if (g.live) this.applyGraphics(g.key, e.target.value); else if (this.R.app.reload3d) this.R.app.reload3d('graphics');
+      } },
         g.values.map(([v, label]) => el('option', { value: v, selected: v === gNow[g.key] ? 'selected' : null }, label)));
       gRows.push(selectRow(g.label, sel, g.title + (fixed ? ' - set by the page address (?' + g.key + '=)' : '')));
     }
@@ -315,11 +369,13 @@ export class View3D {
           selectRow('X-Ray', this.xraySel, 'Living players behind walls and props as a translucent silhouette in the team colour, the selected player in orange (key X cycles). "Players + names" also shows every name - a player out of sight gets his name on a badge with the team shape (▲ / ◆) - and keeps overlapping names apart'),
           this.propsRow,
           switchRow('Kill feed', this.killfeedBox, { title: 'The kills and bomb plants / defuses of the last ' + C4.mapConfig.EXPORT.KILLFEED_MS / 1000 + ' s over the view, with the weapon icons' }),
-          switchRow('Kill icons', this.killIconsBox, { title: 'The weapon icon over each death marker' })),
+          switchRow('Kill icons', this.killIconsBox, { title: 'The weapon icon over each death marker' }),
+          switchRow('Game HUD', this.hudBox, { title: "First person: the game's HUD (Promod's layout) - the minimap, ammo and grenades, the low health overlay, the damage indicator, the teammate under the crosshair; hold Tab for the scoreboard" }),
+          switchRow('Bullet tracers', this.tracersBox, { title: "The game's bullet tracers: a short glowing streak flying from the muzzle, gone at the impact - for 20 % of the hits the server reports (cg_tracerChance) and half the shots of the player seen in first person (cg_firstPersonTracerChance)" })),
         this.soundRows) },
       { key: 'graphics', title: 'Graphics', hint: 'reloads the 3D map', icon: 'sun', node: el('div', { class: 'pop-body' },
         el('div', { class: 'grp' }, ...gRows),
-        el('p', { class: 'pop-note' }, 'Lower settings help on slow graphics cards. A change reloads the 3D map; time, selection and the other options stay.')) }
+        el('p', { class: 'pop-note' }, 'Lower settings help on slow graphics cards. A change reloads the 3D map (the first-person weapon switches at once); time, selection and the other options stay.')) }
     ];
   }
   fillPlayerSelect() {
@@ -347,6 +403,12 @@ export class View3D {
     fadeHint(this.camHint);
     this.needsRender = true;
   }
+  /** a graphics setting that applies without rebuilding the view (graphics.js "live") */
+  applyGraphics(key, value) {
+    if (key === 'viewmodel') this.viewmodel.enabled = value !== 'off';
+    if (key === 'crosshair') this.viewmodel.crosshair = value !== 'off';
+    this.needsRender = true;
+  }
   /** X-Ray: 'off' | 'players' | 'names' (xray.js); user: chosen in the popover or with X - remembered */
   setXray(mode, user = false) {
     mode = XRAY_MODES.some(m => m[0] === mode) ? mode : 'off';
@@ -369,6 +431,20 @@ export class View3D {
     this.killIconsBox.checked = on;
     if (user) store(KILL_ICONS_KEY, on ? 'on' : 'off');
     this.R.invalidate();
+  }
+  /** the game's HUD in first person on / off */
+  setHud(on, user = false) {
+    this.hud.enabled = on;
+    if (this.hudBox) this.hudBox.checked = on;
+    if (user) store(HUD_KEY, on ? 'on' : 'off');
+    this.needsRender = true;
+  }
+  /** the bullet tracers on / off */
+  setTracers(on, user = false) {
+    this.tracers.enabled = on;
+    if (this.tracersBox) this.tracersBox.checked = on;
+    if (user) store(TRACERS_KEY, on ? 'on' : 'off');
+    this.needsRender = true;
   }
   /** sound on / off (user: from the button - remembered) */
   setSound(on, user = false) {
@@ -442,6 +518,8 @@ export class View3D {
     if (!r.width || !r.height) return;
     this.w = r.width; this.h = r.height;
     this.renderer.setSize(r.width, r.height, false);
+    const dpr = this.renderer.getPixelRatio();
+    this.hudCanvas.width = Math.round(r.width * dpr); this.hudCanvas.height = Math.round(r.height * dpr);
     this.camera.aspect = r.width / r.height;
     this.camera.updateProjectionMatrix();
     this.needsRender = true;
@@ -456,6 +534,7 @@ export class View3D {
     this.effects.update(t, R);
     this.killfeed.update(t);
     if (this.scriptModels) this.scriptModels.update(t);
+    if (this.worldWeapons) this.worldWeapons.update(t);
     this.needsRender = true;
   }
 
@@ -467,6 +546,47 @@ export class View3D {
     return this.camera.position.clone().addScaledVector(f, 700);
   }
 
+  /** the weapons the given clients hold between a and b (ms; default the whole demo), each with the
+   *  client's body model at its first use -> [{weapon, body}] (ViewModel.preload) */
+  viewModelPairs(clients, a = -Infinity, b = Infinity) {
+    const M = this.M, out = [], seen = new Set();
+    for (const cl of clients) {
+      const P = M.d.positions[cl];
+      if (!P) continue;
+      for (let i = 0; i < P.t.length; i++) {
+        const t = P.t[i];
+        if (t < a || t > b) continue;
+        const name = M.weaponName(P.weapon[i], t);
+        if (!name) continue;
+        const models = this.actors.modelsAt(cl, t), body = models && models.body;
+        const key = name + '|' + body;
+        if (!seen.has(key)) { seen.add(key); out.push({ weapon: name, body }); }
+      }
+      // the recorder's offhand weapons (the grenade he holds and throws: viewanim.js)
+      const W = M.d.psWeapon;
+      for (let i = 0; W && i < W.t.length; i++) {
+        if (W.client[i] !== cl || !W.offhand[i] || W.state[i] < 15 || W.state[i] > 20 || W.t[i] < a || W.t[i] > b) continue;
+        const name = M.weaponName(W.offhand[i], W.t[i]), models = this.actors.modelsAt(cl, W.t[i]), body = models && models.body;
+        const key = name + '|' + body;
+        if (name && !seen.has(key)) { seen.add(key); out.push({ weapon: name, body }); }
+      }
+    }
+    return out;
+  }
+
+  /** the player under client cl's crosshair within range (the crosshair's colour of a player without his
+   *  player state: CG_CalcCrosshairColor's teammate / enemy test, here a trace along his view against the
+   *  world and the players) -> 'friend' | 'enemy' | null */
+  aimedPlayer(cl, t, target, range) {
+    if (!range || !this.fx || !this.fx.tracer) return null;
+    const tr = shotTracer(this.fx.tracer, this.M, t, cl);
+    const e = target.eye, f = forward(target.yaw, target.pitch);
+    const h = tr.trace([e.x, e.y, e.z], [e.x + f.x * range, e.y + f.y * range, e.z + f.z * range]);
+    if (!h || h.player == null) return null;
+    const team = c => { const p = this.M.d.players.find(x => x.client === c); return p ? p.team : null; };
+    return team(h.player) === team(cl) ? 'friend' : 'enemy';
+  }
+
   /** the player the follow / first-person camera uses: the selection, else the POV's followed player */
   cameraTarget() {
     const M = this.M, t = this.t;
@@ -474,7 +594,11 @@ export class View3D {
     const s = cl != null ? M.sampleAt(cl, t) : null;
     if (!s || s.age > C4.mapConfig.STALE_MS) return { cl, target: null };
     const pos = new THREE.Vector3(s.x, s.y, s.z);
-    return { cl, target: { pos, eye: new THREE.Vector3(s.x, s.y, s.z + EYE[stanceOf(s)]), yaw: s.yaw, pitch: s.pitch } };
+    // the eye: the recorder's view height, else the stance's moving as the game moves it; in first person
+    // the landing dip (viewanim.js)
+    const A = this.viewmodel.anim;
+    const eyeH = A ? A.eyeHeight(cl, t, s) + (this.cams.mode === 'fp' ? A.landDip(cl, t) : 0) : EYE[stanceOf(s)];
+    return { cl, target: { pos, eye: new THREE.Vector3(s.x, s.y, s.z + eyeH), yaw: s.yaw, pitch: s.pitch, weapon: s.weapon } };
   }
 
   loop(now) {
@@ -510,23 +634,120 @@ export class View3D {
         if (msg) holdHint(this.camHint); else fadeHint(this.camHint);
       }
       if (mode === 'fp' && target) { hideClient = cl; this.actors.hide(cl); }
-    } else if (this.cams.tick(dt, null)) this.needsRender = true;
+      // the first-person weapon: the weapon held now, in the hands of the player's character (the
+      // player's weapons over the demo are loaded when the camera starts following them)
+      if (mode === 'fp' && cl != null && this.vmPreloaded !== cl) { this.vmPreloaded = cl; this.viewmodel.preload(this.viewModelPairs([cl])); }
+      // its animations, aiming, crosshair (viewanim.js) - and the sights' zoom of the camera
+      const models = mode === 'fp' && target ? this.actors.modelsAt(cl, this.t || 0) : null;
+      this.viewmodel.aimTarget = target ? (st, range) => this.aimedPlayer(cl, this.t || 0, target, range) : null;
+      this.viewmodel.update(cl, this.t || 0, mode === 'fp' && target ? this.M.sampleAt(cl, this.t || 0) : null, models && models.body);
+      if (mode === 'fp') {
+        const fov = this.viewmodel.fov(FP_FOV);
+        if (Math.abs(this.camera.fov - fov) > 1e-3) { this.camera.fov = fov; this.camera.updateProjectionMatrix(); this.needsRender = true; }
+      }
+      // the view's own motion: the scope's sway (viewanim.js viewSway, with the held breath) and the camera
+      // shakes of earthquakes (shakeAngles) - pitch / yaw / roll on top of the player's view angles
+      if (mode === 'fp' && target) {
+        const st = this.viewmodel.state, sw = st && st.viewSway, sh = this.shakeAngles(this.t || 0, target.eye);
+        if (sw || sh) {
+          const p = (sw ? sw[0] : 0) + (sh ? sh[0] : 0), y = (sw ? sw[1] : 0) + (sh ? sh[1] : 0);
+          this.camera.lookAt(target.eye.clone().add(forward(target.yaw + y, target.pitch + p)));
+          if (sh) this.camera.rotateZ(-sh[2] * Math.PI / 180);
+          this.needsRender = true;
+        }
+      }
+    } else {
+      this.viewmodel.update(-1, 0, null);
+      if (this.cams.tick(dt, null)) this.needsRender = true;
+    }
     if (!this.needsRender && !force) return false;
     this.needsRender = false;
     if (this.shadows) {
       this.camera.updateMatrixWorld();
       this.shadows.update(this.scene, this.shadowCenter(), SUN.dir.value, this.camera, this.world && this.world.info.lights, shadowDt);
     }
-    if (this.fx) this.fx.update((this.t || 0) + (this.M.d.meta.firstServerTime || 0), this.camera, cl => this.actors.muzzle(cl), this.fxOpts);
+    if (this.fx) {
+      // the player seen in first person: the view flash and casings at the view model's tags (fx.js)
+      this.fx.viewClient = hideClient;
+      this.fx.viewMuzzle = hideClient != null && this.viewmodel.enabled ? tag => this.viewmodel.tagFrame(this.camera, tag) : null;
+      this.fx.update((this.t || 0) + (this.M.d.meta.firstServerTime || 0), this.camera, (cl, tag) => this.actors.muzzle(cl, tag), this.fxOpts);
+    }
+    if (this.tracers) {
+      const mz = cl => { const f = this.actors.muzzle(cl); return f ? f.origin : null; };
+      this.tracers.update(this.t || 0, this.camera, mz, hideClient, (from) => (this.fx && hideClient != null ? this.fx.ownShots(hideClient, from, this.t || 0) : []));
+    }
     this.renderer.render(this.scene, this.camera);
     // X-Ray: the players' hidden parts over the finished frame (also in the video export)
     if (this.xrayMode !== 'off') this.xray.render(this.camera, this.actors.xrayTargets(hideClient, this.R.focus));
     this.actors.setXrayHidden(this.xrayMode === 'names' ? this.xray.hidden() : null);
+    // the first-person weapon over everything (its own pass, depth cleared: never in a wall), then the
+    // crosshair or the scope
+    this.viewmodel.render(this.renderer, this.camera);
+    // the game's HUD (first person)
+    this.drawHud(this.hudCanvas.getContext('2d'), this.hudCanvas.width, this.hudCanvas.height, hideClient);
     if (!this.exporting) {
       this.actors.projectLabels(this.camera, this.w, this.h, hideClient);
       this.effects.projectLabels(this.camera, this.w, this.h);
     }
     return { hideClient };
+  }
+
+  /** the HUD of the player seen in first person (cl; null: none) into g, w x h device pixels (clear: the HUD's
+   *  own canvas; the video export draws it over its frame) */
+  drawHud(g, w, h, cl, clear = true) {
+    if (clear) g.clearRect(0, 0, w, h);
+    if (cl == null || !this.hud.enabled) return;
+    const s = this.M.sampleAt(cl, this.t || 0);
+    if (!s && !this.hud.scoreboard) return;
+    const st = this.viewmodel.state;
+    // the live view: inside the viewer's controls (their safe area); the export's frame: all of it
+    const ins = clear ? this.uiInsets(w / Math.max(1, this.hudCanvas.clientWidth || w)) : { l: 0, t: 0, r: 0, b: 0 };
+    g.save();
+    g.translate(ins.l, ins.t);
+    this.hud.draw(g, w - ins.l - ins.r, h - ins.t - ins.b, this.t || 0, cl, s ? { yaw: s.yaw, pitch: s.pitch } : null, st && st.weapon ? String(st.weapon).toLowerCase() : null);
+    g.restore();
+  }
+
+  /** the viewer's controls over the 3D canvas (rail, score, drawer, the playback bar) as the HUD's safe area: per
+   *  control the canvas edge it hugs, inset past it (device pixels) */
+  uiInsets(dpr) {
+    const c = this.renderer.domElement.getBoundingClientRect(), ins = { l: 0, t: 0, r: 0, b: 0 }, gap = 8;
+    // (in fullscreen the player bar floats over the view only while the mouse moves: the HUD stays put)
+    const fs = !!document.fullscreenElement;
+    for (const sel of ['#rail', '#overview', '#drawer', '#drawer-open', '#controls']) {
+      if (fs && sel === '#controls') continue;
+      for (const e of document.querySelectorAll(sel)) {
+        const r = e.getBoundingClientRect(), cs = getComputedStyle(e);
+        if (!r.width || !r.height || cs.display === 'none' || cs.visibility === 'hidden' || Number(cs.opacity) === 0) continue;
+        if (r.right <= c.left || r.left >= c.right || r.bottom <= c.top || r.top >= c.bottom) continue;
+        const cand = { l: r.right - c.left, r: c.right - r.left, t: r.bottom - c.top, b: c.bottom - r.top };
+        const edge = Object.keys(cand).reduce((a, b) => (cand[a] <= cand[b] ? a : b));
+        ins[edge] = Math.max(ins[edge], cand[edge] + gap);
+      }
+    }
+    for (const k in ins) ins[k] = Math.round(ins[k] * dpr);
+    return ins;
+  }
+
+  /** CG_ShakeCamera: the strongest earthquake (EV_EARTHQUAKE: scale, radius, duration) at the eye now ->
+   *  [pitch, yaw, roll] degrees or null; its size falls off over the radius and the duration, the angles are
+   *  sines of the server time / 600 at a phase drawn once per shake */
+  shakeAngles(t, eye) {
+    const Q = this.M.d.fx3d && this.M.d.fx3d.quakes;
+    if (!Q || !Q.length) return null;
+    let size = 0, rumble = 0, start = 0;
+    for (const q of Q) {
+      const dt = t - q[0];
+      if (dt < 0 || dt >= q[6] || !(q[4] > 0) || !(q[5] > 0)) continue;
+      const x = (1 - dt / q[6]) * q[4];
+      const val = 1 - Math.hypot(eye.x - q[1], eye.y - q[2], eye.z - q[3]) / q[5];
+      const sz = val < 0 ? val / x : val * x;
+      if (sz > size) { size = sz; rumble = x; start = q[0]; }
+    }
+    if (size <= 0) return null;
+    const s = Math.min(1, size), sx = (t + (this.M.d.meta.firstServerTime || 0)) / 600;
+    const ph = ((start * 9301 + 49297) % 233280) / 233280 * 2 * Math.PI - Math.PI;
+    return [Math.sin(ph + sx * 25.13274) * rumble * 18 * s, Math.sin(ph + sx * 47.12389) * rumble * 16 * s, Math.sin(ph + sx * 37.69911) * rumble * 10 * s];
   }
 
   /* ---------- video export (exportVideo3d.js, loaded on first use) ---------- */
@@ -540,12 +761,17 @@ export class View3D {
     this.actors.dispose();
     this.effects.dispose();
     this.killfeed.dispose();
+    if (this.tracers) this.tracers.dispose();
+    window.removeEventListener('keydown', this.onTabDown);
+    window.removeEventListener('keyup', this.onTabUp);
     this.cams.dispose();
     if (this.shadows) { this.shadows.dispose(); this.shadows = null; }
     this.xray.dispose();
+    this.viewmodel.dispose();
     if (this.sky) { this.sky.dispose(); this.sky = null; }
     if (this.fx) { this.fx.dispose(); this.fx = null; }
     if (this.scriptModels) { this.scriptModels.dispose(); this.scriptModels = null; }
+    if (this.worldWeapons) { this.worldWeapons.dispose(); this.worldWeapons = null; }
     if (this.auditTimer) { clearInterval(this.auditTimer); this.auditTimer = null; }
     if (this.sound) { this.sound.dispose(); this.sound = null; }
     if (this.offArm) this.offArm();

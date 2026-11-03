@@ -1,0 +1,419 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "viewmodel_winchester1200_mp",
+ "kind": "viewmodel",
+ "faction": null,
+ "file": "viewmodel_winchester1200_mp.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 32700
+  },
+  "normal": {
+   "offset": 32700,
+   "length": 10900
+  },
+  "uv": {
+   "offset": 43600,
+   "length": 21800
+  },
+  "skinIndex": {
+   "offset": 65400,
+   "length": 10900
+  },
+  "skinWeight": {
+   "offset": 76300,
+   "length": 10900
+  },
+  "index": {
+   "offset": 87200,
+   "length": 12780
+  },
+  "color": {
+   "offset": 99980,
+   "length": 10900
+  }
+ },
+ "vertexCount": 2725,
+ "triangleCount": 2130,
+ "bones": [
+  {
+   "name": "j_gun",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "j_load",
+   "parent": 0,
+   "pos": [
+    -0.8047,
+    0.0,
+    -1.0044
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -0.8047,
+    0.0,
+    -1.0044
+   ]
+  },
+  {
+   "name": "j_pump",
+   "parent": 0,
+   "pos": [
+    7.0758,
+    0.0302,
+    -0.5384
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    7.0758,
+    0.0302,
+    -0.5384
+   ]
+  },
+  {
+   "name": "j_slide",
+   "parent": 0,
+   "pos": [
+    0.593,
+    -0.6787,
+    0.8732
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    0.593,
+    -0.6787,
+    0.8732
+   ]
+  },
+  {
+   "name": "tag_ak47_mount",
+   "parent": 0,
+   "pos": [
+    -2.2823,
+    -0.2327,
+    1.4887
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -2.2823,
+    -0.2327,
+    1.4887
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 0,
+   "pos": [
+    0.593,
+    -0.0252,
+    0.8732
+   ],
+   "quat": [
+    -0.166906,
+    -0.166906,
+    -0.687126,
+    0.687126
+   ],
+   "trans": [
+    0.593,
+    -0.0252,
+    0.8732
+   ]
+  },
+  {
+   "name": "tag_clip",
+   "parent": 0,
+   "pos": [
+    -0.2379,
+    -0.2327,
+    -2.8332
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -0.2379,
+    -0.2327,
+    -2.8332
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    25.3419,
+    0.0,
+    0.9949
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    25.3419,
+    0.0,
+    0.9949
+   ]
+  },
+  {
+   "name": "tag_iron_sight",
+   "parent": 0,
+   "pos": [
+    -2.2823,
+    -0.2327,
+    1.4887
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -2.2823,
+    -0.2327,
+    1.4887
+   ]
+  },
+  {
+   "name": "tag_reflex_sight",
+   "parent": 0,
+   "pos": [
+    -2.2823,
+    -0.2327,
+    1.4887
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -2.2823,
+    -0.2327,
+    1.4887
+   ]
+  },
+  {
+   "name": "tag_foregrip",
+   "parent": 2,
+   "pos": [
+    7.0758,
+    0.0302,
+    -0.5384
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 90,
+   "material": 0
+  },
+  {
+   "indexStart": 90,
+   "indexCount": 552,
+   "material": 0
+  },
+  {
+   "indexStart": 642,
+   "indexCount": 1332,
+   "material": 0
+  },
+  {
+   "indexStart": 1974,
+   "indexCount": 2754,
+   "material": 0
+  },
+  {
+   "indexStart": 4728,
+   "indexCount": 336,
+   "material": 1
+  },
+  {
+   "indexStart": 5064,
+   "indexCount": 444,
+   "material": 1
+  },
+  {
+   "indexStart": 5508,
+   "indexCount": 858,
+   "material": 2
+  },
+  {
+   "indexStart": 6366,
+   "indexCount": 12,
+   "material": 3
+  },
+  {
+   "indexStart": 6378,
+   "indexCount": 12,
+   "material": 4
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_winchest1200",
+   "texture": "_textures/winchest1200_col.webp",
+   "textureAlpha": false,
+   "color": "#373531",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/winchest1200_spec-rgb_winche_e5e1fe71.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_winchest1200_misc_nocamo",
+   "texture": "_textures/winchest1200_col.webp",
+   "textureAlpha": false,
+   "color": "#373531",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/winchest1200_spec-rgb_winche_e5e1fe71.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_reflex_sight",
+   "texture": "_textures/weapon_reflex_sight_col.webp",
+   "textureAlpha": false,
+   "color": "#2a2a2a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_reflex_sight_spc-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_reflex_red_dot",
+   "texture": "_textures/weapon_red_dot_reflexsight.webp",
+   "textureAlpha": false,
+   "color": "#0b0b0b",
+   "alphaTest": null,
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "detailScale": [
+    25.0,
+    25.0,
+    0.0,
+    0.0
+   ],
+   "detailMap": "_textures/weapon_red_cross_background.webp"
+  },
+  {
+   "name": "mc/mtl_weapon_reflex_lens",
+   "texture": "_textures/weapon_reflex_lens_col.webp",
+   "textureAlpha": true,
+   "color": "#5b3700",
+   "alphaTest": "gt0",
+   "blend": "srcalpha/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -21.68,
+   -1.17,
+   -7.37
+  ],
+  "maxs": [
+   25.45,
+   1.24,
+   3.87
+  ]
+ }
+}

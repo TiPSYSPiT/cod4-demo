@@ -1319,6 +1319,14 @@
   "vertices": 54,
   "triangles": 48
  },
+ "fx_bullet_chain_blur": {
+  "file": "fx_bullet_chain_blur.json",
+  "kind": "fx",
+  "faction": null,
+  "bones": 1,
+  "vertices": 54,
+  "triangles": 48
+ },
  "fx_glass_piece01": {
   "file": "fx_glass_piece01.json",
   "kind": "fx",
@@ -1369,6 +1377,14 @@
  },
  "fx_rifle_shell": {
   "file": "fx_rifle_shell.json",
+  "kind": "fx",
+  "faction": null,
+  "bones": 1,
+  "vertices": 63,
+  "triangles": 58
+ },
+ "fx_rifle_shell_blur": {
+  "file": "fx_rifle_shell_blur.json",
   "kind": "fx",
   "faction": null,
   "bones": 1,
@@ -2079,6 +2095,14 @@
   "vertices": 600,
   "triangles": 440
  },
+ "projectile_concussion_grenade": {
+  "file": "projectile_concussion_grenade.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 1,
+  "vertices": 341,
+  "triangles": 256
+ },
  "projectile_m203grenade": {
   "file": "projectile_m203grenade.json",
   "kind": "fx",
@@ -2086,6 +2110,30 @@
   "bones": 2,
   "vertices": 46,
   "triangles": 46
+ },
+ "projectile_m67fraggrenade": {
+  "file": "projectile_m67fraggrenade.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 1,
+  "vertices": 374,
+  "triangles": 438
+ },
+ "projectile_rpg7": {
+  "file": "projectile_rpg7.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 3,
+  "vertices": 138,
+  "triangles": 84
+ },
+ "projectile_us_smoke_grenade": {
+  "file": "projectile_us_smoke_grenade.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 1,
+  "vertices": 304,
+  "triangles": 300
  },
  "prop_flag_neutral": {
   "file": "prop_flag_neutral.json",
@@ -4735,6 +4783,518 @@
   "vertices": 6118,
   "triangles": 5972
  },
+ "viewhands_black_kit": {
+  "file": "viewhands_black_kit.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 71,
+  "vertices": 2884,
+  "triangles": 4540
+ },
+ "viewhands_desert_opfor": {
+  "file": "viewhands_desert_opfor.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 71,
+  "vertices": 3380,
+  "triangles": 4420
+ },
+ "viewhands_marine_sniper": {
+  "file": "viewhands_marine_sniper.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 71,
+  "vertices": 3562,
+  "triangles": 4974
+ },
+ "viewhands_op_force": {
+  "file": "viewhands_op_force.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 71,
+  "vertices": 2668,
+  "triangles": 4364
+ },
+ "viewhands_sas_woodland": {
+  "file": "viewhands_sas_woodland.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 71,
+  "vertices": 2856,
+  "triangles": 4532
+ },
+ "viewmodel_ak47": {
+  "file": "viewmodel_ak47.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 6,
+  "vertices": 2555,
+  "triangles": 1784
+ },
+ "viewmodel_ak47_and_silencer_mp": {
+  "file": "viewmodel_ak47_and_silencer_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 6,
+  "vertices": 2610,
+  "triangles": 1824
+ },
+ "viewmodel_ak47_grenadier_mp": {
+  "file": "viewmodel_ak47_grenadier_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 7,
+  "vertices": 2535,
+  "triangles": 2016
+ },
+ "viewmodel_ak47_mp": {
+  "file": "viewmodel_ak47_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 9,
+  "vertices": 3761,
+  "triangles": 2684
+ },
+ "viewmodel_ak74u_mp": {
+  "file": "viewmodel_ak74u_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 10,
+  "vertices": 3163,
+  "triangles": 2402
+ },
+ "viewmodel_ak74u_silencer": {
+  "file": "viewmodel_ak74u_silencer.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 7,
+  "vertices": 1936,
+  "triangles": 1506
+ },
+ "viewmodel_barrett_mp": {
+  "file": "viewmodel_barrett_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 13,
+  "vertices": 3518,
+  "triangles": 2702
+ },
+ "viewmodel_base_viewhands": {
+  "file": "viewmodel_base_viewhands.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 71,
+  "vertices": 2856,
+  "triangles": 4532
+ },
+ "viewmodel_benelli_m4_mp": {
+  "file": "viewmodel_benelli_m4_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 9,
+  "vertices": 2740,
+  "triangles": 2052
+ },
+ "viewmodel_beretta_and_silencer_mp": {
+  "file": "viewmodel_beretta_and_silencer_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 6,
+  "vertices": 1839,
+  "triangles": 1416
+ },
+ "viewmodel_beretta_mp": {
+  "file": "viewmodel_beretta_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 6,
+  "vertices": 1701,
+  "triangles": 1292
+ },
+ "viewmodel_briefcase_bomb_mp": {
+  "file": "viewmodel_briefcase_bomb_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 7,
+  "vertices": 4049,
+  "triangles": 2858
+ },
+ "viewmodel_c4": {
+  "file": "viewmodel_c4.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 8,
+  "vertices": 2699,
+  "triangles": 2138
+ },
+ "viewmodel_claymore": {
+  "file": "viewmodel_claymore.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 5,
+  "vertices": 699,
+  "triangles": 516
+ },
+ "viewmodel_colt45_and_silencer_mp": {
+  "file": "viewmodel_colt45_and_silencer_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 6,
+  "vertices": 1402,
+  "triangles": 1080
+ },
+ "viewmodel_colt45_mp": {
+  "file": "viewmodel_colt45_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 6,
+  "vertices": 1264,
+  "triangles": 956
+ },
+ "viewmodel_desert_eagle": {
+  "file": "viewmodel_desert_eagle.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 6,
+  "vertices": 1622,
+  "triangles": 1140
+ },
+ "viewmodel_desert_eagle_gold_mp": {
+  "file": "viewmodel_desert_eagle_gold_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 6,
+  "vertices": 1622,
+  "triangles": 1140
+ },
+ "viewmodel_dragunov_mp": {
+  "file": "viewmodel_dragunov_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 8,
+  "vertices": 3278,
+  "triangles": 2498
+ },
+ "viewmodel_g36c_mp": {
+  "file": "viewmodel_g36c_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 11,
+  "vertices": 4052,
+  "triangles": 3010
+ },
+ "viewmodel_g36c_silencer": {
+  "file": "viewmodel_g36c_silencer.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 7,
+  "vertices": 2348,
+  "triangles": 1674
+ },
+ "viewmodel_g36cm203_mp": {
+  "file": "viewmodel_g36cm203_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 10,
+  "vertices": 2695,
+  "triangles": 1930
+ },
+ "viewmodel_g3_mp": {
+  "file": "viewmodel_g3_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 9,
+  "vertices": 3362,
+  "triangles": 2488
+ },
+ "viewmodel_g3_silencer": {
+  "file": "viewmodel_g3_silencer.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 5,
+  "vertices": 2143,
+  "triangles": 1578
+ },
+ "viewmodel_g3m203_mp": {
+  "file": "viewmodel_g3m203_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 7,
+  "vertices": 2490,
+  "triangles": 1834
+ },
+ "viewmodel_knife": {
+  "file": "viewmodel_knife.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 2,
+  "vertices": 111,
+  "triangles": 84
+ },
+ "viewmodel_m14_gl_mp": {
+  "file": "viewmodel_m14_gl_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 9,
+  "vertices": 2378,
+  "triangles": 1782
+ },
+ "viewmodel_m14_mp": {
+  "file": "viewmodel_m14_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 9,
+  "vertices": 3149,
+  "triangles": 2392
+ },
+ "viewmodel_m14sd_mp": {
+  "file": "viewmodel_m14sd_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 6,
+  "vertices": 2053,
+  "triangles": 1542
+ },
+ "viewmodel_m16_and_silencer_mp": {
+  "file": "viewmodel_m16_and_silencer_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 7,
+  "vertices": 2613,
+  "triangles": 1728
+ },
+ "viewmodel_m16_mp": {
+  "file": "viewmodel_m16_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 8,
+  "vertices": 3753,
+  "triangles": 2602
+ },
+ "viewmodel_m16m203": {
+  "file": "viewmodel_m16m203.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 10,
+  "vertices": 2493,
+  "triangles": 1748
+ },
+ "viewmodel_m16m203_mp": {
+  "file": "viewmodel_m16m203_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 10,
+  "vertices": 2493,
+  "triangles": 1748
+ },
+ "viewmodel_m21_mp": {
+  "file": "viewmodel_m21_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 9,
+  "vertices": 3322,
+  "triangles": 2536
+ },
+ "viewmodel_m249_mp": {
+  "file": "viewmodel_m249_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 27,
+  "vertices": 4374,
+  "triangles": 3340
+ },
+ "viewmodel_m40a3_mp": {
+  "file": "viewmodel_m40a3_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 7,
+  "vertices": 3011,
+  "triangles": 2276
+ },
+ "viewmodel_m4_and_silencer_mp": {
+  "file": "viewmodel_m4_and_silencer_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 7,
+  "vertices": 2387,
+  "triangles": 1620
+ },
+ "viewmodel_m4_mp": {
+  "file": "viewmodel_m4_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 10,
+  "vertices": 3527,
+  "triangles": 2494
+ },
+ "viewmodel_m4m203_mp": {
+  "file": "viewmodel_m4m203_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 10,
+  "vertices": 2737,
+  "triangles": 1836
+ },
+ "viewmodel_m60_mp": {
+  "file": "viewmodel_m60_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 31,
+  "vertices": 4347,
+  "triangles": 3180
+ },
+ "viewmodel_m67": {
+  "file": "viewmodel_m67.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 3,
+  "vertices": 987,
+  "triangles": 1432
+ },
+ "viewmodel_m84": {
+  "file": "viewmodel_m84.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 8,
+  "vertices": 871,
+  "triangles": 774
+ },
+ "viewmodel_miniuzi_mp": {
+  "file": "viewmodel_miniuzi_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 12,
+  "vertices": 3208,
+  "triangles": 2582
+ },
+ "viewmodel_miniuzi_silencer": {
+  "file": "viewmodel_miniuzi_silencer.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 8,
+  "vertices": 2195,
+  "triangles": 1838
+ },
+ "viewmodel_mp44_mp": {
+  "file": "viewmodel_mp44_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 5,
+  "vertices": 2122,
+  "triangles": 1630
+ },
+ "viewmodel_mp5_mp": {
+  "file": "viewmodel_mp5_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 10,
+  "vertices": 3179,
+  "triangles": 2472
+ },
+ "viewmodel_mp5_silencer_mp": {
+  "file": "viewmodel_mp5_silencer_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 7,
+  "vertices": 1911,
+  "triangles": 1526
+ },
+ "viewmodel_p90_mp": {
+  "file": "viewmodel_p90_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 9,
+  "vertices": 3147,
+  "triangles": 2504
+ },
+ "viewmodel_p90_silencer_mp": {
+  "file": "viewmodel_p90_silencer_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 6,
+  "vertices": 2006,
+  "triangles": 1628
+ },
+ "viewmodel_remington700_mp": {
+  "file": "viewmodel_remington700_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 7,
+  "vertices": 2035,
+  "triangles": 1698
+ },
+ "viewmodel_rpd_mp": {
+  "file": "viewmodel_rpd_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 35,
+  "vertices": 4397,
+  "triangles": 3444
+ },
+ "viewmodel_rpg7": {
+  "file": "viewmodel_rpg7.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 5,
+  "vertices": 2586,
+  "triangles": 1944
+ },
+ "viewmodel_skorpion_mp": {
+  "file": "viewmodel_skorpion_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 8,
+  "vertices": 2778,
+  "triangles": 2606
+ },
+ "viewmodel_skorpion_silencer": {
+  "file": "viewmodel_skorpion_silencer.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 5,
+  "vertices": 1637,
+  "triangles": 1782
+ },
+ "viewmodel_usp": {
+  "file": "viewmodel_usp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 6,
+  "vertices": 1813,
+  "triangles": 1300
+ },
+ "viewmodel_usp_mp": {
+  "file": "viewmodel_usp_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 6,
+  "vertices": 1813,
+  "triangles": 1300
+ },
+ "viewmodel_usp_silencer_mp": {
+  "file": "viewmodel_usp_silencer_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 7,
+  "vertices": 1951,
+  "triangles": 1424
+ },
+ "viewmodel_ussmokegrenade": {
+  "file": "viewmodel_ussmokegrenade.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 5,
+  "vertices": 481,
+  "triangles": 536
+ },
+ "viewmodel_winchester1200_mp": {
+  "file": "viewmodel_winchester1200_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 11,
+  "vertices": 2725,
+  "triangles": 2130
+ },
  "wall_fan_blades_02": {
   "file": "wall_fan_blades_02.json",
   "kind": "script",
@@ -4813,6 +5373,14 @@
   "faction": null,
   "bones": 2,
   "vertices": 899,
+  "triangles": 690
+ },
+ "weapon_c4_mp": {
+  "file": "weapon_c4_mp.json",
+  "kind": "viewmodel",
+  "faction": null,
+  "bones": 2,
+  "vertices": 873,
   "triangles": 690
  },
  "weapon_claymore": {

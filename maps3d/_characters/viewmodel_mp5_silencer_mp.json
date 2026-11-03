@@ -1,0 +1,258 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "viewmodel_mp5_silencer_mp",
+ "kind": "viewmodel",
+ "faction": null,
+ "file": "viewmodel_mp5_silencer_mp.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 22932
+  },
+  "normal": {
+   "offset": 22932,
+   "length": 7644
+  },
+  "uv": {
+   "offset": 30576,
+   "length": 15288
+  },
+  "skinIndex": {
+   "offset": 45864,
+   "length": 7644
+  },
+  "skinWeight": {
+   "offset": 53508,
+   "length": 7644
+  },
+  "index": {
+   "offset": 61152,
+   "length": 9156
+  },
+  "color": {
+   "offset": 70308,
+   "length": 7644
+  }
+ },
+ "vertexCount": 1911,
+ "triangleCount": 1526,
+ "bones": [
+  {
+   "name": "j_gun",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "j_bolt",
+   "parent": 0,
+   "pos": [
+    5.0762,
+    0.2086,
+    1.9557
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    5.0762,
+    0.2086,
+    1.9557
+   ]
+  },
+  {
+   "name": "j_trigger",
+   "parent": 0,
+   "pos": [
+    -1.5417,
+    0.0,
+    -1.5577
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -1.5417,
+    0.0,
+    -1.5577
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 0,
+   "pos": [
+    -2.7193,
+    -0.594,
+    1.148
+   ],
+   "quat": [
+    -0.183021,
+    -0.183021,
+    -0.68301,
+    0.68301
+   ],
+   "trans": [
+    -2.7193,
+    -0.594,
+    1.148
+   ]
+  },
+  {
+   "name": "tag_clip",
+   "parent": 0,
+   "pos": [
+    -0.5862,
+    0.015,
+    -1.3007
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -0.5862,
+    0.015,
+    -1.3007
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    15.7443,
+    0.0,
+    0.9477
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    15.7443,
+    0.0,
+    0.9477
+   ]
+  },
+  {
+   "name": "tag_iron_sight",
+   "parent": 0,
+   "pos": [
+    -6.7467,
+    0.015,
+    2.3472
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -6.7467,
+    0.015,
+    2.3472
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 414,
+   "material": 0
+  },
+  {
+   "indexStart": 414,
+   "indexCount": 3204,
+   "material": 0
+  },
+  {
+   "indexStart": 3618,
+   "indexCount": 792,
+   "material": 0
+  },
+  {
+   "indexStart": 4410,
+   "indexCount": 168,
+   "material": 1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_mp5",
+   "texture": "_textures/weapon_mp5_c.webp",
+   "textureAlpha": false,
+   "color": "#1d1d1d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_mp5_s-r-49g-49b-49_we_029a9a7a.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_mp5sd",
+   "texture": "_textures/weapon_mp5sd_c.webp",
+   "textureAlpha": false,
+   "color": "#262925",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_mp5sd_s-r-49g-49b-49__a02dd838.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -16.91,
+   -0.96,
+   -8.63
+  ],
+  "maxs": [
+   15.74,
+   1.3,
+   3.75
+  ]
+ }
+}

@@ -1,0 +1,190 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "viewmodel_ussmokegrenade",
+ "kind": "viewmodel",
+ "faction": null,
+ "file": "viewmodel_ussmokegrenade.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 5772
+  },
+  "normal": {
+   "offset": 5772,
+   "length": 1924
+  },
+  "uv": {
+   "offset": 7696,
+   "length": 3848
+  },
+  "skinIndex": {
+   "offset": 11544,
+   "length": 1924
+  },
+  "skinWeight": {
+   "offset": 13468,
+   "length": 1924
+  },
+  "index": {
+   "offset": 15392,
+   "length": 3216
+  },
+  "color": {
+   "offset": 18608,
+   "length": 1924
+  }
+ },
+ "vertexCount": 481,
+ "triangleCount": 536,
+ "bones": [
+  {
+   "name": "j_gun",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_clip",
+   "parent": 0,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "j_handle",
+   "parent": 1,
+   "pos": [
+    0.3225,
+    -0.0664,
+    1.1151
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    0.3225,
+    -0.0664,
+    1.1151
+   ]
+  },
+  {
+   "name": "j_ring",
+   "parent": 1,
+   "pos": [
+    -0.3967,
+    0.3839,
+    0.7641
+   ],
+   "quat": [
+    -0.499832,
+    -0.500168,
+    0.499832,
+    0.500168
+   ],
+   "trans": [
+    -0.3967,
+    0.3839,
+    0.7641
+   ]
+  },
+  {
+   "name": "j_handle_squeeze",
+   "parent": 2,
+   "pos": [
+    -1.181,
+    -0.0664,
+    0.2694
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -1.5035,
+    0.0,
+    -0.8457
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 216,
+   "material": 0
+  },
+  {
+   "indexStart": 216,
+   "indexCount": 576,
+   "material": -1
+  },
+  {
+   "indexStart": 792,
+   "indexCount": 816,
+   "material": -1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_us_smoke_grenade",
+   "texture": "_textures/us_smoke_grenade_c.webp",
+   "textureAlpha": false,
+   "color": "#5e655b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/us_smoke_grenade_s-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -1.5,
+   -1.14,
+   -5.1
+  ],
+  "maxs": [
+   1.18,
+   1.48,
+   1.18
+  ]
+ }
+}

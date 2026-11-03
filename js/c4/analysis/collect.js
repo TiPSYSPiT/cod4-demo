@@ -34,7 +34,8 @@ C4.define('collect', function (C4) {
   const isSoundEvent = ev => SOUND_EVENTS.has(ev) || (ev >= 77 && ev < 135);   // melee, grenade, footsteps, jump; landing (+ pain)
   // cod4-demo3d (the 3D view's sounds, CG_EntityEvent): the player events that play a sound - foliage,
   // sound alias, reload / raise / put away / pull back, shots, rechamber, melee, footsteps, jump, landings
-  const SND_PLAYER_EVENTS = new Set([1, 3, 4, 15, 16, 17, 18, 21, 22, 23, 24, 25, 26, 27, 28, 30, 35, 36, 38]);
+  // (+ item / ammo pickup, the dry fire of no ammo, the recorder's offhand prepare / use: pin pull and throw)
+  const SND_PLAYER_EVENTS = new Set([1, 3, 4, 9, 10, 11, 15, 16, 17, 18, 21, 22, 23, 24, 25, 26, 27, 28, 30, 32, 33, 35, 36, 38]);
   const isSndPlayerEvent = ev => SND_PLAYER_EVENTS.has(ev) || (ev >= 72 && ev < 135);
   const EV_SOUND_ALIAS = 3, EV_SOUND_ALIAS_AS_MASTER = 4, E_LOOPSOUND = 32;
   const PSI = {
@@ -47,8 +48,20 @@ C4.define('collect', function (C4) {
     viewHeight: PS_INDEX['viewHeightCurrent'], aimSpread: PS_INDEX['aimSpreadScale'], weaponPos: PS_INDEX['fWeaponPosFrac'],
     spreadOverride: PS_INDEX['spreadOverride'], spreadOverrideState: PS_INDEX['spreadOverrideState'],
     legsAnim: PS_INDEX['legsAnim'], torsoAnim: PS_INDEX['torsoAnim'],
-    moveDir: PS_INDEX['movementDir'], lean: PS_INDEX['leanf'], torsoPitch: PS_INDEX['fTorsoPitch'], waistPitch: PS_INDEX['fWaistPitch']
+    moveDir: PS_INDEX['movementDir'], lean: PS_INDEX['leanf'], torsoPitch: PS_INDEX['fTorsoPitch'], waistPitch: PS_INDEX['fWaistPitch'],
+    // cod4-demo3d (the first-person view model): the weapon's animation and state, the movement
+    weapAnim: PS_INDEX['weapAnim'], weaponState: PS_INDEX['weaponstate'], weaponTime: PS_INDEX['weaponTime'], weaponDelay: PS_INDEX['weaponDelay'],
+    bobCycle: PS_INDEX['bobCycle'], vx: PS_INDEX['velocity[0]'], vy: PS_INDEX['velocity[1]'], vz: PS_INDEX['velocity[2]'],
+    groundEnt: PS_INDEX['groundEntityNum'], pmFlags: PS_INDEX['pm_flags'], weapFlags: PS_INDEX['weapFlags'], shotCount: PS_INDEX['weaponShotCount'],
+    offhand: PS_INDEX['offHandIndex'], holdBreath: PS_INDEX['holdBreathScale'],
+    // cod4-demo3d (the first-person HUD): the damage indicator, the cursor hints, the equipped special grenade
+    damageEvent: PS_INDEX['damageEvent'], damageYaw: PS_INDEX['damageYaw'], damagePitch: PS_INDEX['damagePitch'],
+    damageCount: PS_INDEX['damageCount'], damageDuration: PS_INDEX['damageDuration'], flinch: PS_INDEX['flinchYawAnim'],
+    cursorHint: PS_INDEX['cursorHint'], cursorHintString: PS_INDEX['cursorHintString'], offhandSecondary: PS_INDEX['offhandSecondary']
   };
+  // cod4-demo3d: the player events of the weapon (the first-person view model): item pickup .. fire_weapon_mg42
+  // (reload, raise / put away, shots, rechamber, melee swipe / hit / miss, offhand) - every player
+  const WEAP_EVENTS_FIRST = 9, WEAP_EVENTS_LAST = 38;
   // cod4-demo3d: the player's animations (indices into the game's "multiplayer" anim tree, bit 0x200
   // toggles on a restart of the same animation), entity state fields legsAnim / torsoAnim
   const E_LEGS = 51, E_TORSO = 52;
@@ -109,15 +122,24 @@ C4.define('collect', function (C4) {
       // cod4-demo3d: the recorder's player state commandTime per snapshot [t, commandTime] - the seed of
       // the bullet spread the client guesses for other players' shots (CG_BulletEndpos)
       psCommandTimes: [],
+      // cod4-demo3d: the recorder's weapon per snapshot: [t, client, weapAnim, weaponstate, weaponTime,
+      // weaponDelay, bobCycle, vx, vy, vz, groundEntityNum, pm_flags, weapFlags, weaponShotCount, weapon, offHandIndex]
+      psWeapon: [],
+      // ... and every player's weapon events [t, client, event, eventParm, weapon]
+      weapEvents: [],
       // cod4-demo3d: what the recorder's client fires its own shots with (DrawBulletImpacts for the
       // player state's client): [t, client, aimSpreadScale, fWeaponPosFrac, viewHeightCurrent, leanf,
       // perks, spreadOverride, spreadOverrideState] per snapshot
       psAim: [],
+      psHud: [],                    // cod4-demo3d: the recorder's HUD state per snapshot (see doPlayerState)
+      psAmmo: [],                   // cod4-demo3d: [t, 0 ammo / 1 clip, slot, value] on every change
       hitsTaken: [],                // EV_BULLET_HIT_CLIENT_*: {t, victim, attacker, weapon}
       // cod4-demo3d (the 3D view's effects): every bullet impact the POV received (EV_BULLET_HIT temp
       // entities): [t, x, y, z, normal (DirToByte), surface type, weapon, impact flags (un1), shooter], and
       // every scripted effect (EV_PLAY_FX): [t, x, y, z, pitch, yaw, roll, effect id (CS_EFFECT_NAMES + id)]
       impacts: [], playFx: [], scriptEnts: [],
+      items: [],                    // cod4-demo3d: the weapons lying on the ground (ET_ITEM), as scriptEnts
+      quakes: [],                   // cod4-demo3d: EV_EARTHQUAKE [t, x, y, z, scale, radius, duration ms]
       // the sounds (sound.js): player events [t, client, event, eventParm, weapon, quiet (specialty_quieter, POV
       // only)]; the other entities' sound events (sound alias, grenade bounce) [t, entity, event, eventParm,
       // weapon, x, y, z, surfType]; looping entity sounds {num, index (CS_SOUNDALIASES + index), t0, t1, x, y, z}
@@ -144,6 +166,7 @@ C4.define('collect', function (C4) {
       if (SHOT_EVENTS.has(ev)) addTime(c.shots, cl, t);
       if (isSoundEvent(ev)) addTime(c.sounds, cl, t);
       if (isSndPlayerEvent(ev)) c.sndEvents.push([t, cl, ev, parm | 0, weapon | 0, quiet ? 1 : 0]);
+      if (ev >= WEAP_EVENTS_FIRST && ev <= WEAP_EVENTS_LAST) c.weapEvents.push([t, cl, ev, parm | 0, weapon | 0]);
     };
     const loopRec = new Map();           // entity number -> current loop sound record (cod4-demo3d)
     let prevPsSeq = null, prevPsEvClient = -1;
@@ -273,11 +296,26 @@ C4.define('collect', function (C4) {
       }
     }
 
+    const lastAmmo = [null, null];
     function doPlayerState(snap, t) {
       const f = snap.ps.fields;
       c.psCommandTimes.push(t, f[PSI.commandTime] | 0);
+      // cod4-demo3d (the first-person HUD): health, max health, the player under the crosshair (stats 0 / 2 / 3),
+      // the damage indicator, flinch, cursor hint, the special grenade equipped; the ammo / clip slots that changed
+      const S = snap.ps.stats;
+      c.psHud.push(t, f[PSI.client], S[0] | 0, S[2] | 0, S[3] | 0, f[PSI.damageEvent] | 0, f[PSI.damageYaw] | 0, f[PSI.damagePitch] | 0,
+        f[PSI.damageCount] | 0, f[PSI.damageDuration] | 0, f[PSI.flinch] | 0, f[PSI.cursorHint] | 0, f[PSI.cursorHintString] | 0, f[PSI.offhandSecondary] | 0);
+      for (const [kind, arr] of [[0, snap.ps.ammo], [1, snap.ps.ammoclip]]) {
+        if (!arr) continue;
+        const last = lastAmmo[kind];
+        for (let i = 0; i < arr.length; i++) if (!last || last[i] !== arr[i]) c.psAmmo.push(t, kind, i, arr[i] | 0);
+        lastAmmo[kind] = arr.slice();
+      }
       c.psAim.push(t, f[PSI.client], u2f(f[PSI.aimSpread]), u2f(f[PSI.weaponPos]), u2f(f[PSI.viewHeight]), u2f(f[PSI.lean]),
-        f[PSI.perks] >>> 0, f[PSI.spreadOverride] | 0, f[PSI.spreadOverrideState] | 0);
+        f[PSI.perks] >>> 0, f[PSI.spreadOverride] | 0, f[PSI.spreadOverrideState] | 0, u2f(f[PSI.holdBreath]));
+      c.psWeapon.push(t, f[PSI.client], f[PSI.weapAnim] | 0, f[PSI.weaponState] | 0, f[PSI.weaponTime] | 0, f[PSI.weaponDelay] | 0,
+        f[PSI.bobCycle] | 0, R(u2f(f[PSI.vx])), R(u2f(f[PSI.vy])), R(u2f(f[PSI.vz])), f[PSI.groundEnt] | 0, f[PSI.pmFlags] >>> 0,
+        f[PSI.weapFlags] | 0, f[PSI.shotCount] | 0, f[PSI.weapon] | 0, f[PSI.offhand] | 0);
       const client = f[PSI.client];
       if (client !== lastPsClient) { c.povTimeline.push({ t, client }); lastPsClient = client; }
       const pm = f[PSI.pmType];
@@ -354,6 +392,24 @@ C4.define('collect', function (C4) {
       const last = rec.states[rec.states.length - 1];
       for (let i = 1; i < s2.length; i++) if (last[i] !== s2[i]) { rec.states.push(s2); return; }
     }
+    // cod4-demo3d: a dropped weapon (CG_Item: index = weapon + 128 x world model; EF 0x20 = not drawn): one
+    // record per appearance, a state [t, index, pos trType, trTime, base xyz, delta xyz, angles xyz, eFlags]
+    // on every change
+    const itemRec = new Map();
+    function onItem(t, num, st, prev) {
+      const s2 = [t, st[E_INDEX] | 0, st[E_POS_TRTYPE], st[E_POS_TRTIME], R(u2f(st[E_POS])), R(u2f(st[E_POS + 1])), R(u2f(st[E_POS + 2])),
+        R(u2f(st[E_VEL])), R(u2f(st[E_VEL + 1])), R(u2f(st[E_VEL + 2])), R(u2f(st[E_APOS])), R(u2f(st[E_APOS + 1])), R(u2f(st[E_APOS + 2])), st[E_EFLAGS]];
+      let rec = itemRec.get(num);
+      if (!rec || !prev || prev[E_TYPE] !== st[E_TYPE] || rec.t1 < t - 1000) {
+        rec = { num, t0: t, t1: t, states: [s2] };
+        itemRec.set(num, rec);
+        c.items.push(rec);
+        return;
+      }
+      rec.t1 = t;
+      const last = rec.states[rec.states.length - 1];
+      for (let i = 1; i < s2.length; i++) if (last[i] !== s2[i]) { rec.states.push(s2); return; }
+    }
     function doEntities(snap, decoder, t) {
       const changed = new Set(snap.changedEntities);
       const cur = new Map();
@@ -420,6 +476,8 @@ C4.define('collect', function (C4) {
           onMissile(t, num, st, changed.has(num));
         } else if (SCRIPT_TYPES.has(etype) && st[E_INDEX]) {
           onScriptEntity(t, num, st, prev);
+        } else if (etype === K.ET.ITEM) {
+          onItem(t, num, st, prev);
         }
       }
       for (const num of prevEntities.keys()) if (!cur.has(num)) missileKey.delete(num);
@@ -467,6 +525,9 @@ C4.define('collect', function (C4) {
         onDetonation(t, num, st, ev, st[E_EVENTPARM]);
       } else if (ev === EV_SOUND_ALIAS || ev === EV_SOUND_ALIAS_AS_MASTER || ev === K.EV.GRENADE_BOUNCE) {
         sndEntEvent(t, num, st, ev, st[E_EVENTPARM]);
+      } else if (ev === K.EV.EARTHQUAKE) {
+        // cod4-demo3d: a script's earthquake() (CG_StartShakeCamera): lerp.u.earthquake {scale, radius, duration}
+        c.quakes.push([t, R(u2f(st[E_POS])), R(u2f(st[E_POS + 1])), R(u2f(st[E_POS + 2])), u2f(st[E_U0]), u2f(st[E_U0 + 1]), st[E_U0 + 2] | 0]);
       } else if (ev === K.EV.PLAY_FX) {
         c.playFx.push([t, R(u2f(st[E_POS])), R(u2f(st[E_POS + 1])), R(u2f(st[E_POS + 2])),
           R(u2f(st[E_APOS])), R(u2f(st[E_APOS + 1])), R(u2f(st[E_APOS + 2])), st[E_EVENTPARM]]);
@@ -506,9 +567,11 @@ C4.define('collect', function (C4) {
       const weapon = st[E_WEAPON];
       const key = num + ':' + launch + ':' + weapon;
       let g = c.grenades.get(key);
+      // (cod4-demo3d: + the spin - apos trType, trTime, base pitch / yaw / roll, delta: G_FireGrenade's TR_LINEAR)
       const seg = [st[E_POS_TRTIME] | 0, st[E_POS_TRTYPE],
         R(u2f(st[E_POS])), R(u2f(st[E_POS + 1])), R(u2f(st[E_POS + 2])),
-        R(u2f(st[E_VEL])), R(u2f(st[E_VEL + 1])), R(u2f(st[E_VEL + 2]))];
+        R(u2f(st[E_VEL])), R(u2f(st[E_VEL + 1])), R(u2f(st[E_VEL + 2])),
+        st[12], st[13] | 0, R(u2f(st[E_APOS])), R(u2f(st[E_APOS + 1])), R(u2f(st[E_APOS + 2])), R(u2f(st[18])), R(u2f(st[19])), R(u2f(st[20]))];
       if (!g) {
         g = { entity: num, weapon, launch, first: t, last: t, segments: [seg], detonation: null };
         c.grenades.set(key, g);

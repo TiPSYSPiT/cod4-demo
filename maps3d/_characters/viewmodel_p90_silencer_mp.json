@@ -1,0 +1,271 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "viewmodel_p90_silencer_mp",
+ "kind": "viewmodel",
+ "faction": null,
+ "file": "viewmodel_p90_silencer_mp.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 24072
+  },
+  "normal": {
+   "offset": 24072,
+   "length": 8024
+  },
+  "uv": {
+   "offset": 32096,
+   "length": 16048
+  },
+  "skinIndex": {
+   "offset": 48144,
+   "length": 8024
+  },
+  "skinWeight": {
+   "offset": 56168,
+   "length": 8024
+  },
+  "index": {
+   "offset": 64192,
+   "length": 9768
+  },
+  "color": {
+   "offset": 73960,
+   "length": 8024
+  }
+ },
+ "vertexCount": 2006,
+ "triangleCount": 1628,
+ "bones": [
+  {
+   "name": "j_gun",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "j_bolt",
+   "parent": 0,
+   "pos": [
+    7.0235,
+    0.9849,
+    0.6322
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    7.0235,
+    0.9849,
+    0.6322
+   ]
+  },
+  {
+   "name": "j_reload_button",
+   "parent": 0,
+   "pos": [
+    -3.784,
+    1.0984,
+    1.6521
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -3.784,
+    1.0984,
+    1.6521
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 0,
+   "pos": [
+    -1.7904,
+    0.0,
+    -2.9985
+   ],
+   "quat": [
+    0.0,
+    0.707107,
+    0.0,
+    0.707107
+   ],
+   "trans": [
+    -1.7904,
+    0.0,
+    -2.9985
+   ]
+  },
+  {
+   "name": "tag_clip",
+   "parent": 0,
+   "pos": [
+    7.8016,
+    0.0,
+    1.2821
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    7.8016,
+    0.0,
+    1.2821
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    15.8308,
+    0.0,
+    0.7394
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    15.8308,
+    0.0,
+    0.7394
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 264,
+   "material": 0
+  },
+  {
+   "indexStart": 264,
+   "indexCount": 2862,
+   "material": 0
+  },
+  {
+   "indexStart": 3126,
+   "indexCount": 480,
+   "material": 0
+  },
+  {
+   "indexStart": 3606,
+   "indexCount": 312,
+   "material": 1
+  },
+  {
+   "indexStart": 3918,
+   "indexCount": 174,
+   "material": -1
+  },
+  {
+   "indexStart": 4092,
+   "indexCount": 792,
+   "material": 2
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_p90",
+   "texture": "_textures/weapon_p90_col.webp",
+   "textureAlpha": false,
+   "color": "#262623",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_p90_spc-r65g65b65_wea_ff8cb4f7.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.8,
+    1.6,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_laser_sight_a",
+   "texture": "_textures/weapon_laser_sight_a_col.webp",
+   "textureAlpha": false,
+   "color": "#3f3e3b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_laser_sight_a_spec-r-_14d7f668.specular.webp",
+   "envMapParms": [
+    0.8,
+    3.2,
+    1.3,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_mp5",
+   "texture": "_textures/weapon_mp5_c.webp",
+   "textureAlpha": false,
+   "color": "#1d1d1d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_mp5_s-r-49g-49b-49_we_029a9a7a.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -10.16,
+   -1.24,
+   -3.46
+  ],
+  "maxs": [
+   15.83,
+   1.7,
+   5.6
+  ]
+ }
+}

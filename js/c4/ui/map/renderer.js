@@ -299,7 +299,7 @@
 
     /** the bomb: small diamond with a light border (carried: a small round dot); opts {color, alpha,
      *  hollow, round, pulse 0..1 (planted ring), burst 0..1 (explosion), dx, dy (screen offset, e.g.
-     *  next to the carrier)} -> screen position */
+     *  next to the carrier), label (beside it: the planted bomb's timer)} -> screen position */
     drawBomb(x, y, opts) {
       const g = this.ctx, B = CFG.BOMB;
       const p = this.pt(x, y);
@@ -336,6 +336,13 @@
       } else {
         g.fillStyle = color; g.fill();
         g.lineWidth = 1.6; g.strokeStyle = B.edge; g.stroke();
+      }
+      if (opts.label) {
+        // the planted bomb's timer beside it
+        g.font = '700 11px Inter, "Segoe UI", system-ui, sans-serif';
+        g.textBaseline = 'middle';
+        g.lineWidth = 3; g.strokeStyle = 'rgba(0,0,0,0.85)'; g.strokeText(opts.label, X + s + 6, Y);
+        g.fillStyle = B.edge; g.fillText(opts.label, X + s + 6, Y);
       }
       g.globalAlpha = 1;
       return { x: X, y: Y };

@@ -1,0 +1,190 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "viewmodel_rpg7",
+ "kind": "viewmodel",
+ "faction": null,
+ "file": "viewmodel_rpg7.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 31032
+  },
+  "normal": {
+   "offset": 31032,
+   "length": 10344
+  },
+  "uv": {
+   "offset": 41376,
+   "length": 20688
+  },
+  "skinIndex": {
+   "offset": 62064,
+   "length": 10344
+  },
+  "skinWeight": {
+   "offset": 72408,
+   "length": 10344
+  },
+  "index": {
+   "offset": 82752,
+   "length": 11664
+  },
+  "color": {
+   "offset": 94416,
+   "length": 10344
+  }
+ },
+ "vertexCount": 2586,
+ "triangleCount": 1944,
+ "bones": [
+  {
+   "name": "j_gun",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "j_front_aim_flip",
+   "parent": 0,
+   "pos": [
+    6.1452,
+    0.5826,
+    3.7229
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    6.1452,
+    0.5826,
+    3.7229
+   ]
+  },
+  {
+   "name": "j_rear_aim_flip",
+   "parent": 0,
+   "pos": [
+    -4.3492,
+    0.6059,
+    3.9406
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -4.3492,
+    0.6059,
+    3.9406
+   ]
+  },
+  {
+   "name": "tag_clip",
+   "parent": 0,
+   "pos": [
+    14.1732,
+    0.0,
+    2.3622
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    14.1732,
+    0.0,
+    2.3622
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    6.8627,
+    0.0,
+    2.3622
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    6.8627,
+    0.0,
+    2.3622
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 4182,
+   "material": 0
+  },
+  {
+   "indexStart": 4182,
+   "indexCount": 1356,
+   "material": -1
+  },
+  {
+   "indexStart": 5538,
+   "indexCount": 294,
+   "material": -1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_rpg7",
+   "texture": "_textures/weapon_rpg7_col.webp",
+   "textureAlpha": false,
+   "color": "#40352b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_rpg7_spec-rgb_weapon__06163c5b.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -29.91,
+   -2.36,
+   -4.04
+  ],
+  "maxs": [
+   6.86,
+   2.36,
+   6.42
+  ]
+ }
+}

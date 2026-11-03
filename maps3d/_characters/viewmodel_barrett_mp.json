@@ -1,0 +1,544 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "viewmodel_barrett_mp",
+ "kind": "viewmodel",
+ "faction": null,
+ "file": "viewmodel_barrett_mp.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 42216
+  },
+  "normal": {
+   "offset": 42216,
+   "length": 14072
+  },
+  "uv": {
+   "offset": 56288,
+   "length": 28144
+  },
+  "skinIndex": {
+   "offset": 84432,
+   "length": 14072
+  },
+  "skinWeight": {
+   "offset": 98504,
+   "length": 14072
+  },
+  "index": {
+   "offset": 112576,
+   "length": 16212
+  },
+  "color": {
+   "offset": 128788,
+   "length": 14072
+  }
+ },
+ "vertexCount": 3518,
+ "triangleCount": 2702,
+ "bones": [
+  {
+   "name": "j_gun",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "j_bolt",
+   "parent": 0,
+   "pos": [
+    6.5707,
+    -1.091,
+    2.3176
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    6.5707,
+    -1.091,
+    2.3176
+   ]
+  },
+  {
+   "name": "j_handle",
+   "parent": 0,
+   "pos": [
+    11.4781,
+    0.0,
+    3.8647
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    11.4781,
+    0.0,
+    3.8647
+   ]
+  },
+  {
+   "name": "j_pod_base",
+   "parent": 0,
+   "pos": [
+    19.2397,
+    0.0,
+    0.4234
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    19.2397,
+    0.0,
+    0.4234
+   ]
+  },
+  {
+   "name": "j_recoil",
+   "parent": 0,
+   "pos": [
+    23.9633,
+    0.0,
+    2.364
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    23.9633,
+    0.0,
+    2.364
+   ]
+  },
+  {
+   "name": "j_trigger",
+   "parent": 0,
+   "pos": [
+    1.4663,
+    0.0,
+    -1.1651
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    1.4663,
+    0.0,
+    -1.1651
+   ]
+  },
+  {
+   "name": "tag_acog",
+   "parent": 0,
+   "pos": [
+    0.5025,
+    0.015,
+    3.5448
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    0.5025,
+    0.015,
+    3.5448
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 0,
+   "pos": [
+    4.9901,
+    -1.1292,
+    2.628
+   ],
+   "quat": [
+    -0.183021,
+    -0.183021,
+    -0.68301,
+    0.68301
+   ],
+   "trans": [
+    4.9901,
+    -1.1292,
+    2.628
+   ]
+  },
+  {
+   "name": "tag_clip",
+   "parent": 0,
+   "pos": [
+    4.2118,
+    0.015,
+    1.5196
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    4.2118,
+    0.015,
+    1.5196
+   ]
+  },
+  {
+   "name": "tag_m82_scope",
+   "parent": 0,
+   "pos": [
+    0.5025,
+    0.015,
+    3.5448
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    0.5025,
+    0.015,
+    3.5448
+   ]
+  },
+  {
+   "name": "j_pod_left",
+   "parent": 3,
+   "pos": [
+    19.2397,
+    1.3833,
+    0.4234
+   ],
+   "quat": [
+    0.244273,
+    0.0,
+    0.0,
+    0.969706
+   ],
+   "trans": [
+    0.0,
+    1.3833,
+    0.0
+   ]
+  },
+  {
+   "name": "j_pod_right",
+   "parent": 3,
+   "pos": [
+    19.2397,
+    -1.2312,
+    0.4234
+   ],
+   "quat": [
+    -0.244273,
+    0.0,
+    0.0,
+    0.969706
+   ],
+   "trans": [
+    0.0,
+    -1.2312,
+    0.0
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 4,
+   "pos": [
+    42.495,
+    0.0,
+    2.364
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    18.5316,
+    0.0,
+    0.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 192,
+   "material": 0
+  },
+  {
+   "indexStart": 192,
+   "indexCount": 3060,
+   "material": 0
+  },
+  {
+   "indexStart": 3252,
+   "indexCount": 342,
+   "material": 0
+  },
+  {
+   "indexStart": 3594,
+   "indexCount": 1860,
+   "material": 1
+  },
+  {
+   "indexStart": 5454,
+   "indexCount": 90,
+   "material": 2
+  },
+  {
+   "indexStart": 5544,
+   "indexCount": 192,
+   "material": 3
+  },
+  {
+   "indexStart": 5736,
+   "indexCount": 510,
+   "material": 3
+  },
+  {
+   "indexStart": 6246,
+   "indexCount": 1728,
+   "material": 4
+  },
+  {
+   "indexStart": 7974,
+   "indexCount": 90,
+   "material": 5
+  },
+  {
+   "indexStart": 8064,
+   "indexCount": 24,
+   "material": 6
+  },
+  {
+   "indexStart": 8088,
+   "indexCount": 18,
+   "material": 7
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_m82",
+   "texture": "_textures/weapon_m82_col.webp",
+   "textureAlpha": false,
+   "color": "#373332",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_m82_spec-rgb_weapon_m_175eeb5c.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_m82_scope",
+   "texture": "_textures/weapon_m82_scope_col.webp",
+   "textureAlpha": false,
+   "color": "#262827",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_m82_scope_spec-rgb_we_517d8f6d.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_m82_scope_lens",
+   "texture": "_textures/weapon_m82_scope_lens_col.webp",
+   "textureAlpha": true,
+   "color": "#0f212c",
+   "alphaTest": "ge128",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "specularMap": "_textures/weapon_m82_scope_lens_spec-r_31ed4753.specular.webp",
+   "envMapParms": [
+    1.2,
+    8.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_m82_misc_nocamo",
+   "texture": "_textures/weapon_m82_col.webp",
+   "textureAlpha": false,
+   "color": "#373332",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_m82_spec-rgb_weapon_m_175eeb5c.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_acog",
+   "texture": "_textures/weapon_acog_col.webp",
+   "textureAlpha": false,
+   "color": "#2d2d2b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_acog_spc-r-25g-25b-25_ffe3f99d.specular.webp",
+   "envMapParms": [
+    2.0,
+    4.0,
+    2.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_acog_alpha",
+   "texture": "_textures/weapon_acog_alpha_col.webp",
+   "textureAlpha": false,
+   "color": "#806764",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "specularMap": "_textures/weapon_acog_alpha_spc-rgb_we_29bfeeda.specular.webp",
+   "envMapParms": [
+    0.0,
+    4.0,
+    0.25,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_acog_lens",
+   "texture": "_textures/weapon_acog_lens_col.webp",
+   "textureAlpha": true,
+   "color": "#003742",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "specularMap": "_textures/weapon_acog_lens_spc-rgb_wea_a5d30b6d.specular.webp",
+   "envMapParms": [
+    0.0,
+    4.0,
+    0.25,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_acog_reticle",
+   "texture": "_textures/weapon_acog_reticle_col.webp",
+   "textureAlpha": true,
+   "color": "#000000",
+   "alphaTest": null,
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -16.91,
+   -2.31,
+   -4.42
+  ],
+  "maxs": [
+   42.5,
+   3.53,
+   8.02
+  ]
+ }
+}

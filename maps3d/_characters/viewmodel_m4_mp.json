@@ -1,0 +1,546 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "viewmodel_m4_mp",
+ "kind": "viewmodel",
+ "faction": null,
+ "file": "viewmodel_m4_mp.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 42324
+  },
+  "normal": {
+   "offset": 42324,
+   "length": 14108
+  },
+  "uv": {
+   "offset": 56432,
+   "length": 28216
+  },
+  "skinIndex": {
+   "offset": 84648,
+   "length": 14108
+  },
+  "skinWeight": {
+   "offset": 98756,
+   "length": 14108
+  },
+  "index": {
+   "offset": 112864,
+   "length": 14964
+  },
+  "color": {
+   "offset": 127828,
+   "length": 14108
+  }
+ },
+ "vertexCount": 3527,
+ "triangleCount": 2494,
+ "bones": [
+  {
+   "name": "j_gun",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "j_clip_release",
+   "parent": 0,
+   "pos": [
+    -1.5305,
+    0.0,
+    2.9327
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -1.5305,
+    0.0,
+    2.9327
+   ]
+  },
+  {
+   "name": "tag_acog",
+   "parent": 0,
+   "pos": [
+    -0.1499,
+    -0.0084,
+    3.5814
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -0.1499,
+    -0.0084,
+    3.5814
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 0,
+   "pos": [
+    4.5628,
+    -0.6906,
+    2.2261
+   ],
+   "quat": [
+    -0.212622,
+    -0.212622,
+    -0.674367,
+    0.674398
+   ],
+   "trans": [
+    4.5628,
+    -0.6906,
+    2.2261
+   ]
+  },
+  {
+   "name": "tag_clip",
+   "parent": 0,
+   "pos": [
+    4.2936,
+    -0.0084,
+    1.2854
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    4.2936,
+    -0.0084,
+    1.2854
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    23.8701,
+    0.0158,
+    2.5039
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    23.8701,
+    0.0158,
+    2.5039
+   ]
+  },
+  {
+   "name": "tag_g36_scope",
+   "parent": 0,
+   "pos": [
+    -0.1499,
+    -0.0084,
+    3.5814
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -0.1499,
+    -0.0084,
+    3.5814
+   ]
+  },
+  {
+   "name": "tag_iron_sight",
+   "parent": 0,
+   "pos": [
+    -0.1499,
+    -0.0084,
+    3.5814
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -0.1499,
+    -0.0084,
+    3.5814
+   ]
+  },
+  {
+   "name": "tag_laser",
+   "parent": 0,
+   "pos": [
+    14.7066,
+    0.739,
+    1.9505
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    14.7066,
+    0.739,
+    1.9505
+   ]
+  },
+  {
+   "name": "tag_reflex_sight",
+   "parent": 0,
+   "pos": [
+    -0.1499,
+    -0.0084,
+    3.5814
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -0.1499,
+    -0.0084,
+    3.5814
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 426,
+   "material": 0
+  },
+  {
+   "indexStart": 426,
+   "indexCount": 2238,
+   "material": 0
+  },
+  {
+   "indexStart": 2664,
+   "indexCount": 150,
+   "material": 1
+  },
+  {
+   "indexStart": 2814,
+   "indexCount": 216,
+   "material": 2
+  },
+  {
+   "indexStart": 3030,
+   "indexCount": 1710,
+   "material": 3
+  },
+  {
+   "indexStart": 4740,
+   "indexCount": 858,
+   "material": 4
+  },
+  {
+   "indexStart": 5598,
+   "indexCount": 12,
+   "material": 5
+  },
+  {
+   "indexStart": 5610,
+   "indexCount": 12,
+   "material": 6
+  },
+  {
+   "indexStart": 5622,
+   "indexCount": 1728,
+   "material": 7
+  },
+  {
+   "indexStart": 7350,
+   "indexCount": 90,
+   "material": 8
+  },
+  {
+   "indexStart": 7440,
+   "indexCount": 24,
+   "material": 9
+  },
+  {
+   "indexStart": 7464,
+   "indexCount": 18,
+   "material": 10
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_m4_m16",
+   "texture": "_textures/weapon_m4_col.webp",
+   "textureAlpha": false,
+   "color": "#2a2c2d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_m4_spc-r-17g-17b-17_w_aca95990.specular.webp",
+   "envMapParms": [
+    2.0,
+    4.0,
+    0.8,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_holograph",
+   "texture": "_textures/weapon_holographic_col.webp",
+   "textureAlpha": false,
+   "color": "#363736",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/weapon_holographic_nml.normal.webp",
+   "specularMap": "_textures/weapon_holographic_spc-r34g3_75307947.specular.webp",
+   "envMapParms": [
+    0.8,
+    10.0,
+    0.8,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_foregrip_a",
+   "texture": "_textures/weapon_foregrip_a_col.webp",
+   "textureAlpha": false,
+   "color": "#151514",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_foregrip_a_spec-r-59g_57ea3d12.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_m4_m16_ironsight",
+   "texture": "_textures/weapon_m4_col.webp",
+   "textureAlpha": false,
+   "color": "#2a2c2d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_m4_spc-r-17g-17b-17_w_aca95990.specular.webp",
+   "envMapParms": [
+    2.0,
+    4.0,
+    0.8,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_reflex_sight",
+   "texture": "_textures/weapon_reflex_sight_col.webp",
+   "textureAlpha": false,
+   "color": "#2a2a2a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_reflex_sight_spc-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_reflex_red_dot",
+   "texture": "_textures/weapon_red_dot_reflexsight.webp",
+   "textureAlpha": false,
+   "color": "#0b0b0b",
+   "alphaTest": null,
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "detailScale": [
+    25.0,
+    25.0,
+    0.0,
+    0.0
+   ],
+   "detailMap": "_textures/weapon_red_cross_background.webp"
+  },
+  {
+   "name": "mc/mtl_weapon_reflex_lens",
+   "texture": "_textures/weapon_reflex_lens_col.webp",
+   "textureAlpha": true,
+   "color": "#5b3700",
+   "alphaTest": "gt0",
+   "blend": "srcalpha/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_acog",
+   "texture": "_textures/weapon_acog_col.webp",
+   "textureAlpha": false,
+   "color": "#2d2d2b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_acog_spc-r-25g-25b-25_ffe3f99d.specular.webp",
+   "envMapParms": [
+    2.0,
+    4.0,
+    2.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_acog_alpha",
+   "texture": "_textures/weapon_acog_alpha_col.webp",
+   "textureAlpha": false,
+   "color": "#806764",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "specularMap": "_textures/weapon_acog_alpha_spc-rgb_we_29bfeeda.specular.webp",
+   "envMapParms": [
+    0.0,
+    4.0,
+    0.25,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_acog_lens",
+   "texture": "_textures/weapon_acog_lens_col.webp",
+   "textureAlpha": true,
+   "color": "#003742",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "specularMap": "_textures/weapon_acog_lens_spc-rgb_wea_a5d30b6d.specular.webp",
+   "envMapParms": [
+    0.0,
+    4.0,
+    0.25,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_acog_reticle",
+   "texture": "_textures/weapon_acog_reticle_col.webp",
+   "textureAlpha": true,
+   "color": "#000000",
+   "alphaTest": null,
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -12.38,
+   -1.1,
+   -5.39
+  ],
+  "maxs": [
+   23.89,
+   1.05,
+   5.84
+  ]
+ }
+}

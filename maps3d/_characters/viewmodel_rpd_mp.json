@@ -1,0 +1,1042 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "viewmodel_rpd_mp",
+ "kind": "viewmodel",
+ "faction": null,
+ "file": "viewmodel_rpd_mp.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 52764
+  },
+  "normal": {
+   "offset": 52764,
+   "length": 17588
+  },
+  "uv": {
+   "offset": 70352,
+   "length": 35176
+  },
+  "skinIndex": {
+   "offset": 105528,
+   "length": 17588
+  },
+  "skinWeight": {
+   "offset": 123116,
+   "length": 17588
+  },
+  "index": {
+   "offset": 140704,
+   "length": 20664
+  },
+  "color": {
+   "offset": 161368,
+   "length": 17588
+  }
+ },
+ "vertexCount": 4397,
+ "triangleCount": 3444,
+ "bones": [
+  {
+   "name": "j_gun",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "j_bipod_le",
+   "parent": 0,
+   "pos": [
+    25.93,
+    0.4724,
+    -0.0802
+   ],
+   "quat": [
+    0.130526,
+    0.0,
+    0.0,
+    0.991445
+   ],
+   "trans": [
+    25.93,
+    0.4724,
+    -0.0802
+   ]
+  },
+  {
+   "name": "j_bipod_ri",
+   "parent": 0,
+   "pos": [
+    25.93,
+    -0.4724,
+    -0.0802
+   ],
+   "quat": [
+    0.0,
+    0.991445,
+    -0.130526,
+    0.0
+   ],
+   "trans": [
+    25.93,
+    -0.4724,
+    -0.0802
+   ]
+  },
+  {
+   "name": "j_bolt",
+   "parent": 0,
+   "pos": [
+    4.6501,
+    -0.5507,
+    1.0007
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    4.6501,
+    -0.5507,
+    1.0007
+   ]
+  },
+  {
+   "name": "j_bullet1",
+   "parent": 0,
+   "pos": [
+    6.4094,
+    0.1326,
+    1.8462
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.707107,
+    0.707107
+   ],
+   "trans": [
+    6.4094,
+    0.1326,
+    1.8462
+   ]
+  },
+  {
+   "name": "j_lock",
+   "parent": 0,
+   "pos": [
+    5.4749,
+    0.3847,
+    -0.4405
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    5.4749,
+    0.3847,
+    -0.4405
+   ]
+  },
+  {
+   "name": "j_main_cover",
+   "parent": 0,
+   "pos": [
+    7.995,
+    0.0,
+    2.0273
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    7.995,
+    0.0,
+    2.0273
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 0,
+   "pos": [
+    6.5398,
+    -0.4372,
+    1.8462
+   ],
+   "quat": [
+    -0.212622,
+    -0.212622,
+    -0.674367,
+    0.674398
+   ],
+   "trans": [
+    6.5398,
+    -0.4372,
+    1.8462
+   ]
+  },
+  {
+   "name": "tag_clip",
+   "parent": 0,
+   "pos": [
+    6.7061,
+    0.8959,
+    -3.2774
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    6.7061,
+    0.8959,
+    -3.2774
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    27.9819,
+    0.0,
+    1.2958
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    27.9819,
+    0.0,
+    1.2958
+   ]
+  },
+  {
+   "name": "tag_foregrip",
+   "parent": 0,
+   "pos": [
+    11.023,
+    0.1305,
+    -0.3141
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    11.023,
+    0.1305,
+    -0.3141
+   ]
+  },
+  {
+   "name": "j_bullet2",
+   "parent": 4,
+   "pos": [
+    6.4094,
+    0.4144,
+    1.8462
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.707107,
+    0.707107
+   ],
+   "trans": [
+    0.2818,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "j_bullet_cover",
+   "parent": 8,
+   "pos": [
+    6.6142,
+    2.6644,
+    -1.0092
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -0.0919,
+    1.7685,
+    2.2682
+   ]
+  },
+  {
+   "name": "tag_acog",
+   "parent": 6,
+   "pos": [
+    1.0324,
+    0.1305,
+    2.2302
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -6.9626,
+    0.1305,
+    0.2028
+   ]
+  },
+  {
+   "name": "tag_iron_sight",
+   "parent": 6,
+   "pos": [
+    6.9452,
+    0.1305,
+    2.7428
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -1.0498,
+    0.1305,
+    0.7154
+   ]
+  },
+  {
+   "name": "tag_reflex_sight",
+   "parent": 6,
+   "pos": [
+    1.0324,
+    0.1305,
+    2.2302
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -6.9626,
+    0.1305,
+    0.2028
+   ]
+  },
+  {
+   "name": "j_aim",
+   "parent": 14,
+   "pos": [
+    6.9452,
+    0.1305,
+    2.7428
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "j_bullet3",
+   "parent": 11,
+   "pos": [
+    6.4094,
+    0.6962,
+    1.8462
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.707107,
+    0.707107
+   ],
+   "trans": [
+    0.2818,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "j_bullet4",
+   "parent": 17,
+   "pos": [
+    6.4094,
+    0.978,
+    1.8462
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.707107,
+    0.707107
+   ],
+   "trans": [
+    0.2818,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "j_bullet5",
+   "parent": 18,
+   "pos": [
+    6.4094,
+    1.2598,
+    1.8462
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.707107,
+    0.707107
+   ],
+   "trans": [
+    0.2818,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "j_bullet6",
+   "parent": 19,
+   "pos": [
+    6.4094,
+    1.5336,
+    1.8462
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.707107,
+    0.707107
+   ],
+   "trans": [
+    0.2738,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "j_bullet7",
+   "parent": 20,
+   "pos": [
+    6.4094,
+    1.8074,
+    1.8462
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.707107,
+    0.707107
+   ],
+   "trans": [
+    0.2738,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "j_bullet8",
+   "parent": 21,
+   "pos": [
+    6.4094,
+    2.0892,
+    1.8462
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.707107,
+    0.707107
+   ],
+   "trans": [
+    0.2818,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "j_bullet9",
+   "parent": 22,
+   "pos": [
+    6.4094,
+    2.3672,
+    1.8462
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.707107,
+    0.707107
+   ],
+   "trans": [
+    0.278,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "j_bullet10",
+   "parent": 23,
+   "pos": [
+    6.4094,
+    2.6526,
+    1.8462
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.707107,
+    0.707107
+   ],
+   "trans": [
+    0.2853,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "j_bullet11",
+   "parent": 24,
+   "pos": [
+    6.4094,
+    2.9368,
+    1.8462
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.707107,
+    0.707107
+   ],
+   "trans": [
+    0.2842,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "j_bullet12",
+   "parent": 25,
+   "pos": [
+    6.4094,
+    3.2163,
+    1.8462
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.707107,
+    0.707107
+   ],
+   "trans": [
+    0.2795,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "j_bullet13",
+   "parent": 26,
+   "pos": [
+    6.4094,
+    3.5016,
+    1.8462
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.707107,
+    0.707107
+   ],
+   "trans": [
+    0.2853,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "j_bullet14",
+   "parent": 27,
+   "pos": [
+    6.4094,
+    3.7811,
+    1.8462
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.707107,
+    0.707107
+   ],
+   "trans": [
+    0.2795,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "j_bullet15",
+   "parent": 28,
+   "pos": [
+    6.4094,
+    4.0587,
+    1.8462
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.707107,
+    0.707107
+   ],
+   "trans": [
+    0.2776,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "j_bullet16",
+   "parent": 29,
+   "pos": [
+    6.4094,
+    4.344,
+    1.8462
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.707107,
+    0.707107
+   ],
+   "trans": [
+    0.2853,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "j_bullet17",
+   "parent": 30,
+   "pos": [
+    6.4094,
+    4.6283,
+    1.8462
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.707107,
+    0.707107
+   ],
+   "trans": [
+    0.2842,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "j_bullet18",
+   "parent": 31,
+   "pos": [
+    6.4094,
+    4.9077,
+    1.8462
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.707107,
+    0.707107
+   ],
+   "trans": [
+    0.2794,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "j_bullet19",
+   "parent": 32,
+   "pos": [
+    6.4094,
+    5.1931,
+    1.8462
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.707107,
+    0.707107
+   ],
+   "trans": [
+    0.2853,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "j_bullet20",
+   "parent": 33,
+   "pos": [
+    6.4094,
+    5.4725,
+    1.8462
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    0.2795,
+    0.0,
+    0.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 552,
+   "material": 0
+  },
+  {
+   "indexStart": 552,
+   "indexCount": 2214,
+   "material": 0
+  },
+  {
+   "indexStart": 2766,
+   "indexCount": 912,
+   "material": 0
+  },
+  {
+   "indexStart": 3678,
+   "indexCount": 348,
+   "material": 0
+  },
+  {
+   "indexStart": 4026,
+   "indexCount": 1950,
+   "material": 1
+  },
+  {
+   "indexStart": 5976,
+   "indexCount": 666,
+   "material": 1
+  },
+  {
+   "indexStart": 6642,
+   "indexCount": 450,
+   "material": 1
+  },
+  {
+   "indexStart": 7092,
+   "indexCount": 378,
+   "material": 1
+  },
+  {
+   "indexStart": 7470,
+   "indexCount": 120,
+   "material": 2
+  },
+  {
+   "indexStart": 7590,
+   "indexCount": 858,
+   "material": 3
+  },
+  {
+   "indexStart": 8448,
+   "indexCount": 12,
+   "material": 4
+  },
+  {
+   "indexStart": 8460,
+   "indexCount": 12,
+   "material": 5
+  },
+  {
+   "indexStart": 8472,
+   "indexCount": 1728,
+   "material": 6
+  },
+  {
+   "indexStart": 10200,
+   "indexCount": 90,
+   "material": 7
+  },
+  {
+   "indexStart": 10290,
+   "indexCount": 24,
+   "material": 8
+  },
+  {
+   "indexStart": 10314,
+   "indexCount": 18,
+   "material": 9
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_rpd",
+   "texture": "_textures/weapon_rpd_col.webp",
+   "textureAlpha": false,
+   "color": "#332e2a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_rpd_spc-r30g30b30_wea_081b41c8.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_rpd_misc_nocamo",
+   "texture": "_textures/weapon_rpd_col.webp",
+   "textureAlpha": false,
+   "color": "#332e2a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_rpd_spc-r30g30b30_wea_081b41c8.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_rpd_foregrip",
+   "texture": "_textures/weapon_rpd_col.webp",
+   "textureAlpha": false,
+   "color": "#332e2a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_rpd_spc-r30g30b30_wea_081b41c8.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_reflex_sight",
+   "texture": "_textures/weapon_reflex_sight_col.webp",
+   "textureAlpha": false,
+   "color": "#2a2a2a",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_reflex_sight_spc-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_reflex_red_dot",
+   "texture": "_textures/weapon_red_dot_reflexsight.webp",
+   "textureAlpha": false,
+   "color": "#0b0b0b",
+   "alphaTest": null,
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "detailScale": [
+    25.0,
+    25.0,
+    0.0,
+    0.0
+   ],
+   "detailMap": "_textures/weapon_red_cross_background.webp"
+  },
+  {
+   "name": "mc/mtl_weapon_reflex_lens",
+   "texture": "_textures/weapon_reflex_lens_col.webp",
+   "textureAlpha": true,
+   "color": "#5b3700",
+   "alphaTest": "gt0",
+   "blend": "srcalpha/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_acog",
+   "texture": "_textures/weapon_acog_col.webp",
+   "textureAlpha": false,
+   "color": "#2d2d2b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_acog_spc-r-25g-25b-25_ffe3f99d.specular.webp",
+   "envMapParms": [
+    2.0,
+    4.0,
+    2.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_acog_alpha",
+   "texture": "_textures/weapon_acog_alpha_col.webp",
+   "textureAlpha": false,
+   "color": "#806764",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "specularMap": "_textures/weapon_acog_alpha_spc-rgb_we_29bfeeda.specular.webp",
+   "envMapParms": [
+    0.0,
+    4.0,
+    0.25,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_acog_lens",
+   "texture": "_textures/weapon_acog_lens_col.webp",
+   "textureAlpha": true,
+   "color": "#003742",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "specularMap": "_textures/weapon_acog_lens_spc-rgb_wea_a5d30b6d.specular.webp",
+   "envMapParms": [
+    0.0,
+    4.0,
+    0.25,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_acog_reticle",
+   "texture": "_textures/weapon_acog_reticle_col.webp",
+   "textureAlpha": true,
+   "color": "#000000",
+   "alphaTest": null,
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -10.5,
+   -2.1,
+   -6.07
+  ],
+  "maxs": [
+   27.98,
+   5.61,
+   4.69
+  ]
+ }
+}

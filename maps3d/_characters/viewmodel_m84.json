@@ -1,0 +1,254 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "viewmodel_m84",
+ "kind": "viewmodel",
+ "faction": null,
+ "file": "viewmodel_m84.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 10452
+  },
+  "normal": {
+   "offset": 10452,
+   "length": 3484
+  },
+  "uv": {
+   "offset": 13936,
+   "length": 6968
+  },
+  "skinIndex": {
+   "offset": 20904,
+   "length": 3484
+  },
+  "skinWeight": {
+   "offset": 24388,
+   "length": 3484
+  },
+  "index": {
+   "offset": 27872,
+   "length": 4644
+  },
+  "color": {
+   "offset": 32516,
+   "length": 3484
+  }
+ },
+ "vertexCount": 871,
+ "triangleCount": 774,
+ "bones": [
+  {
+   "name": "j_gun",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_clip",
+   "parent": 0,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "j_cir_stick",
+   "parent": 1,
+   "pos": [
+    0.013,
+    0.5979,
+    0.8597
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    0.013,
+    0.5979,
+    0.8597
+   ]
+  },
+  {
+   "name": "j_handle",
+   "parent": 1,
+   "pos": [
+    0.5115,
+    -0.0603,
+    1.0337
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    0.5115,
+    -0.0603,
+    1.0337
+   ]
+  },
+  {
+   "name": "j_tir_stick",
+   "parent": 1,
+   "pos": [
+    -0.5201,
+    0.5973,
+    0.8595
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -0.5201,
+    0.5973,
+    0.8595
+   ]
+  },
+  {
+   "name": "j_cir_ring",
+   "parent": 2,
+   "pos": [
+    0.013,
+    0.5979,
+    0.8597
+   ],
+   "quat": [
+    -0.499832,
+    -0.500168,
+    0.499832,
+    0.500168
+   ],
+   "trans": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "j_handle_squeeze",
+   "parent": 3,
+   "pos": [
+    -0.8403,
+    -0.0603,
+    0.311
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -1.3517,
+    0.0,
+    -0.7227
+   ]
+  },
+  {
+   "name": "j_tri_ring",
+   "parent": 4,
+   "pos": [
+    -0.5201,
+    0.5973,
+    0.8595
+   ],
+   "quat": [
+    -0.499832,
+    -0.500168,
+    0.499832,
+    0.500168
+   ],
+   "trans": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 552,
+   "material": 0
+  },
+  {
+   "indexStart": 552,
+   "indexCount": 678,
+   "material": -1
+  },
+  {
+   "indexStart": 1230,
+   "indexCount": 564,
+   "material": -1
+  },
+  {
+   "indexStart": 1794,
+   "indexCount": 528,
+   "material": -1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_m84",
+   "texture": "_textures/m84_flashbang_col.webp",
+   "textureAlpha": false,
+   "color": "#4c4536",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -1.37,
+   -0.97,
+   -4.14
+  ],
+  "maxs": [
+   0.99,
+   2.33,
+   1.17
+  ]
+ }
+}

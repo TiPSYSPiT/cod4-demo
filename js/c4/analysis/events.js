@@ -19,7 +19,11 @@ C4.define('events', function (C4) {
     ['timeout', 'Timeout called', true],
     ['team_join', 'Joined team', false],
     ['bomb_pickup', 'Bomb picked up', false],
-    ['bomb_drop', 'Bomb dropped', false]
+    ['bomb_drop', 'Bomb dropped', false],
+    ['weapon_pickup', 'Weapon picked up', false],
+    ['ammo_pickup', 'Ammo picked up', false],
+    ['out_of_ammo', 'Out of ammo', false],
+    ['no_grenades', 'Out of grenades', false]
   ];
 
   /**
@@ -208,6 +212,12 @@ C4.define('events', function (C4) {
     }
     for (const h of ctx.halftimes) add(h, 'halftime', 'Halftime - teams switch sides', [], { heuristic: !ctx.halftimeFromSound });
     for (const k of kills) add(k.t, 'kill', '', [k.attacker, k.victim].filter(x => x != null && x < 64), { kill: k.index });
+    // the player events of items (EV_ITEM_PICKUP, EV_AMMO_PICKUP, EV_NOAMMO; EV_EMPTY_OFFHAND: only the recorder's)
+    const ITEM = { 9: ['weapon_pickup', ' picked up '], 10: ['ammo_pickup', ' picked up ammo for '], 11: ['out_of_ammo', ' is out of ammo: '], 13: ['no_grenades', ' is out of grenades'] };
+    for (const e of ctx.weapItems || []) {
+      const [type, verb] = ITEM[e.event];
+      add(e.t, type, playerName(e.client) + verb + (e.event === 13 ? '' : e.label || 'a weapon'), [e.client], { weapon: e.weapon });
+    }
 
     ev.sort((a, b) => a.t - b.t || EVENT_TYPES.findIndex(x => x[0] === a.type) - EVENT_TYPES.findIndex(x => x[0] === b.type));
     const phaseOf = ctx.phaseAt || (() => 'live');

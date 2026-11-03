@@ -1,0 +1,391 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "viewmodel_remington700_mp",
+ "kind": "viewmodel",
+ "faction": null,
+ "file": "viewmodel_remington700_mp.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 24420
+  },
+  "normal": {
+   "offset": 24420,
+   "length": 8140
+  },
+  "uv": {
+   "offset": 32560,
+   "length": 16280
+  },
+  "skinIndex": {
+   "offset": 48840,
+   "length": 8140
+  },
+  "skinWeight": {
+   "offset": 56980,
+   "length": 8140
+  },
+  "index": {
+   "offset": 65120,
+   "length": 10188
+  },
+  "color": {
+   "offset": 75308,
+   "length": 8140
+  }
+ },
+ "vertexCount": 2035,
+ "triangleCount": 1698,
+ "bones": [
+  {
+   "name": "j_gun",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "bullet_joint",
+   "parent": 0,
+   "pos": [
+    -3.7082,
+    -0.045,
+    1.8072
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -3.7082,
+    -0.045,
+    1.8072
+   ]
+  },
+  {
+   "name": "j_bolt",
+   "parent": 0,
+   "pos": [
+    -6.7795,
+    0.0,
+    1.5996
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -6.7795,
+    0.0,
+    1.5996
+   ]
+  },
+  {
+   "name": "tag_acog",
+   "parent": 0,
+   "pos": [
+    -6.0148,
+    0.0,
+    2.1738
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -6.0148,
+    0.0,
+    2.1738
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 0,
+   "pos": [
+    -3.9978,
+    -0.2805,
+    1.8072
+   ],
+   "quat": [
+    -0.212622,
+    -0.212622,
+    -0.674367,
+    0.674398
+   ],
+   "trans": [
+    -3.9978,
+    -0.2805,
+    1.8072
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    22.6432,
+    0.0,
+    1.704
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    22.6432,
+    0.0,
+    1.704
+   ]
+  },
+  {
+   "name": "tag_rem700_scope",
+   "parent": 0,
+   "pos": [
+    -6.0148,
+    0.0,
+    2.1738
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -6.0148,
+    0.0,
+    2.1738
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 654,
+   "material": 0
+  },
+  {
+   "indexStart": 654,
+   "indexCount": 1194,
+   "material": 0
+  },
+  {
+   "indexStart": 1848,
+   "indexCount": 1248,
+   "material": 0
+  },
+  {
+   "indexStart": 3096,
+   "indexCount": 102,
+   "material": 1
+  },
+  {
+   "indexStart": 3198,
+   "indexCount": 36,
+   "material": 2
+  },
+  {
+   "indexStart": 3234,
+   "indexCount": 1728,
+   "material": 3
+  },
+  {
+   "indexStart": 4962,
+   "indexCount": 90,
+   "material": 4
+  },
+  {
+   "indexStart": 5052,
+   "indexCount": 24,
+   "material": 5
+  },
+  {
+   "indexStart": 5076,
+   "indexCount": 18,
+   "material": 6
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_remington700",
+   "texture": "_textures/mtl_weapon_remington700_col.webp",
+   "textureAlpha": false,
+   "color": "#21201e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/mtl_weapon_remington700_spc-_27f61cce.specular.webp",
+   "envMapParms": [
+    1.0,
+    3.2,
+    1.6,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_bullet",
+   "texture": "_textures/weapon_bullet_col.webp",
+   "textureAlpha": false,
+   "color": "#846b4b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_bullet_spc-r-87g-87b-_7fcd185c.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_m14_scope_lens",
+   "texture": "_textures/m14_scope_lens_col.webp",
+   "textureAlpha": true,
+   "color": "#09151c",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "specularMap": "_textures/m14_scope_lens_spec-rgb_m14__eace8daa.specular.webp",
+   "envMapParms": [
+    2.0,
+    8.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_acog",
+   "texture": "_textures/weapon_acog_col.webp",
+   "textureAlpha": false,
+   "color": "#2d2d2b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_acog_spc-r-25g-25b-25_ffe3f99d.specular.webp",
+   "envMapParms": [
+    2.0,
+    4.0,
+    2.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_acog_alpha",
+   "texture": "_textures/weapon_acog_alpha_col.webp",
+   "textureAlpha": false,
+   "color": "#806764",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "specularMap": "_textures/weapon_acog_alpha_spc-rgb_we_29bfeeda.specular.webp",
+   "envMapParms": [
+    0.0,
+    4.0,
+    0.25,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_acog_lens",
+   "texture": "_textures/weapon_acog_lens_col.webp",
+   "textureAlpha": true,
+   "color": "#003742",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "specularMap": "_textures/weapon_acog_lens_spc-rgb_wea_a5d30b6d.specular.webp",
+   "envMapParms": [
+    0.0,
+    4.0,
+    0.25,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_acog_reticle",
+   "texture": "_textures/weapon_acog_reticle_col.webp",
+   "textureAlpha": true,
+   "color": "#000000",
+   "alphaTest": null,
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -20.35,
+   -1.55,
+   -3.36
+  ],
+  "maxs": [
+   22.64,
+   1.14,
+   4.8
+  ]
+ }
+}

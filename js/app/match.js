@@ -160,6 +160,13 @@ export class Match {
     return e;
   }
 
+  /** the planted bomb's timer at t -> {left (ms), heuristic, source} or null (no bomb ticking) */
+  bombTimer(t) {
+    const e = this.bombAt(t);
+    if (!e || e.state !== 'planted' || e.explodeAt == null || t >= e.explodeAt) return null;
+    return { left: e.explodeAt - t, heuristic: e.timerSource !== 'clock', source: e.timerSource };
+  }
+
   /** the round at t; between two rounds the last one before t (null before the first) */
   roundAtOrBefore(t) {
     const d = this.d;

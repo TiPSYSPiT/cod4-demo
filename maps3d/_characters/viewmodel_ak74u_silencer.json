@@ -1,0 +1,258 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "viewmodel_ak74u_silencer",
+ "kind": "viewmodel",
+ "faction": null,
+ "file": "viewmodel_ak74u_silencer.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 23232
+  },
+  "normal": {
+   "offset": 23232,
+   "length": 7744
+  },
+  "uv": {
+   "offset": 30976,
+   "length": 15488
+  },
+  "skinIndex": {
+   "offset": 46464,
+   "length": 7744
+  },
+  "skinWeight": {
+   "offset": 54208,
+   "length": 7744
+  },
+  "index": {
+   "offset": 61952,
+   "length": 9036
+  },
+  "color": {
+   "offset": 70988,
+   "length": 7744
+  }
+ },
+ "vertexCount": 1936,
+ "triangleCount": 1506,
+ "bones": [
+  {
+   "name": "j_gun",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "silerncer_geo",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "j_bolt",
+   "parent": 0,
+   "pos": [
+    6.156,
+    -0.8368,
+    1.8879
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    6.156,
+    -0.8368,
+    1.8879
+   ]
+  },
+  {
+   "name": "j_trigger",
+   "parent": 0,
+   "pos": [
+    2.2511,
+    0.0,
+    -1.2827
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    2.2511,
+    0.0,
+    -1.2827
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 0,
+   "pos": [
+    4.5816,
+    0.0,
+    1.9526
+   ],
+   "quat": [
+    -0.212622,
+    -0.212622,
+    -0.674367,
+    0.674398
+   ],
+   "trans": [
+    4.5816,
+    0.0,
+    1.9526
+   ]
+  },
+  {
+   "name": "tag_clip",
+   "parent": 0,
+   "pos": [
+    4.2118,
+    0.015,
+    0.2791
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    4.2118,
+    0.015,
+    0.2791
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    27.437,
+    0.0158,
+    1.3543
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    27.437,
+    0.0158,
+    1.3543
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 18,
+   "material": 0
+  },
+  {
+   "indexStart": 18,
+   "indexCount": 3912,
+   "material": 0
+  },
+  {
+   "indexStart": 3930,
+   "indexCount": 120,
+   "material": -1
+  },
+  {
+   "indexStart": 4050,
+   "indexCount": 78,
+   "material": 1
+  },
+  {
+   "indexStart": 4128,
+   "indexCount": 390,
+   "material": 1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_ak74u",
+   "texture": "_textures/weapon_ak74u_col.webp",
+   "textureAlpha": false,
+   "color": "#36312f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_ak74u_spec-rgb_weapon_8d98e74a.specular.webp",
+   "envMapParms": [
+    3.0,
+    4.0,
+    4.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_ak74u_misc_nocamo",
+   "texture": "_textures/weapon_ak74u_col.webp",
+   "textureAlpha": false,
+   "color": "#36312f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_ak74u_spec-rgb_weapon_8d98e74a.specular.webp",
+   "envMapParms": [
+    3.0,
+    4.0,
+    4.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -14.09,
+   -2.21,
+   -8.88
+  ],
+  "maxs": [
+   28.15,
+   1.5,
+   4.2
+  ]
+ }
+}

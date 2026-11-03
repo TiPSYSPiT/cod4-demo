@@ -1,0 +1,191 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "viewmodel_colt45_and_silencer_mp",
+ "kind": "viewmodel",
+ "faction": null,
+ "file": "viewmodel_colt45_and_silencer_mp.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 16824
+  },
+  "normal": {
+   "offset": 16824,
+   "length": 5608
+  },
+  "uv": {
+   "offset": 22432,
+   "length": 11216
+  },
+  "skinIndex": {
+   "offset": 33648,
+   "length": 5608
+  },
+  "skinWeight": {
+   "offset": 39256,
+   "length": 5608
+  },
+  "index": {
+   "offset": 44864,
+   "length": 6480
+  },
+  "color": {
+   "offset": 51344,
+   "length": 5608
+  }
+ },
+ "vertexCount": 1402,
+ "triangleCount": 1080,
+ "bones": [
+  {
+   "name": "j_gun",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "j_bolt",
+   "parent": 0,
+   "pos": [
+    -1.3531,
+    0.082,
+    1.4411
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -1.3531,
+    0.082,
+    1.4411
+   ]
+  },
+  {
+   "name": "j_press_rear",
+   "parent": 0,
+   "pos": [
+    -2.7132,
+    0.0627,
+    0.3713
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -2.7132,
+    0.0627,
+    0.3713
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 0,
+   "pos": [
+    -0.822,
+    0.0,
+    1.3123
+   ],
+   "quat": [
+    -0.653278,
+    0.270607,
+    -0.653278,
+    0.270607
+   ],
+   "trans": [
+    -0.822,
+    0.0,
+    1.3123
+   ]
+  },
+  {
+   "name": "tag_clip",
+   "parent": 0,
+   "pos": [
+    -1.6216,
+    0.0867,
+    -1.4971
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -1.6216,
+    0.0867,
+    -1.4971
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    11.4137,
+    0.0,
+    0.9432
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    11.4137,
+    0.0,
+    0.9432
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 324,
+   "material": -1
+  },
+  {
+   "indexStart": 324,
+   "indexCount": 1656,
+   "material": -1
+  },
+  {
+   "indexStart": 1980,
+   "indexCount": 888,
+   "material": -1
+  },
+  {
+   "indexStart": 2868,
+   "indexCount": 372,
+   "material": -1
+  }
+ ],
+ "materials": [],
+ "bounds": {
+  "mins": [
+   -3.9,
+   -0.68,
+   -4.52
+  ],
+  "maxs": [
+   11.41,
+   0.68,
+   1.72
+  ]
+ }
+}

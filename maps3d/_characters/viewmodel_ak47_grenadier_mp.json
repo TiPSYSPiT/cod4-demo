@@ -1,0 +1,291 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "viewmodel_ak47_grenadier_mp",
+ "kind": "viewmodel",
+ "faction": null,
+ "file": "viewmodel_ak47_grenadier_mp.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 30420
+  },
+  "normal": {
+   "offset": 30420,
+   "length": 10140
+  },
+  "uv": {
+   "offset": 40560,
+   "length": 20280
+  },
+  "skinIndex": {
+   "offset": 60840,
+   "length": 10140
+  },
+  "skinWeight": {
+   "offset": 70980,
+   "length": 10140
+  },
+  "index": {
+   "offset": 81120,
+   "length": 12096
+  },
+  "color": {
+   "offset": 93216,
+   "length": 10140
+  }
+ },
+ "vertexCount": 2535,
+ "triangleCount": 2016,
+ "bones": [
+  {
+   "name": "j_gun",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "j_bolt",
+   "parent": 0,
+   "pos": [
+    5.3086,
+    -0.2817,
+    2.3576
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    5.3086,
+    -0.2817,
+    2.3576
+   ]
+  },
+  {
+   "name": "j_grenade",
+   "parent": 0,
+   "pos": [
+    25.8903,
+    0.0,
+    -1.2598
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    25.8903,
+    0.0,
+    -1.2598
+   ]
+  },
+  {
+   "name": "j_trigger",
+   "parent": 0,
+   "pos": [
+    2.4008,
+    0.0,
+    -1.133
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    2.4008,
+    0.0,
+    -1.133
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 0,
+   "pos": [
+    5.9734,
+    -0.8368,
+    2.4147
+   ],
+   "quat": [
+    -0.212622,
+    -0.212622,
+    -0.674367,
+    0.674398
+   ],
+   "trans": [
+    5.9734,
+    -0.8368,
+    2.4147
+   ]
+  },
+  {
+   "name": "tag_clip",
+   "parent": 0,
+   "pos": [
+    4.2118,
+    0.015,
+    0.2791
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    4.2118,
+    0.015,
+    0.2791
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    25.406,
+    0.0158,
+    1.3543
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    25.406,
+    0.0158,
+    1.3543
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 3420,
+   "material": 0
+  },
+  {
+   "indexStart": 3420,
+   "indexCount": 354,
+   "material": 0
+  },
+  {
+   "indexStart": 3774,
+   "indexCount": 132,
+   "material": 0
+  },
+  {
+   "indexStart": 3906,
+   "indexCount": 1140,
+   "material": 1
+  },
+  {
+   "indexStart": 5046,
+   "indexCount": 210,
+   "material": -1
+  },
+  {
+   "indexStart": 5256,
+   "indexCount": 792,
+   "material": 2
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_ak47",
+   "texture": "_textures/weapon_ak47_c.webp",
+   "textureAlpha": false,
+   "color": "#292522",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_ak47_s-r-61g-61b-61_w_0848fdf9.specular.webp",
+   "envMapParms": [
+    1.2,
+    3.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_ak47_grenadier",
+   "texture": "_textures/weapon_ak47_grenadier_col.webp",
+   "textureAlpha": false,
+   "color": "#1b1d1d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_ak47_grenadier_spc-r6_e3b32d6a.specular.webp",
+   "envMapParms": [
+    1.2,
+    3.2,
+    1.3,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_ak47_misc_nocamo",
+   "texture": "_textures/weapon_ak47_c.webp",
+   "textureAlpha": false,
+   "color": "#292522",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_ak47_s-r30g30b30_weap_270f7f8d.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -13.74,
+   -2.19,
+   -7.68
+  ],
+  "maxs": [
+   27.6,
+   1.14,
+   4.44
+  ]
+ }
+}

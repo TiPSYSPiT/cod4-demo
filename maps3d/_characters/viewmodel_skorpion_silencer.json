@@ -1,0 +1,190 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "viewmodel_skorpion_silencer",
+ "kind": "viewmodel",
+ "faction": null,
+ "file": "viewmodel_skorpion_silencer.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 19644
+  },
+  "normal": {
+   "offset": 19644,
+   "length": 6548
+  },
+  "uv": {
+   "offset": 26192,
+   "length": 13096
+  },
+  "skinIndex": {
+   "offset": 39288,
+   "length": 6548
+  },
+  "skinWeight": {
+   "offset": 45836,
+   "length": 6548
+  },
+  "index": {
+   "offset": 52384,
+   "length": 10692
+  },
+  "color": {
+   "offset": 63076,
+   "length": 6548
+  }
+ },
+ "vertexCount": 1637,
+ "triangleCount": 1782,
+ "bones": [
+  {
+   "name": "j_gun",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "j_bolt",
+   "parent": 0,
+   "pos": [
+    5.498,
+    0.0,
+    1.8103
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    5.498,
+    0.0,
+    1.8103
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 0,
+   "pos": [
+    2.7233,
+    -0.5387,
+    1.8103
+   ],
+   "quat": [
+    -0.212622,
+    -0.212622,
+    -0.674367,
+    0.674398
+   ],
+   "trans": [
+    2.7233,
+    -0.5387,
+    1.8103
+   ]
+  },
+  {
+   "name": "tag_clip",
+   "parent": 0,
+   "pos": [
+    3.1088,
+    0.0106,
+    0.8344
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    3.1088,
+    0.0106,
+    0.8344
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    14.9698,
+    0.0,
+    1.4572
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    14.9698,
+    0.0,
+    1.4572
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 4560,
+   "material": 0
+  },
+  {
+   "indexStart": 4560,
+   "indexCount": 414,
+   "material": 0
+  },
+  {
+   "indexStart": 4974,
+   "indexCount": 372,
+   "material": -1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_scorpion",
+   "texture": "_textures/weapon_scorpion_col.webp",
+   "textureAlpha": false,
+   "color": "#29231f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_scorpion_spc-rgb_weap_5811727e.specular.webp",
+   "envMapParms": [
+    0.4,
+    4.0,
+    2.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -2.61,
+   -1.05,
+   -4.07
+  ],
+  "maxs": [
+   17.74,
+   1.05,
+   2.87
+  ]
+ }
+}

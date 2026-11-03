@@ -1,0 +1,76 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "projectile_m67fraggrenade",
+ "kind": "viewmodel",
+ "faction": null,
+ "file": "projectile_m67fraggrenade.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 4488
+  },
+  "normal": {
+   "offset": 4488,
+   "length": 1496
+  },
+  "uv": {
+   "offset": 5984,
+   "length": 2992
+  },
+  "skinIndex": {
+   "offset": 8976,
+   "length": 1496
+  },
+  "skinWeight": {
+   "offset": 10472,
+   "length": 1496
+  },
+  "index": {
+   "offset": 11968,
+   "length": 2628
+  },
+  "color": {
+   "offset": 14596,
+   "length": 1496
+  }
+ },
+ "vertexCount": 374,
+ "triangleCount": 438,
+ "bones": [
+  {
+   "name": "tag_weapon",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 1314,
+   "material": -1
+  }
+ ],
+ "materials": [],
+ "bounds": {
+  "mins": [
+   -1.48,
+   -1.52,
+   -1.25
+  ],
+  "maxs": [
+   1.47,
+   1.44,
+   2.49
+  ]
+ }
+}

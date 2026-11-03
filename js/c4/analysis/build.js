@@ -253,6 +253,32 @@ C4.define('build', function (C4) {
     const bombSD = (serverinfo.g_gametype || '').toLowerCase() === 'sd';
     const bombObs = col.bombObs.map(o => Object.assign({}, o, { t: rel(o.t) })).filter(o => o.t >= mapWindow.start && o.t < mapWindow.end);
     const bombTrack = C4.events.bombTrack(bombObs, R.rounds, bombSD);
+    // the bomb timer: the plant's setGameEndTime (sd.gsc: now + bombtimer; CS 11, the game's end time in
+    // server ms, CG_ParseGameEndTime) - exact; else the plant -> explosion time of the demo's exploded
+    // rounds, else the gametype's default bombtimer (45 s, stock and Promod)
+    {
+      const ends = csChanges.filter(ch => ch.index === K.CS.GAMEENDTIME).map(ch => ({ t: ch.t, end: (parseInt(ch.value, 10) || 0) - t0 }));
+      const fuses = [];
+      for (let i = 0; i + 1 < bombTrack.length; i++) {
+        if (bombTrack[i].state === 'planted' && bombTrack[i + 1].state === 'exploded') fuses.push(bombTrack[i + 1].t - bombTrack[i].t);
+      }
+      fuses.sort((a, b) => a - b);
+      const fuse = fuses.length ? fuses[fuses.length >> 1] : 45000;
+      let plantAt = null;
+      for (const b of bombTrack) {
+        if (b.state !== 'planted') { plantAt = null; continue; }
+        if (plantAt == null) {
+          plantAt = b.t;
+          const ck = ends.find(h => h.t >= b.t - 200 && h.t <= b.t + 1500 && h.end - h.t >= 10000);
+          b.explodeAt = ck ? ck.end : b.t + fuse;
+          b.timerSource = ck ? 'clock' : fuses.length ? 'exploded rounds' : 'default';
+        } else {
+          // (a later entry of the same plant: a better position) - the same timer
+          const first = bombTrack.find(x => x.t === plantAt && x.state === 'planted');
+          b.explodeAt = first.explodeAt; b.timerSource = first.timerSource;
+        }
+      }
+    }
     for (const mc of mapChanges) {
       warnings.push('Map change at ' + fmtTime(mc.t) + ': the recording continues on ' + (mc.map || 'another map') +
         '. Everything from then on belongs to that map and is not counted (phase aftermatch).');
@@ -409,7 +435,13 @@ C4.define('build', function (C4) {
     }
     const resolver = C4.events.nameResolver(col.nameHistory, names);
     const status = R.status;
-    const events = C4.events.buildEvents({ commands, rounds, kills, slotEvents: col.slotEvents.map(s => ({ t: rel(s.t) - (s.t === col.firstTime ? 1 : 0), client: s.client, kind: s.kind })), resolver, povClient, playerName, endTime, status, halftimes: R.halftimes, halftimeFromSound: R.halftimeFromSound, phaseAt, bomb: R.bomb });
+    // the weapon pickups, the dry fire of an empty weapon, the throw without grenades (player events)
+    const PARM_WEAPON = new Set([9, 10, 32, 33]);         // (the events that name their weapon in the parameter)
+    const weapItems = col.weapEvents.filter(r => r[2] === 9 || r[2] === 10 || r[2] === 11 || r[2] === 13).map(r => {
+      const t = rel(r[0]), w = weaponName(PARM_WEAPON.has(r[2]) ? r[3] : r[4], t);
+      return { t, client: r[1], event: r[2], weapon: w, label: w ? W.label(w) : null };
+    }).filter(e => e.t >= mapWindow.start && e.t < mapWindow.end);
+    const events = C4.events.buildEvents({ weapItems, commands, rounds, kills, slotEvents: col.slotEvents.map(s => ({ t: rel(s.t) - (s.t === col.firstTime ? 1 : 0), client: s.client, kind: s.kind })), resolver, povClient, playerName, endTime, status, halftimes: R.halftimes, halftimeFromSound: R.halftimeFromSound, phaseAt, bomb: R.bomb });
     const leftAt = new Map(), joinedAt = new Map();
     for (const e of events) {
       if (e.type === 'left' && e.clients.length) leftAt.set(e.clients[0], e.t);
@@ -557,7 +589,7 @@ C4.define('build', function (C4) {
       grenades.push({
         entity: g.entity, weapon: wName, kind: W.grenadeKind(wName) || 'other',
         launch: rel(g.launch), first: rel(g.first), last: rel(g.last),
-        segments: g.segments.map(s => [s[0] - t0, s[1], s[2], s[3], s[4], s[5], s[6], s[7]]),
+        segments: g.segments.map(s => [s[0] - t0, s[1], s[2], s[3], s[4], s[5], s[6], s[7]].concat(s.length > 8 ? [s[8], s[9] - t0].concat(s.slice(10)) : [])),
         detonation: g.detonation ? detOut(g.detonation) : null,
         thrower: null
       });
@@ -684,7 +716,7 @@ C4.define('build', function (C4) {
       isSearchAndDestroy: (serverinfo.g_gametype || '').toLowerCase() === 'sd'
     };
 
-    return {
+    const data = {
       format: 'cod4-demo-viewer/1',
       meta, serverinfo, systeminfo, warnings, diagnostics,
       teams: teamList, players, rounds, initialScore: R.initialScore, halfInfo, halftimes: R.halftimes,
@@ -719,6 +751,11 @@ C4.define('build', function (C4) {
       // cod4-demo3d: the map's script entities (collect.js onScriptEntity): one record per appearance,
       // states [t, eType, model, pos trType, trTime, trDuration, base xyz, delta xyz, apos trType, trTime,
       // trDuration, base xyz, delta xyz, eFlags, solid], times relative (trTime too)
+      // cod4-demo3d: the dropped weapons (collect.js items): {num, t0, t1, weapon (name), states [t, index, pos trType,
+      // trTime, base xyz, delta xyz, angles xyz, eFlags]} - times relative, on the main map
+      items: (col.items || []).filter(r => onMainMap(rel(r.t0))).map(r => ({ num: r.num, t0: rel(r.t0), t1: rel(r.t1),
+        weapon: weaponName(r.states[0][1] % 128, rel(r.t0)),
+        states: r.states.map(s => { const o = s.slice(); o[0] = rel(o[0]); o[3] = o[3] - t0; return o; }) })),
       scriptEnts: (col.scriptEnts || []).filter(r => onMainMap(rel(r.t0))).map(r => ({ num: r.num, t0: rel(r.t0), t1: rel(r.t1),
         states: r.states.map(s => { const o = s.slice(); o[0] = rel(o[0]); o[4] = rel(o[4]); o[13] = rel(o[13]); return o; }) })),
       // cod4-demo3d: the sounds the replay plays (js/view3d/sound.js), times relative, on the main map:
@@ -732,20 +769,55 @@ C4.define('build', function (C4) {
         for (let i = 0; i < n; i++) { t[i] = rel(a[2 * i]); ct[i] = a[2 * i + 1]; }
         return { t, ct };
       })(),
+      // cod4-demo3d: the recorder's weapon per snapshot (relative time; collect.js psWeapon): the view
+      // model's animation (weapAnim: the WeapAnimFiles index, bit 0x200 toggles on a restart), state and
+      // its timers, the bob cycle, the velocity and ground entity (the view model's movement)
+      psWeapon: (() => {
+        const a = col.psWeapon || [], N = 16, n = Math.floor(a.length / N);
+        const o = { t: new Int32Array(n), client: new Uint8Array(n), anim: new Uint16Array(n), state: new Uint8Array(n), time: new Int32Array(n),
+          delay: new Int32Array(n), bob: new Uint8Array(n), vx: new Float32Array(n), vy: new Float32Array(n), vz: new Float32Array(n),
+          ground: new Uint16Array(n), pmFlags: new Uint32Array(n), weapFlags: new Uint16Array(n), shots: new Uint8Array(n), weapon: new Uint8Array(n),
+          offhand: new Uint8Array(n) };
+        for (let i = 0; i < n; i++) {
+          const r = i * N;
+          o.t[i] = rel(a[r]); o.client[i] = a[r + 1]; o.anim[i] = a[r + 2]; o.state[i] = a[r + 3]; o.time[i] = a[r + 4]; o.delay[i] = a[r + 5];
+          o.bob[i] = a[r + 6]; o.vx[i] = a[r + 7]; o.vy[i] = a[r + 8]; o.vz[i] = a[r + 9]; o.ground[i] = a[r + 10]; o.pmFlags[i] = a[r + 11];
+          o.weapFlags[i] = a[r + 12]; o.shots[i] = a[r + 13]; o.weapon[i] = a[r + 14]; o.offhand[i] = a[r + 15];
+        }
+        return o;
+      })(),
+      // cod4-demo3d: every player's weapon events [t, client, event, eventParm, weapon name] (collect.js weapEvents)
+      weapEvents: (col.weapEvents || []).map(r => { const t = rel(r[0]); return [t, r[1], r[2], r[3], weaponName(r[4], t)]; }).filter(r => onMainMap(r[0])),
+      // cod4-demo3d: the recorder's HUD state per snapshot (collect.js psHud): health, maxHealth, ident (the player
+      // under the crosshair), damage event / yaw / pitch / count / duration, flinch, cursor hint + string, offhandSecondary
+      psHud: (() => {
+        const a = col.psHud || [], N = 14, n = Math.floor(a.length / N);
+        const keys = ['client', 'health', 'maxHealth', 'ident', 'damageEvent', 'damageYaw', 'damagePitch', 'damageCount', 'damageDuration',
+          'flinch', 'hint', 'hintString', 'offhandSecondary'];
+        const o = { t: new Int32Array(n) };
+        for (const k of keys) o[k] = new Int16Array(n);
+        for (let i = 0; i < n; i++) { const r = i * N; o.t[i] = rel(a[r]); keys.forEach((k, j) => { o[k][i] = a[r + 1 + j]; }); }
+        return o;
+      })(),
+      // cod4-demo3d: the recorder's ammo (kind 0) and clip (kind 1) slots on every change: [t, kind, slot, value]
+      psAmmo: (() => { const a = col.psAmmo || [], out = []; for (let i = 0; i + 3 < a.length; i += 4) out.push([rel(a[i]), a[i + 1], a[i + 2], a[i + 3]]); return out; })(),
       // cod4-demo3d: the recorder's own aim per snapshot (relative time; collect.js psAim)
       psAim: (() => {
-        const a = col.psAim || [], N = 9, n = Math.floor(a.length / N);
+        // (breath: holdBreathScale - 0 while the sniper holds the breath, up to the gasp's scale after it)
+        const a = col.psAim || [], N = 10, n = Math.floor(a.length / N);
         const o = { t: new Int32Array(n), client: new Uint8Array(n), aim: new Float32Array(n), ads: new Float32Array(n), vh: new Float32Array(n),
-          lean: new Float32Array(n), perks: new Uint32Array(n), spreadOverride: new Uint8Array(n), spreadOverrideState: new Uint8Array(n) };
+          lean: new Float32Array(n), perks: new Uint32Array(n), spreadOverride: new Uint8Array(n), spreadOverrideState: new Uint8Array(n),
+          breath: new Float32Array(n) };
         for (let i = 0; i < n; i++) {
           const r = i * N;
           o.t[i] = rel(a[r]); o.client[i] = a[r + 1]; o.aim[i] = a[r + 2]; o.ads[i] = a[r + 3]; o.vh[i] = a[r + 4]; o.lean[i] = a[r + 5];
-          o.perks[i] = a[r + 6]; o.spreadOverride[i] = a[r + 7]; o.spreadOverrideState[i] = a[r + 8];
+          o.perks[i] = a[r + 6]; o.spreadOverride[i] = a[r + 7]; o.spreadOverrideState[i] = a[r + 8]; o.breath[i] = a[r + 9];
         }
         return o;
       })(),
       sounds3d: {
-        events: (col.sndEvents || []).map(r => { const t = rel(r[0]); return [t, r[1], r[2], r[3], weaponName(r[4], t), r[5]]; })
+        // (the pickups and the offhand's prepare / use name their weapon in the event parameter)
+        events: (col.sndEvents || []).map(r => { const t = rel(r[0]); return [t, r[1], r[2], r[3], weaponName(PARM_WEAPON.has(r[2]) ? r[3] : r[4], t), r[5]]; })
           .filter(r => onMainMap(r[0])),
         entEvents: (col.sndEntEvents || []).map(r => {
           const t = rel(r[0]);
@@ -759,6 +831,8 @@ C4.define('build', function (C4) {
         ambient: (String(cs.get(821) || '').match(/(?:^|\\)n\\([^\\]+)/) || [])[1] || null
       },
       fx3d: {
+        // the camera shakes (EV_EARTHQUAKE): [t, x, y, z, scale, radius, duration ms]
+        quakes: (col.quakes || []).map(r => [rel(r[0])].concat(r.slice(1))).filter(r => onMainMap(r[0])),
         impacts: (col.impacts || []).map(r => [rel(r[0])].concat(r.slice(1))).filter(r => onMainMap(r[0])),
         playFx: (col.playFx || []).map(r => [rel(r[0])].concat(r.slice(1))).filter(r => onMainMap(r[0])),
         effectNames: (() => {
@@ -773,6 +847,9 @@ C4.define('build', function (C4) {
       // not exported: consumed by C4.ownKills.applySight and deleted (main.js)
       sightJob
     };
+    // round combat statistics: opening duels, trades, multikills, clutches (combat.js)
+    C4.combat.analyze(data);
+    return data;
   }
 
   /** K / D of one kill - THE rule of the scoreboard (only kills of phase "live" count; the caller

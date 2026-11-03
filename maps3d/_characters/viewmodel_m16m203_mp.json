@@ -1,0 +1,313 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "viewmodel_m16m203_mp",
+ "kind": "viewmodel",
+ "faction": null,
+ "file": "viewmodel_m16m203_mp.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 29916
+  },
+  "normal": {
+   "offset": 29916,
+   "length": 9972
+  },
+  "uv": {
+   "offset": 39888,
+   "length": 19944
+  },
+  "skinIndex": {
+   "offset": 59832,
+   "length": 9972
+  },
+  "skinWeight": {
+   "offset": 69804,
+   "length": 9972
+  },
+  "index": {
+   "offset": 79776,
+   "length": 10488
+  },
+  "color": {
+   "offset": 90264,
+   "length": 9972
+  }
+ },
+ "vertexCount": 2493,
+ "triangleCount": 1748,
+ "bones": [
+  {
+   "name": "j_gun",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "j_clip_release",
+   "parent": 0,
+   "pos": [
+    -1.5305,
+    0.0,
+    2.9327
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -1.5305,
+    0.0,
+    2.9327
+   ]
+  },
+  {
+   "name": "j_grenade_ammo",
+   "parent": 0,
+   "pos": [
+    16.1101,
+    0.002,
+    0.1773
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.707107,
+    0.707107
+   ],
+   "trans": [
+    16.1101,
+    0.002,
+    0.1773
+   ]
+  },
+  {
+   "name": "j_m16m203_button",
+   "parent": 0,
+   "pos": [
+    10.892,
+    0.7926,
+    1.0564
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.707107,
+    0.707107
+   ],
+   "trans": [
+    10.892,
+    0.7926,
+    1.0564
+   ]
+  },
+  {
+   "name": "j_m16m203_slide",
+   "parent": 0,
+   "pos": [
+    10.1805,
+    0.002,
+    0.2323
+   ],
+   "quat": [
+    0.393077,
+    -0.587784,
+    0.587784,
+    0.393077
+   ],
+   "trans": [
+    10.1805,
+    0.002,
+    0.2323
+   ]
+  },
+  {
+   "name": "j_trigger",
+   "parent": 0,
+   "pos": [
+    5.8245,
+    0.002,
+    -0.2449
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    5.8245,
+    0.002,
+    -0.2449
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 0,
+   "pos": [
+    4.5628,
+    -0.6906,
+    2.2261
+   ],
+   "quat": [
+    -0.212622,
+    -0.212622,
+    -0.674367,
+    0.674398
+   ],
+   "trans": [
+    4.5628,
+    -0.6906,
+    2.2261
+   ]
+  },
+  {
+   "name": "tag_clip",
+   "parent": 0,
+   "pos": [
+    4.2936,
+    -0.0084,
+    1.2854
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    4.2936,
+    -0.0084,
+    1.2854
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    26.9837,
+    0.0158,
+    2.5039
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    26.9837,
+    0.0158,
+    2.5039
+   ]
+  },
+  {
+   "name": "j_grenade_tip",
+   "parent": 2,
+   "pos": [
+    17.5565,
+    0.002,
+    0.1729
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.707107,
+    0.707107
+   ],
+   "trans": [
+    0.0,
+    -1.4464,
+    -0.0044
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 672,
+   "material": 0
+  },
+  {
+   "indexStart": 672,
+   "indexCount": 4290,
+   "material": 0
+  },
+  {
+   "indexStart": 4962,
+   "indexCount": 282,
+   "material": 1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_m4_m16",
+   "texture": "_textures/weapon_m4_col.webp",
+   "textureAlpha": false,
+   "color": "#2a2c2d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_m4_spc-r-17g-17b-17_w_aca95990.specular.webp",
+   "envMapParms": [
+    2.0,
+    4.0,
+    0.8,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_m203_grenade",
+   "texture": "_textures/weapon_m203_grenade_col.webp",
+   "textureAlpha": false,
+   "color": "#565145",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_m203_grenade_spc-r65g_dad0da51.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -12.2,
+   -1.04,
+   -5.39
+  ],
+  "maxs": [
+   26.98,
+   1.2,
+   5.35
+  ]
+ }
+}

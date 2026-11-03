@@ -756,6 +756,24 @@ void main() {
   setModels(library, onChange = null) { this.modelLib = library; this.onChange = onChange; }
 
   /** the effects the demo records (M: app/match.js Match), on the game's clock (server time) */
+  /** a Promod demo: the weapons' effects and spread of Promod's weapon files (viewmodels.json "promod":
+   *  no muzzle flashes, the snipers' smaller hip spread) - before setDemo */
+  setWeaponOverrides(promod) {
+    for (const [name, pm] of Object.entries(promod || {})) {
+      const W = this.weapons[name];
+      if (!W) continue;
+      const o = Object.assign({}, W);
+      if (pm.fx) for (const k of ['flash', 'viewFlash', 'shellEject', 'viewShellEject', 'lastShotEject', 'viewLastShotEject']) if (k in pm.fx) o[k] = pm.fx[k];
+      const P = pm.params || {}, sp = (W.spread || []).slice();
+      ['hipSpreadStandMin', 'hipSpreadMax', 'hipSpreadDuckedMin', 'hipSpreadDuckedMax', 'hipSpreadProneMin', 'hipSpreadProneMax', 'adsSpread']
+        .forEach((k, i) => { if (P[k] != null) sp[i] = P[k]; });
+      o.spread = sp;
+      if (P.boltAction != null) o.boltAction = !!P.boltAction;
+      this.weapons[name] = o;
+    }
+    this.promod = true;
+  }
+
   setDemo(M) {
     const d = M.d, t0 = (d.meta && d.meta.firstServerTime) || 0;
     this.t0 = t0;
@@ -789,6 +807,27 @@ void main() {
     this.shots = [];
     for (const [cl, times] of Object.entries(d.shotsSeen || {})) this.shots.push({ cl: +cl, times });
     this.M = M;
+    // the casings (CG_FireWeapon / CG_EjectWeaponBrass): a shot ejects one unless the weapon is a bolt action
+    // (R700, M40A3, W1200 - theirs comes with EV_EJECT_BRASS, when the bolt / pump is worked); the last shot
+    // its weapon's last-shot effect. Per client: times (sorted) and last-shot flags
+    const lastShots = new Set(), ejects = new Map();
+    for (const r of d.weapEvents || []) {
+      if (r[2] === 27) lastShots.add(r[1] * 1e7 + r[0]);
+      else if (r[2] === 29) { let a = ejects.get(r[1]); if (!a) ejects.set(r[1], a = []); a.push(r[0]); }
+    }
+    this.brass = [];
+    for (const { cl, times } of this.shots) {
+      const list = [];
+      for (const ts of times) {
+        const smp = M.sampleAt(cl, ts), W = this.weapons[M.weaponName(smp ? smp.weapon : 0, ts)];
+        if (W && !W.boltAction) list.push([ts, lastShots.has(cl * 1e7 + ts)]);
+      }
+      for (const ts of ejects.get(cl) || []) list.push([ts, false]);
+      list.sort((a, b) => a[0] - b[0]);
+      if (list.length) this.brass.push({ cl, times: list.map(x => x[0]), last: list.map(x => x[1]) });
+      ejects.delete(cl);
+    }
+    for (const [cl, a] of ejects) this.brass.push({ cl, times: a.sort((x, y) => x - y), last: a.map(() => false) });
     this.flashDur = new Map();
     // the server's flesh impacts per shooter (?shots=server): impact rows [t, x, y, z, dir, surface, weapon,
     // flags, shooter], surface 7 = flesh
@@ -949,6 +988,33 @@ void main() {
     }
   }
 
+  /** the shots of client cl between the demo times from and to (ms) with their path, for the tracers of the
+   *  player seen in first person (tracers.js): [{t, start (the view model's tag_flash now, else the hit's
+   *  shooter eye), end (the bullet's first hit)}]; a shot not traced yet is traced now (as worldImpacts) */
+  ownShots(cl, from, to) {
+    const out = [], S = this.shots && this.shots.find(s => s.cl === cl);
+    if (!S || !this.tracer) return out;
+    const times = S.times;
+    let lo = 0, hi = times.length;
+    while (lo < hi) { const k = (lo + hi) >> 1; if (times[k] < from) lo = k + 1; else hi = k; }
+    const flash = this.viewMuzzle ? this.viewMuzzle('tag_flash') : null;
+    for (let i = lo; i < times.length && times[i] <= to; i++) {
+      const key = cl * 1e7 + times[i];
+      let hits = this.impactCache.get(key);
+      if (hits === undefined) {
+        hits = this.traceShot(cl, times[i]); this.impactCache.set(key, hits);
+        for (const h of hits || []) this.addMarks(h);
+        this.marksSorted = false;
+      }
+      const h = hits && hits[0];
+      if (!h) continue;
+      const s = this.M.sampleAt(cl, times[i]);
+      const start = flash ? flash.origin : s ? [s.x, s.y, s.z + 60] : null;
+      if (start) out.push({ t: times[i], start, end: h.frame.origin });
+    }
+    return out;
+  }
+
   /** the obstacles at the demo time rel (ms): the world, and the script models where they stand then */
   tracerAt(rel) { return this.scripts && this.scripts.tracerFor ? this.scripts.tracerFor(this.tracer, rel) : this.tracer; }
 
@@ -985,17 +1051,21 @@ void main() {
     return out;
   }
 
-  /** CG_FireWeapon: the weapon's world muzzle flash at its tag_flash for every shot of the last moments */
+  /** CG_FireWeapon: the weapon's world muzzle flash at its tag_flash for every shot of the last moments -
+   *  for the player seen in first person (this.viewClient) the view flash (viewFlashEffect) at the view
+   *  model's tag_flash (this.viewMuzzle; none while the scope hides the gun) */
   flashes(t, muzzle) {
     const M = this.M, rel = t - this.t0;
     for (const { cl, times } of this.shots) {
       let lo = 0, hi = times.length;
       while (lo < hi) { const k = (lo + hi) >> 1; if (times[k] < rel - 400) lo = k + 1; else hi = k; }
+      const view = cl === this.viewClient && this.viewMuzzle;
       for (let i = lo; i < times.length && times[i] <= rel; i++) {
         const W = this.weapons[M.weaponName(M.sampleAt(cl, times[i]) ? M.sampleAt(cl, times[i]).weapon : 0, times[i])];
-        const def = W && W.flash && this.defs[W.flash];
+        const name = W && (view ? W.viewFlash : W.flash);
+        const def = name && this.defs[name];
         if (!def || rel - times[i] > this.duration(def)) continue;
-        const frame = muzzle(cl);
+        const frame = view ? this.viewMuzzle('tag_flash') : muzzle(cl);
         if (!frame) continue;
         // the flash itself lives a few ms (the game draws it in the frame of the shot); shots are known to
         // the snapshot (50 ms): it shows for the first FLASH_MS, at the shot's own moment
@@ -1006,25 +1076,29 @@ void main() {
     if (this.casings !== false) this.shellEjects(t, muzzle);
   }
 
-  /** CG_EjectWeaponBrass: the weapon's worldShellEjectEffect at its tag_brass for every shot (the casings
-   *  fly, bounce and lie on the ground for their life). The frame is the tag's at the first frame drawn
-   *  after the shot, kept for the shot (a casing in the air does not follow the gun) */
+  /** CG_EjectWeaponBrass: the weapon's worldShellEjectEffect at its tag_brass for every casing (this.brass:
+   *  the shots of the other weapons, the bolt actions' EV_EJECT_BRASS; the last shot's own effect when the
+   *  weapon has one) - the casings fly, bounce and lie on the ground for their life. The frame is the tag's
+   *  at the first frame drawn after the shot, kept for the shot (a casing in the air does not follow the gun).
+   *  The player seen in first person: the view effects (viewShellEjectEffect ...) at the view model's tag_brass */
   shellEjects(t, muzzle) {
     const M = this.M, rel = t - this.t0;
     const frames = this.brassFrames || (this.brassFrames = new Map());
     if (frames.size > 4000) frames.clear();
-    for (const { cl, times } of this.shots) {
+    for (const { cl, times, last } of this.brass || []) {
       let lo = 0, hi = times.length;
       while (lo < hi) { const k = (lo + hi) >> 1; if (times[k] < rel - BRASS_MS) lo = k + 1; else hi = k; }
+      const view = cl === this.viewClient && this.viewMuzzle;
       for (let i = lo; i < times.length && times[i] <= rel; i++) {
         const smp = M.sampleAt(cl, times[i]);
         const W = this.weapons[M.weaponName(smp ? smp.weapon : 0, times[i])];
-        const def = W && W.shellEject && this.defs[W.shellEject];
+        const name = W && (view ? last[i] && W.viewLastShotEject || W.viewShellEject : last[i] && W.lastShotEject || W.shellEject);
+        const def = name && this.defs[name];
         if (!def || rel - times[i] > this.duration(def)) continue;
         const key = cl * 1e7 + times[i];
         let eff = frames.get(key);                    // one effect per shot: its casings' bounce paths are kept
         if (!eff || eff.def !== def) {
-          const frame = muzzle(cl, 'tag_brass');
+          const frame = view ? this.viewMuzzle('tag_brass') : muzzle(cl, 'tag_brass');
           if (!frame) continue;
           const begin = this.t0 + times[i];
           eff = { def, frame, begin, seed: useed(begin * 5 + cl * 31), light: def.flags & 1 ? this.packedLighting(frame.origin) : null };

@@ -1,0 +1,76 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "projectile_concussion_grenade",
+ "kind": "viewmodel",
+ "faction": null,
+ "file": "projectile_concussion_grenade.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 4092
+  },
+  "normal": {
+   "offset": 4092,
+   "length": 1364
+  },
+  "uv": {
+   "offset": 5456,
+   "length": 2728
+  },
+  "skinIndex": {
+   "offset": 8184,
+   "length": 1364
+  },
+  "skinWeight": {
+   "offset": 9548,
+   "length": 1364
+  },
+  "index": {
+   "offset": 10912,
+   "length": 1536
+  },
+  "color": {
+   "offset": 12448,
+   "length": 1364
+  }
+ },
+ "vertexCount": 341,
+ "triangleCount": 256,
+ "bones": [
+  {
+   "name": "",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 768,
+   "material": -1
+  }
+ ],
+ "materials": [],
+ "bounds": {
+  "mins": [
+   -1.95,
+   -3.15,
+   -1.39
+  ],
+  "maxs": [
+   1.2,
+   4.43,
+   1.39
+  ]
+ }
+}

@@ -1,9 +1,10 @@
 /* The 3D view's graphics settings (the Graphics popover of the rail): the game's lighting, the sun
- * shadows, the reflections and the effects. They take effect when the 3D map is loaded, so a change
- * rebuilds the 3D view (main.js: app.reload3d). Remembered in localStorage; a URL parameter
- * (?lighting=scene, ?shadows=off, ?reflections=off, ?fx=off|ambient|demo) overrides it for that page. */
+ * shadows, the reflections, the effects and the first-person weapon. They take effect when the 3D map
+ * is loaded, so a change rebuilds the 3D view (main.js: app.reload3d) - except a "live" one, which the
+ * view applies at once. Remembered in localStorage; a URL parameter (?lighting=scene, ?shadows=off,
+ * ?reflections=off, ?fx=off|ambient|demo, ?viewmodel=off, ?crosshair=off) overrides it for that page. */
 
-const KEY = 'cod4demo3d.graphics';            // JSON {lighting, shadows, reflections, fx}
+const KEY = 'cod4demo3d.graphics';            // JSON {lighting, shadows, reflections, fx, viewmodel, crosshair}
 
 /** key, URL parameter, values ([value, label, title]) - the first is the default */
 export const GRAPHICS = [
@@ -14,11 +15,16 @@ export const GRAPHICS = [
   { key: 'reflections', label: 'Reflections', title: 'The reflection probes of the specular maps (shiny surfaces reflect the map around them)',
     values: [['on', 'On'], ['off', 'Off']] },
   { key: 'fx', label: 'Effects', title: 'The game\'s particle effects: the map\'s ambient effects (smoke, fire, dust) and the demo\'s own (explosions, smoke grenades, impacts, muzzle flashes)',
-    values: [['all', 'All'], ['ambient', 'Map only'], ['demo', 'Demo only'], ['off', 'Off']] }
+    values: [['all', 'All'], ['ambient', 'Map only'], ['demo', 'Demo only'], ['off', 'Off']] },
+  { key: 'viewmodel', label: 'First-person weapon', live: true, title: 'In the first-person camera: the weapon the player holds, in their character\'s hands - the game\'s view models and animations as the demo drives them (shots, reloads, switches, aiming down the sights with the zoom and the sniper scope, the knife), drawn over the world',
+    values: [['on', 'On'], ['off', 'Off']] },
+  { key: 'crosshair', label: 'Crosshair', live: true, title: 'In the first-person camera: the crosshair as in the game - its gap the weapon\'s spread (stance, movement, shots), hidden aiming down the sights and for the scoped rifles',
+    values: [['on', 'On'], ['off', 'Off']] }
 ];
 // the URL parameters' values in the settings' terms (?fx=on is not a value: ignored)
 const FROM_URL = { lighting: v => v === 'scene' ? 'scene' : null, shadows: v => v === 'off' ? 'off' : null,
-  reflections: v => v === 'off' ? 'off' : null, fx: v => ['off', 'ambient', 'demo'].includes(v) ? v : null };
+  reflections: v => v === 'off' ? 'off' : null, fx: v => ['off', 'ambient', 'demo'].includes(v) ? v : null,
+  viewmodel: v => v === 'off' ? 'off' : null, crosshair: v => v === 'off' ? 'off' : null };
 
 function stored() {
   try { return JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (err) { return {}; }

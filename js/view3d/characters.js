@@ -49,7 +49,7 @@ const LEG = { le: ['j_hip_le', 'j_knee_le', 'j_ankle_le'], ri: ['j_hip_ri', 'j_k
 const PITCH_BONES = [['j_spinelower', 0.2], ['j_spineupper', 0.25], ['j_spine4', 0.25], ['j_neck', 0.15], ['j_head', 0.15]];
 
 /** world (model space) bind transforms of a bone list -> arrays of {p: Vector3, q: Quaternion} */
-function bindWorld(bones) {
+export function bindWorld(bones) {
   return bones.map(b => ({ p: new THREE.Vector3(...b.pos), q: new THREE.Quaternion(...b.quat).normalize() }));
 }
 
@@ -155,7 +155,7 @@ function stancePose(bones, stance) {
 
 
 /** local transforms (relative to the parent) from world transforms */
-function toLocal(bones, world) {
+export function toLocal(bones, world) {
   return bones.map((b, i) => {
     if (b.parent < 0) return { p: world[i].p.clone(), q: world[i].q.clone() };
     const pq = world[b.parent].q.clone().invert();
@@ -199,6 +199,17 @@ export class CharacterLibrary {
     if (!this.weaponsReady) this.weaponsReady = fetchRetry(this.base + 'weapons.json').then(r => r.ok ? r.json() : null)
       .then(j => j && j.weapons || null).catch(() => null);
     return this.weaponsReady;
+  }
+  /** viewmodels.json: the first-person view models (viewmodel.js; null when not exported) */
+  async viewModels() {
+    if (!this.viewReady) this.viewReady = fetchRetry(this.base + 'viewmodels.json').then(r => r.ok ? r.json() : null).catch(() => null);
+    return this.viewReady;
+  }
+  /** a data file of the library (a view animation) -> ArrayBuffer */
+  async binary(file) {
+    const r = await fetchRetry(this.base + file);
+    if (!r.ok) throw new Error('HTTP ' + r.status + ' ' + file);
+    return r.arrayBuffer();
   }
   async _load(name) {
     const idx = await this.available();

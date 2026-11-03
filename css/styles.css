@@ -240,6 +240,7 @@ body.loaded main { height: calc(100vh - var(--top-h)); }
 .stage.drawer-off { --drawer-space: calc(36px + 2 * var(--gutter)); }
 .view-stage { position: absolute; inset: 0; }
 .view-stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.view-stage canvas.hud-canvas { pointer-events: none; z-index: 1; }   /* the game's HUD over the 3D view (hud.js) */
 /* touch screens: the map views and the timeline take the gestures (pan, pinch, orbit, seek), not the page */
 .view-stage canvas, .timeline, .timeline canvas { touch-action: none; }
 .view-error { position: absolute; left: 50%; top: 64px; transform: translateX(-50%); z-index: var(--z-error); max-width: min(640px, 70%); }
@@ -256,6 +257,12 @@ body.loaded main { height: calc(100vh - var(--top-h)); }
 .score .meta { color: var(--muted); padding-left: 14px; border-left: 1px solid var(--line-2); display: flex; gap: 10px; }
 .score .meta b { color: var(--text); font-weight: 500; }
 .score .meta-round:empty { display: none; }
+/* the planted bomb's timer (overview.js): its own slot, also on narrow screens */
+.score .bomb-timer { display: inline-flex; align-items: center; gap: 6px; padding-left: 12px; border-left: 1px solid var(--line-2); color: var(--accent); font-weight: 600; }
+.score .bomb-timer[hidden] { display: none; }
+.score .bomb-timer .bomb-dot { width: 8px; height: 8px; transform: rotate(45deg); background: var(--accent); animation: bomb-blink 1s steps(2, start) infinite; }
+@keyframes bomb-blink { to { opacity: .35; } }
+@media (prefers-reduced-motion: reduce) { .score .bomb-timer .bomb-dot { animation: none; } }
 
 /* icon rail + popovers (main.js) */
 .rail { position: absolute; left: var(--gutter); top: var(--gutter); z-index: var(--z-rail); display: flex; flex-direction: column; gap: 2px; padding: 5px; }
@@ -355,6 +362,21 @@ kbd { font: 500 var(--fs-xs) var(--mono); padding: 1px 6px; border-radius: 5px; 
 .drawer { position: absolute; top: var(--gutter); right: var(--gutter); bottom: calc(var(--bar-h) + 2 * var(--gutter)); z-index: var(--z-drawer); width: var(--drawer-w);
   display: flex; flex-direction: column; overflow: hidden; container: drawer / inline-size; }
 .drawer-open { position: absolute; top: var(--gutter); right: var(--gutter); z-index: var(--z-drawer); width: 36px; height: 36px; }
+/* fullscreen (main.js): the toggle left of the panel, unobtrusive until hovered; in fullscreen only the view, its HUD
+   and this button - the player bar shows on mouse move (.fs-ui) */
+.fs-btn { position: absolute; top: var(--gutter); right: var(--drawer-space); z-index: var(--z-bar); width: 36px; height: 36px; opacity: .55; transition: opacity .15s; }
+.fs-btn:hover, .fs-btn:focus-visible { opacity: 1; }
+.stage.fs { height: 100vh; width: 100vw; display: block; overflow: hidden; background: var(--stage); }
+.stage.fs::before { display: none; }
+.stage.fs .view-stage { inset: 0; height: auto; }
+.stage.fs .fs-btn { right: var(--gutter); }
+.stage.fs .score, .stage.fs .rail, .stage.fs .drawer, .stage.fs .drawer-open, .stage.fs .toasts, .stage.fs .details, .stage.fs .pop,
+.stage.fs .map-tools, .stage.fs .map-hint, .stage.fs .cam-hint, .stage.fs .heat-chip, .stage.fs .player-notice, .stage.fs .view-error { display: none !important; }
+.stage.fs .bar { position: absolute; left: var(--gutter); right: var(--gutter); bottom: var(--gutter); margin: 0; opacity: 0; pointer-events: none; transition: opacity .25s; }
+.stage.fs.fs-ui .bar { opacity: 1; pointer-events: auto; }
+.stage.fs:not(.fs-ui) { cursor: none; }
+.stage.fs:not(.fs-ui) .fs-btn { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .fs-btn, .stage.fs .bar { transition: none; } }
 .dhead { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 10px 10px 16px; border-bottom: 1px solid var(--line); flex: none; }
 .rp-head-text { flex: 1; min-width: 0; display: flex; align-items: baseline; gap: 8px; white-space: nowrap; overflow: hidden; }
 .rp-title { font-weight: 600; flex: none; }
@@ -558,6 +580,10 @@ table.data.scoreboard tbody tr.team-head ~ tr.team-head td { border-top: 14px so
 .round-toggle { color: var(--muted); transition: transform var(--ease); text-align: center; }
 .round-card.open .round-toggle { transform: rotate(90deg); }
 .round-body { display: none; border-top: 1px solid var(--line); padding: 6px 0; }
+/* the round's combat line (combat.js): first blood, multikills, clutches */
+.round-combat { display: flex; flex-wrap: wrap; gap: 6px 16px; padding: 4px 16px 6px 18px; }
+.round-combat .rc-item { display: inline-flex; align-items: center; gap: 4px; }
+.badge.win { color: var(--tl-defuse); }
 .round-card.open .round-body { display: block; }
 .round-card.not-counted { opacity: .72; border-style: dashed; }
 .tl-row { display: grid; grid-template-columns: 120px 1fr; gap: 12px; padding: 4px 16px 4px 18px; align-items: center; }
@@ -715,6 +741,8 @@ table.data.scoreboard tbody tr.team-head ~ tr.team-head td { border-top: 14px so
      the window, e.g. at 1024 x 700 */
   :root { --gutter: 10px; --drawer-space: var(--gutter); --stack-view-h: max(300px, min(68vh, 92vw, calc(100vh - 270px))); }
   .stage, .stage.drawer-off { --drawer-space: var(--gutter); }
+  /* (the fullscreen toggle at the view's top right corner: the score pill keeps clear of it) */
+  .score { max-width: calc(100% - 2 * (var(--gutter) + 44px)); }
   .topbar { grid-template-columns: minmax(0, 1fr) auto; height: auto; min-height: var(--top-h); padding: 6px 10px; gap: 6px 8px; }
   .top-l { grid-column: 1; }
   .top-r { grid-column: 2; }
@@ -749,7 +777,7 @@ table.data.scoreboard tbody tr.team-head ~ tr.team-head td { border-top: 14px so
   .crumb { display: none; }
   .top-r { gap: 0; }
   .top-r .tb { padding: 0 10px; margin-left: 4px; }
-  .score { gap: 8px; padding: 5px 12px; max-width: calc(100% - 70px); left: auto; right: var(--gutter); transform: none; }
+  .score { gap: 8px; padding: 5px 12px; max-width: calc(100% - 114px); left: auto; right: calc(var(--gutter) + 44px); transform: none; }
   .score .meta { display: none; }
   .kf-row .kf-name { max-width: 110px; }
   .bar-r .pill { padding: 0 8px; }

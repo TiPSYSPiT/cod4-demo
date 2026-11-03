@@ -424,8 +424,13 @@ async function prepare(view, p, progress) {
     if (D.cancel) return;
     R.pb.t = warm[i];
     R.frame(warm[i]);
-    if (view.fx) view.fx.update(warm[i] + fst, view.camera, cl => A.muzzle(cl), view.fxOpts);
+    if (view.fx) view.fx.update(warm[i] + fst, view.camera, (cl, tag) => A.muzzle(cl, tag), view.fxOpts);
     if (i % 8 === 0) { progress(i, warm.length * 4); await sleep(0); }
+  }
+  // the first-person weapon: the guns the camera's player holds in the range (viewmodel.js)
+  if (view.cams.mode === 'fp' && view.viewmodel) {
+    const clients = R.focus != null ? [R.focus] : [...new Set(warm.map(t => view.M.followedAt(t)).filter(c => c != null))];
+    await Promise.race([view.viewmodel.preload(view.viewModelPairs(clients, p.a, p.b)), sleep(20000)]);
   }
   // everything that started loading (models: CharacterLibrary promises)
   for (let round = 0; round < 3 && performance.now() < deadline; round++) {
@@ -433,7 +438,7 @@ async function prepare(view, p, progress) {
     await Promise.race([Promise.allSettled(pending), sleep(20000)]);
     await sleep(50);                         // the callbacks that build the characters
     R.frame(p.a);
-    if (view.fx) view.fx.update(p.a + fst, view.camera, cl => A.muzzle(cl), view.fxOpts);
+    if (view.fx) view.fx.update(p.a + fst, view.camera, (cl, tag) => A.muzzle(cl, tag), view.fxOpts);
     if (view.characters.models.size === pending.length) break;
   }
   // textures still loading (image not there yet)
@@ -471,6 +476,8 @@ function drawFrame(ctx, i) {
   ctx.path[i] = listenerOf(view.camera);       // the sound's listener in this frame
   ctx.fp[i] = r && r.hideClient != null ? r.hideClient : null;
   g.drawImage(view.renderer.domElement, 0, 0, C.width, C.height);
+  // the game's HUD of the player seen in first person (hud.js)
+  if (r && r.hideClient != null && view.hud && view.hud.enabled) view.drawHud(g, C.width, C.height, r.hideClient, false);
   drawOverlays(ctx, t, r ? r.hideClient : null);
   if (window.__exportProbe) probe(ctx, i);
 }

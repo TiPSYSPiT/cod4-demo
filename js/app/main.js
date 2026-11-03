@@ -6,6 +6,7 @@ import { Replay } from './replay.js';
 import { View2D } from '../view2d/view2d.js';
 import { InfoHint } from './infoHint.js';
 import { explainImportError, resolveSpecifier } from './moduleCheck.js';
+import { armAudio } from './audioUnlock.js';
 import '../c4/ui/killfeed.js';           // C4.killfeed: the kill feed of the 3D view and of both video exports
 
 const C4 = window.C4;
@@ -340,7 +341,7 @@ InfoHint.onChange = () => { const o = rail.open; if (o && o.p.key === 'info') fi
 /** the info popover: the match facts (overview.js), the active view's map details, the shortcuts */
 function fillInfo(node) {
   const R = state.replay, v = R && R.view;
-  const keys = [['Space', 'Play / pause'], ['← / →', '5 s back / forward'], ['V', 'Switch 2D / 3D'], ['I / O', 'Export range start / end'], ['Esc', 'Close a popover or dialog']];
+  const keys = [['Space', 'Play / pause'], ['← / →', '5 s back / forward'], ['V', 'Switch 2D / 3D'], ['I / O', 'Export range start / end'], ['F', 'Fullscreen (not in the free camera)'], ['Esc', 'Close a popover or dialog']];
   if (v && v.key === '2d') keys.push(['Q / E', 'Rotate the map'], ['Wheel / drag', 'Zoom / pan, double-click: reset']);
   if (v && v.key === '3d') keys.push(['C', 'Cycle the camera'], ['X', 'X-Ray: off / players / players + names'], ['W A S D, R / F', 'Free camera: move, up / down (Shift: fast)']);
   const text = v && v.info ? v.info.text : '';
@@ -391,11 +392,14 @@ function exportJson() {
 
 /* ---- wiring ---- */
 function init() {
+  // the game sounds' AudioContext, made in the first click / key (audioUnlock.js: the browsers' autoplay rules)
+  armAudio();
   // the icons of the static markup
   $('details-btn').append(icon('chart'));
   $('export-btn').append(icon('json'));
   $('details-close').append(icon('x'));
   $('drawer-open').append(icon('panel'));
+  setupFullscreen();
   $('drawer-open').addEventListener('click', () => setDrawer(true));
   const stored = key => { try { return localStorage.getItem(key); } catch (err) { return null; } };
   setDrawer(stored(DRAWER_KEY) !== 'closed');
@@ -442,6 +446,8 @@ function init() {
     else if (e.code === 'KeyV') { e.preventDefault(); setView(state.view === '2d' ? '3d' : '2d'); }
     else if (e.code === 'KeyI') { e.preventDefault(); R.setMark('a'); }
     else if (e.code === 'KeyO') { e.preventDefault(); R.setMark('b'); }
+    // (F in the free camera flies down: cameras.js takes it first)
+    else if (e.code === 'KeyF' && !e.shiftKey) { e.preventDefault(); toggleFullscreen(); }
   });
   // optional: index.html?demo=<url of a .dm_1 file> (served over http)
   const demoUrl = new URLSearchParams(location.search).get('demo');
@@ -450,5 +456,48 @@ function init() {
       .then(b => load(new File([b], decodeURIComponent(demoUrl.split('/').pop()), { lastModified: Date.now() })))
       .catch(err => fail('Could not load ' + demoUrl + ': ' + err.message));
   }
+}
+/* Fullscreen: the stage (the view with its HUD) as the browser's fullscreen element - the score pill, rail, panel
+ * and map tools hidden (css .stage.fs); the player bar comes up on mouse move / touch for FS_UI_MS. The browser's
+ * own exit (Esc) restores the layout through fullscreenchange, like the button and F. */
+const FS_UI_MS = 2500;
+const fsElement = () => document.fullscreenElement || document.webkitFullscreenElement || null;
+function toggleFullscreen() {
+  const st = $('viewport');
+  if (!st || $('viewer').hidden) return;
+  const fn = fsElement() ? (document.exitFullscreen || document.webkitExitFullscreen) : (st.requestFullscreen || st.webkitRequestFullscreen);
+  if (!fn) return;
+  const p = fn.call(fsElement() ? document : st);
+  if (p && p.catch) p.catch(err => console.warn('fullscreen refused:', err.message));
+}
+function setupFullscreen() {
+  const btn = $('fs-btn'), st = $('viewport');
+  const supported = !!(document.fullscreenEnabled || document.webkitFullscreenEnabled);
+  btn.hidden = !supported;
+  if (!supported) return;
+  btn.append(icon('expand'));
+  btn.addEventListener('click', () => { toggleFullscreen(); btn.blur(); });
+  let timer = 0;
+  const showUi = () => {
+    if (!st.classList.contains('fs')) return;
+    st.classList.add('fs-ui');
+    clearTimeout(timer);
+    timer = setTimeout(() => { if (!st.querySelector('#controls:hover, #controls:focus-within')) st.classList.remove('fs-ui'); else showUi(); }, FS_UI_MS);
+  };
+  st.addEventListener('pointermove', showUi);
+  st.addEventListener('pointerdown', showUi);
+  const sync = () => {
+    const on = fsElement() === st;
+    st.classList.toggle('fs', on);
+    if (!on) { st.classList.remove('fs-ui'); clearTimeout(timer); }
+    else showUi();
+    btn.replaceChildren(icon(on ? 'shrink' : 'expand'));
+    btn.title = on ? 'Exit fullscreen (F / Esc)' : 'Fullscreen (F)';
+    btn.setAttribute('aria-label', on ? 'Exit fullscreen' : 'Fullscreen');
+    btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    if (on) closePop();
+  };
+  document.addEventListener('fullscreenchange', sync);
+  document.addEventListener('webkitfullscreenchange', sync);
 }
 init();

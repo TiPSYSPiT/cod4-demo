@@ -1,0 +1,120 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "viewmodel_knife",
+ "kind": "viewmodel",
+ "faction": null,
+ "file": "viewmodel_knife.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 1332
+  },
+  "normal": {
+   "offset": 1332,
+   "length": 444
+  },
+  "uv": {
+   "offset": 1776,
+   "length": 888
+  },
+  "skinIndex": {
+   "offset": 2664,
+   "length": 444
+  },
+  "skinWeight": {
+   "offset": 3108,
+   "length": 444
+  },
+  "index": {
+   "offset": 3552,
+   "length": 504
+  },
+  "color": {
+   "offset": 4056,
+   "length": 444
+  }
+ },
+ "vertexCount": 111,
+ "triangleCount": 84,
+ "bones": [
+  {
+   "name": "tag_knife",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_knife_fx",
+   "parent": 0,
+   "pos": [
+    7.0858,
+    -0.0014,
+    -0.8684
+   ],
+   "quat": [
+    0.0,
+    0.707107,
+    0.0,
+    0.707107
+   ],
+   "trans": [
+    7.0858,
+    -0.0014,
+    -0.8684
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 252,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_parabolic_knife",
+   "texture": "_textures/weapon_parbolic_knife_col.webp",
+   "textureAlpha": false,
+   "color": "#4c4c4c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_parbolic_knife_spc-rg_20e5f788.specular.webp",
+   "envMapParms": [
+    2.0,
+    8.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -2.87,
+   -0.54,
+   -1.24
+  ],
+  "maxs": [
+   11.4,
+   0.54,
+   1.22
+  ]
+ }
+}

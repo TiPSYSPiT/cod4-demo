@@ -1,0 +1,257 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "viewmodel_beretta_mp",
+ "kind": "viewmodel",
+ "faction": null,
+ "file": "viewmodel_beretta_mp.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 20412
+  },
+  "normal": {
+   "offset": 20412,
+   "length": 6804
+  },
+  "uv": {
+   "offset": 27216,
+   "length": 13608
+  },
+  "skinIndex": {
+   "offset": 40824,
+   "length": 6804
+  },
+  "skinWeight": {
+   "offset": 47628,
+   "length": 6804
+  },
+  "index": {
+   "offset": 54432,
+   "length": 7752
+  },
+  "color": {
+   "offset": 62184,
+   "length": 6804
+  }
+ },
+ "vertexCount": 1701,
+ "triangleCount": 1292,
+ "bones": [
+  {
+   "name": "j_gun",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "j_bolt",
+   "parent": 0,
+   "pos": [
+    -1.2301,
+    0.0745,
+    1.6761
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -1.2301,
+    0.0745,
+    1.6761
+   ]
+  },
+  {
+   "name": "j_press_rear",
+   "parent": 0,
+   "pos": [
+    -2.5542,
+    0.057,
+    0.4855
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -2.5542,
+    0.057,
+    0.4855
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 0,
+   "pos": [
+    -0.7472,
+    0.0,
+    1.559
+   ],
+   "quat": [
+    -0.653278,
+    0.270607,
+    -0.653278,
+    0.270607
+   ],
+   "trans": [
+    -0.7472,
+    0.0,
+    1.559
+   ]
+  },
+  {
+   "name": "tag_clip",
+   "parent": 0,
+   "pos": [
+    -1.4742,
+    0.0788,
+    -1.361
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -1.4742,
+    0.0788,
+    -1.361
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    5.9962,
+    0.0846,
+    1.2928
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    5.9962,
+    0.0846,
+    1.2928
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 90,
+   "material": 0
+  },
+  {
+   "indexStart": 90,
+   "indexCount": 306,
+   "material": -1
+  },
+  {
+   "indexStart": 396,
+   "indexCount": 1674,
+   "material": -1
+  },
+  {
+   "indexStart": 2070,
+   "indexCount": 1770,
+   "material": -1
+  },
+  {
+   "indexStart": 3840,
+   "indexCount": 18,
+   "material": 1
+  },
+  {
+   "indexStart": 3858,
+   "indexCount": 18,
+   "material": 2
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_beretta",
+   "texture": "_textures/weapon_beretta_c.webp",
+   "textureAlpha": false,
+   "color": "#262827",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_beretta_s-r-17g-17b-1_41155d1b.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_trinium_sight_glow",
+   "texture": "_textures/weapon_trinium_site_c.webp",
+   "textureAlpha": true,
+   "color": "#1d5e28",
+   "alphaTest": null,
+   "blend": "one/one",
+   "doubleSided": false,
+   "depthWrite": false,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_trinium_sight",
+   "texture": null,
+   "textureAlpha": false,
+   "color": null,
+   "alphaTest": "gt0",
+   "blend": "srcalpha/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -3.52,
+   -0.55,
+   -4.28
+  ],
+  "maxs": [
+   5.97,
+   0.79,
+   1.99
+  ]
+ }
+}

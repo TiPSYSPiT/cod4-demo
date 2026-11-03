@@ -57,12 +57,28 @@ Every choice below is remembered in the browser.
 
 | Part | What it does |
 |---|---|
-| Top bar | The file name, the **2D / 3D** toggle (key `V`), **Match details** (chart icon: scoreboard, round by round, chat, events), **Export JSON** (file icon), the GitHub link, **Open demo** |
-| Score pill | Top centre: the teams (▲ the POV's team in blue, ◆ the other in red - the shapes tell them apart without the colours), the score at the playback time, the round and its time, map and mode |
+| Top bar | The file name, the **2D / 3D** toggle (key `V`), **Match details** (chart icon: scoreboard, round by round, chat, events, weapons), **Export JSON** (file icon), the GitHub link, **Open demo** |
+| Score pill | Top centre: the teams (▲ the POV's team in blue, ◆ the other in red - the shapes tell them apart without the colours), the score at the playback time, the round and its time, map and mode; while a bomb is planted its countdown (the server's `setGameEndTime` clock of the plant, config string 11 - else the demo's plant-to-explosion time, else 45 s, marked `≈`; the 2D bomb shows it too) |
 | Rail | The icon bar on the left; each icon opens a popover (`Esc` or a click outside closes it). **Layers**: names, trails (5 s), kill lines, last known position, grenade types (smoke / frag / flash). The view's own popovers follow (2D: **Heatmap**; 3D: **Camera**, **Display**, **Graphics**, below). **Match info** at the bottom: **Show final score** (the result and the halves), map, mode, ruleset, server, POV, length, record date, protocol (`≈` marks heuristic values - hover one for how it was derived), the map data (file, triangle counts, load time) and the keyboard shortcuts |
 | Drawer | On the right, hideable (the panel icon), its two sections foldable. **Teams**: round, status, side, score and the players alive (bars) per team; per player the weapon in hand (its icon) and K / D up to now. **Click a player to select them** (highlighted in 2D and 3D; the 3D follow and first-person cameras use the selection; also with `Tab` and `Enter`). The eye shows or hides a player, the team name the team, *All* / *None* everyone, the chart icon opens the player's stats. **Kill feed & bomb**: kills (attacker, weapon icon, headshot, victim) and plant / defuse of the range; the entry at the playback time is highlighted and kept in view, later ones are dimmed; click one to jump to 2 s before it |
 | Player bar | At the bottom: ⏪ / ⏩ 5 s (`←` / `→`), play / pause (`Space`), the time (under it the round and its time), the timeline - the rounds as segments (underlined in the winner's colour once played), kills as ticks (the blue team's above, the red team's below), bomb plants (orange) and defuses (green), halftime lines; drag to scrub, strat time is skipped -, **Range** (whole match or one round), the speed (0.5–4×), **[ ]** the start / end of an export range at the current time (keys `I` / `O`; again to clear), **Export video** (MP4 / GIF of the 2D or the 3D view, below) |
 | Match details | The cod4-demo tabs over the view. Clicking a kill or bomb event closes the overlay and jumps there |
+| Fullscreen | The button left of the drawer or key `F` (not in the free camera, where `F` flies down): only the view and its HUD; the player bar comes up while the mouse moves (2.5 s). `Esc` or `F` leaves it |
+
+**Round combat statistics** (`js/c4/analysis/combat.js`, from the kills of the live rounds with the scoreboard's
+credit rule): the opening duel (first blood), trades (a kill of the enemy who killed a teammate within 5 s),
+multikills and clutches (the last player of a team alive against one or more enemies; won when the team wins the
+round). The scoreboard has the columns *Open* (won - lost), *Trades*, *3K+* (hover: 2K / 3K / 4K / 5K) and *Clutch*
+(won / played) and the JSON download carries them; a round's card lists first blood, 3K+ and the clutches, its
+kills are marked *First blood* / *Trade*. A player the demo never shows in a round is not counted there.
+
+**Weapons tab**: the numbers of every weapon of the demo from its weapon file (`maps3d/_characters/viewmodels.json`;
+for a Promod server Promod's own files): damage and falloff (`Bullet_CalcDamageRange`), the hit locations'
+multipliers, hits to kill (head / torso / leg), RPM, clip / ammo, reload, ADS time and zoom, move speed, and how the
+demo used it (kills, HS %, average kill distance, players seen holding it). Needs the web server (not `file://`).
+
+**Events tab**: besides the match events also *Weapon picked up*, *Ammo picked up*, *Out of ammo* (the dry fire)
+and *Out of grenades* (the recorder only) - off by default.
 
 Warnings about the demo appear as toasts under the score pill (each one can be dismissed). Below a
 window width of 1100 px the page becomes one column: the view, the player bar under it, the drawer
@@ -107,10 +123,17 @@ headshot icon, victim in the team colours, the drawer's icons and rules (suicide
 knife, grenades; a *Teamkill* / *Bomb* tag; a weapon without an icon by name), on a dark row that
 stays readable over bright maps. Entries fade out over their last 0.8 s; the feed depends only on
 the replay time, so pausing, seeking and the speed need nothing special. *Kill icons* (off by
-default) puts the weapon icon over each death cross. Cameras (`C` cycles):
+default) puts the weapon icon over each death cross. *Bullet tracers* (off by default) draws the game's tracers
+(`CG_SpawnTracer` / `CG_DrawTracer`: a 160-unit glowing beam flying at 7500 units/s from the muzzle, gone at the
+hit, `gfx_tracer`'s image): for 20 % of the bullet hits the server reports (`cg_tracerChance`) and half the shots
+of the player seen in first person (`cg_firstPersonTracerChance`), decided per bullet so every replay shows the
+same ones. The weapons lying on the ground (the demo's `ET_ITEM` entities: dropped and left weapons, the weapon's
+world model where the server has it) and the grenades in flight (the weapon file's `projectileModel`, turning by
+the spin the server gives it, slowed at each bounce) are drawn with their models (`js/view3d/worldWeapons.js`; the
+flashbang's model shares another's bone arrays and is not exported). Cameras (`C` cycles):
 
-**Sound** (Display popover: *Game sounds* and the volume, remembered; the browsers start audio only
-after a click, `?sound=off` in the URL leaves it out): the game's sounds, played with the replay
+**Sound** (Display popover: *Game sounds* and the volume - on at 30 % until changed, remembered;
+`?sound=off` in the URL leaves it out): the game's sounds, played with the replay
 and heard at the camera - every player's shots, reloads, weapon raises, melee, footsteps, jumps and
 landings on the surface they stand on (quieter with *specialty_quieter*, as in the game), the bullet
 impacts (the demo's on players and the traced ones on the world, also where a bullet leaves a wall),
@@ -124,14 +147,66 @@ probability, its volume and pitch ranges, not started beyond its maximum distanc
 attenuation of its falloff curve, panned left / right by the camera; in the first-person camera the
 followed player hears his own shots and steps (the `_plr` aliases). Seeking, pausing and the
 playback speed (0.25-4×, pitched) keep it in step; a sound that started just before the new
-position plays from its middle.
+position plays from its middle. The browsers let a page play audio only after a click, key or touch
+in it: the page makes its audio context in the first one (opening a demo, play, the timeline;
+`js/app/audioUnlock.js`), so the sound starts with the 3D view, without another click. A dropped file
+is no such gesture for the browsers - then the sound starts with the first click (the Display
+popover says so); nothing is reported as an error while it waits.
 
 | Camera | Controls |
 |---|---|
 | Orbit | Left drag rotates, right drag pans, wheel zooms. Click a player to select them |
 | Free fly | Drag to look, `W A S D` to move, `R` / `F` (or `E` / `Q`) for up / down, `Shift` for fast, wheel sets the speed |
 | Follow player | Travels with the selected player (or the POV's followed player). Drag to turn around them |
-| First person | The selected player's eyes with their view angles |
+| First person | The selected player's eyes with their view angles, with their weapon in hand and the crosshair (below) |
+
+**First-person weapon** (Graphics popover: *First-person weapon* and *Crosshair*, on by default, switched
+at once; `?viewmodel=off`, `?crosshair=off`). The first-person camera shows the weapon the player holds
+as the game draws it: the weapon's view model (`gunModel` of its weapon file) in the hands of the
+player's character (the character script's `setViewmodel`: US Marines in desert and woodland kit, SAS, OpFor, Arab
+and the snipers' ghillie hands - the hands follow the player's body model, so the faction of
+the map), the attachments the weapon does not have hidden (`hideTags`), lit like the players. It is
+drawn in a pass of its own over the finished frame (never in a wall), in X-Ray, both player modes and
+the video export. It moves with the weapon's own view animations (`tools/export/viewmodels_export.py`:
+715 clips), chosen from the demo at every moment - nothing is kept from frame to frame, so pause, seek
+and the playback speed (0.5-4×: the animations run in demo time, each shot restarts the fire animation;
+a shot between two frames at 4× is skipped, never doubled) need nothing special, and the motion runs at
+the display's frame rate:
+
+| What | The recorder (the demo's own player state) | Every other player |
+|---|---|---|
+| Animation (idle, fire, last shot, rechamber, reload / from empty, shotgun start - shells - end, raise / first raise / quick, put away, melee, sprint, grenade hold and throw) | **exact**: `weapAnim` per snapshot (the animation the game played), its start between the snapshots | from the **demo's events** (shots, reloads, rechamber, raise / put away, melee swipe); a put away and raise of the same weapon = the quick ones of a grenade throw; sprint from the legs animation |
+| Aiming down the sights (the `adsUp` animation on `tag_ads`, the zoom `adsZoomFov` over `adsZoomInFrac`, ADS shots) | **exact**: `fWeaponPosFrac` | the legs animation's walk movetype (the game's `BG_IsAds` for other players) at the weapon's `adsTransInTime` / `OutTime` |
+| Sniper scope | the overlay (`scope_overlay_m40a3`) when fully aimed, the gun hidden - as the game | the same |
+| Knife | the weapon's `meleeAnim` with the knife (`viewmodel_knife`) on `tag_knife_attach`: exact (`weapAnim` 8) | on every melee swipe; a knife kill without a swipe event starts it `meleeDelay` before the kill (knife rounds included) |
+| Crosshair (`CG_DrawCrosshair`: the weapon's `reticleSide` image four times at the spread, at least `reticleMinOfs`; the grenades' `reticleCenter`; smaller and moved by `adsAimPitch` while aiming in; faded by the aim spread scale, never below 0.5; hidden fully aimed, raising, dropping, reloading, in melee and when dead; the team colours over a teammate / an enemy for weapons with `crosshairColorChange` - none on Promod) | **exact**: `aimSpreadScale` between the stance's minimum and maximum (`hipSpread*`, the view height), the player state's `weapFlags` for the colour | approximated: the stance's minimum and maximum, scaled by the speed and the recent shots (`hipSpreadMoveAdd`, `FireAdd`, decay); the colour from the player the shot line meets |
+| Bob, landing dip | the bob cycle, the velocity and the ground contact of the player state | the distance walked and the vertical speed from the positions |
+| Stance and movement offsets, lean, idle sway | **the game's formulas** (`BG_CalculateWeaponPosition`, KisakCOD): the base position and angles follow the movement at `posMoveRate` / `posRotRate` above `*MoveMinSpeed`, the ADS aim pitch, the lean's roll (-2 f) and offset, the idle sway of hip / ADS amount and speed with the stance factor and `holdBreathScale` | the same with the movement from the positions |
+| Turn sway, gun kick, bob | the weapon file's numbers (`sway*`, `hipGunKick*`, `adsBobFactor`) in an approximated motion | the same |
+| Eye height, landing | the view height of the player state; the landing dip of `EV_LANDING` (camera 150 ms down, 300 ms up; the gun a quarter) | the stance's eye height followed at the game's lerp times (`PM_GetViewHeightLerpTime`: 200 / 400 ms) |
+
+**Around the weapon in first person**: the weapon's view flash (`viewFlashEffect`, none on Promod) at the view
+model's `tag_flash` and its casings (`viewShellEjectEffect`) from `tag_brass` - the bolt actions (R700, M40A3, W1200)
+eject theirs when the bolt is worked (`EV_EJECT_BRASS`), every other weapon on each shot (`CG_EjectWeaponBrass`); a
+sniper scope sways the view (`CG_CalculateView_IdleAngles`, still while the breath is held - Promod sets no ADS
+sway) and the recorder's breath is heard (`weap_sniper_breathin` / `breathout` / `breathgasp`); explosions shake the
+camera (`EV_EARTHQUAKE`: `CG_ShakeCamera`'s scale, radius and duration).
+
+**The game's HUD** (Display: *Game HUD*, on; `js/view3d/hud.js`, the images by `tools/export/hud_export.py`): in
+first person the minimap of Promod's HUD (the compass map turned with the view, teammates, enemies while they fire),
+the ammo (clip | reserve, red when low) with the weapon's name and the grenades, the low health overlay, the damage
+direction indicator (2 s), the teammate under the crosshair and the use hint - laid out on the game's 640 × 480 screen
+inside the viewer's panels; hold `Tab` for the scoreboard (kills / deaths so far). The ammo, health, damage and hints
+exist only for the recorder (the demo's player state); the server's own HUD elements are not drawn. The video export
+draws the HUD into its frames.
+
+**Promod demos** (`mod` / `fs_game` / `promodVersion` name Promod): the numbers and effects of Promod's weapon files
+(`promod_x-master/weapons/mp`, exported into `viewmodels.json` as the differences) - no crosshair colours, no muzzle
+flashes, no ADS sway, the snipers' smaller hip spread, Promod's damage; stock demos use the stock files.
+
+The first-person camera's field of view is 80° vertical (about the game's `cg_fov 80` with
+`cg_fovscale` 1.2); the gun uses the same projection, as in the game. Without a view model for a
+weapon its world model is drawn ahead of the eye (none of the demos' 13 weapons needs it).
 
 **X-Ray** (Display popover or key `X`, remembered): *Off*, *Players* - the living players behind walls,
 props and smoke as a translucent silhouette in the team colour with a brighter rim (the selected player
@@ -183,6 +258,7 @@ above. *Models* draws each player's real character:
   shadows, as in the game. The **Graphics** popover (rail, 3D) switches the *Lighting* (Game /
   Simple: the plain scene lights), the *Sun shadows*, the *Reflections* and the *Effects*; a change
   reloads the 3D map (time, selection and the other options stay) and helps slow graphics cards.
+  *First-person weapon* and *Crosshair* (above) switch at once, without a reload.
   The same in the URL, which wins for that page: `?lighting=scene`, `?reflections=off`, `?shadows=off`, `?fx=off`;
   `?maps=off` drops the normal / specular maps. `?shadows=off` drops the
   shadow maps (the sun's near and far partition, and the lamps' maps: the 4 lamps the game would
@@ -455,6 +531,20 @@ these: `--anims-only`):
   tracks, the anim tree; 1.2 MB, 0.26 MB compressed), the 37 core clips of the movement-based
   fallback in `anims.bin` (1.5 MB) and every other clip in `anims/<name>.bin` (205 files,
   5.9 MB), loaded per demo.
+- `viewmodels_export.py` exports the first-person view models: the weapon files (`weapons/mp/*` of
+  the `.iwd` archives: gun model, hands, view animations, hidden attachments, knife, the ADS / kick /
+  spread / sway / offset numbers), the gun models and base hands of `common_mp.ff`, the faction hands
+  of the map zones that hold them, the character scripts' body -> hands, all 715 view animations
+  (single-frame poses included; `vanims/<name>.bin`, loaded per weapon) and the sniper scope overlay ->
+  `maps3d/_characters/viewmodels.json` (64 models with the knife, 11.4 MB). A view model's bones carry the skeleton's
+  own translation (`XModel trans`), to which the game adds an animation's: zero on the hands, whose
+  animations hold the whole offset. Run it after `export_maps.py`:
+  `py tools/export/viewmodels_export.py --game "C:/Games/Call of Duty 4"` (`--force` re-exports).
+  It also writes the numbers of Promod's weapon files (`promod_x-master/weapons/mp`, read only) as the
+  differences to the stock files (`"promod"`), the HUD's ammo / clip names and the grenades' projectile models.
+- `hud_export.py` writes the first-person HUD's images (`maps3d/_hud/`: the minimap frame, the compass pings,
+  the low health overlay, the damage indicator, the hints, the grenade icons; 29 images) from the `.iwd`
+  archives: `py tools/export/hud_export.py --game "C:/Games/Call of Duty 4"` (after `viewmodels_export.py`).
 - `weapons_export.py` exports the world weapon models (52, 2.5 MB) like the characters and
   writes `weapons.json`: base weapon → plain / silenced / grenade-launcher model. The mapping is
   a table, not read from the game's WeaponDefs.
@@ -621,11 +711,15 @@ css/styles.css           the one stylesheet: design tokens (:root - colours, tea
 js/c4/                   from cod4-demo: parser, analysis (DemoData), UI pieces (scoreboard,
                          rounds, chat, events, 2D renderer, heatmap, video export); additions in
                          analysis/collect.js + build.js: player models, animation state per
-                         sample, corpses
+                         sample, corpses, the recorder's weapon state (psWeapon) and every
+                         player's weapon events (weapEvents), the HUD state (psHud, psAmmo),
+                         the dropped weapons (items), earthquakes; analysis/combat.js: the round
+                         combat statistics; ui/weapons.js: the Weapons tab
 js/app/main.js           file loading (worker), app facade, 2D/3D toggle, the rail and its
                          popovers, the drawer, details overlay, keys
 js/app/moduleCheck.js    why a module did not load: the file of the chain that is missing,
                          not JavaScript or unreachable, else the broken module
+js/app/audioUnlock.js    the game sounds' audio context, made in the page's first click / key
 js/app/match.js          Match: DemoData prepared for playback - positions at time t, trails,
                          grenade arcs, bomb, rounds (shared by both views)
 js/app/replay.js         Replay: the one playback state (time, range, selection, filters),
@@ -647,7 +741,12 @@ js/view3d/               view3d (scene, loop, Camera / Display / Graphics popove
                          shadow map), sky (the sky cube), fx (the effects: the map's and the
                          demo's, the game's effect system), effects (markers, grenades), cameras,
                          scriptModels (the map's script models in the demo's states), sound (the
-                         game's sounds: live with Web Audio, offline for the MP4 export), audit
+                         game's sounds: live with Web Audio, offline for the MP4 export),
+                         viewmodel (the first-person weapon: rig, animation blending, knife,
+                         crosshair, scope, ADS zoom), viewanim (its state at a demo time from
+                         the player state or the events), hud (the game's HUD in first person,
+                         Tab scoreboard), tracers (the bullet tracers), worldWeapons (dropped
+                         weapons, grenades in flight), audit
                          (?audit=1: the assets coloured by the asset audit's status), blend (the
                          game's blend factors for every renderer)
 assets/maps/             compass images + calibration (maps.js);  assets/killfeed/  weapon icons
@@ -660,7 +759,8 @@ tools/export/            export_maps.py, xmodel.py + props_export.py (prop model
                          cod4ff (fast file parser, copy of cod4-ff)
 tools/export/            ... characters_export.py (player models with skeleton and skin weights),
                          xanim.py + animtree.py + anims_export.py (player animations and the
-                         game's anim tree), weapons_export.py, light_grid.py (model lighting),
+                         game's anim tree), weapons_export.py, viewmodels_export.py (the
+                         first-person view models, hands and view animations), light_grid.py (model lighting),
                          sight.py (the collision the light grid's sight traces test),
                          d3dshader.py (lists / disassembles the game's compiled shaders),
                          fx_export.py (effects: createfx placements, FX definitions, the impact

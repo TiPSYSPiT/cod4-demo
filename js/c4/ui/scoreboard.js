@@ -6,14 +6,19 @@
   const kd = p => (p.kills == null || p.deaths == null ? null : p.deaths === 0 ? p.kills : p.kills / p.deaths);
   const fmtPct = v => Math.round(v) + ' %';
   const round2 = v => v == null ? null : Math.round(v * 100) / 100;
+  // the combat statistics (combat.js): rounds with 3+ kills
+  const multi3 = p => (p.combat ? p.combat.multi[3] + p.combat.multi[4] + p.combat.multi[5] : 0);
   const byScore = (a, b) => (b.score == null ? -Infinity : b.score) - (a.score == null ? -Infinity : a.score);
 
   /** team totals as numbers (shared by the table and the JSON download) */
   function teamTotals(rows) {
     const sum = k => rows.reduce((a, p) => a + (p[k] || 0), 0);
+    const csum = k => rows.reduce((a, p) => a + (p.combat ? p.combat[k] : 0), 0);
     const K = sum('kills'), D = sum('deaths'), ownK = sum('ownKills'), HS = sum('headshots');
     return { score: sum('score'), kills: K, assists: sum('assists'), deaths: D, kd: D ? K / D : K,
-      nadeKills: sum('nadeKills'), nadeDeaths: sum('nadeDeaths'), tk: sum('teamkills'), teamKilled: sum('teamKilled'), hsPercent: ownK ? HS / ownK * 100 : null, plants: sum('plants'), defuses: sum('defuses') };
+      nadeKills: sum('nadeKills'), nadeDeaths: sum('nadeDeaths'), tk: sum('teamkills'), teamKilled: sum('teamKilled'), hsPercent: ownK ? HS / ownK * 100 : null, plants: sum('plants'), defuses: sum('defuses'),
+      openingKills: csum('openingKills'), openingDeaths: csum('openingDeaths'), trades: csum('trades'), multi3: rows.reduce((a, p) => a + multi3(p), 0),
+      clutchesWon: csum('clutchesWon'), clutchesPlayed: csum('clutchesPlayed') };
   }
 
   /** the scoreboard as plain JSON: map, record date, half scores, then teams (in table order),
@@ -65,7 +70,9 @@
           hsPercent: p.headshotPct == null ? null : Math.round(p.headshotPct),
           plants: p.plants,
           defuses: p.defuses
-        }, p.isPov ? { pov: true } : null)),
+        }, p.combat ? { openingKills: p.combat.openingKills, openingDeaths: p.combat.openingDeaths, trades: p.combat.trades,
+          multikills: p.combat.multi, clutchesWon: p.combat.clutchesWon, clutchesPlayed: p.combat.clutchesPlayed } : null,
+        p.isPov ? { pov: true } : null)),
         teamTotal: Object.assign(tot, { kd: round2(tot.kd), hsPercent: tot.hsPercent == null ? null : Math.round(tot.hsPercent) })
       });
     }
@@ -119,6 +126,27 @@
       { key: 'teamKilled', label: 'TKd', title: 'Times killed by a teammate', render: p => String(p.teamKilled), total: t => t.teamKilled },
       { key: 'nadeKills', label: 'Nade K', title: 'Kills with frag grenades', render: p => String(p.nadeKills), total: t => t.nadeKills },
       { key: 'nadeDeaths', label: 'Nade D', title: 'Deaths by frag grenades', render: p => String(p.nadeDeaths), total: t => t.nadeDeaths },
+      {
+        key: 'opening', label: 'Open', title: 'opening duels won - lost: the first kill of a round (first blood) made / suffered',
+        sort: p => (p.combat ? p.combat.openingKills - p.combat.openingDeaths : 0),
+        render: p => (p.combat ? p.combat.openingKills + '–' + p.combat.openingDeaths : ''), total: t => t.openingKills + '–' + t.openingDeaths
+      },
+      {
+        key: 'trades', label: 'Trades', title: 'trade kills: killed the enemy who had killed a teammate within ' + C4.combat.TRADE_MS / 1000 + ' s',
+        sort: p => (p.combat ? p.combat.trades : 0), render: p => String(p.combat ? p.combat.trades : 0), total: t => t.trades
+      },
+      {
+        key: 'multi', label: '3K+', title: 'rounds with 3 or more kills (hover a cell for 2K / 3K / 4K / 5K)', sort: multi3,
+        render: p => el('span', { title: p.combat ? '2K ' + p.combat.multi[2] + ' · 3K ' + p.combat.multi[3] + ' · 4K ' + p.combat.multi[4] + ' · 5K ' + p.combat.multi[5] : '' }, String(multi3(p))),
+        total: t => t.multi3
+      },
+      {
+        key: 'clutch', label: 'Clutch', title: 'clutches won / played: the last player of the team alive against one or more enemies (1vX); won when the team won the round',
+        sort: p => (p.combat ? p.combat.clutchesWon * 100 + p.combat.clutchesPlayed : 0),
+        render: p => el('span', { title: p.combat && p.combat.clutches.length ? p.combat.clutches.map(c => '1v' + c.vs + (c.won ? ' won' : ' lost')).join(', ') : '' },
+          p.combat ? p.combat.clutchesWon + '/' + p.combat.clutchesPlayed : ''),
+        total: t => t.clutchesWon + '/' + t.clutchesPlayed
+      },
       { key: 'plants', label: 'Plants', title: 'bomb plants (server message "planted the bomb", match rounds only)', total: t => t.plants },
       { key: 'defuses', label: 'Defuses', title: 'bomb defuses (server message "defused the bomb", match rounds only)', total: t => t.defuses }
     ];
@@ -148,7 +176,7 @@
         (d.match && d.match.end != null ? ' (official match end ' + fmtTime(d.match.end) + ')' : '') + '. ',
         'Values from the game’s scoreboard as it stood at the match end (reconnected players: sessions summed). ',
         'Click a column header to sort. ', el('span', { class: 'approx' }, '≈'), ' marks values completed from the kill feed. ',
-        'HS %, TK, Nade K / D, Plants and Defuses are not in the game’s scoreboard - they are counted from the kill feed and the bomb messages of this demo (only the recorded rounds; ',
+        'HS %, TK, Nade K / D, Open, Trades, 3K+, Clutch, Plants and Defuses are not in the game’s scoreboard - they are counted from the kill feed and the bomb messages of this demo (only the recorded rounds; ',
         'team kills only while a match round is live, not in warm-up, pauses or the knife round).'),
       sortableTable(columns, groups, { sortKey: 'score', asc: false, cls: 'scoreboard', rowClass: p => (p.isPov ? 'pov ' : '') })
     );

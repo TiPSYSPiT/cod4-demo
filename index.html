@@ -81,6 +81,7 @@
           </div>
         </aside>
         <button class="ib glass drawer-open" id="drawer-open" type="button" title="Show the teams and kill feed panel" aria-label="Show panel" hidden></button>
+        <button class="ib glass fs-btn" id="fs-btn" type="button" title="Fullscreen (F)" aria-label="Fullscreen" aria-pressed="false" hidden></button>
         <div class="bar glass" id="controls"></div>
 
         <div class="details" id="details" role="dialog" aria-label="Match details" hidden>
@@ -90,6 +91,7 @@
               <button role="tab" data-tab="rounds">Round by Round</button>
               <button role="tab" data-tab="chat">Chat</button>
               <button role="tab" data-tab="events">Events</button>
+              <button role="tab" data-tab="weapons">Weapons</button>
             </nav>
             <button class="ib details-close" id="details-close" title="Close (Esc)" aria-label="Close match details"></button>
           </div>
@@ -98,6 +100,7 @@
             <section class="tab-panel" id="tab-rounds"></section>
             <section class="tab-panel" id="tab-chat"></section>
             <section class="tab-panel" id="tab-events"></section>
+            <section class="tab-panel" id="tab-weapons"></section>
           </div>
         </div>
       </div>
@@ -124,6 +127,7 @@
   <script src="js/c4/analysis/povDamage.js"></script>
   <script src="js/c4/analysis/sight.js"></script>
   <script src="js/c4/analysis/ownKills.js"></script>
+  <script src="js/c4/analysis/combat.js"></script>
   <script src="js/c4/analysis/build.js"></script>
   <script src="js/c4/analysis/worker.js"></script>
   <script src="assets/maps/maps.js"></script>
@@ -135,6 +139,7 @@
   <script src="js/c4/ui/rounds.js"></script>
   <script src="js/c4/ui/chat.js"></script>
   <script src="js/c4/ui/events.js"></script>
+  <script src="js/c4/ui/weapons.js"></script>
   <script src="js/c4/ui/map/config.js"></script>
   <script src="js/c4/ui/map/renderer.js"></script>
   <script src="js/c4/ui/map/heatmap.js"></script>

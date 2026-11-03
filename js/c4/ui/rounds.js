@@ -123,8 +123,30 @@
     return card;
   }
 
+  /** the round's combat line (combat.js): first blood, 3K+ multikills, clutches */
+  function combatLine(app, r) {
+    const c = r.combat, d = app.data;
+    if (!c) return null;
+    const parts = [];
+    if (c.opening != null) {
+      const k = d.kills[c.opening];
+      parts.push(el('span', { class: 'rc-item', title: 'the opening duel: the first kill of the round' },
+        el('span', { class: 'badge' }, 'First blood'), ' ', app.playerNode(k.attacker), el('span', { class: 'dim' }, ' → '), app.playerNode(k.victim)));
+    }
+    for (const m of c.multikills.filter(m => m.kills >= 3)) {
+      parts.push(el('span', { class: 'rc-item', title: m.kills + ' kills by one player in this round' }, el('span', { class: 'badge' }, m.kills + 'K'), ' ', app.playerNode(m.client)));
+    }
+    for (const x of c.clutches) {
+      parts.push(el('span', { class: 'rc-item', title: 'the last player of the team alive against ' + x.vs + ' (' + (x.won ? 'the team won the round' : 'the team lost the round') + ')' },
+        el('span', { class: 'badge' + (x.won ? ' win' : '') }, '1v' + x.vs + (x.won ? ' won' : '')), ' ', app.playerNode(x.client)));
+    }
+    return parts.length ? el('div', { class: 'round-combat' }, parts) : null;
+  }
+
   function fillTimeline(app, r, i, body) {
     const d = app.data;
+    const line = combatLine(app, r);
+    if (line) body.append(line);
     const items = [];
     for (const ki of r.kills) items.push({ t: d.kills[ki].t, kill: d.kills[ki] });
     for (const b of r.bomb) if (b.action === 'planted' || b.action === 'defused') items.push({ t: b.t, bomb: b });
@@ -134,7 +156,7 @@
     for (const it of items) {
       if (it.kill) {
         body.append(el('div', { class: 'tl-row clickable', onclick: () => app.gotoMap(it.t, i), title: 'show on the map' },
-          time(it.t), el('div', { class: 'tl-what' }, killNodes(app, it.kill))));
+          time(it.t), el('div', { class: 'tl-what' }, killNodes(app, it.kill), tradeBadges(d, it.kill))));
       } else {
         const b = it.bomb;
         const who = d.players.find(p => p.cleanName === b.name);
@@ -142,6 +164,15 @@
           time(it.t), el('div', { class: 'tl-what' }, 'Bomb ' + b.action + ' by ', who ? app.playerNode(who.client) : b.name)));
       }
     }
+  }
+
+  /** a kill's first-blood / trade badges (combat.js) */
+  function tradeBadges(d, k) {
+    const avenged = k.tradeOf != null ? d.kills[k.tradeOf] : null;
+    const mate = avenged ? d.players.find(p => p.client === avenged.victim) : null;
+    return [
+      k.opening ? el('span', { class: 'badge', title: 'the first kill of the round' }, 'First blood') : null,
+      avenged ? el('span', { class: 'badge', title: 'a trade: avenges ' + (mate ? mate.cleanName : 'a teammate') + ', killed by this victim ' + ((k.t - avenged.t) / 1000).toFixed(1) + ' s before' }, 'Trade') : null];
   }
 
   C4.tabs.rounds = { render };

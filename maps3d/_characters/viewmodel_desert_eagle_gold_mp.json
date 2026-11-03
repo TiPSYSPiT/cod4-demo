@@ -1,0 +1,210 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "viewmodel_desert_eagle_gold_mp",
+ "kind": "viewmodel",
+ "faction": null,
+ "file": "viewmodel_desert_eagle_gold_mp.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 19464
+  },
+  "normal": {
+   "offset": 19464,
+   "length": 6488
+  },
+  "uv": {
+   "offset": 25952,
+   "length": 12976
+  },
+  "skinIndex": {
+   "offset": 38928,
+   "length": 6488
+  },
+  "skinWeight": {
+   "offset": 45416,
+   "length": 6488
+  },
+  "index": {
+   "offset": 51904,
+   "length": 6840
+  },
+  "color": {
+   "offset": 58744,
+   "length": 6488
+  }
+ },
+ "vertexCount": 1622,
+ "triangleCount": 1140,
+ "bones": [
+  {
+   "name": "j_gun",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "j_bolt",
+   "parent": 0,
+   "pos": [
+    -1.2301,
+    0.0745,
+    1.6761
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -1.2301,
+    0.0745,
+    1.6761
+   ]
+  },
+  {
+   "name": "j_press_rear",
+   "parent": 0,
+   "pos": [
+    -2.5542,
+    0.057,
+    0.4855
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -2.5542,
+    0.057,
+    0.4855
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 0,
+   "pos": [
+    -0.7472,
+    0.0,
+    1.559
+   ],
+   "quat": [
+    -0.653278,
+    0.270607,
+    -0.653278,
+    0.270607
+   ],
+   "trans": [
+    -0.7472,
+    0.0,
+    1.559
+   ]
+  },
+  {
+   "name": "tag_clip",
+   "parent": 0,
+   "pos": [
+    -1.4742,
+    0.0788,
+    -1.361
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -1.4742,
+    0.0788,
+    -1.361
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    5.9962,
+    0.0846,
+    1.2928
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    5.9962,
+    0.0846,
+    1.2928
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 252,
+   "material": 0
+  },
+  {
+   "indexStart": 252,
+   "indexCount": 1812,
+   "material": -1
+  },
+  {
+   "indexStart": 2064,
+   "indexCount": 1356,
+   "material": -1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_desert_eagle_gold",
+   "texture": "_textures/weapon_desert_eagle_gold_col.webp",
+   "textureAlpha": false,
+   "color": "#5f5e42",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_desert_eagle_gold_spc_f7d5bd11.specular.webp",
+   "envMapParms": [
+    4.0,
+    4.0,
+    6.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -4.27,
+   -1.16,
+   -4.29
+  ],
+  "maxs": [
+   7.38,
+   0.91,
+   2.19
+  ]
+ }
+}

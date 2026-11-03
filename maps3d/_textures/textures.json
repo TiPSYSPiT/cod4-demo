@@ -11624,6 +11624,13 @@
   "source": "fire_light_n",
   "w": 256
  },
+ "fire_patch_ember_add": {
+  "alpha": false,
+  "color": "#38200c",
+  "h": 256,
+  "source": "fire_patch_ember_add",
+  "w": 256
+ },
  "fire_patch_ember_bg": {
   "alpha": true,
   "color": "#cd6c27",
@@ -14060,6 +14067,15 @@
   "source": "m14_scope_lens_col",
   "w": 256
  },
+ "m14_scope_lens_spec-rgb_m14__eace8daa.specular": {
+  "alpha": true,
+  "color": "#999999",
+  "exact": 2,
+  "h": 128,
+  "kind": "specular",
+  "source": "~m14_scope_lens_spec-rgb&m14_~eace8daa",
+  "w": 128
+ },
  "m14_scope_spec-rgb_m14_scope_cos-l-11.specular": {
   "alpha": true,
   "color": "#616161",
@@ -14101,6 +14117,22 @@
   "source": "~m60_spec-rgb&m60_cos-l-11",
   "w": 256
  },
+ "m67_grenade_col": {
+  "alpha": false,
+  "color": "#55564c",
+  "h": 512,
+  "source": "m67_grenade_col",
+  "w": 512
+ },
+ "m67_grenade_spc-rgb_m67_gren_8648b09e.specular": {
+  "alpha": true,
+  "color": "#545449",
+  "exact": 2,
+  "h": 256,
+  "kind": "specular",
+  "source": "~m67_grenade_spc-rgb&m67_gren~8648b09e",
+  "w": 256
+ },
  "m84_flashbang_burnt_col": {
   "alpha": true,
   "color": "#1a150c",
@@ -14117,6 +14149,13 @@
   "kind": "specular",
   "source": "~m84_flashbang_burnt_spec-rgb~aedebf0f",
   "w": 64
+ },
+ "m84_flashbang_col": {
+  "alpha": false,
+  "color": "#4c4536",
+  "h": 512,
+  "source": "m84_flashbang_col",
+  "w": 512
  },
  "m84_flashbang_spec-rgb_m84_f_9c887267.specular": {
   "alpha": true,
@@ -22421,6 +22460,22 @@
   "source": "mtl_wallpaper_col_003",
   "w": 512
  },
+ "mtl_weapon_colt1911_col": {
+  "alpha": false,
+  "color": "#32332f",
+  "h": 256,
+  "source": "mtl_weapon_colt1911_col",
+  "w": 256
+ },
+ "mtl_weapon_colt1911_spec-r30_a0b777cc.specular": {
+  "alpha": true,
+  "color": "#434343",
+  "exact": 2,
+  "h": 256,
+  "kind": "specular",
+  "source": "~mtl_weapon_colt1911_spec-r30~a0b777cc",
+  "w": 256
+ },
  "mtl_weapon_m40a3_col": {
   "alpha": false,
   "color": "#36382f",
@@ -23155,6 +23210,39 @@
   "h": 256,
   "kind": "specular",
   "source": "~officewall01_spec-rgb&office~f65856fa",
+  "w": 256
+ },
+ "op_force_clr": {
+  "alpha": false,
+  "color": "#4c4a41",
+  "h": 256,
+  "source": "op_force_clr",
+  "w": 512
+ },
+ "op_force_nml.normal": {
+  "alpha": false,
+  "color": "#807d80",
+  "h": 128,
+  "kind": "normal",
+  "source": "op_force_nml",
+  "w": 256
+ },
+ "op_force_spc-r-44g-44b-44_op_95b4ecf2.specular": {
+  "alpha": true,
+  "color": "#25282a",
+  "exact": 2,
+  "h": 128,
+  "kind": "specular",
+  "source": "~op_force_spc-r-44g-44b-44&op~95b4ecf2",
+  "w": 256
+ },
+ "op_force_spc-r-71g-71b-71_op_6ddbe8bd.specular": {
+  "alpha": true,
+  "color": "#141617",
+  "exact": 2,
+  "h": 128,
+  "kind": "specular",
+  "source": "~op_force_spc-r-71g-71b-71&op~6ddbe8bd",
   "w": 256
  },
  "opforce_3hole_ski_mask_col_sp": {
@@ -26095,6 +26183,14 @@
   "source": "~school_desk_and_chairs_spc-r~23737153",
   "w": 256
  },
+ "scope_overlay_m40a3_1024_0": {
+  "alpha": true,
+  "color": "#253434",
+  "exact": 2,
+  "h": 1024,
+  "source": "scope_overlay_m40a3_1024#0",
+  "w": 1024
+ },
  "seagull_fly_atlas": {
   "alpha": true,
   "color": "#0b0b0b",
@@ -26255,6 +26351,14 @@
   "h": 256,
   "source": "signs_constr_01",
   "w": 512
+ },
+ "slamraam_trailer_nml_mip1.normal": {
+  "alpha": false,
+  "color": "#7f8080",
+  "h": 128,
+  "kind": "normal",
+  "source": "slamraam_trailer_nml_mip1",
+  "w": 256
  },
  "small_hatchback_wagon_nrml.normal": {
   "alpha": false,
@@ -27474,6 +27578,13 @@
   "source": "~towel_spc-rgb&towel_cos-l-11",
   "w": 256
  },
+ "tracer_0": {
+  "alpha": false,
+  "color": "#0d0808",
+  "h": 64,
+  "source": "tracer#0",
+  "w": 64
+ },
  "tractor_col": {
   "alpha": false,
   "color": "#4b372f",
@@ -28133,6 +28244,22 @@
   "source": "~us_smoke_grenade_burnt_s-rgbl-11",
   "w": 256
  },
+ "us_smoke_grenade_c": {
+  "alpha": false,
+  "color": "#5e655b",
+  "h": 256,
+  "source": "us_smoke_grenade_c",
+  "w": 256
+ },
+ "us_smoke_grenade_s-rgbl-11.specular": {
+  "alpha": true,
+  "color": "#636666",
+  "exact": 2,
+  "h": 256,
+  "kind": "specular",
+  "source": "~us_smoke_grenade_s-rgbl-11",
+  "w": 256
+ },
  "usmc_body_mp_col": {
   "alpha": false,
   "color": "#5c5243",
@@ -28715,6 +28842,178 @@
   "source": "~videocamera_spc-rgb&videocam~f7fc5855",
   "w": 256
  },
+ "viewhand_black_kit_col": {
+  "alpha": false,
+  "color": "#4c4c4b",
+  "h": 256,
+  "source": "viewhand_black_kit_col",
+  "w": 512
+ },
+ "viewhand_black_kit_nml.normal": {
+  "alpha": false,
+  "color": "#7e7f80",
+  "h": 128,
+  "kind": "normal",
+  "source": "viewhand_black_kit_nml",
+  "w": 256
+ },
+ "viewhand_black_kit_spc-r30g3_a3c1436a.specular": {
+  "alpha": true,
+  "color": "#1f1e1f",
+  "exact": 2,
+  "h": 128,
+  "kind": "specular",
+  "source": "~viewhand_black_kit_spc-r30g3~a3c1436a",
+  "w": 256
+ },
+ "viewhand_black_kit_spc-r30g3_d35b529d.specular": {
+  "alpha": true,
+  "color": "#1f1e1f",
+  "exact": 2,
+  "h": 128,
+  "kind": "specular",
+  "source": "~viewhand_black_kit_spc-r30g3~d35b529d",
+  "w": 256
+ },
+ "viewhand_marine_ghillie_clr": {
+  "alpha": true,
+  "color": "#332d24",
+  "exact": 2,
+  "h": 512,
+  "source": "viewhand_marine_ghillie_clr",
+  "w": 512
+ },
+ "viewhand_marine_ghillie_nml.normal": {
+  "alpha": false,
+  "color": "#818180",
+  "h": 256,
+  "kind": "normal",
+  "source": "viewhand_marine_ghillie_nml",
+  "w": 256
+ },
+ "viewhand_marine_ghillie_spc-_236c5a53.specular": {
+  "alpha": true,
+  "color": "#020202",
+  "exact": 2,
+  "h": 256,
+  "kind": "specular",
+  "source": "~viewhand_marine_ghillie_spc-~236c5a53",
+  "w": 256
+ },
+ "viewhand_sas_woodland_clr": {
+  "alpha": false,
+  "color": "#5a4e47",
+  "h": 256,
+  "source": "viewhand_sas_woodland_clr",
+  "w": 512
+ },
+ "viewhand_sas_woodland_nml.normal": {
+  "alpha": false,
+  "color": "#7b8080",
+  "h": 128,
+  "kind": "normal",
+  "source": "viewhand_sas_woodland_nml",
+  "w": 256
+ },
+ "viewhand_sas_woodland_spc-r-_9c259430.specular": {
+  "alpha": true,
+  "color": "#0a0a09",
+  "exact": 2,
+  "h": 128,
+  "kind": "specular",
+  "source": "~viewhand_sas_woodland_spc-r-~9c259430",
+  "w": 256
+ },
+ "viewhands_desert_opfor_clr": {
+  "alpha": false,
+  "color": "#4d4334",
+  "h": 256,
+  "source": "viewhands_desert_opfor_clr",
+  "w": 512
+ },
+ "viewhands_desert_opfor_nml.normal": {
+  "alpha": false,
+  "color": "#7e7e80",
+  "h": 128,
+  "kind": "normal",
+  "source": "viewhands_desert_opfor_nml",
+  "w": 256
+ },
+ "viewhands_desert_opfor_spc-r_3c3356ad.specular": {
+  "alpha": true,
+  "color": "#191a1b",
+  "exact": 2,
+  "h": 128,
+  "kind": "specular",
+  "source": "~viewhands_desert_opfor_spc-r~3c3356ad",
+  "w": 256
+ },
+ "viewhands_desert_opfor_spc-r_83bf7825.specular": {
+  "alpha": true,
+  "color": "#191a1b",
+  "exact": 2,
+  "h": 128,
+  "kind": "specular",
+  "source": "~viewhands_desert_opfor_spc-r~83bf7825",
+  "w": 256
+ },
+ "viewhands_marine_gloves_col": {
+  "alpha": false,
+  "color": "#585147",
+  "h": 256,
+  "source": "viewhands_marine_gloves_col",
+  "w": 512
+ },
+ "viewhands_marine_gloves_nml.normal": {
+  "alpha": false,
+  "color": "#807d80",
+  "h": 128,
+  "kind": "normal",
+  "source": "viewhands_marine_gloves_nml",
+  "w": 256
+ },
+ "viewhands_marine_gloves_spc-_14a748c8.specular": {
+  "alpha": true,
+  "color": "#0e0f0f",
+  "exact": 2,
+  "h": 128,
+  "kind": "specular",
+  "source": "~viewhands_marine_gloves_spc-~14a748c8",
+  "w": 256
+ },
+ "viewhands_marine_gloves_spc-_d740812a.specular": {
+  "alpha": true,
+  "color": "#131415",
+  "exact": 2,
+  "h": 128,
+  "kind": "specular",
+  "source": "~viewhands_marine_gloves_spc-~d740812a",
+  "w": 256
+ },
+ "viewhands_marine_sniper_clr": {
+  "alpha": false,
+  "color": "#494336",
+  "h": 256,
+  "source": "viewhands_marine_sniper_clr",
+  "w": 512
+ },
+ "viewhands_marine_sniper_nml.normal": {
+  "alpha": false,
+  "color": "#807d80",
+  "h": 128,
+  "kind": "normal",
+  "source": "viewhands_marine_sniper_nml",
+  "w": 256
+ },
+ "viewhands_marine_sniper_spc-_1aac873f.specular": {
+  "alpha": true,
+  "color": "#060706",
+  "exact": 2,
+  "h": 128,
+  "kind": "specular",
+  "source": "~viewhands_marine_sniper_spc-~1aac873f",
+  "w": 256
+ },
  "wagon_donkey_col": {
   "alpha": false,
   "color": "#76726d",
@@ -29000,12 +29299,69 @@
   "source": "~weapon_acog_alpha_spc-rgb&we~29bfeeda",
   "w": 256
  },
+ "weapon_acog_col": {
+  "alpha": false,
+  "color": "#2d2d2b",
+  "h": 256,
+  "source": "weapon_acog_col",
+  "w": 512
+ },
+ "weapon_acog_lens_col": {
+  "alpha": true,
+  "color": "#003742",
+  "exact": 2,
+  "h": 64,
+  "source": "weapon_acog_lens_col",
+  "w": 64
+ },
+ "weapon_acog_lens_spc-rgb_wea_a5d30b6d.specular": {
+  "alpha": true,
+  "color": "#904000",
+  "exact": 2,
+  "h": 64,
+  "kind": "specular",
+  "source": "~weapon_acog_lens_spc-rgb&wea~a5d30b6d",
+  "w": 64
+ },
+ "weapon_acog_reticle_col": {
+  "alpha": true,
+  "color": "#000000",
+  "exact": 2,
+  "h": 512,
+  "source": "weapon_acog_reticle_col",
+  "w": 512
+ },
+ "weapon_acog_spc-r-25g-25b-25_ffe3f99d.specular": {
+  "alpha": true,
+  "color": "#21201f",
+  "exact": 2,
+  "h": 128,
+  "kind": "specular",
+  "source": "~weapon_acog_spc-r-25g-25b-25~ffe3f99d",
+  "w": 256
+ },
  "weapon_ak47_c": {
   "alpha": false,
   "color": "#292522",
   "h": 512,
   "source": "weapon_ak47_c",
   "w": 512
+ },
+ "weapon_ak47_grenadier_col": {
+  "alpha": false,
+  "color": "#1b1d1d",
+  "h": 128,
+  "source": "weapon_ak47_grenadier_col",
+  "w": 256
+ },
+ "weapon_ak47_grenadier_spc-r6_e3b32d6a.specular": {
+  "alpha": true,
+  "color": "#555555",
+  "exact": 2,
+  "h": 128,
+  "kind": "specular",
+  "source": "~weapon_ak47_grenadier_spc-r6~e3b32d6a",
+  "w": 256
  },
  "weapon_ak47_s-r-61g-61b-61_w_0848fdf9.specular": {
   "alpha": true,
@@ -29057,6 +29413,126 @@
   "source": "~weapon_benelli_super_90_spc-~9c97d471",
   "w": 256
  },
+ "weapon_beretta_c": {
+  "alpha": false,
+  "color": "#262827",
+  "h": 256,
+  "source": "weapon_beretta_c",
+  "w": 256
+ },
+ "weapon_beretta_s-r-17g-17b-1_41155d1b.specular": {
+  "alpha": true,
+  "color": "#3d3d3d",
+  "exact": 2,
+  "h": 256,
+  "kind": "specular",
+  "source": "~weapon_beretta_s-r-17g-17b-1~41155d1b",
+  "w": 256
+ },
+ "weapon_bullet_col": {
+  "alpha": false,
+  "color": "#846b4b",
+  "h": 128,
+  "source": "weapon_bullet_col",
+  "w": 256
+ },
+ "weapon_bullet_spc-r-87g-87b-_7fcd185c.specular": {
+  "alpha": true,
+  "color": "#3b3b3b",
+  "exact": 2,
+  "h": 128,
+  "kind": "specular",
+  "source": "~weapon_bullet_spc-r-87g-87b-~7fcd185c",
+  "w": 256
+ },
+ "weapon_c4_col": {
+  "alpha": false,
+  "color": "#4b412d",
+  "h": 512,
+  "source": "weapon_c4_col",
+  "w": 512
+ },
+ "weapon_c4_spec-rgb_weapon_c4_cos-l-11.specular": {
+  "alpha": true,
+  "color": "#323232",
+  "exact": 2,
+  "h": 256,
+  "kind": "specular",
+  "source": "~weapon_c4_spec-rgb&weapon_c4_cos-l-11",
+  "w": 256
+ },
+ "weapon_claymore_col": {
+  "alpha": false,
+  "color": "#6e6646",
+  "h": 512,
+  "source": "weapon_claymore_col",
+  "w": 512
+ },
+ "weapon_claymore_detonator_col": {
+  "alpha": false,
+  "color": "#63583d",
+  "h": 256,
+  "source": "weapon_claymore_detonator_col",
+  "w": 256
+ },
+ "weapon_claymore_detonator_sp_0756aea3.specular": {
+  "alpha": true,
+  "color": "#585858",
+  "exact": 2,
+  "h": 256,
+  "kind": "specular",
+  "source": "~weapon_claymore_detonator_sp~0756aea3",
+  "w": 256
+ },
+ "weapon_claymore_nml.normal": {
+  "alpha": false,
+  "color": "#808180",
+  "h": 256,
+  "kind": "normal",
+  "source": "weapon_claymore_nml",
+  "w": 256
+ },
+ "weapon_claymore_spec-r-61g-6_7ad315ae.specular": {
+  "alpha": true,
+  "color": "#191917",
+  "exact": 2,
+  "h": 256,
+  "kind": "specular",
+  "source": "~weapon_claymore_spec-r-61g-6~7ad315ae",
+  "w": 256
+ },
+ "weapon_desert_eagle_gold_col": {
+  "alpha": false,
+  "color": "#5f5e42",
+  "h": 512,
+  "source": "weapon_desert_eagle_gold_col",
+  "w": 512
+ },
+ "weapon_desert_eagle_gold_spc_f7d5bd11.specular": {
+  "alpha": true,
+  "color": "#787352",
+  "exact": 2,
+  "h": 256,
+  "kind": "specular",
+  "source": "~weapon_desert_eagle_gold_spc~f7d5bd11",
+  "w": 256
+ },
+ "weapon_desert_eagle_silver_col": {
+  "alpha": false,
+  "color": "#515050",
+  "h": 512,
+  "source": "weapon_desert_eagle_silver_col",
+  "w": 512
+ },
+ "weapon_desert_eagle_silver_s_0e95b0eb.specular": {
+  "alpha": true,
+  "color": "#717b7d",
+  "exact": 2,
+  "h": 256,
+  "kind": "specular",
+  "source": "~weapon_desert_eagle_silver_s~0e95b0eb",
+  "w": 256
+ },
  "weapon_dragunov_col": {
   "alpha": false,
   "color": "#2d241f",
@@ -29089,12 +29565,44 @@
   "source": "~weapon_dragunuv_spec-rgb&wea~41893625",
   "w": 256
  },
+ "weapon_foregrip_a_col": {
+  "alpha": false,
+  "color": "#151514",
+  "h": 64,
+  "source": "weapon_foregrip_a_col",
+  "w": 128
+ },
+ "weapon_foregrip_a_spec-r-59g_57ea3d12.specular": {
+  "alpha": true,
+  "color": "#4d4b4a",
+  "exact": 2,
+  "h": 64,
+  "kind": "specular",
+  "source": "~weapon_foregrip_a_spec-r-59g~57ea3d12",
+  "w": 128
+ },
  "weapon_g36_col": {
   "alpha": false,
   "color": "#232324",
   "h": 512,
   "source": "weapon_g36_col",
   "w": 512
+ },
+ "weapon_g36_scope_col": {
+  "alpha": false,
+  "color": "#2b2b2c",
+  "h": 256,
+  "source": "weapon_g36_scope_col",
+  "w": 512
+ },
+ "weapon_g36_scope_spec-r30g30_44839f6a.specular": {
+  "alpha": true,
+  "color": "#484848",
+  "exact": 2,
+  "h": 128,
+  "kind": "specular",
+  "source": "~weapon_g36_scope_spec-r30g30~44839f6a",
+  "w": 256
  },
  "weapon_g36_spec-r30g30b30_we_833b4d4f.specular": {
   "alpha": true,
@@ -29121,6 +29629,30 @@
   "source": "~weapon_g3_spec-r-61g-61b-61&~4f6b3aaf",
   "w": 256
  },
+ "weapon_holographic_col": {
+  "alpha": false,
+  "color": "#363736",
+  "h": 256,
+  "source": "weapon_holographic_col",
+  "w": 512
+ },
+ "weapon_holographic_nml.normal": {
+  "alpha": false,
+  "color": "#7d7c80",
+  "h": 128,
+  "kind": "normal",
+  "source": "weapon_holographic_nml",
+  "w": 256
+ },
+ "weapon_holographic_spc-r34g3_75307947.specular": {
+  "alpha": true,
+  "color": "#353535",
+  "exact": 2,
+  "h": 128,
+  "kind": "specular",
+  "source": "~weapon_holographic_spc-r34g3~75307947",
+  "w": 256
+ },
  "weapon_laser_sight_a_col": {
   "alpha": false,
   "color": "#3f3e3b",
@@ -29136,6 +29668,22 @@
   "kind": "specular",
   "source": "~weapon_laser_sight_a_spec-r-~14d7f668",
   "w": 128
+ },
+ "weapon_m203_grenade_col": {
+  "alpha": false,
+  "color": "#565145",
+  "h": 128,
+  "source": "weapon_m203_grenade_col",
+  "w": 256
+ },
+ "weapon_m203_grenade_spc-r65g_dad0da51.specular": {
+  "alpha": true,
+  "color": "#5d5d5d",
+  "exact": 2,
+  "h": 128,
+  "kind": "specular",
+  "source": "~weapon_m203_grenade_spc-r65g~dad0da51",
+  "w": 256
  },
  "weapon_m4_col": {
   "alpha": false,
@@ -29282,6 +29830,38 @@
   "source": "~weapon_p90_spc-r65g65b65&wea~ff8cb4f7",
   "w": 256
  },
+ "weapon_parbolic_knife_col": {
+  "alpha": false,
+  "color": "#4c4c4c",
+  "h": 256,
+  "source": "weapon_parbolic_knife_col",
+  "w": 256
+ },
+ "weapon_parbolic_knife_spc-rg_20e5f788.specular": {
+  "alpha": true,
+  "color": "#71737a",
+  "exact": 2,
+  "h": 256,
+  "kind": "specular",
+  "source": "~weapon_parbolic_knife_spc-rg~20e5f788",
+  "w": 256
+ },
+ "weapon_peq6_col": {
+  "alpha": false,
+  "color": "#2c2d29",
+  "h": 128,
+  "source": "weapon_peq6_col",
+  "w": 256
+ },
+ "weapon_peq6_spc-r-59g-59b-59_4ef712bb.specular": {
+  "alpha": true,
+  "color": "#4c4f48",
+  "exact": 2,
+  "h": 128,
+  "kind": "specular",
+  "source": "~weapon_peq6_spc-r-59g-59b-59~4ef712bb",
+  "w": 256
+ },
  "weapon_power_drill_col": {
   "alpha": false,
   "color": "#3d2c2a",
@@ -29306,6 +29886,21 @@
   "source": "~~weapon_power_drill_spc-rgb&~fba295ab",
   "w": 256
  },
+ "weapon_red_cross_background": {
+  "alpha": true,
+  "color": "#909090",
+  "exact": 2,
+  "h": 128,
+  "source": "weapon_red_cross_background",
+  "w": 128
+ },
+ "weapon_red_dot_reflexsight": {
+  "alpha": false,
+  "color": "#0b0b0b",
+  "h": 32,
+  "source": "weapon_red_dot_reflexsight",
+  "w": 32
+ },
  "weapon_red_scope_col": {
   "alpha": false,
   "color": "#4e2210",
@@ -29322,6 +29917,39 @@
   "source": "~weapon_red_scope_spc-r65g65b~d4364490",
   "w": 64
  },
+ "weapon_reflex_lens_col": {
+  "alpha": true,
+  "color": "#5b3700",
+  "exact": 2,
+  "h": 64,
+  "source": "weapon_reflex_lens_col",
+  "w": 64
+ },
+ "weapon_reflex_lens_spc-rgb_w_e0ac07de.specular": {
+  "alpha": true,
+  "color": "#d14b08",
+  "exact": 2,
+  "h": 64,
+  "kind": "specular",
+  "source": "~weapon_reflex_lens_spc-rgb&w~e0ac07de",
+  "w": 64
+ },
+ "weapon_reflex_sight_col": {
+  "alpha": false,
+  "color": "#2a2a2a",
+  "h": 256,
+  "source": "weapon_reflex_sight_col",
+  "w": 512
+ },
+ "weapon_reflex_sight_spc-rgbl-11.specular": {
+  "alpha": true,
+  "color": "#79797a",
+  "exact": 2,
+  "h": 128,
+  "kind": "specular",
+  "source": "~weapon_reflex_sight_spc-rgbl-11",
+  "w": 256
+ },
  "weapon_rpd_col": {
   "alpha": false,
   "color": "#332e2a",
@@ -29336,6 +29964,22 @@
   "h": 128,
   "kind": "specular",
   "source": "~weapon_rpd_spc-r30g30b30&wea~081b41c8",
+  "w": 256
+ },
+ "weapon_rpg7_col": {
+  "alpha": false,
+  "color": "#40352b",
+  "h": 512,
+  "source": "weapon_rpg7_col",
+  "w": 512
+ },
+ "weapon_rpg7_spec-rgb_weapon__06163c5b.specular": {
+  "alpha": true,
+  "color": "#706963",
+  "exact": 2,
+  "h": 256,
+  "kind": "specular",
+  "source": "~weapon_rpg7_spec-rgb&weapon_~06163c5b",
   "w": 256
  },
  "weapon_saw_col": {
@@ -29384,6 +30028,62 @@
   "h": 128,
   "kind": "specular",
   "source": "~weapon_stinger_spc-rgb&weapo~5a9d5e03",
+  "w": 256
+ },
+ "weapon_suppressor_a_col": {
+  "alpha": false,
+  "color": "#2c2e31",
+  "h": 32,
+  "source": "weapon_suppressor_a_col",
+  "w": 128
+ },
+ "weapon_suppressor_a_spec-r-5_7d745564.specular": {
+  "alpha": true,
+  "color": "#4b4c4e",
+  "exact": 2,
+  "h": 32,
+  "kind": "specular",
+  "source": "~weapon_suppressor_a_spec-r-5~7d745564",
+  "w": 128
+ },
+ "weapon_suppressor_b_col": {
+  "alpha": false,
+  "color": "#373734",
+  "h": 32,
+  "source": "weapon_suppressor_b_col",
+  "w": 128
+ },
+ "weapon_suppressor_b_spc-r-59_afa8576d.specular": {
+  "alpha": true,
+  "color": "#676768",
+  "exact": 2,
+  "h": 32,
+  "kind": "specular",
+  "source": "~weapon_suppressor_b_spc-r-59~afa8576d",
+  "w": 128
+ },
+ "weapon_trinium_site_c": {
+  "alpha": true,
+  "color": "#1d5e28",
+  "exact": 2,
+  "h": 32,
+  "source": "weapon_trinium_site_c",
+  "w": 16
+ },
+ "weapon_usp_c": {
+  "alpha": false,
+  "color": "#2f3230",
+  "h": 256,
+  "source": "weapon_usp_c",
+  "w": 256
+ },
+ "weapon_usp_s-r-17g-17b-17_we_765326da.specular": {
+  "alpha": true,
+  "color": "#373737",
+  "exact": 2,
+  "h": 256,
+  "kind": "specular",
+  "source": "~weapon_usp_s-r-17g-17b-17&we~765326da",
   "w": 256
  },
  "weaponscase_nml.normal": {

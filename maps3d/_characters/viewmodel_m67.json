@@ -1,0 +1,145 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "viewmodel_m67",
+ "kind": "viewmodel",
+ "faction": null,
+ "file": "viewmodel_m67.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 11844
+  },
+  "normal": {
+   "offset": 11844,
+   "length": 3948
+  },
+  "uv": {
+   "offset": 15792,
+   "length": 7896
+  },
+  "skinIndex": {
+   "offset": 23688,
+   "length": 3948
+  },
+  "skinWeight": {
+   "offset": 27636,
+   "length": 3948
+  },
+  "index": {
+   "offset": 31584,
+   "length": 8592
+  },
+  "color": {
+   "offset": 40176,
+   "length": 3948
+  }
+ },
+ "vertexCount": 987,
+ "triangleCount": 1432,
+ "bones": [
+  {
+   "name": "j_gun",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "tag_clip",
+   "parent": 0,
+   "pos": [
+    0.0,
+    0.0,
+    1.1928
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    0.0,
+    0.0,
+    1.1928
+   ]
+  },
+  {
+   "name": "j_grenade_activate_clip",
+   "parent": 1,
+   "pos": [
+    -0.5095,
+    0.3756,
+    2.0137
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    -0.5095,
+    0.3756,
+    0.8209
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 1440,
+   "material": 0
+  },
+  {
+   "indexStart": 1440,
+   "indexCount": 2856,
+   "material": -1
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_m67_grenade",
+   "texture": "_textures/m67_grenade_col.webp",
+   "textureAlpha": false,
+   "color": "#55564c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/m67_grenade_spc-rgb_m67_gren_8648b09e.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -1.72,
+   -1.48,
+   -1.43
+  ],
+  "maxs": [
+   1.48,
+   1.48,
+   2.36
+  ]
+ }
+}

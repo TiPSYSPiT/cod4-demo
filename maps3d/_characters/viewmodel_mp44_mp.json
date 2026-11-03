@@ -1,0 +1,190 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "viewmodel_mp44_mp",
+ "kind": "viewmodel",
+ "faction": null,
+ "file": "viewmodel_mp44_mp.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 25464
+  },
+  "normal": {
+   "offset": 25464,
+   "length": 8488
+  },
+  "uv": {
+   "offset": 33952,
+   "length": 16976
+  },
+  "skinIndex": {
+   "offset": 50928,
+   "length": 8488
+  },
+  "skinWeight": {
+   "offset": 59416,
+   "length": 8488
+  },
+  "index": {
+   "offset": 67904,
+   "length": 9780
+  },
+  "color": {
+   "offset": 77684,
+   "length": 8488
+  }
+ },
+ "vertexCount": 2122,
+ "triangleCount": 1630,
+ "bones": [
+  {
+   "name": "j_gun",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "name": "j_bolt",
+   "parent": 0,
+   "pos": [
+    4.6905,
+    0.1345,
+    3.1293
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    4.6905,
+    0.1345,
+    3.1293
+   ]
+  },
+  {
+   "name": "tag_brass",
+   "parent": 0,
+   "pos": [
+    3.7697,
+    -0.6825,
+    2.5953
+   ],
+   "quat": [
+    -0.212622,
+    -0.212622,
+    -0.674367,
+    0.674398
+   ],
+   "trans": [
+    3.7697,
+    -0.6825,
+    2.5953
+   ]
+  },
+  {
+   "name": "tag_clip",
+   "parent": 0,
+   "pos": [
+    5.4023,
+    0.015,
+    -1.9866
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    5.4023,
+    0.015,
+    -1.9866
+   ]
+  },
+  {
+   "name": "tag_flash",
+   "parent": 0,
+   "pos": [
+    24.1682,
+    -0.0121,
+    1.9973
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trans": [
+    24.1682,
+    -0.0121,
+    1.9973
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 366,
+   "material": 0
+  },
+  {
+   "indexStart": 366,
+   "indexCount": 372,
+   "material": 0
+  },
+  {
+   "indexStart": 738,
+   "indexCount": 4152,
+   "material": 0
+  }
+ ],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_mp44",
+   "texture": "_textures/weapon_mp44_c.webp",
+   "textureAlpha": false,
+   "color": "#2a2828",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_mp44_s-r-49g-49b-49_w_2103b12f.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "bounds": {
+  "mins": [
+   -13.34,
+   -0.81,
+   -7.89
+  ],
+  "maxs": [
+   24.17,
+   1.18,
+   4.98
+  ]
+ }
+}

@@ -28,6 +28,7 @@
  * (camera's) right vector. The random numbers are seeded per event: seeking and exporting give the
  * same sounds. */
 import { loadDataManifest, dataUrl } from './data.js';
+import { claimAudio } from '../app/audioUnlock.js';
 
 const BASE = { dir: 'maps3d/' };            // the exported data (tools: setSoundBase)
 const MAX_VOICES = 48;                        // the game mixes 32 3D + 16 2D + streams
@@ -38,7 +39,9 @@ const RESTART_MS = 2500;                      // on seek / play: sounds started 
 const EV = { FOLIAGE: 1, SOUND_ALIAS: 3, SOUND_ALIAS_MASTER: 4, RELOAD: 15, RELOAD_EMPTY: 16, RELOAD_START: 17, RELOAD_END: 18,
   RAISE: 21, FIRST_RAISE: 22, PUTAWAY: 23, ALT: 24, PULLBACK: 25, FIRE: 26, FIRE_LAST: 27, RECHAMBER: 28, MELEE_SWIPE: 30,
   MELEE_HIT: 35, MELEE_MISS: 36, FIRE_MG42: 38, GRENADE_BOUNCE: 44, FLASHBANG_EXPLODE: 48, SPRINT: 72, RUN: 73, WALK: 74,
-  PRONE: 75, JUMP: 76, LAND: 77, LAND_PAIN: 106 };
+  PRONE: 75, JUMP: 76, LAND: 77, LAND_PAIN: 106, ITEM_PICKUP: 9, AMMO_PICKUP: 10, NOAMMO: 11, PREP_OFFHAND: 32, USE_OFFHAND: 33 };
+// HoldBreathUpdate: the sniper's breath (player_breath_hold_time 4.5 s: longer -> the gasp; player_breath_snd_delay 1 s)
+const BREATH_HOLD_MS = 4500, BREATH_DELAY_MS = 1000;
 const WEAPON_EVENT = { [EV.RELOAD]: 'reloadSound', [EV.RELOAD_EMPTY]: 'reloadEmptySound', [EV.RELOAD_START]: 'reloadStartSound',
   [EV.RELOAD_END]: 'reloadEndSound', [EV.RAISE]: 'raiseSound', [EV.FIRST_RAISE]: 'firstRaiseSound', [EV.PUTAWAY]: 'putawaySound',
   [EV.ALT]: 'altSwitchSound', [EV.PULLBACK]: 'pullbackSound', [EV.RECHAMBER]: 'rechamberSound', [EV.MELEE_SWIPE]: 'meleeSwipeSound' };
@@ -217,9 +220,9 @@ export class SoundSystem {
     const d = M.d, S = d.sounds3d || {}, cues = [];
     const W = name => this.weaponSounds[name] || {};
     const at = (cl, t, dz = 0) => { const s = M.sampleAt(cl, t); return s && s.age < 1000 ? [s.x, s.y, s.z + dz] : null; };
-    const add = (t, alias, pos, ent, cl = null, plr = null) => {
+    const add = (t, alias, pos, ent, cl = null, plr = null, own = false) => {
       if (!this.has(alias) && !this.has(plr)) { if (alias) this.missing.add(alias); return; }
-      cues.push({ t, alias: this.has(alias) ? alias : null, plr: this.has(plr) ? plr : null, pos, ent, cl, k: cues.length });
+      cues.push({ t, alias: this.has(alias) ? alias : null, plr: this.has(plr) ? plr : null, pos, ent, cl, k: cues.length, own });
     };
     for (const r of S.events || []) {
       const [t, cl, ev, parm, wname, quiet] = r, w = W(wname), q = quiet ? 'q' : '';
@@ -232,6 +235,12 @@ export class SoundSystem {
       } else if (ev === EV.MELEE_HIT) add(t, parm ? 'melee_knife_hit_body' : w.meleeHitSound || 'melee_hit', at(cl, t, 40), cl, cl);
       else if (ev === EV.MELEE_MISS) add(t, parm ? 'melee_knife_hit_other' : w.meleeMissSound || 'melee_hit_other', at(cl, t, 40), cl, cl);
       else if (ev === EV.FOLIAGE) add(t, 'movement_foliage', at(cl, t), cl, cl);
+      else if (ev === EV.ITEM_PICKUP) add(t, w.pickupSound, at(cl, t, 40), cl, cl, w.pickupSoundPlayer);
+      else if (ev === EV.AMMO_PICKUP) add(t, w.ammoPickupSound, at(cl, t, 40), cl, cl, w.ammoPickupSoundPlayer);
+      else if (ev === EV.NOAMMO) add(t, w.emptyFireSound, at(cl, t, 40), cl, cl, w.emptyFireSoundPlayer);
+      // the recorder's own (CG_PrepOffHand: pullbackSound, CG_UseOffHand: fireSound at the hand)
+      else if (ev === EV.PREP_OFFHAND) add(t, null, at(cl, t, 40), cl, cl, w.pullbackSound, true);
+      else if (ev === EV.USE_OFFHAND) add(t, w.fireSound, at(cl, t, 40), cl, cl, null, true);
       else if (ev >= EV.SPRINT && ev <= EV.JUMP) {
         // footsteps: the surface is the event's parameter; the gear rattle with each step
         const kind = { [EV.SPRINT]: 'sprint', [EV.RUN]: 'run', [EV.WALK]: 'walk', [EV.PRONE]: 'prone', [EV.JUMP]: 'run' }[ev];
@@ -243,6 +252,25 @@ export class SoundSystem {
         const pain = ev >= EV.LAND_PAIN, surf = ev - (pain ? EV.LAND_PAIN : EV.LAND), pos = at(cl, t);
         add(t, this.surface(q + 'land', surf), pos, cl, cl, this.surface(q + 'land_plr', surf));
         if (pain) add(t, 'land_damage', pos, -1, cl);
+      }
+    }
+    // HoldBreathUpdate (the recorder in first person): breath in when the sniper starts holding it (weapFlags 4),
+    // breath out on letting go - the gasp after holding longer than the hold time; at most one per second
+    const PW = d.psWeapon;
+    if (PW) {
+      let start = null, cl = -1, delayUntil = -Infinity;
+      for (let i = 0; i < PW.t.length; i++) {
+        const on = (PW.weapFlags[i] & 4) !== 0, t = PW.t[i];
+        if (start != null && (!on || PW.client[i] !== cl)) {
+          const held = t - start;
+          if (held > BREATH_HOLD_MS) add(t, null, null, -1, cl, 'weap_sniper_breathgasp', true);
+          else if (t >= delayUntil) { add(t, null, null, -1, cl, 'weap_sniper_breathout', true); delayUntil = t + BREATH_DELAY_MS; }
+          start = null;
+        }
+        if (on && start == null) {
+          start = t; cl = PW.client[i];
+          if (t >= delayUntil) { add(t, null, null, -1, cl, 'weap_sniper_breathin', true); delayUntil = t + BREATH_DELAY_MS; }
+        }
       }
     }
     for (const r of S.entEvents || []) {
@@ -370,6 +398,7 @@ export class SoundSystem {
       if (!p) return null;
       cue = Object.assign({}, cue, { pos: p, line: null });
     }
+    if (cue.own && cue.cl !== fpClient) return null;            // (only the player seen in first person hears it)
     const rnd = random(seedOf(cue.t, cue.k));
     const name = cue.cl != null && cue.cl === fpClient && cue.plr ? cue.plr : cue.alias || cue.plr;
     const out = [];
@@ -399,9 +428,9 @@ export class SoundSystem {
   enable(on) {
     this.enabled = on;
     if (on && !this.ctx) {
-      const AC = window.AudioContext || window.webkitAudioContext;
-      if (!AC) return false;
-      this.ctx = new AC({ latencyHint: 'interactive' });
+      // the page's context (audioUnlock.js): made in the user's first gesture, so the browser lets it play
+      this.ctx = claimAudio(true);
+      if (!this.ctx) return false;
       this.out = this.ctx.createGain();
       this.out.gain.value = this.volume;
       const comp = this.ctx.createDynamicsCompressor();     // many sounds at once must not clip
@@ -665,7 +694,10 @@ export class SoundSystem {
 
   dispose() {
     this.stopAll();
-    if (this.ctx) this.ctx.close().catch(() => null);
+    // the page's context stays (the next demo's sounds use it): only this system's nodes go
+    if (this.out) this.out.disconnect();
+    if (this.comp) this.comp.disconnect();
+    if (this.ctx) this.ctx.suspend().catch(() => null);
     this.ctx = null;
   }
 }
