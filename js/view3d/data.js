@@ -62,11 +62,19 @@ async function fail(url, r, bytes, message) {
   throw new DataError(message);
 }
 
-/** fetch a maps3d file (versioned URL, status checked) -> Response */
+/** fetch a maps3d file (versioned URL, status checked) -> Response. A network error (no response: a connection
+ *  the server dropped while the map's files load at once) is tried again 3 times, 0.3 / 0.9 / 2 s later; an HTTP
+ *  error is not (a missing file stays missing) */
 export async function fetchData(url, opts) {
   await loadDataManifest();
   let r;
-  try { r = await fetch(dataUrl(url), opts); } catch (err) { return fail(url, null, null, name(url) + ': ' + err.message); }
+  for (let k = 0; ; k++) {
+    try { r = await fetch(dataUrl(url), opts); break; }
+    catch (err) {
+      if (k >= 3 || (opts && opts.signal && opts.signal.aborted)) return fail(url, null, null, name(url) + ': ' + err.message);
+      await new Promise(res => setTimeout(res, [300, 900, 2000][k]));
+    }
+  }
   if (!r.ok) return fail(url, r, null, name(url) + ': HTTP ' + r.status + (r.status === 404 ? ' (not found - not deployed?)' : ''));
   return r;
 }

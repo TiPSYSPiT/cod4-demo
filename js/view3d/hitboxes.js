@@ -10,7 +10,7 @@
  * Corpses are not hit: MASK_SHOT has no CONTENTS_CORPSE. */
 import * as THREE from 'three';
 import { stancePose, rigModel, Character } from './characters.js';
-import { weaponModelName } from './actors.js';
+import { weaponModelName, isPromod } from './actors.js';
 import { dataUrl } from './data.js';
 
 const NEAR = 80;                              // a ray farther than this from the player's centre misses it
@@ -148,7 +148,7 @@ export class HitBoxes {
     this.ready = (async () => {
       try { this.index = await (await fetch(dataUrl(this.dir + 'index.json'))).json(); } catch (err) { this.index = {}; }
       // the weapons the players hold (their tag_flash: where the client starts another player's shot)
-      try { this.weaponTable = (await (await fetch(dataUrl(this.dir + 'weapons.json'))).json()).weapons; } catch (err) { this.weaponTable = null; }
+      try { const j = await (await fetch(dataUrl(this.dir + 'weapons.json'))).json(); this.weaponTable = j && j.weapons ? Object.assign(j, { usePromod: isPromod(M) }) : null; } catch (err) { this.weaponTable = null; }
       this.M = M;
       if (this.weaponTable && M.weaponName) {
         for (const P of Object.values(M.d.positions || {})) {

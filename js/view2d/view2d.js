@@ -70,7 +70,12 @@ export class View2D {
 
   show() { this.visible = true; this.stage.hidden = false; this.renderer.resize(); fadeHint(this.ctrlHint); }
   hide() { this.visible = false; this.stage.hidden = true; if (this.heatUi.close) this.heatUi.close(); }
-  destroy() { window.removeEventListener('keydown', this.onKey); if (this.heatUi.close) this.heatUi.close(); this.stage.remove(); }
+  destroy() {
+    window.removeEventListener('keydown', this.onKey);
+    if (this.renderer.offWindow) this.renderer.offWindow();
+    if (this.heatUi.close) this.heatUi.close();
+    this.stage.remove();
+  }
 
   /* ---------- one frame ---------- */
   draw(t) {

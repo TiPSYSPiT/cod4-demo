@@ -1,128 +1,2478 @@
 {
- "format": "cod4-demo3d-weapons/1",
- "source": "common_mp.ff",
+ "format": "cod4-demo3d-weapons/2",
+ "source": [
+  "common_mp.ff",
+  "main/*.iwd weapons/mp",
+  "promod_x-master weapons/mp"
+ ],
  "attachTo": "tag_weapon_right",
+ "knifeTag": "tag_inhand",
  "weapons": {
-  "ak47": {
-   "model": "weapon_ak47",
-   "silencer": "weapon_ak47_silencer",
-   "gl": "weapon_ak47_grenadier"
+  "airstrike_mp": {
+   "models": [
+    "weapon_c4",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
   },
-  "ak74u": {
-   "model": "weapon_ak74u",
-   "silencer": "weapon_ak74u_supressed"
+  "ak47_acog_mp": {
+   "models": [
+    "weapon_ak47",
+    "weapon_ak47_mp_brock",
+    "weapon_ak47_mp_bshdwl",
+    "weapon_ak47_mp_bwmrpt",
+    "weapon_ak47_mp_cmdtgr",
+    "weapon_ak47_mp_stagger",
+    "weapon_ak47_gold",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
   },
-  "m16": {
-   "model": "weapon_m16_mp",
-   "silencer": "weapon_m16_silencer_mp",
-   "gl": "weapon_m16gr_sp"
+  "ak47_gl_mp": {
+   "models": [
+    "weapon_ak47_grenadier",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
   },
-  "m4": {
-   "model": "weapon_m4_mp",
-   "silencer": "weapon_m4_silencer_mp",
-   "gl": "weapon_m4m203_mp"
+  "ak47_mp": {
+   "models": [
+    "weapon_ak47",
+    "weapon_ak47_mp_brock",
+    "weapon_ak47_mp_bshdwl",
+    "weapon_ak47_mp_bwmrpt",
+    "weapon_ak47_mp_cmdtgr",
+    "weapon_ak47_mp_stagger",
+    "weapon_ak47_gold",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
   },
-  "g3": {
-   "model": "weapon_g3",
-   "silencer": "weapon_g3_silencer",
-   "gl": "weapon_g3m203"
+  "ak47_reflex_mp": {
+   "models": [
+    "weapon_ak47",
+    "weapon_ak47_mp_brock",
+    "weapon_ak47_mp_bshdwl",
+    "weapon_ak47_mp_bwmrpt",
+    "weapon_ak47_mp_cmdtgr",
+    "weapon_ak47_mp_stagger",
+    "weapon_ak47_gold",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
   },
-  "g36c": {
-   "model": "weapon_g36_mp",
-   "silencer": "weapon_g36csd_mp",
-   "gl": "weapon_g36m203"
+  "ak47_silencer_mp": {
+   "models": [
+    "weapon_ak47_silencer",
+    "weapon_ak47sd_mp_brock",
+    "weapon_ak47sd_mp_bwmrpt",
+    "weapon_ak47sd_mp_bwmrpt",
+    "weapon_ak47sd_mp_cmdtgr",
+    "weapon_ak47sd_mp_stagger",
+    "weapon_ak47_silencer_gold",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
   },
-  "m14": {
-   "model": "weapon_m14_mp",
-   "gl": "weapon_m14_gl_scout_mp"
+  "ak74u_acog_mp": {
+   "models": [
+    "weapon_ak74u",
+    "weapon_ak74u_mp_brock",
+    "weapon_ak74u_mp_bshdwl",
+    "weapon_ak74u_mp_bwmrpt",
+    "weapon_ak74u_mp_cmdtgr",
+    "weapon_ak74u_mp_stagger",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
   },
-  "mp44": {
-   "model": "weapon_mp44"
+  "ak74u_mp": {
+   "models": [
+    "weapon_ak74u",
+    "weapon_ak74u_mp_brock",
+    "weapon_ak74u_mp_bshdwl",
+    "weapon_ak74u_mp_bwmrpt",
+    "weapon_ak74u_mp_cmdtgr",
+    "weapon_ak74u_mp_stagger",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
   },
-  "mp5": {
-   "model": "weapon_mp5",
-   "silencer": "weapon_mp5sd"
+  "ak74u_reflex_mp": {
+   "models": [
+    "weapon_ak74u",
+    "weapon_ak74u_mp_brock",
+    "weapon_ak74u_mp_bshdwl",
+    "weapon_ak74u_mp_bwmrpt",
+    "weapon_ak74u_mp_cmdtgr",
+    "weapon_ak74u_mp_stagger",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
   },
-  "skorpion": {
-   "model": "weapon_skorpion",
-   "silencer": "weapon_skorpion_sd"
+  "ak74u_silencer_mp": {
+   "models": [
+    "weapon_ak74u_supressed",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
   },
-  "uzi": {
-   "model": "weapon_mini_uzi",
-   "silencer": "weapon_mini_uzi_silencer"
+  "artillery_mp": {
+   "models": [
+    "weapon_claymore",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": null
   },
-  "p90": {
-   "model": "weapon_p90",
-   "silencer": "weapon_p90_sd"
+  "aw50_acog_mp": {
+   "models": [
+    "weapon_dragunov",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
   },
-  "m1014": {
-   "model": "weapon_benelli_super_90"
+  "aw50_mp": {
+   "models": [
+    "weapon_dragunov",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
   },
-  "winchester1200": {
-   "model": "weapon_winchest1200"
+  "barrett_acog_mp": {
+   "models": [
+    "weapon_m82",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
   },
-  "rpd": {
-   "model": "weapon_rpd"
+  "barrett_mp": {
+   "models": [
+    "weapon_m82",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
   },
-  "saw": {
-   "model": "weapon_saw"
+  "beretta_mp": {
+   "models": [
+    "weapon_beretta",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
   },
-  "m60e4": {
-   "model": "weapon_m60"
+  "beretta_silencer_mp": {
+   "models": [
+    "weapon_beretta_silencer",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
   },
-  "dragunov": {
-   "model": "weapon_dragunov"
+  "brick_blaster_mp": {
+   "models": [
+    "weapon_usp",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": null
   },
-  "m40a3": {
-   "model": "weapon_m40a3"
+  "c4_mp": {
+   "models": [
+    "weapon_c4_mp",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
   },
-  "barrett": {
-   "model": "weapon_m82"
+  "claymore_mp": {
+   "models": [
+    "weapon_claymore_no_legs",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
   },
-  "remington700": {
-   "model": "weapon_remington700"
+  "colt45_mp": {
+   "models": [
+    "weapon_colt1911_black",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
   },
-  "m21": {
-   "model": "weapon_m14_scout_mp",
-   "silencer": "weapon_m14sd_scout"
+  "colt45_silencer_mp": {
+   "models": [
+    "weapon_colt1911_silencer",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
   },
-  "beretta": {
-   "model": "weapon_beretta",
-   "silencer": "weapon_beretta_silencer"
+  "concussion_grenade_mp": {
+   "models": [
+    "weapon_concussion_grenade",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": null
   },
-  "usp": {
-   "model": "weapon_usp",
-   "silencer": "weapon_usp_silencer"
+  "deserteagle_mp": {
+   "models": [
+    "weapon_desert_eagle_silver",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
   },
-  "colt45": {
-   "model": "weapon_colt1911_black",
-   "silencer": "weapon_colt1911_silencer"
+  "deserteaglegold_mp": {
+   "models": [
+    "weapon_desert_eagle_gold",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
   },
-  "deserteagle": {
-   "model": "weapon_desert_eagle_silver"
+  "destructible_car": {
+   "models": [
+    "weapon_claymore",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": null
   },
-  "rpg": {
-   "model": "weapon_rpg7"
+  "dragunov_acog_mp": {
+   "models": [
+    "weapon_dragunov",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
   },
-  "c4": {
-   "model": "weapon_c4"
+  "dragunov_mp": {
+   "models": [
+    "weapon_dragunov",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
   },
-  "claymore": {
-   "model": "weapon_claymore"
+  "flash_grenade_mp": {
+   "models": [
+    "weapon_m84_flashbang_grenade",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": null
   },
-  "frag_grenade": {
-   "model": "weapon_m67_grenade"
+  "frag_grenade_mp": {
+   "models": [
+    "weapon_m67_grenade",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": null
   },
-  "smoke_grenade": {
-   "model": "weapon_us_smoke_grenade"
+  "frag_grenade_short_mp": {
+   "models": [
+    "weapon_m67_grenade",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": null
   },
-  "concussion_grenade": {
-   "model": "weapon_concussion_grenade"
+  "g36c_acog_mp": {
+   "models": [
+    "weapon_g36_mp",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "g36c_gl_mp": {
+   "models": [
+    "weapon_g36m203",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "g36c_mp": {
+   "models": [
+    "weapon_g36_mp",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "g36c_reflex_mp": {
+   "models": [
+    "weapon_g36_mp",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "g36c_silencer_mp": {
+   "models": [
+    "weapon_g36csd_mp",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "g3_acog_mp": {
+   "models": [
+    "weapon_g3",
+    "weapon_g3_mp_brock",
+    "weapon_g3_mp_bshdwl",
+    "weapon_g3_mp_bwmrpt",
+    "weapon_g3_mp_cmdtgr",
+    "weapon_g3_mp_stagger",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "g3_gl_mp": {
+   "models": [
+    "weapon_g3m203",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "g3_mp": {
+   "models": [
+    "weapon_g3",
+    "weapon_g3_mp_brock",
+    "weapon_g3_mp_bshdwl",
+    "weapon_g3_mp_bwmrpt",
+    "weapon_g3_mp_cmdtgr",
+    "weapon_g3_mp_stagger",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "g3_reflex_mp": {
+   "models": [
+    "weapon_g3",
+    "weapon_g3_mp_brock",
+    "weapon_g3_mp_bshdwl",
+    "weapon_g3_mp_bwmrpt",
+    "weapon_g3_mp_cmdtgr",
+    "weapon_g3_mp_stagger",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "g3_silencer_mp": {
+   "models": [
+    "weapon_g3_silencer",
+    "weapon_g3sd_mp_brock",
+    "weapon_g3sd_mp_bshdwl",
+    "weapon_g3sd_mp_bwmrpt",
+    "weapon_g3sd_mp_cmdtgr",
+    "weapon_g3sd_mp_stagger",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "gl_ak47_mp": {
+   "models": [
+    "weapon_ak47_grenadier",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "gl_g36c_mp": {
+   "models": [
+    "weapon_g36m203",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "gl_g3_mp": {
+   "models": [
+    "weapon_g3m203",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "gl_m14_mp": {
+   "models": [
+    "weapon_m14_gl_scout_mp",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "gl_m16_mp": {
+   "models": [
+    "weapon_m16gr_sp",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "gl_m4_mp": {
+   "models": [
+    "weapon_m4m203_mp",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "gl_mp": {
+   "models": [
+    "weapon_m16gr_sp",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "helicopter_mp": {
+   "models": [
+    "weapon_c4",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "location_selector_mp": {
+   "models": [
+    "weapon_ak47",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": null
+  },
+  "m1014_grip_mp": {
+   "models": [
+    "weapon_benelli_super_90",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "m1014_mp": {
+   "models": [
+    "weapon_benelli_super_90",
+    "weapon_benelli_super_90_mp_brock",
+    "weapon_benelli_super_90_mp_bshdwl",
+    "weapon_benelli_super_90_mp_bwmrpt",
+    "weapon_benelli_super_90_mp_cmdtgr",
+    "weapon_benelli_super_90_mp_stagger",
+    "weapon_benelli_super_90_gold",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "m1014_reflex_mp": {
+   "models": [
+    "weapon_benelli_super_90",
+    "weapon_benelli_super_90_mp_brock",
+    "weapon_benelli_super_90_mp_bshdwl",
+    "weapon_benelli_super_90_mp_bwmrpt",
+    "weapon_benelli_super_90_mp_cmdtgr",
+    "weapon_benelli_super_90_mp_stagger",
+    "weapon_benelli_super_90_gold",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "m14_acog_mp": {
+   "models": [
+    "weapon_m14_scout_mp",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "m14_gl_mp": {
+   "models": [
+    "weapon_m14_gl_scout_mp",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "m14_mp": {
+   "models": [
+    "weapon_m14_scout_mp",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "m14_reflex_mp": {
+   "models": [
+    "weapon_m14_scout_mp",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "m14_silencer_mp": {
+   "models": [
+    "weapon_m14sd_scout",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "m16_acog_mp": {
+   "models": [
+    "weapon_m16_mp",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "m16_gl_mp": {
+   "models": [
+    "weapon_m16gr_sp",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "m16_mp": {
+   "models": [
+    "weapon_m16_mp",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "m16_reflex_mp": {
+   "models": [
+    "weapon_m16_mp",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "m16_silencer_mp": {
+   "models": [
+    "weapon_m16_silencer_mp",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "m21_acog_mp": {
+   "models": [
+    "weapon_m14_mp",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "m21_mp": {
+   "models": [
+    "weapon_m14_mp",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "m40a3_acog_mp": {
+   "models": [
+    "weapon_m40a3",
+    "weapon_m40a3_mp_brock",
+    "weapon_m40a3_mp_bshdwl",
+    "weapon_m40a3_mp_bwmrpt",
+    "weapon_m40a3_mp_cmdtgr",
+    "weapon_m40a3_mp_stagger",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "m40a3_mp": {
+   "models": [
+    "weapon_m40a3",
+    "weapon_m40a3_mp_brock",
+    "weapon_m40a3_mp_bshdwl",
+    "weapon_m40a3_mp_bwmrpt",
+    "weapon_m40a3_mp_cmdtgr",
+    "weapon_m40a3_mp_stagger",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "m4_acog_mp": {
+   "models": [
+    "weapon_m4_mp",
+    "weapon_m4_mp_brock",
+    "weapon_m4_mp_bshdwl",
+    "weapon_m4_mp_bwmrpt",
+    "weapon_m4_mp_cmdtgr",
+    "weapon_m4_mp_stagger",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "m4_gl_mp": {
+   "models": [
+    "weapon_m4m203_mp",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "m4_mp": {
+   "models": [
+    "weapon_m4_mp",
+    "weapon_m4_mp_brock",
+    "weapon_m4_mp_bshdwl",
+    "weapon_m4_mp_bwmrpt",
+    "weapon_m4_mp_cmdtgr",
+    "weapon_m4_mp_stagger",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "m4_reflex_mp": {
+   "models": [
+    "weapon_m4_mp",
+    "weapon_m4_mp_brock",
+    "weapon_m4_mp_bshdwl",
+    "weapon_m4_mp_bwmrpt",
+    "weapon_m4_mp_cmdtgr",
+    "weapon_m4_mp_stagger",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "m4_silencer_mp": {
+   "models": [
+    "weapon_m4_silencer_mp",
+    "weapon_m4sd_mp_brock",
+    "weapon_m4sd_mp_bshdwl",
+    "weapon_m4sd_mp_bwmrpt",
+    "weapon_m4sd_mp_cmdtgr",
+    "weapon_m4sd_mp_stagger",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "m60e4_acog_mp": {
+   "models": [
+    "weapon_m60",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "m60e4_grip_mp": {
+   "models": [
+    "weapon_m60",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "m60e4_mp": {
+   "models": [
+    "weapon_m60",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "m60e4_reflex_mp": {
+   "models": [
+    "weapon_m60",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "mp44_mp": {
+   "models": [
+    "weapon_mp44",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "mp5_acog_mp": {
+   "models": [
+    "weapon_mp5",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "mp5_mp": {
+   "models": [
+    "weapon_mp5",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "mp5_reflex_mp": {
+   "models": [
+    "weapon_mp5",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "mp5_silencer_mp": {
+   "models": [
+    "weapon_mp5sd",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "p90_acog_mp": {
+   "models": [
+    "weapon_p90",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "p90_mp": {
+   "models": [
+    "weapon_p90",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "p90_reflex_mp": {
+   "models": [
+    "weapon_p90",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "p90_silencer_mp": {
+   "models": [
+    "weapon_p90_sd",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "radar_mp": {
+   "models": [
+    "weapon_c4",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "remington700_acog_mp": {
+   "models": [
+    "weapon_remington700",
+    "weapon_remington700_mp_brock",
+    "weapon_remington700_mp_bshdwl",
+    "weapon_remington700_mp_bwmrpt",
+    "weapon_remington700_mp_cmdtgr",
+    "weapon_remington700_mp_stagger",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "remington700_mp": {
+   "models": [
+    "weapon_remington700",
+    "weapon_remington700_mp_brock",
+    "weapon_remington700_mp_bshdwl",
+    "weapon_remington700_mp_bwmrpt",
+    "weapon_remington700_mp_cmdtgr",
+    "weapon_remington700_mp_stagger",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "rpd_acog_mp": {
+   "models": [
+    "weapon_rpd",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "rpd_grip_mp": {
+   "models": [
+    "weapon_rpd",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "rpd_mp": {
+   "models": [
+    "weapon_rpd",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "rpd_reflex_mp": {
+   "models": [
+    "weapon_rpd",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "rpg_mp": {
+   "models": [
+    "weapon_rpg7",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "saw_acog_mp": {
+   "models": [
+    "weapon_saw",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "saw_grip_mp": {
+   "models": [
+    "weapon_saw",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "saw_mp": {
+   "models": [
+    "weapon_saw",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "saw_reflex_mp": {
+   "models": [
+    "weapon_saw",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "skorpion_acog_mp": {
+   "models": [
+    "weapon_skorpion",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "skorpion_mp": {
+   "models": [
+    "weapon_skorpion",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "skorpion_reflex_mp": {
+   "models": [
+    "weapon_skorpion",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "skorpion_silencer_mp": {
+   "models": [
+    "weapon_skorpion_sd",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "smoke_grenade_mp": {
+   "models": [
+    "weapon_us_smoke_grenade",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": null
+  },
+  "usp_mp": {
+   "models": [
+    "weapon_usp",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "usp_silencer_mp": {
+   "models": [
+    "weapon_usp_silencer",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "uzi_acog_mp": {
+   "models": [
+    "weapon_mini_uzi",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "uzi_mp": {
+   "models": [
+    "weapon_mini_uzi",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "uzi_reflex_mp": {
+   "models": [
+    "weapon_mini_uzi",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "uzi_silencer_mp": {
+   "models": [
+    "weapon_mini_uzi_silencer",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "winchester1200_grip_mp": {
+   "models": [
+    "weapon_winchest1200",
+    "weapon_winchest1200_mp_brock",
+    "weapon_winchest1200_mp_bshdwl",
+    "weapon_winchest1200_mp_bwmrpt",
+    "weapon_winchest1200_mp_cmdtgr",
+    "weapon_winchest1200_mp_stagger",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "winchester1200_mp": {
+   "models": [
+    "weapon_winchest1200",
+    "weapon_winchest1200_mp_brock",
+    "weapon_winchest1200_mp_bshdwl",
+    "weapon_winchest1200_mp_bwmrpt",
+    "weapon_winchest1200_mp_cmdtgr",
+    "weapon_winchest1200_mp_stagger",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "winchester1200_reflex_mp": {
+   "models": [
+    "weapon_winchest1200",
+    "weapon_winchest1200_mp_brock",
+    "weapon_winchest1200_mp_bshdwl",
+    "weapon_winchest1200_mp_bwmrpt",
+    "weapon_winchest1200_mp_cmdtgr",
+    "weapon_winchest1200_mp_stagger",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "knife": "weapon_parabolic_knife"
+  }
+ },
+ "promod": {
+  "ak47_mp": {
+   "models": [
+    "weapon_ak47",
+    "weapon_ak47_mp_brock",
+    "weapon_ak47_mp_bshdwl",
+    "weapon_ak47_mp_bwmrpt",
+    "weapon_ak47_mp_cmdtgr",
+    "weapon_ak47_mp_stagger",
+    "weapon_ak47_gold",
+    "weapon_ak47",
+    "weapon_ak47",
+    "weapon_ak47",
+    "weapon_ak47",
+    "weapon_ak47",
+    "weapon_ak47",
+    "weapon_ak47",
+    "weapon_ak47",
+    "weapon_ak47"
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "ak74u_mp": {
+   "models": [
+    "weapon_ak74u",
+    "weapon_ak74u_mp_brock",
+    "weapon_ak74u_mp_bshdwl",
+    "weapon_ak74u_mp_bwmrpt",
+    "weapon_ak74u_mp_cmdtgr",
+    "weapon_ak74u_mp_stagger",
+    "weapon_ak74u",
+    "weapon_ak74u",
+    "weapon_ak74u",
+    "weapon_ak74u",
+    "weapon_ak74u",
+    "weapon_ak74u",
+    "weapon_ak74u",
+    "weapon_ak74u",
+    "weapon_ak74u",
+    "weapon_ak74u"
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "deserteagle_mp": {
+   "models": [
+    "weapon_desert_eagle_silver",
+    "weapon_desert_eagle_silver",
+    "weapon_desert_eagle_silver",
+    "weapon_desert_eagle_silver",
+    "weapon_desert_eagle_silver",
+    "weapon_desert_eagle_silver",
+    "weapon_desert_eagle_silver",
+    "weapon_desert_eagle_silver",
+    "weapon_desert_eagle_silver",
+    "weapon_desert_eagle_silver",
+    "weapon_desert_eagle_silver",
+    "weapon_desert_eagle_silver",
+    "weapon_desert_eagle_silver",
+    "weapon_desert_eagle_silver",
+    "weapon_desert_eagle_silver",
+    "weapon_desert_eagle_silver"
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "m40a3_mp": {
+   "models": [
+    "weapon_m40a3",
+    "weapon_m40a3_mp_brock",
+    "weapon_m40a3_mp_bshdwl",
+    "weapon_m40a3_mp_bwmrpt",
+    "weapon_m40a3_mp_cmdtgr",
+    "weapon_m40a3_mp_stagger",
+    "weapon_m40a3",
+    "weapon_m40a3",
+    "weapon_m40a3",
+    "weapon_m40a3",
+    "weapon_m40a3",
+    "weapon_m40a3",
+    "weapon_m40a3",
+    "weapon_m40a3",
+    "weapon_m40a3",
+    "weapon_m40a3"
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "m4_mp": {
+   "models": [
+    "weapon_m4_mp",
+    "weapon_m4_mp_brock",
+    "weapon_m4_mp_bshdwl",
+    "weapon_m4_mp_bwmrpt",
+    "weapon_m4_mp_cmdtgr",
+    "weapon_m4_mp_stagger",
+    "weapon_m4_mp",
+    "weapon_m4_mp",
+    "weapon_m4_mp",
+    "weapon_m4_mp",
+    "weapon_m4_mp",
+    "weapon_m4_mp",
+    "weapon_m4_mp",
+    "weapon_m4_mp",
+    "weapon_m4_mp",
+    "weapon_m4_mp"
+   ],
+   "knife": "weapon_parabolic_knife"
+  },
+  "remington700_mp": {
+   "models": [
+    "weapon_remington700",
+    "weapon_remington700_mp_brock",
+    "weapon_remington700_mp_bshdwl",
+    "weapon_remington700_mp_bwmrpt",
+    "weapon_remington700_mp_cmdtgr",
+    "weapon_remington700_mp_stagger",
+    "weapon_remington700",
+    "weapon_remington700",
+    "weapon_remington700",
+    "weapon_remington700",
+    "weapon_remington700",
+    "weapon_remington700",
+    "weapon_remington700",
+    "weapon_remington700",
+    "weapon_remington700",
+    "weapon_remington700"
+   ],
+   "knife": "weapon_parabolic_knife"
   }
  },
  "missing": [
-  "weapon_desert_eagle_gold",
-  "weapon_m84_flashbang_grenade"
+  "defaultweapon",
+  "weapon_ac130",
+  "weapon_at4",
+  "weapon_mk2fraggrenade"
  ],
- "note": "base weapon (C4.weapons.baseWeapon) -> world models: model, silencer, gl"
+ "note": "weapon -> its world models by variant (worldModel .. worldModel16: the entity's weaponModel) and the knife of a knife melee (worldKnifeModel, tag_inhand); 'promod': the weapons whose Promod file names others"
 }

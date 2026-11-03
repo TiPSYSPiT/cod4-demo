@@ -1,0 +1,76 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "weapon_claymore_no_legs",
+ "kind": "weapon",
+ "faction": null,
+ "file": "weapon_claymore_no_legs.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 3516
+  },
+  "normal": {
+   "offset": 3516,
+   "length": 1172
+  },
+  "uv": {
+   "offset": 4688,
+   "length": 2344
+  },
+  "skinIndex": {
+   "offset": 7032,
+   "length": 1172
+  },
+  "skinWeight": {
+   "offset": 8204,
+   "length": 1172
+  },
+  "index": {
+   "offset": 9376,
+   "length": 1344
+  },
+  "color": {
+   "offset": 10720,
+   "length": 1172
+  }
+ },
+ "vertexCount": 293,
+ "triangleCount": 224,
+ "bones": [
+  {
+   "name": "claymore_lod0",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 672,
+   "material": -1
+  }
+ ],
+ "materials": [],
+ "bounds": {
+  "mins": [
+   -5.04,
+   -6.04,
+   -0.62
+  ],
+  "maxs": [
+   3.34,
+   5.62,
+   2.15
+  ]
+ }
+}

@@ -10,7 +10,12 @@ export class Sky {
   /** dir: maps3d/<map>/, meta: world.json "sky" -> Sky or null */
   static async load(dir, meta) {
     if (!meta) return null;
-    const tex = await new THREE.TextureLoader().loadAsync(dataUrl(dir + meta.file));
+    // (tried again on a dropped connection, as the other textures: mapLoader.js loadTexture)
+    let tex;
+    for (let k = 0; ; k++) {
+      try { tex = await new THREE.TextureLoader().loadAsync(dataUrl(dir + meta.file)); break; }
+      catch (err) { if (k >= 3) throw err; await new Promise(r => setTimeout(r, [400, 1200, 2400][k])); }
+    }
     tex.flipY = false;
     tex.colorSpace = THREE.NoColorSpace;                    // gamma-space colours, like the rest of the view
     tex.generateMipmaps = false;

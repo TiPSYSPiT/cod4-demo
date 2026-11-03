@@ -36,15 +36,20 @@ function view(buf, a, what = 'world.bin') { const T = ARRAYS[a.type]; return che
 /** the textures that failed to load (maps3d files): drawn neutral grey, listed here and warned about */
 export const failedTextures = new Set();
 let grey = null;
-/** load a maps3d texture; on an error the texture gets a neutral grey 1 x 1 image instead of none - three
- *  draws a texture without an image black - and a console warning */
+/** load a maps3d texture; a failed load is tried again (3 times, 0.4 / 1.2 / 2.4 s later: a server that drops
+ *  connections under the load of a map's hundreds of images), then the texture gets a neutral grey 1 x 1 image
+ *  instead of none - three draws a texture without an image black - and a console warning */
 export function loadTexture(url, loader = new THREE.TextureLoader()) {
-  const t = loader.load(dataUrl(url), undefined, undefined, () => {
+  const t = new THREE.Texture();
+  const fail = () => {
     failedTextures.add(url);
     console.warn('texture not loaded - drawn neutral grey:', url);
     if (!grey) { grey = document.createElement('canvas'); grey.width = grey.height = 1; const g = grey.getContext('2d'); g.fillStyle = '#808080'; g.fillRect(0, 0, 1, 1); }
     t.image = grey; t.needsUpdate = true;
-  });
+  };
+  const attempt = n => loader.load(dataUrl(url), loaded => { t.image = loaded.image; t.needsUpdate = true; loaded.dispose(); }, undefined,
+    () => (n < 3 ? setTimeout(() => attempt(n + 1), [400, 1200, 2400][n]) : fail()));
+  attempt(0);
   return t;
 }
 

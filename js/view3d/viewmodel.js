@@ -19,7 +19,7 @@
 import * as THREE from 'three';
 import { toLocal } from './characters.js';
 import { gridLit, objectLighting, setObjectLighting } from './lighting.js';
-import { weaponModelName } from './actors.js';
+import { weaponModelName, isPromod } from './actors.js';
 import { ViewAnimator } from './viewanim.js';
 import { loadTexture } from './mapLoader.js';
 
@@ -56,11 +56,7 @@ function reticleTexture(kind) {
   return t;
 }
 
-/** the demo's server ran Promod (its own weapon files: viewmodels.json "promod") */
-export function isPromod(M) {
-  const m = M && M.d && M.d.meta;
-  return !!(m && (/promod/i.test(m.mod || '') || /promod/i.test(m.fsGame || '') || m.promodVersion));
-}
+export { isPromod };
 
 export class ViewModel {
   /** library: the CharacterLibrary (models, viewmodels.json, the animation files) */

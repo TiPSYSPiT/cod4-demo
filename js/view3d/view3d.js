@@ -27,13 +27,16 @@ const { el, icon, switchRow, selectRow } = C4.ui;
 const CFG = C4.mapConfig;
 const CAM_KEY = 'cod4demo3d.camera';
 const PLAYERS_KEY = 'cod4demo3d.players';
-/** shared colour maps of the exported data (maps3d/_textures), D3D texture coordinates */
+/** shared colour maps of the exported data (maps3d/_textures), D3D texture coordinates - the players', weapons' and
+ *  script models' textures: mipmapped (three's default) and filtered anisotropically (no shimmer at grazing angles) */
 const texCache = new Map();
+let ANISOTROPY = 1;
 function mapTexture(file) {
   if (!file) return null;
   if (!texCache.has(file)) {
     const t = loadTexture('maps3d/' + file);
     t.flipY = false; t.colorSpace = THREE.NoColorSpace; t.wrapS = t.wrapT = THREE.RepeatWrapping;
+    t.anisotropy = ANISOTROPY;
     texCache.set(file, t);
   }
   return texCache.get(file);
@@ -65,6 +68,7 @@ export class View3D {
     container.append(this.stage);
     this.renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance', stencil: true });   // (stencil: X-Ray)
     this.renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
+    ANISOTROPY = Math.min(8, this.renderer.capabilities.getMaxAnisotropy());
     this.renderer.outputColorSpace = THREE.LinearSRGBColorSpace;    // gamma-space colours, as the game
     this.stage.append(this.renderer.domElement);
     this.labels = el('div', { class: 'label-layer' });
@@ -131,8 +135,10 @@ export class View3D {
     let mode = 'orbit';
     try { const v = localStorage.getItem(CAM_KEY); if (MODES.some(m => m[0] === v)) mode = v; } catch (err) { /* default */ }
     this.setMode(mode);
-    let players = 'simple';
-    try { if (localStorage.getItem(PLAYERS_KEY) === 'models') players = 'models'; } catch (err) { /* default */ }
+    // the players: the character models by default (their cost is in the noise of the map's: docs/validation.md),
+    // the capsules when chosen
+    let players = 'models';
+    try { if (localStorage.getItem(PLAYERS_KEY) === 'simple') players = 'simple'; } catch (err) { /* default */ }
     this.setPlayersMode(players);
 
     // click a player to select them (not after a drag)
@@ -153,7 +159,8 @@ export class View3D {
       if (cl != null) this.R.setFocus(cl);
     });
     this.offFocus = replay.on(what => { if (what === 'focus') this.syncPlayerSelect(); });
-    new ResizeObserver(() => this.resize()).observe(this.stage);
+    this.resizeObserver = new ResizeObserver(() => this.resize());
+    this.resizeObserver.observe(this.stage);
     this.loop = this.loop.bind(this);
     this.last = null;
     this.load();
@@ -776,6 +783,11 @@ export class View3D {
     if (this.sound) { this.sound.dispose(); this.sound = null; }
     if (this.offArm) this.offArm();
     this.scene.traverse(o => { if (o.geometry) o.geometry.dispose(); });
+    this.resizeObserver.disconnect();
+    // the shared texture cache keeps its images for the next demo, but each texture's GPU copy of this renderer is
+    // released: three.js keeps it per texture source, and through it this renderer's context - and this view with its
+    // demo - would stay alive after the demo is closed
+    for (const t of texCache.values()) t.dispose();
     this.renderer.dispose();
     this.renderer.forceContextLoss();          // free the GPU memory when the next demo is opened
     this.stage.remove();

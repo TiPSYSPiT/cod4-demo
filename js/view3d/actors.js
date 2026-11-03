@@ -10,12 +10,14 @@
 import * as THREE from 'three';
 import { Character } from './characters.js';
 import { Animator } from './animator.js';
+import { upperBound } from '../app/match.js';
 import { Controllers } from './controllers.js';
 import { setObjectLighting } from './lighting.js';
 import { declutter } from './xray.js';
 
 const C4 = window.C4;
 const CFG = C4.mapConfig;
+const PF = C4.collect.PF;
 const RADIUS = 14;
 const PRONE_R = 11;
 export const EYE = { stand: 60, crouch: 40, prone: 11 };
@@ -31,20 +33,39 @@ export function forward(yaw, pitch, out = new THREE.Vector3()) {
 }
 export function stanceOf(s) { return s.prone ? 'prone' : s.crouch ? 'crouch' : 'stand'; }
 
-/** world model of an internal weapon name with the table of weapons.json (ak47_silencer_mp ->
- *  weapon_ak47_silencer, gl_m16_mp -> the M16 with launcher); null for none / not drawn */
-export function weaponModelName(table, name) {
-  if (!table || !name) return null;
-  const n = String(name).toLowerCase().replace(/_mp$/, '');
-  let base, variant = 'model';
-  if (n.startsWith('gl_')) { base = C4.weapons.baseWeapon(n.slice(3)); variant = 'gl'; }
-  else {
-    base = C4.weapons.baseWeapon(n);
-    if (/_silencer/.test(n)) variant = 'silencer'; else if (/_gl(_|$)/.test(n)) variant = 'gl';
-  }
-  const w = table[base] || table[base.replace(/gold$/, '')];
-  return w ? w[variant] || w.model : null;
+/** the demo's server ran Promod (its own weapon files: viewmodels.json / weapons.json "promod") */
+export function isPromod(M) {
+  const m = M && M.d && M.d.meta;
+  return !!(m && (/promod/i.test(m.mod || '') || /promod/i.test(m.fsGame || '') || m.promodVersion));
 }
+
+/** the weapon file's entry of an internal weapon name in weapons.json (format 2: weapon -> {models (worldModel ..
+ *  worldModel16), knife}; table.usePromod: a Promod server's file first) or null */
+function weaponEntry(table, name) {
+  if (!table || !name || !table.weapons) return null;
+  let n = String(name).toLowerCase();
+  if (!/_mp$/.test(n)) n += '_mp';
+  return (table.usePromod && table.promod && table.promod[n]) || table.weapons[n] || null;
+}
+
+/** the world model of an internal weapon name in its model variant (the entity's weaponModel: worldModel[variant],
+ *  a camouflage - the plain model where that variant is not exported); null for none / not drawn */
+export function weaponModelName(table, name, variant = 0) {
+  const w = weaponEntry(table, name);
+  if (!w) return null;
+  return w.models[variant] || w.models[0] || null;
+}
+
+/** the knife a player holds in a knife melee with this weapon (worldKnifeModel) or null */
+export function knifeModelName(table, name) {
+  const w = weaponEntry(table, name);
+  return w ? w.knife || null : null;
+}
+
+// the torso animations of a knife melee (playeranim.script events knife_melee / knife_melee_charge: the game's
+// animation flag 0x100, BG_IsKnifeMeleeAnim): the world knife on tag_inhand while one plays (cg_players_mp.cpp)
+const KNIFE_EVENTS = new Set(['knife_melee', 'knife_melee_charge']);
+const FADE_OUT_MS = 600, FADE_IN_MS = 250;           // a player model fading out / in (fadeOf)
 
 export class Actors {
   constructor(scene, labelLayer, match, library, onNotice, anims) {
@@ -58,6 +79,7 @@ export class Actors {
     this.corpsePool = new Map();                 // body|head -> free corpse characters
     this.weaponModels = new Map();               // world model name -> loaded model | null (missing)
     this.weaponTable = null;
+    this.runStarts = new Map();                  // client -> per sample the start time of its run (fadeOf)
     this.onNotice = onNotice || (() => {});
     this.mode = 'simple';
     this.failed = new Map();           // model name -> reason
@@ -109,7 +131,7 @@ export class Actors {
     for (const it of this.items.values()) if (it.char) it.char.group.visible = false;
     for (const h of this.corpses.values()) if (h.char) h.char.group.visible = false;
     if (this.mode === 'models' && !this.weaponLoading) {
-      this.weaponLoading = this.library.weaponTable().then(t => { this.weaponTable = t; if (this.onLoaded) this.onLoaded(); });
+      this.weaponLoading = this.library.weaponTable().then(t => { this.weaponTable = t && Object.assign({}, t, { usePromod: isPromod(this.M) }); if (this.onLoaded) this.onLoaded(); });
     }
     if (this.mode === 'models') this.loadAnimations();
   }
@@ -185,9 +207,55 @@ export class Actors {
     return null;
   }
 
-  /** the loaded weapon model held with weapon index `index` at t (null while loading / none) */
-  weaponAt(index, t) {
-    const model = weaponModelName(this.weaponTable, this.M.weaponName(index, t));
+  /** a player model's fade (1 whole .. 0 gone; lighting.js uLgFade): out over the last 600 ms before it is hidden
+   *  (CFG.STALE_MS without data: the POV's snapshots no longer hold the player), in over FADE_IN_MS after it is
+   *  sent again after a gap (CFG.GAP_MS) or a respawn - a function of the demo time, so seek and speed agree */
+  fadeOf(cl, t, s) {
+    let f = s.age <= CFG.STALE_MS - FADE_OUT_MS ? 1 : Math.max(0, (CFG.STALE_MS - s.age) / FADE_OUT_MS);
+    const P = this.M.d.positions[cl];
+    if (!P || !P.t.length) return f;
+    let R = this.runStarts.get(cl);
+    if (!R) {
+      // per sample: the time its run of samples began (a gap, a death or the recording's start breaks it)
+      R = new Float64Array(P.t.length);
+      for (let i = 0; i < P.t.length; i++) {
+        const brk = i === 0 || P.t[i] - P.t[i - 1] > CFG.GAP_MS || (P.flags[i - 1] & PF.DEAD) && !(P.flags[i] & PF.DEAD);
+        R[i] = brk ? (i === 0 ? -Infinity : P.t[i]) : R[i - 1];
+      }
+      this.runStarts.set(cl, R);
+    }
+    const i = upperBound(P.t, t) - 1;
+    if (i >= 0) f = Math.min(f, Math.max(0, Math.min(1, (t - R[i]) / FADE_IN_MS)));
+    return f;
+  }
+
+  /** the model variant (the entity's weaponModel: a camouflage) of client cl at t */
+  variantAt(cl, t) {
+    const list = this.M.d.weaponModels && this.M.d.weaponModels[cl];
+    if (!list) return 0;
+    let v = 0;
+    for (const [tt, x] of list) { if (tt > t) break; v = x; }
+    return v;
+  }
+
+  /** the knife model of client cl at t: during a knife melee torso animation, the weapon's worldKnifeModel */
+  knifeAt(cl, t, index) {
+    const P = this.M.d.positions[cl], A = this.anims;
+    if (!P || !P.torso || !A || !A.meta) return null;
+    const i = upperBound(P.t, t) - 1;
+    if (i < 0) return null;
+    const c = A.info(A.treeName(P.torso[i]) || '');
+    if (!c || !c.game || !(c.game.events || []).some(e => KNIFE_EVENTS.has(e))) return null;
+    return this.modelAt(knifeModelName(this.weaponTable, this.M.weaponName(index, t)));
+  }
+
+  /** the loaded weapon model held with weapon index `index` (in its model variant) at t (null while loading / none) */
+  weaponAt(index, t, variant = 0) {
+    return this.modelAt(weaponModelName(this.weaponTable, this.M.weaponName(index, t), variant));
+  }
+
+  /** a world weapon model by name, loaded on first use (null while loading / missing) */
+  modelAt(model) {
     if (!model) return null;
     if (!this.weaponModels.has(model)) {
       this.weaponModels.set(model, undefined);
@@ -282,6 +350,7 @@ export class Actors {
       if (it.char && it.char !== ch) it.char.group.visible = false;
       if (ch) {
         ch.group.visible = true;
+        if (ch.lg) ch.lg.uLgFade.value = this.fadeOf(cl, t, s);
         ch.group.position.set(s.x, s.y, s.z);
         ch.group.rotation.set(0, 0, s.yaw * D2R);
         const layers = this.animReady ? this.animator.alive(cl, t, s, st) : null;
@@ -293,7 +362,8 @@ export class Actors {
         else ch.pose(st, s.pitch);
         if (ctrl) ch.applyControllers(ctrl);
         this.lightCharacter(ch, s.x, s.y, s.z, st);
-        ch.setWeapon(this.weaponAt(s.weapon, t));
+        ch.setWeapon(this.weaponAt(s.weapon, t, this.variantAt(cl, t)));
+        ch.setKnife(this.knifeAt(cl, t, s.weapon));
       }
       it.modelShown = !!ch;
       b.visible = !ch;                                      // the capsule stays the pick target

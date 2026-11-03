@@ -358,7 +358,11 @@ export class ProbeSet {
     let tex = null, cells = null;
     const cellsReady = meta.cells ? fetchBinary(dir + meta.cells.file).catch(err => { console.warn('probe cells not loaded:', err.message); return null; }) : null;
     if (texture) {
-      tex = await new THREE.TextureLoader().loadAsync(dataUrl(dir + meta.file));
+      // (tried again on a dropped connection, as the other textures: mapLoader.js loadTexture)
+      for (let k = 0; ; k++) {
+        try { tex = await new THREE.TextureLoader().loadAsync(dataUrl(dir + meta.file)); break; }
+        catch (err) { if (k >= 3) throw err; await new Promise(r => setTimeout(r, [400, 1200, 2400][k])); }
+      }
       tex.flipY = false;
       tex.colorSpace = THREE.NoColorSpace;
       tex.minFilter = THREE.LinearMipmapLinearFilter;
@@ -844,7 +848,9 @@ function volumeTexture(data, w, h, d) {
 export function objectLighting() {
   const data = new Uint8Array(256).fill(128);
   return { uLgVolume: { value: volumeTexture(data, 4, 4, 4) }, uLgVolSize: { value: new THREE.Vector3(4, 4, 4) },
-           uLgBlock: { value: new THREE.Vector3(0, 0, 0) }, uLgLight: { value: 0 }, uLgProbe: { value: 0 } };
+           uLgBlock: { value: new THREE.Vector3(0, 0, 0) }, uLgLight: { value: 0 }, uLgProbe: { value: 0 },
+           // the object's fade in / out (1 = drawn whole): a 4 x 4 ordered dither, no blending (actors.js fadeOf)
+           uLgFade: { value: 1 } };
 }
 export function setObjectLighting(L, s) {
   const tex = L.uLgVolume.value;
@@ -983,8 +989,22 @@ varying vec2 vLgDUv;
 #endif
 }`);
     shader.fragmentShader = shader.fragmentShader
+      .replace('#include <clipping_planes_fragment>', `#include <clipping_planes_fragment>
+#ifdef LG_OBJECT
+  if (uLgFade < 1.0) {
+    // the fade: the pixels of a 4 x 4 Bayer pattern below the fade are kept (opaque, depth written, no sorting)
+    ivec2 q = ivec2(mod(gl_FragCoord.xy, 4.0));
+    int k = q.x + q.y * 4;
+    float b = float(k == 0 ? 0 : k == 1 ? 8 : k == 2 ? 2 : k == 3 ? 10 : k == 4 ? 12 : k == 5 ? 4 : k == 6 ? 14 : k == 7 ? 6 :
+                    k == 8 ? 3 : k == 9 ? 11 : k == 10 ? 1 : k == 11 ? 9 : k == 12 ? 15 : k == 13 ? 7 : k == 14 ? 13 : 5);
+    if ((b + 0.5) / 16.0 >= uLgFade) discard;
+  }
+#endif`)
       .replace('#include <common>', `#include <common>
 ${gridGLSL}
+#ifdef LG_OBJECT
+uniform float uLgFade;
+#endif
 uniform sampler2D uLgDetailMap;
 uniform vec2 uLgDetailScale;
 varying vec3 vLgPos;

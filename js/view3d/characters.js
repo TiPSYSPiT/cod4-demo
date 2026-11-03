@@ -18,6 +18,8 @@ const D2R = Math.PI / 180;
 /** the game's controller bones in the order of its controller_names (g_active_mp.cpp); controllers.js */
 export const CONTROLLER_BONES = ['back_low', 'back_mid', 'back_up', 'neck', 'head', 'pelvis'];
 const IDENTITY = new THREE.Matrix4();
+// a player model's cull sphere in its own space (feet at the origin; ~72 units tall, ~70 long lying prone)
+const CHARACTER_SPHERE = new THREE.Sphere(new THREE.Vector3(0, 0, 32), 80);
 const AX = { x: new THREE.Vector3(1, 0, 0), y: new THREE.Vector3(0, 1, 0), z: new THREE.Vector3(0, 0, 1) };
 
 /* ---------- stance poses ----------
@@ -194,10 +196,10 @@ export class CharacterLibrary {
   }
   /** a model that has finished loading, else null (lets a character be built in the same frame) */
   loaded(name) { return this.resolved && this.resolved.get(name) || null; }
-  /** weapons.json: base weapon -> world models {model, silencer, gl} (Phase 2, may be missing) */
+  /** weapons.json (format 2): weapon -> its world models by variant and its knife, Promod's apart (null: not exported) */
   async weaponTable() {
     if (!this.weaponsReady) this.weaponsReady = fetchRetry(this.base + 'weapons.json').then(r => r.ok ? r.json() : null)
-      .then(j => j && j.weapons || null).catch(() => null);
+      .then(j => j && j.weapons ? j : null).catch(() => null);
     return this.weaponsReady;
   }
   /** viewmodels.json: the first-person view models (viewmodel.js; null when not exported) */
@@ -273,7 +275,9 @@ export class Character {
     for (let i = 0; i < this.bones.length; i++) if (body.bones[i].parent < 0) this.bodyMesh.add(this.bones[i]);
     // an explicit bind matrix: without it three.js recomputes the inverses from the current bones
     this.bodyMesh.bind(new THREE.Skeleton(this.bones, body.inverses), IDENTITY);
-    this.bodyMesh.frustumCulled = false;
+    // culled by a fixed sphere around the player (feet at the origin: standing, crouched, prone and animated within
+    // it) - each pass (the view, the sun's near / far map, the lamps' maps) draws only the players in its view
+    this.bodyMesh.boundingSphere = CHARACTER_SPHERE;
     this.bodyMesh.layers.enable(SHADOW_LAYER);                 // casts the sun's shadow (shadows.js)
     this.group.add(this.bodyMesh);
     this.triangles = body.triangles;
@@ -289,7 +293,7 @@ export class Character {
       head.bones.forEach((b, i) => { if (!this.byName.has(b.name) && b.parent >= 0) hb[b.parent].add(hb[i]); });
       this.headMesh = new THREE.SkinnedMesh(head.geo, head.mats);
       this.headMesh.bind(new THREE.Skeleton(hb, head.inverses), IDENTITY);
-      this.headMesh.frustumCulled = false;
+      this.headMesh.boundingSphere = CHARACTER_SPHERE;
       this.headMesh.layers.enable(SHADOW_LAYER);
       this.group.add(this.headMesh);
       this.triangles += head.triangles;
@@ -345,7 +349,7 @@ export class Character {
       m = new THREE.Mesh(model.geo, this.lg ? model.mats.map((x, k) => gridLit(x.clone(), this.lg, model.shadings && model.shadings[k])) : model.mats);
       m.name = name;
       m.userData.model = model;
-      m.frustumCulled = false;
+      // (culled by the model's own bounds: a rigid mesh on a tag)
       m.layers.enable(SHADOW_LAYER);
       m.userData.triangles = model.triangles;
       tag.add(m);
@@ -353,6 +357,33 @@ export class Character {
     }
     m.visible = true;
     this.weapon = m;
+    this.triangles += model.triangles;
+  }
+
+  /** the knife of a knife melee on tag_inhand (cg_players_mp.cpp: worldKnifeModel while the torso animation is a
+   *  knife melee), null: none */
+  setKnife(model) {
+    const name = model ? model.name : null;
+    if (this.knifeName === name) return;
+    if (this.knife) { this.knife.visible = false; this.triangles -= this.knife.userData.triangles; }
+    this.knifeName = name;
+    this.knife = null;
+    const tag = model && this.byName.get('tag_inhand');
+    if (!tag) return;
+    if (!this.knives) this.knives = new Map();
+    let m = this.knives.get(name);
+    if (!m) {
+      m = new THREE.Mesh(model.geo, this.lg ? model.mats.map((x, k) => gridLit(x.clone(), this.lg, model.shadings && model.shadings[k])) : model.mats);
+      m.name = name;
+      m.userData.model = model;
+      // (culled by the model's own bounds: a rigid mesh on a tag)
+      m.layers.enable(SHADOW_LAYER);
+      m.userData.triangles = model.triangles;
+      tag.add(m);
+      this.knives.set(name, m);
+    }
+    m.visible = true;
+    this.knife = m;
     this.triangles += model.triangles;
   }
 

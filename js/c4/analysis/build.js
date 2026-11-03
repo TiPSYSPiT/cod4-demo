@@ -736,6 +736,9 @@ C4.define('build', function (C4) {
       })(),
       // cod4-demo3d: player corpses (entity type 2) with the server's death animation (legs / torso:
       // anim tree indices), only on the main map
+      // cod4-demo3d: the players' weapon model variants (entity weaponModel: CG_Item / the DObj's worldModel[n],
+      // Promod's camouflages) per client: [[t, variant], ...] on every change, times relative
+      weaponModels: (() => { const out = {}; for (const [t, cl, v] of col.weaponModels || []) (out[cl] || (out[cl] = [])).push([rel(t), v]); return out; })(),
       corpses: (col.corpses || []).map(c => Object.assign({}, c, { t0: c.t0 - t0, t1: c.t1 - t0 }))
         .filter(c => c.t0 >= mapWindow.start && c.t0 < mapWindow.end),
       // damage statistics of the recording player (povDamage.js) and own-kill metrics

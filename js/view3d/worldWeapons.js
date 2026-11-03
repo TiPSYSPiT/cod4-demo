@@ -9,7 +9,7 @@ import * as THREE from 'three';
 import { objectLighting, setObjectLighting, gridLit } from './lighting.js';
 import { SHADOW_LAYER } from './shadows.js';
 import { evaluateTrajectory } from './scriptModels.js';
-import { weaponModelName } from './actors.js';
+import { weaponModelName, isPromod } from './actors.js';
 
 const EF_NODRAW = 0x20;
 const GRAVITY = 800;                     // g_gravity (the grenades' TR_GRAVITY)
@@ -37,6 +37,9 @@ export class WorldWeapons {
     this.items = M.d.items || [];
     this.grenades = (M.grenades || []).filter(gr => gr.g.segments && gr.g.segments.length);
     this.projectiles = null;
+    // the weapons' world models (weapons.json, in any player mode): a lying weapon's variant is its item index / 128
+    this.table = null;
+    library.weaponTable().then(t => { this.table = t && Object.assign({}, t, { usePromod: isPromod(M) }); if (this.onChange) this.onChange(); }).catch(() => null);
     library.viewModels().then(t => {
       this.projectiles = {};
       for (const [n, w] of Object.entries((t && t.weapons) || {})) if (w.params && w.params.projectileModel) this.projectiles[n] = w.params.projectileModel;
@@ -56,7 +59,7 @@ export class WorldWeapons {
     if (!this.enabled) return;
     const pos = [0, 0, 0], ang = [0, 0, 0];
     // the dropped weapons
-    const table = this.weaponTable();
+    const table = this.table;
     if (table) {
       for (const it of this.items) {
         if (t < it.t0 || t > it.t1 + HOLD_MS) continue;
@@ -65,7 +68,7 @@ export class WorldWeapons {
         while (i > 0 && S[i][0] > t) i--;
         const s = S[i];
         if (s[13] & EF_NODRAW) continue;
-        const name = weaponModelName(table, it.weapon);
+        const name = weaponModelName(table, it.weapon, s[1] >> 7);          // (item index / 128: the model variant)
         if (!name) continue;
         evaluateTrajectory(s[2], s[3], 0, [s[4], s[5], s[6]], [s[7], s[8], s[9]], t, pos);
         ang[0] = s[10]; ang[1] = s[11]; ang[2] = s[12];

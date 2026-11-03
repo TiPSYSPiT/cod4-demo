@@ -222,7 +222,7 @@ Cost: 0.3-0.6 ms of GPU time per frame at 1920 × 1080 with 8 players (NVIDIA T4
 The 3D video export has an *X-Ray* option, by default the view's mode, so the video looks like the view
 (silhouettes, badges and the moved names).
 
-**Players: Simple / Models** (Display popover, remembered): *Simple* draws the capsules described
+**Players: Simple / Models** (Display popover, remembered; *Models* by default): *Simple* draws the capsules described
 above. *Models* draws each player's real character:
 - body and head exactly as the demo records them (client state); on the six demo maps USMC vs
   Arab OpFor, switching at halftime
@@ -243,8 +243,12 @@ above. *Models* draws each player's real character:
   the round ends (a body that was already lying when the recorder first saw it shows the end
   pose, as in the game); a kill whose corpse the demo does not hold falls with a death clip chosen
   from the movement for as long as the death markers are shown (5 s)
-- the weapon in the hands (the world model of the weapon the demo says they hold, with the
-  silenced and grenade-launcher variants)
+- the weapon in the hands: the world model the weapon file names for the variant the demo records
+  (`worldModel` .. `worldModel16` by the entity's `weaponModel`: Promod's camouflages and the gold models; a Promod
+  server's own weapon files for its demos), and during a knife melee the knife (`worldKnifeModel` on `tag_inhand`)
+- a player who is no longer sent (the POV's snapshots) fades out over 600 ms instead of vanishing, and fades in
+  after a gap or a respawn (a dither: no blending, no sorting); the models are culled per pass (the view, the
+  sun's and the lamps' shadow maps) and their textures filtered anisotropically
 - lit like in the game (`js/view3d/lighting.js`): the map's light grid at the player's lighting
   origin (a directional "ambient cube" per grid point, trilinear between the 8 points around the
   player, with the game's sight traces against the map's collision model for the points it
@@ -545,9 +549,12 @@ these: `--anims-only`):
 - `hud_export.py` writes the first-person HUD's images (`maps3d/_hud/`: the minimap frame, the compass pings,
   the low health overlay, the damage indicator, the hints, the grenade icons; 29 images) from the `.iwd`
   archives: `py tools/export/hud_export.py --game "C:/Games/Call of Duty 4"` (after `viewmodels_export.py`).
-- `weapons_export.py` exports the world weapon models (52, 2.5 MB) like the characters and
-  writes `weapons.json`: base weapon → plain / silenced / grenade-launcher model. The mapping is
-  a table, not read from the game's WeaponDefs.
+- `weapons_export.py` exports the world weapon models like the characters and writes `weapons.json`
+  (format 2): weapon → its world models by variant (`worldModel` .. `worldModel16`) and its knife
+  (`worldKnifeModel`), read from the weapon files - the stock ones and, apart, Promod's. Every variant and the
+  knife only for the weapons of the sample demos (`DEMO_WEAPONS`), the other weapons their plain model (113
+  models, 5.8 MB); a model whose bone arrays the zone shares takes the skeleton of its family's exported model.
+  Also run by `export_maps.py`; alone: `py tools/export/weapons_export.py --game "C:/Games/Call of Duty 4"`.
 - The effects' debris models (kind `fx`: glass shards, wood splinters, rocks, shell casings, the
   spent smoke grenade and flashbang, the fruit stands' watermelon chunks ...; 33 models, 0.18 MB)
   are exported the same way: every model an effect definition of `common_mp.ff` or of a map's

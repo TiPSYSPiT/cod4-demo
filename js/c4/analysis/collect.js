@@ -13,6 +13,7 @@ C4.define('collect', function (C4) {
     E_APOS = 15, E_U0 = 21, E_OTHER = 29, E_ATTACKER = 30, E_CLIENTNUM = 35, E_EVENTPARM = 39,
     E_EVENTSEQ = 40, E_EVENTS = 41, E_EVENTPARMS = 45, E_WEAPON = 49, E_SURFTYPE = 33, E_UN1 = 53,
     E_INDEX = 34,                       // model index (config string MODELS + index)
+    E_WEAPONMODEL = 50,                 // the world model variant of the weapon (worldModel[n]: camouflage)
     E_SOLID = 38;
   // cod4-demo3d: an entity whose solid is SOLID_BMODEL (0xFFFFFF) is a brush model - its index is the
   // map's inline brush model, not a config string model (CG_ScriptMover: R_GetBrushModel(index)); named
@@ -105,6 +106,7 @@ C4.define('collect', function (C4) {
       teamTimeline: [],             // {t, client, team}
       modelTimeline: [],            // {t, client, model, attach: [model indices]} (cod4-demo3d)
       corpses: [],                  // {client, t0, t1, x, y, z, yaw, legs, torso} player corpse entities (cod4-demo3d)
+      weaponModels: [],             // [t, client, weaponModel] on every change of a player's weapon model variant (cod4-demo3d)
       slotEvents: [],               // {t, client, kind: 'connected'|'disconnected'}
       kills: [],
       tracks: new Map(),            // client -> PosTrack
@@ -371,6 +373,7 @@ C4.define('collect', function (C4) {
     }
 
     const corpseRec = new Map();         // corpse entity number -> current record (cod4-demo3d)
+    const lastWeaponModel = new Map();   // client -> its last weaponModel (cod4-demo3d)
     // cod4-demo3d: the map's script entities (script models / brush models, turrets, helicopters, planes,
     // vehicles): one record per appearance with every change of model, trajectory, angles, flags and solid
     const SCRIPT_TYPES = new Set([0, 6, 11, 12, 13, 14, 15, 16]);
@@ -461,6 +464,8 @@ C4.define('collect', function (C4) {
           track(num).push(t, R(x), R(y), R(z), R(u2f(st[E_APOS + 1])), R(u2f(st[E_APOS])), flags, w, st[E_LEGS], st[E_TORSO],
             st[E_MOVEDIR] | 0, u2f(st[E_LEAN]), R(u2f(st[E_TORSOPITCH])), R(u2f(st[E_WAISTPITCH])));
           lastWeapon.set(num, [t, w]);
+          const wm = st[E_WEAPONMODEL] | 0;
+          if (lastWeaponModel.get(num) !== wm) { lastWeaponModel.set(num, wm); c.weaponModels.push([t, num, wm]); }
           lastPos.set(num, [t, x, y, z]);
         } else if (etype === K.ET.PLAYER_CORPSE) {
           // a dead player's body with the death animation the server chose; one record per appearance

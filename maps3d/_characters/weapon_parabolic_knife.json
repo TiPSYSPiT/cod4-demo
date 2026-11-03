@@ -1,0 +1,76 @@
+{
+ "format": "cod4-demo3d-character/1",
+ "name": "weapon_parabolic_knife",
+ "kind": "weapon",
+ "faction": null,
+ "file": "weapon_parabolic_knife.bin",
+ "sections": {
+  "position": {
+   "offset": 0,
+   "length": 1332
+  },
+  "normal": {
+   "offset": 1332,
+   "length": 444
+  },
+  "uv": {
+   "offset": 1776,
+   "length": 888
+  },
+  "skinIndex": {
+   "offset": 2664,
+   "length": 444
+  },
+  "skinWeight": {
+   "offset": 3108,
+   "length": 444
+  },
+  "index": {
+   "offset": 3552,
+   "length": 504
+  },
+  "color": {
+   "offset": 4056,
+   "length": 444
+  }
+ },
+ "vertexCount": 111,
+ "triangleCount": 84,
+ "bones": [
+  {
+   "name": "parabolic_knife_lod0",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "surfaces": [
+  {
+   "indexStart": 0,
+   "indexCount": 252,
+   "material": -1
+  }
+ ],
+ "materials": [],
+ "bounds": {
+  "mins": [
+   -3.43,
+   -0.76,
+   -1.71
+  ],
+  "maxs": [
+   16.48,
+   0.76,
+   1.71
+  ]
+ }
+}

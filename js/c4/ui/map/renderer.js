@@ -119,13 +119,17 @@
       }, { passive: false });
       let drag = null;
       c.addEventListener('mousedown', e => { drag = { x: e.clientX, y: e.clientY, px: this.pan.x, py: this.pan.y }; c.style.cursor = 'grabbing'; });
-      window.addEventListener('mousemove', e => {
+      const move = e => {
         if (!drag) return;
         this.pan.x = drag.px + e.clientX - drag.x;
         this.pan.y = drag.py + e.clientY - drag.y;
         if (this.onChange) this.onChange();
-      });
-      window.addEventListener('mouseup', () => { drag = null; c.style.cursor = ''; });
+      };
+      const up = () => { drag = null; c.style.cursor = ''; };
+      window.addEventListener('mousemove', move);
+      window.addEventListener('mouseup', up);
+      // (removed with the view: the window's listeners would keep the renderer and its demo alive)
+      this.offWindow = () => { window.removeEventListener('mousemove', move); window.removeEventListener('mouseup', up); };
       c.addEventListener('dblclick', () => { this.zoom = 1; this.pan = { x: 0, y: 0 }; if (this.onChange) this.onChange(); });
     }
 

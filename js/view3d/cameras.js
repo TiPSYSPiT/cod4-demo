@@ -99,8 +99,11 @@ export class Cameras {
       e.preventDefault();
       this.speed = Math.min(4000, Math.max(60, this.speed * Math.exp(-e.deltaY * 0.001)));
     }, { passive: false });
-    window.addEventListener('keyup', e => this.keys.delete(e.code));
-    window.addEventListener('blur', () => this.keys.clear());
+    // (removed in dispose: the window's listeners would keep the cameras - and through onChange the view - alive)
+    this.onKeyUp = e => this.keys.delete(e.code);
+    this.onBlur = () => this.keys.clear();
+    window.addEventListener('keyup', this.onKeyUp);
+    window.addEventListener('blur', this.onBlur);
   }
 
   /** key handling of the free camera; true = the key was used (the app ignores it) */
@@ -154,5 +157,9 @@ export class Cameras {
     return false;
   }
 
-  dispose() { this.orbit.dispose(); }
+  dispose() {
+    this.orbit.dispose();
+    window.removeEventListener('keyup', this.onKeyUp);
+    window.removeEventListener('blur', this.onBlur);
+  }
 }
