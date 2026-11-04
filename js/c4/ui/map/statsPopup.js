@@ -44,6 +44,27 @@
       weapons: [...weapons.values()].sort((a, b) => b.kills - a.kills || a.label.localeCompare(b.label)) };
   }
 
+  /** the scoreboard's pings of a client in [from, to) (DemoData.scoreboardTrack) -> {t, ping, avg, max, n} or null */
+  function pingOf(d, cl, from, to) {
+    const tr = d.scoreboardTrack && d.scoreboardTrack[cl];
+    if (!tr) return null;
+    const t = [], ping = [];
+    for (let i = 0; i < tr.t.length; i++) if (tr.t[i] >= from && tr.t[i] < to && tr.ping[i] > 0 && tr.ping[i] < 999) { t.push(tr.t[i]); ping.push(tr.ping[i]); }
+    if (!ping.length) return null;
+    return { t, ping, n: ping.length, avg: Math.round(ping.reduce((a, b) => a + b, 0) / ping.length), max: Math.max(...ping) };
+  }
+  /** a small line of the ping over time */
+  function sparkline(pg) {
+    const w = 90, h = 18, c = el('canvas', { class: 'stats-spark', width: w * 2, height: h * 2, style: { width: w + 'px', height: h + 'px' } });
+    const g = c.getContext('2d'), t0 = pg.t[0], t1 = pg.t[pg.t.length - 1] || t0 + 1, top = Math.max(...pg.ping) * 1.1 || 1;
+    g.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--muted').trim() || '#8d8d95';
+    g.lineWidth = 2;
+    g.beginPath();
+    pg.ping.forEach((v, i) => { const x = (pg.t[i] - t0) / Math.max(1, t1 - t0) * (w * 2 - 2) + 1, y = h * 2 - 1 - v / top * (h * 2 - 2); if (i) g.lineTo(x, y); else g.moveTo(x, y); });
+    g.stroke();
+    return c;
+  }
+
   /* ---------- the popup ---------- */
   let P = null;          // {box, client, anchor, ctx, mode}
   let lastMode = 'match'; // kept for the next popup
@@ -133,6 +154,8 @@
             (s.nadesUnknown ? s.nadesUnknown + ' grenade(s) in this range could not be given to a player.' : ''))], null],
         ['Shots fired (seen)', [String(s.shots), approx('only shots visible in the demo: fire events of this player - every shot of the recording player (and of the player he follows), others only while they were in the POV\'s snapshots')], null]
       ];
+      const pg = pingOf(d, cl, live || !r ? -Infinity : r.segStart, live || !r ? Infinity : r.segEnd);
+      if (pg) rows.push(['Ping (scoreboard)', [pg.avg + ' ms avg · ' + pg.max + ' max ', sparkline(pg)], "the scoreboard updates in the demo: the ping the server reported (" + pg.n + ' values) - only while the recorder looked at the scoreboard']);
       const tb = el('tbody');
       for (const [k, v, note] of rows) tb.append(el('tr', { title: note || null }, el('td', null, k), el('td', { class: 'num' }, v, note ? el('span', { class: 'stats-note' }, ' *') : null)));
       P.box.append(el('table', { class: 'stats-table' }, tb));

@@ -17,6 +17,7 @@ import { FxSystem, shotTracer } from './fx.js';
 import { ScriptModels } from './scriptModels.js';
 import { SoundSystem } from './sound.js';
 import { ViewModel, isPromod } from './viewmodel.js';
+import { MapMarks } from './mapMarks.js';
 import { WorldWeapons } from './worldWeapons.js';
 import { Tracers } from './tracers.js';
 import { GameHud } from './hud.js';
@@ -50,7 +51,10 @@ const stored = key => { try { return localStorage.getItem(key); } catch (err) { 
 const store = (key, v) => { try { localStorage.setItem(key, v); } catch (err) { /* not stored */ } };
 const SOUND_KEY = 'cod4demo3d.sound';              // 'on' / 'off' (default on); .volume 0-1 (default SOUND_VOLUME)
 const SOUND_VOLUME = 0.3;
+const BOB_MAX = 8;                               // bg_bobMax
 const KILLFEED_KEY = 'cod4demo3d.killfeed';      // 'on' / 'off' (default on)
+const ITEMS_KEY = 'cod4demo3d.items';            // 'on' / 'off' (default on): grenades in flight, dropped weapons
+const CASINGS_KEY = 'cod4demo3d.casings';        // 'on' / 'off' (default on): the shell casings
 const TRACERS_KEY = 'cod4demo3d.tracers';          // 'on' / 'off' (default off): the bullet tracers
 const HUD_KEY = 'cod4demo3d.hud';                  // 'on' / 'off' (default on): the game's HUD in first person
 const XRAY_KEY = 'cod4demo3d.xray';              // 'off' / 'players' / 'names' (default off)
@@ -115,6 +119,8 @@ export class View3D {
     this.buildToolbar();
     this.setXray(stored(XRAY_KEY));
     this.setKillfeed(stored(KILLFEED_KEY) !== 'off');
+    this.setItems(stored(ITEMS_KEY) !== 'off');
+    this.setCasings(stored(CASINGS_KEY) !== 'off');
     for (const k of Object.keys(SWITCH_KEYS)) this.setActorSwitch(k, stored(SWITCH_KEYS[k]) !== 'off');
     // the bullet tracers (tracers.js)
     this.tracers = new Tracers(this.scene, this.M);
@@ -205,12 +211,15 @@ export class View3D {
           else SUN.color.value.setRGB(...(w.info.sun.sunColor || [1, 1, 1]).map(c => c * k));
         }
         this.effects.setSites(w.sites || []);
+        if (this.mapMarks) this.mapMarks.dispose();
+        this.mapMarks = new MapMarks(this.scene, w.entities);
         // the script models: destructible cars and the gametypes' objects, with their state from the demo
         this.scriptModels = new ScriptModels(this.M, w.scriptModels, this.characters, w.lightGrid, () => { this.needsRender = true; }, w.props);
         this.scriptModels.setCollision(w.scriptCollision);
         this.scene.add(this.scriptModels.group);
         // the dropped weapons and the grenades in flight (worldWeapons.js)
         this.worldWeapons = new WorldWeapons(this.M, this.characters, w.lightGrid, () => this.actors.weaponTable, () => { this.needsRender = true; });
+        this.worldWeapons.enabled = this.itemsOn !== false;
         this.scene.add(this.worldWeapons.group);
         // ?audit=1: the assets coloured by the audit's status (audit.js, tools/audit/asset_audit.py)
         if (new URLSearchParams(location.search).get('audit')) {
@@ -246,6 +255,7 @@ export class View3D {
             const active = !navigator.userActivation || navigator.userActivation.hasBeenActive;
             if (this.soundWanted && active) this.setSound(true);
             else if (this.soundWanted) this.soundNote.textContent = 'starts with the first click';
+            this.syncSoundHint();
           }).catch(err => console.warn('sounds not loaded:', err));
         }
         if (fxOpt !== 'off') {
@@ -266,6 +276,7 @@ export class View3D {
             fx.setWorld(w);
             this.fxOpts = { ambient: fxOpt !== 'demo', demo: fxOpt !== 'ambient' };
             this.fx = fx; this.scene.add(fx.group); this.needsRender = true;
+            fx.casings = this.casingsOn !== false;
             if (this.sound) this.sound.setDemo(this.M, fx);
             this.effects.realFx = this.fxOpts.demo;     // no marker clouds where the real smoke is drawn
             this.actors.realFlash = this.fxOpts.demo;   // no marker sphere where the muzzle flash is drawn
@@ -345,12 +356,17 @@ export class View3D {
     this.xraySel = el('select', { onchange: e => this.setXray(e.target.value, true) }, ...XRAY_MODES.map(([v, label]) => el('option', { value: v }, label)));
     this.killfeedBox = el('input', { type: 'checkbox', onchange: e => this.setKillfeed(e.target.checked, true) });
     this.tracersBox = el('input', { type: 'checkbox', onchange: e => this.setTracers(e.target.checked, true) });
+    this.itemsBox = el('input', { type: 'checkbox', onchange: e => this.setItems(e.target.checked, true) });
+    this.casingsBox = el('input', { type: 'checkbox', onchange: e => this.setCasings(e.target.checked, true) });
     this.switchBoxes = {};
     for (const k of Object.keys(SWITCH_KEYS)) this.switchBoxes[k] = el('input', { type: 'checkbox', onchange: e => this.setActorSwitch(k, e.target.checked, true) });
     this.hudBox = el('input', { type: 'checkbox', onchange: e => this.setHud(e.target.checked, true) });
     // sound wanted (the default) starts with the first click / key / touch in the page - opening a demo,
     // play, the timeline (a dropped file is no user gesture for the browsers: then the next click)
-    const arm = () => { if (this.soundWanted && this.sound && this.visible && (!this.sound.enabled || !this.sound.ctx || this.sound.ctx.state !== 'running')) this.setSound(true); };
+    const arm = () => { if (this.soundWanted && this.sound && this.visible && (!this.sound.enabled || !this.sound.ctx || this.sound.ctx.state !== 'running')) this.setSound(true); this.syncSoundHint(); };
+    // (a demo opened by a link: no click yet, the browser holds the sound back)
+    this.soundHint = el('button', { class: 'sound-hint', hidden: true, title: 'The browser starts sound only after a click' }, 'Click to enable sound');
+    this.stage.append(this.soundHint);
     const ARM_EVENTS = ['pointerdown', 'pointerup', 'keydown', 'touchend'];
     for (const ev of ARM_EVENTS) window.addEventListener(ev, arm, { capture: true });
     this.offArm = () => { for (const ev of ARM_EVENTS) window.removeEventListener(ev, arm, { capture: true }); };
@@ -380,6 +396,8 @@ export class View3D {
           switchRow('Enemy names', this.switchBoxes.enemyNames, { title: 'The enemies\' names over their heads (enemies of the player in first person, else of the selected player, else of the player the demo follows). Off: as in the game, only teammates are named; the selected / hovered player and X-Ray\'s "Players + names" keep theirs' }),
           switchRow('Kill feed', this.killfeedBox, { title: 'The kills and bomb plants / defuses of the last ' + C4.mapConfig.EXPORT.KILLFEED_MS / 1000 + ' s over the view, with the weapon icons' }),
           switchRow('Game HUD', this.hudBox, { title: "First person: the game's HUD (Promod's layout) - the minimap, ammo and grenades, the hit marker, the teammate under the crosshair" }),
+          switchRow('Grenades and dropped weapons', this.itemsBox, { title: "The grenades in flight (their own model, spinning as the demo has it) and the weapons on the ground, where the demo's entities have them" }),
+          switchRow('Shell casings', this.casingsBox, { title: "The cases each shot ejects, the game's shell eject effect at the gun's ejection port" }),
           switchRow('Bullet tracers', this.tracersBox, { title: "The game's bullet tracers: a short glowing streak flying from the muzzle, gone at the impact - for 20 % of the hits the server reports (cg_tracerChance) and half the shots of the player seen in first person (cg_firstPersonTracerChance)" })),
         this.soundRows) },
       { key: 'graphics', title: 'Graphics', hint: 'reloads the 3D map', icon: 'sun', node: el('div', { class: 'pop-body' },
@@ -435,6 +453,22 @@ export class View3D {
     if (user) store(KILLFEED_KEY, on ? 'on' : 'off');
     this.killfeed.update(this.t || 0);
   }
+  /** the grenades in flight and the dropped weapons on / off */
+  setItems(on, user = false) {
+    this.itemsOn = on;
+    if (this.worldWeapons) this.worldWeapons.enabled = on;
+    if (this.itemsBox) this.itemsBox.checked = on;
+    if (user) store(ITEMS_KEY, on ? 'on' : 'off');
+    this.needsRender = true;
+  }
+  /** the shell casings on / off */
+  setCasings(on, user = false) {
+    this.casingsOn = on;
+    if (this.fx) this.fx.casings = on;
+    if (this.casingsBox) this.casingsBox.checked = on;
+    if (user) store(CASINGS_KEY, on ? 'on' : 'off');
+    this.needsRender = true;
+  }
   /** a player overlay switch (SWITCH_KEYS: view lines, player rings, enemy names) on / off */
   setActorSwitch(key, on, user = false) {
     this.actors[key] = on;
@@ -456,6 +490,11 @@ export class View3D {
     if (this.tracersBox) this.tracersBox.checked = on;
     if (user) store(TRACERS_KEY, on ? 'on' : 'off');
     this.needsRender = true;
+  }
+  /** the hint while the sound is wanted and the page has had no click yet */
+  syncSoundHint() {
+    const U = navigator.userActivation;
+    this.soundHint.hidden = !(this.sound && this.soundWanted && this.visible && U && !U.hasBeenActive);
   }
   /** sound on / off (user: from the button - remembered) */
   setSound(on, user = false) {
@@ -540,6 +579,7 @@ export class View3D {
   draw(t) {
     this.t = t;
     const R = this.R;
+    if (this.mapMarks) this.mapMarks.set(R.opts.mapCams, R.opts.hurt);
     // (the reference of Enemy names: the player in first person / followed - the selected one, else the demo's own view)
     this.actors.update(t, { shown: R.shownPlayers(), focus: R.focus, hover: R.hover, labels: R.opts.labels || this.xrayMode === 'names', lastKnown: R.opts.lastKnown,
       xrayNames: this.xrayMode === 'names', ref: R.focus != null ? R.focus : this.M.followedAt(t),
@@ -616,7 +656,15 @@ export class View3D {
     const lean = A && this.cams.mode === 'fp' ? A.leanEye(cl, t, s.yaw) : null;
     if (lean) { eye.x += lean[0]; eye.y += lean[1]; eye.z = Math.max(eye.z + lean[2], s.z + 8); }
     if (A && this.cams.mode === 'fp') eye.z = Math.max(eye.z + A.stepOffset(cl, t), s.z + 8);
-    return { cl, target: { pos, eye, yaw: s.yaw, pitch: s.pitch, weapon: s.weapon } };
+    // the view's motion in first person: the bob (stock servers: Promod sets bg_bobMax 0) and the flinch when hit
+    let pitch = s.pitch, roll = 0;
+    if (A && this.cams.mode === 'fp') {
+      const b = A.viewBob(cl, t, s, isPromod(this.M) ? 0 : BOB_MAX), y = s.yaw * Math.PI / 180;
+      if (b) { eye.x += Math.sin(y) * b.right; eye.y -= Math.cos(y) * b.right; eye.z += b.up; }
+      const k = A.damageKick(cl, t, n => this.viewmodel.entry(n));
+      if (k) { pitch += k[0]; roll = k[1]; }
+    }
+    return { cl, target: { pos, eye, yaw: s.yaw, pitch, roll, weapon: s.weapon } };
   }
 
   loop(now) {
@@ -718,6 +766,8 @@ export class View3D {
    *  own canvas; the video export draws it over its frame) */
   drawHud(g, w, h, cl, clear = true) {
     if (clear) g.clearRect(0, 0, w, h);
+    // (the viewer's kill feed gives way to the game's)
+    if (clear) this.killfeed.box.style.visibility = cl != null && this.hud.enabled ? 'hidden' : '';
     if (cl == null || !this.hud.enabled) return;
     const s = this.M.sampleAt(cl, this.t || 0);
     const st = this.viewmodel.state;
@@ -781,6 +831,7 @@ export class View3D {
   destroy() {
     this.visible = false;
     this.offFocus();
+    if (this.mapMarks) this.mapMarks.dispose();
     this.actors.dispose();
     this.effects.dispose();
     this.killfeed.dispose();

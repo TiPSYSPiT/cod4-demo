@@ -743,7 +743,8 @@ function drawOverlays(ctx, t, hideClient) {
     for (const [txt, col] of parts) { g.fillStyle = col; g.fillText(txt, x, 38 * s); x += g.measureText(txt).width; }
   }
   // kill feed, top right: the kills and bomb events of the last seconds of this round, with the icons
-  if (opts.killfeed) C4.killfeed.draw(g, app, d, t, { right: p.W - 8 * s, top: 18 * s, scale: s, imgs: ctx.kfImgs });
+  // (first person with the game's HUD: its own obituaries)
+  if (opts.killfeed && !(hideClient != null && ctx.view && ctx.view.hud && ctx.view.hud.enabled)) C4.killfeed.draw(g, app, d, t, { right: p.W - 8 * s, top: 18 * s, scale: s, imgs: ctx.kfImgs });
   // title, bottom left: map, game type, round
   if (opts.title) {
     const m = d.meta;

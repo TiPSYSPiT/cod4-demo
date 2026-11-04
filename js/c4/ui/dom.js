@@ -272,4 +272,11 @@
   C4.ui = { el, append, clear, coloured, fmtTime, fmtRoundTime, na, approx, teamClass, sortableTable, virtualList, PHASES, phaseBadge, roundCell,
     icon, switchRow, selectRow, segmented };
   C4.tabs = C4.tabs || {};       // tab modules register here
+  // the game's team icons (maps3d/_hud; g_TeamIcon_* name the material)
+  const FACTIONS = { faction_128_usmc: ['faction_128_usmc_silver', 'Marines'], faction_128_sas: ['faction_128_sas_black', 'SAS'],
+    faction_128_arab: ['faction_128_arab_gold', 'OpFor'], faction_128_ussr: ['faction_128_russia_red', 'Spetsnaz'] };
+  C4.ui.factionIcon = (material, size = 16) => (material && Object.hasOwn(FACTIONS, material)
+    ? el('img', { class: 'faction-icon', src: 'maps3d/_hud/' + FACTIONS[material][0] + '.webp', alt: '', title: FACTIONS[material][1], width: size, height: size,
+      draggable: 'false', onerror: e => e.target.remove() })
+    : null);
 })(window.C4);

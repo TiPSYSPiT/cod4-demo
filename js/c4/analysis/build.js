@@ -800,9 +800,9 @@ C4.define('build', function (C4) {
       // cod4-demo3d: the recorder's HUD state per snapshot (collect.js psHud): health, maxHealth, ident (the player
       // under the crosshair), damage event / yaw / pitch / count / duration, flinch, cursor hint + string, offhandSecondary
       psHud: (() => {
-        const a = col.psHud || [], N = 14, n = Math.floor(a.length / N);
+        const a = col.psHud || [], N = 15, n = Math.floor(a.length / N);
         const keys = ['client', 'health', 'maxHealth', 'ident', 'damageEvent', 'damageYaw', 'damagePitch', 'damageCount', 'damageDuration',
-          'flinch', 'hint', 'hintString', 'offhandSecondary'];
+          'flinch', 'hint', 'hintString', 'offhandSecondary', 'mantle'];
         const o = { t: new Int32Array(n) };
         for (const k of keys) o[k] = new Int16Array(n);
         for (let i = 0; i < n; i++) { const r = i * N; o.t[i] = rel(a[r]); keys.forEach((k, j) => { o[k][i] = a[r + 1 + j]; }); }
@@ -812,13 +812,15 @@ C4.define('build', function (C4) {
         const E = col.hudElems || [], St = col.hudStates || [], NH = E.length ? E[0].length : 0;
         o.ref = Uint32Array.from(col.psHudRef || []);
         o.objRef = Uint32Array.from(col.psObjRef || []);
+        // the server's messages to the recorder's game message windows (CG_DeployServerCommand: e, f the lower left, c, g bold)
+        o.messages = commands.filter(c => c.d && 'efcg'.includes(c.d.verb || '-') && c.d.text).map(c => [c.t, c.d.verb === 'e' || c.d.verb === 'f' ? 0 : 1, c.d.text]);
         o.objs = col.objStates || [];
         const start = new Uint32Array(St.length + 1);
         St.forEach((s, i) => { start[i + 1] = start[i] + s.length; });
         const ids = new Uint32Array(start[St.length]), elems = new Int32Array(E.length * NH);
         St.forEach((s, i) => ids.set(s, start[i]));
         E.forEach((e, i) => elems.set(e, i * NH));
-        const want = i => (i >= K.CS.LOCALIZED && i < K.CS.NORTHYAW) || (i >= K.CS.SERVER_MATERIALS && i < K.CS.WEAPONFILES) || (i > K.CS.WEAPONFILES && i <= K.CS.WEAPONFILES + 8);
+        const want = i => (i >= K.CS.HINT_STRINGS && i < K.CS.NORTHYAW) || (i >= K.CS.SERVER_MATERIALS && i < K.CS.WEAPONFILES) || (i > K.CS.WEAPONFILES && i <= K.CS.WEAPONFILES + 8);
         const init = {};
         for (const [i, v] of csInit) if (want(i)) init[i] = v;
         o.elems = { t0, start, ids, data: elems, stride: NH, cs: { init,
@@ -827,6 +829,21 @@ C4.define('build', function (C4) {
       })(),
       // cod4-demo3d: the scores the server sent ("b": only while the recorder looked at the scoreboard): the game's scoreboard
       scoreboards: col.scoreboards.map(sb => ({ t: rel(sb.t), axis: sb.axis, allies: sb.allies, limit: sb.limit, entries: sb.entries })),
+      // cod4-demo3d: the same scores per client: the ping over time (the stats popup) on every change
+      scoreboardTrack: (() => {
+        const tr = {};
+        for (const sb of col.scoreboards) {
+          const t = rel(sb.t);
+          if (!onMainMap(t)) continue;
+          for (const e of sb.entries) {
+            if (e.client == null || e.client < 0 || e.client >= 64) continue;
+            const o = tr[e.client] || (tr[e.client] = { t: [], ping: [] }), n = o.t.length;
+            if (!n || o.ping[n - 1] !== e.ping) { o.t.push(t); o.ping.push(e.ping | 0); }
+          }
+        }
+        for (const o of Object.values(tr)) { o.t = Int32Array.from(o.t); o.ping = Uint16Array.from(o.ping); }
+        return tr;
+      })(),
       // cod4-demo3d: the recorder's ammo (kind 0) and clip (kind 1) slots on every change: [t, kind, slot, value]
       psAmmo: (() => { const a = col.psAmmo || [], out = []; for (let i = 0; i + 3 < a.length; i += 4) out.push([rel(a[i]), a[i + 1], a[i + 2], a[i + 3]]); return out; })(),
       // cod4-demo3d: the recorder's own aim per snapshot (relative time; collect.js psAim)

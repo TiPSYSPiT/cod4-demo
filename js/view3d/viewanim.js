@@ -48,6 +48,8 @@ const ENTITYNUM_NONE = 1023;
 const OFFHAND_STATES = [15, 20];               // WEAPON_OFFHAND_INIT .. WEAPON_OFFHAND_END
 const RUN_SPEED = 190;                         // units / s: full movement offsets and bob
 const SIM_MS = 2500;                           // the gun's follow simulation: the last 2.5 s (gunFollow)
+// bg_bobAmplitudeSprinting / Standing / Ducked / Prone: [horizontal, vertical]
+const BOB_AMP = { sprint: [0.02, 0.014], stand: [0.007, 0.007], ducked: [0.0075, 0.0075], prone: [0.03, 0.03] };
 const NO_GROUND = 1023;                        // groundEntityNum in the air
 // cg_viewZSmoothingMin / Max / Time (the defaults; Promod's client.gsc forces the same), bg_stepSize
 const STEP_MIN = 1, STEP_MAX = 16, STEP_MS = 100, STEP_SIZE = 18;
@@ -671,6 +673,70 @@ export class ViewAnimator {
     for (let i = k; i >= 0 && t - S.t[i] < STEP_MS; i--) off -= S.amount[i] * (1 - (t - S.t[i]) / STEP_MS);
     if (k + 1 < S.t.length && t > S.from[k + 1]) off -= S.amount[k + 1] * (t - S.from[k + 1]) / (S.t[k + 1] - S.from[k + 1]);
     return Math.max(-STEP_MAX, Math.min(STEP_MAX, off));
+  }
+
+  /** the recorder's hits: ps.damageEvent changed with a damageCount (CG_CheckPlayerstateEvents -> CG_DamageFeedback) */
+  hitsOf(cl) {
+    const C = this.hits || (this.hits = new Map());
+    let L = C.get(cl);
+    if (L) return L;
+    L = { t: [], count: [], yaw: [], pitch: [] };
+    C.set(cl, L);
+    const H = this.M.d.psHud;
+    for (let i = 1; H && i < H.t.length; i++) {
+      if (H.client[i] !== cl || H.client[i - 1] !== cl || H.damageEvent[i] === H.damageEvent[i - 1] || !H.damageCount[i]) continue;
+      L.t.push(H.t[i]); L.count.push(H.damageCount[i]); L.yaw.push(H.damageYaw[i]); L.pitch.push(H.damagePitch[i]);
+    }
+    return L;
+  }
+
+  /** the recorder's flinch when hit (CG_DamageFeedback, BG_CalculateView_DamageKick): the kick is the damage x bg_viewKickScale
+   *  0.2 (5 .. 90) along the view - pitch by the damage direction's share forward, roll by its share to the left (no
+   *  direction: pitch up by all of it) - rising over 100 ms and falling over the next 400 ms (GetLeanFraction), half as much at
+   *  full ADS (x (1 + ADS / 2) with a scope) -> [pitch, roll] (degrees) or null */
+  damageKick(cl, t, entryOf) {
+    const L = this.hitsOf(cl), k = lower(L.t, t);
+    if (k < 0 || t - L.t[k] >= 500) return null;
+    const M = this.M, dt = t - L.t[k], A = M.d.psAim, r = A ? lower(A.t, t) : -1, ads = r >= 0 && A.client[r] === cl ? A.ads[r] : 0;
+    const lf = f => f * (2 - Math.abs(f)), s0 = M.sampleAt(cl, t), e = s0 ? entryOf(M.weaponName(s0.weapon, t)) : null;
+    let scale = 1 - 0.5 * ads;
+    if (ads && e && e.params && e.params.overlayReticle && e.params.overlayReticle !== 'none') scale *= 1 + 0.5 * ads;
+    const v = dt < 100 ? scale * lf(dt / 100) : (1 - lf((dt - 100) / 400)) * scale;
+    const kick = Math.min(90, Math.max(5, L.count[k] * 0.2));
+    if (L.yaw[k] === 255 && L.pitch[k] === 255) return [-kick * v, 0];
+    const s = M.sampleAt(cl, L.t[k]);
+    if (!s) return null;
+    const D2 = Math.PI / 180, dy = L.yaw[k] / 255 * 360 * D2, dp = L.pitch[k] / 255 * 360 * D2;
+    const dir = [Math.cos(dp) * Math.cos(dy), Math.cos(dp) * Math.sin(dy), -Math.sin(dp)];
+    const vy = s.yaw * D2, vp = s.pitch * D2;
+    const fw = [Math.cos(vp) * Math.cos(vy), Math.cos(vp) * Math.sin(vy), -Math.sin(vp)], left = [-Math.sin(vy), Math.cos(vy), 0];
+    const kp = (dir[0] * fw[0] + dir[1] * fw[1] + dir[2] * fw[2]) * kick, kr = -kick * (dir[0] * left[0] + dir[1] * left[1]);
+    return [kp * v, kr * v];
+  }
+
+  /** the first-person camera's bob at t (CG_OffsetFirstPersonView: BG_GetVerticalBobFactor / HorizontalBobFactor; the recorder's
+   *  bobCycle, else the distance walked, one cycle per 2 steps) -> {up, right} (units). Promod sets bg_bobMax 0: none there */
+  viewBob(cl, t, s, bobMax) {
+    if (!bobMax) return null;
+    const M = this.M, ri = this.recorderRow(cl, t), W = ri >= 0 ? this.rec.W : null;
+    let cycle, speed, ampH, ampV;
+    if (W) {
+      let b = W.bob[ri];
+      const nx = ri + 1 < W.t.length && W.client[ri + 1] === cl && W.t[ri + 1] > W.t[ri] ? ri + 1 : -1;
+      const f = nx > 0 ? clamp01((t - W.t[ri]) / (W.t[nx] - W.t[ri])) : 0;
+      if (nx > 0) { let d = W.bob[nx] - b; if (d < -128) d += 256; b += d * f; }
+      cycle = b / 255 * Math.PI * 2 + Math.PI * 2;
+      speed = Math.hypot(W.vx[ri] + (nx > 0 ? (W.vx[nx] - W.vx[ri]) * f : 0), W.vy[ri] + (nx > 0 ? (W.vy[nx] - W.vy[ri]) * f : 0));
+    } else {
+      const Ps = M.d.positions[cl], D = this.distOf ? this.distOf(cl) : null, i = lower(Ps.t, t);
+      const a = M.sampleAt(cl, t - 50);
+      speed = a ? Math.hypot(s.x - a.x, s.y - a.y) * 20 : 0;
+      cycle = D && i >= 0 ? D[i] / 96 * Math.PI : 0;
+    }
+    const sprint = W && W.state[ri] >= 22 && W.state[ri] <= 23;
+    [ampH, ampV] = s.prone ? BOB_AMP.prone : s.crouch ? BOB_AMP.ducked : sprint ? BOB_AMP.sprint : BOB_AMP.stand;
+    const v = Math.min(bobMax, speed * ampV), h = Math.min(bobMax, speed * ampH);
+    return { up: (Math.sin(4 * cycle + Math.PI / 2) * 0.2 + Math.sin(2 * cycle)) * 0.75 * v, right: Math.sin(cycle) * h };
   }
 
   /** the landing dip (units, <= 0) of client cl's view at t (CG_EntityEvent EV_LANDING / EV_LANDING_PAIN,

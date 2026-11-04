@@ -198,6 +198,7 @@ export async function loadWorld(mapName, { onProgress, props = true, gameLightin
   // the map's script models (destructible cars, ...: scriptModels.js)
   try {
     const ents = await fetchJSON(dir + 'entities.json');
+    out.entities = { spawns: ents.spawns || [], hurt: ents.hurt || [] };       // (mapMarks.js)
     out.scriptModels = ents.scriptModels || [];
     // their collision (script_coll.bin: model space, float32 x 9 per triangle, then a uint8 surface type each)
     if (ents.collision && ents.collision.triangles) {

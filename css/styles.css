@@ -155,13 +155,13 @@ a.ib:focus-visible { background: var(--raise); color: var(--text); }
 .seg button:hover { color: var(--text); }
 .seg button.active { background: var(--raise-2); color: var(--text); box-shadow: 0 1px 2px rgba(0, 0, 0, .4); }
 .seg.small button { padding: 3px 10px; font-size: var(--fs-s); }
-/* segmented control inside a panel (C2.ui.segmented) */
+/* segmented control inside a panel (C4.ui.segmented) */
 .mseg { display: grid; grid-template-columns: repeat(var(--n, 4), 1fr); background: var(--well); border-radius: var(--r-s); padding: 2px; gap: 2px; }
 .mseg button { border: 0; background: transparent; text-align: center; padding: 6px 4px; border-radius: var(--r-xs); color: var(--muted); font-weight: 500;
   font-size: var(--fs-s); white-space: nowrap; transition: color var(--ease), background-color var(--ease); }
 .mseg button:hover { color: var(--text); }
 .mseg button.on { background: var(--raise-3); color: var(--text); }
-/* switch (input.tog, C2.ui.switchRow) */
+/* switch (input.tog, C4.ui.switchRow) */
 input.tog { appearance: none; -webkit-appearance: none; margin: 0; width: 30px; height: 18px; border-radius: 99px; background: var(--switch-off);
   position: relative; flex: none; cursor: pointer; transition: background-color .2s; }
 input.tog::after { content: ''; position: absolute; top: 2px; left: 2px; width: 14px; height: 14px; border-radius: 50%; background: #fff; transition: left .2s; }
@@ -172,7 +172,7 @@ input.tog:disabled { opacity: .45; cursor: default; }
 .sw-l { display: inline-flex; align-items: baseline; gap: 6px; min-width: 0; }
 .sw small { color: var(--muted); font-size: var(--fs-xs); }
 .dotc { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 2px; align-self: center; }
-/* select row (C2.ui.selectRow): "label ..... value ⌄" */
+/* select row (C4.ui.selectRow): "label ..... value ⌄" */
 .sel { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 0 4px 0 10px; height: 34px; border-radius: var(--r-s);
   background: var(--well); border: 1px solid var(--line); cursor: pointer; }
 .sel small { color: var(--muted); font-size: var(--fs-s); flex: none; }
@@ -287,6 +287,7 @@ body.loaded main { height: calc(100vh - var(--top-h)); }
 .score-final-toggle:hover { color: var(--text); }
 .score-halves { color: var(--text); font-size: var(--fs-s); line-height: 1.5; }
 .ov-items { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 12px; border-top: 1px solid var(--line); padding-top: 10px; }
+.ov-sub-h { grid-column: 1 / -1; font-size: var(--fs-cap); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
 .ov-item { display: contents; font-size: var(--fs-s); }
 .ov-item .ov-label { color: var(--muted); white-space: nowrap; }
 .ov-item .ov-value { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 500; }
@@ -314,6 +315,13 @@ kbd { font: 500 var(--fs-xs) var(--mono); padding: 1px 6px; border-radius: 5px; 
   max-width: min(560px, calc(100% - var(--drawer-space) - var(--rail-w) - 40px)); padding: 7px 11px; border-radius: var(--r-s); font-size: var(--fs-s);
   background: var(--glass-2); border: 1px solid var(--line); color: var(--text); pointer-events: none; backdrop-filter: var(--blur); -webkit-backdrop-filter: var(--blur); }
 .map-hint.warn { color: var(--warn); border-color: var(--warn-line); }
+/* a demo opened by a link: the browser holds the sound back until a click (view3d.js) */
+.sound-hint { position: absolute; left: 50%; transform: translateX(-50%); bottom: calc(var(--bar-h) + 2 * var(--gutter) + 38px); z-index: 7;
+  display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px; border-radius: 999px; font: inherit; font-size: var(--fs-s);
+  background: var(--glass-2); border: 1px solid var(--line); color: var(--text); cursor: pointer; backdrop-filter: var(--blur); -webkit-backdrop-filter: var(--blur); }
+.sound-hint:hover { border-color: var(--muted); }
+.sound-hint[hidden] { display: none; }
+.stage.fs .sound-hint { bottom: calc(var(--bar-h) + 2 * var(--gutter)); }
 .cam-hint { position: absolute; left: 50%; transform: translateX(-50%); bottom: calc(var(--bar-h) + 2 * var(--gutter)); z-index: var(--z-hint); white-space: nowrap;
   padding: 6px 12px; border-radius: 999px; font-size: var(--fs-s); background: var(--glass-2); border: 1px solid var(--line); color: var(--muted);
   pointer-events: none; transition: opacity .6s; max-width: calc(100% - 2 * var(--drawer-space)); overflow: hidden; text-overflow: ellipsis; }
@@ -405,6 +413,10 @@ kbd { font: 500 var(--fs-xs) var(--mono); padding: 1px 6px; border-radius: 5px; 
 .rp-team-name { color: var(--tc); font-weight: 600; cursor: pointer; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .rp-team-name:hover { text-decoration: underline; text-underline-offset: 2px; }
 .rp-side { color: var(--muted); font-size: var(--fs-xs); }
+/* the game's team icons (g_TeamIcon_*) */
+.faction-icon { display: inline-block; vertical-align: -2px; margin-right: 4px; image-rendering: auto; }
+.faction-slot:empty { display: none; }
+.faction-slot { display: inline-flex; align-items: center; align-self: center; }
 .rp-score { font: 600 var(--fs-s) var(--mono); color: var(--text); }
 .rp-alive { margin-left: auto; display: flex; gap: 3px; align-self: center; color: var(--tc); }
 .rp-alive i { width: 12px; height: 4px; border-radius: 2px; background: currentColor; }
@@ -638,6 +650,7 @@ table.data.scoreboard tbody tr.team-head ~ tr.team-head td { border-top: 14px so
 .stats-table td:first-child { color: var(--muted); }
 .stats-table .num { text-align: right; font-family: var(--mono); }
 .stats-note { color: var(--warn); }
+.stats-spark { vertical-align: middle; }
 .stats-nade { display: inline-flex; align-items: center; gap: 3px; }
 .stats-nade-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
 .stats-nade-dot.frag { background: #ff8a1f; } .stats-nade-dot.smoke { background: #a9b0b8; }

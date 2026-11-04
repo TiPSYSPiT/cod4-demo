@@ -27,7 +27,7 @@ export class Replay {
     this.selection = { a: null, b: null };   // the export range markers on the timeline (I / O)
     this.hover = null;               // player under the mouse in the team panel
     // (trails off by default - as the other Layers options, not remembered)
-    this.opts = { labels: true, lastKnown: false, trails: false, killLines: true, grenadeKinds: new Set(['smoke', 'frag', 'flash', 'concussion', 'other']) };
+    this.opts = { labels: true, lastKnown: false, trails: false, killLines: true, items: false, mapCams: false, hurt: false, grenadeKinds: new Set(['smoke', 'frag', 'flash', 'concussion', 'other']) };
     this.scope = -1;
     this.base = 0;
     this.listeners = new Set();
@@ -139,7 +139,10 @@ export class Replay {
         el('div', { class: 'grp' },
           sw('Names', 'labels'), sw('Trails', 'trails', 'Last ' + CFG.TRAIL_MS / 1000 + ' s of movement', 'last ' + CFG.TRAIL_MS / 1000 + ' s'),
           sw('Kill lines', 'killLines', 'Line from killer to victim for 5 s after a kill'),
-          sw('Last known position', 'lastKnown', 'Players the server stopped sending are drawn hollow at their last known position (same life only)')),
+          sw('Last known position', 'lastKnown', 'Players the server stopped sending are drawn hollow at their last known position (same life only)'),
+          this.d.items && this.d.items.length ? sw('Dropped weapons', 'items', "2D map: the weapons on the ground as the game's weapon icon, turned as they lie (where the demo has them)") : null,
+          sw('Intermission camera', 'mapCams', "The map's intermission camera (mp_global_intermission): where the game puts the view between rounds and after the match"),
+          sw('Hurt triggers', 'hurt', "The map's hurt triggers (trigger_hurt: kill planes under the map, edges): their boxes and damage")),
         nades) };
   }
 
@@ -186,7 +189,7 @@ export class Replay {
   /* ---------- kill & bomb feed (side panel) ---------- */
   /** the range's separators in time order, for the feed and the timeline's labels: each round (from the rounds the
    *  timeline and the score pill use: knife / warm-up / after-match rounds by their kind), a warm-up phase outside
-   *  every round, each halftime (the rounds' side swaps / zPAM's messages) */
+   *  every round, each halftime (the rounds' side swaps) */
   separators(range) {
     const d = this.d, seps = [];
     d.rounds.forEach((r, k) => {
@@ -284,10 +287,11 @@ export class Replay {
     this.rp = { title, status, cards: [], rows: new Map() };
     const addCard = (key, name, ps, color) => {
       const score = el('span', { class: 'rp-score', title: 'rounds won' }), side = el('small', { class: 'rp-side' }), alive = el('span', { class: 'rp-alive' });
-      const rows = el('div', { class: 'rp-rows' });
+      const rows = el('div', { class: 'rp-rows' }), flag = el('span', { class: 'faction-slot' });
       const card = el('div', { class: 'rp-card', style: { '--tc': color } },
         el('div', { class: 'th' },
           key ? app.teamMark(key) : null,
+          flag,
           el('span', { class: 'rp-team-name', role: 'button', tabindex: '0', title: name + ' - click: show / hide the whole team',
             onclick: () => setAll(ps.map(p => p.client), !ps.every(p => this.selected.has(p.client))),
             onkeydown: e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.target.click(); } } }, name),
@@ -296,7 +300,7 @@ export class Replay {
         rows);
       for (const p of ps) this.rp.rows.set(p.client, this.playerRow(p, rows));
       box.append(card);
-      if (key) this.rp.cards.push({ key, score, side, alive, ps, aliveKey: null });
+      if (key) this.rp.cards.push({ key, score, side, alive, ps, flag, aliveKey: null });
     };
     for (const t of d.teams) {
       const ps = d.players.filter(p => p.team === t.key && withPos(p));
@@ -351,6 +355,8 @@ export class Replay {
     const score = this.scoreNow = this.scoreAt(t);
     for (const c of this.rp.cards) {
       setText(c.score, String(score[c.key] != null ? score[c.key] : 0));
+      const fa = this.match.factionAt(c.key, t) || '';
+      if (c.flag.dataset.f !== fa) { c.flag.dataset.f = fa; c.flag.replaceChildren(C4.ui.factionIcon(fa, 14) || ''); }
       const sd = r && r.sides ? r.sides[c.key] : null;
       setText(c.side, sd === 'attack' ? 'Attack' : sd === 'defence' ? 'Defence' : '');
       const inRound = r ? c.ps.filter(p => { const P = d.positions[p.client]; const i = upperBound(P.t, r.segEnd) - 1; return i >= 0 && P.t[i] >= r.segStart; }) : [];
@@ -404,7 +410,8 @@ export class Replay {
     this.timeline.setTime(t);
     this.updateTeamPanel(t);
     // the score pill: the rounds won up to now (the final score only on request: overview.js)
-    C4.tabs.overview.update(this.scoreNow, this.rp.title.textContent, rl ? rl.split(' · ')[1] || '' : '', this.match.bombTimer(t));
+    C4.tabs.overview.update(this.scoreNow, this.rp.title.textContent, rl ? rl.split(' · ')[1] || '' : '', this.match.bombTimer(t),
+      { A: this.match.factionAt('A', t), B: this.match.factionAt('B', t) });
     if (this.view) this.view.draw(t);
     C4.mapStats.refresh();
     // feed: the latest entry highlighted and kept in view, the ones after the playback time dimmed - a clicked entry

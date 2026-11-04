@@ -62,7 +62,7 @@ Every choice below is remembered in the browser.
 |---|---|
 | Top bar | The file name, the **2D / 3D** toggle (key `V`; a demo opens in **3D, in first person** of the demo's own view - the recording player, or the player he followed then; the view and the camera the viewer chose are remembered instead), **Match details** (chart icon: scoreboard, round by round, chat, events, weapons), **Export JSON** (file icon), the GitHub link, **Open demo** |
 | Score pill | Top centre: the teams (▲ the POV's team in blue, ◆ the other in red - the shapes tell them apart without the colours), the score at the playback time, the round and its time, map and mode; while a bomb is planted its countdown (the server's `setGameEndTime` clock of the plant, config string 11 - else the demo's plant-to-explosion time, else 45 s, marked `≈`; the 2D bomb shows it too) |
-| Rail | The icon bar on the left; each icon opens a popover (`Esc` or a click outside closes it). **Layers**: names, trails (5 s, off by default), kill lines, last known position, grenade types (smoke / frag / flash). The view's own popovers follow (2D: **Heatmap**; 3D: **Camera**, **Display**, **Graphics**, below). **Match info** at the bottom: **Show final score** (the result and the halves), map, mode, ruleset, server, POV, length, record date, protocol (`≈` marks heuristic values - hover one for how it was derived), the map data (file, triangle counts, load time) and the keyboard shortcuts |
+| Rail | The icon bar on the left; each icon opens a popover (`Esc` or a click outside closes it). **Layers**: names, trails (5 s, off by default), kill lines, last known position, dropped weapons (2D), the intermission camera and hurt triggers (2D and 3D; all three off by default), grenade types (smoke / frag / flash). The view's own popovers follow (2D: **Heatmap**; 3D: **Camera**, **Display**, **Graphics**, below). **Match info** at the bottom: **Show final score** (the result and the halves), map, mode, ruleset, server, POV, length, record date, protocol (`≈` marks heuristic values - hover one for how it was derived), the map data (file, triangle counts, load time) and the keyboard shortcuts |
 | Drawer | On the right, hideable (the panel icon), its two sections foldable. **Teams**: round, status, side, score and the players alive (bars) per team; per player the weapon in hand (its icon) and K / D up to now. **Click a player to select them** (highlighted in 2D and 3D; the 3D follow and first-person cameras use the selection; also with `Tab` and `Enter`). The eye shows or hides a player, the team name the team, *All* / *None* everyone, the chart icon opens the player's stats. **Kill feed & bomb**: kills (attacker, weapon icon, headshot, victim) and plant / defuse of the range; the entry at the playback time is highlighted and kept in view, later ones are dimmed; click one to jump to 2 s before it (that entry stays the highlighted one); separators mark each round ("R7", the knife round, the warm-up, after the match - the same rounds as the timeline; the current round's in the accent, click one for the round's start) and each halftime |
 | Player bar | At the bottom: ⏪ / ⏩ 5 s (`←` / `→`), play / pause (`Space`), the time (under it the round and its time), the timeline - the round labels under it (click to jump, hover for the time and score), the rounds as segments (underlined in the winner's colour once played), kills as ticks (the blue team's above, the red team's below), bomb plants (orange) and defuses (green), halftime lines; drag to scrub, strat time is skipped -, **Range** (whole match or one round), the speed (0.5–4×), **[ ]** the start / end of an export range at the current time (keys `I` / `O`; again to clear), **Export video** (MP4 / GIF of the 2D or the 3D view, below) |
 | Scoreboard | Hold `Tab`: the game's scoreboard over the view - 2D, 3D in every camera, fullscreen: per team its icon, name, count and score, per player status icon, score, kills, assists, deaths and ping as the server last sent them (only while the recorder looked at the scoreboard, so they can lag behind the playback; a player not listed yet shows the viewer's own kills and deaths), the watched player lit. Not part of the video exports. |
@@ -210,7 +210,8 @@ marker, hints and the **server's HUD elements** (the scripts' texts, timers and 
 banner ...) exist only for the recorder (the demo's player state). The text is in the game's fonts; the strings are the
 game's, with English written by hand over the German install for what the HUD shows (`STRINGS_EN` in `hud_export.py`).
 The minimap shows the objectives (bomb sites, the bomb, its carrier), the view the scripts' waypoints, at the screen's
-edge with an arrow when out of view. The video export draws the HUD into its frames.
+edge with an arrow when out of view. The game's messages stand lower left (obituaries, bomb messages; the viewer's kill
+feed gives way to them in first person), "You killed" / "Killed by" under the centre. The video export draws the HUD into its frames.
 
 **Promod demos** (`mod` / `fs_game` / `promodVersion` name Promod): the numbers and effects of Promod's weapon files
 (`promod_x-master/weapons/mp`, exported into `viewmodels.json` as the differences) - no crosshair colours, no muzzle
@@ -817,10 +818,32 @@ py tools/serve.py
 node tools/audit/browser/run.mjs
 ```
 
-A suite by name (`smoke`, `badfiles`, `hud`, `scores`, `timebar`, `notes`, `steps`, `touch`, `export`, and on request `fxhash`,
+A suite by name (`smoke`, `badfiles`, `hud`, `scores`, `timebar`, `notes`, `steps`, `touch`, `export`, `extras`, `polish`, and on request `fxhash`,
 `perf`, `leak`), `--browsers chrome,edge,firefox`, `--demos a.dm_1,b.dm_1`. Each run prints one line; details in
 `tools/audit/out/browser/`. Exit code 1 when a check fails or the page logged an error, a warning or a failed request. `fxhash`
 prints the effects' output as hashes: compare two runs after a change to `fx.js`.
+
+Read-only audits of the data, without a browser:
+
+```bash
+node tools/audit/demo_audit.mjs
+```
+
+```bash
+py tools/audit/site_audit.py
+```
+
+```bash
+py tools/audit/map_audit.py
+```
+
+```bash
+py tools/audit/leftovers.py
+```
+
+`demo_audit.mjs` runs the parser and analysis over `demos/` and checks each demo's consistency, `site_audit.py` the site for GitHub
+Pages (manifest, exact case of references, sizes), `map_audit.py` every map's files and entities, `leftovers.py` looks for code left
+from CoD2.
 
 ## Credits and licence
 

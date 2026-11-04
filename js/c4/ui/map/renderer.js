@@ -287,6 +287,53 @@
       g.globalAlpha = 1;
     }
 
+    /** an image (its part box [x, y, w, h]) h pixels high at a world point, turned by a (radians), never upside down */
+    drawIcon(x, y, img, box, a, h, alpha) {
+      const g = this.ctx, [X, Y] = this.pt(x, y), w = h * box[2] / box[3];
+      g.save();
+      g.globalAlpha = alpha;
+      g.translate(X, Y); g.rotate(a);
+      if (Math.cos(a) < 0) g.scale(1, -1);
+      g.shadowColor = 'rgba(0,0,0,0.9)'; g.shadowBlur = 3;
+      g.drawImage(img, box[0], box[1], box[2], box[3], -w / 2, -h / 2, w, h);
+      g.restore();
+    }
+
+    /** a world box (x / y of mins, maxs) outlined, dashed, with a label at its top-left corner */
+    drawBox(mins, maxs, color, label) {
+      const g = this.ctx, c = [[mins[0], mins[1]], [maxs[0], mins[1]], [maxs[0], maxs[1]], [mins[0], maxs[1]]].map(p => this.pt(p[0], p[1]));
+      g.save();
+      g.globalAlpha = 0.9; g.strokeStyle = color; g.lineWidth = 1.6; g.setLineDash([7, 4]);
+      g.fillStyle = color + '1a';
+      g.beginPath(); c.forEach(([X, Y], i) => (i ? g.lineTo(X, Y) : g.moveTo(X, Y))); g.closePath(); g.fill(); g.stroke();
+      g.setLineDash([]);
+      if (label) {
+        const X = Math.min(...c.map(p => p[0])) + 6, Y = Math.min(...c.map(p => p[1])) + 12;
+        g.font = '600 10.5px Inter, "Segoe UI", system-ui, sans-serif'; g.textBaseline = 'middle';
+        g.lineWidth = 3; g.strokeStyle = 'rgba(0,0,0,0.85)'; g.strokeText(label, X, Y);
+        g.fillStyle = color; g.fillText(label, X, Y);
+      }
+      g.restore();
+    }
+
+    /** a camera at a world point looking along yaw (degrees): a small body with its view cone, and a label */
+    drawCamera(x, y, yaw, label) {
+      const g = this.ctx, [X, Y] = this.pt(x, y), a = this.dirAngle(yaw);
+      g.save();
+      g.translate(X, Y); g.rotate(a);
+      g.globalAlpha = 0.95; g.lineWidth = 1.6;
+      g.fillStyle = 'rgba(230,230,230,0.18)'; g.strokeStyle = '#e6e6e6';
+      g.beginPath(); g.moveTo(0, 0); g.lineTo(34, -18); g.lineTo(34, 18); g.closePath(); g.fill(); g.stroke();
+      g.fillStyle = '#e6e6e6'; g.strokeStyle = 'rgba(0,0,0,0.85)';
+      g.beginPath(); g.rect(-9, -6, 12, 12); g.fill(); g.stroke();
+      g.restore();
+      if (label) {
+        g.font = '600 10.5px Inter, "Segoe UI", system-ui, sans-serif'; g.textBaseline = 'middle';
+        g.lineWidth = 3; g.strokeStyle = 'rgba(0,0,0,0.85)'; g.strokeText(label, X + 10, Y + 14);
+        g.fillStyle = '#e6e6e6'; g.fillText(label, X + 10, Y + 14);
+      }
+    }
+
     drawDeath(x, y, color, alpha) {
       const g = this.ctx;
       const [X, Y] = this.pt(x, y), s = 6;

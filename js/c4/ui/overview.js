@@ -24,8 +24,14 @@
 
   /** the score at the playback time (Replay: rounds won so far), the round it is in ('Round 8', ...),
    *  the round time ('01:23') and the planted bomb's timer (match.js bombTimer: {left, heuristic} or null) */
-  function update(score, roundText, roundTime, bomb) {
+  function update(score, roundText, roundTime, bomb, factions) {
     if (!live) return;
+    if (factions && live.flags) for (const k of ['A', 'B']) {
+      const slot = live.flags[k];
+      if (!slot || slot.dataset.f === (factions[k] || '')) continue;
+      slot.dataset.f = factions[k] || '';
+      slot.replaceChildren(C4.ui.factionIcon(factions[k], 14) || '');
+    }
     if (live.A) {
       setText(live.A, String(score && score.A != null ? score.A : 0));
       setText(live.B, String(score && score.B != null ? score.B : 0));
@@ -51,12 +57,12 @@
 
     // final score
     const [A, B] = d.teams;
-    const played = d.rounds.filter(r => r.kind === 'round');
+    const played = d.rounds.filter(r => r.kind === 'round'), flags = {};
     let scoreCard;
     if (played.length) {
       // the team's shape (▲ / ◆) next to its colour: readable without telling the colours apart
       const teamLabel = (t, cls) => el('span', { class: 'score-team ' + cls, title: t.name + (t.nameHeuristic ? '' : ' (no common clan tag found)') },
-        app.teamMark ? app.teamMark(t.key) : null, t.name, t.nameHeuristic ? approx('team name from the common name prefix of the players') : null);
+        app.teamMark ? app.teamMark(t.key) : null, flags[t.key] = el('span', { class: 'faction-slot' }), t.name, t.nameHeuristic ? approx('team name from the common name prefix of the players') : null);
       const halves = [];
       const hi = d.halfInfo;
       const n = Math.max(A.halves.length, B.halves.length);
@@ -89,7 +95,7 @@
         el('span', { class: 'score-num', title: 'rounds won up to the playback time' + (m.isSearchAndDestroy ? '' : ' (rounds of the round logic)') }, liveA, el('i', null, ':'), liveB),
         teamLabel(B, 'b'));
       scoreCard = el('div', { class: 'ov-final' }, el('div', { class: 'ov-final-head' }, el('h4', null, 'Final score'), toggle), finalLine);
-      live = { A: liveA, B: liveB };
+      live = { A: liveA, B: liveB, flags };
     } else {
       root.append(el('span', { class: 'score-none' }, 'Score ', na(m.isSearchAndDestroy ? 'no complete round in the demo' : 'no rounds detected - round logic is built for Search & Destroy')));
       scoreCard = null;
@@ -122,15 +128,37 @@
       card('Length', fmtTime(m.durationMs), (m.stats ? m.stats.snapshots.toLocaleString('en') + ' snapshots' : '')),
       card('Record date', date, null)
     );
+    // the rules: the server's settings in the demo (the dvars it announces, the serverinfo)
+    const rules = rulesOf(d);
+    if (rules.length) {
+      const g = el('div', { class: 'ov-items' }, el('div', { class: 'ov-sub-h' }, 'Rules'));
+      for (const [label, value, sub] of rules) g.append(card(label, value, sub));
+      info.append(g);
+    }
     // the bomb timer of the S&D rounds (build.js: the plant's countdown clock)
     const fuse = (d.bombTrack || []).find(b => b.state === 'planted' && b.explodeAt != null);
-    if (fuse) items.append(card('Bomb timer', [Math.round((fuse.explodeAt - fuse.t) / 1000) + ' s', fuse.timerSource === 'clock' ? null : ' ', fuse.timerSource === 'clock' ? null : approx(fuse.timerSource === 'default' ? 'no countdown clock and no exploded round in the demo: the default bombtimer' : 'no countdown clock in the demo: the plant -> explosion time of its exploded rounds')],
+    if (fuse) (info.querySelector('.ov-items:last-of-type') || items).append(card('Bomb timer', [Math.round((fuse.explodeAt - fuse.t) / 1000) + ' s', fuse.timerSource === 'clock' ? null : ' ', fuse.timerSource === 'clock' ? null : approx(fuse.timerSource === 'default' ? 'no countdown clock and no exploded round in the demo: the default bombtimer' : 'no countdown clock in the demo: the plant -> explosion time of its exploded rounds')],
       fuse.timerSource === 'clock' ? "the server's clock" : null));
     // the "≈" marks explain themselves on hover - say so once, under the facts, where any is shown
     if (root.querySelector('.approx') || info.querySelector('.approx')) {
       info.append(el('div', { class: 'ov-legend', title: 'Values marked ≈ are heuristic: the demo does not state them, they are derived. Hover a mark for how.' },
         el('span', { class: 'approx' }, '≈'), ' heuristic value - hover a mark for how it was derived'));
     }
+  }
+
+  /** the match rules the demo states -> [[label, value, sub]] */
+  function rulesOf(d) {
+    const m = d.meta, dv = m.dvars || {}, si = d.serverinfo || {}, out = [];
+    const onOff = v => (v === '1' ? 'on' : v === '0' ? 'off' : v);
+    const FF = { 0: 'off', 1: 'on', 2: 'reflect', 3: 'shared' };
+    if (dv.ui_friendlyfire != null) out.push(['Friendly fire', FF[dv.ui_friendlyfire] || dv.ui_friendlyfire, null]);
+    const limit = Number(dv.ui_timelimit != null ? dv.ui_timelimit : m.timelimit);
+    if (limit > 0) out.push([m.isSearchAndDestroy ? 'Round time' : 'Time limit', m.isSearchAndDestroy ? fmtTime(limit * 60000) : limit + ' min', null]);
+    if (Number(m.scorelimit) > 0) out.push(['Score limit', String(m.scorelimit), m.isSearchAndDestroy ? 'rounds' : null]);
+    if (si.sv_voice != null) out.push(['Voice chat', onOff(si.sv_voice), null]);
+    if (si.g_compassShowEnemies != null) out.push(['Enemies on the compass', onOff(si.g_compassShowEnemies), null]);
+    if (si.sv_pure != null) out.push(['Pure server', onOff(si.sv_pure), null]);
+    return out;
   }
 
   C4.tabs.overview = { render, update };

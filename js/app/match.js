@@ -183,6 +183,15 @@ export class Match {
     return { left: e.explodeAt - t, heuristic: e.timerSource !== 'clock', source: e.timerSource };
   }
 
+  /** a team's faction icon at t: the side it plays (the round's attack / defence, the demo's attackers) and that side's
+   *  g_TeamIcon_* dvar (a material: faction_128_usmc ...), or null before the sides are known */
+  factionAt(key, t) {
+    const r = this.roundAtOrBefore(t), m = this.d.meta, role = r && r.sides ? r.sides[key] : null;
+    if (!role || !m.attackSide) return null;
+    const side = role === 'attack' ? m.attackSide : m.attackSide === 'axis' ? 'allies' : 'axis';
+    return (m.dvars || {})['g_TeamIcon_' + (side === 'axis' ? 'Axis' : 'Allies')] || null;
+  }
+
   /** the round at t; between two rounds the last one before t (null before the first) */
   roundAtOrBefore(t) {
     const d = this.d;

@@ -59,7 +59,7 @@ C4.define('collect', function (C4) {
     // cod4-demo3d (the first-person HUD): the damage state, the cursor hints, the equipped special grenade
     damageEvent: PS_INDEX['damageEvent'], damageYaw: PS_INDEX['damageYaw'], damagePitch: PS_INDEX['damagePitch'],
     damageCount: PS_INDEX['damageCount'], damageDuration: PS_INDEX['damageDuration'], flinch: PS_INDEX['flinchYawAnim'],
-    cursorHint: PS_INDEX['cursorHint'], cursorHintString: PS_INDEX['cursorHintString'], offhandSecondary: PS_INDEX['offhandSecondary']
+    mantle: PS_INDEX['mantleState.flags'], cursorHint: PS_INDEX['cursorHint'], cursorHintString: PS_INDEX['cursorHintString'], offhandSecondary: PS_INDEX['offhandSecondary']
   };
   // cod4-demo3d: the player events of the weapon (the first-person view model): item pickup .. fire_weapon_mg42
   // (reload, raise / put away, shots, rechamber, melee swipe / hit / miss, offhand) - every player
@@ -380,7 +380,7 @@ C4.define('collect', function (C4) {
       // the damage state, flinch, cursor hint, the special grenade equipped; the ammo / clip slots that changed
       const S = snap.ps.stats;
       c.psHud.push(t, f[PSI.client], S[0] | 0, S[2] | 0, S[3] | 0, f[PSI.damageEvent] | 0, f[PSI.damageYaw] | 0, f[PSI.damagePitch] | 0,
-        f[PSI.damageCount] | 0, f[PSI.damageDuration] | 0, f[PSI.flinch] | 0, f[PSI.cursorHint] | 0, f[PSI.cursorHintString] | 0, f[PSI.offhandSecondary] | 0);
+        f[PSI.damageCount] | 0, f[PSI.damageDuration] | 0, f[PSI.flinch] | 0, f[PSI.cursorHint] | 0, f[PSI.cursorHintString] | 0, f[PSI.offhandSecondary] | 0, f[PSI.mantle] | 0);
       c.psHudRef.push(doHudState(snap.ps));
       c.psObjRef.push(doObjState(snap.ps));
       for (const [kind, arr] of [[0, snap.ps.ammo], [1, snap.ps.ammoclip]]) {

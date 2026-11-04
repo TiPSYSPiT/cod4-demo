@@ -1,6 +1,7 @@
 /* 2D view: top-down replay on the compass image (cod4-demo's map tab, drawn from the shared
  * Match + Replay state). Renderer, heatmap, heat panel and video export are cod4-demo's
  * modules (js/c4/ui/map). */
+import '../c4/ui/killfeed.js';                     // C4.killfeed (the dropped weapons' icons)
 import { InfoHint, fadeHint } from '../app/infoHint.js';
 
 const C4 = window.C4;
@@ -8,6 +9,7 @@ const { el, icon } = C4.ui;
 const CFG = C4.mapConfig;
 
 const BOMB_TEXT = { base: 'Bomb at its start position', dropped: 'Dropped', planted: 'Planted', defused: 'Defused', exploded: 'Exploded' };
+const EF_NODRAW = 0x20;
 const BOMB_SOURCE = { objective: 'compass objective', model: 'bomb model', 'last known': 'last known position', message: 'server message' };
 
 export class View2D {
@@ -36,6 +38,7 @@ export class View2D {
     this.heatPts = {};
     this.heatLayer = new C4.HeatLayer(M.rect);
     this.heatUi = C4.mapHeat.create({ app, data: d, onChange: () => replay.invalidate() });
+    if (d.items && d.items.length) this.loadIcons();          // (the dropped weapons: ready for a video export too)
     // map tools (zoom, rotation) bottom right of the map; the heatmap is a popover of the rail (main.js: panels)
     const tool = (name, title, label, fn) => el('button', { class: 'ib', title, 'aria-label': label, onclick: fn }, icon(name));
     const tools = el('div', { class: 'map-tools glass', role: 'toolbar', 'aria-label': 'Map tools' },
@@ -108,6 +111,8 @@ export class View2D {
     const shown = RP.shownPlayers();
     const hover = this.exporting ? null : RP.hover;
     const dim = cl => (hover != null && cl !== hover) || (RP.focus != null && cl !== RP.focus && hover == null);
+    if (o.mapCams || o.hurt) this.drawMapMarks(o);
+    if (o.items && d.items && d.items.length) this.drawItems(t);
     if (o.trails) for (const cl of shown) R.drawTrail(M.trailOf(cl, t).map(s => s.map(p => [p[0], p[1], p[3]])), M.color(cl), dim(cl) ? 0.45 : 1);
 
     // kill lines (killer -> victim) and death markers
@@ -139,6 +144,43 @@ export class View2D {
     }
     this.drawBomb(t);
     if (!this.exporting) this.updateBombTitle();
+  }
+
+  /** the map's intermission camera (mp_global_intermission) and hurt triggers (trigger_hurt), loaded once */
+  drawMapMarks(o) {
+    if (this.mapEnts === undefined) {
+      this.mapEnts = null;
+      const raw = String(this.M.d.meta.map || '').toLowerCase(), key = (C4.maps && C4.maps.resolve(raw)) || raw;
+      if (key) fetch('maps3d/' + key + '/entities.json').then(r => (r.ok ? r.json() : null)).then(j => { this.mapEnts = j; this.R.invalidate(); }).catch(() => {});
+      return;
+    }
+    const E = this.mapEnts;
+    if (!E) return;
+    if (o.hurt) for (const h of E.hurt || []) this.renderer.drawBox(h.mins, h.maxs, '#ff5a3c', 'hurt ' + h.dmg + (h.dmg >= 100 ? ' (kill)' : '') + ' · z ' + Math.round(h.mins[2]) + '…' + Math.round(h.maxs[2]));
+    if (o.mapCams) for (const s of E.spawns || []) if (s.classname === 'mp_global_intermission' && s.origin) this.renderer.drawCamera(s.origin[0], s.origin[1], (s.angles || [0, 0, 0])[1], 'intermission');
+  }
+
+  /** the weapon icons (the kill feed's images), once */
+  loadIcons() {
+    if (!this.iconsLoading) this.iconsLoading = C4.killfeed.images().then(m => { this.icons = m; this.R.invalidate(); });
+    return this.iconsLoading;
+  }
+
+  /** the weapons on the ground at t (DemoData.items: the state valid at t, falling by its trajectory) as their weapon icon,
+   *  turned as they lie */
+  drawItems(t) {
+    if (!this.icons) { this.loadIcons(); return; }
+    for (const it of this.M.d.items) {
+      if (t < it.t0 || t > it.t1) continue;
+      const S = it.states;
+      let i = S.length - 1;
+      while (i > 0 && S[i][0] > t) i--;
+      const s = S[i], ic = C4.weapons.weaponIcon(it.weapon), img = ic && this.icons.get(ic.file);
+      if (!img || (s[13] & EF_NODRAW)) continue;
+      // (the x, y of BG_EvaluateTrajectory: linear and gravity paths move by the delta, anything else lies at its base)
+      const dt = s[2] === 2 || s[2] === 3 || s[2] === 5 ? Math.max(0, (t - s[3]) / 1000) : 0;
+      this.renderer.drawIcon(s[4] + s[7] * dt, s[5] + s[8] * dt, img, ic.box, this.renderer.dirAngle(s[11]), 9, 0.9);
+    }
   }
 
   drawHeat(t) {
