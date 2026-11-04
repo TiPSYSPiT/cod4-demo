@@ -101,7 +101,7 @@ export function openExport(view) {
     // X-Ray: the view's current mode by default, so the video looks like the view
     xray: sel(XRAY_MODES.map(([v, label]) => [v, label + (v === view.xrayMode ? ' (as in the view)' : '')]), view.xrayMode || 'off'),
     labels: check(true, 'player names (as the Names option) and bomb site letters'),
-    killfeed: check(true, 'the kills of the last seconds, top right'),
+    killfeed: check(true, "the game's kill feed, lower left"),
     sound: check(!!view.sound, 'the game\'s sounds at the camera (MP4; the WebM fallback records them in real time): shots, impacts, footsteps, explosions, the announcer'),
     markers: check(true, 'kill lines, death crosses and the bomb in the scene'),
     hud: check(true, 'round, round time and score, top left'),
@@ -312,9 +312,9 @@ async function start() {
     const C = document.createElement('canvas');
     C.width = p.W; C.height = p.H;
     const g = C.getContext('2d', { willReadFrequently: p.gif });
-    // the kill feed's icons are drawn into the frame (js/c4/ui/killfeed.js): all loaded before the first
-    const kfImgs = opts.killfeed ? await C4.killfeed.images() : null;
-    const ctx = { view, p, opts, C, g, kfImgs, t0: performance.now(), path: [], fp: [] };
+    // the kill feed's font and icons are drawn into the frame (js/c4/ui/killfeed.js): all loaded before the first
+    const kfAssets = opts.killfeed ? await C4.killfeed.ready() : null;
+    const ctx = { view, p, opts, C, g, kfAssets, t0: performance.now(), path: [], fp: [] };
     D.status.textContent = 'Rendering …';
     if (p.gif) result = await exportGif(ctx, progress);
     else if (D.h264) { result = await exportMp4(ctx, progress, D.h264); D.lastAudio = ctx.audio || null; }
@@ -742,9 +742,8 @@ function drawOverlays(ctx, t, hideClient) {
     let x = 16 * s;
     for (const [txt, col] of parts) { g.fillStyle = col; g.fillText(txt, x, 38 * s); x += g.measureText(txt).width; }
   }
-  // kill feed, top right: the kills and bomb events of the last seconds of this round, with the icons
-  // (first person with the game's HUD: its own obituaries)
-  if (opts.killfeed && !(hideClient != null && ctx.view && ctx.view.hud && ctx.view.hud.enabled)) C4.killfeed.draw(g, app, d, t, { right: p.W - 8 * s, top: 18 * s, scale: s, imgs: ctx.kfImgs });
+  // the game's kill feed, lower left
+  if (opts.killfeed && ctx.view) ctx.view.feed.draw(g, t, { w: p.W, h: p.H, pov: ctx.view.povAt(t), assets: ctx.kfAssets });
   // title, bottom left: map, game type, round
   if (opts.title) {
     const m = d.meta;

@@ -4,8 +4,9 @@
 
 const BASE = 'maps3d/';
 const FONT_SMALL = 0.25, FONT_BIG = 0.4, FONT_EXTRABIG = 0.55;      // ui_smallFont, ui_bigFont, ui_extraBigFont
-// ^0 .. ^9 (^8, ^9: the team colours, which the HUD cannot tell apart from the text's own)
-const CODES = [[0, 0, 0], [1, 0.36, 0.36], [0, 1, 0], [1, 1, 0], [0, 0, 1], [0, 1, 1], [1, 0.36, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1]];
+// g_color_table ^0 .. ^7; ^8, ^9 the viewer's team and the other's (CL_LookupColor): the caller's, else white
+const CODES = [[0, 0, 0], [1, 0.36, 0.36], [0, 1, 0], [1, 1, 0], [0, 0, 1], [0, 1, 1], [1, 0.36, 1], [1, 1, 1]];
+const NO_TEAMS = [[1, 1, 1], [1, 1, 1]];
 // a text's [{+action}]: the key the player bound - not in the demo, so the game's default
 const DEFAULT_KEYS = { melee: 'V', activate: 'F', attack: 'MOUSE1', gostand: 'SPACE', frag: 'G', smoke: '4' };
 const clamp01 = x => (x < 0 ? 0 : x > 1 ? 1 : x);
@@ -49,14 +50,15 @@ class Fonts {
     }
     return Math.max(best, w);
   }
-  /** the colour runs of a text: [[text, colour]] */
-  runs(text, base) {
+  /** the colour runs of a text: [[text, colour]]; teams: [^8, ^9] */
+  runs(text, base, teams = NO_TEAMS) {
     const out = [];
     let cur = '', col = base;
     for (let i = 0; i < text.length; i++) {
       if (text[i] === '^' && i + 1 < text.length && /[0-9]/.test(text[i + 1])) {
         if (cur) out.push([cur, col]);
-        cur = ''; col = CODES[Number(text[i + 1])];
+        const n = Number(text[i + 1]);
+        cur = ''; col = n < 8 ? CODES[n] : teams[n - 8];
         i++;
         continue;
       }
@@ -80,6 +82,7 @@ class Fonts {
     const w = Math.max(1, Math.ceil(Math.max(maxX, x) * k) + 2), h = Math.max(1, Math.ceil((maxY - minY) * k) + 2);
     const cv = canvas(w, h), c = cv.getContext('2d'), A = this.atlas;
     c.imageSmoothingEnabled = true;
+    c.imageSmoothingQuality = 'high';
     x = 0;
     for (const ch of text) {
       const g = this.glyph(font, ch.charCodeAt(0));
@@ -119,17 +122,18 @@ export class HudText {
   }
   width(str, scale, s, kind = 0, real = scale * s) { return this.fonts.width(this.fonts.pick(kind, real), str, scale) * s; }
   /** a text at a device position (x: the pen, y: the baseline) -> its width (device pixels). scale: virtual, s: device pixels
-   *  per virtual unit, color [r, g, b] (^ codes switch it), style 3: shadowed */
-  draw(g, str, x, y, scale, s, color, alpha = 1, style = 3, kind = 0, real = scale * s) {
+   *  per virtual unit, color [r, g, b] (^ codes switch it; teams: [^8, ^9]), style 3: shadowed - one screen pixel, as the game's
+   *  (RB_DrawText: ofs 1 in x and y, black with the text's alpha) */
+  draw(g, str, x, y, scale, s, color, alpha = 1, style = 3, kind = 0, real = scale * s, teams = NO_TEAMS) {
     if (!str || alpha <= 0) return 0;
     const F = this.fonts, font = F.pick(kind, real), k = scale * 48 / font.height * s;
-    const shadow = style === 3 ? Math.max(1, Math.round(s)) : 0;
+    const shadow = style === 3 ? 1 : 0;
     let py = y, total = 0;
     g.save();
     g.globalAlpha = clamp01(alpha);
     for (const line of str.split('\n')) {
       let px = x;
-      for (const [t, c] of F.runs(line, color)) {
+      for (const [t, c] of F.runs(line, color, teams)) {
         if (shadow) { const r = F.run(font, t, k, [0, 0, 0]); g.drawImage(r.canvas, Math.round(px + r.ox + shadow), Math.round(py + r.oy + shadow)); }
         const r = F.run(font, t, k, c);
         g.drawImage(r.canvas, Math.round(px + r.ox), Math.round(py + r.oy));

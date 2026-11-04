@@ -67,7 +67,6 @@ export function drawScoreboard(g, M, w, h, s, t, cl, T, csAt) {
     return g.measureText(str).width;
   };
   g.save();
-  g.globalAlpha = 0.72; g.fillStyle = '#000'; g.fillRect(left, top, SB.w * s, SB.h * s);
   // the game type and map; the server's name at the bottom (CG_DrawBackdropServerInfo)
   text(String(meta.gametype || '').toUpperCase(), x0, top + 24 * s, WHITE);
   text(String(meta.mapDisplay || meta.map || ''), x0 + SB.list * s, top + 24 * s, WHITE, 2);

@@ -553,7 +553,12 @@ table.data.scoreboard .col-clan, table.data.scoreboard .col-player { overflow: h
 /* sort arrow of a statistics column: in the space reserved on the left, so the right-aligned header keeps its place */
 table.data.scoreboard th.col-stat.sorted::after { position: absolute; left: 8px; top: 50%; transform: translateY(-50%); content: "\25BE"; }
 table.data.scoreboard th.col-stat.sorted.asc::after { content: "\25B4"; }
-table.data.scoreboard tbody tr.team-head ~ tr.team-head td { border-top: 14px solid var(--solid); }
+table.data.scoreboard tbody tr.team-head ~ tr.team-head td { border-top: 14px solid var(--bg); }
+/* the Scoreboard tab: on the page's background, no dark fills of its own (the sticky head stays opaque to cover the rows under it) */
+.details:has(#tab-scoreboard.active) { background: var(--bg); }
+table.data.scoreboard th { background: var(--bg); }
+table.data.scoreboard tr.team-head td { background: none; }
+table.data.scoreboard tbody tr.team-head:hover td { background: var(--hover); }
 /* badges and markers */
 .badge { display: inline-block; padding: 1px 6px; border-radius: 5px; font-size: 10.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
   background: transparent; color: var(--muted); border: 1px solid var(--line-2); vertical-align: 1px; line-height: 1.4; }
@@ -637,6 +642,7 @@ table.data.scoreboard tbody tr.team-head ~ tr.team-head td { border-top: 14px so
 .kf-weapon { display: inline-flex; align-items: center; gap: 4px; margin: 0 2px; flex: none; vertical-align: middle; opacity: .85; }
 .kf-icon { display: inline-block; height: 18px; overflow: hidden; vertical-align: middle; flex: none; line-height: 0; }
 .kf-icon img { display: block; max-width: none; }
+.kf-icon.flip { transform: scaleX(-1); }
 .kf-note { font-size: var(--fs-xs); flex: none; }
 
 /* player statistics popup (statsPopup.js) */
@@ -717,18 +723,6 @@ table.data.scoreboard tbody tr.team-head ~ tr.team-head td { border-top: 14px so
 .p3-label.site { font: 700 22px var(--sans); color: var(--site); text-shadow: 0 0 4px #000, 0 0 2px #000; }
 /* Tab's scoreboard (js/app/scoresOverlay.js): over the 2D / 3D view and its HUD, under the panels */
 .scores-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 8; pointer-events: none; }
-/* the 3D kill feed: top right, left of the drawer, newest at the bottom */
-.kf-overlay { position: absolute; right: var(--drawer-space); top: calc(var(--gutter) + 50px); z-index: var(--z-view-ui); display: flex; flex-direction: column; align-items: flex-end; gap: 3px;
-  pointer-events: none; max-width: 46%; }
-.kf-row { display: flex; align-items: center; gap: 6px; padding: 2px 8px; min-height: 22px; border-radius: var(--r-xs); background: rgba(16, 16, 18, .72);
-  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); font: 600 var(--fs-s) var(--sans); white-space: nowrap; text-shadow: 0 0 2px #000; }
-.kf-row .kf-weapon { margin: 0; opacity: 1; }
-.kf-row .kf-icon { filter: drop-shadow(0 0 1px rgba(0, 0, 0, .9)); }
-.kf-row .kf-name { overflow: hidden; text-overflow: ellipsis; max-width: 180px; }
-.kf-row .kf-note { font-weight: 400; }
-.kf-row .badge { line-height: 13px; padding: 0 5px; }
-.kf-row .approx { color: var(--muted); font-size: 10px; margin-left: -2px; }
-.kf-row.kf-bomb { color: var(--warn); }
 
 /* ---- cod4-demo3d: team shapes, notices of the 3D view ---- */
 /* the team's shape next to its colour, so the teams read without telling the colours apart (main.js teamMark) */
@@ -800,7 +794,6 @@ table.data.scoreboard tbody tr.team-head ~ tr.team-head td { border-top: 14px so
   .drawer-open, .dhead > .ib { display: none !important; }
   .stage.drawer-off .drawer { display: flex !important; }
   .pop { max-height: calc(var(--stack-view-h) - 2 * var(--gutter)); }
-  .kf-overlay { max-width: 75%; }
   .details { position: fixed; inset: 0; z-index: 60; border-radius: 0; }      /* (over the sticky top bar) */
   .export-dlg { bottom: 12px; max-height: calc(100vh - 24px); }
 }
@@ -811,7 +804,6 @@ table.data.scoreboard tbody tr.team-head ~ tr.team-head td { border-top: 14px so
   .top-r .tb { padding: 0 10px; margin-left: 4px; }
   .score { gap: 8px; padding: 5px 12px; max-width: calc(100% - 114px); left: auto; right: calc(var(--gutter) + 44px); transform: none; }
   .score .meta { display: none; }
-  .kf-row .kf-name { max-width: 110px; }
   .bar-r .pill { padding: 0 8px; }
   .ex-row, .ex-custom, .ex-sub { grid-template-columns: 84px minmax(0, 1fr); }
   .ex-checks { grid-template-columns: 1fr; }

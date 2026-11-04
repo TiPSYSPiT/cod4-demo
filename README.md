@@ -94,7 +94,7 @@ death crosses, grenade arcs and clouds, and the bomb (S&D). Wheel zooms, draggin
 double-click resets. `Q` / `E` rotate the map in 90° steps (the map tools bottom right: zoom and
 rotation). The **Heatmap** popover (rail) offers positions, kills, deaths, grenade landings, smokes and shots, filtered by team,
 side and player. Its video export (*Export video*: MP4 / GIF of the 2D map, with an overlay of
-round, score and the kill feed) draws the kill feed with the same weapon icons as the 3D one.
+round, score and the kill feed) draws the same game kill feed as the 3D view, lower left.
 
 **3D:** the map geometry from the game files (textures and baked lightmaps, shaded with the
 formulas of the game's own compiled shaders: the lightmaps' light direction with the normal maps,
@@ -123,13 +123,14 @@ distance: LOD 0 up to its switch distance, then the coarse LOD, none beyond the 
 Match info popover shows the triangle counts and load times. Players are capsules in the team colour:
 standing, crouched or lying prone, with an aim line using their real pitch (Display: *View lines*; *Player rings*
 the team rings at the models' feet; *Enemy names* off names only the teammates of the watched player, as the game -
-all three on by default, remembered). Kill lines,
+view lines and rings off by default, enemy names on, remembered). Kill lines,
 death crosses, grenade arcs, smoke clouds and the bomb are drawn too. The **kill feed** (Display popover:
-*Kill feed*, on by default, remembered) shows the kills and bomb plants / defuses of the last 5 s of
-the round under the score pill, left of the drawer, newest at the bottom, like the game's obituaries: killer, weapon icon,
-headshot icon, victim in the team colours, the drawer's icons and rules (suicide, falling, car,
-knife, grenades; a *Teamkill* / *Bomb* tag; a weapon without an icon by name), on a dark row that
-stays readable over bright maps. Entries fade out over their last 0.8 s; the feed depends only on
+*Kill feed*, on by default, remembered) is the game's obituary window, lower left in every camera, drawn on the HUD canvas in
+the game's font: "Killer [icon] Victim", the icon, its size and direction from the weapon files, a headshot's the headshot icon
+alone, suicides and world kills without a killer. The names take the team colours from the view of the player seen (his team
+and the other's; white without a team), with the codes of the names. The server's messages share the window, as in the game: 4 lines,
+5 s each, a fifth line fading the oldest out, emptied at the start of a round (`js/c4/ui/killfeed.js`; docs/changes-cod2-port.md
+section 18 lists what comes from the engine); the feed depends only on
 the replay time, so pausing, seeking and the speed need nothing special. *Bullet tracers* (off by default) draws the game's tracers
 (`CG_SpawnTracer` / `CG_DrawTracer`: a 160-unit glowing beam flying at 7500 units/s from the muzzle, gone at the
 hit, `gfx_tracer`'s image): for 20 % of the bullet hits the server reports (`cg_tracerChance`) and half the shots
@@ -276,7 +277,9 @@ above. *Models* draws each player's real character:
   Simple: the plain scene lights), the *Sun shadows*, the *Reflections* and the *Effects*; a change
   reloads the 3D map (time, selection and the other options stay) and helps slow graphics cards.
   *First-person weapon* and *Crosshair* (above) switch at once, without a reload.
-  The same in the URL, which wins for that page: `?lighting=scene`, `?reflections=off`, `?shadows=off`, `?fx=off`;
+  The defaults: Game lighting, sun shadows on, reflections off, effects Demo only, first-person weapon and crosshair on
+  (`js/app/defaults.js`, with those of the Display popover; *Reset to defaults* in both popovers goes back to them).
+  The same in the URL, which wins for that page: `?lighting=scene`, `?reflections=on`, `?shadows=off`, `?fx=all` (`ambient`, `demo`, `off`);
   `?maps=off` drops the normal / specular maps. `?shadows=off` drops the
   shadow maps (the sun's near and far partition, and the lamps' maps: the 4 lamps the game would
   pick, faded in and out like the game). The light grid is read as the game reads it: its full 56-colour block per grid
@@ -548,6 +551,10 @@ these: `--anims-only`):
   tracks, the anim tree; 1.2 MB, 0.26 MB compressed), the 37 core clips of the movement-based
   fallback in `anims.bin` (1.5 MB) and every other clip in `anims/<name>.bin` (205 files,
   5.9 MB), loaded per demo.
+- `killicons_export.py` exports the kill icons: per weapon `killIcon`, `killIconRatio` and `flipKillIcon` of the weapon files,
+  the materials' images from the fast files and `.iwd` archives, into `assets/killfeed/` and the generated table in
+  `js/c4/analysis/weapons.js` - the one mapping of the feed and of every list.
+  `py tools/export/killicons_export.py --game "C:/Games/Call of Duty 4"`.
 - `viewmodels_export.py` exports the first-person view models: the weapon files (`weapons/mp/*` of
   the `.iwd` archives: gun model, hands, view animations, hidden attachments, knife, the ADS / kick /
   spread / sway / offset numbers), the gun models and base hands of `common_mp.ff`, the faction hands
@@ -748,7 +755,8 @@ js/app/match.js          Match: DemoData prepared for playback - positions at ti
                          grenade arcs, bomb, rounds (shared by both views)
 js/app/replay.js         Replay: the one playback state (time, range, selection, filters),
                          player bar, timeline, Layers popover, drawer (teams, kill feed)
-js/c4/ui/killfeed.js     the kill feed overlay of the 3D view (DOM) and of both video exports
+js/c4/ui/killfeed.js     the game's kill feed and message windows: 3D view (HUD canvas), both video exports
+js/app/defaults.js       the defaults of the Display / Graphics options and their storage keys
                          (canvas), with C4.weapons.killIcons - the drawer's icon mapping
 js/view2d/view2d.js      2D view
 js/view3d/               view3d (scene, loop, Camera / Display / Graphics popovers), graphics
@@ -773,7 +781,7 @@ js/view3d/               view3d (scene, loop, Camera / Display / Graphics popove
                          weapons, grenades in flight), audit
                          (?audit=1: the assets coloured by the asset audit's status), blend (the
                          game's blend factors for every renderer)
-assets/maps/             compass images + calibration (maps.js);  assets/killfeed/  weapon icons
+assets/maps/             compass images + calibration (maps.js);  assets/killfeed/  the kill icons (tools/export/killicons_export.py)
 vendor/three/            three.js r170 (three.module.js, OrbitControls) - see vendor/README.md
 tools/check_deploy.py    maps3d/manifest.json (sizes, hashes) and the check of the deployed site
 tools/check_imports.py   the module graph: missing files, case, exports, import map (--url: the site)

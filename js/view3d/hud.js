@@ -11,9 +11,8 @@
  *                the frag and special grenades with their counts (the player state's ammo / clip slots:
  *                BG_SetupAmmoIndexes / ClipIndexes - the n-th ammo / clip name in the weapon list's order)
  *   hit marker   the scripts' damage_feedback HUD element (_damagefeedback.gsc; collect.js hitMarks) on every hit
- *   messages     the game message windows of Promod's HUD (Con_DrawMessageWindow): lower left the obituaries (attacker, the kill
- *                icon, victim: the viewer's kill feed gives way to it) and the server's game messages, the bold ones over the
- *                centre; "You killed" / "Killed by" for the player seen (CG_PriorityCenterPrint, 180 under the centre)
+ *   messages     the bold game messages over the centre (the lower left window of the obituaries is the kill feed: killfeed.js,
+ *                in every camera); "You killed" / "Killed by" for the player seen (CG_PriorityCenterPrint, 180 under the centre)
  *   names        CG_DrawCrosshairNames: the teammate under the crosshair (stats[3]) below it
  *   hints        CG_CURSORHINT: the use icon while the server shows a hint (planting / defusing the bomb ...)
  *   server HUD   the scripts' HUD elements of the player state (CG_Draw2dHudElems; collect.js doHudState): texts, values,
@@ -56,10 +55,8 @@ const NO_ENTITY = 1023;
 const HINT_WEAPON = 5, HINT_FADE_MS = 100;       // FIRST_WEAPON_HINT: weapon number + 4
 const HINT_ICONS = { 2: 'hint_usable', 3: 'hint_health' };
 const KEY_USE = 'F', KEY_JUMP = 'SPACE';         // the default binds of +activate, +gostand
-// the windows of ui_mp/hud.menu: gamemessages (6, -65 left / bottom, TEXTSIZE_SMALL x 0.75), boldgamemessages (0, -60 centre,
-// 0.417); con_gameMsgWindow0 / 1: 5 / 8 s, 4 / 5 lines, the fades. cg_centertime 5 s, its last 0.1 s fading (CG_FadeColor)
-const WINDOWS = [{ x: 6, y: -65, scale: 0.225, time: 5000, lines: 4 }, { x: 0, y: -60, scale: 0.417, time: 8000, lines: 5 }];
-const SCROLL_MS = 250, FADE_IN_MS = 250, FADE_OUT_MS = 500, CENTER_MS = 5000, CENTER_SCALE = 0.375;
+// cg_centertime 5 s, its last 0.1 s fading (CG_FadeColor); textscale of "CenterObituary": TEXTSIZE_DEFAULT (0.4583 in the stock hud.menu)
+const CENTER_MS = 5000, CENTER_SCALE = 0.4583;
 const TEXT_TYPES = new Set([1, 2, 3, 4, 5, 7, 8, 9, 10]);
 
 const lower = (a, x) => { let lo = 0, hi = a.length; while (lo < hi) { const m = (lo + hi) >> 1; if (a[m] <= x) lo = m + 1; else hi = m; } return lo - 1; };
@@ -81,12 +78,8 @@ export class GameHud {
     this.txt = null;                     // the game's fonts, strings, the elements' images (hudtext.js)
     this.elems = new Map();              // element number -> its fields
     this.csAt = configStrings(M.d);
-    const msgs = (M.d.psHud && M.d.psHud.messages) || [];
-    // window 0: the obituaries and the game messages; window 1: the bold messages
-    this.feed = [M.d.kills.map(k => ({ t: k.t, kill: k })).concat(msgs.filter(m => !m[1]).map(m => ({ t: m[0], text: m[2] }))).sort((a, b) => a.t - b.t),
-      msgs.filter(m => m[1]).map(m => ({ t: m[0], text: m[2] }))];
+    this.bold = new C4.killfeed.Feed(M.d).bold;
     this.killT = M.d.kills.map(k => k.t);
-    this.feedT = this.feed.map(l => l.map(e => e.t));
     this.icons = null;
     C4.killfeed.images().then(m => { this.icons = m; if (this.onChange) this.onChange(); });
     loadHudText().then(x => { this.txt = x; if (this.onChange) this.onChange(); });
@@ -345,37 +338,14 @@ export class GameHud {
     return w;
   }
 
-  /** the lines of message window w alive at t, oldest first: {e, a (alpha)} and the scroll offset (in lines) */
-  windowAt(w, t) {
-    const W = WINDOWS[w], T = this.feedT[w], E = this.feed[w], out = [];
-    let scroll = 0;
-    for (let i = lower(T, t); i >= 0 && t - T[i] < W.time && out.length < W.lines; i--) {
-      const age = t - T[i], left = W.time - age;
-      out.unshift({ e: E[i], a: Math.min(1, age / FADE_IN_MS, left / FADE_OUT_MS) });
-      if (age < SCROLL_MS) scroll += 1 - age / SCROLL_MS;
-    }
-    return { lines: out, scroll };
-  }
-
-  /** the game message windows and the first person's "You killed" line */
+  /** the bold game messages and the first person's "You killed" line */
   drawMessages(g, w, h, s, F, t, cl) {
     const T = this.txt;
     if (!T) return;
-    // obituaries and game messages, the newest at the bottom, a new one scrolling in
-    const W = WINDOWS[0], lh = W.scale * 48 * 1.5 * s, a = this.windowAt(0, t);
-    let y = h + W.y * s + a.scroll * lh;
-    for (let i = a.lines.length - 1; i >= 0; i--) {
-      const L = a.lines[i], base = y - lh * 0.25;
-      if (L.e.kill) this.obituary(g, L.e.kill, W.x * s, base, W.scale, s, L.a, lh);
-      else T.draw(g, T.localize(L.e.text), W.x * s, base, W.scale, s, WHITE, L.a);
-      y -= lh;
-    }
-    const B = WINDOWS[1], bh = B.scale * 48 * s, b = this.windowAt(1, t);
-    y = F.y + F.h / 2 + B.y * s + b.scroll * bh;
-    for (let i = b.lines.length - 1; i >= 0; i--) {
-      const text = T.localize(b.lines[i].e.text);
-      T.draw(g, text, F.x + F.w / 2 - T.width(text, B.scale, s) / 2, y, B.scale, s, WHITE, b.lines[i].a);
-      y -= bh;
+    const B = this.bold.W, charHeight = Math.round(B.textScale * 48), scale = charHeight / 48, real = B.textScale * s;
+    for (const r of this.bold.rows(t, charHeight)) {
+      const text = T.localize(r.m.text);
+      T.draw(g, text, F.x + F.w / 2 - T.width(text, scale, s, 0, real) / 2, F.y + F.h / 2 + (B.y + r.y) * s, scale, s, WHITE, r.alpha, 3, 0, real);
     }
     // CG_Obituary: the player's own kill or death, the last one (a teammate as such); not a suicide
     for (let i = lower(this.killT, t); i >= 0 && t - this.killT[i] < CENTER_MS; i--) {
@@ -388,24 +358,6 @@ export class GameHud {
       T.draw(g, text, F.x + F.w / 2 - T.width(text, CENTER_SCALE, s) / 2, F.y + F.h / 2 + 180 * s, CENTER_SCALE, s, WHITE, Math.min(1, left / 100));
       break;
     }
-  }
-
-  /** CL_DeathMessagePrint: attacker in his team's colour, the kill icons, victim in his */
-  obituary(g, k, x, base, scale, s, alpha, lh) {
-    const T = this.txt, M = this.M, ic = C4.weapons.killIcons(k), world = k.attacker >= 64 || k.attacker === k.victim;
-    const name = cl => { const p = M.player(cl); return p ? p.name : ''; };
-    if (!world) x += T.draw(g, name(k.attacker) + '^7 ', x, base, scale, s, hexColor(M.color(k.attacker)), alpha);
-    g.save();
-    g.globalAlpha = alpha;
-    for (const i of [ic.weapon, ic.headshot]) {
-      const img = i && this.icons && this.icons.get(i.file);
-      if (!img) continue;
-      const ih = lh * 0.95, iw = ih * i.box[2] / i.box[3];
-      g.drawImage(img, i.box[0], i.box[1], i.box[2], i.box[3], x, base - ih * 0.8, iw, ih);
-      x += iw + 3 * s;
-    }
-    g.restore();
-    T.draw(g, name(k.victim), x, base, scale, s, hexColor(M.color(k.victim)), alpha);
   }
 
   /** CG_DrawCursorhint / CG_DrawMantleHint: the text, then the icon after it, centred at the menus' place (Cursorhints 60,

@@ -9,7 +9,7 @@ import { explainImportError, resolveSpecifier } from './moduleCheck.js';
 import { armAudio } from './audioUnlock.js';
 import { ScoresOverlay } from './scoresOverlay.js';
 import { migrateSettings } from './settings.js';
-import '../c4/ui/killfeed.js';           // C4.killfeed: the kill feed of the 3D view and of both video exports
+import '../c4/ui/killfeed.js';           // C4.killfeed: the game's kill feed of the 3D view and of both video exports
 
 const C4 = window.C4;
 const { el, clear, coloured, teamClass, icon } = C4.ui;
@@ -81,6 +81,8 @@ const app = {
     const btn = reopen && [...$('rail').querySelectorAll('button')].find(b => b.title.toLowerCase() === reopen);
     if (btn) btn.click();
   },
+  /** the player seen at t: the selected one, else the demo's own */
+  povAt(t) { const R = state.replay; return !R ? null : R.focus != null ? R.focus : R.match.followedAt(t); },
   /** from the details tabs: close the overlay and jump to 2 s before t */
   gotoMap(t, roundIndex) {
     showDetails(false);

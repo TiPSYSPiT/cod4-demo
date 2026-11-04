@@ -26,6 +26,7 @@ legally owned copy of the game with `tools/export/export_maps.py`.
 | `_textures/*.webp` | Colour, normal (`*.normal.webp`) and specular maps (`*.specular.webp`): `.iwi` images in `main/*.iwd` (and the usermap's `.iwd`), downscaled |
 | `<map>/minimap.json`, `../assets/maps/<usermap>.png` | The 2D map: the world rectangle computed from the map entity string (as the game's `setupMiniMap`); for the custom maps (`mp_coastal`, `mp_manorhouse`, `mp_marketcenter`: `usermaps/<map>/`, the work of their authors) also their compass image from the map's `.iwd` |
 | `_hud/*.webp`, `_hud/hud.json` | The HUD's images (`.iwi` of `main/*.iwd`, the font image of the localized `.iwd`), the fonts' glyph tables and the localized strings of `zone/<language>/localized_code_post_gfx_mp.ff`. The English strings over the German install (`STRINGS_EN` in `tools/export/hud_export.py`) are written for this viewer. |
+| `../assets/killfeed/*.png` | The kill icons (46 images, 129 KB): `.iwi` images of `main/*.iwd`, unchanged in size, named by the weapon files' `killIcon` and the client's materials (`tools/export/killicons_export.py`) |
 | `manifest.json` | No game content: size and hash of every file of this folder (`tools/check_deploy.py`), for the viewer's cache-busting and the check of the deployed site |
 
 It is published only so the viewer can show the real map when it analyses your own

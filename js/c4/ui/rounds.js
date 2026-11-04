@@ -11,7 +11,7 @@
     const px = v => (v * s).toFixed(2) + 'px';
     const img = el('img', { src: ic.src, alt: ic.title, draggable: 'false',
       style: { width: px(ic.size[0]), height: px(ic.size[1]), marginLeft: px(-ic.box[0]), marginTop: px(-ic.box[1]) } });
-    const wrap = el('span', { class: 'kf-icon', title: ic.title, style: { width: px(ic.box[2]) } }, img);
+    const wrap = el('span', { class: 'kf-icon' + (ic.flip ? ' flip' : ''), title: ic.title, style: { width: px(ic.box[2]) } }, img);
     // missing file: the name as text, as for weapons without an icon
     img.addEventListener('error', () => wrap.replaceWith(el('span', { class: 'weapon' }, fallbackText || ic.title)));
     return wrap;

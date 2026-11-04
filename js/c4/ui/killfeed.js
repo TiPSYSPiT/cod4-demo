@@ -1,175 +1,163 @@
-/* The kill feed overlay shared by the 3D view (DOM rows over the canvas) and the video exports (drawn
- * into the frame): the kills and bomb plants / defuses of the last seconds of the round, newest at the
- * bottom, fading out like the game's obituaries. A pure function of the replay time, so pause, seeking
- * and the playback speed need no state. Icons, texts and their order come from the side panel's rules:
- * C4.weapons.killIcons (the weapon -> icon mapping) and the sequence of C4.ui.killNodes.
- * Loaded by the modules that use it (`import '../c4/ui/killfeed.js'`: main.js, view3d.js, effects.js,
- * exportVideo3d.js) - not by a script tag, so a view module never depends on the page's script list
- * (a page cached from before a new script tag would lack it). It needs the classic scripts C4.ui,
- * C4.weapons and C4.mapConfig, which the page loads before any module. */
-(function (C4) {
-  'use strict';
-  if (C4.killfeed) return;                     // (a page that also loads it as a classic script)
-  const X = C4.mapConfig.EXPORT;
-  const FADE_MS = 800;                         // the last 0.8 s of an entry fade out
-  const WARN = '#f5c451', MUTED = '#c8c8ce', DIM = '#8d8d95';
+/* The game's kill feed, for the 3D view and both video exports: the obituaries and the server's messages in the game message
+ * window, as the client draws them - cl_console.cpp (the window's lines and their times), CG_Obituary and CL_DeathMessagePrint
+ * (the line), RB_DrawHudIcon (its icon), CG_DrawScoreboard_GetTeamColorIndex and CL_LookupColor (the colours); the game's
+ * font through hudtext.js, the icons of C4.weapons.killIcons. A pure function of the replay time and the player seen, so pause,
+ * seeking and the playback speed need no state: the window's lines are worked out once, in the order they came.
+ * An ES module (`import '../c4/ui/killfeed.js'`), so a view module never depends on the page's script list. It needs the
+ * classic scripts C4.weapons and C4.events, which the page loads before any module. */
+import { loadHudText } from '../../view3d/hudtext.js';
 
-  /** the entries shown at t: [{t, kill | ev, alpha}] - kills and bomb plants / defuses of the last
-   *  KILLFEED_MS of the round at t (none from before its start), at most KILLFEED_LINES, oldest first */
-  function itemsAt(d, t) {
-    const ri = C4.events.roundAt(d.rounds, t), since = ri >= 0 ? d.rounds[ri].segStart : -Infinity;
-    const on = x => x <= t && t - x < X.KILLFEED_MS && x >= since;
-    const out = [];
-    for (const k of d.kills) if (on(k.t)) out.push({ t: k.t, kill: k });
-    for (const e of d.events) if ((e.type === 'bomb_planted' || e.type === 'bomb_defused') && on(e.t)) out.push({ t: e.t, ev: e });
-    out.sort((a, b) => a.t - b.t);
-    for (const it of out) it.alpha = Math.max(0, Math.min(1, (X.KILLFEED_MS - (t - it.t)) / FADE_MS));
-    return out.slice(-X.KILLFEED_LINES);
-  }
+const C4 = window.C4;
+// ui_mp/hud.menu "gamemessages", "boldgamemessages" (rect, textscale); con_gameMsgWindow0 / 1 MsgTime, LineCount, ScrollTime,
+// FadeInTime, FadeOutTime. Con_InitMessageBuffer: lines + 3, padding 3
+const WINDOWS = [{ x: 6, y: -65, textScale: 0.28125, time: 5000, lines: 4, scroll: 250, fadeIn: 250, fadeOut: 500 },
+  { x: 0, y: -60, textScale: 0.417, time: 8000, lines: 5, scroll: 250, fadeIn: 250, fadeOut: 10 }];
+const PADDING = 3;
+const ALLIES = [0.6, 0.64, 0.69], AXIS = [0.65, 0.57, 0.41];       // the defaults of g_TeamColor_Allies / Axis
+const WHITE = [1, 1, 1];
+const clamp01 = x => (x < 0 ? 0 : x > 1 ? 1 : x);
+const upper = (a, x) => { let lo = 0, hi = a.length; while (lo < hi) { const m = (lo + hi) >> 1; if (a[m] <= x) lo = m + 1; else hi = m; } return lo; };
+const dvarColor = (v, def) => { const a = String(v || '').trim().split(/\s+/).map(Number); return a.length >= 3 && a.every(Number.isFinite) ? a.slice(0, 3) : def; };
 
-  /** the parts of one entry, in the side panel's order: [{text, color} | {icon, heuristic} | {badge, color}]
-   *  "Killer [weapon] [headshot] Victim [Teamkill] [Bomb]"; suicides, world and entity kills without the
-   *  killer; a weapon without an icon as its name (and listed in missing) */
-  function parts(app, d, it) {
-    if (it.ev) return [{ text: it.ev.text || it.ev.type, color: WARN }];
-    const k = it.kill, icons = C4.weapons.killIcons(k);
-    const name = (cl, team) => {
-      if (cl === 1022) return { text: 'World', color: DIM };
-      if (cl == null || cl >= 64) return { text: cl == null ? '?' : 'Entity ' + cl, color: DIM };
-      const p = d.players.find(x => x.client === cl);
-      return { text: p ? p.cleanName : 'Client ' + cl, color: app.teamColor(team || (p && p.team)) };
-    };
-    const out = [];
-    if (!k.suicide && !k.world && !k.entityAttacker) out.push(name(k.attacker, k.attackerTeam));
-    if (icons.weapon) out.push({ icon: icons.weapon, heuristic: icons.weapon.heuristic });
-    else {
-      out.push({ text: icons.text || '?', color: MUTED });
-      noteMissing(k);
+/** One of the client's message windows over a demo. messages: [{t, ...}] in time order; clears: the times the window empties
+ *  (a map_restart: Con_ClearNotify - the start of every round) */
+class MessageWindow {
+  constructor(W, messages, clears) {
+    this.W = W;
+    this.lines = [];
+    const count = W.lines + PADDING;
+    let active = [], ci = 0;
+    const clear = t => { for (const l of active) l.end = Math.min(l.end, t); active = []; };
+    for (const m of messages) {
+      while (ci < clears.length && clears[ci] <= m.t) clear(clears[ci++]);
+      while (active.length && m.t >= active[0].end) active.shift();            // Con_CullFinishedLines
+      if (active.length === count) { const first = active.shift(); first.end = Math.min(first.end, m.t); }
+      const line = { t: m.t, end: m.t + W.time, m };
+      active.push(line);
+      this.lines.push(line);
+      // Con_UpdateMessageWindowLine: past the visible lines the oldest fades out at once
+      const pad = active.length - (count - PADDING);
+      if (pad > 0 && active[pad - 1].end - W.fadeOut > m.t) active[pad - 1].end = m.t + W.fadeOut;
     }
-    if (icons.headshot) out.push({ icon: icons.headshot });
-    out.push(name(k.victim, k.victimTeam));
-    if (k.suicide) out.push({ text: 'suicide', color: DIM, small: true });
-    if (k.teamkill && !k.suicide) out.push({ badge: 'Teamkill', color: WARN });
-    if (k.bomb) out.push({ badge: 'Bomb', color: WARN });
+    while (ci < clears.length) clear(clears[ci++]);
+    this.times = this.lines.map(l => l.t);
+  }
+  /** the lines alive at t, oldest first */
+  at(t) {
+    const out = [];
+    for (let i = upper(this.times, t) - 1; i >= 0 && t - this.times[i] < this.W.time; i--) if (this.lines[i].end > t) out.unshift(this.lines[i]);
     return out;
   }
-
-  /** weapons of kills that have no icon (shown as text): weapon or means of death -> count */
-  const missing = new Map();
-  function noteMissing(k) {
-    const key = k.weaponName && k.weaponName !== 'none' ? k.weaponName : (k.mod || 'unknown');
-    if (!missing.has(key)) console.info('kill feed: no icon for', key, '- shown as "' + (C4.weapons.killIcons(k).text || '?') + '"');
-    missing.set(key, (missing.get(key) || 0) + 1);
+  /** Con_GetMessageAlpha */
+  alpha(l, t) {
+    const W = this.W, left = l.end - t, age = t - l.t;
+    return clamp01((left < W.fadeOut ? left / W.fadeOut : 1) * (age < W.fadeIn ? age / W.fadeIn : 1));
   }
+  /** Con_DrawMessageWindowNewToOld (up): [{m, y, alpha}] newest first - y: the line's baseline over the window's, in virtual
+   *  units of charHeight lines, a new line pushing the others up as it scrolls in */
+  rows(t, charHeight) {
+    const lines = this.at(t);
+    let y = 0;
+    for (const l of lines) { const age = t - l.t; if (age < this.W.scroll) y += Math.round(charHeight * clamp01(1 - age / this.W.scroll)); }
+    const out = [];
+    for (let i = lines.length - 1; i >= 0; i--) { y -= charHeight; out.push({ m: lines[i].m, y, alpha: this.alpha(lines[i], t) }); }
+    return out;
+  }
+}
 
-  /* ---------- canvas (video export) ---------- */
-  let loading = null;
-  /** all icon images, loaded once -> Promise<Map file -> HTMLImageElement> (a file that fails to load
-   *  is left out: that entry is drawn as text) */
-  function images() {
-    if (!loading) {
-      loading = Promise.all(Object.keys(C4.weapons.ICONS).map(file => new Promise(res => {
-        const img = new Image();
-        img.onload = () => res([file, img]);
-        img.onerror = () => { console.warn('kill feed icon not loaded:', file); res(null); };
-        img.src = C4.weapons.ICON_DIR + file;
-      }))).then(list => new Map(list.filter(Boolean)));
+/** the windows of a demo: its kills and the recorder's messages, emptied at the rounds' start */
+function messagesOf(d) {
+  const msgs = (d.psHud && d.psHud.messages) || [];
+  const byTime = (a, b) => a.t - b.t;
+  return [d.kills.map(k => ({ t: k.t, kill: k })).concat(msgs.filter(m => !m[1]).map(m => ({ t: m[0], text: m[2] }))).sort(byTime),
+    msgs.filter(m => m[1]).map(m => ({ t: m[0], text: m[2] })).sort(byTime)];
+}
+
+class Feed {
+  constructor(d) {
+    this.d = d;
+    this.players = new Map(d.players.map(p => [p.client, p]));
+    const clears = d.rounds.map(r => r.segStart).filter(Number.isFinite).sort((a, b) => a - b), [plain, bold] = messagesOf(d);
+    this.window = new MessageWindow(WINDOWS[0], plain, clears);
+    this.bold = new MessageWindow(WINDOWS[1], bold, clears);
+  }
+  /** the side a team plays at t: 'axis' / 'allies' (the round's attack / defence, the demo's attackers), null before it is known */
+  sideAt(key, t) {
+    const d = this.d, m = d.meta || {};
+    let ri = C4.events.roundAt(d.rounds, t);
+    if (ri < 0) for (let i = 0; i < d.rounds.length; i++) if (d.rounds[i].segStart <= t) ri = i;
+    const role = ri >= 0 && d.rounds[ri].sides ? d.rounds[ri].sides[key] : null;
+    if (!role || !m.attackSide) return null;
+    return role === 'attack' ? m.attackSide : m.attackSide === 'axis' ? 'allies' : 'axis';
+  }
+  /** CL_LookupColor: [^8, ^9] for a viewer of team key: his side's colour and the other's (no team: as the allies) */
+  teamColors(key, t) {
+    const dv = (this.d.meta && this.d.meta.dvars) || {};
+    const allies = dvarColor(dv.g_TeamColor_Allies, ALLIES), axis = dvarColor(dv.g_TeamColor_Axis, AXIS);
+    return this.sideAt(key, t) === 'axis' ? [axis, allies] : [allies, axis];
+  }
+  /** CG_DrawScoreboard_GetTeamColorIndex: 7 without a team on either side, 8 the viewer's team, 9 the other */
+  code(team, viewer) {
+    const inTeam = x => x === 'A' || x === 'B';
+    return !inTeam(team) || !inTeam(viewer) ? '7' : team === viewer ? '8' : '9';
+  }
+  /** CG_Obituary, CL_DeathMessagePrint: {attacker, icon, victim}: the texts with their colour codes, no attacker for a suicide or
+   *  the world */
+  line(k, viewer) {
+    const name = cl => { const p = this.players.get(cl); return p ? p.name : ''; };
+    const team = (cl, tm) => tm || (this.players.get(cl) || {}).team;
+    const own = k.attacker === k.victim || k.attacker == null || k.attacker >= 64;
+    return { attacker: own ? '' : '^' + this.code(team(k.attacker, k.attackerTeam), viewer) + name(k.attacker) + '^7 ',
+      icon: C4.weapons.killIcons(k).game, victim: ' ^' + this.code(team(k.victim, k.victimTeam), viewer) + name(k.victim) };
+  }
+  /** the window into g at t: w x h device pixels (the safe area, its corner at the origin); pov: the client seen; assets: ready() */
+  draw(g, t, { w, h, pov, assets }) {
+    const T = assets && assets.txt;
+    if (!T) return;
+    const W = WINDOWS[0], s = h / 480, charHeight = Math.round(W.textScale * 48), scale = charHeight / 48, real = W.textScale * s;
+    const rows = this.window.rows(t, charHeight);
+    if (!rows.length) return;
+    const viewer = (this.players.get(pov) || {}).team, codes = this.teamColors(viewer, t), font = T.fonts.pick(0, real);
+    const text = (str, x, y, alpha) => T.draw(g, str, x, y, scale, s, WHITE, alpha, 3, 0, real, codes);
+    for (const r of rows) {
+      const y = h + (W.y + r.y) * s;
+      let x = W.x * s;
+      if (!r.m.kill) { text(T.localize(r.m.text), x, y, r.alpha); continue; }
+      const L = this.line(r.m.kill, viewer);
+      x += text(L.attacker, x, y, r.alpha);
+      x += this.icon(g, assets.imgs, L.icon, x, y, font.height, scale * 48 / font.height * s, r.alpha);
+      text(L.victim, x, y, r.alpha);
     }
-    return loading;
   }
-
-  /** draw the feed at t into a 2D context: right-aligned at `right`, the first row centred at `top`;
-   *  sizes x scale (1 = the page at 720 lines); imgs from images() */
-  function draw(g, app, d, t, { right, top, scale = 1, imgs }) {
-    const s = scale, ICON_H = 16 * s, ROW_H = 21 * s, PAD = 6 * s, GAP = 5 * s;
-    const font = (w, px) => w + ' ' + (px * s).toFixed(1) + 'px Inter, "Segoe UI", system-ui, sans-serif';
+  /** RB_DrawHudIcon: the whole image, its size in the font's lines (the size rounded to 1/32 of a line), centred on the line, mirrored
+   *  by flipKillIcon; no shadow -> the width */
+  icon(g, imgs, ic, x, y, height, k, alpha) {
+    const img = ic && imgs && imgs.get(ic.file);
+    if (!img) return 0;
+    const dim = v => Math.floor((height * Math.max(16, Math.min(127, Math.round(v * 32))) + 16) / 32) * k;
+    const w = dim(ic.lines[0]), hh = dim(ic.lines[1]), top = y - (height * k + hh) / 2;
     g.save();
-    g.textBaseline = 'middle'; g.textAlign = 'left';
-    let y = top;
-    for (const it of itemsAt(d, t)) {
-      // measure: an icon is its visible content box scaled to ICON_H (aspect ratio kept)
-      const segs = parts(app, d, it).map(p => {
-        if (p.icon) {
-          const img = imgs && imgs.get(p.icon.file);
-          if (img) return Object.assign({ w: p.icon.box[2] * ICON_H / p.icon.box[3], img }, p);
-          p = { text: p.icon.title, color: MUTED };
-        }
-        g.font = p.badge ? font('700', 10.5) : font(p.small ? '400' : '600', p.small ? 11 : 12);
-        return Object.assign({ w: g.measureText(p.badge || p.text).width + (p.badge ? 10 * s : 0), font: g.font }, p);
-      });
-      const w = segs.reduce((a, q) => a + q.w, 0) + GAP * (segs.length - 1) + 2 * PAD;
-      const x0 = right - w;
-      g.globalAlpha = it.alpha;
-      g.fillStyle = 'rgba(16,16,18,0.72)';
-      roundRect(g, x0, y - ROW_H / 2 + s, w, ROW_H - 2 * s, 3 * s); g.fill();
-      let x = x0 + PAD;
-      for (const q of segs) {
-        if (q.img) {
-          const b = q.icon.box;
-          g.shadowColor = 'rgba(0,0,0,0.85)'; g.shadowBlur = 2 * s;
-          g.drawImage(q.img, b[0], b[1], b[2], b[3], x, y - ICON_H / 2, q.w, ICON_H);
-          g.shadowBlur = 0;
-          if (q.heuristic) { g.font = font('700', 10); g.fillStyle = DIM; g.fillText('≈', x + q.w - 2 * s, y - 5 * s); }
-        } else if (q.badge) {
-          g.font = q.font;
-          g.strokeStyle = q.color; g.lineWidth = Math.max(1, s);
-          roundRect(g, x + 0.5, y - 7 * s, q.w - 1, 14 * s, 7 * s); g.stroke();
-          g.fillStyle = q.color; g.fillText(q.badge, x + 5 * s, y + 0.5 * s);
-        } else {
-          g.font = q.font;
-          g.shadowColor = '#000'; g.shadowBlur = 2 * s;
-          g.fillStyle = q.color; g.fillText(q.text, x, y + 0.5 * s);
-          g.shadowBlur = 0;
-        }
-        x += q.w + GAP;
-      }
-      g.globalAlpha = 1;
-      y += ROW_H;
-    }
+    g.globalAlpha = alpha;
+    if (ic.flip) { g.translate(x + w, top); g.scale(-1, 1); g.drawImage(img, 0, 0, w, hh); } else g.drawImage(img, x, top, w, hh);
     g.restore();
+    return w;
   }
-  function roundRect(g, x, y, w, h, r) {
-    g.beginPath();
-    if (g.roundRect) g.roundRect(x, y, w, h, r); else g.rect(x, y, w, h);
-  }
+}
 
-  /* ---------- DOM (3D view) ---------- */
-  /** the feed as rows over a view: update(t) rebuilds the rows only when the entries change, and sets
-   *  their fade every call */
-  class Overlay {
-    constructor(parent, app, d) {
-      this.app = app; this.d = d;
-      this.box = C4.ui.el('div', { class: 'kf-overlay', 'aria-live': 'off' });
-      parent.append(this.box);
-      this.key = '';
-      this.rows = [];
-    }
-    set visible(on) { this.box.hidden = !on; }
-    get visible() { return !this.box.hidden; }
-    update(t) {
-      if (this.box.hidden) return;
-      const items = itemsAt(this.d, t);
-      const key = items.map(it => it.t + (it.kill ? 'k' + it.kill.victim : 'e')).join(',');
-      if (key !== this.key) {
-        this.key = key;
-        this.box.textContent = '';
-        this.rows = items.map(it => {
-          const row = C4.ui.el('div', { class: 'kf-row' + (it.ev ? ' kf-bomb' : '') }, parts(this.app, this.d, it).map(p => this.node(p)));
-          this.box.append(row);
-          return row;
-        });
-      }
-      items.forEach((it, i) => { const o = it.alpha.toFixed(2); if (this.rows[i].style.opacity !== o) this.rows[i].style.opacity = o; });
-    }
-    node(p) {
-      const el = C4.ui.el;
-      if (p.icon) return el('span', { class: 'kf-weapon' }, C4.ui.iconNode(p.icon, p.icon.title),
-        p.heuristic ? C4.ui.approx('the obituary of a headshot carries no weapon; this is the weapon the killer held at that moment') : null);
-      if (p.badge) return el('span', { class: 'badge tk' }, p.badge);
-      return el('span', { class: p.small ? 'kf-note' : 'kf-name', style: { color: p.color } }, p.text);
-    }
-    dispose() { this.box.remove(); }
+let loading = null;
+/** all icon images, loaded once -> Promise<Map file -> HTMLImageElement> (a file that fails to load is left out) */
+function images() {
+  if (!loading) {
+    loading = Promise.all(Object.keys(C4.weapons.ICONS).map(file => new Promise(res => {
+      const img = new Image();
+      img.onload = () => res([file, img]);
+      img.onerror = () => { console.warn('kill feed icon not loaded:', file); res(null); };
+      img.src = C4.weapons.ICON_DIR + file;
+    }))).then(list => new Map(list.filter(Boolean)));
   }
+  return loading;
+}
+/** the font and the icons -> Promise<{txt, imgs}> (txt null without maps3d/_hud: nothing is drawn) */
+const ready = () => Promise.all([loadHudText(), images()]).then(([txt, imgs]) => ({ txt, imgs }));
 
-  C4.killfeed = { FADE_MS, itemsAt, parts, missing, images, draw, Overlay };
-})(window.C4);
+C4.killfeed = { WINDOWS, MessageWindow, Feed, images, ready };

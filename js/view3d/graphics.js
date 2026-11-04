@@ -2,11 +2,11 @@
  * shadows, the reflections, the effects and the first-person weapon. They take effect when the 3D map
  * is loaded, so a change rebuilds the 3D view (main.js: app.reload3d) - except a "live" one, which the
  * view applies at once. Remembered in localStorage; a URL parameter (?lighting=scene, ?shadows=off,
- * ?reflections=off, ?fx=off|ambient|demo, ?viewmodel=off, ?crosshair=off) overrides it for that page. */
+ * ?reflections=on, ?fx=all|ambient|demo|off, ?viewmodel=off, ?crosshair=off) overrides it for that page. The defaults:
+ * app/defaults.js. */
+import { DEFAULTS, GRAPHICS_KEY as KEY } from '../app/defaults.js';
 
-const KEY = 'cod4demo3d.graphics';            // JSON {lighting, shadows, reflections, fx, viewmodel, crosshair}
-
-/** key, URL parameter, values ([value, label, title]) - the first is the default */
+/** key, URL parameter, values ([value, label, title]) */
 export const GRAPHICS = [
   { key: 'lighting', label: 'Lighting', title: 'Game: the players, props and effects lit by the map\'s light grid, reflection probes and sun, as in the game. Simple: plain scene lights (faster).',
     values: [['game', 'Game'], ['scene', 'Simple']] },
@@ -21,10 +21,7 @@ export const GRAPHICS = [
   { key: 'crosshair', label: 'Crosshair', live: true, title: 'In the first-person camera: the crosshair with the game\'s images - its gap the weapon\'s spread (stance, movement, jumps, shots), hidden aiming down the sights, sprinting and for the scoped rifles',
     values: [['on', 'On'], ['off', 'Off']] }
 ];
-// the URL parameters' values in the settings' terms (?fx=on is not a value: ignored)
-const FROM_URL = { lighting: v => v === 'scene' ? 'scene' : null, shadows: v => v === 'off' ? 'off' : null,
-  reflections: v => v === 'off' ? 'off' : null, fx: v => ['off', 'ambient', 'demo'].includes(v) ? v : null,
-  viewmodel: v => v === 'off' ? 'off' : null, crosshair: v => v === 'off' ? 'off' : null };
+const known = (key, v) => GRAPHICS.find(g => g.key === key).values.some(x => x[0] === v);
 
 function stored() {
   try { return JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (err) { return {}; }
@@ -33,7 +30,7 @@ function stored() {
 /** the setting given by the page's URL, or null */
 export function urlGraphics(key) {
   const v = new URLSearchParams(location.search).get(key);
-  return v != null ? FROM_URL[key](v) : null;
+  return v != null && known(key, v) ? v : null;       // (?fx=on is not a value: ignored)
 }
 
 /** the effective settings: URL parameter, else the stored choice, else the default */
@@ -41,7 +38,7 @@ export function graphics() {
   const s = stored(), out = {};
   for (const g of GRAPHICS) {
     const v = urlGraphics(g.key) || s[g.key];
-    out[g.key] = g.values.some(x => x[0] === v) ? v : g.values[0][0];
+    out[g.key] = known(g.key, v) ? v : DEFAULTS.graphics[g.key];
   }
   return out;
 }

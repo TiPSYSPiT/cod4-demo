@@ -2,7 +2,6 @@
  * grenade arcs and clouds, the bomb and the bomb-site labels. Same rules (and constants)
  * as the 2D view - only the current round is drawn. */
 import * as THREE from 'three';
-import '../c4/ui/killfeed.js';                     // C4.killfeed (a classic script, loaded here: see the file)
 
 const C4 = window.C4;
 const CFG = C4.mapConfig;

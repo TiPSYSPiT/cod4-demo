@@ -67,7 +67,6 @@
       MP4_SIZE_FACTOR: 0.8,                   // the encoder used 35-80 % of the target bit rate (zoomed in: more)
       GIF_BYTES_PER_PIXEL: 0.03,              // bytes per pixel and frame (measured 0.011-0.025)
       GIF_WARN_SECONDS: 30, WARN_MB: 50,      // warn above these
-      KILLFEED_MS: 5000, KILLFEED_LINES: 5    // overlay: kills of the last 5 s, at most 5 lines
     },
     ROTATION_DEFAULT: 1,          // quarter turns counter-clockwise without a stored value (90° left)
     ROTATION_KEY: 'cod4demo.mapRotation.'   // localStorage key prefix, + raw map name

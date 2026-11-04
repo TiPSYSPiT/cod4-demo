@@ -179,9 +179,9 @@
     R.resize();
     R.canvas.width = p.W; R.canvas.height = p.H;
     const progress = (i, n) => { const v = Math.min(100, Math.floor(100 * i / n)); D.bar.style.width = v + '%'; D.pct.textContent = v + ' %'; };
-    // the kill feed's weapon icons (js/c4/ui/killfeed.js) are drawn into the frame: loaded before the first
-    const kfImgs = D.form.overlay.checked && C4.killfeed ? await C4.killfeed.images() : null;
-    const drawAt = t => { api.drawFrame(R, t); if (D.form.overlay.checked) drawOverlay(R, S.d, t, kfImgs); };
+    // the kill feed's font and icons (js/c4/ui/killfeed.js) are drawn into the frame: loaded before the first
+    const kf = D.form.overlay.checked && C4.killfeed ? { assets: await C4.killfeed.ready(), feed: new C4.killfeed.Feed(S.d) } : null;
+    const drawAt = t => { api.drawFrame(R, t); if (D.form.overlay.checked) drawOverlay(R, S.d, t, kf); };
     let result = null, kind = p.gif ? 'gif' : 'mp4';
     try {
       if (p.gif) result = await exportGif(p, R, drawAt, progress);
@@ -298,7 +298,7 @@
   }
 
   /* ---------- overlay: round, round time, score, kill feed ---------- */
-  function drawOverlay(R, d, t, kfImgs) {
+  function drawOverlay(R, d, t, kf) {
     const g = R.ctx, app = C4.app;
     g.save();
     g.setTransform(R.dpr, 0, 0, R.dpr, 0, 0);
@@ -322,8 +322,8 @@
     g.font = font('700', 13);
     let x = 16;
     for (const [txt, col] of parts) { g.fillStyle = col; g.fillText(txt, x, 38); x += g.measureText(txt).width; }
-    // top right: kill feed (kills and bomb events of the last seconds, with the weapon icons)
-    if (C4.killfeed) C4.killfeed.draw(g, app, d, t, { right: R.w - 8, top: 18, imgs: kfImgs });
+    // lower left: the game's kill feed, in the frame's pixels
+    if (kf) { g.setTransform(1, 0, 0, 1, 0, 0); kf.feed.draw(g, t, { w: g.canvas.width, h: g.canvas.height, pov: app.povAt(t), assets: kf.assets }); }
     g.restore();
   }
 
