@@ -3,6 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Content-Security-Policy: only the site's own files. The sha256 is the hash of the import map below - it must be
+       recomputed when the import map changes (README, Deploy); blob: = the parser and GIF workers. The CDN alternative of
+       the import map would also need that host in script-src. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-Mne3CI18ZSns61UE2acmcxBJb8wPiixDKJMLGynStww='; worker-src 'self' blob:; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; media-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'none'">
   <title>CoD4 Demo Viewer</title>
   <meta name="description" content="Call of Duty 4 demo (.dm_1) replay in 2D and 3D - parsed locally in the browser.">
   <link rel="icon" href="favicon.ico" sizes="any">

@@ -53,12 +53,20 @@ class DepthMaterials {
   }
   /** render the casters on `layer` with `camera` into `target` (whole target, or a viewport) */
   render(renderer, scene, camera, layer, target, viewport = null, clear = true) {
-    const swapped = [];
-    scene.traverse(o => {
-      if (!o.isMesh || !o.layers.isEnabled(layer)) return;
-      swapped.push([o, o.material]);
-      o.material = Array.isArray(o.material) ? o.material.map(m => this.get(m)) : this.get(o.material);
+    // (every frame, for every caster of every pass: the same arrays and function each time)
+    const meshes = this.meshes || (this.meshes = []), mats = this.mats || (this.mats = []), lists = this.lists || (this.lists = new WeakMap());
+    meshes.length = 0; mats.length = 0;
+    this.layer = layer;
+    this.swap = this.swap || (o => {
+      if (!o.isMesh || !o.layers.isEnabled(this.layer)) return;
+      const m = o.material;
+      meshes.push(o); mats.push(m);
+      if (!Array.isArray(m)) { o.material = this.get(m); return; }
+      let l = lists.get(m);
+      if (!l) lists.set(m, l = m.map(x => this.get(x)));
+      o.material = l;
     });
+    scene.traverse(this.swap);
     const prevTarget = renderer.getRenderTarget(), prevBg = scene.background, prevFog = scene.fog;
     scene.background = null; scene.fog = null;
     camera.layers.set(layer);
@@ -74,8 +82,8 @@ class DepthMaterials {
     target.scissorTest = false;
     renderer.setRenderTarget(prevTarget);
     scene.background = prevBg; scene.fog = prevFog;
-    for (const [o, m] of swapped) o.material = m;
-    return swapped.length;
+    for (let i = 0; i < meshes.length; i++) meshes[i].material = mats[i];
+    return meshes.length;
   }
 }
 

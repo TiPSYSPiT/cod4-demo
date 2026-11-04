@@ -67,6 +67,9 @@
       half: v('--muted', '#8d8d95'), sel: v('--tl-sel', 'rgba(255,255,255,.85)'), band: v('--tl-defuse', '#5dd39e') };
   }
   const PAD = 9;                   // room for the head at both ends of the bar (draw and pointer agree)
+  const MARK_GAP = 6;              // the least space between two labels (px)
+  const MARK_STEPS = [1, 2, 5, 10, 20];
+  const MARK_LOSS = 0.2;
 
   class Timeline {
     /** markers: [{t, kind: 'seg' (t..t1, end: decided, color: winner) | 'kill' (color, up) | 'bomb' | 'defuse' | 'half'}] */
@@ -80,7 +83,17 @@
       this.tip = document.createElement('div');
       this.tip.className = 'tl-tip';
       this.tip.setAttribute('aria-hidden', 'true');
-      container.append(this.canvas, this.tip);
+      // the round labels: a lane of their own under the bar (the kill ticks and the head above it, the time over the bar)
+      this.lane = document.createElement('div');
+      this.lane.className = 'tl-marks';
+      this.markTip = document.createElement('div');
+      this.markTip.className = 'tl-mark-tip';
+      this.markTip.hidden = true;
+      container.append(this.canvas, this.tip, this.lane, this.markTip);
+      this.marks = [];
+      this.markNodes = new Map();  // round index -> its label, when shown
+      this.current = -1;
+      this.measure = document.createElement('canvas').getContext('2d');
       this.onSeek = onSeek;
       this.range = [0, 1];
       this.markers = [];
@@ -101,17 +114,116 @@
         this.canvas.title = C4.ui.fmtTime(t - this.base);
       });
       this.canvas.addEventListener('pointerup', () => { down = false; });
-      new ResizeObserver(() => this.draw()).observe(container);
+      this.lane.addEventListener('pointermove', e => this.showMarkTip(e));
+      this.lane.addEventListener('pointerleave', () => { this.markTip.hidden = true; });
+      this.lane.addEventListener('click', e => { const m = this.markAt(e); if (m) this.onSeek(m.jump, 1); });
+      // (disconnected by dispose: a live observer keeps the timeline and its replay in memory)
+      this.resizeObs = new ResizeObserver(() => { this.layoutMarks(); this.draw(); });
+      this.resizeObs.observe(container);
     }
-    /** opts: {skips: [[a, b), ...] cut out of the bar, base: time shown as 00:00} */
+    /** the closed replay's timeline: its resize observer off */
+    dispose() { if (this.resizeObs) this.resizeObs.disconnect(); this.resizeObs = null; }
+    /** opts: {skips: [[a, b), ...] cut out of the bar, base: time shown as 00:00, marks: the labels under the bar
+     *  [{t, jump, round, half, text, short, n, title}]} */
     set(range, markers, opts) {
       this.range = range;
       this.markers = markers;
       this.skips = (opts && opts.skips) || [];
       this.base = (opts && opts.base) || 0;
       this.pal = palette();
+      this.marks = ((opts && opts.marks) || []).slice().sort((x, y) => x.t - y.t);
+      this.layoutMarks();
       this.draw();
     }
+    /** the round at the playback time: its label lit */
+    setCurrent(round) {
+      if (round === this.current) return;
+      const prev = this.markNodes.get(this.current), next = this.markNodes.get(round);
+      if (prev) prev.classList.remove('current');
+      if (next) next.classList.add('current');
+      this.current = round;
+    }
+    /** x of time t on a bar W wide */
+    xAt(t, W) { return PAD + (t - this.range[0]) / (this.range[1] - this.range[0]) * (W - 2 * PAD); }
+    /** the labels that fit: the warm-up, half-time and other named ones first (their short text when the next label is
+     *  close), then the round numbers - as "R11", as "11", every 2nd, 5th, 10th...: the first choice that loses at most
+     *  MARK_LOSS of its labels to a neighbour closer than MARK_GAP (a few short rounds thin out where they are, not all
+     *  over the bar); the first round's too when there is room. A halftime's label ends at its time: the next round's
+     *  starts right after it */
+    layoutMarks() {
+      const W = this.box.clientWidth;
+      this.lane.replaceChildren();
+      this.markNodes.clear();
+      this.markTip.hidden = true;
+      if (!W || !this.marks.length) return;
+      const cs = getComputedStyle(this.lane), g = this.measure;
+      g.font = cs.fontWeight + ' ' + cs.fontSize + ' ' + cs.fontFamily;
+      const width = s => Math.ceil(g.measureText(s).width);
+      const spot = (m, w) => Math.max(0, Math.min(W - w, this.xAt(m.t, W) - (m.half ? w + 2 : 0)));
+      const clash = (list, x, w) => list.some(o => x < o.x + o.w + MARK_GAP && o.x < x + w + MARK_GAP);
+      const named = [];
+      this.marks.forEach((m, i) => {
+        if (m.n != null) return;
+        const next = this.marks[i + 1], room = next ? this.xAt(next.t, W) - this.xAt(m.t, W) : Infinity;
+        const text = m.half || width(m.text) + MARK_GAP <= room ? m.text : m.short, w = width(text), x = spot(m, w);
+        if (!clash(named, x, w)) named.push({ m, text, x, w });
+      });
+      const numbered = this.marks.filter(m => m.n != null);
+      let shown = [];
+      choose: for (const step of MARK_STEPS) {
+        for (const key of ['text', 'short']) {
+          const put = [];
+          let wanted = 0, lost = 0;
+          for (const m of numbered) {
+            if (m.n % step) continue;
+            const text = m[key], w = width(text), x = spot(m, w);
+            wanted++;
+            if (clash(put, x, w)) lost++;
+            else if (!clash(named, x, w)) put.push({ m, text, x, w });
+          }
+          shown = put;
+          if (lost <= wanted * MARK_LOSS) break choose;
+        }
+      }
+      const first = numbered[0];
+      if (first && !shown.some(o => o.m === first)) {
+        const w = width(first.text), x = spot(first, w);
+        if (!clash(shown, x, w) && !clash(named, x, w)) shown.push({ m: first, text: first.text, x, w });
+      }
+      for (const o of named.concat(shown)) {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.tabIndex = -1;
+        b.className = 'tl-mark' + (o.m.half ? ' half' : '') + (o.m.round != null && o.m.round === this.current ? ' current' : '');
+        b.textContent = o.text;
+        b.style.left = Math.round(o.x) + 'px';
+        b.setAttribute('aria-label', o.m.title);
+        b.dataset.i = String(this.marks.indexOf(o.m));
+        if (o.m.round != null) this.markNodes.set(o.m.round, b);
+        this.lane.append(b);
+      }
+    }
+    /** the label under the pointer, else the round this spot of the lane lies in (also one thinned out) */
+    markAt(e) {
+      const n = e.target.closest('.tl-mark');
+      if (n) return this.marks[Number(n.dataset.i)];
+      const r = this.lane.getBoundingClientRect(), x = e.clientX - r.left, list = this.marks.filter(m => !m.half);
+      let best = list[0] || null;
+      for (const m of list) if (this.xAt(m.t, r.width) <= x) best = m;
+      return best;
+    }
+    showMarkTip(e) {
+      const m = this.markAt(e), tip = this.markTip;
+      tip.hidden = !m;
+      if (!m) return;
+      if (tip.textContent !== m.title) tip.textContent = m.title;
+      const r = this.lane.getBoundingClientRect();
+      tip.style.left = Math.round(Math.max(0, Math.min(r.width - tip.offsetWidth, e.clientX - r.left - tip.offsetWidth / 2))) + 'px';
+    }
+    /** the range of a video export [a, b] (marked on the bar), or null */
+    setBand(band) { this.band = band; this.draw(); }
+    /** the user's export selection {a, b} (start / end markers, either may be null), or null */
+    setSelection(sel) { this.selection = sel; this.draw(); }
     setTime(t) { this.t = t; this.draw(); }
     /** the range of a video export [a, b] (marked on the bar), or null */
     setBand(band) { this.band = band; this.draw(); }
@@ -127,7 +239,7 @@
       g.clearRect(0, 0, W, H);
       const [a, b] = this.range;
       const pad = PAD;
-      const X = t => pad + (t - a) / (b - a) * (W - 2 * pad);
+      const X = t => this.xAt(t, W);
       const mid = Math.round(H / 2), now = this.t;
       const pill = (x0, x1, y, h, color) => {
         const w = Math.max(2, x1 - x0), rr = Math.min(h / 2, w / 2);

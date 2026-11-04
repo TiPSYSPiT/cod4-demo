@@ -121,6 +121,8 @@ export function tracerAt(world, scripts, t) {
   };
 }
 
+const ALL_TIME = [-Infinity, Infinity], TR_INTERPOLATE = 1;      // (TR_STATIONARY 0)
+
 export class ScriptModels {
   /** M: app/match.js Match, spawns: entities.json scriptModels, library: characters.js CharacterLibrary */
   constructor(M, spawns, library, lightGrid, onChange, props = null) {
@@ -134,6 +136,7 @@ export class ScriptModels {
     this.items = this.build(spawns || [], M.d.scriptEnts || []);
     this.meshes = new Map();                  // item -> {name, mesh}
     this.tmpM = new THREE.Matrix4();
+    this.tmpA = [0, 0, 0]; this.tmpB = [0, 0, 0];
     this.rounds = (M.d.rounds || []).map(r => [r.segStart, r.segEnd]);
   }
 
@@ -174,14 +177,16 @@ export class ScriptModels {
   stateAt(it, t) {
     const S = it.states;
     if (S.length) {
-      const r = this.rounds.find(x => t >= x[0] && t < x[1]) || [-Infinity, Infinity];
-      let pick = null;
+      // (every bullet and debris trace asks for every item: no closures, and a state that does not move is made once)
+      let r = ALL_TIME, pick = null;
+      for (const x of this.rounds) if (t >= x[0] && t < x[1]) { r = x; break; }
       if (it.spawn) {
         // a map entity: its last known state - the demo records every change while the server sends the
         // entity - unless a round started (map_restart: everything restored) while it was not sent; then
         // the first state known in the round, else the map's own
         for (const s of S) { if (s[0] <= t) pick = s; else break; }
-        const seenAtStart = it.records.some(([a, b]) => a <= r[0] && b >= r[0]);
+        let seenAtStart = false;
+        for (const x of it.records) if (x[0] <= r[0] && x[1] >= r[0]) { seenAtStart = true; break; }
         if (!pick || (pick[0] < r[0] && !seenAtStart)) {
           pick = null;
           for (const s of S) { if (s[0] >= r[0] && s[0] < r[1]) { pick = s; break; } }
@@ -190,19 +195,24 @@ export class ScriptModels {
         }
       } else {
         // an entity the scripts spawn: only while the demo has it
-        if (!it.records.some(([a, b]) => t >= a && t <= b + 100)) return null;
+        let present = false;
+        for (const x of it.records) if (t >= x[0] && t <= x[1] + 100) { present = true; break; }
+        if (!present) return null;
         for (const s of S) { if (s[0] <= t) pick = s; else break; }
       }
       if (!pick || (stFlags(pick) & EF_NODRAW) || !stModel(pick) || stModel(pick)[0] === '*') return null;
+      if (pick.still) return pick.still;
       const o = evaluateTrajectory(pick[3], pick[4], pick[5], [pick[6], pick[7], pick[8]], [pick[9], pick[10], pick[11]], t, [0, 0, 0]);
       const a = evaluateTrajectory(pick[12], pick[13], pick[14], [pick[15], pick[16], pick[17]], [pick[18], pick[19], pick[20]], t, [0, 0, 0]);
       // solid: what is drawn (the entity state's solid field is the client's prediction box, 0 for the
       // cars, which the server's traces hit with their model's collision)
-      return { model: stModel(pick), origin: o, angles: a, solid: true };
+      const state = { model: stModel(pick), origin: o, angles: a, solid: true };
+      if (pick[3] <= TR_INTERPOLATE && pick[12] <= TR_INTERPOLATE) pick.still = state;       // (the base, whatever t)
+      return state;
     }
     return it.spawn ? this.spawnState(it.spawn) : null;
   }
-  spawnState(sp) { return { model: sp.model, origin: sp.origin, angles: sp.angles, solid: true }; }
+  spawnState(sp) { return sp.state || (sp.state = { model: sp.model, origin: sp.origin, angles: sp.angles, solid: true }); }
 
   /** the collision triangles of the models (mapLoader scriptCollision: {models: {name: [first, count]},
    *  P: Float32Array 9 per triangle, S: surface types}) */
@@ -225,15 +235,16 @@ export class ScriptModels {
       if (!r) continue;
       const box = this.boundsOf(st.model, r);
       // into the model's frame: the placement is a rotation (AnglesToAxis) and the origin
-      const m = placement(st.angles, st.origin, this.tmpM).elements;
-      const f = [m[0], m[1], m[2]], l = [m[4], m[5], m[6]], u = [m[8], m[9], m[10]], o = st.origin;
-      const loc = p => { const d = [p[0] - o[0], p[1] - o[1], p[2] - o[2]]; return [dot(f, d), dot(l, d), dot(u, d)]; };
-      const la = loc(a), lb = loc(b);
+      const m = placement(st.angles, st.origin, this.tmpM).elements, o = st.origin, la = this.tmpA, lb = this.tmpB;
+      for (let k = 0; k < 2; k++) {
+        const p = k ? b : a, q = k ? lb : la, dx = p[0] - o[0], dy = p[1] - o[1], dz = p[2] - o[2];
+        q[0] = m[0] * dx + m[1] * dy + m[2] * dz; q[1] = m[4] * dx + m[5] * dy + m[6] * dz; q[2] = m[8] * dx + m[9] * dy + m[10] * dz;
+      }
       if (!segmentHitsBox(la, lb, box, bestF)) continue;
       const hit = triangles(C.P, r[0], r[1], la, lb, bestF);
       if (!hit) continue;
       bestF = hit.f;
-      const n = hit.n, wn = [f[0] * n[0] + l[0] * n[1] + u[0] * n[2], f[1] * n[0] + l[1] * n[1] + u[1] * n[2], f[2] * n[0] + l[2] * n[1] + u[2] * n[2]];
+      const n = hit.n, wn = [m[0] * n[0] + m[4] * n[1] + m[8] * n[2], m[1] * n[0] + m[5] * n[1] + m[9] * n[2], m[2] * n[0] + m[6] * n[1] + m[10] * n[2]];
       const dir = [b[0] - a[0], b[1] - a[1], b[2] - a[2]];
       if (dot(wn, dir) > 0) { wn[0] = -wn[0]; wn[1] = -wn[1]; wn[2] = -wn[2]; }
       best = { frac: hit.f, point: [a[0] + dir[0] * hit.f, a[1] + dir[1] * hit.f, a[2] + dir[2] * hit.f], normal: wn,

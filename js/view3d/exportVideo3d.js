@@ -477,7 +477,7 @@ function drawFrame(ctx, i) {
   ctx.fp[i] = r && r.hideClient != null ? r.hideClient : null;
   g.drawImage(view.renderer.domElement, 0, 0, C.width, C.height);
   // the game's HUD of the player seen in first person (hud.js)
-  if (r && r.hideClient != null && view.hud && view.hud.enabled) view.drawHud(g, C.width, C.height, r.hideClient, false);
+  if (r && r.hudClient != null && view.hud && view.hud.enabled) view.drawHud(g, C.width, C.height, r.hudClient, false);
   drawOverlays(ctx, t, r ? r.hideClient : null);
   if (window.__exportProbe) probe(ctx, i);
 }

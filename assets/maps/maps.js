@@ -46,8 +46,9 @@ C4.define('maps', function (C4) {
   /** raw map name -> registry key: exact name, alias, then the longest known prefix ("mp_crash_x") */
   function resolve(raw) {
     const name = String(raw || '').toLowerCase();
-    if (MAPS[name]) return name;
-    if (ALIASES[name]) return ALIASES[name];
+    // (own keys only: a map named "constructor" or "__proto__" is no map)
+    if (Object.hasOwn(MAPS, name)) return name;
+    if (Object.hasOwn(ALIASES, name)) return ALIASES[name];
     let best = null;
     for (const k of Object.keys(MAPS)) if (name.startsWith(k + '_') && (!best || k.length > best.length)) best = k;
     return best;

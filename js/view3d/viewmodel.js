@@ -22,6 +22,7 @@ import { gridLit, objectLighting, setObjectLighting } from './lighting.js';
 import { weaponModelName, isPromod } from './actors.js';
 import { ViewAnimator } from './viewanim.js';
 import { loadTexture } from './mapLoader.js';
+import { CG_FOV, hFov43, vFov43 } from './cameras.js';
 
 const IDENTITY = new THREE.Matrix4();
 const D2R = Math.PI / 180;
@@ -208,11 +209,12 @@ export class ViewModel {
   fov(base) {
     const st = this.state, P = st && st.entry && st.entry.params;
     if (!this.enabled || !P || !P.adsZoomFov || !(st.ads > 0)) return base;
-    const h43 = v => 2 * Math.atan(Math.tan(v * D2R / 2) / 0.75) / D2R, v43 = h => 2 * Math.atan(Math.tan(h * D2R / 2) * 0.75) / D2R;
-    const scale = h43(base) / 80;                             // the base as cg_fov 80 x fov scale
-    const zoomed = v43(Math.min(170, P.adsZoomFov * scale));
-    const f = P.adsZoomInFrac || 0.5, z = Math.min(1, Math.max(0, (st.ads - (1 - f)) / f));
-    return base + (zoomed - base) * z;
+    // CG_GetViewFov: linear in the 4:3 screen's horizontal fov, over the last adsZoomInFrac (aiming in) / OutFrac
+    // (out) of the ADS fraction; base = cg_fov x the viewer's fov scale, the weapon's zoom scaled with it
+    const hb = hFov43(base), zoomed = Math.min(hb, P.adsZoomFov * hb / CG_FOV);
+    if (st.ads >= 1) return vFov43(zoomed);
+    const f = (st.adsIn ? P.adsZoomInFrac : P.adsZoomOutFrac) || 0.5, z = (st.ads - (1 - f)) / f;
+    return z > 0 ? vFov43(hb - (hb - zoomed) * z) : base;
   }
 
   /** the rig of gun + hands (+ knife) of a view model entry (built when its models are loaded) */

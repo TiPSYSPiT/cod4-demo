@@ -135,6 +135,11 @@ C4.define('collect', function (C4) {
       // perks, spreadOverride, spreadOverrideState] per snapshot
       psAim: [],
       psHud: [],                    // cod4-demo3d: the recorder's HUD state per snapshot (see doPlayerState)
+      psHudRef: [],                 // cod4-demo3d: per psHud row its entry of hudStates
+      psObjRef: [],                 // cod4-demo3d: per psHud row its entry of objStates
+      objStates: [],                // cod4-demo3d: the compass objectives: [[x, y, z, icon, entNum, teamNum], ...]
+      hudElems: [],                 // cod4-demo3d: the distinct HUD elements (arrays by C4.delta.HUD_INDEX)
+      hudStates: [],                // cod4-demo3d: the element lists (indices into hudElems) in the game's order
       psAmmo: [],                   // cod4-demo3d: [t, 0 ammo / 1 clip, slot, value] on every change
       hitMarks: [],                 // cod4-demo3d: the scripts' hit marker HUD element on every change (see doHitMarks)
       shocks: [],                   // cod4-demo3d: the followed client's shell shocks {client, start, duration, name}
@@ -332,6 +337,40 @@ C4.define('collect', function (C4) {
       }
     }
 
+    // cod4-demo3d (the server's HUD): the player state's elements on every change - the distinct elements once, a state a
+    // list of them (GetSortedHudElems: the current ones, then the archived, each up to the first free slot). The
+    // world's waypoints (13) are kept for hud.js too
+    const hudIds = new Map(), hudSlots = [[], []];
+    let hudLast = null;
+    function doHudState(ps) {
+      const ids = [];
+      [ps.hudCurrent, ps.hudArchival].forEach((arr, k) => {
+        if (!arr) return;
+        for (let i = 0; i < arr.length && arr[i][HE.type]; i++) {
+          const e = arr[i];
+          const was = hudSlots[k][i];
+          if (was && (was.e === e || was.e.every((v, j) => v === e[j]))) { was.e = e; ids.push(was.id); continue; }
+          const key = e.join(',');
+          let id = hudIds.get(key);
+          if (id === undefined) { id = c.hudElems.length; hudIds.set(key, id); c.hudElems.push(e); }
+          hudSlots[k][i] = { e, id };
+          ids.push(id);
+        }
+      });
+      if (!hudLast || ids.length !== hudLast.length || ids.some((v, i) => v !== hudLast[i])) { c.hudStates.push(ids); hudLast = ids; }
+      return c.hudStates.length - 1;
+    }
+
+    // cod4-demo3d (the HUD's objectives): the active ones of the player state on every change (OBJST_ACTIVE, OBJST_CURRENT)
+    let objLast = null;
+    function doObjState(ps) {
+      const list = [];
+      for (const o of ps.objectives) if (o[0] === 1 || o[0] === 4) list.push([R(u2f(o[1])), R(u2f(o[2])), R(u2f(o[3])), o[4], o[5], o[6]]);
+      const key = list.join(';');
+      if (key !== objLast) { c.objStates.push(list); objLast = key; }
+      return c.objStates.length - 1;
+    }
+
     const lastAmmo = [null, null];
     let lastShock = null;
     function doPlayerState(snap, t) {
@@ -342,6 +381,8 @@ C4.define('collect', function (C4) {
       const S = snap.ps.stats;
       c.psHud.push(t, f[PSI.client], S[0] | 0, S[2] | 0, S[3] | 0, f[PSI.damageEvent] | 0, f[PSI.damageYaw] | 0, f[PSI.damagePitch] | 0,
         f[PSI.damageCount] | 0, f[PSI.damageDuration] | 0, f[PSI.flinch] | 0, f[PSI.cursorHint] | 0, f[PSI.cursorHintString] | 0, f[PSI.offhandSecondary] | 0);
+      c.psHudRef.push(doHudState(snap.ps));
+      c.psObjRef.push(doObjState(snap.ps));
       for (const [kind, arr] of [[0, snap.ps.ammo], [1, snap.ps.ammoclip]]) {
         if (!arr) continue;
         const last = lastAmmo[kind];

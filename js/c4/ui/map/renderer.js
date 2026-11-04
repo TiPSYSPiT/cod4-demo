@@ -130,6 +130,36 @@
       window.addEventListener('mouseup', up);
       // (removed with the view: the window's listeners would keep the renderer and its demo alive)
       this.offWindow = () => { window.removeEventListener('mousemove', move); window.removeEventListener('mouseup', up); };
+      // touch: one finger pans, two fingers pinch-zoom around their midpoint (the mouse keeps the handlers above)
+      const touches = new Map();
+      const mid = () => { const [a, b] = [...touches.values()]; return [(a.x + b.x) / 2, (a.y + b.y) / 2, Math.hypot(a.x - b.x, a.y - b.y)]; };
+      c.addEventListener('pointerdown', e => {
+        if (e.pointerType !== 'touch') return;
+        c.setPointerCapture(e.pointerId);
+        touches.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      });
+      c.addEventListener('pointermove', e => {
+        if (e.pointerType !== 'touch' || !touches.has(e.pointerId)) return;
+        const p = touches.get(e.pointerId);
+        if (touches.size === 1) {
+          this.pan.x += e.clientX - p.x; this.pan.y += e.clientY - p.y;
+          p.x = e.clientX; p.y = e.clientY;
+        } else if (touches.size === 2) {
+          const [x0, y0, d0] = mid();
+          p.x = e.clientX; p.y = e.clientY;
+          const [x1, y1, d1] = mid();
+          this.pan.x += x1 - x0; this.pan.y += y1 - y0;
+          const r = c.getBoundingClientRect(), mx = x1 - r.left, my = y1 - r.top;
+          const [wx, wy] = this.inv(mx, my);
+          this.zoom = Math.min(12, Math.max(0.5, this.zoom * (d0 > 0 ? d1 / d0 : 1)));
+          const [nx, ny] = this.pt(wx, wy);
+          this.pan.x += mx - nx; this.pan.y += my - ny;
+        } else return;
+        if (this.onChange) this.onChange();
+      });
+      const lift = e => { touches.delete(e.pointerId); };
+      c.addEventListener('pointerup', lift);
+      c.addEventListener('pointercancel', lift);
       c.addEventListener('dblclick', () => { this.zoom = 1; this.pan = { x: 0, y: 0 }; if (this.onChange) this.onChange(); });
     }
 

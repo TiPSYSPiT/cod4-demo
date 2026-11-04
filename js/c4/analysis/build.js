@@ -806,8 +806,27 @@ C4.define('build', function (C4) {
         const o = { t: new Int32Array(n) };
         for (const k of keys) o[k] = new Int16Array(n);
         for (let i = 0; i < n; i++) { const r = i * N; o.t[i] = rel(a[r]); keys.forEach((k, j) => { o[k][i] = a[r + 1 + j]; }); }
+        // the server's HUD (hud.js): per row its state (ref), a state the elements of start[i] .. start[i + 1] in ids, the
+        // elements flat (stride: C4.delta.HUD_INDEX); t0 turns their server times into the replay's. The config strings they
+        // read over time: localized strings, materials, the scoreboard's status icons
+        const E = col.hudElems || [], St = col.hudStates || [], NH = E.length ? E[0].length : 0;
+        o.ref = Uint32Array.from(col.psHudRef || []);
+        o.objRef = Uint32Array.from(col.psObjRef || []);
+        o.objs = col.objStates || [];
+        const start = new Uint32Array(St.length + 1);
+        St.forEach((s, i) => { start[i + 1] = start[i] + s.length; });
+        const ids = new Uint32Array(start[St.length]), elems = new Int32Array(E.length * NH);
+        St.forEach((s, i) => ids.set(s, start[i]));
+        E.forEach((e, i) => elems.set(e, i * NH));
+        const want = i => (i >= K.CS.LOCALIZED && i < K.CS.NORTHYAW) || (i >= K.CS.SERVER_MATERIALS && i < K.CS.WEAPONFILES) || (i > K.CS.WEAPONFILES && i <= K.CS.WEAPONFILES + 8);
+        const init = {};
+        for (const [i, v] of csInit) if (want(i)) init[i] = v;
+        o.elems = { t0, start, ids, data: elems, stride: NH, cs: { init,
+          changes: csChanges.filter(x => want(x.index) && x.t >= main.start && x.t < main.end).map(x => [x.t, x.index, x.value]) } };
         return o;
       })(),
+      // cod4-demo3d: the scores the server sent ("b": only while the recorder looked at the scoreboard): the game's scoreboard
+      scoreboards: col.scoreboards.map(sb => ({ t: rel(sb.t), axis: sb.axis, allies: sb.allies, limit: sb.limit, entries: sb.entries })),
       // cod4-demo3d: the recorder's ammo (kind 0) and clip (kind 1) slots on every change: [t, kind, slot, value]
       psAmmo: (() => { const a = col.psAmmo || [], out = []; for (let i = 0; i + 3 < a.length; i += 4) out.push([rel(a[i]), a[i + 1], a[i + 2], a[i + 3]]); return out; })(),
       // cod4-demo3d: the recorder's own aim per snapshot (relative time; collect.js psAim)

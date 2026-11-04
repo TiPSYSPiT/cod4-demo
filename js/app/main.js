@@ -132,7 +132,7 @@ async function load(file) {
     const m = ev.data;
     if (m.type === 'progress') setProgress(m.value);
     else if (m.type === 'done') { worker.terminate(); state.worker = null; finish(m.data, loadId); }
-    else if (m.type === 'error') { worker.terminate(); state.worker = null; fail(errorText(m.message, m.invalid), m.stack); }
+    else if (m.type === 'error') { worker.terminate(); state.worker = null; failDemo(m.message, m.invalid, m.stack); }
   };
   worker.onerror = e => {
     e.preventDefault();
@@ -149,7 +149,7 @@ function parseMainThread(buffer, loadId) {
   setTimeout(() => {
     let data;
     try { data = C4.analyzeDemo(new Uint8Array(buffer), state.fileInfo, setProgress); }
-    catch (err) { return fail(errorText(err.message, err instanceof C4.demo.DemoError), err.stack); }
+    catch (err) { return failDemo(err.message, err instanceof C4.demo.DemoError, err.stack); }
     finish(data, loadId);
   }, 30);
 }
@@ -171,6 +171,11 @@ function finish(data, loadId) {
 
 function errorText(message, invalid) {
   return invalid ? 'Unsupported or invalid demo: ' + message : 'The demo could not be analysed: ' + message;
+}
+/** a demo that did not load: an invalid file is a warning without a stack, anything else an error */
+function failDemo(message, invalid, stack) {
+  if (invalid) console.warn('Not loaded: ' + message);
+  fail(errorText(message, invalid), invalid ? null : stack);
 }
 
 function fail(message, stack) {
@@ -467,26 +472,37 @@ function init() {
     const ae = document.activeElement;
     if (e.code === 'Space' && ae && (tag === 'BUTTON' || tag === 'A' || ae.getAttribute('role') === 'button')) return;
     if (e.code === 'Space') { e.preventDefault(); R.pb.toggle(); }
-    else if (e.code === 'ArrowLeft') { e.preventDefault(); R.pb.seek(R.pb.t - C4.mapConfig.SEEK_STEP_MS, -1); }
-    else if (e.code === 'ArrowRight') { e.preventDefault(); R.pb.seek(R.pb.t + C4.mapConfig.SEEK_STEP_MS, 1); }
+    else if (e.code === 'ArrowLeft') { e.preventDefault(); R.pb.seek(R.pb.t - C4.mapConfig.SEEK_STEP_MS, -1); fsFlash(); }
+    else if (e.code === 'ArrowRight') { e.preventDefault(); R.pb.seek(R.pb.t + C4.mapConfig.SEEK_STEP_MS, 1); fsFlash(); }
     else if (e.code === 'KeyV') { e.preventDefault(); setView(state.view === '2d' ? '3d' : '2d', true); }
     else if (e.code === 'KeyI') { e.preventDefault(); R.setMark('a'); }
     else if (e.code === 'KeyO') { e.preventDefault(); R.setMark('b'); }
     // (F in the free camera flies down: cameras.js takes it first)
     else if (e.code === 'KeyF' && !e.shiftKey) { e.preventDefault(); toggleFullscreen(); }
   });
-  // optional: index.html?demo=<url of a .dm_1 file> (served over http)
+  // optional: index.html?demo=<path of a .dm_1 file on this site> (served over http). Only the site's own files: a link
+  // must not open someone else's file under the site's name (the CSP's connect-src agrees)
   const demoUrl = new URLSearchParams(location.search).get('demo');
   if (demoUrl) {
-    fetch(demoUrl).then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.blob(); })
-      .then(b => load(new File([b], decodeURIComponent(demoUrl.split('/').pop()), { lastModified: Date.now() })))
-      .catch(err => fail('Could not load ' + demoUrl + ': ' + err.message));
+    let url = null;
+    try { url = new URL(demoUrl, location.href); } catch (err) { /* not a URL */ }
+    if (!url || url.origin !== location.origin) fail('?demo= opens only a demo file on this site (a path such as demos/my.dm_1).');
+    else {
+      fetch(url).then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.blob(); })
+        .then(b => load(new File([b], decodeURIComponent(url.pathname.split('/').pop()) || 'demo.dm_1', { lastModified: Date.now() })))
+        .catch(err => fail('Could not load ' + demoUrl + ': ' + err.message));
+    }
   }
 }
-/* Fullscreen: the stage (the view with its HUD) as the browser's fullscreen element - the score pill, rail, panel
- * and map tools hidden (css .stage.fs); the player bar comes up on mouse move / touch for FS_UI_MS. The browser's
- * own exit (Esc) restores the layout through fullscreenchange, like the button and F. */
-const FS_UI_MS = 2500;
+/* Fullscreen: the stage (the view with its HUD) as the browser's fullscreen element - the top bar, score pill, rail,
+ * panel and map tools hidden (css .stage.fs). The player bar is hidden too, over the view when it shows (the view and
+ * the HUD do not move): it slides in while the mouse is at the bottom of the screen, on a touch and on a seek by the
+ * keys, and out FS_HIDE_MS after that - not while the mouse is at the bottom or on it, the playhead is dragged or a
+ * dropdown is open. The cursor and the exit button go after FS_IDLE_MS without a move, unless on the bar. The
+ * browser's own exit (Esc) restores the layout through fullscreenchange, like the button and F. */
+const FS_HIDE_MS = 2000, FS_IDLE_MS = 2000;
+const FS_ZONE_PX = 24;                // the bottom area: the bar's place and this much above it
+let fsFlash = () => {};               // shows the player bar for FS_HIDE_MS (setupFullscreen)
 const fsElement = () => document.fullscreenElement || document.webkitFullscreenElement || null;
 function toggleFullscreen() {
   const st = $('viewport');
@@ -497,26 +513,74 @@ function toggleFullscreen() {
   if (p && p.catch) p.catch(err => console.warn('fullscreen refused:', err.message));
 }
 function setupFullscreen() {
-  const btn = $('fs-btn'), st = $('viewport');
+  const btn = $('fs-btn'), st = $('viewport'), bar = $('controls');
   const supported = !!(document.fullscreenEnabled || document.webkitFullscreenEnabled);
   btn.hidden = !supported;
   if (!supported) return;
   btn.append(icon('expand'));
   btn.addEventListener('click', () => { toggleFullscreen(); btn.blur(); });
-  let timer = 0;
-  const showUi = () => {
-    if (!st.classList.contains('fs')) return;
-    st.classList.add('fs-ui');
-    clearTimeout(timer);
-    timer = setTimeout(() => { if (!st.querySelector('#controls:hover, #controls:focus-within')) st.classList.remove('fs-ui'); else showUi(); }, FS_UI_MS);
+  let hideTimer = 0, idleTimer = 0, inZone = false, overBar = false, pressed = false, listOpen = false, lastX = -1, lastY = -1;
+  const isFs = () => st.classList.contains('fs');
+  const held = () => inZone || overBar || pressed || listOpen;
+  // (the bar's controls keep the keyboard no longer than the bar shows: a dropdown with the focus takes the shortcuts)
+  const hide = () => {
+    hideTimer = 0;
+    st.classList.remove('fs-ui');
+    if (bar.contains(document.activeElement)) document.activeElement.blur();
   };
-  st.addEventListener('pointermove', showUi);
-  st.addEventListener('pointerdown', showUi);
+  const update = () => {
+    if (!isFs()) return;
+    if (held()) { st.classList.add('fs-ui'); clearTimeout(hideTimer); hideTimer = 0; }
+    else if (st.classList.contains('fs-ui') && !hideTimer) hideTimer = setTimeout(hide, FS_HIDE_MS);
+  };
+  const awake = () => {
+    st.classList.remove('fs-idle');
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(() => { if (!overBar && !pressed && !listOpen) st.classList.add('fs-idle'); }, FS_IDLE_MS);
+  };
+  fsFlash = () => {
+    if (!isFs()) return;
+    st.classList.add('fs-ui');
+    clearTimeout(hideTimer); hideTimer = 0;
+    update();
+  };
+  st.addEventListener('pointermove', e => {
+    // (not a move: a browser's event after the layout changed under the resting mouse)
+    if (!isFs() || (e.clientX === lastX && e.clientY === lastY)) return;
+    lastX = e.clientX; lastY = e.clientY;
+    awake();
+    if (e.pointerType === 'touch') return;
+    // (by the place, not the event's target: the bar slides in under a resting mouse, and a drag captures the pointer)
+    overBar = e.clientY >= bar.offsetTop && e.clientX >= bar.offsetLeft && e.clientX < bar.offsetLeft + bar.offsetWidth;
+    inZone = e.clientY >= bar.offsetTop - FS_ZONE_PX;
+    // (a page event: the dropdown's list, which takes the mouse while open, is closed)
+    if (listOpen && !e.target.closest('select')) listOpen = false;
+    update();
+  });
+  st.addEventListener('pointerleave', () => { inZone = overBar = false; update(); });
+  st.addEventListener('pointerdown', e => {
+    if (!isFs()) return;
+    awake();
+    if (e.target.closest('#controls')) {
+      pressed = true;
+      if (e.target.closest('select')) listOpen = !listOpen;
+      update();
+    }
+    if (e.pointerType === 'touch') fsFlash();
+  });
+  const released = () => { pressed = false; update(); };
+  window.addEventListener('pointerup', released);
+  window.addEventListener('pointercancel', released);
+  window.addEventListener('blur', released);
+  bar.addEventListener('change', e => { if (isFs() && e.target.tagName === 'SELECT') { listOpen = false; e.target.blur(); update(); } });
+  bar.addEventListener('focusout', () => { listOpen = false; update(); });
   const sync = () => {
     const on = fsElement() === st;
     st.classList.toggle('fs', on);
-    if (!on) { st.classList.remove('fs-ui'); clearTimeout(timer); }
-    else showUi();
+    st.classList.remove('fs-ui', 'fs-idle');
+    clearTimeout(hideTimer); clearTimeout(idleTimer); hideTimer = 0;
+    inZone = overBar = pressed = listOpen = false; lastX = lastY = -1;
+    if (on) awake();
     btn.replaceChildren(icon(on ? 'shrink' : 'expand'));
     btn.title = on ? 'Exit fullscreen (F / Esc)' : 'Fullscreen (F)';
     btn.setAttribute('aria-label', on ? 'Exit fullscreen' : 'Fullscreen');

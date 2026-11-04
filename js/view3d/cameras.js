@@ -10,7 +10,13 @@ import { forward } from './actors.js';
 export const MODES = [['orbit', 'Orbit'], ['free', 'Free fly'], ['follow', 'Follow player'], ['fp', 'First person']];
 /** the first-person camera's vertical field of view (deg; about the game's cg_fov 80 with cg_fovscale 1.2) -
  *  aiming down the sights zooms from it (viewmodel.js fov) */
-export const FP_FOV = 80;
+// cg_fov is the horizontal fov of the 4:3 screen (CG_UpdateFov: tanHalfFovY = tan(fov / 2) x 0.75, a wider screen sees
+// more at the sides); three's camera.fov is the vertical one
+const PINCH_FLY = 0.004;                // seconds of flight per pixel of a two-finger spread
+export const CG_FOV = 80;
+export const vFov43 = h => 2 * Math.atan(Math.tan(h * Math.PI / 360) * 0.75) * 180 / Math.PI;
+export const hFov43 = v => 2 * Math.atan(Math.tan(v * Math.PI / 360) / 0.75) * 180 / Math.PI;
+export const FP_FOV = vFov43(CG_FOV);
 const MOVE_KEYS = new Set(['KeyW', 'KeyA', 'KeyS', 'KeyD', 'KeyQ', 'KeyE', 'KeyR', 'KeyF', 'ShiftLeft', 'ShiftRight']);
 
 export class Cameras {
@@ -81,19 +87,31 @@ export class Cameras {
   }
 
   bindFree() {
-    const el = this.dom;
+    const el = this.dom, fingers = new Map();
+    const spread = () => { const [a, b] = [...fingers.values()]; return Math.hypot(a[0] - b[0], a[1] - b[1]); };
     el.addEventListener('pointerdown', e => {
       if (this.mode !== 'free') return;
-      this.drag = { x: e.clientX, y: e.clientY, yaw: this.yaw, pitch: this.pitch };
       el.setPointerCapture(e.pointerId);
+      if (e.pointerType === 'touch') { fingers.set(e.pointerId, [e.clientX, e.clientY]); if (fingers.size > 1) { this.drag = null; return; } }
+      this.drag = { x: e.clientX, y: e.clientY, yaw: this.yaw, pitch: this.pitch };
     });
     el.addEventListener('pointermove', e => {
+      if (this.mode === 'free' && fingers.size === 2 && fingers.has(e.pointerId)) {
+        // two fingers: spreading them flies forward, pinching back
+        const d0 = spread();
+        fingers.set(e.pointerId, [e.clientX, e.clientY]);
+        this.camera.translateZ((d0 - spread()) * this.speed * PINCH_FLY);
+        this.onChange();
+        return;
+      }
       if (this.mode !== 'free' || !this.drag) return;
       this.yaw = this.drag.yaw - (e.clientX - this.drag.x) * 0.004;
       this.pitch = Math.max(-1.5, Math.min(1.5, this.drag.pitch - (e.clientY - this.drag.y) * 0.004));
       this.onChange();
     });
-    el.addEventListener('pointerup', () => { this.drag = null; });
+    const lift = e => { fingers.delete(e.pointerId); this.drag = null; };
+    el.addEventListener('pointerup', lift);
+    el.addEventListener('pointercancel', lift);
     el.addEventListener('wheel', e => {
       if (this.mode !== 'free') return;
       e.preventDefault();

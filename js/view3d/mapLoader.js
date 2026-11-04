@@ -24,9 +24,9 @@ async function loadManifest() {
 export async function resolveMap(raw) {
   const m = await loadManifest();
   const name = String(raw || '').toLowerCase();
-  if (m.maps[name]) return name;
+  if (Object.hasOwn(m.maps, name)) return name;            // (own keys: "__proto__" is no map)
   const key = C4.maps && C4.maps.resolve(name);
-  return key && m.maps[key] ? key : null;
+  return key && Object.hasOwn(m.maps, key) ? key : null;
 }
 
 const ARRAYS = { float32: Float32Array, int8: Int8Array, uint8: Uint8Array, uint16: Uint16Array, uint32: Uint32Array };

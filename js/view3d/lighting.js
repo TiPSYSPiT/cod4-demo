@@ -853,11 +853,13 @@ export function objectLighting() {
            uLgFade: { value: 1 } };
 }
 export function setObjectLighting(L, s) {
-  const tex = L.uLgVolume.value;
-  const before = L._key;
-  blockOf(s, tex.image.data);
-  const key = tex.image.data.join(',');
-  if (key !== before) { L._key = key; tex.needsUpdate = true; }
+  const tex = L.uLgVolume.value, data = tex.image.data;
+  blockOf(s, data);
+  // (the block changed: every actor, every frame - compared, not turned into a string)
+  const was = L._block;
+  let same = !!was;
+  for (let i = 0; same && i < data.length; i++) same = was[i] === data[i];
+  if (!same) { L._block = data.slice(); tex.needsUpdate = true; }
   L.uLgLight.value = s.light != null ? s.light : (s.sun > 0 ? LIGHTS.sunIndex.value : 0);
   if (s.probe !== undefined) L.uLgProbe.value = s.probe;
 }

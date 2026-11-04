@@ -26,6 +26,13 @@ export const WEAP_ANIMS = ['idle', 'idle', 'fire', 'lastShot', 'rechamber', 'ads
   'altDrop', 'altRaise', 'quickDrop', 'quickRaise', 'emptyDrop', 'emptyRaise', 'sprintIn', 'sprintLoop', 'sprintOut',
   'holdFire', 'detonate'];
 const LOOPED = new Set(['idle', 'emptyIdle', 'sprintLoop', 'holdFire']);
+// the animations played stretched to the weapon file's time (GetWeaponAnimRate, g_animRateOffsets: the animation's
+// length / the time); the others - idle, fire, last shot, rechamber, ADS - at their own pace
+export const STRETCH = { holdFire: 'holdFireTime', melee: 'meleeTime', meleeCharge: 'meleeChargeTime', reload: 'reloadTime', reloadEmpty: 'reloadEmptyTime',
+  reloadStart: 'reloadStartTime', reloadEnd: 'reloadEndTime', raise: 'raiseTime', firstRaise: 'firstRaiseTime', drop: 'dropTime',
+  altRaise: 'altRaiseTime', altDrop: 'altDropTime', quickRaise: 'quickRaiseTime', quickDrop: 'quickDropTime', emptyRaise: 'emptyRaiseTime',
+  emptyDrop: 'emptyDropTime', sprintIn: 'sprintInTime', sprintLoop: 'sprintLoopTime', sprintOut: 'sprintOutTime' };
+export const PERK_RELOAD = 0.5, PERK_RATE = 0.75;     // perk_weapReloadMultiplier (sleight of hand), perk_weapRateMultiplier (double tap)
 const ADS_VARIANT = { fire: 'adsFire', lastShot: 'adsLastShot', rechamber: 'adsRechamber' };
 const ADS_ANIMS = new Set(['adsFire', 'adsLastShot', 'adsRechamber']);
 const FIRE_ANIMS = new Set(['fire', 'lastShot', 'adsFire', 'adsLastShot']);
@@ -41,6 +48,9 @@ const ENTITYNUM_NONE = 1023;
 const OFFHAND_STATES = [15, 20];               // WEAPON_OFFHAND_INIT .. WEAPON_OFFHAND_END
 const RUN_SPEED = 190;                         // units / s: full movement offsets and bob
 const SIM_MS = 2500;                           // the gun's follow simulation: the last 2.5 s (gunFollow)
+const NO_GROUND = 1023;                        // groundEntityNum in the air
+// cg_viewZSmoothingMin / Max / Time (the defaults; Promod's client.gsc forces the same), bg_stepSize
+const STEP_MIN = 1, STEP_MAX = 16, STEP_MS = 100, STEP_SIZE = 18;
 const RETICLE_OFF = new Set([1, 2, 3, 4, 7, 12, 13, 14]);   // AllowedToDrawCrosshair: raising, dropping, reloading, melee
 const AIM_SPEED_MIN = 11;                      // bg_aimSpreadMoveSpeedThreshold
 const JUMP_SPREAD_ADD = 64;                    // jump_spreadAdd
@@ -154,7 +164,12 @@ export class ViewAnimator {
       offset: { pos: [0, 0, 0], rot: [0, 0, 0] }, sources: W ? 'player state' : 'events' };
     if (!entry) return out;
     const A = entry.anims || {}, P = entry.params || {};
-    const dur = key => { const c = A[key] && clipInfo(A[key]); return c ? c.duration : null; };
+    // the rate of an animation (StartWeaponAnim: the recorder's reload and rechamber faster with the perks) and its
+    // duration at that rate (s)
+    const A3 = M.d.psAim, perks = W && A3 && ri < A3.t.length ? A3.perks[ri] : 0, ws = W ? W.state[ri] : -1;
+    const perkRate = ws >= 7 && ws <= 11 && (perks & 4) ? 1 / PERK_RELOAD : ws === 6 && (perks & 8) ? 1 / PERK_RATE : 1;
+    const rate = key => { const c = A[key] && clipInfo(A[key]), tm = STRETCH[key] && P[STRETCH[key]]; return (c && tm > 0 && c.duration > 0 ? c.duration / tm : 1) * perkRate; };
+    const dur = key => { const c = A[key] && clipInfo(A[key]); return c ? c.duration / rate(key) : null; };
     const has = key => !!(A[key] && clipInfo(A[key]));
     const idleKey = has('idle') ? 'idle' : null;
 
@@ -215,8 +230,8 @@ export class ViewAnimator {
       const name = A[k];
       const c = name && clipInfo(name);
       if (!c) { if (k !== 'idle' && idleKey) push(list, 'idle', t / 1000, w); return; }
-      let x = tm;
-      if (c.loop || LOOPED.has(k)) x = c.duration > 0 ? tm % c.duration : 0; else x = Math.min(Math.max(0, tm), c.duration);
+      let x = tm * rate(k);
+      if (c.loop || LOOPED.has(k)) x = c.duration > 0 ? x % c.duration : 0; else x = Math.min(Math.max(0, x), c.duration);
       list.push({ clip: name, time: x, weight: w, key: k });
     };
     const blendTime = FIRE_ANIMS.has(key) ? FIRE_BLEND : BLEND;
@@ -258,7 +273,6 @@ export class ViewAnimator {
     out.sprinting = W ? this.heldState(W, ri, cl, isSprint) : !!this.sprintOther(cl, t);
     out.flashed = !!W && this.flashedAt(cl, t);
     // the grenade's cook timer (CG_DrawReticleCenter: the centre pulses by grenadeTimeLeft)
-    const A3 = M.d.psAim;
     out.grenadeLeft = W && A3 && A3.grenadeLeft && ri < A3.t.length ? A3.grenadeLeft[ri] : 0;
     if (W) out.reticleOff = this.heldState(W, ri, cl, isOff);
     else out.reticleOff = !!(key && /^(raise|firstRaise|quickRaise|altRaise|emptyRaise|drop|quickDrop|altDrop|emptyDrop|reload|reloadEmpty|reloadStart|reloadEnd|melee|meleeCharge)$/.test(key)
@@ -599,11 +613,64 @@ export class ViewAnimator {
   /** the lean (-1 .. 1) of client cl at t: the recorder's player state, else the entity's */
   leanAt(cl, t, W, ri) {
     const A2 = this.M.d.psAim;
-    if (W && A2 && ri < A2.t.length) return A2.lean[ri];
+    const lerp = (a, T, i, ok) => (ok && T[i + 1] > T[i] ? a[i] + (a[i + 1] - a[i]) * clamp01((t - T[i]) / (T[i + 1] - T[i])) : a[i]);
+    if (W && A2 && ri < A2.t.length) return lerp(A2.lean, A2.t, ri, ri + 1 < A2.t.length && A2.client[ri + 1] === cl);
     const Ps = this.M.d.positions[cl];
     if (!Ps || !Ps.lean) return 0;
     const i = lower(Ps.t, t);
-    return i >= 0 ? Ps.lean[i] : 0;
+    return i >= 0 ? lerp(Ps.lean, Ps.t, i, i + 1 < Ps.t.length) : 0;
+  }
+
+  /** the eye's move by the lean at t (CG_CalcViewValues: AddLeanToPosition - 20 x f units along the right vector of the
+   *  view's yaw with a roll of 16 x f degrees, f = GetLeanFraction) -> [x, y, z] or null */
+  leanEye(cl, t, yaw) {
+    const ri = this.recorderRow(cl, t), l = this.leanAt(cl, t, ri >= 0 ? this.rec.W : null, ri);
+    if (!l) return null;
+    const f = (2 - Math.abs(l)) * l, y = yaw * Math.PI / 180, r = 16 * f * Math.PI / 180, d = 20 * f;
+    return [Math.cos(r) * Math.sin(y) * d, -Math.cos(r) * Math.cos(y) * d, -Math.sin(r) * d];
+  }
+
+  /** the recorder's stair steps per client: {t, from, amount}. The demo has no step event (pm->viewChange stays in the
+   *  client's prediction): a step is the height between two snapshots on the ground that the vertical velocity does not
+   *  explain (on a ramp the velocity follows the plane, on stairs it is level), at least cg_viewZSmoothingMin, at most a
+   *  step (18 units: a teleport or a mantle is none) */
+  stepsOf(cl) {
+    const C = this.steps || (this.steps = new Map());
+    let S = C.get(cl);
+    if (S) return S;
+    S = { t: [], from: [], amount: [] };
+    C.set(cl, S);
+    const W = this.rec && this.rec.W, P = this.M.d.positions[cl];
+    if (!W || !P) return S;
+    let j = 0, prev = null;
+    for (let i = 0; i < W.t.length; i++) {
+      if (W.client[i] !== cl) { prev = null; continue; }
+      while (j < P.t.length && P.t[j] < W.t[i]) j++;
+      if (j >= P.t.length) break;
+      if (P.t[j] !== W.t[i]) { prev = null; continue; }
+      if (prev && W.ground[i] !== NO_GROUND && W.ground[prev.i] !== NO_GROUND && W.t[i] - W.t[prev.i] <= 100) {
+        // (the height moved, and more than the velocity says - a standing player keeps a small velocity into the ground)
+        const dz = P.z[j] - prev.z, a = dz - (W.vz[i] + W.vz[prev.i]) / 2 * (W.t[i] - W.t[prev.i]) / 1000;
+        const step = Math.sign(dz) * Math.min(Math.abs(dz), Math.abs(a));
+        if (a * dz > 0 && Math.abs(step) >= STEP_MIN && Math.abs(dz) <= STEP_SIZE) { S.t.push(W.t[i]); S.from.push(W.t[prev.i]); S.amount.push(step); }
+      }
+      prev = { i, z: P.z[j] };
+    }
+    return S;
+  }
+
+  /** the height added to the first-person eye at t: the recorder's stair steps spread over cg_viewZSmoothingTime
+   *  (CG_PredictPlayerState + CG_SmoothCameraZ: the eye keeps its height and follows a step within 100 ms, at most
+   *  cg_viewZSmoothingMax behind - the game does so live, its demo playback does not). While the snapshots' interpolation
+   *  already rises towards a step, that rise is held back too */
+  stepOffset(cl, t) {
+    const S = this.stepsOf(cl);
+    if (!S.t.length) return 0;
+    const k = lower(S.t, t);
+    let off = 0;
+    for (let i = k; i >= 0 && t - S.t[i] < STEP_MS; i--) off -= S.amount[i] * (1 - (t - S.t[i]) / STEP_MS);
+    if (k + 1 < S.t.length && t > S.from[k + 1]) off -= S.amount[k + 1] * (t - S.from[k + 1]) / (S.t[k + 1] - S.from[k + 1]);
+    return Math.max(-STEP_MAX, Math.min(STEP_MAX, off));
   }
 
   /** the landing dip (units, <= 0) of client cl's view at t (CG_EntityEvent EV_LANDING / EV_LANDING_PAIN,

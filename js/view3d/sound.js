@@ -7,7 +7,9 @@
  *
  * What plays, as the game's client does it (CG_EntityEvent, CG_FireWeapon, CG_BulletHitEvent):
  *   - the players' events: shots (fireSound / fireLastSound; the first-person camera's player:
- *     fireSoundPlayer), reload / raise / put away / rechamber / melee, footsteps, jumps and landings
+ *     fireSoundPlayer), reload / raise / put away / rechamber / melee, footsteps, jumps and landings;
+ *     in first person the view animations' notes instead (PlayNoteMappedSoundAliases: the clip out, in,
+ *     the bolt at their place in the animation - addViewNotes)
  *     on the surface the event names (step_run_<surface>, quiet with specialty_quieter: qstep_...)
  *     with the gear rattle;
  *   - the bullet impacts: the demo's on players (EV_BULLET_HIT) and the world impacts the 3D view
@@ -29,6 +31,7 @@
  * same sounds. */
 import { loadDataManifest, dataUrl } from './data.js';
 import { claimAudio } from '../app/audioUnlock.js';
+import { PERK_RATE, PERK_RELOAD, STRETCH } from './viewanim.js';
 
 const BASE = { dir: 'maps3d/' };            // the exported data (tools: setSoundBase)
 const MAX_VOICES = 48;                        // the game mixes 32 3D + 16 2D + streams
@@ -45,6 +48,9 @@ const BREATH_HOLD_MS = 4500, BREATH_DELAY_MS = 1000;
 const WEAPON_EVENT = { [EV.RELOAD]: 'reloadSound', [EV.RELOAD_EMPTY]: 'reloadEmptySound', [EV.RELOAD_START]: 'reloadStartSound',
   [EV.RELOAD_END]: 'reloadEndSound', [EV.RAISE]: 'raiseSound', [EV.FIRST_RAISE]: 'firstRaiseSound', [EV.PUTAWAY]: 'putawaySound',
   [EV.ALT]: 'altSwitchSound', [EV.PULLBACK]: 'pullbackSound', [EV.RECHAMBER]: 'rechamberSound', [EV.MELEE_SWIPE]: 'meleeSwipeSound' };
+// the view animation of a weapon event (viewanim.js EVENT_ANIMS), whose notes play in first person
+const NOTE_ANIMS = { [EV.RELOAD]: 'reload', [EV.RELOAD_EMPTY]: 'reloadEmpty', [EV.RELOAD_START]: 'reloadStart', [EV.RELOAD_END]: 'reloadEnd',
+  [EV.RAISE]: 'raise', [EV.FIRST_RAISE]: 'firstRaise', [EV.PUTAWAY]: 'drop', [EV.RECHAMBER]: 'rechamber', [EV.MELEE_SWIPE]: 'melee' };
 // CG_ImpactEffectForWeapon: the bullets' surface tables by impact type
 const IMPACT_PREFIX = { bullet_small: 'bullet_small', bullet_large: 'bullet_large', bullet_ap: 'bullet_ap', shotgun: 'bulletspray_small' };
 const MUZZLE_Z = 50;                          // a shot sounds at the weapon, not the feet
@@ -230,8 +236,9 @@ export class SoundSystem {
         const last = ev === EV.FIRE_LAST;
         add(t, (last && w.fireLastSound) || w.fireSound, at(cl, t, MUZZLE_Z), cl, cl, (last && w.fireLastSoundPlayer) || w.fireSoundPlayer);
       } else if (WEAPON_EVENT[ev]) {
-        const f = WEAPON_EVENT[ev];
+        const f = WEAPON_EVENT[ev], n = cues.length;
         add(t, w[f], at(cl, t, 40), cl, cl, w[f + 'Player'] || null);
+        if (cues.length > n) cues[n].weaponEvent = ev;
       } else if (ev === EV.MELEE_HIT) add(t, parm ? 'melee_knife_hit_body' : w.meleeHitSound || 'melee_hit', at(cl, t, 40), cl, cl);
       else if (ev === EV.MELEE_MISS) add(t, parm ? 'melee_knife_hit_other' : w.meleeMissSound || 'melee_hit_other', at(cl, t, 40), cl, cl);
       else if (ev === EV.FOLIAGE) add(t, 'movement_foliage', at(cl, t), cl, cl);
@@ -306,7 +313,57 @@ export class SoundSystem {
     // the shots whose world impacts the 3D view traces (fx.js), per client
     this.shots = [];
     for (const [cl, times] of Object.entries(d.shotsSeen || {})) this.shots.push({ cl: +cl, times });
+    if (this.noteSource) this.addViewNotes(this.noteSource.entryOf, this.noteSource.clips);
     return { cues: cues.length, loops: this.loopList.length, missing: [...this.missing] };
+  }
+
+  /** the first-person sounds of the view animations (DObjGetClientNotifyList, PlayNoteMappedSoundAliases): per weapon event
+   *  the notes of its animation that the weapon file's notetrackSoundMap names, at their fraction of the animation - its
+   *  length the weapon file's time when it is stretched (viewanim.js STRETCH), shorter with the recorder's perks. A note
+   *  after the player's next weapon event or death did not happen. Only the player seen in first person hears them, and
+   *  he no longer hears the event's own sound (the game's first person has no reloadSoundPlayer: that sound is the others').
+   *  entryOf: weapon -> viewmodel.js entry; clips: viewmodels.json clips */
+  addViewNotes(entryOf, clips) {
+    this.noteSource = { entryOf, clips };
+    if (!this.cues || !this.M) return 0;
+    const M = this.M, d = M.d, A = d.psAim, events = (d.sounds3d && d.sounds3d.events) || [];
+    const cues = this.cues.filter(c => !c.note), byClient = new Map(), noted = new Set();
+    for (const r of events) if (NOTE_ANIMS[r[2]] || r[2] === EV.FIRE || r[2] === EV.FIRE_LAST || r[2] === EV.FIRE_MG42) {
+      let a = byClient.get(r[1]);
+      if (!a) byClient.set(r[1], a = []);
+      a.push(r);
+    }
+    const perksAt = (cl, t) => {
+      if (!A) return 0;
+      let lo = 0, hi = A.t.length;
+      while (lo < hi) { const m = (lo + hi) >> 1; if (A.t[m] <= t) lo = m + 1; else hi = m; }
+      return lo && A.client[lo - 1] === cl && t - A.t[lo - 1] < 250 ? A.perks[lo - 1] : 0;
+    };
+    let k = 0;
+    for (const [cl, list] of byClient) {
+      const deaths = (M.deaths && M.deaths.get(cl)) || [];
+      list.forEach((r, i) => {
+        const [t, , ev, , wname] = r, key = NOTE_ANIMS[ev], e = key && wname ? entryOf(wname) : null;
+        const clip = e && e.anims && clips[e.anims[key]];
+        if (!clip || !clip.notes || !e.notes) return;
+        const P = e.params || {}, perks = perksAt(cl, t);
+        let ms = (STRETCH[key] && P[STRETCH[key]] > 0 ? P[STRETCH[key]] : clip.duration) * 1000;
+        if (/^reload/.test(key) && (perks & 4)) ms *= PERK_RELOAD;
+        if (key === 'rechamber' && (perks & 8)) ms *= PERK_RATE;
+        const dead = deaths.find(x => x.t > t), end = Math.min(i + 1 < list.length ? list[i + 1][0] : Infinity, dead ? dead.t : Infinity);
+        for (const [note, at] of clip.notes) {
+          const alias = e.notes[note], when = t + at * ms;
+          if (!alias || !this.has(alias) || when >= end) continue;
+          const s = M.sampleAt(cl, when);
+          cues.push({ t: when, alias: null, plr: alias, pos: s ? [s.x, s.y, s.z + 40] : null, ent: cl, cl, k: 800000 + k++, own: true, note: true });
+          noted.add(cl + ':' + t + ':' + ev);
+        }
+      });
+    }
+    for (const c of cues) if (c.weaponEvent && !c.plr && noted.has(c.cl + ':' + c.t + ':' + c.weaponEvent)) c.othersOnly = true;
+    cues.sort((a, b) => a.t - b.t || a.k - b.k);
+    this.cues = cues;
+    return k;
   }
 
   /** the world impacts of the shots in (a, b] (traced by fx.js, the same hits as the bullet holes) */
@@ -399,6 +456,7 @@ export class SoundSystem {
       cue = Object.assign({}, cue, { pos: p, line: null });
     }
     if (cue.own && cue.cl !== fpClient) return null;            // (only the player seen in first person hears it)
+    if (cue.othersOnly && cue.cl === fpClient) return null;     // (he hears the animation's notes instead)
     const rnd = random(seedOf(cue.t, cue.k));
     const name = cue.cl != null && cue.cl === fpClient && cue.plr ? cue.plr : cue.alias || cue.plr;
     const out = [];

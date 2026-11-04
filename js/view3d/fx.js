@@ -183,6 +183,10 @@ function axisFromDir(dir) {                                           // (any le
 }
 
 const rint = (amp, r16) => ((amp + 1) * r16) >>> 16;
+// (every frame simulates every particle anew: no objects per particle in these paths)
+const backToFront = (x, y) => y.d2 - x.d2;
+/** FX_EvaluateDistanceFade's lerp of a fade range at distance d */
+const fadeLerp = (r, d) => { const b = d - r[0]; return b < 0 ? 1 : r[1] > b ? 1 - b / r[1] : 0; };
 
 /* the rows of the impact table by the weapon's impactType (CG_ImpactEffectForWeapon; + 1: exit wound) */
 const IMPACT_ROW = { bullet_small: 0, bullet_large: 2, shotgun: 4, bullet_ap: 6, grenade_bounce: 8, grenade_explode: 9,
@@ -733,7 +737,7 @@ void main() {
       mesh.renderOrder = decal ? 5 : add ? 11 : 10;
       mesh.name = 'fx ' + name;
       this.group.add(mesh);
-      this.batches.set(name, { mesh, add, cap: 0, n: 0, list: [] });
+      this.batches.set(name, { mesh, add, cap: 0, n: 0, list: [], pool: [] });
     }
     // the placements: spawned at delay x 1000 ms of the game's clock (the demo's server time)
     this.effects = data.effects.map((p, i) => {
@@ -742,7 +746,8 @@ void main() {
       return { def, frame: { origin: p.origin, axis }, begin: Math.round(p.delay * 1000), seed: (i * 7919 + 13) % SEEDS,
         light: def && def.flags & 1 ? this.packedLighting(p.origin) : null };
     }).filter(e => e.def);
-    this.tmp = { local: [0, 0, 0], world: [0, 0, 0], vel: [0, 0, 0], base: [0, 0, 0], d: [0, 0, 0] };
+    this.tmp = { local: [0, 0, 0], world: [0, 0, 0], vel: [0, 0, 0], base: [0, 0, 0], d: [0, 0, 0], col: [0, 0, 0, 0], pos: [0, 0, 0], dc: [0, 0, 0], tan: [0, 0, 0],
+      placed: { orient: null, world: null, baseVel: null, rest: null } };
     this.penetration = common ? common.penetration || null : null;
     this.paths = new Map();                         // colliding elements: their simulated paths
     this.models = [];                               // debris models of this frame
@@ -1291,7 +1296,7 @@ void main() {
   /** where an element is elapsed ms after its spawn (now = the game time, for elements that move with
    *  their effect): the spawn origin (FX_GetOriginForElem, in the effect's frame when it was played)
    *  moved by the velocity curve and gravity, or along its simulated bounces -> {orient, world, baseVel,
-   *  rest} (this.tmp arrays, valid until the next call) or null (died on touch) */
+   *  rest} (this.tmp's object and arrays, valid until the next call) or null (died on touch) */
   place(eff, e, index, played, sequence, seed, begin, life, elapsed, now) {
     const run = e.flags & F.RUN_MASK, frame = run ? this.frameOf(eff, now) : this.frameOf(eff, played), orient = orientation(e, frame, seed);
     const local = this.tmp.local, world = this.tmp.world;
@@ -1322,7 +1327,9 @@ void main() {
         if (gz != null && world[2] < gz + 1) { world[2] = gz + 1; baseVel[2] = 0; }
       }
     }
-    return { orient, world, baseVel, rest };
+    const out = this.tmp.placed;
+    out.orient = orient; out.world = world; out.baseVel = baseVel; out.rest = rest;
+    return out;
   }
 
   /** FX_ProcessEmitting over an element's whole life, once: its path sampled every EMIT_STEP ms, an
@@ -1513,7 +1520,7 @@ void main() {
 
   effect(eff, t, depth) {
     if (t < eff.begin || depth > 4) return;
-    const def = eff.def, [nLoop, nOne] = def.counts;
+    const def = eff.def, nLoop = def.counts[0], nOne = def.counts[1];
     const elapsed = t - eff.begin;
     for (let i = 0; i < nLoop + nOne; i++) {
       const e = def.elems[i];
@@ -1625,9 +1632,11 @@ void main() {
       return;
     }
     const vl = RAND[seed + K.COLOR], vli = 1 - vl;
-    const col = [0, 1, 2, 3].map(c => Math.round(sl * (A1.base.color[c] * vli + A1.amplitude.color[c] * vl) + sli * (A0.base.color[c] * vli + A0.amplitude.color[c] * vl)));
-    const sizeAt = (c, key) => { const r = RAND[seed + key]; return (r * A0.amplitude.size[c] + A0.base.size[c]) * sli + (r * A1.amplitude.size[c] + A1.base.size[c]) * sl; };
-    const size0 = sizeAt(0, K.SIZE0), size1 = e.flags & F.NONUNIFORM ? sizeAt(1, K.SIZE1) : size0;
+    const col = this.tmp.col, C0 = A0.base.color, C1 = A1.base.color, D0 = A0.amplitude.color, D1 = A1.amplitude.color;
+    for (let c = 0; c < 4; c++) col[c] = Math.round(sl * (C1[c] * vli + D1[c] * vl) + sli * (C0[c] * vli + D0[c] * vl));
+    const r0 = RAND[seed + K.SIZE0], size0 = (r0 * A0.amplitude.size[0] + A0.base.size[0]) * sli + (r0 * A1.amplitude.size[0] + A1.base.size[0]) * sl;
+    let size1 = size0;
+    if (e.flags & F.NONUNIFORM) { const r1 = RAND[seed + K.SIZE1]; size1 = (r1 * A0.amplitude.size[1] + A0.base.size[1]) * sli + (r1 * A1.amplitude.size[1] + A1.base.size[1]) * sl; }
     if (e.lightingFrac && eff.light) {                                // FX_EvaluateVisualState_DoLighting (colour bytes: B, G, R, A)
       for (let c = 0; c < 3; c++) {
         const f = Math.floor((2 * eff.light[c] - 255) * e.lightingFrac / 255) + 255;
@@ -1647,8 +1656,7 @@ void main() {
     let fade = 255;
     if (e.fadeInRange[1] || e.fadeOutRange[1]) {
       const d = Math.hypot(world[0] - this.cam.x, world[1] - this.cam.y, world[2] - this.cam.z);
-      const lerp = (r) => { const b = d - r[0]; return b < 0 ? 1 : r[1] > b ? 1 - b / r[1] : 0; };
-      const fin = e.fadeInRange[1] ? lerp(e.fadeInRange) : 1, fout = e.fadeOutRange[1] ? 1 - lerp(e.fadeOutRange) : 1;
+      const fin = e.fadeInRange[1] ? fadeLerp(e.fadeInRange, d) : 1, fout = e.fadeOutRange[1] ? 1 - fadeLerp(e.fadeOutRange, d) : 1;
       fade = Math.floor(Math.min(fin, fout) * 255 + 0.5);
     }
     const alpha = (fade * col[3]) >> 8;
@@ -1674,24 +1682,33 @@ void main() {
       const v = this.tmp.vel;
       velocityAt(e, seed, life, elapsed, orient, baseVel, v);
       if (!normalize(v)) return;
-      pos = [world[0] - v[0] * size1, world[1] - v[1] * size1, world[2] - v[2] * size1];
-      const dc = [this.cam.x - pos[0], this.cam.y - pos[1], this.cam.z - pos[2]];
-      tan = cross(v, dc); if (!normalize(tan)) return;
-      bin = [v[0], v[1], v[2]];
+      pos = this.tmp.pos;
+      pos[0] = world[0] - v[0] * size1; pos[1] = world[1] - v[1] * size1; pos[2] = world[2] - v[2] * size1;
+      const dc = this.tmp.dc;
+      dc[0] = this.cam.x - pos[0]; dc[1] = this.cam.y - pos[1]; dc[2] = this.cam.z - pos[2];
+      tan = this.tmp.tan;
+      tan[0] = v[1] * dc[2] - v[2] * dc[1]; tan[1] = v[2] * dc[0] - v[0] * dc[2]; tan[2] = v[0] * dc[1] - v[1] * dc[0];
+      if (!normalize(tan)) return;
+      bin = v;
     } else { tan = this.camRight; bin = this.camUp; }
-    const c = Math.cos(rot), s = Math.sin(rot);
-    const rt = [c * tan[0] + s * bin[0], c * tan[1] + s * bin[1], c * tan[2] + s * bin[2]];
-    const rb = [s * tan[0] - c * bin[0], s * tan[1] - c * bin[1], s * tan[2] - c * bin[2]];
-    const d2 = (pos[0] - this.cam.x) ** 2 + (pos[1] - this.cam.y) ** 2 + (pos[2] - this.cam.z) ** 2;
-    batch.list.push({ p: [pos[0], pos[1], pos[2]], rt, rb, s0: size0, s1: size1, uv: [s0, t0, ds, dt],
-      // vertex colour: the game's bytes are B, G, R, A
-      col: [col[2] / 255, col[1] / 255, col[0] / 255, alpha / 255], d2 });
+    const c = Math.cos(rot), s = Math.sin(rot), L = batch.list;
+    // the batch's entry for this sprite (pooled: the same objects frame after frame)
+    const q = batch.pool[L.length] || (batch.pool[L.length] = { p: [0, 0, 0], rt: [0, 0, 0], rb: [0, 0, 0], s0: 0, s1: 0, uv: [0, 0, 1, 1], col: [1, 1, 1, 1], d2: 0 });
+    const p = q.p, rt = q.rt, rb = q.rb, uv = q.uv, qc = q.col;
+    p[0] = pos[0]; p[1] = pos[1]; p[2] = pos[2];
+    for (let k = 0; k < 3; k++) { rt[k] = c * tan[k] + s * bin[k]; rb[k] = s * tan[k] - c * bin[k]; }
+    uv[0] = s0; uv[1] = t0; uv[2] = ds; uv[3] = dt;
+    // vertex colour: the game's bytes are B, G, R, A
+    qc[0] = col[2] / 255; qc[1] = col[1] / 255; qc[2] = col[0] / 255; qc[3] = alpha / 255;
+    q.s0 = size0; q.s1 = size1;
+    q.d2 = (pos[0] - this.cam.x) ** 2 + (pos[1] - this.cam.y) ** 2 + (pos[2] - this.cam.z) ** 2;
+    L.push(q);
     this.count++;
   }
 
   upload(b) {
     const list = b.list;
-    if (!b.add) list.sort((x, y) => y.d2 - x.d2);                    // blended sprites back to front
+    if (!b.add) list.sort(backToFront);                              // blended sprites back to front
     const n = list.length;
     const geo = b.mesh.geometry;
     b.mesh.visible = n > 0;
@@ -1720,9 +1737,9 @@ void main() {
         const l = rt[k] * q.s0, u = rb[k] * q.s1;
         P[o + k] = q.p[k] - l + u; P[o + 3 + k] = q.p[k] - l - u; P[o + 6 + k] = q.p[k] + l - u; P[o + 9 + k] = q.p[k] + l + u;
       }
-      const [s0, t0, ds, dt] = q.uv;
-      U.set([s0, t0 + dt, s0, t0, s0 + ds, t0, s0 + ds, t0 + dt], 8 * i);
-      for (let v = 0; v < 4; v++) C.set(q.col, 16 * i + 4 * v);
+      const uv = q.uv, s0 = uv[0], t0 = uv[1], s1 = s0 + uv[2], t1 = t0 + uv[3], u = 8 * i, col = q.col;
+      U[u] = s0; U[u + 1] = t1; U[u + 2] = s0; U[u + 3] = t0; U[u + 4] = s1; U[u + 5] = t0; U[u + 6] = s1; U[u + 7] = t1;
+      for (let v = 0, w = 16 * i; v < 4; v++, w += 4) { C[w] = col[0]; C[w + 1] = col[1]; C[w + 2] = col[2]; C[w + 3] = col[3]; }
     }
     geo.setDrawRange(0, n * 6);
     geo.attributes.position.needsUpdate = true; geo.attributes.uv.needsUpdate = true; geo.attributes.color.needsUpdate = true;

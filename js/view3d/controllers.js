@@ -55,6 +55,7 @@ function swing(st, key, flag, dest, tol, clamp, speed, dt) {
   else if (s2 < -clamp) st[key] = norm360(dest + clamp);
 }
 
+const HEAD = [0, 0, 0], TORSO = [0, 0, 0], TAG = [0, 0, 0];      // (goals' scratch: no arrays per step)
 /** BG_Player_DoControllersInternal: goal angles of the controller bones and the root */
 function goals(st, inp, out) {
   const torsoP0 = inp.climb ? 0 : st.pitch;
@@ -64,13 +65,14 @@ function goals(st, inp, out) {
     torsoP = (v - Math.floor(v + 0.5)) * 360;
     torsoP = torsoP <= 0 ? torsoP * 0.25 : torsoP * 0.5;
   }
-  const head = [delta(inp.pitch, torsoP), delta(inp.yaw, st.torso), 0];
-  const torso = [delta(torsoP, 0), delta(st.torso, st.legs), 0];
+  const head = HEAD, torso = TORSO, tag = TAG;
+  head[0] = delta(inp.pitch, torsoP); head[1] = delta(inp.yaw, st.torso); head[2] = 0;
+  torso[0] = delta(torsoP, 0); torso[1] = delta(st.torso, st.legs); torso[2] = 0;
   const f = inp.lean * (2 - Math.abs(inp.lean));                      // GetLeanFraction
   torso[2] = f * 50 * 0.925; head[2] = torso[2];
   let offX = 0, offY = 0;
   if (f) offY += inp.crouch ? (f <= 0 ? -f * LEAN_SHIFT.crouchLeft : -f * LEAN_SHIFT.crouchRight) : (f <= 0 ? -f * LEAN_SHIFT.left : -f * LEAN_SHIFT.right);
-  const tag = [0, delta(st.legs, inp.yaw), 0];
+  tag[0] = 0; tag[1] = delta(st.legs, inp.yaw); tag[2] = 0;
   const slope = inp.torsoPitch || inp.waistPitch ? delta(inp.torsoPitch, inp.waistPitch) : 0;
   const a = out.angles;
   if (inp.prone) {

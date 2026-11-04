@@ -122,6 +122,7 @@ export class View3D {
     // the game's HUD in first person (hud.js): a 2D canvas over the view (Tab's scoreboard: js/app/scoresOverlay.js)
     this.hud = new GameHud(this.M, null);
     this.hud.onChange = () => { this.needsRender = true; };
+    this.hud.camera = this.camera;       // (the waypoints' place on the screen)
     this.characters.viewModels().then(t => { this.hud.table = t; this.needsRender = true; }).catch(() => null);
     this.hudCanvas = el('canvas', { class: 'hud-canvas', 'aria-hidden': 'true' });
     this.stage.append(this.hudCanvas);
@@ -237,6 +238,8 @@ export class View3D {
             if (!snd || this.world !== w) return;
             this.sound = snd;
             snd.setDemo(this.M, this.fx);
+            // (the first-person reload sounds need the weapon files and the view animations' notes)
+            this.viewmodel.ready.then(t => { if (t && t.clips && this.sound === snd) snd.addViewNotes(n => this.viewmodel.entry(n), t.clips); }).catch(() => null);
             snd.setVolume(this.soundVolume);
             this.soundRows.hidden = false;
             this.soundBtn.checked = this.soundWanted;
@@ -608,7 +611,12 @@ export class View3D {
     // the landing dip (viewanim.js)
     const A = this.viewmodel.anim;
     const eyeH = A ? A.eyeHeight(cl, t, s) + (this.cams.mode === 'fp' ? A.landDip(cl, t) : 0) : EYE[stanceOf(s)];
-    return { cl, target: { pos, eye: new THREE.Vector3(s.x, s.y, s.z + eyeH), yaw: s.yaw, pitch: s.pitch, weapon: s.weapon } };
+    const eye = new THREE.Vector3(s.x, s.y, s.z + eyeH);
+    // the lean moves the first-person eye, at least 8 units over the feet (CG_CalcViewValues)
+    const lean = A && this.cams.mode === 'fp' ? A.leanEye(cl, t, s.yaw) : null;
+    if (lean) { eye.x += lean[0]; eye.y += lean[1]; eye.z = Math.max(eye.z + lean[2], s.z + 8); }
+    if (A && this.cams.mode === 'fp') eye.z = Math.max(eye.z + A.stepOffset(cl, t), s.z + 8);
+    return { cl, target: { pos, eye, yaw: s.yaw, pitch: s.pitch, weapon: s.weapon } };
   }
 
   loop(now) {
@@ -631,9 +639,10 @@ export class View3D {
    *  nothing was rendered */
   renderFrame(dt, shadowDt, force = false) {
     const mode = this.cams.mode;
-    let hideClient = null;
+    let hideClient = null, hudClient = null;       // (the HUD also while the player seen in first person is dead)
     if (mode === 'follow' || mode === 'fp') {
       const { cl, target } = this.cameraTarget();
+      if (mode === 'fp') hudClient = cl;
       if (this.cams.tick(dt, target)) this.needsRender = true;
       const name = cl != null ? this.M.name(cl) : null;
       const msg = !target ? (name ? name + ' is not visible at this time (dead or not sent by the server)' : 'Select a player to follow') : null;
@@ -697,12 +706,12 @@ export class View3D {
     // crosshair or the scope
     this.viewmodel.render(this.renderer, this.camera);
     // the game's HUD (first person)
-    this.drawHud(this.hudCanvas.getContext('2d'), this.hudCanvas.width, this.hudCanvas.height, hideClient);
+    this.drawHud(this.hudCanvas.getContext('2d'), this.hudCanvas.width, this.hudCanvas.height, hudClient);
     if (!this.exporting) {
       this.actors.projectLabels(this.camera, this.w, this.h, hideClient);
       this.effects.projectLabels(this.camera, this.w, this.h);
     }
-    return { hideClient };
+    return { hideClient, hudClient };
   }
 
   /** the HUD of the player seen in first person (cl; null: none) into g, w x h device pixels (clear: the HUD's
@@ -711,14 +720,13 @@ export class View3D {
     if (clear) g.clearRect(0, 0, w, h);
     if (cl == null || !this.hud.enabled) return;
     const s = this.M.sampleAt(cl, this.t || 0);
-    if (!s) return;
     const st = this.viewmodel.state;
     // the live view: inside the viewer's controls (their safe area); the export's frame: all of it
     const ins = clear ? this.uiInsets(w / Math.max(1, this.hudCanvas.clientWidth || w)) : { l: 0, t: 0, r: 0, b: 0 };
     g.save();
     g.translate(ins.l, ins.t);
     // (the whole view in the safe area's coordinates: the hit marker centred on the screen as the game draws it)
-    this.hud.draw(g, w - ins.l - ins.r, h - ins.t - ins.b, this.t || 0, cl, s ? { yaw: s.yaw, pitch: s.pitch } : null, st && st.weapon ? String(st.weapon).toLowerCase() : null,
+    this.hud.draw(g, w - ins.l - ins.r, h - ins.t - ins.b, this.t || 0, cl, s ? { yaw: s.yaw, pitch: s.pitch, flashed: !!(st && st.flashed) } : null, st && st.weapon ? String(st.weapon).toLowerCase() : null,
       { x: -ins.l, y: -ins.t, w, h });
     g.restore();
   }
