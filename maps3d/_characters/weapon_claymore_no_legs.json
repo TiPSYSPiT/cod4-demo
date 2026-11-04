@@ -57,10 +57,35 @@
   {
    "indexStart": 0,
    "indexCount": 672,
-   "material": -1
+   "material": 0
   }
  ],
- "materials": [],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_claymore",
+   "texture": "_textures/weapon_claymore_col.webp",
+   "textureAlpha": false,
+   "color": "#6e6646",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/weapon_claymore_nml.normal.webp",
+   "specularMap": "_textures/weapon_claymore_spec-r-61g-6_7ad315ae.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
  "bounds": {
   "mins": [
    -5.04,

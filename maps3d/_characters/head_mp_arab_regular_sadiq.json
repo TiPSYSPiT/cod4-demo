@@ -7,34 +7,34 @@
  "sections": {
   "position": {
    "offset": 0,
-   "length": 24024
+   "length": 48840
   },
   "normal": {
-   "offset": 24024,
-   "length": 8008
+   "offset": 48840,
+   "length": 16280
   },
   "uv": {
-   "offset": 32032,
-   "length": 16016
+   "offset": 65120,
+   "length": 32560
   },
   "skinIndex": {
-   "offset": 48048,
-   "length": 8008
+   "offset": 97680,
+   "length": 16280
   },
   "skinWeight": {
-   "offset": 56056,
-   "length": 8008
+   "offset": 113960,
+   "length": 16280
   },
   "index": {
-   "offset": 64064,
-   "length": 18180
+   "offset": 130240,
+   "length": 33000
   },
   "color": {
-   "offset": 82244,
-   "length": 8008
+   "offset": 163240,
+   "length": 16280
   }
  },
- "vertexCount": 2002,
+ "vertexCount": 4070,
  "triangleCount": 3030,
  "bones": [
   {
@@ -972,30 +972,109 @@
   {
    "indexStart": 0,
    "indexCount": 12,
-   "material": 1
+   "material": 0
   },
   {
    "indexStart": 12,
    "indexCount": 3576,
-   "material": -1
+   "material": 1
   },
   {
    "indexStart": 3588,
    "indexCount": 4170,
-   "material": 0
+   "material": 2
   },
   {
    "indexStart": 7758,
    "indexCount": 912,
-   "material": -1
+   "material": 3
   },
   {
    "indexStart": 8670,
    "indexCount": 420,
-   "material": -1
+   "material": 4
+  },
+  {
+   "indexStart": 9090,
+   "indexCount": 12,
+   "material": 0
+  },
+  {
+   "indexStart": 9102,
+   "indexCount": 1752,
+   "material": 1
+  },
+  {
+   "indexStart": 10854,
+   "indexCount": 2280,
+   "material": 2
+  },
+  {
+   "indexStart": 13134,
+   "indexCount": 426,
+   "material": 3
+  },
+  {
+   "indexStart": 13560,
+   "indexCount": 6,
+   "material": 0
+  },
+  {
+   "indexStart": 13566,
+   "indexCount": 84,
+   "material": 2
+  },
+  {
+   "indexStart": 13650,
+   "indexCount": 2076,
+   "material": 5
+  },
+  {
+   "indexStart": 15726,
+   "indexCount": 426,
+   "material": 5
+  },
+  {
+   "indexStart": 16152,
+   "indexCount": 348,
+   "material": 5
   }
  ],
  "materials": [
+  {
+   "name": ",mc/lambert1",
+   "texture": null,
+   "textureAlpha": false,
+   "color": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true
+  },
+  {
+   "name": "mc/mtl_bodies_arab_regular",
+   "texture": "_textures/bodies_arab_regular_col.webp",
+   "textureAlpha": false,
+   "color": "#312c26",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/bodies_arab_regular_nml.normal.webp",
+   "specularMap": "_textures/bodies_arab_regular_spc-rgb__3e6beec8.specular.webp",
+   "envMapParms": [
+    0.4,
+    8.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
   {
    "name": "mc/mtl_arab_regular_sadiq_sp",
    "texture": "_textures/arab_regular_sadiq_sp_col.webp",
@@ -1020,14 +1099,75 @@
    ]
   },
   {
-   "name": ",mc/lambert1",
-   "texture": null,
+   "name": "mc/mtl_arab_regular_helmet_hands_sp",
+   "texture": "_textures/arab_regular_helmet_hands_sp_col.webp",
    "textureAlpha": false,
-   "color": null,
+   "color": "#654f4c",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
-   "depthWrite": true
+   "depthWrite": true,
+   "normalMap": "_textures/arab_regular_helmet_hands_sp_nml.normal.webp",
+   "specularMap": "_textures/arab_regular_helmet_hands_sp_9476642e.specular.webp",
+   "envMapParms": [
+    1.2,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_eye_highlight",
+   "texture": "_textures/eye_highlight_col.webp",
+   "textureAlpha": true,
+   "color": "#cbc9cb",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "specularMap": "_textures/eye_highlight_spc-rgb_eye_hi_92c2d33b.specular.webp",
+   "envMapParms": [
+    1.0,
+    1.0,
+    2.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_arab_regular_lod_sp",
+   "texture": "_textures/arab_regular_lod_sp_col.webp",
+   "textureAlpha": false,
+   "color": "#40332e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/arab_regular_lod_sp_nml.normal.webp",
+   "specularMap": "_textures/arab_regular_lod_sp_spc-rgb__6eec55b0.specular.webp",
+   "envMapParms": [
+    0.4,
+    8.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
   }
  ],
  "bounds": {
@@ -1042,6 +1182,32 @@
    20.95
   ]
  },
+ "lods": [
+  {
+   "dist": 300.0,
+   "surfaceStart": 0,
+   "surfaceCount": 5,
+   "triangles": 3030
+  },
+  {
+   "dist": 500.0,
+   "surfaceStart": 5,
+   "surfaceCount": 4,
+   "triangles": 1490
+  },
+  {
+   "dist": 1200.0,
+   "surfaceStart": 9,
+   "surfaceCount": 4,
+   "triangles": 864
+  },
+  {
+   "dist": 1000000.0,
+   "surfaceStart": 13,
+   "surfaceCount": 1,
+   "triangles": 116
+  }
+ ],
  "hitBoxes": [
   {
    "bone": 0,

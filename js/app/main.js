@@ -7,15 +7,21 @@ import { View2D } from '../view2d/view2d.js';
 import { InfoHint } from './infoHint.js';
 import { explainImportError, resolveSpecifier } from './moduleCheck.js';
 import { armAudio } from './audioUnlock.js';
+import { ScoresOverlay } from './scoresOverlay.js';
+import { migrateSettings } from './settings.js';
 import '../c4/ui/killfeed.js';           // C4.killfeed: the kill feed of the 3D view and of both video exports
 
 const C4 = window.C4;
 const { el, clear, coloured, teamClass, icon } = C4.ui;
 const $ = id => document.getElementById(id);
-const VIEW_KEY = 'cod4demo3d.view';
+// the view (2D / 3D): stored only when the viewer switches it (the toggle, V) - not by the start, a deep link or the
+// fallback to 2D after a 3D error; a demo opens in 3D otherwise (settings.js: the old key, written at every start, is
+// dropped once)
+const VIEW_KEY = 'cod4demo3d.view2';
+migrateSettings();
 const DRAWER_KEY = 'cod4demo3d.drawer';      // 'open' / 'closed' and '.teams' / '.feed' ('closed': section folded)
 
-const state = { data: null, fileInfo: null, worker: null, loadId: 0, replay: null, view: '2d', rendered: new Set(), detailsTab: 'scoreboard' };
+const state = { data: null, fileInfo: null, worker: null, loadId: 0, replay: null, view: '3d', rendered: new Set(), detailsTab: 'scoreboard' };
 try { const v = localStorage.getItem(VIEW_KEY); if (v === '2d' || v === '3d') state.view = v; } catch (err) { /* storage blocked */ }
 
 const cssVar = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
@@ -204,6 +210,8 @@ function show(data) {
   const replay = new Replay(match, app, { viewport: $('viewport'), controls: $('controls'), teams: $('teams'), feed: $('feed'), head: $('drawer-head') });
   $('drawer-head').append(el('button', { class: 'ib', title: 'Hide the panel', 'aria-label': 'Hide panel', onclick: () => setDrawer(false) }, icon('panel')));
   state.replay = replay;
+  if (state.scores) state.scores.destroy();
+  state.scores = new ScoresOverlay($('viewport'), replay);   // the scoreboard while Tab is held
   window.cod4 = { replay, match, data };            // debugging handle
   replay.addView(new View2D(replay, $('viewport')));
   // deep link: ?view=2d|3d&t=<match time in seconds>&focus=<player name>
@@ -252,9 +260,11 @@ async function load3d(R) {
   }
   return null;
 }
-async function setView(key) {
+/** user: the viewer's own switch (remembered) */
+async function setView(key, user = false) {
   const R = state.replay;
   if (!R) return;
+  if (user) { try { localStorage.setItem(VIEW_KEY, key); } catch (err) { /* not stored */ } }
   $('view-error').hidden = true;
   if (key === '3d' && !R.views['3d']) {
     const error = await load3d(R);
@@ -265,7 +275,6 @@ async function setView(key) {
     }
   }
   state.view = key;
-  try { localStorage.setItem(VIEW_KEY, key); } catch (err) { /* not stored */ }
   for (const b of $('view-toggle').querySelectorAll('button')) b.classList.toggle('active', b.dataset.view === key);
   document.body.dataset.view = key;
   R.setView(key);
@@ -341,7 +350,7 @@ InfoHint.onChange = () => { const o = rail.open; if (o && o.p.key === 'info') fi
 /** the info popover: the match facts (overview.js), the active view's map details, the shortcuts */
 function fillInfo(node) {
   const R = state.replay, v = R && R.view;
-  const keys = [['Space', 'Play / pause'], ['← / →', '5 s back / forward'], ['V', 'Switch 2D / 3D'], ['I / O', 'Export range start / end'], ['F', 'Fullscreen (not in the free camera)'], ['Esc', 'Close a popover or dialog']];
+  const keys = [['Space', 'Play / pause'], ['← / →', '5 s back / forward'], ['Tab', 'Hold for the scoreboard'], ['V', 'Switch 2D / 3D'], ['I / O', 'Export range start / end'], ['F', 'Fullscreen (not in the free camera)'], ['Esc', 'Close a popover or dialog']];
   if (v && v.key === '2d') keys.push(['Q / E', 'Rotate the map'], ['Wheel / drag', 'Zoom / pan, double-click: reset']);
   if (v && v.key === '3d') keys.push(['C', 'Cycle the camera'], ['X', 'X-Ray: off / players / players + names'], ['W A S D, R / F', 'Free camera: move, up / down (Shift: fast)']);
   const text = v && v.info ? v.info.text : '';
@@ -415,7 +424,7 @@ function init() {
   $('details-btn').addEventListener('click', () => showDetails($('details').hidden));
   $('details-close').addEventListener('click', () => showDetails(false));
   for (const b of document.querySelectorAll('#tabs button')) b.addEventListener('click', () => showTab(b.dataset.tab));
-  for (const b of $('view-toggle').querySelectorAll('button')) b.addEventListener('click', () => setView(b.dataset.view));
+  for (const b of $('view-toggle').querySelectorAll('button')) b.addEventListener('click', () => setView(b.dataset.view, true));
   let depth = 0;
   const isFile = e => e.dataTransfer && Array.from(e.dataTransfer.types || []).includes('Files');
   window.addEventListener('dragenter', e => { if (!isFile(e)) return; e.preventDefault(); depth++; document.body.classList.add('dragging'); });
@@ -428,9 +437,25 @@ function init() {
     document.body.classList.remove('dragging');
     onFiles(e.dataTransfer.files);
   });
+  // Tab (held): the scoreboard - the viewer's key unless the focus is in a form field or dropdown, a popover or a
+  // dialog is open (there Tab moves the focus as usual)
+  const tabFree = () => {
+    const ae = document.activeElement, tag = (ae && ae.tagName) || '';
+    if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA' || (ae && ae.isContentEditable)) return false;
+    if (rail.open || !$('details').hidden || document.querySelector('dialog[open], .modal:not([hidden])')) return false;
+    return true;
+  };
+  window.addEventListener('keyup', e => { if (e.code === 'Tab' && state.scores) state.scores.show(false); });
+  window.addEventListener('blur', () => { if (state.scores) state.scores.show(false); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden && state.scores) state.scores.show(false); });
   window.addEventListener('keydown', e => {
     const R = state.replay;
     if (!R) return;
+    if (e.code === 'Tab' && !e.ctrlKey && !e.altKey && !e.metaKey && state.scores && !$('viewer').hidden && tabFree()) {
+      e.preventDefault();
+      state.scores.show(true);
+      return;
+    }
     const tag = (document.activeElement && document.activeElement.tagName) || '';
     if (tag === 'INPUT' && document.activeElement.type !== 'checkbox' || tag === 'SELECT' || tag === 'TEXTAREA') return;
     if (e.code === 'Escape' && rail.open) { closePop(true); return; }
@@ -443,7 +468,7 @@ function init() {
     if (e.code === 'Space') { e.preventDefault(); R.pb.toggle(); }
     else if (e.code === 'ArrowLeft') { e.preventDefault(); R.pb.seek(R.pb.t - C4.mapConfig.SEEK_STEP_MS, -1); }
     else if (e.code === 'ArrowRight') { e.preventDefault(); R.pb.seek(R.pb.t + C4.mapConfig.SEEK_STEP_MS, 1); }
-    else if (e.code === 'KeyV') { e.preventDefault(); setView(state.view === '2d' ? '3d' : '2d'); }
+    else if (e.code === 'KeyV') { e.preventDefault(); setView(state.view === '2d' ? '3d' : '2d', true); }
     else if (e.code === 'KeyI') { e.preventDefault(); R.setMark('a'); }
     else if (e.code === 'KeyO') { e.preventDefault(); R.setMark('b'); }
     // (F in the free camera flies down: cameras.js takes it first)

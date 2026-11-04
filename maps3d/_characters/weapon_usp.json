@@ -87,15 +87,62 @@
   {
    "indexStart": 0,
    "indexCount": 1464,
-   "material": -1
+   "material": 0
   },
   {
    "indexStart": 1464,
    "indexCount": 534,
-   "material": -1
+   "material": 1
   }
  ],
- "materials": [],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_usp",
+   "texture": "_textures/weapon_usp_c.webp",
+   "textureAlpha": false,
+   "color": "#2f3230",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_usp_s-r-17g-17b-17_we_765326da.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    1.2,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_peq6",
+   "texture": "_textures/weapon_peq6_col.webp",
+   "textureAlpha": false,
+   "color": "#2c2d29",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_peq6_spc-r-59g-59b-59_4ef712bb.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    1.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
  "bounds": {
   "mins": [
    -12.22,

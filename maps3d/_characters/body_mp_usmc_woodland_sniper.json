@@ -7,34 +7,34 @@
  "sections": {
   "position": {
    "offset": 0,
-   "length": 66648
+   "length": 154932
   },
   "normal": {
-   "offset": 66648,
-   "length": 22216
+   "offset": 154932,
+   "length": 51644
   },
   "uv": {
-   "offset": 88864,
-   "length": 44432
+   "offset": 206576,
+   "length": 103288
   },
   "skinIndex": {
-   "offset": 133296,
-   "length": 22216
+   "offset": 309864,
+   "length": 51644
   },
   "skinWeight": {
-   "offset": 155512,
-   "length": 22216
+   "offset": 361508,
+   "length": 51644
   },
   "index": {
-   "offset": 177728,
-   "length": 33396
+   "offset": 413152,
+   "length": 72984
   },
   "color": {
-   "offset": 211124,
-   "length": 22216
+   "offset": 486136,
+   "length": 51644
   }
  },
- "vertexCount": 5554,
+ "vertexCount": 12911,
  "triangleCount": 5566,
  "bones": [
   {
@@ -837,25 +837,89 @@
   {
    "indexStart": 0,
    "indexCount": 8478,
-   "material": 1
+   "material": 0
   },
   {
    "indexStart": 8478,
    "indexCount": 1128,
-   "material": 1
+   "material": 0
   },
   {
    "indexStart": 9606,
    "indexCount": 516,
-   "material": 1
+   "material": 0
   },
   {
    "indexStart": 10122,
    "indexCount": 6576,
+   "material": 1
+  },
+  {
+   "indexStart": 16698,
+   "indexCount": 5118,
    "material": 0
+  },
+  {
+   "indexStart": 21816,
+   "indexCount": 360,
+   "material": 0
+  },
+  {
+   "indexStart": 22176,
+   "indexCount": 312,
+   "material": 0
+  },
+  {
+   "indexStart": 22488,
+   "indexCount": 5976,
+   "material": -1
+  },
+  {
+   "indexStart": 28464,
+   "indexCount": 2616,
+   "material": 2
+  },
+  {
+   "indexStart": 31080,
+   "indexCount": 3552,
+   "material": -1
+  },
+  {
+   "indexStart": 34632,
+   "indexCount": 1098,
+   "material": 2
+  },
+  {
+   "indexStart": 35730,
+   "indexCount": 762,
+   "material": -1
   }
  ],
  "materials": [
+  {
+   "name": "mc/mtl_usmc_woodland_body_mp",
+   "texture": "_textures/usmc_body_woodland_mp_col.webp",
+   "textureAlpha": false,
+   "color": "#423c31",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/usmc_body_woodland_mp_nml.normal.webp",
+   "specularMap": "_textures/usmc_body_woodland_mp_spc-rg_409440aa.specular.webp",
+   "envMapParms": [
+    0.4,
+    12.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
   {
    "name": "mc/mtl_ghillie_mesh_mp",
    "texture": "_textures/ghillie_mesh_mp_col.webp",
@@ -881,16 +945,16 @@
    ]
   },
   {
-   "name": "mc/mtl_usmc_woodland_body_mp",
-   "texture": "_textures/usmc_body_woodland_mp_col.webp",
+   "name": "mc/mtl_usmc_woodland_lod_mp",
+   "texture": "_textures/usmc_lod_mp_woodland_col.webp",
    "textureAlpha": false,
-   "color": "#423c31",
+   "color": "#3b352b",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
    "depthWrite": true,
-   "normalMap": "_textures/usmc_body_woodland_mp_nml.normal.webp",
-   "specularMap": "_textures/usmc_body_woodland_mp_spc-rg_409440aa.specular.webp",
+   "normalMap": "_textures/usmc_lod_mp_woodland_nml.normal.webp",
+   "specularMap": "_textures/usmc_lod_mp_woodland_spc-rgb_c0f11534.specular.webp",
    "envMapParms": [
     0.4,
     12.0,
@@ -917,6 +981,32 @@
    63.1
   ]
  },
+ "lods": [
+  {
+   "dist": 300.0,
+   "surfaceStart": 0,
+   "surfaceCount": 4,
+   "triangles": 5566
+  },
+  {
+   "dist": 500.0,
+   "surfaceStart": 4,
+   "surfaceCount": 4,
+   "triangles": 3922
+  },
+  {
+   "dist": 1200.0,
+   "surfaceStart": 8,
+   "surfaceCount": 2,
+   "triangles": 2056
+  },
+  {
+   "dist": 1000000.0,
+   "surfaceStart": 10,
+   "surfaceCount": 2,
+   "triangles": 620
+  }
+ ],
  "hitBoxes": [
   {
    "bone": 2,

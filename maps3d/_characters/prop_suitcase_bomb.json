@@ -88,13 +88,16 @@
  "materials": [
   {
    "name": "mc/mtl_plexi_middle_front",
-   "texture": null,
-   "textureAlpha": false,
-   "color": null,
+   "texture": "_textures/suitcase_plexi.webp",
+   "textureAlpha": true,
+   "color": "#282629",
    "alphaTest": "gt0",
    "blend": "one/invsrcalpha",
    "doubleSided": false,
-   "depthWrite": false
+   "depthWrite": false,
+   "normalMap": "_textures/suitcase_plexi_nml.normal.webp",
+   "specularMap": "_textures/suitcase_plexi_spc-rgb_suitc_213f474a.specular.webp",
+   "textureFrom": "viewmodel_briefcase_bomb_mp"
   },
   {
    "name": "mc/mtl_suitcase",
@@ -105,7 +108,9 @@
    "blend": null,
    "doubleSided": false,
    "depthWrite": true,
-   "textureGuess": "name"
+   "normalMap": "_textures/suitcase_nml.normal.webp",
+   "specularMap": "_textures/suitcase_spc-rgb_suitcase_cos-l-11.specular.webp",
+   "textureFrom": "viewmodel_briefcase_bomb_mp"
   },
   {
    "name": "mc/mtl_plexi_bottom",

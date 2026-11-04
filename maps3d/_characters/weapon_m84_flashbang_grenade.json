@@ -57,10 +57,33 @@
   {
    "indexStart": 0,
    "indexCount": 768,
-   "material": -1
+   "material": 0
   }
  ],
- "materials": [],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_m84",
+   "texture": "_textures/m84_flashbang_col.webp",
+   "textureAlpha": false,
+   "color": "#4c4536",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
  "bounds": {
   "mins": [
    -1.95,

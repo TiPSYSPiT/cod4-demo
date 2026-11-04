@@ -7,34 +7,34 @@
  "sections": {
   "position": {
    "offset": 0,
-   "length": 19896
+   "length": 40548
   },
   "normal": {
-   "offset": 19896,
-   "length": 6632
+   "offset": 40548,
+   "length": 13516
   },
   "uv": {
-   "offset": 26528,
-   "length": 13264
+   "offset": 54064,
+   "length": 27032
   },
   "skinIndex": {
-   "offset": 39792,
-   "length": 6632
+   "offset": 81096,
+   "length": 13516
   },
   "skinWeight": {
-   "offset": 46424,
-   "length": 6632
+   "offset": 94612,
+   "length": 13516
   },
   "index": {
-   "offset": 53056,
-   "length": 15312
+   "offset": 108128,
+   "length": 28788
   },
   "color": {
-   "offset": 68368,
-   "length": 6632
+   "offset": 136916,
+   "length": 13516
   }
  },
- "vertexCount": 1658,
+ "vertexCount": 3379,
  "triangleCount": 2552,
  "bones": [
   {
@@ -927,20 +927,68 @@
   {
    "indexStart": 0,
    "indexCount": 420,
-   "material": -1
+   "material": 0
   },
   {
    "indexStart": 420,
    "indexCount": 3660,
-   "material": 0
+   "material": 1
   },
   {
    "indexStart": 4080,
    "indexCount": 3576,
-   "material": -1
+   "material": 2
+  },
+  {
+   "indexStart": 7656,
+   "indexCount": 2436,
+   "material": 1
+  },
+  {
+   "indexStart": 10092,
+   "indexCount": 1752,
+   "material": 2
+  },
+  {
+   "indexStart": 11844,
+   "indexCount": 36,
+   "material": 3
+  },
+  {
+   "indexStart": 11880,
+   "indexCount": 2232,
+   "material": 4
+  },
+  {
+   "indexStart": 14112,
+   "indexCount": 282,
+   "material": 4
   }
  ],
  "materials": [
+  {
+   "name": "mc/mtl_eye_highlight",
+   "texture": "_textures/eye_highlight_col.webp",
+   "textureAlpha": true,
+   "color": "#cbc9cb",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "specularMap": "_textures/eye_highlight_spc-rgb_eye_hi_92c2d33b.specular.webp",
+   "envMapParms": [
+    1.0,
+    1.0,
+    2.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
   {
    "name": "mc/mtl_arab_regular_ski_mask_sp",
    "texture": "_textures/arab_regular_ski_mask_sp_col.webp",
@@ -964,6 +1012,64 @@
     1.0,
     1.0
    ]
+  },
+  {
+   "name": "mc/mtl_bodies_arab_regular",
+   "texture": "_textures/bodies_arab_regular_col.webp",
+   "textureAlpha": false,
+   "color": "#312c26",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/bodies_arab_regular_nml.normal.webp",
+   "specularMap": "_textures/bodies_arab_regular_spc-rgb__3e6beec8.specular.webp",
+   "envMapParms": [
+    0.4,
+    8.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": ",mc/lambert1",
+   "texture": null,
+   "textureAlpha": false,
+   "color": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true
+  },
+  {
+   "name": "mc/mtl_arab_regular_lod_sp",
+   "texture": "_textures/arab_regular_lod_sp_col.webp",
+   "textureAlpha": false,
+   "color": "#40332e",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/arab_regular_lod_sp_nml.normal.webp",
+   "specularMap": "_textures/arab_regular_lod_sp_spc-rgb__6eec55b0.specular.webp",
+   "envMapParms": [
+    0.4,
+    8.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
   }
  ],
  "bounds": {
@@ -978,6 +1084,32 @@
    20.95
   ]
  },
+ "lods": [
+  {
+   "dist": 300.0,
+   "surfaceStart": 0,
+   "surfaceCount": 3,
+   "triangles": 2552
+  },
+  {
+   "dist": 500.0,
+   "surfaceStart": 3,
+   "surfaceCount": 2,
+   "triangles": 1396
+  },
+  {
+   "dist": 1200.0,
+   "surfaceStart": 5,
+   "surfaceCount": 2,
+   "triangles": 756
+  },
+  {
+   "dist": 1000000.0,
+   "surfaceStart": 7,
+   "surfaceCount": 1,
+   "triangles": 94
+  }
+ ],
  "hitBoxes": [
   {
    "bone": 0,

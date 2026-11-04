@@ -63,7 +63,7 @@ export class Effects {
     this.clouds = new Pool(scene, () => { const m = new THREE.Mesh(sphere, new THREE.MeshLambertMaterial({ transparent: true, depthWrite: false })); m.renderOrder = 4; return m; });
     this.bomb = new THREE.Mesh(new THREE.BoxGeometry(14, 9, 5), new THREE.MeshBasicMaterial({ color: CFG.BOMB.color }));
     this.bomb.visible = false;
-    this.bombRing = new THREE.Mesh(new THREE.RingGeometry(16, 20, 40), new THREE.MeshBasicMaterial({ color: CFG.BOMB.color, transparent: true, side: THREE.DoubleSide, depthTest: false }));
+    this.bombRing = new THREE.Mesh(new THREE.RingGeometry(16, 20, 40), new THREE.MeshBasicMaterial({ color: CFG.BOMB.color, transparent: true, side: THREE.DoubleSide, forceSinglePass: true, depthTest: false }));
     this.bombRing.renderOrder = 6;
     this.bombRing.visible = false;
     this.blast = new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ color: 0xff8a1f, transparent: true, depthWrite: false }));
@@ -72,8 +72,6 @@ export class Effects {
     this.layer = labelLayer;
     this.siteLabels = [];
     this.markers = true;              // kill lines, death crosses and the bomb (the video export can hide them)
-    this.killIcons = false;           // the weapon icon over each death marker (3D toolbar: Kill icons)
-    this.killMarks = new Map();       // kill -> {el, pos, alpha}: the shown icon labels
   }
 
   /** bomb-site letters from the map entities */
@@ -104,26 +102,14 @@ export class Effects {
       }
     }
     this.trails.end();
-    // kill lines (eye of the killer -> chest of the victim), death crosses and their weapon icons
+    // kill lines (eye of the killer -> chest of the victim), death crosses
     this.lines.begin();
-    const marks = new Set();
     for (const k of this.markers ? R.recentKills(t, CFG.DEATH_MARKER_MS) : []) {
       if (!shown.has(k.victim) && !shown.has(k.attacker)) continue;
       const fade = 1 - (t - k.t) / CFG.DEATH_MARKER_MS;
       const vp = M.deathPos(k);
       if (!vp) continue;
       const vz = vp[2] != null ? vp[2] : M.zRange[0];
-      if (this.killIcons && shown.has(k.victim)) {
-        let m = this.killMarks.get(k);
-        if (!m) {
-          m = { el: C4.killfeed.markNode(k), pos: new THREE.Vector3() };
-          this.layer.append(m.el);
-          this.killMarks.set(k, m);
-        }
-        m.pos.set(vp[0], vp[1], vz + 24);
-        m.alpha = Math.min(1, fade * 3);
-        marks.add(k);
-      }
       if (o.killLines && !k.suicide && !k.world && k.attacker < 64) {
         const ap = M.attackerPos(k);
         if (ap) this.lines.seg([ap[0], ap[1], (ap[2] != null ? ap[2] : vz) + 56], [vp[0], vp[1], vz + 40], M.color(k.attacker), 0.95 * fade, 0.6 * fade);
@@ -172,7 +158,6 @@ export class Effects {
         }
       }
     }
-    for (const [k, m] of this.killMarks) if (!marks.has(k)) { m.el.remove(); this.killMarks.delete(k); }
     this.grenades.end();
     this.clouds.end();
     this.lines.end();
@@ -217,12 +202,6 @@ export class Effects {
 
   projectLabels(camera, w, h) {
     const v = new THREE.Vector3();
-    for (const m of this.killMarks.values()) {
-      v.copy(m.pos).project(camera);
-      const on = v.z < 1 && Math.abs(v.x) < 1.1 && Math.abs(v.y) < 1.1;
-      m.el.style.display = on ? '' : 'none';
-      if (on) { m.el.style.left = ((v.x + 1) / 2 * w).toFixed(1) + 'px'; m.el.style.top = ((1 - v.y) / 2 * h).toFixed(1) + 'px'; m.el.style.opacity = m.alpha.toFixed(2); }
-    }
     for (const s of this.siteLabels) {
       v.copy(s.pos).project(camera);
       const on = v.z < 1 && Math.abs(v.x) < 1.1 && Math.abs(v.y) < 1.1;
@@ -231,5 +210,5 @@ export class Effects {
     }
   }
 
-  dispose() { for (const s of this.siteLabels) s.el.remove(); for (const m of this.killMarks.values()) m.el.remove(); }
+  dispose() { for (const s of this.siteLabels) s.el.remove(); }
 }

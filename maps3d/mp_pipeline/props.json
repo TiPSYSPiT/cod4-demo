@@ -1462,7 +1462,7 @@
    "name": "mc/mtl_80s_econdestroy_tan",
    "texture": "_textures/80s_econdestroy_tan_col.webp",
    "textureAlpha": false,
-   "color": "#574d41",
+   "color": "#564d41",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
@@ -2224,7 +2224,7 @@
    "name": "mc/mtl_train_fuelcar",
    "texture": "_textures/mtl_train_fuelcar.webp",
    "textureAlpha": false,
-   "color": "#474841",
+   "color": "#474840",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
@@ -7440,8 +7440,8 @@
   "lod0SurfacesWithoutMaterial": 0,
   "materialHandles": {
    "inline": 168,
-   "resolved": 878,
-   "unresolved": 89,
+   "resolved": 941,
+   "unresolved": 26,
    "null": 0,
    "chains": 26,
    "rules": {
@@ -7450,6 +7450,8 @@
    },
    "shiftedModels": 10,
    "windowedChains": 3,
+   "selfPlaced": 31,
+   "selfOverrides": 2,
    "known": {
     "14032": "mc/mtl_steel_ladder",
     "83580": "mc/mtl_desertshrubs",
@@ -7586,7 +7588,7 @@
     "4435596": "mc/mtl_80s_econ_red",
     "4435636": "mc/mtl_80s_econ_glass",
     "4435704": "mc/mtl_80s_econ_green_metal",
-    "27833044": "mc/mtl_usmc_woodland_body_mp",
+    "27833044": "mc/mtl_usmc_woodland_lod_mp",
     "27833056": "mc/mtl_usmc_woodland_lod_mp",
     "27854956": "mc/mtl_accessories_mp",
     "27854964": "mc/mtl_usmc_tactical_mich_stripes_nomex",
@@ -7604,7 +7606,7 @@
     "28205856": "mc/mtl_marine_sniper_hands",
     "28205860": "mc/mtl_ghillie",
     "28377084": "mc/mtl_opforce_body_sp",
-    "28377092": "mc/mtl_opforce_lod_sp",
+    "28377092": "mc/mtl_opforce_body_sp",
     "28398784": "mc/mtl_opforce_fullwrap_sp",
     "28398788": "mc/mtl_opforce_hands_sp",
     "28424888": "mc/mtl_op_force_gloves",
@@ -7615,7 +7617,15 @@
     "28612028": "mc/mtl_opforce_3hole_ski_mask_sp",
     "28722600": "mc/mtl_opforce_ski_mask_sp",
     "28816408": "mc/mtl_80s_econdestroy_green_rubber",
-    "28816412": "mc/mtl_80s_econdestroy_green_metal"
+    "28816412": "mc/mtl_80s_econdestroy_green_metal",
+    "3842152": "mc/mtl_barrel_damaged",
+    "27833032": "mc/mtl_usmc_woodland_body_mp",
+    "27969716": "mc/mtl_usmc_tactical_mich",
+    "27969732": "mc/mtl_accessories_alpha_mp",
+    "27969736": "mc/mtl_usmc_tactical_cap",
+    "27969744": ",mc/lambert1",
+    "28377100": "mc/mtl_opforce_lod_sp",
+    "29205176": ",mc/mtl_weapon_saw"
    }
   }
  },

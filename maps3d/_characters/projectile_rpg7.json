@@ -97,10 +97,34 @@
   {
    "indexStart": 0,
    "indexCount": 252,
-   "material": -1
+   "material": 0
   }
  ],
- "materials": [],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_rpg7",
+   "texture": "_textures/weapon_rpg7_col.webp",
+   "textureAlpha": false,
+   "color": "#40352b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_rpg7_spec-rgb_weapon__06163c5b.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
  "bounds": {
   "mins": [
    -16.36,

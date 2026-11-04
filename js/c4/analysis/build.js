@@ -791,6 +791,10 @@ C4.define('build', function (C4) {
       })(),
       // cod4-demo3d: every player's weapon events [t, client, event, eventParm, weapon name] (collect.js weapEvents)
       weapEvents: (col.weapEvents || []).map(r => { const t = rel(r[0]); return [t, r[1], r[2], r[3], weaponName(r[4], t)]; }).filter(r => onMainMap(r[0])),
+      // cod4-demo3d: the scripts' hit marker HUD element of the followed player on every change (collect.js hitMarks;
+      // the server times relative as the rest)
+      hitMarks: (col.hitMarks || []).map(h => Object.assign({}, h, { t: rel(h.t), fadeStart: h.fadeStart ? rel(h.fadeStart) : 0,
+        scaleStart: h.scaleStart ? rel(h.scaleStart) : 0 })),
       // cod4-demo3d: the recorder's HUD state per snapshot (collect.js psHud): health, maxHealth, ident (the player
       // under the crosshair), damage event / yaw / pitch / count / duration, flinch, cursor hint + string, offhandSecondary
       psHud: (() => {

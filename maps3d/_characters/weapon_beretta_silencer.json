@@ -107,10 +107,34 @@
   {
    "indexStart": 90,
    "indexCount": 1662,
-   "material": -1
+   "material": 0
   }
  ],
- "materials": [],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_beretta",
+   "texture": "_textures/weapon_beretta_c.webp",
+   "textureAlpha": false,
+   "color": "#262827",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_beretta_s-r-17g-17b-1_41155d1b.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
  "bounds": {
   "mins": [
    -12.27,

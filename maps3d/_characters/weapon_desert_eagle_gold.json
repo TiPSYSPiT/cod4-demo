@@ -102,10 +102,34 @@
   {
    "indexStart": 0,
    "indexCount": 1380,
-   "material": -1
+   "material": 0
   }
  ],
- "materials": [],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_desert_eagle_gold",
+   "texture": "_textures/weapon_desert_eagle_gold_col.webp",
+   "textureAlpha": false,
+   "color": "#5f5e42",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_desert_eagle_gold_spc_f7d5bd11.specular.webp",
+   "envMapParms": [
+    4.0,
+    4.0,
+    6.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
  "bounds": {
   "mins": [
    -13.14,

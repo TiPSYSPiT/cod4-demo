@@ -282,7 +282,7 @@ export class Actors {
     const aimGeo = new THREE.BufferGeometry().setAttribute('position', new THREE.BufferAttribute(new Float32Array(6), 3));
     const aim = new THREE.Line(aimGeo, new THREE.LineBasicMaterial({ color: color.clone().lerp(new THREE.Color(0xffffff), 0.35), transparent: true }));
     aim.frustumCulled = false;
-    const ring = new THREE.Mesh(this.ringGeo, new THREE.MeshBasicMaterial({ color: 0xffb35c, side: THREE.DoubleSide, transparent: true, opacity: 0.9, depthTest: false }));
+    const ring = new THREE.Mesh(this.ringGeo, new THREE.MeshBasicMaterial({ color: 0xffb35c, side: THREE.DoubleSide, forceSinglePass: true, transparent: true, opacity: 0.9, depthTest: false }));
     ring.renderOrder = 5;
     const fire = new THREE.Mesh(new THREE.SphereGeometry(4, 8, 6), new THREE.MeshBasicMaterial({ color: 0xfff0b4 }));
     const label = document.createElement('div');
@@ -292,7 +292,7 @@ export class Actors {
     const team = (this.M.d.players.find(p => p.client === cl) || {}).team, app = this.M.app;
     if ((team === 'A' || team === 'B') && app) label.dataset.mark = team === app.blueTeam ? '▲' : '◆';
     this.layer.append(label);
-    const teamRing = new THREE.Mesh(this.teamRingGeo, new THREE.MeshBasicMaterial({ color, side: THREE.DoubleSide, transparent: true, opacity: 0.85, depthWrite: false }));
+    const teamRing = new THREE.Mesh(this.teamRingGeo, new THREE.MeshBasicMaterial({ color, side: THREE.DoubleSide, forceSinglePass: true, transparent: true, opacity: 0.85, depthWrite: false }));
     teamRing.renderOrder = 4;
     it = { cl, group, body, aim, ring, fire, label, color, teamRing, visible: false, pos: new THREE.Vector3(), eye: new THREE.Vector3(), sample: null };
     this.root.add(group, aim, ring, fire, teamRing);
@@ -300,10 +300,13 @@ export class Actors {
     return it;
   }
 
-  /** place every player at time t; opts: {shown:Set, focus, hover, labels, lastKnown} */
+  /** place every player at time t; opts: {shown:Set, focus, hover, labels, xrayNames, ref (the player whose enemies'
+   *  names Enemy names off leaves out), lastKnown}. Switches (Display popover): viewLines, rings, enemyNames */
   update(t, opts) {
     const M = this.M, fwd = new THREE.Vector3();
     for (const it of this.items.values()) it.visible = false;
+    const teamOf = cl => { const p = M.player(cl); return p && (p.team === 'A' || p.team === 'B') ? p.team : null; };
+    const refTeam = opts.ref != null ? teamOf(opts.ref) : null;
     for (const cl of opts.shown) {
       const s = M.sampleAt(cl, t);
       if (!s) continue;
@@ -334,11 +337,13 @@ export class Actors {
       // aim line from the eye
       const eyeH = s.ps && s.eyeHeight ? s.eyeHeight : EYE[st];
       it.eye.set(s.x, s.y, s.z + eyeH);
-      const a = it.aim.geometry.attributes.position.array;
-      a[0] = it.eye.x; a[1] = it.eye.y; a[2] = it.eye.z;
-      a[3] = it.eye.x + fwd.x * AIM_LEN; a[4] = it.eye.y + fwd.y * AIM_LEN; a[5] = it.eye.z + fwd.z * AIM_LEN;
-      it.aim.geometry.attributes.position.needsUpdate = true;
-      it.aim.visible = !stale;
+      it.aim.visible = !stale && this.viewLines !== false;
+      if (it.aim.visible) {
+        const a = it.aim.geometry.attributes.position.array;
+        a[0] = it.eye.x; a[1] = it.eye.y; a[2] = it.eye.z;
+        a[3] = it.eye.x + fwd.x * AIM_LEN; a[4] = it.eye.y + fwd.y * AIM_LEN; a[5] = it.eye.z + fwd.z * AIM_LEN;
+        it.aim.geometry.attributes.position.needsUpdate = true;
+      }
       it.fire.visible = s.firing && !stale && !this.realFlash;
       it.fire.position.set(it.eye.x + fwd.x * 34, it.eye.y + fwd.y * 34, it.eye.z - 8 + fwd.z * 34);
       // real model (mode "models"): placed at the feet, turned by the yaw, posed by stance and pitch
@@ -367,14 +372,18 @@ export class Actors {
       }
       it.modelShown = !!ch;
       b.visible = !ch;                                      // the capsule stays the pick target
-      it.teamRing.visible = !!ch;
+      it.teamRing.visible = !!ch && this.rings !== false;
       it.teamRing.position.set(s.x, s.y, s.z + 1);
       it.ring.visible = focus || hover;
       it.ring.position.set(s.x, s.y, s.z + 1.5);
       it.ring.material.color.set(focus ? 0xffb35c : 0xffffff);
       // label text (position is set in projectLabels)
       const name = M.name(cl) + (stale ? ' (' + Math.round(s.age / 1000) + 's ago)' : '');
-      it.labelText = opts.labels || focus || hover ? name + (focus && !stale ? '  ·  ' + M.weaponLabel(s.weapon, t) : '') : '';
+      // (Enemy names off: the enemies of the reference player unnamed - as the game, which names only a teammate
+      // under the crosshair; X-Ray's names still name everyone)
+      const enemy = refTeam && teamOf(cl) && teamOf(cl) !== refTeam;
+      const named = opts.labels && (this.enemyNames !== false || !enemy || opts.xrayNames);
+      it.labelText = named || focus || hover ? name + (focus && !stale ? '  ·  ' + M.weaponLabel(s.weapon, t) : '') : '';
       it.label.classList.toggle('stale', stale);
       it.label.classList.toggle('focus', focus);
     }
@@ -527,6 +536,16 @@ export class Actors {
     // capsules (or a weapon without the tag): ahead of the eye; the casings (tag_brass) beside the gun
     const d = tagName === 'tag_brass' ? 16 : 34, side = tagName === 'tag_brass' ? -4 : 0;
     return { origin: [it.eye.x + f.x * d + left[0] * side, it.eye.y + f.y * d + left[1] * side, it.eye.z - 8 + f.z * d], axis: [[f.x, f.y, f.z], left, up] };
+  }
+
+  /** the player models' LODs for the view's camera (characters.js setLod): the distance from the eye to the player's
+   *  middle, scaled by the view's zoom as the game's LOD distance (tan(fov_y / 2) against the default 65 degree view's) -
+   *  also the corpses */
+  updateLods(camera) {
+    const e = camera.position, k = Math.tan(camera.fov * Math.PI / 360) / Math.tan(25.53 * Math.PI / 180);
+    const one = ch => { if (!ch || !ch.group.visible) return; const p = ch.group.position; ch.setLod(Math.hypot(p.x - e.x, p.y - e.y, p.z + 36 - e.z) * k); };
+    for (const it of this.items.values()) one(it.char);
+    for (const h of this.corpses.values()) one(h.char);
   }
 
   hide(cl) {

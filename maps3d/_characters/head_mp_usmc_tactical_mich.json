@@ -7,34 +7,34 @@
  "sections": {
   "position": {
    "offset": 0,
-   "length": 40428
+   "length": 81792
   },
   "normal": {
-   "offset": 40428,
-   "length": 13476
+   "offset": 81792,
+   "length": 27264
   },
   "uv": {
-   "offset": 53904,
-   "length": 26952
+   "offset": 109056,
+   "length": 54528
   },
   "skinIndex": {
-   "offset": 80856,
-   "length": 13476
+   "offset": 163584,
+   "length": 27264
   },
   "skinWeight": {
-   "offset": 94332,
-   "length": 13476
+   "offset": 190848,
+   "length": 27264
   },
   "index": {
-   "offset": 107808,
-   "length": 23232
+   "offset": 218112,
+   "length": 42984
   },
   "color": {
-   "offset": 131040,
-   "length": 13476
+   "offset": 261096,
+   "length": 27264
   }
  },
- "vertexCount": 3369,
+ "vertexCount": 6816,
  "triangleCount": 3872,
  "bones": [
   {
@@ -1003,6 +1003,51 @@
    "indexStart": 11196,
    "indexCount": 420,
    "material": 4
+  },
+  {
+   "indexStart": 11616,
+   "indexCount": 84,
+   "material": 5
+  },
+  {
+   "indexStart": 11700,
+   "indexCount": 2214,
+   "material": 0
+  },
+  {
+   "indexStart": 13914,
+   "indexCount": 1356,
+   "material": 0
+  },
+  {
+   "indexStart": 15270,
+   "indexCount": 2094,
+   "material": 1
+  },
+  {
+   "indexStart": 17364,
+   "indexCount": 576,
+   "material": 1
+  },
+  {
+   "indexStart": 17940,
+   "indexCount": 66,
+   "material": 2
+  },
+  {
+   "indexStart": 18006,
+   "indexCount": 192,
+   "material": 3
+  },
+  {
+   "indexStart": 18198,
+   "indexCount": 2766,
+   "material": 6
+  },
+  {
+   "indexStart": 20964,
+   "indexCount": 528,
+   "material": 6
   }
  ],
  "materials": [
@@ -1079,20 +1124,20 @@
    ]
   },
   {
-   "name": "mc/mtl_usmc_shaved_head",
-   "texture": "_textures/usmc_shaved_head_col.webp",
+   "name": "mc/mtl_usmc_tactical_cap",
+   "texture": "_textures/usmc_tactical_cap_col.webp",
    "textureAlpha": false,
-   "color": "#563e32",
+   "color": "#565141",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
    "depthWrite": true,
-   "normalMap": "_textures/usmc_shaved_head_nml.normal.webp",
-   "specularMap": "_textures/usmc_shaved_head_spc-rgb_usm_1982b424.specular.webp",
+   "normalMap": "_textures/usmc_tactical_cap_nml.normal.webp",
+   "specularMap": "_textures/usmc_tactical_cap_spc-rgb_us_21ab2957.specular.webp",
    "envMapParms": [
-    0.8,
-    2.0,
-    2.5,
+    0.0,
+    12.0,
+    3.0,
     0.625
    ],
    "colorTint": [
@@ -1124,6 +1169,40 @@
     1.0,
     1.0
    ]
+  },
+  {
+   "name": ",mc/lambert1",
+   "texture": null,
+   "textureAlpha": false,
+   "color": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true
+  },
+  {
+   "name": "mc/mtl_usmc_lod_mp",
+   "texture": "_textures/usmc_lod_mp_col.webp",
+   "textureAlpha": false,
+   "color": "#483f34",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/usmc_lod_mp_nml.normal.webp",
+   "specularMap": "_textures/usmc_lod_mp_spc-rgb_usmc_lod_1fa2b4a7.specular.webp",
+   "envMapParms": [
+    0.4,
+    12.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
   }
  ],
  "bounds": {
@@ -1138,6 +1217,32 @@
    20.97
   ]
  },
+ "lods": [
+  {
+   "dist": 300.0,
+   "surfaceStart": 0,
+   "surfaceCount": 7,
+   "triangles": 3872
+  },
+  {
+   "dist": 500.0,
+   "surfaceStart": 7,
+   "surfaceCount": 7,
+   "triangles": 2194
+  },
+  {
+   "dist": 1200.0,
+   "surfaceStart": 14,
+   "surfaceCount": 1,
+   "triangles": 922
+  },
+  {
+   "dist": 1000000.0,
+   "surfaceStart": 15,
+   "surfaceCount": 1,
+   "triangles": 176
+  }
+ ],
  "hitBoxes": [
   {
    "bone": 0,

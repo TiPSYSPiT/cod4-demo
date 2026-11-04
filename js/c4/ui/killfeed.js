@@ -128,28 +128,6 @@
     }
     g.restore();
   }
-  /** the icons of a kill (weapon, headshot) centred at x above y - the marker over a death position */
-  function drawMark(g, k, x, y, { scale = 1, imgs, alpha = 1 }) {
-    const s = scale, H = 16 * s, PAD = 4 * s, GAP = 3 * s;
-    const ic = C4.weapons.killIcons(k), list = [ic.weapon, ic.headshot].filter(i => i && imgs && imgs.get(i.file));
-    g.save();
-    g.globalAlpha = alpha;
-    g.font = '600 ' + (11 * s).toFixed(1) + 'px Inter, "Segoe UI", system-ui, sans-serif';
-    const text = ic.weapon ? null : ic.text || '?';
-    const w = (text ? g.measureText(text).width : 0) + list.reduce((a, i) => a + i.box[2] * H / i.box[3], 0) + GAP * Math.max(0, list.length - 1 + (text ? 1 : 0)) + 2 * PAD;
-    const top = y - H - 2 * PAD;
-    g.fillStyle = 'rgba(11,11,12,0.6)';
-    roundRect(g, x - w / 2, top, w, H + 2 * PAD, 3 * s); g.fill();
-    let xx = x - w / 2 + PAD;
-    if (text) { g.textBaseline = 'middle'; g.fillStyle = MUTED; g.fillText(text, xx, top + PAD + H / 2); xx += g.measureText(text).width + GAP; }
-    g.shadowColor = 'rgba(0,0,0,0.85)'; g.shadowBlur = 2 * s;
-    for (const i of list) {
-      const iw = i.box[2] * H / i.box[3];
-      g.drawImage(imgs.get(i.file), i.box[0], i.box[1], i.box[2], i.box[3], xx, top + PAD, iw, H);
-      xx += iw + GAP;
-    }
-    g.restore();
-  }
   function roundRect(g, x, y, w, h, r) {
     g.beginPath();
     if (g.roundRect) g.roundRect(x, y, w, h, r); else g.rect(x, y, w, h);
@@ -193,13 +171,5 @@
     dispose() { this.box.remove(); }
   }
 
-  /** the DOM marker of a kill for the 3D view's label layer: weapon (+ headshot) icon, else its text */
-  function markNode(k) {
-    const el = C4.ui.el, ic = C4.weapons.killIcons(k);
-    return el('div', { class: 'p3-label kf-mark' },
-      ic.weapon ? C4.ui.iconNode(ic.weapon, ic.text) : el('span', { class: 'kf-name', style: { color: MUTED } }, ic.text || '?'),
-      ic.headshot ? C4.ui.iconNode(ic.headshot, 'HS') : null);
-  }
-
-  C4.killfeed = { FADE_MS, itemsAt, parts, missing, images, draw, drawMark, markNode, Overlay };
+  C4.killfeed = { FADE_MS, itemsAt, parts, missing, images, draw, Overlay };
 })(window.C4);

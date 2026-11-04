@@ -107,10 +107,34 @@
   {
    "indexStart": 90,
    "indexCount": 1818,
-   "material": -1
+   "material": 0
   }
  ],
- "materials": [],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_colt1911",
+   "texture": "_textures/mtl_weapon_colt1911_col.webp",
+   "textureAlpha": false,
+   "color": "#32332f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/mtl_weapon_colt1911_spec-r30_a0b777cc.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
  "bounds": {
   "mins": [
    -12.8,

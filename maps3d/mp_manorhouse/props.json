@@ -609,7 +609,7 @@
    "name": "mc/mtl_military_tires02",
    "texture": "_textures/tires02_col.webp",
    "textureAlpha": false,
-   "color": "#30302c",
+   "color": "#31302c",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
@@ -1978,7 +1978,7 @@
    "name": "mc/mtl_desk_test_02",
    "texture": "_textures/mtl_desk_test_02.webp",
    "textureAlpha": false,
-   "color": "#52443e",
+   "color": "#52453e",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
@@ -3144,7 +3144,7 @@
    "name": "mc/mtl_mp_frag_button",
    "texture": "_textures/button_col.webp",
    "textureAlpha": false,
-   "color": "#675e56",
+   "color": "#675f56",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
@@ -4892,7 +4892,7 @@
    "name": "mc/mtl_small_hatchback_wagon_rubber",
    "texture": "_textures/small_hatchback_wagon_white_col.webp",
    "textureAlpha": false,
-   "color": "#7b7566",
+   "color": "#7a7565",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
@@ -6682,7 +6682,7 @@
    "name": "mc/mtl_p6_dig_metal_panel",
    "texture": "_textures/p6_dig_metal_panel_c.webp",
    "textureAlpha": true,
-   "color": "#4a4a46",
+   "color": "#4a4b46",
    "alphaTest": "ge128",
    "blend": null,
    "doubleSided": false,
@@ -6723,7 +6723,7 @@
    "name": "mc/mtl_rowboat_and_paddles",
    "texture": "_textures/xpec_rowboat_and_paddles_col.webp",
    "textureAlpha": false,
-   "color": "#3f3831",
+   "color": "#3f3832",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
@@ -15121,7 +15121,7 @@
       {
        "indexStart": 0,
        "indexCount": 2154,
-       "material": -1
+       "material": 160
       }
      ]
     }
@@ -15198,7 +15198,7 @@
       {
        "indexStart": 0,
        "indexCount": 1356,
-       "material": -1
+       "material": 162
       }
      ]
     }
@@ -27095,8 +27095,8 @@
   "lod0SurfacesWithoutMaterial": 0,
   "materialHandles": {
    "inline": 432,
-   "resolved": 1740,
-   "unresolved": 684,
+   "resolved": 2166,
+   "unresolved": 258,
    "null": 0,
    "chains": 52,
    "rules": {
@@ -27104,6 +27104,8 @@
    },
    "shiftedModels": 10,
    "windowedChains": 2,
+   "selfPlaced": 36,
+   "selfOverrides": 3,
    "known": {
     "24348": "mc/mtl_p6_dig_wood_barrel",
     "61540": "mc/mtl_paint_can",
@@ -27467,10 +27469,10 @@
     "14329688": "mc/mtl_milk_carton",
     "14331576": "mc/mtl_barrel_damaged",
     "14386468": ",mc/com_glass_shattered_outside",
-    "14386492": "mc/com_glass_shattered_inside",
-    "14386516": "mc/mtl_80s_econ_silv",
+    "14386492": ",mc/com_glass_shattered_outside",
+    "14386516": "mc/com_glass_shattered_inside",
     "14386556": "mc/mtl_80s_econ_glass",
-    "14386580": "mc/mtl_80s_econdestroy_green",
+    "14386580": "mc/mtl_80s_econ_glass",
     "14386596": "mc/mtl_engine",
     "14566136": "mc/mtl_80s_econ_red",
     "14776440": "mc/mtl_80s_econ_brn",
@@ -27515,7 +27517,20 @@
     "56652984": "mc/mtl_black_kit_hands",
     "56652988": "mc/mtl_black_kit_sleeves",
     "56907792": "mc/mtl_80s_edestroy_glass",
-    "57026116": "mc/mtl_80s_econdestroy_brn"
+    "57026116": "mc/mtl_80s_econdestroy_brn",
+    "8688648": "mc/mtl_machinery_tool_cart_iw6",
+    "9028596": "mc/mtl_pb_weld_tanks_01",
+    "14386540": "mc/mtl_80s_econ_silv",
+    "14386604": "mc/mtl_80s_econdestroy_green",
+    "14386620": "mc/mtl_engine",
+    "55439556": "mc/mtl_usmc_body_mp",
+    "55439572": "mc/mtl_usmc_lod_mp",
+    "55471896": "mc/mtl_usmc_tactical_mich_stripes_nomex",
+    "55471904": "mc/mtl_accessories_mp",
+    "55471916": "mc/mtl_accessories_alpha_mp",
+    "56738564": "mc/mtl_80s_econdestroy_red",
+    "56738572": "mc/mtl_80s_econdestroy_green_rubber",
+    "56738576": "mc/mtl_80s_econdestroy_green_metal"
    }
   }
  },

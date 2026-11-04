@@ -8103,8 +8103,8 @@
   "lod0SurfacesWithoutMaterial": 0,
   "materialHandles": {
    "inline": 170,
-   "resolved": 858,
-   "unresolved": 92,
+   "resolved": 907,
+   "unresolved": 43,
    "null": 0,
    "chains": 29,
    "rules": {
@@ -8112,6 +8112,8 @@
    },
    "shiftedModels": 8,
    "windowedChains": 3,
+   "selfPlaced": 24,
+   "selfOverrides": 1,
    "known": {
     "17036": "mc/mtl_ch_couch01",
     "36576": "mc/mtl_corkboards",
@@ -8259,7 +8261,7 @@
     "41543932": "mc/mtl_sas_ct_lod_sp",
     "41574136": "mc/mtl_black_kit_hands",
     "41574140": "mc/mtl_black_kit_sleeves",
-    "41903484": "mc/mtl_opforce_body_sp",
+    "41903484": "mc/mtl_opforce_lod_sp",
     "41903500": "mc/mtl_opforce_lod_sp",
     "41927828": "mc/mtl_opforce_justin_beanie_sp",
     "41927836": "mc/mtl_opforce_hands_sp",
@@ -8269,10 +8271,21 @@
     "42051612": "mc/mtl_opforce_3hole_ski_mask_sp",
     "42147632": "mc/mtl_opforce_fullwrap_sp",
     "42243964": "mc/mtl_opforce_gas_mask_lens_sp",
-    "42243976": "mc/mtl_opforce_gas_mask_sp"
+    "42243976": "mc/mtl_opforce_gas_mask_sp",
+    "523740": "mc/mtl_doorknob",
+    "532196": "mc/mtl_electric_box3",
+    "41903468": "mc/mtl_opforce_body_sp",
+    "41927780": "mc/mtl_opforce_justin_beanie_sp",
+    "41927788": "mc/mtl_opforce_hands_sp",
+    "42243900": "mc/mtl_opforce_gas_mask_lens_sp",
+    "42243912": "mc/mtl_opforce_gas_mask_sp",
+    "42419796": "mc/mtl_80s_econdestroy_silv",
+    "42419804": "mc/mtl_80s_econdestroy_green_rubber",
+    "42419808": "mc/mtl_80s_econdestroy_green_metal",
+    "42865160": ",mc/mtl_weapon_saw"
    }
   },
-  "materialsShared": 4
+  "materialsShared": 24
  },
  "note": "Activision's models, extracted from the game files (see maps3d/NOTICE.md). Models without lods are drawn as boxes of their bounds.",
  "collision": {

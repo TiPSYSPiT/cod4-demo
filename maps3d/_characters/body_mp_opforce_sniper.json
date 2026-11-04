@@ -7,34 +7,34 @@
  "sections": {
   "position": {
    "offset": 0,
-   "length": 72528
+   "length": 164256
   },
   "normal": {
-   "offset": 72528,
-   "length": 24176
+   "offset": 164256,
+   "length": 54752
   },
   "uv": {
-   "offset": 96704,
-   "length": 48352
+   "offset": 219008,
+   "length": 109504
   },
   "skinIndex": {
-   "offset": 145056,
-   "length": 24176
+   "offset": 328512,
+   "length": 54752
   },
   "skinWeight": {
-   "offset": 169232,
-   "length": 24176
+   "offset": 383264,
+   "length": 54752
   },
   "index": {
-   "offset": 193408,
-   "length": 38760
+   "offset": 438016,
+   "length": 81276
   },
   "color": {
-   "offset": 232168,
-   "length": 24176
+   "offset": 519292,
+   "length": 54752
   }
  },
- "vertexCount": 6044,
+ "vertexCount": 13688,
  "triangleCount": 6460,
  "bones": [
   {
@@ -833,9 +833,68 @@
    "indexStart": 12804,
    "indexCount": 6576,
    "material": -1
+  },
+  {
+   "indexStart": 19380,
+   "indexCount": 5814,
+   "material": 0
+  },
+  {
+   "indexStart": 25194,
+   "indexCount": 384,
+   "material": 0
+  },
+  {
+   "indexStart": 25578,
+   "indexCount": 6120,
+   "material": -1
+  },
+  {
+   "indexStart": 31698,
+   "indexCount": 2958,
+   "material": 1
+  },
+  {
+   "indexStart": 34656,
+   "indexCount": 3552,
+   "material": -1
+  },
+  {
+   "indexStart": 38208,
+   "indexCount": 1686,
+   "material": 1
+  },
+  {
+   "indexStart": 39894,
+   "indexCount": 744,
+   "material": -1
   }
  ],
  "materials": [
+  {
+   "name": "mc/mtl_opforce_body_sp",
+   "texture": "_textures/opforce_body_sp_col.webp",
+   "textureAlpha": false,
+   "color": "#433c31",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/opforce_body_sp_nml.normal.webp",
+   "specularMap": "_textures/opforce_body_sp_spc-rgb_opfo_769a6dca.specular.webp",
+   "envMapParms": [
+    0.2,
+    8.8,
+    2.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
   {
    "name": "mc/mtl_opforce_lod_sp",
    "texture": "_textures/opforce_lod_col_sp.webp",
@@ -873,6 +932,32 @@
    63.79
   ]
  },
+ "lods": [
+  {
+   "dist": 300.0,
+   "surfaceStart": 0,
+   "surfaceCount": 3,
+   "triangles": 6460
+  },
+  {
+   "dist": 500.0,
+   "surfaceStart": 3,
+   "surfaceCount": 3,
+   "triangles": 4106
+  },
+  {
+   "dist": 1200.0,
+   "surfaceStart": 6,
+   "surfaceCount": 2,
+   "triangles": 2170
+  },
+  {
+   "dist": 1000000.0,
+   "surfaceStart": 8,
+   "surfaceCount": 2,
+   "triangles": 810
+  }
+ ],
  "hitBoxes": [
   {
    "bone": 2,

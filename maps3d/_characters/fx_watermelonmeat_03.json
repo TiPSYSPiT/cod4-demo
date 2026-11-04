@@ -57,10 +57,27 @@
   {
    "indexStart": 0,
    "indexCount": 216,
-   "material": -1
+   "material": 0
   }
  ],
- "materials": [],
+ "materials": [
+  {
+   "name": "mc/mtl_fx_watermelonchunks",
+   "texture": "_textures/fx_watermelonchunks_col.webp",
+   "textureAlpha": false,
+   "color": "#c25e5c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
  "bounds": {
   "mins": [
    -1.05,

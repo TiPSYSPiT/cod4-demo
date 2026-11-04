@@ -723,7 +723,7 @@ void main() {
   vec4 c = t * vColor * uTint;
   ${premul ? 'gl_FragColor = vec4(c.rgb * c.a, c.a);' : 'gl_FragColor = c;'}
 }`,
-        side: THREE.DoubleSide, depthTest: true, ...blend,
+        side: THREE.DoubleSide, forceSinglePass: true, depthTest: true, ...blend,      // (one pass: mapLoader.js)
         // marks lie on the world's surfaces: pulled towards the camera in depth
         ...(decal ? { polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -4 } : {}),
       });

@@ -446,6 +446,17 @@ kbd { font: 500 var(--fs-xs) var(--mono); padding: 1px 6px; border-radius: 5px; 
 .map-ev .kf-icon { zoom: .7; }
 .map-ev.current { background: var(--accent-soft); box-shadow: inset 2px 0 0 var(--accent); }
 .map-ev.future { opacity: .35; }
+/* the round separators (replay.js buildFeed): a hairline with the round's label; the current round's in the accent, a
+   round's jumps to its start */
+.feed-sep { display: flex; align-items: center; gap: 8px; margin: 8px 6px 2px; font: 600 10px/1 var(--sans); letter-spacing: .06em;
+  text-transform: uppercase; color: var(--dim); transition: color var(--ease); }
+.feed-sep::after { content: ''; flex: 1; height: 1px; background: var(--line); transition: background-color var(--ease); }
+.feed-sep:first-child { margin-top: 2px; }
+.feed-sep[data-round] { cursor: pointer; }
+.feed-sep[data-round]:hover { color: var(--muted); }
+.feed-sep.current { color: var(--accent); }
+.feed-sep.current::after { background: var(--accent-line); }
+.feed-sep.half { color: var(--muted); font-weight: 500; text-transform: none; letter-spacing: 0; }
 .map-ev.future:hover { opacity: .8; }
 
 /* ---- player bar (replay.js) ---- */
@@ -682,9 +693,8 @@ table.data.scoreboard tbody tr.team-head ~ tr.team-head td { border-top: 14px so
 /* the team's shape on the badge (actors.js data-mark: ▲ the blue team, ◆ the red one) */
 .p3-label.xray-hidden[data-mark]::before { content: attr(data-mark) ' '; font-size: 9px; vertical-align: 1px; }
 .p3-label.site { font: 700 22px var(--sans); color: var(--site); text-shadow: 0 0 4px #000, 0 0 2px #000; }
-/* weapon icon over a death marker (Display popover: Kill icons) */
-.p3-label.kf-mark { display: flex; align-items: center; gap: 3px; padding: 1px 6px; border-radius: 5px; background: rgba(11, 11, 12, .6); }
-.p3-label.kf-mark .kf-icon { height: 18px; }
+/* Tab's scoreboard (js/app/scoresOverlay.js): over the 2D / 3D view and its HUD, under the panels */
+.scores-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 8; pointer-events: none; }
 /* the 3D kill feed: top right, left of the drawer, newest at the bottom */
 .kf-overlay { position: absolute; right: var(--drawer-space); top: calc(var(--gutter) + 50px); z-index: var(--z-view-ui); display: flex; flex-direction: column; align-items: flex-end; gap: 3px;
   pointer-events: none; max-width: 46%; }

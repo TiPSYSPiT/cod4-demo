@@ -1442,7 +1442,7 @@
    "name": "mc/mtl_transmitting_tower2",
    "texture": "_textures/transmitting_tower2_col__0.webp",
    "textureAlpha": true,
-   "color": "#282625",
+   "color": "#272624",
    "alphaTest": "ge128",
    "blend": null,
    "doubleSided": true,
@@ -1601,7 +1601,7 @@
    "name": "mc/mtl_military_tires02",
    "texture": "_textures/tires02_col.webp",
    "textureAlpha": false,
-   "color": "#30302c",
+   "color": "#31302c",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
@@ -5612,8 +5612,8 @@
   "lod0SurfacesWithoutMaterial": 0,
   "materialHandles": {
    "inline": 132,
-   "resolved": 448,
-   "unresolved": 82,
+   "resolved": 525,
+   "unresolved": 5,
    "null": 0,
    "chains": 14,
    "rules": {
@@ -5621,6 +5621,8 @@
    },
    "shiftedModels": 6,
    "windowedChains": 1,
+   "selfPlaced": 23,
+   "selfOverrides": 1,
    "known": {
     "37232": "mc/mtl_cargocontainerlockingbar",
     "37236": "mc/mtl_cargocontainerdoorhinge_blue",
@@ -5738,7 +5740,7 @@
     "10431548": "mc/mtl_sas_ct_lod_sp",
     "10461752": "mc/mtl_black_kit_hands",
     "10461756": "mc/mtl_black_kit_sleeves",
-    "10791100": "mc/mtl_opforce_body_sp",
+    "10791100": "mc/mtl_opforce_lod_sp",
     "10791116": "mc/mtl_opforce_lod_sp",
     "10815444": "mc/mtl_opforce_justin_beanie_sp",
     "10815452": "mc/mtl_opforce_hands_sp",
@@ -5748,10 +5750,18 @@
     "10939228": "mc/mtl_opforce_3hole_ski_mask_sp",
     "11035248": "mc/mtl_opforce_fullwrap_sp",
     "11131580": "mc/mtl_opforce_gas_mask_lens_sp",
-    "11131592": "mc/mtl_opforce_gas_mask_sp"
+    "11131592": "mc/mtl_opforce_gas_mask_sp",
+    "1352376": "mc/mtl_water_tower",
+    "1352380": "mc/mtl_water_tower2",
+    "9868096": "mc/mtl_american_humvee",
+    "9868136": "mc/mtl_american_humvee_glass",
+    "10791084": "mc/mtl_opforce_body_sp",
+    "10815396": "mc/mtl_opforce_justin_beanie_sp",
+    "10815404": "mc/mtl_opforce_hands_sp",
+    "11131516": "mc/mtl_opforce_gas_mask_lens_sp",
+    "11131528": "mc/mtl_opforce_gas_mask_sp"
    }
-  },
-  "materialsShared": 2
+  }
  },
  "note": "Activision's models, extracted from the game files (see maps3d/NOTICE.md). Models without lods are drawn as boxes of their bounds.",
  "collision": {

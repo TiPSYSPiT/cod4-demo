@@ -232,37 +232,37 @@
   {
    "indexStart": 3774,
    "indexCount": 18,
-   "material": -1
+   "material": 1
   },
   {
    "indexStart": 3792,
    "indexCount": 18,
-   "material": -1
+   "material": 2
   },
   {
    "indexStart": 3810,
    "indexCount": 942,
-   "material": 1
+   "material": 3
   },
   {
    "indexStart": 4752,
    "indexCount": 630,
-   "material": 1
+   "material": 3
   },
   {
    "indexStart": 5382,
    "indexCount": 750,
-   "material": 2
+   "material": 4
   },
   {
    "indexStart": 6132,
    "indexCount": 12,
-   "material": 3
+   "material": 5
   },
   {
    "indexStart": 6144,
    "indexCount": 12,
-   "material": 4
+   "material": 6
   }
  ],
  "materials": [
@@ -282,6 +282,38 @@
     3.5,
     0.625
    ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_trinium_sight",
+   "texture": null,
+   "textureAlpha": false,
+   "color": null,
+   "alphaTest": "gt0",
+   "blend": "srcalpha/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_trinium_sight_glow",
+   "texture": "_textures/weapon_trinium_site_c.webp",
+   "textureAlpha": true,
+   "color": "#1d5e28",
+   "alphaTest": null,
+   "blend": "one/one",
+   "doubleSided": false,
+   "depthWrite": false,
    "colorTint": [
     1.0,
     1.0,

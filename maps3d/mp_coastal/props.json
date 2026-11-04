@@ -1935,7 +1935,7 @@
    "name": "mc/mtl_desk_test_02",
    "texture": "_textures/mtl_desk_test_02.webp",
    "textureAlpha": false,
-   "color": "#52443e",
+   "color": "#52453e",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
@@ -2456,7 +2456,7 @@
    "name": "mc/mtl_rowboat_and_paddles",
    "texture": "_textures/xpec_rowboat_and_paddles_col.webp",
    "textureAlpha": false,
-   "color": "#3f3831",
+   "color": "#3f3832",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
@@ -2496,7 +2496,7 @@
    "name": "mc/mtl_military_tires02",
    "texture": "_textures/tires02_col.webp",
    "textureAlpha": false,
-   "color": "#30302c",
+   "color": "#31302c",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
@@ -3639,7 +3639,7 @@
    "name": "mc/mtl_p6_desert_mountain_01",
    "texture": "_textures/mtl_p6_desert_mountain_01_c.webp",
    "textureAlpha": true,
-   "color": "#4b4c49",
+   "color": "#4b4b49",
    "alphaTest": "ge128",
    "blend": null,
    "doubleSided": false,
@@ -8087,7 +8087,7 @@
       {
        "indexStart": 0,
        "indexCount": 120,
-       "material": -1
+       "material": 94
       }
      ]
     },
@@ -8102,7 +8102,7 @@
       {
        "indexStart": 0,
        "indexCount": 24,
-       "material": -1
+       "material": 94
       }
      ]
     }
@@ -8165,7 +8165,7 @@
       {
        "indexStart": 0,
        "indexCount": 120,
-       "material": -1
+       "material": 94
       }
      ]
     },
@@ -8180,7 +8180,7 @@
       {
        "indexStart": 0,
        "indexCount": 24,
-       "material": -1
+       "material": 94
       }
      ]
     }
@@ -8227,7 +8227,7 @@
       {
        "indexStart": 0,
        "indexCount": 24,
-       "material": -1
+       "material": 94
       }
      ]
     }
@@ -13311,11 +13311,11 @@
   "lowInstanceTriangles": 1434984,
   "materials": 183,
   "materialsTextured": 183,
-  "lod0SurfacesWithoutMaterial": 2,
+  "lod0SurfacesWithoutMaterial": 0,
   "materialHandles": {
    "inline": 231,
-   "resolved": 1507,
-   "unresolved": 124,
+   "resolved": 1586,
+   "unresolved": 45,
    "null": 0,
    "chains": 33,
    "rules": {
@@ -13323,6 +13323,8 @@
    },
    "shiftedModels": 6,
    "windowedChains": 1,
+   "selfPlaced": 23,
+   "selfOverrides": 0,
    "known": {
     "23492": "mc/mtl_fountain_01",
     "104644": "mc/mtl_curb_03",
@@ -13544,10 +13546,20 @@
     "40974968": "mc/mtl_desert_op_force_arms",
     "41038016": "mc/mtl_arab_regular_helmet_hands_sp",
     "41063892": "mc/mtl_arab_regular_sadiq_sp",
-    "41138864": "mc/mtl_arab_regular_backpack"
+    "41138864": "mc/mtl_arab_regular_backpack",
+    "12112056": "mc/mtl_lamp_ornate_on",
+    "40765348": "mc/mtl_usmc_tactical_mich",
+    "40765368": "mc/mtl_usmc_tactical_cap",
+    "40765376": ",mc/lambert1",
+    "40924068": "mc/mtl_bodies_arab_regular",
+    "40924076": "mc/mtl_arab_regular_lod_sp",
+    "41402940": "mc/mtl_80s_econdestroy_brn",
+    "41402944": "mc/mtl_80s_edestroy_glass",
+    "41592260": "mc/mtl_80s_econdestroy_silv",
+    "41592268": "mc/mtl_80s_econdestroy_green_rubber",
+    "41592272": "mc/mtl_80s_econdestroy_green_metal"
    }
-  },
-  "materialsShared": 1
+  }
  },
  "note": "Activision's models, extracted from the game files (see maps3d/NOTICE.md). Models without lods are drawn as boxes of their bounds.",
  "collision": {

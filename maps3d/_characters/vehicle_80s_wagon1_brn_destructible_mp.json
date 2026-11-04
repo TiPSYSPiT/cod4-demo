@@ -1127,14 +1127,13 @@
    "color": "#687575",
    "alphaTest": "gt0",
    "blend": "one/invsrcalpha",
-   "doubleSided": false,
+   "doubleSided": true,
    "depthWrite": false,
-   "normalMap": "_textures/glass_shattered_nml.normal.webp",
-   "specularMap": "_textures/glass_shattered_spc-rgb_glas_36dd5f9b.specular.webp",
+   "specularMap": "_textures/glass_shattered_spc-rgb__white-l-11.specular.webp",
    "envMapParms": [
-    2.0,
-    12.0,
-    10.0,
+    0.8,
+    4.0,
+    2.5,
     0.625
    ],
    "colorTint": [

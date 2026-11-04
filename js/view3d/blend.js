@@ -46,6 +46,15 @@ export function blendOptions(blend) {
   });
 }
 
+/** alpha to coverage for an alpha-tested, unblended material (merged into its options): the cut-out's edge
+ *  antialiased by the multisampling - three.js sharpens the alpha to about a pixel around the test's threshold
+ *  (alphatest_fragment, ALPHA_TO_COVERAGE), so the silhouette stays the game's. The colour is written as it is, the
+ *  framebuffer's alpha kept (the coverage alpha would leave the canvas see-through: washed-out screenshots and videos) */
+export function coverageOptions() {
+  return { alphaToCoverage: true, blending: THREE.CustomBlending, blendEquation: THREE.AddEquation, blendSrc: THREE.OneFactor, blendDst: THREE.ZeroFactor,
+    blendSrcAlpha: THREE.ZeroFactor, blendDstAlpha: THREE.OneFactor };
+}
+
 /** is it a multiply (the destination scaled by the source colour: no lightmap on such decals) */
 export function isMultiply(blend) {
   const f = blendFactors(blend);

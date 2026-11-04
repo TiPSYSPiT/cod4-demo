@@ -10,14 +10,14 @@
  *                BG_SetupAmmoIndexes / ClipIndexes - the n-th ammo / clip name in the weapon list's order)
  *   health       CG_PLAYER_LOW_HEALTH_OVERLAY: overlay_low_health over the screen, stronger and pulsing as the
  *                health falls
- *   damage       CG_DrawDamageDirectionIndicators: damage_feedback towards the attacker for 2 s
+ *   damage       CG_DrawDamageDirectionIndicators: hit_direction towards the attacker for 2 s
  *                (cg_hudDamageIconWidth 128, Height 64, Offset 128, Time 2000 - the values Promod enforces)
+ *   hit marker   the scripts' damage_feedback HUD element (_damagefeedback.gsc; collect.js hitMarks) on every hit
  *   names        CG_DrawCrosshairNames: the teammate under the crosshair (stats[3]) below it
  *   hints        CG_CURSORHINT: the use icon while the server shows a hint (planting / defusing the bomb ...)
- *   scoreboard   Tab (held): the teams with each player's kills and deaths so far
  * Promod hides the stance indicator (its rect lies off the screen) - so does this HUD. Only the recorder has a
- * player state: the ammo, health, damage, names and hints are his; for another player the minimap. The server's
- * own HUD elements (hudelems) are not drawn. */
+ * player state: the ammo, health, damage, hit marker, names and hints are his; for another player the minimap. Of the
+ * server's own HUD elements (hudelems) only the hit marker is drawn. */
 import { isPromod } from './viewmodel.js';
 
 const BASE = 'maps3d/';
@@ -43,7 +43,6 @@ export class GameHud {
     this.table = table;                  // viewmodels.json (the weapon files' numbers) or null
     this.promod = isPromod(M);           // (a Promod server: its weapon files' names and numbers)
     this.enabled = true;
-    this.scoreboard = false;
     this.images = new Map();
     this.imgList = null;
     fetch(BASE + '_hud/hud.json').then(r => (r.ok ? r.json() : null)).then(h => {
@@ -81,6 +80,15 @@ export class GameHud {
       if (H.damageEvent[i] !== H.damageEvent[i - 1] && H.client[i] === H.client[i - 1] && H.damageCount[i] > 0) this.hits.push({ t: H.t[i], yaw: (H.damageYaw[i] & 255) * 360 / 256, cl: H.client[i] });
     }
     this.hitTimes = this.hits.map(h => h.t);
+    // the scripts' hit marker element per client and slot (collect.js hitMarks): its states in time order
+    this.marks = new Map();
+    for (const m of d.hitMarks || []) {
+      let bySlot = this.marks.get(m.client);
+      if (!bySlot) this.marks.set(m.client, bySlot = new Map());
+      let a = bySlot.get(m.slot);
+      if (!a) bySlot.set(m.slot, a = { t: [], m: [] });
+      a.t.push(m.t); a.m.push(m);
+    }
     // the shots seen per client (the enemies' fire pings)
     this.shots = new Map(Object.entries(d.shotsSeen || {}).map(([cl, a]) => [+cl, a]));
   }
@@ -130,13 +138,14 @@ export class GameHud {
     return i >= 0 && H.client[i] === cl && t - H.t[i] < 1000 ? i : -1;
   }
 
-  /** draw the HUD of client cl at t into the 2D context g (w x h device pixels); view: {yaw, pitch} (null: the
-   *  player is dead - only the scoreboard) */
-  draw(g, w, h, t, cl, view, weaponName) {
+  /** draw the HUD of client cl at t into the 2D context g (w x h device pixels: the safe area); view: {yaw, pitch}
+   *  (null: the player is dead - nothing); full: the whole view {x, y, w, h} in the same coordinates (default the
+   *  safe area) - the crosshair's parts are centred on it */
+  draw(g, w, h, t, cl, view, weaponName, full = null) {
     if (!this.enabled || cl == null) return;
     const M = this.M, s = h / 480, R = x => w - (640 - x) * s;
     g.save();
-    if (!view) { if (this.scoreboard) this.drawScoreboard(g, w, h, s, t, cl); g.restore(); return; }
+    if (!view) { g.restore(); return; }
     const row = this.hudRow(cl, t), H = M.d.psHud;
     // the low health overlay (below the rest)
     if (row >= 0 && H.maxHealth[row] > 0) {
@@ -149,7 +158,11 @@ export class GameHud {
     }
     this.drawMinimap(g, s, t, cl, view);
     if (row >= 0) {
-      this.drawDamage(g, w, h, s, t, cl, view);
+      const F = full || { x: 0, y: 0, w, h };
+      g.save(); g.translate(F.x, F.y);
+      this.drawDamage(g, F.w, F.h, F.h / 480, t, cl, view);
+      this.drawHitMarker(g, F.w, F.h, F.h / 480, t, cl);
+      g.restore();
       this.drawAmmo(g, s, R, t, cl, weaponName);
       this.drawNames(g, w, h, s, row);
       if (H.hint[row]) {
@@ -157,7 +170,6 @@ export class GameHud {
         if (img) { g.globalAlpha = 1; g.drawImage(img, w / 2 - 20 * s, h / 2 + 40 * s, 40 * s, 40 * s); }
       }
     }
-    if (this.scoreboard) this.drawScoreboard(g, w, h, s, t, cl);
     g.restore();
   }
 
@@ -217,7 +229,7 @@ export class GameHud {
   }
 
   drawDamage(g, w, h, s, t, cl, view) {
-    const img = this.img('damage_feedback');
+    const img = this.img('hit_direction');             // (the client's cgMedia image; damage_feedback is the scripts' hit marker)
     if (!img) return;
     for (let i = lower(this.hitTimes, t); i >= 0 && t - this.hitTimes[i] < DAMAGE.time; i--) {
       const hit = this.hits[i];
@@ -229,6 +241,50 @@ export class GameHud {
       g.translate(w / 2, h / 2); g.rotate(rel);
       g.globalAlpha = a;
       g.drawImage(img, -DAMAGE.w / 2 * s, -(DAMAGE.offset + DAMAGE.h / 2) * s, DAMAGE.w * s, DAMAGE.h * s);
+      g.restore();
+    }
+  }
+
+  /** the hit marker (the scripts' HUD element, _damagefeedback.gsc: damage_feedback 24 x 48 at -12 / -12 from the
+   *  screen's centre, alpha 1 faded out over 1 s on every hit - CG_Draw2dHudElems): its state at t from the server's
+   *  fade (colours RGBA, alpha in the high byte), size change and placement (alignScreen: horizontal << 3 | vertical,
+   *  1 left / top, 2 centre / middle, 3 right / bottom; alignOrg: horizontal << 2 | vertical, 0 left / top, 1 centre,
+   *  2 right / bottom), in the whole view as the game places it */
+  drawHitMarker(g, w, h, s, t, cl) {
+    const bySlot = this.marks && this.marks.get(cl), img = this.img('damage_feedback');
+    if (!bySlot || !img) return;
+    for (const a of bySlot.values()) {
+      const i = lower(a.t, t);
+      if (i < 0 || a.m[i].gone) continue;
+      const m = a.m[i];
+      let alpha = (m.color >>> 24) / 255;
+      if (m.fadeTime > 0 && t - m.fadeStart < m.fadeTime) {
+        const f = Math.max(0, Math.min(1, (t - m.fadeStart) / m.fadeTime));
+        alpha = (m.fromColor >>> 24) / 255 + (alpha - (m.fromColor >>> 24) / 255) * f;
+      }
+      if (alpha <= 0.004) continue;
+      let ew = m.w, eh = m.h;
+      if (m.scaleTime > 0 && t - m.scaleStart < m.scaleTime) {
+        const f = Math.max(0, Math.min(1, (t - m.scaleStart) / m.scaleTime));
+        ew = m.fromW + (ew - m.fromW) * f; eh = m.fromH + (eh - m.fromH) * f;
+      }
+      const hs = (m.alignScreen >> 3) & 7, vs = m.alignScreen & 7, ho = (m.alignOrg >> 2) & 3, vo = m.alignOrg & 3;
+      let x = (hs === 2 ? w / 2 : hs === 3 ? w : 0) + m.x * s, y = (vs === 2 ? h / 2 : vs === 3 ? h : 0) + m.y * s;
+      x -= ho === 1 ? ew * s / 2 : ho === 2 ? ew * s : 0;
+      y -= vo === 1 ? eh * s / 2 : vo === 2 ? eh * s : 0;
+      const c = m.fromColor && m.fadeTime > 0 && t - m.fadeStart < m.fadeTime ? m.fromColor : m.color;
+      g.save();
+      g.globalAlpha = Math.min(1, alpha);
+      if ((c & 0xffffff) !== 0xffffff) {
+        // (a tinted marker - Promod's colours: the image multiplied by the colour, drawn through an offscreen copy)
+        const k = this.tinted || (this.tinted = document.createElement('canvas'));
+        k.width = img.width; k.height = img.height;
+        const kg = k.getContext('2d');
+        kg.globalCompositeOperation = 'source-over'; kg.drawImage(img, 0, 0);
+        kg.globalCompositeOperation = 'multiply'; kg.fillStyle = 'rgb(' + (c & 255) + ',' + ((c >> 8) & 255) + ',' + ((c >> 16) & 255) + ')'; kg.fillRect(0, 0, k.width, k.height);
+        kg.globalCompositeOperation = 'destination-in'; kg.drawImage(img, 0, 0);
+        g.drawImage(k, x, y, ew * s, eh * s);
+      } else g.drawImage(img, x, y, ew * s, eh * s);
       g.restore();
     }
   }
@@ -291,40 +347,5 @@ export class GameHud {
     g.lineWidth = 3 * s; g.strokeStyle = 'rgba(0,0,0,0.6)';
     g.strokeText(p.cleanName, w / 2, h / 2 + 22 * s);
     g.fillStyle = this.M.color(id); g.fillText(p.cleanName, w / 2, h / 2 + 22 * s);
-  }
-
-  /** the scoreboard (Tab): the teams, their players' kills / deaths up to t (the scoreboard's rule) */
-  drawScoreboard(g, w, h, s, t, cl) {
-    const M = this.M, d = M.d, kd = new Map();
-    for (const k of d.kills) {
-      if (k.t > t) break;
-      const r = C4.build.kdRule(k);
-      if (r.credit) { const a = kd.get(k.attacker) || [0, 0]; a[0]++; kd.set(k.attacker, a); }
-      if (r.death) { const v = kd.get(k.victim) || [0, 0]; v[1]++; kd.set(k.victim, v); }
-    }
-    const W = 360 * s, x0 = (w - W) / 2;
-    let y = 70 * s;
-    g.globalAlpha = 0.8; g.fillStyle = '#0b0d10';
-    const teams = d.teams.map(tm => ({ tm, ps: d.players.filter(p => p.team === tm.key) })).filter(x => x.ps.length);
-    const rows = teams.reduce((a, x) => a + x.ps.length + 2, 0);
-    g.fillRect(x0, y - 8 * s, W, (rows * 14 + 16) * s);
-    g.globalAlpha = 1; g.textBaseline = 'top';
-    for (const { tm, ps } of teams) {
-      g.font = 'bold ' + Math.round(11 * s) + 'px ' + FONT; g.textAlign = 'left'; g.fillStyle = M.app ? M.app.teamColor(tm.key) : '#fff';
-      g.fillText(tm.name, x0 + 10 * s, y);
-      g.textAlign = 'right'; g.fillStyle = '#9aa0a6';
-      g.fillText('K', x0 + W - 50 * s, y); g.fillText('D', x0 + W - 12 * s, y);
-      y += 16 * s;
-      g.font = Math.round(11 * s) + 'px ' + FONT;
-      for (const p of ps.slice().sort((a, b) => ((kd.get(b.client) || [0])[0] - (kd.get(a.client) || [0])[0]))) {
-        const v = kd.get(p.client) || [0, 0];
-        g.textAlign = 'left'; g.fillStyle = p.client === cl ? '#ffd76a' : '#e8eaed';
-        g.fillText(p.cleanName, x0 + 10 * s, y);
-        g.textAlign = 'right';
-        g.fillText(String(v[0]), x0 + W - 50 * s, y); g.fillText(String(v[1]), x0 + W - 12 * s, y);
-        y += 14 * s;
-      }
-      y += 12 * s;
-    }
   }
 }

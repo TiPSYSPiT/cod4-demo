@@ -4,7 +4,7 @@
  * the "Boxes" mode, use see-through boxes of the model bounds. Modes: off | boxes | high | low. */
 import * as THREE from 'three';
 import { gridLit, setInstanceLighting, materialShading, lightingAtlas } from './lighting.js';
-import { blendOptions } from './blend.js';
+import { blendOptions, coverageOptions } from './blend.js';
 import { fetchData, fetchBinary, checkedView } from './data.js';
 
 const PROP_GAIN = 1.25;
@@ -23,13 +23,16 @@ function placement(buf, o, out) {
 function propMaterial(m, texture, gameLit, vertexColors = false) {
   if (!m) return new THREE.MeshLambertMaterial({ color: 0x8c8780 });
   // the vertex colours: the model shaders (lp_*) multiply the colour map by them - foliage tint and shading
-  const opts = { side: m.doubleSided ? THREE.DoubleSide : THREE.FrontSide, vertexColors };
+  const opts = { side: m.doubleSided ? THREE.DoubleSide : THREE.FrontSide, forceSinglePass: true, vertexColors };   // (one pass: mapLoader.js)
   const tex = texture(m.texture);
   // props have no lightmap: with the light grid lit like in the game, else by the scene lights, a
   // little brighter to sit with the lightmapped world
   const gain = gameLit ? 1 : PROP_GAIN;
   if (tex) { opts.map = tex; opts.color = new THREE.Color(gain, gain, gain); } else opts.color = new THREE.Color(m.color || '#8c8780').multiplyScalar(gain);
-  if (m.alphaTest && m.textureAlpha) opts.alphaTest = m.alphaTest === 'gt0' ? 0.05 : 0.5;
+  if (m.alphaTest && m.textureAlpha) {
+    opts.alphaTest = m.alphaTest === 'gt0' ? 0.05 : 0.5;
+    if (!m.blend) Object.assign(opts, coverageOptions());          // (foliage, fences: the edge antialiased - blend.js)
+  }
   // the game's blend factors (blend.js), the framebuffer's alpha kept
   Object.assign(opts, blendOptions(m.blend));
   const mat = new THREE.MeshLambertMaterial(opts);
@@ -177,11 +180,13 @@ export class Props {
       const view = name => { const T = SECTION_TYPES[name]; return checkedView(T, bin, sec[name].offset, sec[name].length / T.BYTES_PER_ELEMENT, pj.file + ' ' + name); };
       const P = view('position'), N = view('normal'), U = view('uv'), I = view('index'), C = colors ? view('color') : null;
       this.arrays = { P, N, U, I, C };
+      this.lodRecs = [];
       pj.models.forEach((model, mi) => {
         const list = byModel[mi];
         if (!list.length) return;
         if (!model.lods || !model.lods.length) { fallback.push(mi); return; }
         const lodSets = [[model.lods[0], this.high, 'high'], [model.lods[model.lods.length - 1], this.low, 'low']];
+        const rec = { list, meshes: [], dist: lodSets.map(([lod]) => (lod.dist > 0 ? lod.dist : Infinity)), single: model.lods.length < 2 };
         for (const [lod, target, key] of lodSets) {
           const geo = new THREE.BufferGeometry();
           const v0 = lod.vertexStart, n = lod.vertexCount;
@@ -199,10 +204,24 @@ export class Props {
           mesh.instanceMatrix.needsUpdate = true;
           mesh.computeBoundingSphere();                       // over all placements, for culling
           mesh.userData.model = model.name;
+          // (the full order kept: the LOD pick repacks the instances - matrices and lighting - per frame it changes)
+          mesh.userData.full = { matrix: mesh.instanceMatrix.array.slice(),
+            block: geo.attributes.lgBlock ? geo.attributes.lgBlock.array.slice() : null, info: geo.attributes.lgInfo ? geo.attributes.lgInfo.array.slice() : null };
+          rec.meshes.push(mesh);
           target.add(mesh);
           this.counts[key].tris += list.length * lod.indexCount / 3;
           this.counts[key].draws += lod.surfaces.length;
         }
+        // the placements' bounds centres (world) for the LOD distance
+        rec.centre = new Float32Array(list.length * 3);
+        list.forEach((i, k) => {
+          const o = i * S, sc = inst[o + 13], c = model.mins ? [0, 1, 2].map(q => (model.mins[q] + model.maxs[q]) / 2 * sc) : [0, 0, 0];
+          rec.centre[k * 3] = inst[o + 1] + c[0] * inst[o + 4] + c[1] * inst[o + 7] + c[2] * inst[o + 10];
+          rec.centre[k * 3 + 1] = inst[o + 2] + c[0] * inst[o + 5] + c[1] * inst[o + 8] + c[2] * inst[o + 11];
+          rec.centre[k * 3 + 2] = inst[o + 3] + c[0] * inst[o + 6] + c[1] * inst[o + 9] + c[2] * inst[o + 12];
+        });
+        rec.pick = new Int8Array(list.length).fill(-1);       // per placement: 0 LOD 0, 1 the coarse LOD, 2 none
+        this.lodRecs.push(rec);
       });
     } else {
       pj.models.forEach((m, mi) => fallback.push(mi));        // format 1: placements only
@@ -239,15 +258,71 @@ export class Props {
     this.setMode(this.modelCount ? 'high' : 'boxes');
   }
 
-  /** off | boxes | high | low */
+  /** off | boxes | high (the game's LOD by distance: updateLods) | low (the coarsest LOD everywhere) */
   setMode(mode) {
     if (!this.modelCount && (mode === 'high' || mode === 'low')) mode = 'boxes';
     this.mode = mode;
+    if (this.lodRecs) {
+      // (low: every placement on the coarse LOD; high: the pick is made again by the next updateLods)
+      for (const rec of this.lodRecs) {
+        rec.pick.fill(-1);
+        if (mode === 'low') this.pack(rec, 1, rec.list.map((_, k) => k));
+        else if (mode === 'high') { this.pack(rec, 0, rec.list.map((_, k) => k)); this.pack(rec, 1, []); }   // (one LOD: both meshes the same, the coarse one empty)
+      }
+      this.lodEye = null;
+    }
     this.high.visible = mode === 'high';
-    this.low.visible = mode === 'low';
+    this.low.visible = mode === 'low' || mode === 'high';         // (high: the coarse LOD's placements far away)
     this.boxes.visible = mode === 'boxes';
     this.fallbackBoxes.visible = mode === 'high' || mode === 'low';
     return mode;
+  }
+
+  /** the game's LOD per placement (XModelGetLodForDist, R_SetLodOrigin): the distance from the eye to the bounds' centre,
+   *  scaled by the view's zoom (tan(fov_y / 2) against the default 65 degree view's), against each LOD's switch
+   *  distance: LOD 0 up to its distance, then the coarse one up to its own, none beyond (the game's cull distance) -
+   *  8 % hysteresis at each switch. Only models whose pick changed are repacked. camera: the view's camera */
+  updateLods(camera) {
+    if (this.mode !== 'high' || !this.lodRecs) return false;
+    const e = camera.position, k = Math.tan(camera.fov * Math.PI / 360) / Math.tan(25.53 * Math.PI / 180);
+    if (this.lodEye && this.lodEye.distanceToSquared(e) < 16 && Math.abs(this.lodK - k) < 0.01) return false;
+    this.lodEye = (this.lodEye || new THREE.Vector3()).copy(e); this.lodK = k;
+    let changed = false;
+    for (const rec of this.lodRecs) {
+      const C = rec.centre, n = rec.list.length, d0 = rec.dist[0], d1 = rec.single ? d0 : rec.dist[1];
+      let dirty = false;
+      for (let j = 0; j < n; j++) {
+        const dx = C[j * 3] - e.x, dy = C[j * 3 + 1] - e.y, dz = C[j * 3 + 2] - e.z, d = Math.sqrt(dx * dx + dy * dy + dz * dz) * k;
+        const cur = rec.pick[j], h0 = cur === 0 ? 1.08 : cur > 0 ? 0.92 : 1, h1 = cur <= 1 && cur >= 0 ? 1.08 : cur === 2 ? 0.92 : 1;
+        const p = d < d0 * h0 ? 0 : d < d1 * h1 ? (rec.single ? 0 : 1) : 2;
+        if (p !== cur) { rec.pick[j] = p; dirty = true; }
+      }
+      if (!dirty) continue;
+      changed = true;
+      const a = [], b = [];
+      for (let j = 0; j < n; j++) { if (rec.pick[j] === 0) a.push(j); else if (rec.pick[j] === 1) b.push(j); }
+      this.pack(rec, 0, a);
+      if (!rec.single) this.pack(rec, 1, b);
+    }
+    return changed;
+  }
+
+  /** the instances `which` (indexes into the model's placement list) into mesh m of rec: their matrices and lighting */
+  pack(rec, m, which) {
+    const mesh = rec.meshes[m];
+    if (!mesh) return;
+    const F = mesh.userData.full, geo = mesh.geometry, M = mesh.instanceMatrix.array;
+    const B = geo.attributes.lgBlock, I = geo.attributes.lgInfo;
+    which.forEach((j, k) => {
+      M.set(F.matrix.subarray(j * 16, j * 16 + 16), k * 16);
+      if (B) B.array.set(F.block.subarray(j * 3, j * 3 + 3), k * 3);
+      if (I) I.array.set(F.info.subarray(j * 2, j * 2 + 2), k * 2);
+    });
+    mesh.count = which.length;
+    mesh.visible = which.length > 0;                   // (an empty instanced mesh is still a draw call)
+    mesh.instanceMatrix.needsUpdate = true;
+    if (B) B.needsUpdate = true;
+    if (I) I.needsUpdate = true;
   }
 
   /** triangles drawn for all placements in the current mode */

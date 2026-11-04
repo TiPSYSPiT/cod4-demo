@@ -177,40 +177,89 @@
   {
    "indexStart": 0,
    "indexCount": 60,
-   "material": -1
+   "material": 0
   },
   {
    "indexStart": 60,
    "indexCount": 1194,
-   "material": -1
+   "material": 0
   },
   {
    "indexStart": 1254,
    "indexCount": 348,
-   "material": -1
+   "material": 1
   },
   {
    "indexStart": 1602,
    "indexCount": 5028,
-   "material": -1
+   "material": 1
   },
   {
    "indexStart": 6630,
    "indexCount": 936,
-   "material": -1
+   "material": 1
   },
   {
    "indexStart": 7566,
    "indexCount": 528,
-   "material": -1
+   "material": 1
   },
   {
    "indexStart": 8094,
    "indexCount": 480,
-   "material": -1
+   "material": 1
   }
  ],
- "materials": [],
+ "materials": [
+  {
+   "name": "mc/mtl_plexi_middle_front",
+   "texture": "_textures/suitcase_plexi.webp",
+   "textureAlpha": true,
+   "color": "#282629",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "normalMap": "_textures/suitcase_plexi_nml.normal.webp",
+   "specularMap": "_textures/suitcase_plexi_spc-rgb_suitc_213f474a.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_suitcase",
+   "texture": "_textures/suitcase_col.webp",
+   "textureAlpha": false,
+   "color": "#483e38",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/suitcase_nml.normal.webp",
+   "specularMap": "_textures/suitcase_spc-rgb_suitcase_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
  "bounds": {
   "mins": [
    -9.48,

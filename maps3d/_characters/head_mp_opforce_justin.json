@@ -7,34 +7,34 @@
  "sections": {
   "position": {
    "offset": 0,
-   "length": 20808
+   "length": 44760
   },
   "normal": {
-   "offset": 20808,
-   "length": 6936
+   "offset": 44760,
+   "length": 14920
   },
   "uv": {
-   "offset": 27744,
-   "length": 13872
+   "offset": 59680,
+   "length": 29840
   },
   "skinIndex": {
-   "offset": 41616,
-   "length": 6936
+   "offset": 89520,
+   "length": 14920
   },
   "skinWeight": {
-   "offset": 48552,
-   "length": 6936
+   "offset": 104440,
+   "length": 14920
   },
   "index": {
-   "offset": 55488,
-   "length": 14808
+   "offset": 119360,
+   "length": 27588
   },
   "color": {
-   "offset": 70296,
-   "length": 6936
+   "offset": 146948,
+   "length": 14920
   }
  },
- "vertexCount": 1734,
+ "vertexCount": 3730,
  "triangleCount": 2468,
  "bones": [
   {
@@ -942,25 +942,73 @@
   {
    "indexStart": 0,
    "indexCount": 432,
-   "material": 2
+   "material": 0
   },
   {
    "indexStart": 432,
    "indexCount": 3222,
-   "material": 0
+   "material": 1
   },
   {
    "indexStart": 3654,
    "indexCount": 642,
-   "material": -1
+   "material": 1
   },
   {
    "indexStart": 4296,
    "indexCount": 3108,
+   "material": 2
+  },
+  {
+   "indexStart": 7404,
+   "indexCount": 1896,
    "material": 1
+  },
+  {
+   "indexStart": 9300,
+   "indexCount": 342,
+   "material": 1
+  },
+  {
+   "indexStart": 9642,
+   "indexCount": 1536,
+   "material": 2
+  },
+  {
+   "indexStart": 11178,
+   "indexCount": 2106,
+   "material": 3
+  },
+  {
+   "indexStart": 13284,
+   "indexCount": 510,
+   "material": 3
   }
  ],
  "materials": [
+  {
+   "name": "mc/mtl_eye_highlight",
+   "texture": "_textures/eye_highlight_col.webp",
+   "textureAlpha": true,
+   "color": "#cbc9cb",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "specularMap": "_textures/eye_highlight_spc-rgb_eye_hi_92c2d33b.specular.webp",
+   "envMapParms": [
+    1.0,
+    1.0,
+    2.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
   {
    "name": "mc/mtl_opforce_justin_beanie_sp",
    "texture": "_textures/opforce_justin_beanie_hat_col_sp.webp",
@@ -1010,18 +1058,19 @@
    ]
   },
   {
-   "name": "mc/mtl_eye_highlight",
-   "texture": "_textures/eye_highlight_col.webp",
-   "textureAlpha": true,
-   "color": "#cbc9cb",
-   "alphaTest": "gt0",
-   "blend": "one/invsrcalpha",
+   "name": "mc/mtl_opforce_lod_sp",
+   "texture": "_textures/opforce_lod_col_sp.webp",
+   "textureAlpha": false,
+   "color": "#453e35",
+   "alphaTest": null,
+   "blend": null,
    "doubleSided": false,
-   "depthWrite": false,
-   "specularMap": "_textures/eye_highlight_spc-rgb_eye_hi_92c2d33b.specular.webp",
+   "depthWrite": true,
+   "normalMap": "_textures/opforce_lod_nml_sp.normal.webp",
+   "specularMap": "_textures/opforce_lod_spc_sp-rgb_opfor_169cd8d8.specular.webp",
    "envMapParms": [
-    1.0,
-    1.0,
+    0.68,
+    6.0,
     2.0,
     0.625
    ],
@@ -1045,6 +1094,32 @@
    21.01
   ]
  },
+ "lods": [
+  {
+   "dist": 300.0,
+   "surfaceStart": 0,
+   "surfaceCount": 4,
+   "triangles": 2468
+  },
+  {
+   "dist": 500.0,
+   "surfaceStart": 4,
+   "surfaceCount": 3,
+   "triangles": 1258
+  },
+  {
+   "dist": 1200.0,
+   "surfaceStart": 7,
+   "surfaceCount": 1,
+   "triangles": 702
+  },
+  {
+   "dist": 1000000.0,
+   "surfaceStart": 8,
+   "surfaceCount": 1,
+   "triangles": 170
+  }
+ ],
  "hitBoxes": [
   {
    "bone": 0,

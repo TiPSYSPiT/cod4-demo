@@ -952,86 +952,72 @@
   {
    "indexStart": 540,
    "indexCount": 6486,
-   "material": 6,
-   "materialVariant": "vehicle_80s_wagon1_brn_destructible_mp"
+   "material": 6
   },
   {
    "indexStart": 7026,
    "indexCount": 330,
-   "material": 6,
-   "materialVariant": "vehicle_80s_wagon1_brn_destructible_mp"
+   "material": 6
   },
   {
    "indexStart": 7356,
    "indexCount": 282,
-   "material": 6,
-   "materialVariant": "vehicle_80s_wagon1_brn_destructible_mp"
+   "material": 6
   },
   {
    "indexStart": 7638,
    "indexCount": 264,
-   "material": 6,
-   "materialVariant": "vehicle_80s_wagon1_brn_destructible_mp"
+   "material": 6
   },
   {
    "indexStart": 7902,
    "indexCount": 324,
-   "material": 6,
-   "materialVariant": "vehicle_80s_wagon1_brn_destructible_mp"
+   "material": 6
   },
   {
    "indexStart": 8226,
    "indexCount": 264,
-   "material": 6,
-   "materialVariant": "vehicle_80s_wagon1_brn_destructible_mp"
+   "material": 6
   },
   {
    "indexStart": 8490,
    "indexCount": 324,
-   "material": 6,
-   "materialVariant": "vehicle_80s_wagon1_brn_destructible_mp"
+   "material": 6
   },
   {
    "indexStart": 8814,
    "indexCount": 162,
-   "material": 6,
-   "materialVariant": "vehicle_80s_wagon1_brn_destructible_mp"
+   "material": 6
   },
   {
    "indexStart": 8976,
    "indexCount": 24,
-   "material": 6,
-   "materialVariant": "vehicle_80s_wagon1_brn_destructible_mp"
+   "material": 6
   },
   {
    "indexStart": 9000,
    "indexCount": 12,
-   "material": 6,
-   "materialVariant": "vehicle_80s_wagon1_brn_destructible_mp"
+   "material": 6
   },
   {
    "indexStart": 9012,
    "indexCount": 24,
-   "material": 6,
-   "materialVariant": "vehicle_80s_wagon1_brn_destructible_mp"
+   "material": 6
   },
   {
    "indexStart": 9036,
    "indexCount": 12,
-   "material": 6,
-   "materialVariant": "vehicle_80s_wagon1_brn_destructible_mp"
+   "material": 6
   },
   {
    "indexStart": 9048,
    "indexCount": 108,
-   "material": 6,
-   "materialVariant": "vehicle_80s_wagon1_brn_destructible_mp"
+   "material": 6
   },
   {
    "indexStart": 9156,
    "indexCount": 108,
-   "material": 6,
-   "materialVariant": "vehicle_80s_wagon1_brn_destructible_mp"
+   "material": 6
   },
   {
    "indexStart": 9264,
@@ -1141,14 +1127,13 @@
    "color": "#687575",
    "alphaTest": "gt0",
    "blend": "one/invsrcalpha",
-   "doubleSided": false,
+   "doubleSided": true,
    "depthWrite": false,
-   "normalMap": "_textures/glass_shattered_nml.normal.webp",
-   "specularMap": "_textures/glass_shattered_spc-rgb_glas_36dd5f9b.specular.webp",
+   "specularMap": "_textures/glass_shattered_spc-rgb__white-l-11.specular.webp",
    "envMapParms": [
-    2.0,
-    12.0,
-    10.0,
+    0.8,
+    4.0,
+    2.5,
     0.625
    ],
    "colorTint": [

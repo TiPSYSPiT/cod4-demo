@@ -1657,7 +1657,7 @@
    "name": "mc/mtl_80s_econdestroy_tan",
    "texture": "_textures/80s_econdestroy_tan_col.webp",
    "textureAlpha": false,
-   "color": "#574d41",
+   "color": "#564d41",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
@@ -3215,7 +3215,7 @@
       {
        "indexStart": 0,
        "indexCount": 24,
-       "material": -1
+       "material": 15
       }
      ]
     }
@@ -3247,7 +3247,7 @@
       {
        "indexStart": 0,
        "indexCount": 120,
-       "material": -1
+       "material": 15
       }
      ]
     },
@@ -3262,7 +3262,7 @@
       {
        "indexStart": 0,
        "indexCount": 24,
-       "material": -1
+       "material": 15
       }
      ]
     }
@@ -4677,7 +4677,7 @@
       {
        "indexStart": 0,
        "indexCount": 120,
-       "material": -1
+       "material": 15
       }
      ]
     },
@@ -4692,7 +4692,7 @@
       {
        "indexStart": 0,
        "indexCount": 24,
-       "material": -1
+       "material": 15
       }
      ]
     }
@@ -8694,11 +8694,11 @@
   "lowInstanceTriangles": 384540,
   "materials": 103,
   "materialsTextured": 102,
-  "lod0SurfacesWithoutMaterial": 2,
+  "lod0SurfacesWithoutMaterial": 0,
   "materialHandles": {
    "inline": 160,
-   "resolved": 564,
-   "unresolved": 62,
+   "resolved": 603,
+   "unresolved": 23,
    "null": 0,
    "chains": 20,
    "rules": {
@@ -8707,6 +8707,8 @@
    },
    "shiftedModels": 11,
    "windowedChains": 1,
+   "selfPlaced": 23,
+   "selfOverrides": 1,
    "known": {
     "74072": "mc/mtl_red_pine_canopy",
     "74076": "mc/mtl_red_pine",
@@ -8855,17 +8857,25 @@
     "28702864": "mc/mtl_marine_sniper_hands",
     "28702868": "mc/mtl_ghillie",
     "28874092": "mc/mtl_opforce_body_sp",
-    "28874100": "mc/mtl_opforce_lod_sp",
+    "28874100": "mc/mtl_opforce_body_sp",
     "28895792": "mc/mtl_opforce_fullwrap_sp",
     "28895796": "mc/mtl_opforce_hands_sp",
     "28921896": "mc/mtl_op_force_gloves",
     "28921900": "mc/mtl_op_force_sleeves",
     "29012332": "mc/mtl_opforce_gas_mask_lens_sp",
     "29012344": "mc/mtl_opforce_gas_mask_sp",
-    "29084152": "mc/mtl_opforce_gear_sp"
+    "29084152": "mc/mtl_opforce_gear_sp",
+    "2992636": "mc/mtl_grey_oak_canopy",
+    "2992640": "mc/mtl_grey_oak",
+    "3182852": "mc/mtl_bedframemetal",
+    "28466724": "mc/mtl_usmc_tactical_mich",
+    "28466740": "mc/mtl_accessories_alpha_mp",
+    "28466744": "mc/mtl_usmc_tactical_cap",
+    "28466752": ",mc/lambert1",
+    "28874108": "mc/mtl_opforce_lod_sp"
    }
   },
-  "materialsShared": 4
+  "materialsShared": 1
  },
  "note": "Activision's models, extracted from the game files (see maps3d/NOTICE.md). Models without lods are drawn as boxes of their bounds.",
  "collision": {

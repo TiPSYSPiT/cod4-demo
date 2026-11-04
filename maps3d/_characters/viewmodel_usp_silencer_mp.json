@@ -177,22 +177,22 @@
   {
    "indexStart": 0,
    "indexCount": 384,
-   "material": -1
+   "material": 0
   },
   {
    "indexStart": 384,
    "indexCount": 1746,
-   "material": -1
+   "material": 0
   },
   {
    "indexStart": 2130,
    "indexCount": 924,
-   "material": -1
+   "material": 0
   },
   {
    "indexStart": 3054,
    "indexCount": 18,
-   "material": -1
+   "material": 1
   },
   {
    "indexStart": 3072,
@@ -202,15 +202,94 @@
   {
    "indexStart": 3444,
    "indexCount": 810,
-   "material": -1
+   "material": 2
   },
   {
    "indexStart": 4254,
    "indexCount": 18,
-   "material": -1
+   "material": 3
   }
  ],
- "materials": [],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_usp",
+   "texture": "_textures/weapon_usp_c.webp",
+   "textureAlpha": false,
+   "color": "#2f3230",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_usp_s-r-17g-17b-17_we_765326da.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    1.2,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_trinium_sight",
+   "texture": null,
+   "textureAlpha": false,
+   "color": null,
+   "alphaTest": "gt0",
+   "blend": "srcalpha/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_peq6",
+   "texture": "_textures/weapon_peq6_col.webp",
+   "textureAlpha": false,
+   "color": "#2c2d29",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_peq6_spc-r-59g-59b-59_4ef712bb.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    1.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_trinium_sight_glow",
+   "texture": "_textures/weapon_trinium_site_c.webp",
+   "textureAlpha": true,
+   "color": "#1d5e28",
+   "alphaTest": null,
+   "blend": "one/one",
+   "doubleSided": false,
+   "depthWrite": false,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
  "bounds": {
   "mins": [
    -3.18,

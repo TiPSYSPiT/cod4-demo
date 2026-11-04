@@ -327,7 +327,7 @@
    "name": "mc/mtl_military_tires02",
    "texture": "_textures/tires02_col.webp",
    "textureAlpha": false,
-   "color": "#30302c",
+   "color": "#31302c",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
@@ -753,7 +753,8 @@
     1.0,
     1.0,
     1.0
-   ]
+   ],
+   "textureFrom": "mp_carentan"
   },
   {
    "name": "mc/mtl_tree_shadow_caster",
@@ -776,7 +777,6 @@
    "doubleSided": false,
    "depthWrite": true,
    "normalMap": "_textures/tree_river_birch_nml.normal.webp",
-   "specularMap": "_textures/dead_pine_spc-r-71g-71b-71_d_34842d41.specular.webp",
    "envMapParms": [
     0.0,
     6.8,
@@ -1048,7 +1048,6 @@
    "doubleSided": false,
    "depthWrite": true,
    "normalMap": "_textures/tree_destroyed_nml.normal.webp",
-   "specularMap": "_textures/dead_pine_spc-r-71g-71b-71_d_34842d41.specular.webp",
    "envMapParms": [
     0.0,
     6.4,
@@ -1066,7 +1065,7 @@
    "name": "mc/mtl_80s_econdestroy_tan",
    "texture": "_textures/80s_econdestroy_tan_col.webp",
    "textureAlpha": false,
-   "color": "#574d41",
+   "color": "#564d41",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
@@ -1304,7 +1303,6 @@
    "doubleSided": false,
    "depthWrite": true,
    "normalMap": "_textures/tree_pine_nml.normal.webp",
-   "specularMap": "_textures/dead_pine_spc-r-71g-71b-71_d_34842d41.specular.webp",
    "envMapParms": [
     0.0,
     6.0,
@@ -1423,7 +1421,6 @@
    "doubleSided": false,
    "depthWrite": true,
    "normalMap": "_textures/dead_pine_nml.normal.webp",
-   "specularMap": "_textures/dead_pine_spc-r-71g-71b-71_d_34842d41.specular.webp",
    "envMapParms": [
     0.0,
     6.4,
@@ -1527,7 +1524,6 @@
    "doubleSided": false,
    "depthWrite": true,
    "normalMap": "_textures/red_pine_nml.normal.webp",
-   "specularMap": "_textures/dead_pine_spc-r-71g-71b-71_d_34842d41.specular.webp",
    "envMapParms": [
     0.0,
     5.2,
@@ -1961,7 +1957,7 @@
    "name": "mc/mtl_transmitting_tower2",
    "texture": "_textures/transmitting_tower2_col__0.webp",
    "textureAlpha": true,
-   "color": "#282625",
+   "color": "#272624",
    "alphaTest": "ge128",
    "blend": null,
    "doubleSided": true,
@@ -10936,25 +10932,23 @@
   "lod0InstanceTriangles": 856330,
   "lowInstanceTriangles": 207934,
   "materials": 125,
-  "materialsTextured": 124,
+  "materialsTextured": 123,
   "lod0SurfacesWithoutMaterial": 2,
   "materialHandles": {
    "inline": 177,
-   "resolved": 674,
-   "unresolved": 92,
+   "resolved": 721,
+   "unresolved": 45,
    "null": 0,
    "chains": 22,
    "rules": {
-    "measured": 19,
+    "measured": 17,
     "cod4ff": 1
    },
    "shiftedModels": 9,
-   "windowedChains": 4,
+   "windowedChains": 2,
+   "selfPlaced": 30,
+   "selfOverrides": 1,
    "known": {
-    "15556": "mc/mtl_corrugated_metal",
-    "96668": "mc/mtl_grey_oak_canopy",
-    "96672": "mc/mtl_grey_oak",
-    "96676": "mc/mtl_tree_shadow_caster",
     "380952": "mc/mtl_river_birch",
     "380956": "mc/mtl_river_birch_canopy",
     "477756": "mc/mtl_desertshrubs",
@@ -11116,17 +11110,34 @@
     "22171632": "mc/mtl_marine_sniper_hands",
     "22171636": "mc/mtl_ghillie",
     "22342860": "mc/mtl_opforce_body_sp",
-    "22342868": "mc/mtl_opforce_lod_sp",
+    "22342868": "mc/mtl_opforce_body_sp",
     "22364560": "mc/mtl_opforce_fullwrap_sp",
     "22364564": "mc/mtl_opforce_hands_sp",
     "22390664": "mc/mtl_op_force_gloves",
     "22390668": "mc/mtl_op_force_sleeves",
     "22481100": "mc/mtl_opforce_gas_mask_lens_sp",
     "22481112": "mc/mtl_opforce_gas_mask_sp",
-    "22552920": "mc/mtl_opforce_gear_sp"
+    "22552920": "mc/mtl_opforce_gear_sp",
+    "15556": "mc/mtl_corrugated_metal",
+    "96668": "mc/mtl_grey_oak_canopy",
+    "96672": "mc/mtl_grey_oak",
+    "96676": "mc/mtl_tree_shadow_caster",
+    "2687600": "mc/mtl_transmitting_tower",
+    "2687604": "mc/mtl_transmitting_tower2",
+    "2720412": "mc/mtl_satellite_dish_big",
+    "2720416": "mc/mtl_satellite_dish_big_decal",
+    "2799488": "mc/mtl_plastic_case_big",
+    "3122284": "mc/mtl_trashbag_black",
+    "3133784": "mc/mtl_trashbag_green",
+    "3966604": "mc/mtl_soup_can",
+    "21935492": "mc/mtl_usmc_tactical_mich",
+    "21935508": "mc/mtl_accessories_alpha_mp",
+    "21935512": "mc/mtl_usmc_tactical_cap",
+    "21935520": ",mc/lambert1",
+    "22342876": "mc/mtl_opforce_lod_sp"
    }
   },
-  "materialsShared": 14
+  "materialsShared": 7
  },
  "note": "Activision's models, extracted from the game files (see maps3d/NOTICE.md). Models without lods are drawn as boxes of their bounds.",
  "collision": {

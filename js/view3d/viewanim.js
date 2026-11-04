@@ -54,6 +54,8 @@ export class ViewAnimator {
     this.events = new Map();             // client -> {t: Int32Array, ev, weapon[]}
     this.dist = new Map();               // client -> cumulative ground distance per position sample
     this.legsInfo = new Map();           // legs anim index -> {ads, sprint}
+    this.adsRuns = new WeakMap();        // weapon params -> client -> the other player's aiming runs (adsRunsOf)
+    this.idleRec = new WeakMap();        // weapon params -> client -> the recorder's idle time integral (idleTime)
     if (anims) anims.load().then(ok => { this.animsReady = ok; });
     this.buildRecorder();
   }
@@ -280,19 +282,83 @@ export class ViewAnimator {
     return a;
   }
 
-  /** the other player's ADS fraction: the legs animation's walk (BG_IsAds) since its last change, at
-   *  the weapon's transition times */
+  /** the other player's ADS fraction: the legs animation's walk (BG_IsAds) since its last change, at the weapon's
+   *  transition times - each ramp starts where the previous one had got to (aiming in again before the sights were
+   *  down: no jump to 0 / 1) */
   adsOther(cl, t, P) {
+    const R = this.adsRunsOf(cl, P);
+    if (!R) return 0;
+    const k = lower(R.c, t);
+    return k < 0 ? 0 : R.value(k, t);
+  }
+
+  /** client cl's aiming runs (built once per weapon params): the change times c (between the two samples), the state
+   *  after each (on), the fraction there (v) and the integral of the fraction up to there (area, ms) -> {c, on, v,
+   *  area, value(k, t), integral(t)} or null */
+  adsRunsOf(cl, P) {
     const Ps = this.M.d.positions[cl];
-    if (!Ps || !Ps.legs || !this.animsReady) return 0;
-    const i = lower(Ps.t, t);
-    if (i < 0) return 0;
-    const on = this.legs(Ps.legs[i]).ads;
-    let j = i;
-    while (j > 0 && i - j < 40 && this.legs(Ps.legs[j - 1]).ads === on && t - Ps.t[j - 1] < 2000) j--;
-    const since = (t - (j > 0 ? (Ps.t[j - 1] + Ps.t[j]) / 2 : Ps.t[j])) / 1000;
-    const tin = P.adsTransInTime || 0.25, tout = P.adsTransOutTime || 0.25;
-    return on ? clamp01(since / tin) : clamp01(1 - since / tout);
+    if (!Ps || !Ps.legs || !Ps.t.length || !this.animsReady) return null;
+    let byCl = this.adsRuns.get(P);
+    if (!byCl) this.adsRuns.set(P, byCl = new Map());
+    let R = byCl.get(cl);
+    if (R) return R;
+    const rin = 1 / ((P.adsTransInTime || 0.25) * 1000), rout = 1 / ((P.adsTransOutTime || 0.25) * 1000);
+    const c = [Ps.t[0]], on = [this.legs(Ps.legs[0]).ads], v = [0], area = [0];
+    // (the fraction d ms after a change from v0 towards up / down, and its integral over those d ms)
+    const step = (v0, up, d) => {
+      const r = up ? rin : rout, goal = up ? 1 : 0, reach = Math.abs(goal - v0) / r;
+      if (d <= reach) { const v1 = v0 + (up ? r : -r) * d; return [v1, d * (v0 + v1) / 2]; }
+      return [goal, reach * (v0 + goal) / 2 + (d - reach) * goal];
+    };
+    for (let i = 1; i < Ps.t.length; i++) {
+      const o = this.legs(Ps.legs[i]).ads, k = on.length - 1;
+      if (o === on[k]) continue;
+      const tc = (Ps.t[i - 1] + Ps.t[i]) / 2, [v1, ar] = step(v[k], on[k], tc - c[k]);
+      c.push(tc); on.push(o); v.push(v1); area.push(area[k] + ar);
+    }
+    R = { c: Float64Array.from(c), on, v: Float64Array.from(v), area: Float64Array.from(area),
+      value: (k, t) => step(R.v[k], R.on[k], t - R.c[k])[0],
+      integral: t => { const k = lower(R.c, t); return k < 0 ? 0 : R.area[k] + step(R.v[k], R.on[k], t - R.c[k])[1]; } };
+    byCl.set(cl, R);
+    return R;
+  }
+
+  /** the idle sway's time at t (ms; BG_CalculateWeaponPosition_IdleAngles advances it by frame time x idle speed): the
+   *  hip speed since the map's start plus what the ADS speed (and, for the recorder, holdBreathScale) added or took -
+   *  integrated from the start, so continuous between frames and the same for the same t (seeks, any speed) */
+  idleTime(cl, t, W, P) {
+    const hs = P.hipIdleSpeed || 1, as = P.adsIdleSpeed || 1;
+    if (!W) {
+      const R = this.adsRunsOf(cl, P);
+      return t * hs + (R ? (as - hs) * R.integral(t) : 0);
+    }
+    // the recorder: his rows (psAim: the ADS fraction and the breath per snapshot), a trapezoid between two rows of his
+    // less than 250 ms apart (else the last one's rate for up to 250 ms)
+    const A2 = this.M.d.psAim;
+    if (!A2) return t * hs;
+    let byCl = this.idleRec.get(P);
+    if (!byCl) this.idleRec.set(P, byCl = new Map());
+    let I = byCl.get(cl);
+    if (!I) {
+      const rt = [], g = [], cum = [];
+      for (let r = 0; r < A2.t.length; r++) {
+        if (A2.client[r] !== cl) continue;
+        const x = (A2.breath ? A2.breath[r] : 1) * (hs + (as - hs) * A2.ads[r]) - hs, n = rt.length;
+        if (n) { const d = A2.t[r] - rt[n - 1]; cum.push(cum[n - 1] + (d < 250 ? d * (g[n - 1] + x) / 2 : 250 * g[n - 1])); }
+        else cum.push(0);
+        rt.push(A2.t[r]); g.push(x);
+      }
+      byCl.set(cl, I = { rt: Float64Array.from(rt), g: Float64Array.from(g), cum: Float64Array.from(cum) });
+    }
+    const k = lower(I.rt, t);
+    if (k < 0) return t * hs;
+    const d = t - I.rt[k];
+    let e = I.cum[k];
+    if (k + 1 < I.rt.length && I.rt[k + 1] - I.rt[k] < 250) {
+      const g1 = I.g[k] + (I.g[k + 1] - I.g[k]) * d / (I.rt[k + 1] - I.rt[k]);
+      e += d * (I.g[k] + g1) / 2;
+    } else e += Math.min(d, 250) * I.g[k];
+    return t * hs + e;
   }
 
   /** the other player's sprint from the legs animation -> {key, time, prev, prevTime} or null */
@@ -338,8 +404,8 @@ export class ViewAnimator {
     const scoped = P.adsOverlayReticle && P.adsOverlayReticle !== 'none';
     const amount = P.hipIdleAmount === 0 && !P.adsIdleAmount ? 80 : v('hipIdleAmount') + (v('adsIdleAmount') - v('hipIdleAmount')) * ads;
     let scale = amount * sim.idleFactor * sim.breath;
-    // the idle time: the hip speed, plus what the ADS speed (and the breath) added over the simulated stretch
-    const it = t * (P.hipIdleSpeed || 1) + sim.idleExtra;
+    // the idle time: the hip / ADS speed (and the breath) integrated since the map's start
+    const it = this.idleTime(cl, t, W, P);
     // the scope's sway moves the view, not the gun (CG_CalculateView_IdleAngles: weapons with an overlay
     // reticle - amount x stance factor x ADS x holdBreathScale; pitch / yaw degrees for the camera)
     out.viewSway = scoped && ads > 0 ? [scale * ads * Math.sin(it * 0.001) * 0.01, scale * ads * Math.sin(it * 0.0007) * 0.01] : null;
@@ -351,7 +417,7 @@ export class ViewAnimator {
     pos[2] += 0.25 * this.landDip(cl, t);
     // bob (approximated): the recorder's bob cycle, else the distance walked (one cycle per 2 steps)
     const crouch = s.crouch && !s.prone ? 1 : 0, prone = s.prone ? 1 : 0, stand = 1 - crouch - prone;
-    const move = clamp01(sim.speed / RUN_SPEED) * (sim.ground ? 1 : 0.3);
+    const move = clamp01(sim.speed / RUN_SPEED) * sim.ground;
     let phase;
     if (W) {
       let b = W.bob[ri];
@@ -376,12 +442,14 @@ export class ViewAnimator {
     if (a0) {
       let dyaw = s.yaw - a0.yaw; dyaw = ((dyaw + 540) % 360) - 180;
       const rateY = dyaw / 0.06, rateP = (s.pitch - a0.pitch) / 0.06;
-      const max = (ads > 0.5 ? v('adsSwayMaxAngle') : v('swayMaxAngle')) * 0.25, lerp = (ads > 0.5 ? P.adsSwayLerpSpeed : P.swayLerpSpeed) || 4;
-      const yawS = ads > 0.5 ? v('adsSwayYawScale') : v('swayYawScale'), pitS = ads > 0.5 ? v('adsSwayPitchScale') : v('swayPitchScale');
+      // (the hip / ADS values mixed by the ADS fraction: switched at a half, the lag jumped while turning and aiming in)
+      const mix = (h, a) => v(h) + (v(a) - v(h)) * ads;
+      const max = mix('swayMaxAngle', 'adsSwayMaxAngle') * 0.25, lerp = (P.swayLerpSpeed || 4) + ((P.adsSwayLerpSpeed || 4) - (P.swayLerpSpeed || 4)) * ads;
+      const yawS = mix('swayYawScale', 'adsSwayYawScale'), pitS = mix('swayPitchScale', 'adsSwayPitchScale');
       const lagY = Math.max(-max, Math.min(max, -rateY / lerp * 0.1 * Math.abs(yawS || 1)));
       const lagP = Math.max(-max, Math.min(max, rateP / lerp * 0.1 * Math.abs(pitS || 1)));
       rot[1] += lagY; rot[0] += lagP;
-      pos[1] += lagY * (ads > 0.5 ? v('adsSwayHorizScale') : v('swayHorizScale')) * 0.3;
+      pos[1] += lagY * mix('swayHorizScale', 'adsSwayHorizScale') * 0.3;
     }
     // the gun kick (approximated): the shots of the last 1.2 s through the weapon's kick spring
     const k = this.kick(cl, t, P, ads);
@@ -390,10 +458,10 @@ export class ViewAnimator {
 
   /** the inputs of the gun's motion at demo time tm: horizontal speed, stance flags, the view height
    *  target, reloading, the ADS fraction - the recorder's player state (interpolated), else the samples */
-  inputAt(cl, tm, W, P) {
-    const M = this.M, s = M.sampleAt(cl, tm);
+  inputAt(cl, tm, W, P, out = {}) {
+    const M = this.M, s = M.sampleInto(cl, tm, this.scratchS || (this.scratchS = {}));
     if (!s) return null;
-    const out = { prone: s.prone, crouch: s.crouch && !s.prone, speed: 0, ground: true, reloading: false, ads: 0, breath: 1 };
+    out.prone = s.prone; out.crouch = s.crouch && !s.prone; out.speed = 0; out.ground = true; out.reloading = false; out.ads = 0; out.breath = 1;
     const r = W ? this.recorderRow(cl, tm) : -1;
     if (r >= 0) {
       const f = r + 1 < W.t.length && W.client[r + 1] === cl && W.t[r + 1] > W.t[r] ? clamp01((tm - W.t[r]) / (W.t[r + 1] - W.t[r])) : 0, n = f ? r + 1 : r;
@@ -407,8 +475,13 @@ export class ViewAnimator {
         if (A2.breath) out.breath = A2.breath[r] + (A2.breath[n] - A2.breath[r]) * f;
       }
     } else {
-      const a = M.sampleAt(cl, tm - 50);
-      if (a) { out.speed = Math.hypot(s.x - a.x, s.y - a.y) * 20; out.ground = Math.abs(s.z - a.z) * 20 < 40; }
+      // (the positions are mostly whole units: over 50 ms one unit of rounding was 20 units / s, the ground flag - and
+      // with it the bob's strength - flipping frame by frame on a slope or stairs; the chord over +-100 ms instead, a
+      // half faster than 600 units / s - a teleport, a respawn - left out)
+      const a = M.sampleInto(cl, tm - 100, this.scratchA || (this.scratchA = {})), b = M.sampleInto(cl, tm + 100, this.scratchB || (this.scratchB = {}));
+      const half = q => (q ? Math.hypot(q.x - s.x, q.y - s.y) * 10 : Infinity), okA = half(a) <= 600, okB = half(b) <= 600;
+      if (okA && okB) { out.speed = Math.hypot(b.x - a.x, b.y - a.y) * 5; out.ground = Math.abs(b.z - a.z) * 5 < 60; }
+      else if (okA || okB) { const q = okA ? a : b; out.speed = half(q); out.ground = Math.abs(q.z - s.z) * 10 < 60; }
       out.ads = this.adsOther(cl, tm, P);
       out.reloading = this.reloadingOther(cl, tm, P);
     }
@@ -427,13 +500,13 @@ export class ViewAnimator {
     return false;
   }
 
-  /** the base position / angles' follow simulation (see motion) -> {org [f, r, u], ang [p, y, r], idleFactor,
-   *  idleExtra (ms of idle time the ADS speed and the held breath added / took), speed, ground, breath} */
+  /** the base position / angles' follow simulation (see motion) -> {org [f, r, u], ang [p, y, r], idleFactor, speed,
+   *  ground (the bob's share: 1 on the ground, 0.3 in the air - the others' estimate followed at 6 / s), breath} */
   gunFollow(cl, t, W, P) {
     const STEP = 1000 / 60, v = k => P[k] || 0, G_SPEED = 190;
     let tm = Math.floor((t - SIM_MS) / STEP) * STEP;
     const org = [0, 0, 0], ang = [0, 0, 0];
-    let idle = null, extra = 0, last = null;
+    let idle = null, last = null, ground = null;
     const follow = (cur, target, rate, dt) => {
       if (target === cur) return cur;
       let d = dt * (target - cur) * rate;
@@ -443,12 +516,14 @@ export class ViewAnimator {
     while (tm < t) {
       const dt = Math.min(STEP, t - tm) / 1000;
       tm += dt * 1000;
-      const inp = this.inputAt(cl, tm, W, P);
+      // (one input object per simulation: 150 steps a frame, nothing allocated per step)
+      const inp = this.inputAt(cl, tm, W, P, this.scratchIn || (this.scratchIn = {}));
       if (!inp) continue;
       last = inp;
       const st = inp.prone ? 'prone' : inp.crouch ? 'ducked' : 'stand';
       // the position: *Move by the speed above *MoveMinSpeed, the *Ofs of the stance
-      const target = [0, 0, 0], angT = [0, 0, 0];
+      const target = this.scratchT || (this.scratchT = [0, 0, 0]), angT = this.scratchR || (this.scratchR = [0, 0, 0]);
+      target[0] = target[1] = target[2] = angT[0] = angT[1] = angT[2] = 0;
       const mMin = v(st + 'MoveMinSpeed'), rMin = v(st + 'RotMinSpeed');
       if (inp.speed > mMin && !inp.reloading) {
         const sc = Math.min(1, (inp.speed - mMin) / (G_SPEED - mMin));
@@ -466,13 +541,12 @@ export class ViewAnimator {
       if (idle == null) idle = fT;
       const scoped = P.adsOverlayReticle && P.adsOverlayReticle !== 'none';
       if (!scoped || inp.ads === 0) idle = idle < fT ? Math.min(fT, idle + dt * 0.5) : Math.max(fT, idle - dt * 0.5);
-      // (the idle time runs at the hip / ADS speed times holdBreathScale: it stands still while the breath is held)
-      const hs = P.hipIdleSpeed || 1;
-      extra += dt * 1000 * (inp.breath * (hs + ((P.adsIdleSpeed || 1) - hs) * inp.ads) - hs);
+      const gT = inp.ground ? 1 : 0.3;
+      ground = ground == null || W ? gT : ground < gT ? Math.min(gT, ground + dt * 6) : Math.max(gT, ground - dt * 6);
     }
     const ads = last ? last.ads : 0, k = ads === 0 ? 1 : ads < 0.5 ? 1 - 2 * ads : 0;
-    return { org: org.map(x => x * k), ang: ang.map(x => x * k), idleFactor: idle == null ? 1 : idle, idleExtra: extra,
-      speed: last ? last.speed : 0, ground: last ? last.ground : true, breath: last ? last.breath : 1 };
+    return { org: org.map(x => x * k), ang: ang.map(x => x * k), idleFactor: idle == null ? 1 : idle,
+      speed: last ? last.speed : 0, ground: ground == null ? 1 : ground, breath: last ? last.breath : 1 };
   }
 
   /** the lean (-1 .. 1) of client cl at t: the recorder's player state, else the entity's */

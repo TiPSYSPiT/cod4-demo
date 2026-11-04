@@ -8,7 +8,7 @@
  * per stance (stand / crouch / prone) with torso rotations and two-bone IK for arms and legs;
  * the view pitch bends spine, neck and head. */
 import * as THREE from 'three';
-import { blendOptions } from './blend.js';
+import { blendOptions, coverageOptions } from './blend.js';
 import { gridLit, objectLighting, materialShading } from './lighting.js';
 import { SHADOW_LAYER } from './shadows.js';
 import { loadDataManifest, dataUrl } from './data.js';
@@ -229,15 +229,29 @@ export class CharacterLibrary {
     // the vertex colours (the model shaders multiply the colour map by them)
     const colors = !!(S.color && S.color.length);
     if (colors) geo.setAttribute('color', new THREE.BufferAttribute(new Uint8Array(bin, S.color.offset, S.color.length), 4, true));
+    // the LODs (player models: meta.lods - LOD 0's surfaces first): one geometry per LOD on the same buffers
+    const lodInfo = meta.lods && meta.lods.length > 1 ? meta.lods : [{ dist: 0, surfaceStart: 0, surfaceCount: meta.surfaces.length, triangles: meta.triangleCount }];
+    const lodGeo = lodInfo.map((L, k) => {
+      if (k === 0) return geo;
+      const g = new THREE.BufferGeometry();
+      for (const [n, a] of Object.entries(geo.attributes)) g.setAttribute(n, a);
+      g.setIndex(geo.index);
+      return g;
+    });
+    const lodOf = j => lodInfo.findIndex(L => j >= L.surfaceStart && j < L.surfaceStart + L.surfaceCount);
     const mats = meta.surfaces.map((s, k) => {
-      geo.addGroup(s.indexStart, s.indexCount, k);
+      const L = lodOf(k);
+      if (L >= 0) lodGeo[L].addGroup(s.indexStart, s.indexCount, k - lodInfo[L].surfaceStart);
       const m = s.material >= 0 ? meta.materials[s.material] : null;
       const opts = { color: 0xffffff, vertexColors: colors };
       const tex = m && this.texture(m.texture);
       if (tex) opts.map = tex; else opts.color = new THREE.Color(m && m.color || '#7a7a70');
-      if (m && m.alphaTest && m.textureAlpha) opts.alphaTest = m.alphaTest === 'gt0' ? 0.05 : 0.5;
+      if (m && m.alphaTest && m.textureAlpha) {
+        opts.alphaTest = m.alphaTest === 'gt0' ? 0.05 : 0.5;
+        if (!m.blend) Object.assign(opts, coverageOptions());      // (the cut-out's edge antialiased: blend.js)
+      }
       if (m && m.blend) Object.assign(opts, blendOptions(m.blend));      // the game's blend factors (blend.js)
-      if (m && m.doubleSided) opts.side = THREE.DoubleSide;
+      if (m && m.doubleSided) { opts.side = THREE.DoubleSide; opts.forceSinglePass = true; }   // (one pass: mapLoader.js)
       // a shadow caster's material: only in the shadow maps (shadows.js), not drawn
       if (m && m.shadowOnly) opts.visible = false;
       // no lit / emissive technique: the game never draws it - nor does it cast (shadows.js)
@@ -245,15 +259,19 @@ export class CharacterLibrary {
       return new THREE.MeshLambertMaterial(opts);
     });
     // normal / specular maps per surface, used with the game's lighting (gridLit)
-    const shadings = meta.surfaces.map(s => materialShading(s.material >= 0 ? meta.materials[s.material] : null, f => this.texture(f)));
+    const allShadings = meta.surfaces.map(s => materialShading(s.material >= 0 ? meta.materials[s.material] : null, f => this.texture(f)));
+    const allMats = mats;
+    const lods = lodInfo.map((L, k) => ({ dist: L.dist > 0 ? L.dist : Infinity, geo: lodGeo[k], triangles: L.triangles,
+      mats: allMats.slice(L.surfaceStart, L.surfaceStart + L.surfaceCount), shadings: allShadings.slice(L.surfaceStart, L.surfaceStart + L.surfaceCount) }));
     geo.computeBoundingSphere();
     geo.boundingSphere.radius += 60;                  // posed limbs reach beyond the bind pose
+    for (const L of lods) L.geo.boundingSphere = geo.boundingSphere;
     // the bind pose (model space) and the stance poses of this skeleton
     const bind = bindWorld(meta.bones);
     const inverses = bind.map(w => new THREE.Matrix4().compose(w.p, w.q, new THREE.Vector3(1, 1, 1)).invert());
     const poses = {};
     if (meta.kind === 'body') for (const st of Object.keys(POSES)) poses[st] = toLocal(meta.bones, stancePose(meta.bones, st));
-    return { name, meta, geo, mats, shadings, bones: meta.bones, bind, inverses, poses, triangles: meta.triangleCount };
+    return { name, meta, geo, mats: lods[0].mats, shadings: lods[0].shadings, lods, bones: meta.bones, bind, inverses, poses, triangles: meta.triangleCount };
   }
 }
 
@@ -298,6 +316,18 @@ export class Character {
       this.group.add(this.headMesh);
       this.triangles += head.triangles;
     }
+    // the coarser LODs (the player models' meta.lods): skinned meshes on the same skeletons, one LOD drawn (setLod)
+    const lodMeshes = (model, mesh) => [mesh, ...(model.lods || []).slice(1).map(L => {
+      const m = new THREE.SkinnedMesh(L.geo, L.mats);
+      m.bind(mesh.skeleton, IDENTITY);
+      m.boundingSphere = CHARACTER_SPHERE;
+      m.layers.enable(SHADOW_LAYER);
+      m.visible = false;
+      this.group.add(m);
+      return m;
+    })];
+    this.parts = [{ model: body, meshes: lodMeshes(body, this.bodyMesh), lod: 0 }];
+    if (head) this.parts.push({ model: head, meshes: lodMeshes(head, this.headMesh), lod: 0 });
     this.stance = null;
     this.pitchBones = PITCH_BONES.map(([n, share]) => [this.byName.get(n), share]).filter(x => x[0]);
     this.tmpQ = new THREE.Quaternion();
@@ -322,14 +352,33 @@ export class Character {
     });
   }
 
+  /** the LOD of each part for an eye at distance d (units, already scaled by the view's zoom): XModelGetLodForDist -
+   *  the first LOD whose distance is beyond d (8 % hysteresis around the current one's bounds); the last one beyond
+   *  its own distance too (players are never culled by distance) -> whether a part switched */
+  setLod(d) {
+    let changed = false;
+    for (const P of this.parts) {
+      const L = P.model.lods;
+      if (!L || L.length < 2) continue;
+      let k = 0;
+      while (k < L.length - 1 && d >= L[k].dist * (k === P.lod ? 1.08 : k === P.lod - 1 ? 0.92 : 1)) k++;
+      if (k === P.lod) continue;
+      P.meshes[P.lod].visible = false;
+      P.meshes[k].visible = true;
+      this.triangles += L[k].triangles - L[P.lod].triangles;
+      P.lod = k;
+      changed = true;
+    }
+    return changed;
+  }
+
   /** the game's model lighting (lighting.js): own copies of the materials, lit by the light grid
    *  values in this.lg (set per frame by the caller); the weapon follows */
   enableGridLighting() {
     if (this.lg) return this.lg;
     this.lg = objectLighting();
-    const patch = (mats, model) => (Array.isArray(mats) ? mats : [mats]).map((m, k) => gridLit(m.clone(), this.lg, model && model.shadings && model.shadings[k]));
-    this.bodyMesh.material = patch(this.bodyMesh.material, this.body);
-    if (this.headMesh) this.headMesh.material = patch(this.headMesh.material, this.head);
+    const patch = (mats, shadings) => (Array.isArray(mats) ? mats : [mats]).map((m, k) => gridLit(m.clone(), this.lg, shadings && shadings[k]));
+    for (const P of this.parts) P.meshes.forEach((mesh, k) => { mesh.material = patch(mesh.material, (P.model.lods ? P.model.lods[k] : P.model).shadings); });
     if (this.weapons) for (const w of this.weapons.values()) w.material = patch(w.material, w.userData.model);
     return this.lg;
   }

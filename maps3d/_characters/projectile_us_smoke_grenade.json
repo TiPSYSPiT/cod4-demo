@@ -57,10 +57,34 @@
   {
    "indexStart": 0,
    "indexCount": 900,
-   "material": -1
+   "material": 0
   }
  ],
- "materials": [],
+ "materials": [
+  {
+   "name": "mc/mtl_us_smoke_grenade",
+   "texture": "_textures/us_smoke_grenade_c.webp",
+   "textureAlpha": false,
+   "color": "#5e655b",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/us_smoke_grenade_s-rgbl-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
  "bounds": {
   "mins": [
    -1.08,

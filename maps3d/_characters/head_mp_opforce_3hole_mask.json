@@ -7,34 +7,34 @@
  "sections": {
   "position": {
    "offset": 0,
-   "length": 20676
+   "length": 46872
   },
   "normal": {
-   "offset": 20676,
-   "length": 6892
+   "offset": 46872,
+   "length": 15624
   },
   "uv": {
-   "offset": 27568,
-   "length": 13784
+   "offset": 62496,
+   "length": 31248
   },
   "skinIndex": {
-   "offset": 41352,
-   "length": 6892
+   "offset": 93744,
+   "length": 15624
   },
   "skinWeight": {
-   "offset": 48244,
-   "length": 6892
+   "offset": 109368,
+   "length": 15624
   },
   "index": {
-   "offset": 55136,
-   "length": 14808
+   "offset": 124992,
+   "length": 29856
   },
   "color": {
-   "offset": 69944,
-   "length": 6892
+   "offset": 154848,
+   "length": 15624
   }
  },
- "vertexCount": 1723,
+ "vertexCount": 3906,
  "triangleCount": 2468,
  "bones": [
   {
@@ -972,20 +972,63 @@
   {
    "indexStart": 0,
    "indexCount": 432,
-   "material": 1
+   "material": 0
   },
   {
    "indexStart": 432,
    "indexCount": 3648,
-   "material": 0
+   "material": 1
   },
   {
    "indexStart": 4080,
    "indexCount": 3324,
    "material": 2
+  },
+  {
+   "indexStart": 7404,
+   "indexCount": 2436,
+   "material": 1
+  },
+  {
+   "indexStart": 9840,
+   "indexCount": 1704,
+   "material": 2
+  },
+  {
+   "indexStart": 11544,
+   "indexCount": 2484,
+   "material": 3
+  },
+  {
+   "indexStart": 14028,
+   "indexCount": 900,
+   "material": 3
   }
  ],
  "materials": [
+  {
+   "name": "mc/mtl_eye_highlight",
+   "texture": "_textures/eye_highlight_col.webp",
+   "textureAlpha": true,
+   "color": "#cbc9cb",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "specularMap": "_textures/eye_highlight_spc-rgb_eye_hi_92c2d33b.specular.webp",
+   "envMapParms": [
+    1.0,
+    1.0,
+    2.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
   {
    "name": "mc/mtl_opforce_3hole_ski_mask_sp",
    "texture": "_textures/opforce_3hole_ski_mask_col_sp.webp",
@@ -1001,29 +1044,6 @@
     0.8,
     4.0,
     2.5,
-    0.625
-   ],
-   "colorTint": [
-    1.0,
-    1.0,
-    1.0,
-    1.0
-   ]
-  },
-  {
-   "name": "mc/mtl_eye_highlight",
-   "texture": "_textures/eye_highlight_col.webp",
-   "textureAlpha": true,
-   "color": "#cbc9cb",
-   "alphaTest": "gt0",
-   "blend": "one/invsrcalpha",
-   "doubleSided": false,
-   "depthWrite": false,
-   "specularMap": "_textures/eye_highlight_spc-rgb_eye_hi_92c2d33b.specular.webp",
-   "envMapParms": [
-    1.0,
-    1.0,
-    2.0,
     0.625
    ],
    "colorTint": [
@@ -1056,6 +1076,30 @@
     1.0,
     1.0
    ]
+  },
+  {
+   "name": "mc/mtl_opforce_lod_sp",
+   "texture": "_textures/opforce_lod_col_sp.webp",
+   "textureAlpha": false,
+   "color": "#453e35",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/opforce_lod_nml_sp.normal.webp",
+   "specularMap": "_textures/opforce_lod_spc_sp-rgb_opfor_169cd8d8.specular.webp",
+   "envMapParms": [
+    0.68,
+    6.0,
+    2.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
   }
  ],
  "bounds": {
@@ -1070,6 +1114,32 @@
    21.01
   ]
  },
+ "lods": [
+  {
+   "dist": 300.0,
+   "surfaceStart": 0,
+   "surfaceCount": 3,
+   "triangles": 2468
+  },
+  {
+   "dist": 500.0,
+   "surfaceStart": 3,
+   "surfaceCount": 2,
+   "triangles": 1380
+  },
+  {
+   "dist": 1200.0,
+   "surfaceStart": 5,
+   "surfaceCount": 1,
+   "triangles": 828
+  },
+  {
+   "dist": 1000000.0,
+   "surfaceStart": 6,
+   "surfaceCount": 1,
+   "triangles": 300
+  }
+ ],
  "hitBoxes": [
   {
    "bone": 0,

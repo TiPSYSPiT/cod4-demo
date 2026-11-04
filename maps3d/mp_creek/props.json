@@ -925,7 +925,7 @@
    "name": "mc/mtl_military_tires02",
    "texture": "_textures/tires02_col.webp",
    "textureAlpha": false,
-   "color": "#30302c",
+   "color": "#31302c",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
@@ -1954,7 +1954,7 @@
    "name": "mc/mtl_rowboat_and_paddles",
    "texture": "_textures/xpec_rowboat_and_paddles_col.webp",
    "textureAlpha": false,
-   "color": "#3f3831",
+   "color": "#3f3832",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
@@ -2264,7 +2264,7 @@
    "name": "mc/mtl_uaz_van",
    "texture": "_textures/mtl_uaz_van_col.webp",
    "textureAlpha": true,
-   "color": "#4f504c",
+   "color": "#4e504c",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
@@ -2311,7 +2311,7 @@
    "name": "mc/mtl_uaz_van_2sided",
    "texture": "_textures/mtl_uaz_van_col.webp",
    "textureAlpha": true,
-   "color": "#4f504c",
+   "color": "#4e504c",
    "alphaTest": null,
    "blend": null,
    "doubleSided": true,
@@ -8151,8 +8151,8 @@
   "lod0SurfacesWithoutMaterial": 0,
   "materialHandles": {
    "inline": 150,
-   "resolved": 523,
-   "unresolved": 71,
+   "resolved": 567,
+   "unresolved": 27,
    "null": 0,
    "chains": 18,
    "rules": {
@@ -8160,6 +8160,8 @@
    },
    "shiftedModels": 9,
    "windowedChains": 2,
+   "selfPlaced": 22,
+   "selfOverrides": 0,
    "known": {
     "246236": "mc/mtl_river_birch_canopy_2",
     "246240": "mc/mtl_river_birch",
@@ -8295,7 +8297,11 @@
     "30185852": "mc/mtl_opforce_gas_mask_lens_sp",
     "30185864": "mc/mtl_opforce_gas_mask_sp",
     "30257672": "mc/mtl_opforce_gear_sp",
-    "30282588": "mc/mtl_opforce_3hole_ski_mask_sp"
+    "30282588": "mc/mtl_opforce_3hole_ski_mask_sp",
+    "29946124": "mc/mtl_opforce_body_sp",
+    "29946148": "mc/mtl_opforce_lod_sp",
+    "29969912": "mc/mtl_opforce_ski_mask_sp",
+    "29969916": "mc/mtl_opforce_hands_sp"
    }
   }
  },

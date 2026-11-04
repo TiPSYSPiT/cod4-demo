@@ -26,8 +26,11 @@ ES modules (needed for three.js) do not work from `file://`, so serve the folder
 
 ```
 cd cod4-demo3d
-py -m http.server 8765
+py tools/serve.py
 ```
+
+(`tools/serve.py`: port 8765, no browser caching and a large listen backlog - `py -m http.server 8765` works too,
+but on Windows it refuses connections while the 3D view loads a map in a burst, and browsers may keep old copies.)
 
 Open <http://127.0.0.1:8765/> and drop a `.dm_1` file on the page (or use **Open demo**).
 Deep links work too: `index.html?demo=demos/my.dm_1&view=3d&t=300&focus=name` loads a demo
@@ -44,8 +47,8 @@ is not served as JavaScript, or cannot be reached (three.js: the `vendor/` folde
 CDN unreachable if you switched the import map to the CDN alternative noted in `index.html`); when
 every file downloads, the module that is broken (a syntax error, a missing export). The 3D view's
 own start errors keep their message; the full stack trace is in the browser console.
-`py -m http.server` sends no cache headers, so after updating the files a browser may keep old
-copies: reload with `Ctrl+F5` if the page behaves oddly.
+With `py -m http.server` (no cache headers) a browser may keep old copies after an update: reload with
+`Ctrl+F5` if the page behaves oddly.
 
 ## Using it
 
@@ -57,11 +60,12 @@ Every choice below is remembered in the browser.
 
 | Part | What it does |
 |---|---|
-| Top bar | The file name, the **2D / 3D** toggle (key `V`), **Match details** (chart icon: scoreboard, round by round, chat, events, weapons), **Export JSON** (file icon), the GitHub link, **Open demo** |
+| Top bar | The file name, the **2D / 3D** toggle (key `V`; a demo opens in **3D, in first person** of the demo's own view - the recording player, or the player he followed then; the view and the camera the viewer chose are remembered instead), **Match details** (chart icon: scoreboard, round by round, chat, events, weapons), **Export JSON** (file icon), the GitHub link, **Open demo** |
 | Score pill | Top centre: the teams (▲ the POV's team in blue, ◆ the other in red - the shapes tell them apart without the colours), the score at the playback time, the round and its time, map and mode; while a bomb is planted its countdown (the server's `setGameEndTime` clock of the plant, config string 11 - else the demo's plant-to-explosion time, else 45 s, marked `≈`; the 2D bomb shows it too) |
-| Rail | The icon bar on the left; each icon opens a popover (`Esc` or a click outside closes it). **Layers**: names, trails (5 s), kill lines, last known position, grenade types (smoke / frag / flash). The view's own popovers follow (2D: **Heatmap**; 3D: **Camera**, **Display**, **Graphics**, below). **Match info** at the bottom: **Show final score** (the result and the halves), map, mode, ruleset, server, POV, length, record date, protocol (`≈` marks heuristic values - hover one for how it was derived), the map data (file, triangle counts, load time) and the keyboard shortcuts |
-| Drawer | On the right, hideable (the panel icon), its two sections foldable. **Teams**: round, status, side, score and the players alive (bars) per team; per player the weapon in hand (its icon) and K / D up to now. **Click a player to select them** (highlighted in 2D and 3D; the 3D follow and first-person cameras use the selection; also with `Tab` and `Enter`). The eye shows or hides a player, the team name the team, *All* / *None* everyone, the chart icon opens the player's stats. **Kill feed & bomb**: kills (attacker, weapon icon, headshot, victim) and plant / defuse of the range; the entry at the playback time is highlighted and kept in view, later ones are dimmed; click one to jump to 2 s before it |
+| Rail | The icon bar on the left; each icon opens a popover (`Esc` or a click outside closes it). **Layers**: names, trails (5 s, off by default), kill lines, last known position, grenade types (smoke / frag / flash). The view's own popovers follow (2D: **Heatmap**; 3D: **Camera**, **Display**, **Graphics**, below). **Match info** at the bottom: **Show final score** (the result and the halves), map, mode, ruleset, server, POV, length, record date, protocol (`≈` marks heuristic values - hover one for how it was derived), the map data (file, triangle counts, load time) and the keyboard shortcuts |
+| Drawer | On the right, hideable (the panel icon), its two sections foldable. **Teams**: round, status, side, score and the players alive (bars) per team; per player the weapon in hand (its icon) and K / D up to now. **Click a player to select them** (highlighted in 2D and 3D; the 3D follow and first-person cameras use the selection; also with `Tab` and `Enter`). The eye shows or hides a player, the team name the team, *All* / *None* everyone, the chart icon opens the player's stats. **Kill feed & bomb**: kills (attacker, weapon icon, headshot, victim) and plant / defuse of the range; the entry at the playback time is highlighted and kept in view, later ones are dimmed; click one to jump to 2 s before it (that entry stays the highlighted one); separators mark each round ("R7", the knife round, the warm-up, after the match - the same rounds as the timeline; the current round's in the accent, click one for the round's start) and each halftime |
 | Player bar | At the bottom: ⏪ / ⏩ 5 s (`←` / `→`), play / pause (`Space`), the time (under it the round and its time), the timeline - the rounds as segments (underlined in the winner's colour once played), kills as ticks (the blue team's above, the red team's below), bomb plants (orange) and defuses (green), halftime lines; drag to scrub, strat time is skipped -, **Range** (whole match or one round), the speed (0.5–4×), **[ ]** the start / end of an export range at the current time (keys `I` / `O`; again to clear), **Export video** (MP4 / GIF of the 2D or the 3D view, below) |
+| Scoreboard | Hold `Tab`: the teams with each player's kills and deaths up to the playback time over the view - 2D, 3D in every camera, fullscreen -, the watched player lit; gone when `Tab` is released or the window loses the focus. In a form field, a dropdown, a popover or a dialog `Tab` moves the focus as usual. Not part of the video export (`js/app/scoresOverlay.js`) |
 | Match details | The cod4-demo tabs over the view. Clicking a kill or bomb event closes the overlay and jumps there |
 | Fullscreen | The button left of the drawer or key `F` (not in the free camera, where `F` flies down): only the view and its HUD; the player bar comes up while the mouse moves (2.5 s). `Esc` or `F` leaves it |
 
@@ -112,18 +116,21 @@ script models (destructible cars, the gametypes' objects such as the bomb case, 
 corkboards the scripts spawn) in the state the demo records - an exploding car jumps, tilts and is
 swapped for its burnt-out model, and stands intact again after the next round start; the cars
 stop bullets and debris with their own collision surfaces where they stand at that moment - and the
-bomb sites A / B. The **Props** selector (Display popover) switches between *Models* (LOD 0), *Models (low detail)*
+bomb sites A / B. The **Props** selector (Display popover) switches between *Models* (the game's detail level by
+distance: LOD 0 up to its switch distance, then the coarse LOD, none beyond the model's cull distance -
+`XModelGetLodForDist`, scaled by the view's zoom), *Models (low detail)*
 (each model's lowest LOD), see-through *Boxes* of the model bounds (foliage green) and *Off*. The
 Match info popover shows the triangle counts and load times. Players are capsules in the team colour:
-standing, crouched or lying prone, with an aim line using their real pitch. Kill lines,
+standing, crouched or lying prone, with an aim line using their real pitch (Display: *View lines*; *Player rings*
+the team rings at the models' feet; *Enemy names* off names only the teammates of the watched player, as the game -
+all three on by default, remembered). Kill lines,
 death crosses, grenade arcs, smoke clouds and the bomb are drawn too. The **kill feed** (Display popover:
 *Kill feed*, on by default, remembered) shows the kills and bomb plants / defuses of the last 5 s of
 the round under the score pill, left of the drawer, newest at the bottom, like the game's obituaries: killer, weapon icon,
 headshot icon, victim in the team colours, the drawer's icons and rules (suicide, falling, car,
 knife, grenades; a *Teamkill* / *Bomb* tag; a weapon without an icon by name), on a dark row that
 stays readable over bright maps. Entries fade out over their last 0.8 s; the feed depends only on
-the replay time, so pausing, seeking and the speed need nothing special. *Kill icons* (off by
-default) puts the weapon icon over each death cross. *Bullet tracers* (off by default) draws the game's tracers
+the replay time, so pausing, seeking and the speed need nothing special. *Bullet tracers* (off by default) draws the game's tracers
 (`CG_SpawnTracer` / `CG_DrawTracer`: a 160-unit glowing beam flying at 7500 units/s from the muzzle, gone at the
 hit, `gfx_tracer`'s image): for 20 % of the bullet hits the server reports (`cg_tracerChance`) and half the shots
 of the player seen in first person (`cg_firstPersonTracerChance`), decided per bullet so every replay shows the
@@ -195,10 +202,12 @@ camera (`EV_EARTHQUAKE`: `CG_ShakeCamera`'s scale, radius and duration).
 **The game's HUD** (Display: *Game HUD*, on; `js/view3d/hud.js`, the images by `tools/export/hud_export.py`): in
 first person the minimap of Promod's HUD (the compass map turned with the view, teammates, enemies while they fire),
 the ammo (clip | reserve, red when low) with the weapon's name and the grenades, the low health overlay, the damage
-direction indicator (2 s), the teammate under the crosshair and the use hint - laid out on the game's 640 × 480 screen
-inside the viewer's panels; hold `Tab` for the scoreboard (kills / deaths so far). The ammo, health, damage and hints
-exist only for the recorder (the demo's player state); the server's own HUD elements are not drawn. The video export
-draws the HUD into its frames.
+direction indicator (`hit_direction`, 2 s), the **hit marker** (the scripts' `damage_feedback` HUD element of
+`_damagefeedback.gsc` - stock and Promod -, its fade, size and place as the server sends them: on every hit the
+recorder lands), the teammate under the crosshair and the use hint - laid out on the game's 640 × 480 screen inside
+the viewer's panels (the damage indicator and the hit marker on the screen's centre, as the game). The ammo, health,
+damage, hit marker and hints exist only for the recorder (the demo's player state); of the server's own HUD elements
+only the hit marker is drawn. The video export draws the HUD into its frames.
 
 **Promod demos** (`mod` / `fs_game` / `promodVersion` name Promod): the numbers and effects of Promod's weapon files
 (`promod_x-master/weapons/mp`, exported into `viewmodels.json` as the differences) - no crosshair colours, no muzzle
@@ -313,7 +322,7 @@ says so.
 | Speed | 0.5×, 1×, 2× |
 | Quality | MP4: high / medium / low bit rate; GIF: 256 colours with or without dithering, 128, 64 colours |
 | Camera | the view's current camera mode and position (orbit, free, follow, first person) with the selected player, and Simple / Models |
-| Overlays | name labels (and bomb site letters), kill feed (with the weapon icons, as in the view), bomb / kill markers in the scene (with the weapon icons when *Kill icons* is on), score and timer, a title (map, mode, round) |
+| Overlays | name labels (and bomb site letters), kill feed (with the weapon icons, as in the view), bomb / kill markers in the scene, score and timer, a title (map, mode, round) |
 | Sound | the game's sounds at the export's camera (MP4; the WebM fallback too; not GIF) |
 
 Before it starts, the dialog shows the size, frame count, video length, an estimated file size and
@@ -419,7 +428,7 @@ py tools/export/export_maps.py --game "C:/Games/Call of Duty 4" --map mp_strike 
 | `--usermaps` | All custom maps of `usermaps/` (see "Custom maps" below) |
 | `--minimap-only` | Only the 2D maps: `minimap.json` of each map, the compass image and the registry of the custom maps |
 | `--out DIR` | Output folder (default `maps3d/` in the project) |
-| `--tex-size N` | Maximum texture edge in pixels (default 512) |
+| `--tex-size N` | Maximum texture edge in pixels (default 1024) |
 | `--map-tex-size N` | Maximum edge of normal and specular maps (default 256) |
 | `--force` | Re-encode textures that are already in the shared cache |
 | `--force-models` | Re-export the player and weapon models even if they are up to date (their materials) |
@@ -599,8 +608,8 @@ Textures are shared by all maps in `maps3d/_textures/`. Mp_strike takes about 14
 19 MB plus textures. All 26 maps of a German retail install (21 stock maps plus the usermaps
 `mp_backlot_x`, `mp_cluster`, `mp_coastal`, `mp_manorhouse` and `mp_marketcenter`) take about 12 minutes (twice that the first time, when the
 textures are encoded; the sounds add about 3 minutes the first time, for the ADPCM encoding). That is
-about 894 MB in total (the three newest usermaps 131 MB of it - mp_coastal alone has 3.1 million prop
-triangles at LOD 0), close to the 1 GB a GitHub Pages site may have; of it 77 MB are the 3,795 shared textures of world, props, players and weapons (colour maps up to 512 px, normal and specular
+about 946 MB in total (the three newest usermaps 131 MB of it - mp_coastal alone has 3.1 million prop
+triangles at LOD 0), close to the 1 GB a GitHub Pages site may have; of it 103 MB are the 3,904 shared textures of world, props, players and weapons (colour maps up to 1024 px, normal and specular
 maps up to 256 px: `--map-tex-size`). The format is described at the top of
 the script and in [docs/findings.md](docs/findings.md).
 
@@ -706,7 +715,7 @@ shows the real maps. It is extracted game content: read [maps3d/NOTICE.md](maps3
 and leave the folder out (add `/maps3d/` to `.gitignore`) if you do not want to publish it.
 The site then falls back to the 2D image as the ground. Individual files stay far below GitHub's
 100 MB limit (the largest `world.bin`, mp_carentan, is 21 MB; the largest `props.bin`, mp_farm,
-5.7 MB; the largest file is mp_manorhouse's world.bin, 23 MB). The whole site is about 0.9 GB (maps3d 894 MB, 101 MB of it the sounds), just below the 1 GB a Pages site may have - before adding more custom maps, lower `--tex-size` or leave a map out (the viewer falls back to its 2D image as the ground).
+5.7 MB; the largest file is mp_manorhouse's world.bin, 23 MB). The whole site is about 0.9 GB (maps3d 946 MB, 101 MB of it the sounds), just below the 1 GB a Pages site may have - before adding more custom maps, lower `--tex-size` or leave a map out (the viewer falls back to its 2D image as the ground).
 
 ## Layout
 

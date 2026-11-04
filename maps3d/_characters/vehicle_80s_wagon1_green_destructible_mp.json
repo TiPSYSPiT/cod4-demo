@@ -952,151 +952,137 @@
   {
    "indexStart": 540,
    "indexCount": 6486,
-   "material": 6,
-   "materialVariant": "vehicle_80s_wagon1_brn_destructible_mp"
+   "material": 3
   },
   {
    "indexStart": 7026,
    "indexCount": 330,
-   "material": 6,
-   "materialVariant": "vehicle_80s_wagon1_brn_destructible_mp"
+   "material": 3
   },
   {
    "indexStart": 7356,
    "indexCount": 282,
-   "material": 6,
-   "materialVariant": "vehicle_80s_wagon1_brn_destructible_mp"
+   "material": 3
   },
   {
    "indexStart": 7638,
    "indexCount": 264,
-   "material": 6,
-   "materialVariant": "vehicle_80s_wagon1_brn_destructible_mp"
+   "material": 3
   },
   {
    "indexStart": 7902,
    "indexCount": 324,
-   "material": 6,
-   "materialVariant": "vehicle_80s_wagon1_brn_destructible_mp"
+   "material": 3
   },
   {
    "indexStart": 8226,
    "indexCount": 264,
-   "material": 6,
-   "materialVariant": "vehicle_80s_wagon1_brn_destructible_mp"
+   "material": 3
   },
   {
    "indexStart": 8490,
    "indexCount": 324,
-   "material": 6,
-   "materialVariant": "vehicle_80s_wagon1_brn_destructible_mp"
+   "material": 3
   },
   {
    "indexStart": 8814,
    "indexCount": 162,
-   "material": 6,
-   "materialVariant": "vehicle_80s_wagon1_brn_destructible_mp"
+   "material": 3
   },
   {
    "indexStart": 8976,
    "indexCount": 24,
-   "material": 6,
-   "materialVariant": "vehicle_80s_wagon1_brn_destructible_mp"
+   "material": 3
   },
   {
    "indexStart": 9000,
    "indexCount": 12,
-   "material": 6,
-   "materialVariant": "vehicle_80s_wagon1_brn_destructible_mp"
+   "material": 3
   },
   {
    "indexStart": 9012,
    "indexCount": 24,
-   "material": 6,
-   "materialVariant": "vehicle_80s_wagon1_brn_destructible_mp"
+   "material": 3
   },
   {
    "indexStart": 9036,
    "indexCount": 12,
-   "material": 6,
-   "materialVariant": "vehicle_80s_wagon1_brn_destructible_mp"
+   "material": 3
   },
   {
    "indexStart": 9048,
    "indexCount": 108,
-   "material": 6,
-   "materialVariant": "vehicle_80s_wagon1_brn_destructible_mp"
+   "material": 3
   },
   {
    "indexStart": 9156,
    "indexCount": 108,
-   "material": 6,
-   "materialVariant": "vehicle_80s_wagon1_brn_destructible_mp"
+   "material": 3
   },
   {
    "indexStart": 9264,
    "indexCount": 132,
-   "material": 3
+   "material": 4
   },
   {
    "indexStart": 9396,
    "indexCount": 30,
-   "material": 3
+   "material": 4
   },
   {
    "indexStart": 9426,
    "indexCount": 144,
-   "material": 3
+   "material": 4
   },
   {
    "indexStart": 9570,
    "indexCount": 18,
-   "material": 3
+   "material": 4
   },
   {
    "indexStart": 9588,
    "indexCount": 18,
-   "material": 3
+   "material": 4
   },
   {
    "indexStart": 9606,
    "indexCount": 18,
-   "material": 3
+   "material": 4
   },
   {
    "indexStart": 9624,
    "indexCount": 18,
-   "material": 3
+   "material": 4
   },
   {
    "indexStart": 9642,
    "indexCount": 30,
-   "material": 3
+   "material": 4
   },
   {
    "indexStart": 9672,
    "indexCount": 96,
-   "material": 4
+   "material": 5
   },
   {
    "indexStart": 9768,
    "indexCount": 408,
-   "material": 5
+   "material": 6
   },
   {
    "indexStart": 10176,
    "indexCount": 408,
-   "material": 5
+   "material": 6
   },
   {
    "indexStart": 10584,
    "indexCount": 408,
-   "material": 5
+   "material": 6
   },
   {
    "indexStart": 10992,
    "indexCount": 408,
-   "material": 5
+   "material": 6
   }
  ],
  "materials": [
@@ -1159,6 +1145,30 @@
    ]
   },
   {
+   "name": "mc/mtl_80s_econ_green",
+   "texture": "_textures/80s_econ_green_col.webp",
+   "textureAlpha": false,
+   "color": "#555e4d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/80s_econ_nml.normal.webp",
+   "specularMap": "_textures/80s_econ_spc-rgb_80s_econ_cos-l-11.specular.webp",
+   "envMapParms": [
+    1.0,
+    3.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
    "name": "mc/mtl_80s_econ_glass",
    "texture": "_textures/80s_econ_glass_col.webp",
    "textureAlpha": true,
@@ -1211,30 +1221,6 @@
    "specularMap": "_textures/80s_econ_spc-rgb_80s_econ_cos-l-11.specular.webp",
    "envMapParms": [
     0.6,
-    3.0,
-    5.0,
-    0.625
-   ],
-   "colorTint": [
-    1.0,
-    1.0,
-    1.0,
-    1.0
-   ]
-  },
-  {
-   "name": "mc/mtl_80s_econ_green",
-   "texture": "_textures/80s_econ_green_col.webp",
-   "textureAlpha": false,
-   "color": "#555e4d",
-   "alphaTest": null,
-   "blend": null,
-   "doubleSided": false,
-   "depthWrite": true,
-   "normalMap": "_textures/80s_econ_nml.normal.webp",
-   "specularMap": "_textures/80s_econ_spc-rgb_80s_econ_cos-l-11.specular.webp",
-   "envMapParms": [
-    1.0,
     3.0,
     5.0,
     0.625

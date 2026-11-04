@@ -57,10 +57,35 @@
   {
    "indexStart": 0,
    "indexCount": 174,
-   "material": -1
+   "material": 0
   }
  ],
- "materials": [],
+ "materials": [
+  {
+   "name": "mc/mtl_fx_shell",
+   "texture": "_textures/fx_shell_col.webp",
+   "textureAlpha": false,
+   "color": "#897b5f",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/fx_shell_nml.normal.webp",
+   "specularMap": "_textures/fx_shell_spc-rgb_fx_shell_cos-l-11.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
  "bounds": {
   "mins": [
    -0.25,

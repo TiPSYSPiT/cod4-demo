@@ -742,7 +742,7 @@
    "name": "mc/mtl_military_tires02",
    "texture": "_textures/tires02_col.webp",
    "textureAlpha": false,
-   "color": "#30302c",
+   "color": "#31302c",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
@@ -4806,8 +4806,8 @@
   "lod0SurfacesWithoutMaterial": 0,
   "materialHandles": {
    "inline": 98,
-   "resolved": 343,
-   "unresolved": 36,
+   "resolved": 374,
+   "unresolved": 5,
    "null": 0,
    "chains": 11,
    "rules": {
@@ -4815,6 +4815,8 @@
    },
    "shiftedModels": 2,
    "windowedChains": 1,
+   "selfPlaced": 19,
+   "selfOverrides": 1,
    "known": {
     "10376": "mc/mtl_street_light_02",
     "10380": "mc/mtl_street_light_bulb_02_off",
@@ -4901,7 +4903,7 @@
     "26986540": "mc/mtl_sas_ct_lod_sp",
     "27016744": "mc/mtl_black_kit_hands",
     "27016748": "mc/mtl_black_kit_sleeves",
-    "27346092": "mc/mtl_opforce_body_sp",
+    "27346092": "mc/mtl_opforce_lod_sp",
     "27346108": "mc/mtl_opforce_lod_sp",
     "27370436": "mc/mtl_opforce_justin_beanie_sp",
     "27370444": "mc/mtl_opforce_hands_sp",
@@ -4912,7 +4914,12 @@
     "27590232": ",mc/lambert1",
     "27590240": "mc/mtl_opforce_fullwrap_sp",
     "27686588": "mc/mtl_opforce_gas_mask_lens_sp",
-    "27686600": "mc/mtl_opforce_gas_mask_sp"
+    "27686600": "mc/mtl_opforce_gas_mask_sp",
+    "27346076": "mc/mtl_opforce_body_sp",
+    "27370388": "mc/mtl_opforce_justin_beanie_sp",
+    "27370396": "mc/mtl_opforce_hands_sp",
+    "27686524": "mc/mtl_opforce_gas_mask_lens_sp",
+    "27686536": "mc/mtl_opforce_gas_mask_sp"
    }
   }
  },

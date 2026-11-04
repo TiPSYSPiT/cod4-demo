@@ -157,40 +157,95 @@
   {
    "indexStart": 0,
    "indexCount": 90,
-   "material": -1
+   "material": 0
   },
   {
    "indexStart": 90,
    "indexCount": 306,
-   "material": -1
+   "material": 0
   },
   {
    "indexStart": 396,
    "indexCount": 1674,
-   "material": -1
+   "material": 0
   },
   {
    "indexStart": 2070,
    "indexCount": 1770,
-   "material": -1
+   "material": 0
   },
   {
    "indexStart": 3840,
    "indexCount": 18,
-   "material": -1
+   "material": 1
   },
   {
    "indexStart": 3858,
    "indexCount": 18,
-   "material": -1
+   "material": 2
   },
   {
    "indexStart": 3876,
    "indexCount": 372,
-   "material": 0
+   "material": 3
   }
  ],
  "materials": [
+  {
+   "name": "mc/mtl_weapon_beretta",
+   "texture": "_textures/weapon_beretta_c.webp",
+   "textureAlpha": false,
+   "color": "#262827",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_beretta_s-r-17g-17b-1_41155d1b.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_trinium_sight_glow",
+   "texture": "_textures/weapon_trinium_site_c.webp",
+   "textureAlpha": true,
+   "color": "#1d5e28",
+   "alphaTest": null,
+   "blend": "one/one",
+   "doubleSided": false,
+   "depthWrite": false,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_trinium_sight",
+   "texture": null,
+   "textureAlpha": false,
+   "color": null,
+   "alphaTest": "gt0",
+   "blend": "srcalpha/invsrcalpha",
+   "doubleSided": false,
+   "depthWrite": false,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
   {
    "name": "mc/mtl_weapon_suppressor_b",
    "texture": "_textures/weapon_suppressor_b_col.webp",

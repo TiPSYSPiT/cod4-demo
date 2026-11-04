@@ -135,6 +135,7 @@ C4.define('collect', function (C4) {
       psAim: [],
       psHud: [],                    // cod4-demo3d: the recorder's HUD state per snapshot (see doPlayerState)
       psAmmo: [],                   // cod4-demo3d: [t, 0 ammo / 1 clip, slot, value] on every change
+      hitMarks: [],                 // cod4-demo3d: the scripts' hit marker HUD element on every change (see doHitMarks)
       hitsTaken: [],                // EV_BULLET_HIT_CLIENT_*: {t, victim, attacker, weapon}
       // cod4-demo3d (the 3D view's effects): every bullet impact the POV received (EV_BULLET_HIT temp
       // entities): [t, x, y, z, normal (DirToByte), surface type, weapon, impact flags (un1), shooter], and
@@ -298,6 +299,37 @@ C4.define('collect', function (C4) {
       }
     }
 
+    // cod4-demo3d (the hit marker): the scripts' damage feedback HUD element (_damagefeedback.gsc - stock and Promod: a
+    // material element "damage_feedback", archived, its alpha set to 1 and faded out on every hit) - its state on
+    // every change: {t, client, slot, fadeStart, fadeTime, color, fromColor (RGBA packed), x, y, w, h, alignOrg,
+    // alignScreen, scaleStart, scaleTime, fromW, fromH}
+    const HE = C4.delta.HUD_INDEX, lastHit = new Map();
+    function doHitMarks(ps, client, t) {
+      const seen = new Set();
+      for (const [arr, base] of [[ps.hudArchival, 0], [ps.hudCurrent, 32]]) {
+        if (!arr) continue;
+        for (let i = 0; i < arr.length; i++) {
+          const e = arr[i];
+          if (!e || e[HE.type] !== 6 || !(e[HE.materialIndex] > 0) || c.cs.get(K.CS.SERVER_MATERIALS + e[HE.materialIndex]) !== 'damage_feedback') continue;
+          const key = [e[HE.fadeStartTime], e[HE.fadeTime], e[HE['color.rgba']], e[HE['fromColor.rgba']], e[HE.x], e[HE.y], e[HE.width], e[HE.height],
+            e[HE.alignOrg], e[HE.alignScreen], e[HE.scaleStartTime], e[HE.scaleTime], e[HE.fromWidth], e[HE.fromHeight]];
+          const k = client * 64 + base + i, ks = key.join(',');
+          seen.add(k);
+          if (lastHit.get(k) === ks) continue;
+          lastHit.set(k, ks);
+          c.hitMarks.push({ t, client, slot: base + i, fadeStart: key[0], fadeTime: key[1], color: key[2] >>> 0, fromColor: key[3] >>> 0,
+            x: u2f(key[4]), y: u2f(key[5]), w: key[6], h: key[7], alignOrg: key[8], alignScreen: key[9], scaleStart: key[10], scaleTime: key[11],
+            fromW: key[12], fromH: key[13] });
+        }
+      }
+      // (a slot that no longer holds it: the element moved to another slot or was freed - its end)
+      for (const k of lastHit.keys()) {
+        if ((k >> 6) !== client || seen.has(k)) continue;
+        lastHit.delete(k);
+        c.hitMarks.push({ t, client, slot: k & 63, gone: true });
+      }
+    }
+
     const lastAmmo = [null, null];
     function doPlayerState(snap, t) {
       const f = snap.ps.fields;
@@ -320,6 +352,7 @@ C4.define('collect', function (C4) {
         f[PSI.weapFlags] | 0, f[PSI.shotCount] | 0, f[PSI.weapon] | 0, f[PSI.offhand] | 0);
       const client = f[PSI.client];
       if (client !== lastPsClient) { c.povTimeline.push({ t, client }); lastPsClient = client; }
+      doHitMarks(snap.ps, client, t);
       const pm = f[PSI.pmType];
       // health and damage feedback of the followed client (change points only)
       const health = snap.ps.stats[0] << 16 >> 16, dEv = f[PSI.damageEvent], w0 = f[PSI.weapon];

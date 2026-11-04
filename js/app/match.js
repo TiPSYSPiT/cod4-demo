@@ -70,8 +70,23 @@ export class Match {
 
   /** position of client cl at time t, interpolated between two samples when they are close
    *  enough (same life, same round, gap <= GAP_MS, no jump); null when dead / not in this life.
-   *  -> {x, y, z, yaw, pitch, age (ms since the sample, 0 = interpolated), crouch, prone, firing, weapon, ps} */
+   *  -> {x, y, z, yaw, pitch, age (ms since the sample, 0 = interpolated), crouch, prone, firing, weapon, ps} - the
+   *  same object again for the same client and time (the last two per client are kept: a frame asks for a player
+   *  from several places; callers must not change it) */
   sampleAt(cl, t) {
+    const C = this.sampleCache || (this.sampleCache = []);
+    const e = C[cl];
+    if (e) { if (e.t0 === t) return e.s0; if (e.t1 === t) return e.s1; }
+    const s = this.sampleNow(cl, t);
+    if (!e) C[cl] = { t0: t, s0: s, t1: NaN, s1: null };
+    else { e.t1 = e.t0; e.s1 = e.s0; e.t0 = t; e.s0 = s; }
+    return s;
+  }
+
+  sampleNow(cl, t) { return this.sampleInto(cl, t, {}); }
+
+  /** sampleNow into the given object o (a caller's scratch: no allocation) -> o or null */
+  sampleInto(cl, t, o) {
     const P = this.d.positions[cl];
     if (!P || !P.t.length) return null;
     const i = upperBound(P.t, t) - 1;
@@ -94,8 +109,9 @@ export class Match {
       }
     }
     const fl = P.flags[i];
-    return { x, y, z, yaw, pitch, age, crouch: !!(fl & PF.CROUCH), prone: !!(fl & PF.PRONE), firing: !!(fl & PF.FIRING),
-      weapon: P.weapon[i], ps: !!(fl & PF.FROM_PS) };
+    o.x = x; o.y = y; o.z = z; o.yaw = yaw; o.pitch = pitch; o.age = age; o.crouch = !!(fl & PF.CROUCH); o.prone = !!(fl & PF.PRONE);
+    o.firing = !!(fl & PF.FIRING); o.weapon = P.weapon[i]; o.ps = !!(fl & PF.FROM_PS);
+    return o;
   }
 
   /** trail of the last TRAIL_MS before t: segments of [x, y, z, age 0..1], broken at gaps / jumps / deaths */

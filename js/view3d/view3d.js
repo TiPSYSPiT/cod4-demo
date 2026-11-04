@@ -9,7 +9,7 @@ import { Cameras, MODES, FP_FOV } from './cameras.js';
 import { AuditView } from './audit.js';
 import { CharacterLibrary, AnimationLibrary } from './characters.js';
 import { SUN, PROBES, installGameFog } from './lighting.js';
-import { SunShadows, castShadows } from './shadows.js';
+import { SunShadows, castShadows, STATIC_LAYER, DYNAMIC_LAYER } from './shadows.js';
 import { GRAPHICS, graphics, urlGraphics, setGraphics } from './graphics.js';
 import { XRay, XRAY_MODES } from './xray.js';
 import { Sky } from './sky.js';
@@ -25,7 +25,7 @@ import { InfoHint, fadeHint, holdHint } from '../app/infoHint.js';
 const C4 = window.C4;
 const { el, icon, switchRow, selectRow } = C4.ui;
 const CFG = C4.mapConfig;
-const CAM_KEY = 'cod4demo3d.camera';
+const CAM_KEY = 'cod4demo3d.camera2';          // the camera mode, stored only by the viewer's own choice (default: first person)
 const PLAYERS_KEY = 'cod4demo3d.players';
 /** shared colour maps of the exported data (maps3d/_textures), D3D texture coordinates - the players', weapons' and
  *  script models' textures: mipmapped (three's default) and filtered anisotropically (no shimmer at grazing angles) */
@@ -51,10 +51,11 @@ const store = (key, v) => { try { localStorage.setItem(key, v); } catch (err) { 
 const SOUND_KEY = 'cod4demo3d.sound';              // 'on' / 'off' (default on); .volume 0-1 (default SOUND_VOLUME)
 const SOUND_VOLUME = 0.3;
 const KILLFEED_KEY = 'cod4demo3d.killfeed';      // 'on' / 'off' (default on)
-const KILL_ICONS_KEY = 'cod4demo3d.killIcons';    // 'on' / 'off' (default off)
 const TRACERS_KEY = 'cod4demo3d.tracers';          // 'on' / 'off' (default off): the bullet tracers
 const HUD_KEY = 'cod4demo3d.hud';                  // 'on' / 'off' (default on): the game's HUD in first person
 const XRAY_KEY = 'cod4demo3d.xray';              // 'off' / 'players' / 'names' (default off)
+// 'on' / 'off' (default on): the players' view lines, the team rings at the models' feet, the enemies' names
+const SWITCH_KEYS = { viewLines: 'cod4demo3d.viewLines', rings: 'cod4demo3d.rings', enemyNames: 'cod4demo3d.enemyNames' };
 
 export class View3D {
   constructor(replay, container) {
@@ -89,6 +90,9 @@ export class View3D {
     this.sun = new THREE.DirectionalLight(0xffffff, 1.4);
     this.sun.position.set(-0.4, -0.5, 1);
     scene.add(hemi, this.sun);
+    // (the lights on the shadow passes' layers too: three.js gathers the lights a camera sees - without them each pass's
+    // light setup differs from the frame's, and every lit material re-derived its program twice a frame)
+    for (const l of [hemi, this.sun]) { l.layers.enable(STATIC_LAYER); l.layers.enable(DYNAMIC_LAYER); }
     this.characters = new CharacterLibrary(mapTexture);
     this.animations = new AnimationLibrary();
     this.actors = new Actors(scene, this.labels, this.M, this.characters, failed => this.showPlayerNotice(failed), this.animations);
@@ -111,28 +115,20 @@ export class View3D {
     this.buildToolbar();
     this.setXray(stored(XRAY_KEY));
     this.setKillfeed(stored(KILLFEED_KEY) !== 'off');
-    this.setKillIcons(stored(KILL_ICONS_KEY) === 'on');
+    for (const k of Object.keys(SWITCH_KEYS)) this.setActorSwitch(k, stored(SWITCH_KEYS[k]) !== 'off');
     // the bullet tracers (tracers.js)
     this.tracers = new Tracers(this.scene, this.M);
     this.setTracers(stored(TRACERS_KEY) === 'on');
-    // the game's HUD in first person (hud.js): a 2D canvas over the view; Tab (held) shows the scoreboard
+    // the game's HUD in first person (hud.js): a 2D canvas over the view (Tab's scoreboard: js/app/scoresOverlay.js)
     this.hud = new GameHud(this.M, null);
     this.hud.onChange = () => { this.needsRender = true; };
     this.characters.viewModels().then(t => { this.hud.table = t; this.needsRender = true; }).catch(() => null);
     this.hudCanvas = el('canvas', { class: 'hud-canvas', 'aria-hidden': 'true' });
     this.stage.append(this.hudCanvas);
     this.setHud(stored(HUD_KEY) !== 'off');
-    const tab = on => e => {
-      if (e.code !== 'Tab' || !this.visible || this.cams.mode !== 'fp' || !this.hud.enabled) return;
-      const ae = document.activeElement, tag = ae && ae.tagName;
-      if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
-      e.preventDefault();
-      if (this.hud.scoreboard !== on) { this.hud.scoreboard = on; this.needsRender = true; }
-    };
-    this.onTabDown = tab(true); this.onTabUp = tab(false);
-    window.addEventListener('keydown', this.onTabDown);
-    window.addEventListener('keyup', this.onTabUp);
-    let mode = 'orbit';
+    // the start: first person without a selected player - the demo's own view (the recorder's eyes, or the player he
+    // followed then); the viewer's own choice wins
+    let mode = 'fp';
     try { const v = localStorage.getItem(CAM_KEY); if (MODES.some(m => m[0] === v)) mode = v; } catch (err) { /* default */ }
     this.setMode(mode);
     // the players: the character models by default (their cost is in the noise of the map's: docs/validation.md),
@@ -317,14 +313,14 @@ export class View3D {
   /* ---------- options: the Camera, Display and Graphics popovers of the rail (main.js: panels) ---------- */
   buildToolbar() {
     const SHORT = { orbit: 'Orbit', free: 'Free', follow: 'Follow', fp: '1st P.' };
-    this.modeSel = C4.ui.segmented(MODES.map(([k, label]) => [k, SHORT[k] || label, label]), v => this.setMode(v));
+    this.modeSel = C4.ui.segmented(MODES.map(([k, label]) => [k, SHORT[k] || label, label]), v => this.setMode(v, true));
     const playerSel = el('select', { onchange: e => { const v = e.target.value; if (v === '') { if (this.R.focus != null) this.R.setFocus(this.R.focus); } else if (Number(v) !== this.R.focus) this.R.setFocus(Number(v)); } });
     this.playerSel = playerSel;
     this.fillPlayerSelect();
     this.propsSel = el('select', { onchange: e => this.setPropsMode(e.target.value) },
       el('option', { value: 'high' }, 'Models'), el('option', { value: 'low' }, 'Models (low detail)'),
       el('option', { value: 'boxes' }, 'Boxes'), el('option', { value: 'off' }, 'Off'));
-    this.propsRow = selectRow('Props', this.propsSel, 'Static models (props): the real models (LOD 0 or the lowest LOD), see-through boxes of their bounds (foliage in green), or none');
+    this.propsRow = selectRow('Props', this.propsSel, "Static models (props): the real models (the game's detail level by distance, or the lowest everywhere), see-through boxes of their bounds (foliage in green), or none");
     this.propsRow.hidden = true;
     this.playersSel = el('select', { onchange: e => this.setPlayersMode(e.target.value) },
       el('option', { value: 'simple' }, 'Simple'), el('option', { value: 'models' }, 'Models'));
@@ -345,8 +341,9 @@ export class View3D {
       el('label', { class: 'sw' }, el('span', { class: 'sw-l' }, 'Volume'), this.soundVol));
     this.xraySel = el('select', { onchange: e => this.setXray(e.target.value, true) }, ...XRAY_MODES.map(([v, label]) => el('option', { value: v }, label)));
     this.killfeedBox = el('input', { type: 'checkbox', onchange: e => this.setKillfeed(e.target.checked, true) });
-    this.killIconsBox = el('input', { type: 'checkbox', onchange: e => this.setKillIcons(e.target.checked, true) });
     this.tracersBox = el('input', { type: 'checkbox', onchange: e => this.setTracers(e.target.checked, true) });
+    this.switchBoxes = {};
+    for (const k of Object.keys(SWITCH_KEYS)) this.switchBoxes[k] = el('input', { type: 'checkbox', onchange: e => this.setActorSwitch(k, e.target.checked, true) });
     this.hudBox = el('input', { type: 'checkbox', onchange: e => this.setHud(e.target.checked, true) });
     // sound wanted (the default) starts with the first click / key / touch in the page - opening a demo,
     // play, the timeline (a dropped file is no user gesture for the browsers: then the next click)
@@ -375,9 +372,11 @@ export class View3D {
           selectRow('Players', this.playersSel, 'Player display: capsules, or the real character models (body and head from the demo, animated with the game\'s animations)'),
           selectRow('X-Ray', this.xraySel, 'Living players behind walls and props as a translucent silhouette in the team colour, the selected player in orange (key X cycles). "Players + names" also shows every name - a player out of sight gets his name on a badge with the team shape (▲ / ◆) - and keeps overlapping names apart'),
           this.propsRow,
+          switchRow('View lines', this.switchBoxes.viewLines, { title: 'A line from each player\'s eyes along the view (the real pitch), in the team colour' }),
+          switchRow('Player rings', this.switchBoxes.rings, { title: 'A ring in the team colour at the feet of each player model (Players: Models)' }),
+          switchRow('Enemy names', this.switchBoxes.enemyNames, { title: 'The enemies\' names over their heads (enemies of the player in first person, else of the selected player, else of the player the demo follows). Off: as in the game, only teammates are named; the selected / hovered player and X-Ray\'s "Players + names" keep theirs' }),
           switchRow('Kill feed', this.killfeedBox, { title: 'The kills and bomb plants / defuses of the last ' + C4.mapConfig.EXPORT.KILLFEED_MS / 1000 + ' s over the view, with the weapon icons' }),
-          switchRow('Kill icons', this.killIconsBox, { title: 'The weapon icon over each death marker' }),
-          switchRow('Game HUD', this.hudBox, { title: "First person: the game's HUD (Promod's layout) - the minimap, ammo and grenades, the low health overlay, the damage indicator, the teammate under the crosshair; hold Tab for the scoreboard" }),
+          switchRow('Game HUD', this.hudBox, { title: "First person: the game's HUD (Promod's layout) - the minimap, ammo and grenades, the low health overlay, the damage indicator, the hit marker, the teammate under the crosshair" }),
           switchRow('Bullet tracers', this.tracersBox, { title: "The game's bullet tracers: a short glowing streak flying from the muzzle, gone at the impact - for 20 % of the hits the server reports (cg_tracerChance) and half the shots of the player seen in first person (cg_firstPersonTracerChance)" })),
         this.soundRows) },
       { key: 'graphics', title: 'Graphics', hint: 'reloads the 3D map', icon: 'sun', node: el('div', { class: 'pop-body' },
@@ -400,11 +399,12 @@ export class View3D {
   }
   syncPlayerSelect() { this.playerSel.value = this.R.focus != null ? String(this.R.focus) : ''; this.needsRender = true; }
 
-  setMode(mode) {
+  /** the camera mode; user: the viewer's own choice (the buttons, C, Reset view - remembered) */
+  setMode(mode, user = false) {
     this.cams.setMode(mode);
     this.modeSel.value = mode;
     this.R.invalidate();
-    try { localStorage.setItem(CAM_KEY, mode); } catch (err) { /* not stored */ }
+    if (user) { try { localStorage.setItem(CAM_KEY, mode); } catch (err) { /* not stored */ } }
     this.camHint.textContent = MODE_HELP[mode];
     this.camHint.hidden = false;
     fadeHint(this.camHint);
@@ -432,12 +432,13 @@ export class View3D {
     if (user) store(KILLFEED_KEY, on ? 'on' : 'off');
     this.killfeed.update(this.t || 0);
   }
-  /** weapon icons over the death markers on / off */
-  setKillIcons(on, user = false) {
-    this.effects.killIcons = on;
-    this.killIconsBox.checked = on;
-    if (user) store(KILL_ICONS_KEY, on ? 'on' : 'off');
+  /** a player overlay switch (SWITCH_KEYS: view lines, player rings, enemy names) on / off */
+  setActorSwitch(key, on, user = false) {
+    this.actors[key] = on;
+    if (this.switchBoxes && this.switchBoxes[key]) this.switchBoxes[key].checked = on;
+    if (user) store(SWITCH_KEYS[key], on ? 'on' : 'off');
     this.R.invalidate();
+    this.needsRender = true;
   }
   /** the game's HUD in first person on / off */
   setHud(on, user = false) {
@@ -503,12 +504,12 @@ export class View3D {
   }
   resetView() {
     const M = this.M, b = M.bbox;
-    if (this.cams.mode !== 'orbit') this.setMode('orbit');
+    if (this.cams.mode !== 'orbit') this.setMode('orbit', true);
     if (b) this.cams.frame({ mins: [b.minX, b.minY, M.zRange[0]], maxs: [b.maxX, b.maxY, M.zRange[1]] });
   }
   capturesKeys(e) {
     if (!this.visible) return false;
-    if (e.code === 'KeyC') { const i = MODES.findIndex(m => m[0] === this.cams.mode); this.setMode(MODES[(i + 1) % MODES.length][0]); return true; }
+    if (e.code === 'KeyC') { const i = MODES.findIndex(m => m[0] === this.cams.mode); this.setMode(MODES[(i + 1) % MODES.length][0], true); return true; }
     if (e.code === 'KeyX' && !e.shiftKey) { const i = XRAY_MODES.findIndex(m => m[0] === this.xrayMode); this.setXray(XRAY_MODES[(i + 1) % XRAY_MODES.length][0], true); return true; }
     return this.cams.captureKey(e);
   }
@@ -536,7 +537,9 @@ export class View3D {
   draw(t) {
     this.t = t;
     const R = this.R;
+    // (the reference of Enemy names: the player in first person / followed - the selected one, else the demo's own view)
     this.actors.update(t, { shown: R.shownPlayers(), focus: R.focus, hover: R.hover, labels: R.opts.labels || this.xrayMode === 'names', lastKnown: R.opts.lastKnown,
+      xrayNames: this.xrayMode === 'names', ref: R.focus != null ? R.focus : this.M.followedAt(t),
       kills: R.recentKills(t, CFG.DEATH_MARKER_MS) });
     this.effects.update(t, R);
     this.killfeed.update(t);
@@ -669,6 +672,9 @@ export class View3D {
     }
     if (!this.needsRender && !force) return false;
     this.needsRender = false;
+    // the game's LODs by the eye's distance: the props' (props.js updateLods) and the player models' (characters.js)
+    if (this.world && this.world.props) this.world.props.updateLods(this.camera);
+    this.actors.updateLods(this.camera);
     if (this.shadows) {
       this.camera.updateMatrixWorld();
       this.shadows.update(this.scene, this.shadowCenter(), SUN.dir.value, this.camera, this.world && this.world.info.lights, shadowDt);
@@ -705,13 +711,16 @@ export class View3D {
     if (clear) g.clearRect(0, 0, w, h);
     if (cl == null || !this.hud.enabled) return;
     const s = this.M.sampleAt(cl, this.t || 0);
-    if (!s && !this.hud.scoreboard) return;
+    if (!s) return;
     const st = this.viewmodel.state;
     // the live view: inside the viewer's controls (their safe area); the export's frame: all of it
     const ins = clear ? this.uiInsets(w / Math.max(1, this.hudCanvas.clientWidth || w)) : { l: 0, t: 0, r: 0, b: 0 };
     g.save();
     g.translate(ins.l, ins.t);
-    this.hud.draw(g, w - ins.l - ins.r, h - ins.t - ins.b, this.t || 0, cl, s ? { yaw: s.yaw, pitch: s.pitch } : null, st && st.weapon ? String(st.weapon).toLowerCase() : null);
+    // (the whole view in the safe area's coordinates: the parts on the crosshair - the damage indicator, the hit marker -
+    // centred on the screen as the game draws them)
+    this.hud.draw(g, w - ins.l - ins.r, h - ins.t - ins.b, this.t || 0, cl, s ? { yaw: s.yaw, pitch: s.pitch } : null, st && st.weapon ? String(st.weapon).toLowerCase() : null,
+      { x: -ins.l, y: -ins.t, w, h });
     g.restore();
   }
 
@@ -769,8 +778,6 @@ export class View3D {
     this.effects.dispose();
     this.killfeed.dispose();
     if (this.tracers) this.tracers.dispose();
-    window.removeEventListener('keydown', this.onTabDown);
-    window.removeEventListener('keyup', this.onTabUp);
     this.cams.dispose();
     if (this.shadows) { this.shadows.dispose(); this.shadows = null; }
     this.xray.dispose();

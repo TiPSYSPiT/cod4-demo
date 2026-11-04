@@ -3,7 +3,7 @@
  * Without exported data the minimap image becomes a ground plane (or a grid). CoD world
  * coordinates stay as they are (+Z up); the camera's up vector is Z. */
 import * as THREE from 'three';
-import { blendOptions, isMultiply } from './blend.js';
+import { blendOptions, isMultiply, coverageOptions } from './blend.js';
 import { fetchJSON, fetchBinary, checkedView, dataUrl } from './data.js';
 import { Props } from './props.js';
 import { LightGrid, ProbeSet, materialShading, gameWorld, setLights } from './lighting.js';
@@ -55,13 +55,18 @@ export function loadTexture(url, loader = new THREE.TextureLoader()) {
 
 /** material of one draw group (see world.json groups) */
 function makeMaterial(g, tex, lightmaps) {
-  const opts = { side: g.doubleSided ? THREE.DoubleSide : THREE.FrontSide };
+  // (forceSinglePass: three.js draws a transparent double-sided material twice - back faces, then front - and
+  // re-derives its program before each pass; the game draws it once)
+  const opts = { side: g.doubleSided ? THREE.DoubleSide : THREE.FrontSide, forceSinglePass: true };
   if (tex) opts.map = tex;
   else opts.color = new THREE.Color(g.color || (g.water ? '#3c5560' : '#8a8a84'));
   const lm = g.lightmap >= 0 ? lightmaps[g.lightmap] : null;
   const multiply = isMultiply(g.blend);
   if (lm && !multiply) { opts.lightMap = lm; opts.lightMapIntensity = LIGHTMAP_SCALE * Math.PI; }
-  if (g.alphaTest && g.textureAlpha && !g.vertexAlpha) opts.alphaTest = g.alphaTest === 'gt0' ? 0.05 : 0.5;
+  if (g.alphaTest && g.textureAlpha && !g.vertexAlpha) {
+    opts.alphaTest = g.alphaTest === 'gt0' ? 0.05 : 0.5;
+    if (!g.blend) Object.assign(opts, coverageOptions());          // (the cut-out's edge antialiased: blend.js)
+  }
   if (g.water) { opts.transparent = true; opts.opacity = 0.75; opts.depthWrite = false; }
   // the game's blend factors (blend.js): multiply decals (also the 2x ones, destcolor/srccolor), additive
   // light shafts (invdestcolor/one), premultiplied decals; the framebuffer's alpha stays 1

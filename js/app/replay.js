@@ -26,7 +26,8 @@ export class Replay {
     this.focus = null;               // the selected player: highlighted in both views, followed by the 3D camera
     this.selection = { a: null, b: null };   // the export range markers on the timeline (I / O)
     this.hover = null;               // player under the mouse in the team panel
-    this.opts = { labels: true, lastKnown: false, trails: true, killLines: true, grenadeKinds: new Set(['smoke', 'frag', 'flash', 'concussion', 'other']) };
+    // (trails off by default - as the other Layers options, not remembered)
+    this.opts = { labels: true, lastKnown: false, trails: false, killLines: true, grenadeKinds: new Set(['smoke', 'frag', 'flash', 'concussion', 'other']) };
     this.scope = -1;
     this.base = 0;
     this.listeners = new Set();
@@ -183,23 +184,55 @@ export class Replay {
   }
 
   /* ---------- kill & bomb feed (side panel) ---------- */
+  /** the kills and bomb events of the range in time order, with separators: each round (the rounds the timeline and
+   *  the score pill use: knife / warm-up / after-match rounds by their kind), a warm-up phase outside every round,
+   *  each halftime (the side swaps). The separators are not entries (evItems holds only the entries); a round's
+   *  separator jumps to its live start */
   buildFeed(range) {
     const d = this.d, box = this.dom.feed;
     clear(box);
     this.evItems = [];
     this.evCurrent = -1;
+    this.feedTarget = null;
+    this.feedSeps = new Map();          // round index -> separator node
+    this.feedSepCurrent = -1;
     const items = [];
     for (const k of d.kills) if (k.t >= range[0] && k.t <= range[1]) items.push({ t: k.t, kill: k });
     for (const e of d.events) if ((e.type === 'bomb_planted' || e.type === 'bomb_defused') && e.t >= range[0] && e.t <= range[1]) items.push({ t: e.t, ev: e });
     items.sort((a, b) => a.t - b.t);
+    const seps = [];
+    d.rounds.forEach((r, k) => {
+      if (r.segEnd < range[0] || r.segStart > range[1]) return;
+      const label = r.kind === 'knife' ? 'Knife round' : r.kind === 'prematch' ? 'Warmup' : r.kind === 'aftermatch' ? 'After the match' : 'R' + r.label;
+      seps.push({ t: Math.max(r.segStart, range[0]), label, round: k, jump: this.match.live[k] });
+    });
+    for (const p of d.phases || []) {
+      if (p.phase !== 'warmup' || p.start < range[0] || p.start > range[1] || C4.events.roundAt(d.rounds, p.start) >= 0) continue;
+      seps.push({ t: p.start, label: 'Warmup' });
+    }
+    for (const h of d.halftimes || []) if (h >= range[0] && h <= range[1]) seps.push({ t: h, label: 'Half-time – sides switched', half: true });
+    seps.sort((a, b) => a.t - b.t);
+    let si = 0;
+    const addSep = sp => {
+      const node = el('div', { class: 'feed-sep' + (sp.half ? ' half' : ''), title: sp.round != null ? 'Jump to the start of the round' : null,
+        onclick: sp.round != null ? () => this.pb.seek(sp.jump) : null }, el('span', null, sp.label));
+      if (sp.round != null) { node.dataset.round = String(sp.round); node.dataset.t = String(sp.jump); this.feedSeps.set(sp.round, node); }
+      box.append(node);
+    };
     for (const it of items) {
-      const node = el('div', { class: 'map-ev future', title: 'Jump to 2 s before', onclick: () => this.pb.seek(it.t - 2000) },
+      while (si < seps.length && seps[si].t <= it.t) addSep(seps[si++]);
+      const i = this.evItems.length;
+      // the click: 2 s before the entry, and this entry the highlighted one until the playback passes it (the
+      // highlight is otherwise the latest entry at or before the time - 2 s before, the one above it)
+      const node = el('div', { class: 'map-ev future', title: 'Jump to 2 s before', onclick: () => { this.feedTarget = i; this.pb.seek(it.t - 2000); } },
         el('span', { class: 'time' }, fmtTime(it.t - this.base)),
         C4.ui.phaseBadge(C4.rounds.phaseAt(d.phases, it.t)),
         el('span', { class: 'tl-what' }, it.kill ? C4.ui.killNodes(this.app, it.kill) : el('span', { style: { color: 'var(--warn)' } }, it.ev.text)));
+      node.dataset.t = String(it.t);
       box.append(node);
       this.evItems.push({ t: it.t, node });
     }
+    while (si < seps.length) addSep(seps[si++]);
     if (!items.length) box.append(el('div', { class: 'empty' }, 'No kills or bomb events in this range.'));
   }
 
@@ -345,10 +378,14 @@ export class Replay {
     C4.tabs.overview.update(this.scoreNow, this.rp.title.textContent, rl ? rl.split(' · ')[1] || '' : '', this.match.bombTimer(t));
     if (this.view) this.view.draw(t);
     C4.mapStats.refresh();
-    // feed: the latest entry highlighted and kept in view, the ones after the playback time dimmed
+    // feed: the latest entry highlighted and kept in view, the ones after the playback time dimmed - a clicked entry
+    // (feedTarget) is the highlighted one from the 2 s before it until the playback passes it
     if (this.evItems && this.evItems.length) {
       let cur = -1;
       for (let i = 0; i < this.evItems.length; i++) if (this.evItems[i].t <= t) cur = i; else break;
+      const tg = this.feedTarget != null ? this.evItems[this.feedTarget] : null;
+      if (tg && t >= tg.t - 2001 && t < tg.t) cur = this.feedTarget;
+      else this.feedTarget = null;
       if (cur !== this.evCurrent) {
         const prev = this.evCurrent;
         if (prev >= 0 && this.evItems[prev]) this.evItems[prev].node.classList.remove('current');
@@ -358,6 +395,16 @@ export class Replay {
           this.scrollFeedTo(this.evItems[cur].node);
         }
         this.evCurrent = cur;
+      }
+    }
+    // the separator of the round at the playback time
+    if (this.feedSeps && this.feedSeps.size) {
+      const ri = C4.events.roundAt(this.d.rounds, t);
+      if (ri !== this.feedSepCurrent) {
+        const prev = this.feedSeps.get(this.feedSepCurrent), next = this.feedSeps.get(ri);
+        if (prev) prev.classList.remove('current');
+        if (next) next.classList.add('current');
+        this.feedSepCurrent = ri;
       }
     }
   }

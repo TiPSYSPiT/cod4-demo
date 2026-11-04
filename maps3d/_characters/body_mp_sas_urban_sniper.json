@@ -7,34 +7,34 @@
  "sections": {
   "position": {
    "offset": 0,
-   "length": 57300
+   "length": 121632
   },
   "normal": {
-   "offset": 57300,
-   "length": 19100
+   "offset": 121632,
+   "length": 40544
   },
   "uv": {
-   "offset": 76400,
-   "length": 38200
+   "offset": 162176,
+   "length": 81088
   },
   "skinIndex": {
-   "offset": 114600,
-   "length": 19100
+   "offset": 243264,
+   "length": 40544
   },
   "skinWeight": {
-   "offset": 133700,
-   "length": 19100
+   "offset": 283808,
+   "length": 40544
   },
   "index": {
-   "offset": 152800,
-   "length": 38184
+   "offset": 324352,
+   "length": 72012
   },
   "color": {
-   "offset": 190984,
-   "length": 19100
+   "offset": 396364,
+   "length": 40544
   }
  },
- "vertexCount": 4775,
+ "vertexCount": 10136,
  "triangleCount": 6364,
  "bones": [
   {
@@ -1583,6 +1583,46 @@
    "indexStart": 18672,
    "indexCount": 420,
    "material": 3
+  },
+  {
+   "indexStart": 19092,
+   "indexCount": 8646,
+   "material": 0
+  },
+  {
+   "indexStart": 27738,
+   "indexCount": 1260,
+   "material": 1
+  },
+  {
+   "indexStart": 28998,
+   "indexCount": 594,
+   "material": 1
+  },
+  {
+   "indexStart": 29592,
+   "indexCount": 66,
+   "material": 2
+  },
+  {
+   "indexStart": 29658,
+   "indexCount": 4206,
+   "material": 4
+  },
+  {
+   "indexStart": 33864,
+   "indexCount": 426,
+   "material": 4
+  },
+  {
+   "indexStart": 34290,
+   "indexCount": 360,
+   "material": 4
+  },
+  {
+   "indexStart": 34650,
+   "indexCount": 1356,
+   "material": 4
   }
  ],
  "materials": [
@@ -1680,6 +1720,30 @@
     1.0,
     1.0
    ]
+  },
+  {
+   "name": "mc/mtl_sas_ct_lod_sp",
+   "texture": "_textures/sas_ct_bodies_sp_lod_col.webp",
+   "textureAlpha": false,
+   "color": "#433d38",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/sas_ct_bodies_sp_lod_nml.normal.webp",
+   "specularMap": "_textures/sas_ct_bodies_sp_lod_spec-rg_b69e72fd.specular.webp",
+   "envMapParms": [
+    0.4,
+    10.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
   }
  ],
  "bounds": {
@@ -1694,6 +1758,32 @@
    71.48
   ]
  },
+ "lods": [
+  {
+   "dist": 300.0,
+   "surfaceStart": 0,
+   "surfaceCount": 6,
+   "triangles": 6364
+  },
+  {
+   "dist": 500.0,
+   "surfaceStart": 6,
+   "surfaceCount": 4,
+   "triangles": 3522
+  },
+  {
+   "dist": 1200.0,
+   "surfaceStart": 10,
+   "surfaceCount": 3,
+   "triangles": 1664
+  },
+  {
+   "dist": 1000000.0,
+   "surfaceStart": 13,
+   "surfaceCount": 1,
+   "triangles": 452
+  }
+ ],
  "hitBoxes": [
   {
    "bone": 2,

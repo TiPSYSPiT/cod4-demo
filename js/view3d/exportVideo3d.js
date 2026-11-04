@@ -313,7 +313,7 @@ async function start() {
     C.width = p.W; C.height = p.H;
     const g = C.getContext('2d', { willReadFrequently: p.gif });
     // the kill feed's icons are drawn into the frame (js/c4/ui/killfeed.js): all loaded before the first
-    const kfImgs = opts.killfeed || opts.markers ? await C4.killfeed.images() : null;
+    const kfImgs = opts.killfeed ? await C4.killfeed.images() : null;
     const ctx = { view, p, opts, C, g, kfImgs, t0: performance.now(), path: [], fp: [] };
     D.status.textContent = 'Rendering …';
     if (p.gif) result = await exportGif(ctx, progress);
@@ -741,15 +741,6 @@ function drawOverlays(ctx, t, hideClient) {
     g.font = font('700', 13);
     let x = 16 * s;
     for (const [txt, col] of parts) { g.fillStyle = col; g.fillText(txt, x, 38 * s); x += g.measureText(txt).width; }
-  }
-  // weapon icons over the death markers (3D Display popover: Kill icons), as effects.js shows them
-  if (opts.markers && view.effects.killIcons) {
-    const v = new THREE.Vector3();
-    for (const [k, m] of view.effects.killMarks) {
-      v.copy(m.pos).project(view.camera);
-      if (!(v.z < 1 && Math.abs(v.x) < 1.1 && Math.abs(v.y) < 1.1)) continue;
-      C4.killfeed.drawMark(g, k, (v.x + 1) / 2 * p.W, (1 - v.y) / 2 * p.H - 4 * s, { scale: s, imgs: ctx.kfImgs, alpha: m.alpha });
-    }
   }
   // kill feed, top right: the kills and bomb events of the last seconds of this round, with the icons
   if (opts.killfeed) C4.killfeed.draw(g, app, d, t, { right: p.W - 8 * s, top: 18 * s, scale: s, imgs: ctx.kfImgs });
