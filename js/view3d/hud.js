@@ -8,15 +8,11 @@
  *   ammo         CG_PLAYER_AMMO_VALUE: the clip (red below a third) and the reserve, the weapon's name and icon;
  *                the frag and special grenades with their counts (the player state's ammo / clip slots:
  *                BG_SetupAmmoIndexes / ClipIndexes - the n-th ammo / clip name in the weapon list's order)
- *   health       CG_PLAYER_LOW_HEALTH_OVERLAY: overlay_low_health over the screen, stronger and pulsing as the
- *                health falls
- *   damage       CG_DrawDamageDirectionIndicators: hit_direction towards the attacker for 2 s
- *                (cg_hudDamageIconWidth 128, Height 64, Offset 128, Time 2000 - the values Promod enforces)
  *   hit marker   the scripts' damage_feedback HUD element (_damagefeedback.gsc; collect.js hitMarks) on every hit
  *   names        CG_DrawCrosshairNames: the teammate under the crosshair (stats[3]) below it
  *   hints        CG_CURSORHINT: the use icon while the server shows a hint (planting / defusing the bomb ...)
  * Promod hides the stance indicator (its rect lies off the screen) - so does this HUD. Only the recorder has a
- * player state: the ammo, health, damage, hit marker, names and hints are his; for another player the minimap. Of the
+ * player state: the ammo, hit marker, names and hints are his; for another player the minimap. Of the
  * server's own HUD elements (hudelems) only the hit marker is drawn. */
 import { isPromod } from './viewmodel.js';
 
@@ -24,7 +20,6 @@ const BASE = 'maps3d/';
 const D2R = Math.PI / 180;
 const MAX_RANGE = 2500;                  // compassMaxRange (the client's default)
 const MINIMAP = { x: 6, y: 6, size: 120, inset: 9 };
-const DAMAGE = { w: 128, h: 64, offset: 128, time: 2000 };
 const FIRE_PING_MS = 1000;
 const HUD_ALPHA = 0.65;
 const LOW = '#e32e03';
@@ -64,7 +59,7 @@ export class GameHud {
   }
   img(key) { const i = this.images.get(key); return i && i.ready ? i : null; }
 
-  /** the recorder's ammo / clip slots over time, the damage events */
+  /** the recorder's ammo / clip slots over time, the hit marker's states */
   prepare() {
     const d = this.M.d;
     this.slots = [new Map(), new Map()];
@@ -73,13 +68,6 @@ export class GameHud {
       if (!s) this.slots[kind].set(slot, s = { t: [], v: [] });
       s.t.push(t); s.v.push(v);
     }
-    // the damage hits: a new damageEvent counter -> {t, yaw (world, degrees)}
-    const H = d.psHud;
-    this.hits = [];
-    if (H) for (let i = 1; i < H.t.length; i++) {
-      if (H.damageEvent[i] !== H.damageEvent[i - 1] && H.client[i] === H.client[i - 1] && H.damageCount[i] > 0) this.hits.push({ t: H.t[i], yaw: (H.damageYaw[i] & 255) * 360 / 256, cl: H.client[i] });
-    }
-    this.hitTimes = this.hits.map(h => h.t);
     // the scripts' hit marker element per client and slot (collect.js hitMarks): its states in time order
     this.marks = new Map();
     for (const m of d.hitMarks || []) {
@@ -140,27 +128,17 @@ export class GameHud {
 
   /** draw the HUD of client cl at t into the 2D context g (w x h device pixels: the safe area); view: {yaw, pitch}
    *  (null: the player is dead - nothing); full: the whole view {x, y, w, h} in the same coordinates (default the
-   *  safe area) - the crosshair's parts are centred on it */
+   *  safe area) - the hit marker is centred on it */
   draw(g, w, h, t, cl, view, weaponName, full = null) {
     if (!this.enabled || cl == null) return;
     const M = this.M, s = h / 480, R = x => w - (640 - x) * s;
     g.save();
     if (!view) { g.restore(); return; }
     const row = this.hudRow(cl, t), H = M.d.psHud;
-    // the low health overlay (below the rest)
-    if (row >= 0 && H.maxHealth[row] > 0) {
-      const f = H.health[row] / H.maxHealth[row], img = this.img('overlay_low_health');
-      if (img && f > 0 && f < 0.55) {
-        const pulse = 0.85 + 0.15 * Math.sin(t / 1000 * Math.PI * 2 * (f < 0.3 ? 2 : 1));
-        g.globalAlpha = Math.min(1, (0.55 - f) / 0.45) * pulse;
-        g.drawImage(img, 0, 0, w, h);
-      }
-    }
     this.drawMinimap(g, s, t, cl, view);
     if (row >= 0) {
       const F = full || { x: 0, y: 0, w, h };
       g.save(); g.translate(F.x, F.y);
-      this.drawDamage(g, F.w, F.h, F.h / 480, t, cl, view);
       this.drawHitMarker(g, F.w, F.h, F.h / 480, t, cl);
       g.restore();
       this.drawAmmo(g, s, R, t, cl, weaponName);
@@ -226,23 +204,6 @@ export class GameHud {
     const pl = this.img('compassping_player'), sz = 16 * s;
     g.globalAlpha = 1;
     if (pl) g.drawImage(pl, cx - sz / 2, cy - sz / 2, sz, sz);
-  }
-
-  drawDamage(g, w, h, s, t, cl, view) {
-    const img = this.img('hit_direction');             // (the client's cgMedia image; damage_feedback is the scripts' hit marker)
-    if (!img) return;
-    for (let i = lower(this.hitTimes, t); i >= 0 && t - this.hitTimes[i] < DAMAGE.time; i--) {
-      const hit = this.hits[i];
-      if (hit.cl !== cl) continue;
-      const a = 1 - (t - hit.t) / DAMAGE.time;
-      // the attacker's direction relative to the view (the indicator turns around the crosshair)
-      const rel = (view.yaw - hit.yaw) * D2R;
-      g.save();
-      g.translate(w / 2, h / 2); g.rotate(rel);
-      g.globalAlpha = a;
-      g.drawImage(img, -DAMAGE.w / 2 * s, -(DAMAGE.offset + DAMAGE.h / 2) * s, DAMAGE.w * s, DAMAGE.h * s);
-      g.restore();
-    }
   }
 
   /** the hit marker (the scripts' HUD element, _damagefeedback.gsc: damage_feedback 24 x 48 at -12 / -12 from the

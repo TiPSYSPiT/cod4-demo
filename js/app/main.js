@@ -267,7 +267,8 @@ async function setView(key, user = false) {
   if (user) { try { localStorage.setItem(VIEW_KEY, key); } catch (err) { /* not stored */ } }
   $('view-error').hidden = true;
   if (key === '3d' && !R.views['3d']) {
-    const error = await load3d(R);
+    // (one load per replay: the 2D / 3D switch can be pressed while the start's load is running)
+    const error = await (R.loading3d || (R.loading3d = load3d(R).finally(() => { R.loading3d = null; })));
     if (state.replay !== R) return;
     if (error) {
       showViewError(error.replace(/([^.])$/, '$1.') + ' Details are in the browser console; the 2D view is shown instead.');

@@ -41,6 +41,9 @@ const ENTITYNUM_NONE = 1023;
 const OFFHAND_STATES = [15, 20];               // WEAPON_OFFHAND_INIT .. WEAPON_OFFHAND_END
 const RUN_SPEED = 190;                         // units / s: full movement offsets and bob
 const SIM_MS = 2500;                           // the gun's follow simulation: the last 2.5 s (gunFollow)
+const RETICLE_OFF = new Set([1, 2, 3, 4, 7, 12, 13, 14]);   // AllowedToDrawCrosshair: raising, dropping, reloading, melee
+const AIM_SPEED_MIN = 11;                      // bg_aimSpreadMoveSpeedThreshold
+const JUMP_SPREAD_ADD = 64;                    // jump_spreadAdd
 
 const lower = (a, t) => { let lo = 0, hi = a.length; while (lo < hi) { const m = (lo + hi) >> 1; if (a[m] <= t) lo = m + 1; else hi = m; } return lo - 1; };
 const clamp01 = x => x < 0 ? 0 : x > 1 ? 1 : x;
@@ -249,8 +252,15 @@ export class ViewAnimator {
     out.spread = this.spread(cl, t, s, W, ri, P, ads);
     out.spreadScale = this.lastScale;                // aimSpreadScale / 255 (the reticle's alpha)
     // the crosshair: not while raising, putting away, reloading, meleeing (AllowedToDrawCrosshair: weapon
-    // states 1 - 4, 7, 12 - 14); the sights' direction (CG_TransitionToAds: the in / out fractions)
-    if (W) out.reticleOff = [1, 2, 3, 4, 7, 12, 13, 14].includes(W.state[ri]);
+    // states 1 - 4, 7, 12 - 14), while flashed (CG_Flashbanged: the recorder's); the sights' direction
+    // (CG_TransitionToAds: the in / out fractions). The sprint states 22 - 24 are the viewer's choice (viewmodel.js)
+    const isSprint = st => st >= 22 && st <= 24, isOff = st => RETICLE_OFF.has(st);
+    out.sprinting = W ? this.heldState(W, ri, cl, isSprint) : !!this.sprintOther(cl, t);
+    out.flashed = !!W && this.flashedAt(cl, t);
+    // the grenade's cook timer (CG_DrawReticleCenter: the centre pulses by grenadeTimeLeft)
+    const A3 = M.d.psAim;
+    out.grenadeLeft = W && A3 && A3.grenadeLeft && ri < A3.t.length ? A3.grenadeLeft[ri] : 0;
+    if (W) out.reticleOff = this.heldState(W, ri, cl, isOff);
     else out.reticleOff = !!(key && /^(raise|firstRaise|quickRaise|altRaise|emptyRaise|drop|quickDrop|altDrop|emptyDrop|reload|reloadEmpty|reloadStart|reloadEnd|melee|meleeCharge)$/.test(key)
       && (dur(key) == null || time <= dur(key) || HOLD_END.has(key)));
     const before = W ? this.adsRecorder(cl, t - 50) : this.adsOther(cl, t - 50, P);
@@ -323,6 +333,21 @@ export class ViewAnimator {
     return R;
   }
 
+  /** the recorder's weapon state at row ri matches, for longer than this one snapshot: a switch key tapped with nothing
+   *  to switch to shows WEAPON_DROPPING for 50 ms - a blink of the crosshair (a real raise, drop, reload or melee takes
+   *  many snapshots) */
+  heldState(W, ri, cl, test) {
+    if (!test(W.state[ri])) return false;
+    return (ri > 0 && W.client[ri - 1] === cl && test(W.state[ri - 1])) || (ri + 1 < W.t.length && W.client[ri + 1] === cl && test(W.state[ri + 1]));
+  }
+
+  /** CG_Flashbanged at t: a flashbang's shell shock of client cl still running (shock files by name: the concussion
+   *  grenade's is "blurred" and keeps the crosshair) */
+  flashedAt(cl, t) {
+    for (const h of this.M.d.shocks || []) if (h.client === cl && t >= h.start && t < h.start + h.duration && /flash/i.test(h.name)) return true;
+    return false;
+  }
+
   /** the idle sway's time at t (ms; BG_CalculateWeaponPosition_IdleAngles advances it by frame time x idle speed): the
    *  hip speed since the map's start plus what the ADS speed (and, for the recorder, holdBreathScale) added or took -
    *  integrated from the start, so continuous between frames and the same for the same t (seeks, any speed) */
@@ -389,7 +414,7 @@ export class ViewAnimator {
    *  - approximated with the weapon file's numbers: the bob, the turn sway, the gun kick */
   motion(out, cl, t, s, W, ri, P, ads) {
     const M = this.M, pos = out.offset.pos, rot = out.offset.rot, v = k => P[k] || 0;
-    const sim = this.gunFollow(cl, t, W, P);
+    const sim = this.simNow = this.gunFollow(cl, t, W, P);
     pos[0] += sim.org[0]; pos[1] -= sim.org[1]; pos[2] += sim.org[2];
     rot[0] += sim.ang[0]; rot[1] += sim.ang[1]; rot[2] += sim.ang[2];
     rot[0] += ads * v('adsAimPitch');
@@ -501,12 +526,15 @@ export class ViewAnimator {
   }
 
   /** the base position / angles' follow simulation (see motion) -> {org [f, r, u], ang [p, y, r], idleFactor, speed,
-   *  ground (the bob's share: 1 on the ground, 0.3 in the air - the others' estimate followed at 6 / s), breath} */
+   *  ground (the bob's share: 1 on the ground, 0.3 in the air - the others' estimate followed at 6 / s), breath,
+   *  aim (the others' aimSpreadScale 0 - 255: PM_UpdateAimSpread on the same steps - the recorder's is in the demo)} */
   gunFollow(cl, t, W, P) {
     const STEP = 1000 / 60, v = k => P[k] || 0, G_SPEED = 190;
     let tm = Math.floor((t - SIM_MS) / STEP) * STEP;
     const org = [0, 0, 0], ang = [0, 0, 0];
-    let idle = null, last = null, ground = null;
+    let idle = null, last = null, ground = null, aim = 0, wasGround = true;
+    const shots = W ? null : this.shotsOf(cl);
+    let shot = shots ? lower(shots, tm) + 1 : 0;
     const follow = (cur, target, rate, dt) => {
       if (target === cur) return cur;
       let d = dt * (target - cur) * rate;
@@ -543,10 +571,29 @@ export class ViewAnimator {
       if (!scoped || inp.ads === 0) idle = idle < fT ? Math.min(fT, idle + dt * 0.5) : Math.max(fT, idle - dt * 0.5);
       const gT = inp.ground ? 1 : 0.3;
       ground = ground == null || W ? gT : ground < gT ? Math.min(gT, ground + dt * 6) : Math.max(gT, ground - dt * 6);
+      if (!W) {
+        // PM_UpdateAimSpread: the decay (hipSpreadDecayRate x the stance's factor, half in the air) unless something
+        // adds - hipSpreadMoveAdd x speed / g_speed above bg_aimSpreadMoveSpeedThreshold, 2 x 1.28 in the air; nothing
+        // while fully aiming. PM_Weapon_AddFiringAimSpreadScale: + hipSpreadFireAdd a shot, Jump_Start: + jump_spreadAdd
+        // 64, moving prone: the maximum (PM_Weapon)
+        let rate = v('hipSpreadDecayRate');
+        if (!inp.ground) rate *= 0.5; else if (inp.prone) rate *= v('hipSpreadProneDecay'); else if (inp.crouch) rate *= v('hipSpreadDuckedDecay');
+        let add = 0;
+        if (inp.ads < 1) {
+          if (v('hipSpreadMoveAdd') && inp.speed > AIM_SPEED_MIN) add += v('hipSpreadMoveAdd') * inp.speed / G_SPEED;
+          if (!inp.ground) add += 2.56;
+        }
+        aim += (add > 0 ? add : -rate) * dt * 255;
+        if (wasGround && !inp.ground) aim += JUMP_SPREAD_ADD;
+        wasGround = inp.ground;
+        for (; shot < shots.length && shots[shot] <= tm; shot++) if (inp.ads < 1) aim += v('hipSpreadFireAdd') * 255;
+        if (inp.prone && inp.ads < 1 && inp.speed > AIM_SPEED_MIN) aim = 255;
+        aim = aim < 0 ? 0 : aim > 255 ? 255 : aim;
+      }
     }
     const ads = last ? last.ads : 0, k = ads === 0 ? 1 : ads < 0.5 ? 1 - 2 * ads : 0;
     return { org: org.map(x => x * k), ang: ang.map(x => x * k), idleFactor: idle == null ? 1 : idle,
-      speed: last ? last.speed : 0, ground: ground == null ? 1 : ground, breath: last ? last.breath : 1 };
+      speed: last ? last.speed : 0, ground: ground == null ? 1 : ground, breath: last ? last.breath : 1, aim };
   }
 
   /** the lean (-1 .. 1) of client cl at t: the recorder's player state, else the entity's */
@@ -653,28 +700,24 @@ export class ViewAnimator {
     return this[key];
   }
 
-  /** the crosshair's spread (deg): the recorder's aimSpreadScale between the stance's minimum (by the
-   *  view height) and maximum (BG_GetSpreadForWeapon); the others: the stance by the flags, the scale
-   *  from the speed and the recent shots (hipSpreadMoveAdd / FireAdd / DecayRate) */
+  /** the crosshair's spread (deg): BG_GetSpreadForWeapon's stance minimum and maximum by the view height, between them
+   *  aimSpreadScale (CG_CalcReticleSpread) - the recorder's from the player state, interpolated between the
+   *  snapshots with his spread override and the steady aim perk; the others' simulated (gunFollow) */
   spread(cl, t, s, W, ri, P, ads) {
-    const v = k => P[k] || 0;
-    const A2 = this.M.d.psAim;
-    let mn, mx, scale;
-    if (W && A2 && ri < A2.t.length) {
-      const vh = A2.vh[ri];
-      if (vh <= 40) { const f = clamp01((vh - 11) / 29); mn = v('hipSpreadProneMin') + (v('hipSpreadDuckedMin') - v('hipSpreadProneMin')) * f; mx = v('hipSpreadProneMax') + (v('hipSpreadDuckedMax') - v('hipSpreadProneMax')) * f; }
-      else { const f = clamp01((vh - 40) / 20); mn = v('hipSpreadDuckedMin') + (v('hipSpreadStandMin') - v('hipSpreadDuckedMin')) * f; mx = v('hipSpreadDuckedMax') + (v('hipSpreadMax') - v('hipSpreadDuckedMax')) * f; }
-      if (A2.perks[ri] & 2) { mn *= 0.65; mx *= 0.65; }
-      scale = A2.aim[ri] / 255;
-    } else {
-      [mn, mx] = s.prone ? [v('hipSpreadProneMin'), v('hipSpreadProneMax')] : s.crouch ? [v('hipSpreadDuckedMin'), v('hipSpreadDuckedMax')] : [v('hipSpreadStandMin'), v('hipSpreadMax')];
-      const a = this.M.sampleAt(cl, t - 100);
-      const speed = a ? Math.hypot(s.x - a.x, s.y - a.y) * 10 : 0;
-      let fire = 0;
-      const shots = this.shotsOf(cl), decay = (s.prone ? v('hipSpreadProneDecay') : s.crouch ? v('hipSpreadDuckedDecay') : v('hipSpreadDecayRate')) || 4;
-      for (let k = lower(shots, t); k >= 0 && t - shots[k] < 2000; k--) fire += v('hipSpreadFireAdd') * 0.25 * Math.exp(-decay * (t - shots[k]) / 1000);
-      scale = clamp01(clamp01(speed / RUN_SPEED) * Math.min(1, v('hipSpreadMoveAdd') / 5) + fire);
-    }
+    const v = k => P[k] || 0, A2 = this.M.d.psAim, rec = W && A2 && ri < A2.t.length;
+    const vh = this.eyeHeight(cl, t, s);
+    let mn, mx;
+    if (vh <= 40) { const f = clamp01((vh - 11) / 29); mn = v('hipSpreadProneMin') + (v('hipSpreadDuckedMin') - v('hipSpreadProneMin')) * f; mx = v('hipSpreadProneMax') + (v('hipSpreadDuckedMax') - v('hipSpreadProneMax')) * f; }
+    else { const f = clamp01((vh - 40) / 20); mn = v('hipSpreadDuckedMin') + (v('hipSpreadStandMin') - v('hipSpreadDuckedMin')) * f; mx = v('hipSpreadDuckedMax') + (v('hipSpreadMax') - v('hipSpreadDuckedMax')) * f; }
+    let scale;
+    if (rec) {
+      const n = ri + 1 < A2.t.length && A2.client[ri + 1] === cl && A2.t[ri + 1] > A2.t[ri] ? ri + 1 : ri;
+      const f = n > ri ? clamp01((t - A2.t[ri]) / (A2.t[n] - A2.t[ri])) : 0;
+      scale = (A2.aim[ri] + (A2.aim[n] - A2.aim[ri]) * f) / 255;
+      const so = A2.spreadOverrideState[ri];                     // PSOS_RESETTING 1, PSOS_ENABLED 2
+      if (so === 2) mn = mx = A2.spreadOverride[ri]; else if (so === 1) mx = A2.spreadOverride[ri];
+      if (A2.perks[ri] & 2) { mn *= 0.65; mx *= 0.65; }          // perk_weapSpreadMultiplier
+    } else scale = (this.simNow ? this.simNow.aim : 0) / 255;
     this.lastScale = scale;
     return (mx - mn) * scale + mn;
   }

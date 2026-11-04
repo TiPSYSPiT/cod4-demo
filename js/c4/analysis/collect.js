@@ -54,8 +54,9 @@ C4.define('collect', function (C4) {
     weapAnim: PS_INDEX['weapAnim'], weaponState: PS_INDEX['weaponstate'], weaponTime: PS_INDEX['weaponTime'], weaponDelay: PS_INDEX['weaponDelay'],
     bobCycle: PS_INDEX['bobCycle'], vx: PS_INDEX['velocity[0]'], vy: PS_INDEX['velocity[1]'], vz: PS_INDEX['velocity[2]'],
     groundEnt: PS_INDEX['groundEntityNum'], pmFlags: PS_INDEX['pm_flags'], weapFlags: PS_INDEX['weapFlags'], shotCount: PS_INDEX['weaponShotCount'],
-    offhand: PS_INDEX['offHandIndex'], holdBreath: PS_INDEX['holdBreathScale'],
-    // cod4-demo3d (the first-person HUD): the damage indicator, the cursor hints, the equipped special grenade
+    offhand: PS_INDEX['offHandIndex'], holdBreath: PS_INDEX['holdBreathScale'], grenadeTimeLeft: PS_INDEX['grenadeTimeLeft'],
+    shockIndex: PS_INDEX['shellshockIndex'], shockTime: PS_INDEX['shellshockTime'], shockDuration: PS_INDEX['shellshockDuration'],
+    // cod4-demo3d (the first-person HUD): the damage state, the cursor hints, the equipped special grenade
     damageEvent: PS_INDEX['damageEvent'], damageYaw: PS_INDEX['damageYaw'], damagePitch: PS_INDEX['damagePitch'],
     damageCount: PS_INDEX['damageCount'], damageDuration: PS_INDEX['damageDuration'], flinch: PS_INDEX['flinchYawAnim'],
     cursorHint: PS_INDEX['cursorHint'], cursorHintString: PS_INDEX['cursorHintString'], offhandSecondary: PS_INDEX['offhandSecondary']
@@ -136,6 +137,7 @@ C4.define('collect', function (C4) {
       psHud: [],                    // cod4-demo3d: the recorder's HUD state per snapshot (see doPlayerState)
       psAmmo: [],                   // cod4-demo3d: [t, 0 ammo / 1 clip, slot, value] on every change
       hitMarks: [],                 // cod4-demo3d: the scripts' hit marker HUD element on every change (see doHitMarks)
+      shocks: [],                   // cod4-demo3d: the followed client's shell shocks {client, start, duration, name}
       hitsTaken: [],                // EV_BULLET_HIT_CLIENT_*: {t, victim, attacker, weapon}
       // cod4-demo3d (the 3D view's effects): every bullet impact the POV received (EV_BULLET_HIT temp
       // entities): [t, x, y, z, normal (DirToByte), surface type, weapon, impact flags (un1), shooter], and
@@ -331,11 +333,12 @@ C4.define('collect', function (C4) {
     }
 
     const lastAmmo = [null, null];
+    let lastShock = null;
     function doPlayerState(snap, t) {
       const f = snap.ps.fields;
       c.psCommandTimes.push(t, f[PSI.commandTime] | 0);
       // cod4-demo3d (the first-person HUD): health, max health, the player under the crosshair (stats 0 / 2 / 3),
-      // the damage indicator, flinch, cursor hint, the special grenade equipped; the ammo / clip slots that changed
+      // the damage state, flinch, cursor hint, the special grenade equipped; the ammo / clip slots that changed
       const S = snap.ps.stats;
       c.psHud.push(t, f[PSI.client], S[0] | 0, S[2] | 0, S[3] | 0, f[PSI.damageEvent] | 0, f[PSI.damageYaw] | 0, f[PSI.damagePitch] | 0,
         f[PSI.damageCount] | 0, f[PSI.damageDuration] | 0, f[PSI.flinch] | 0, f[PSI.cursorHint] | 0, f[PSI.cursorHintString] | 0, f[PSI.offhandSecondary] | 0);
@@ -346,7 +349,12 @@ C4.define('collect', function (C4) {
         lastAmmo[kind] = arr.slice();
       }
       c.psAim.push(t, f[PSI.client], u2f(f[PSI.aimSpread]), u2f(f[PSI.weaponPos]), u2f(f[PSI.viewHeight]), u2f(f[PSI.lean]),
-        f[PSI.perks] >>> 0, f[PSI.spreadOverride] | 0, f[PSI.spreadOverrideState] | 0, u2f(f[PSI.holdBreath]));
+        f[PSI.perks] >>> 0, f[PSI.spreadOverride] | 0, f[PSI.spreadOverrideState] | 0, u2f(f[PSI.holdBreath]), f[PSI.grenadeTimeLeft] | 0);
+      // the shell shock of the followed client on every change (the crosshair: CG_Flashbanged)
+      if (f[PSI.shockIndex] && f[PSI.shockTime] !== lastShock) {
+        lastShock = f[PSI.shockTime];
+        c.shocks.push({ client: f[PSI.client], start: f[PSI.shockTime] | 0, duration: f[PSI.shockDuration] | 0, name: c.cs.get(K.CS.SHELLSHOCKS + f[PSI.shockIndex]) || '' });
+      }
       c.psWeapon.push(t, f[PSI.client], f[PSI.weapAnim] | 0, f[PSI.weaponState] | 0, f[PSI.weaponTime] | 0, f[PSI.weaponDelay] | 0,
         f[PSI.bobCycle] | 0, R(u2f(f[PSI.vx])), R(u2f(f[PSI.vy])), R(u2f(f[PSI.vz])), f[PSI.groundEnt] | 0, f[PSI.pmFlags] >>> 0,
         f[PSI.weapFlags] | 0, f[PSI.shotCount] | 0, f[PSI.weapon] | 0, f[PSI.offhand] | 0);

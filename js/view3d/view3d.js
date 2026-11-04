@@ -376,7 +376,7 @@ export class View3D {
           switchRow('Player rings', this.switchBoxes.rings, { title: 'A ring in the team colour at the feet of each player model (Players: Models)' }),
           switchRow('Enemy names', this.switchBoxes.enemyNames, { title: 'The enemies\' names over their heads (enemies of the player in first person, else of the selected player, else of the player the demo follows). Off: as in the game, only teammates are named; the selected / hovered player and X-Ray\'s "Players + names" keep theirs' }),
           switchRow('Kill feed', this.killfeedBox, { title: 'The kills and bomb plants / defuses of the last ' + C4.mapConfig.EXPORT.KILLFEED_MS / 1000 + ' s over the view, with the weapon icons' }),
-          switchRow('Game HUD', this.hudBox, { title: "First person: the game's HUD (Promod's layout) - the minimap, ammo and grenades, the low health overlay, the damage indicator, the hit marker, the teammate under the crosshair" }),
+          switchRow('Game HUD', this.hudBox, { title: "First person: the game's HUD (Promod's layout) - the minimap, ammo and grenades, the hit marker, the teammate under the crosshair" }),
           switchRow('Bullet tracers', this.tracersBox, { title: "The game's bullet tracers: a short glowing streak flying from the muzzle, gone at the impact - for 20 % of the hits the server reports (cg_tracerChance) and half the shots of the player seen in first person (cg_firstPersonTracerChance)" })),
         this.soundRows) },
       { key: 'graphics', title: 'Graphics', hint: 'reloads the 3D map', icon: 'sun', node: el('div', { class: 'pop-body' },
@@ -717,8 +717,7 @@ export class View3D {
     const ins = clear ? this.uiInsets(w / Math.max(1, this.hudCanvas.clientWidth || w)) : { l: 0, t: 0, r: 0, b: 0 };
     g.save();
     g.translate(ins.l, ins.t);
-    // (the whole view in the safe area's coordinates: the parts on the crosshair - the damage indicator, the hit marker -
-    // centred on the screen as the game draws them)
+    // (the whole view in the safe area's coordinates: the hit marker centred on the screen as the game draws it)
     this.hud.draw(g, w - ins.l - ins.r, h - ins.t - ins.b, this.t || 0, cl, s ? { yaw: s.yaw, pitch: s.pitch } : null, st && st.weapon ? String(st.weapon).toLowerCase() : null,
       { x: -ins.l, y: -ins.t, w, h });
     g.restore();

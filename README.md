@@ -201,12 +201,12 @@ camera (`EV_EARTHQUAKE`: `CG_ShakeCamera`'s scale, radius and duration).
 
 **The game's HUD** (Display: *Game HUD*, on; `js/view3d/hud.js`, the images by `tools/export/hud_export.py`): in
 first person the minimap of Promod's HUD (the compass map turned with the view, teammates, enemies while they fire),
-the ammo (clip | reserve, red when low) with the weapon's name and the grenades, the low health overlay, the damage
-direction indicator (`hit_direction`, 2 s), the **hit marker** (the scripts' `damage_feedback` HUD element of
+the ammo (clip | reserve, red when low) with the weapon's name and the grenades, the **hit marker** (the scripts' `damage_feedback` HUD element of
 `_damagefeedback.gsc` - stock and Promod -, its fade, size and place as the server sends them: on every hit the
 recorder lands), the teammate under the crosshair and the use hint - laid out on the game's 640 × 480 screen inside
-the viewer's panels (the damage indicator and the hit marker on the screen's centre, as the game). The ammo, health,
-damage, hit marker and hints exist only for the recorder (the demo's player state); of the server's own HUD elements
+the viewer's panels (the hit marker on the screen's centre, as the game). The game's red damage indicators (the
+direction arc, the low health overlay) are left out on purpose; the damage data stays (statistics). The ammo, hit
+marker and hints exist only for the recorder (the demo's player state); of the server's own HUD elements
 only the hit marker is drawn. The video export draws the HUD into its frames.
 
 **Promod demos** (`mod` / `fs_game` / `promodVersion` name Promod): the numbers and effects of Promod's weapon files
@@ -556,7 +556,7 @@ these: `--anims-only`):
   It also writes the numbers of Promod's weapon files (`promod_x-master/weapons/mp`, read only) as the
   differences to the stock files (`"promod"`), the HUD's ammo / clip names and the grenades' projectile models.
 - `hud_export.py` writes the first-person HUD's images (`maps3d/_hud/`: the minimap frame, the compass pings,
-  the low health overlay, the damage indicator, the hints, the grenade icons; 29 images) from the `.iwd`
+  the hit marker, the reticles, the hints, the grenade icons; 32 images) from the `.iwd`
   archives: `py tools/export/hud_export.py --game "C:/Games/Call of Duty 4"` (after `viewmodels_export.py`).
 - `weapons_export.py` exports the world weapon models like the characters and writes `weapons.json`
   (format 2): weapon → its world models by variant (`worldModel` .. `worldModel16`) and its knife

@@ -38,23 +38,11 @@ const FALLBACK_OFFSET = new THREE.Vector3(14, -6, -8);
 const CROSSHAIR_ALPHA = 1, CROSSHAIR_ALPHA_MIN = 0.5;
 const MY_TEAM = [0.4, 0.6, 0.85], ENEMY_TEAM = [0.75, 0.25, 0.25];
 
-/** the reticle images (reticle_side_small, reticle_center_cross: in the fast files, drawn here): a soft
- *  white bar along the image's height / a small cross */
-function reticleTexture(kind) {
-  const c = document.createElement('canvas');
-  c.width = c.height = 32;
-  const g = c.getContext('2d');
-  g.fillStyle = '#fff';
-  if (kind === 'side') {
-    g.globalAlpha = 0.4; g.fillRect(12, 1, 8, 30);
-    g.globalAlpha = 1; g.fillRect(13.5, 2, 5, 28);
-  } else {
-    g.globalAlpha = 1; g.fillRect(15, 10, 2, 12); g.fillRect(10, 15, 12, 2);
-  }
-  const t = new THREE.CanvasTexture(c);
-  t.colorSpace = THREE.NoColorSpace;
-  return t;
-}
+// the viewer's own rules on top of the game's (AllowedToDrawCrosshair hides neither; the weapon files give the scoped
+// rifles reticle_side_small too): no crosshair while sprinting, none for the scoped rifles at the hip
+const HIDE_SPRINTING = true, HIDE_SCOPED = true;
+// the reticle materials' images (common_mp.ff; maps3d/_hud: tools/export/hud_export.py)
+const RETICLE_IMAGES = { reticle_side_small: 'side_small', reticle_center_cross: 'center_cross', reticle_flechette: 'flechette_reticle', reticle_m203: 'm203_reticle' };
 
 export { isPromod };
 
@@ -86,12 +74,28 @@ export class ViewModel {
     // the overlay pass: crosshair lines and the scope (pixels, origin at the centre)
     this.hud = new THREE.Scene();
     this.hudCam = new THREE.OrthographicCamera(-1, 1, 1, -1, -1, 1);
-    const quad = map => { const m = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({ map, color: 0xffffff, transparent: true, depthTest: false, depthWrite: false })); this.hud.add(m); return m; };
-    const side = reticleTexture('side');
-    this.lines = [quad(side), quad(side), quad(side), quad(side)];   // the four sides (top, right, bottom, left)
-    this.center = quad(reticleTexture('center'));
+    this.reticles = new Map();           // reticle material -> texture
+    const quad = () => { const m = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({ map: this.reticle('reticle_side_small'), color: 0xffffff, transparent: true, depthTest: false, depthWrite: false })); m.visible = false; this.hud.add(m); return m; };
+    this.lines = [quad(), quad(), quad(), quad()];                   // the four sides (top, right, bottom, left)
+    this.center = quad();
     this.aimTarget = null;               // (cl, t, s, range) -> 'friend' | 'enemy' | null: the other players' crosshair colour
     this.scope = null;                   // {group, quads, bars, cross} built when an overlay is first needed
+  }
+
+  /** the game's image of a reticle material as a texture (gamma space, as the rest of the view; no mipmaps: drawn
+   *  about its own size) */
+  reticle(material) {
+    let t = this.reticles.get(material);
+    if (!t) {
+      t = loadTexture('maps3d/_hud/' + (RETICLE_IMAGES[material] || material) + '.webp', new THREE.TextureLoader().setCrossOrigin('anonymous'));
+      t.colorSpace = THREE.NoColorSpace;
+      t.generateMipmaps = false;
+      t.minFilter = t.magFilter = THREE.LinearFilter;
+      t.wrapS = t.wrapT = THREE.ClampToEdgeWrapping;
+      const poll = setInterval(() => { if (t.image) { clearInterval(poll); this.changed(); } }, 100);
+      this.reticles.set(material, t);
+    }
+    return t;
   }
 
   /** the match (a new demo): the animation driver; anims: the player animation library (ADS, sprint) */
@@ -462,7 +466,8 @@ export class ViewModel {
     // crosshairColorChange - the recorder's weapFlags 8 / 0x10, the others by their view), its alpha (1 -
     // the scope's zoom), hidden at full ADS and in the raise / drop / reload / melee states
     const zoom = this.reticleZoom();
-    let show = !!(st && P && this.crosshair && st.ads < 1 && !st.reticleOff);
+    const scopedGun = P && P.adsOverlayReticle && P.adsOverlayReticle !== 'none';
+    let show = !!(st && P && this.crosshair && st.ads < 1 && !st.reticleOff && !st.flashed && !(HIDE_SPRINTING && st.sprinting) && !(HIDE_SCOPED && scopedGun));
     let color = [1, 1, 1];
     if (show && P.crosshairColorChange) {
       const f = st.weapFlags;
@@ -482,7 +487,13 @@ export class ViewModel {
     for (const l of this.lines) l.visible = false;
     this.center.visible = false;
     if (show) {
-      const cy = -transShift * px;
+      // an image on the device's pixel grid: its size and top-left corner rounded (x, y: virtual units from the
+      // screen's centre, y down) - the same sharpness at any resolution, nothing swimming between pixels
+      const place = (m, x, y, d) => {
+        const size = Math.max(1, Math.round(d * px)), left = Math.round(W / 2 + x * px), top = Math.round(H / 2 + (y + transShift) * px);
+        m.position.set(left + size / 2 - W / 2, H / 2 - top - size / 2, 0);
+        m.scale.set(size, size, 1);
+      };
       // the sides (CG_DrawReticleSides): the image four times, turned 0 / 90 / 180 / 270, at the spread's
       // distance tan(spread x transScale) x 240 / tan(fov / 2) (at least reticleMinOfs); faded by the
       // aim spread scale (CG_CalcReticleColor), not below cg_crosshairAlphaMin
@@ -493,23 +504,27 @@ export class ViewModel {
         if (sp < (P.reticleMinOfs || 0)) sp = P.reticleMinOfs || 0;
         sp -= (P.hipReticleSidePos || 0) * d;
         const off = d / 8;                                   // CG_CalcReticleImageOffset
-        // the top-left corners of the four images (virtual units, y down) -> centres in pixels (y up)
+        const tex = this.reticle(P.reticleSide);
+        // the top-left corners of the four images
         const corners = [[-d / 2, -d - sp - off], [sp, -d / 2], [-d / 2 - off, sp], [-d - sp - off, -d / 2 - off]];
         corners.forEach(([x, y], k) => {
           const l = this.lines[k];
-          l.visible = true;
-          l.position.set((x + d / 2) * px, cy - (y + d / 2) * px, 0);
-          l.scale.set(d * px, d * px, 1);
+          l.visible = !!tex.image;
+          l.material.map = tex;
+          place(l, x, y, d);
           l.rotation.z = -k * Math.PI / 2;
           l.material.color.setRGB(...color); l.material.opacity = Math.min(1, a);
         });
       }
-      // the centre image (grenades: reticle_center_cross at reticleCenterSize)
+      // the centre image (CG_DrawReticleCenter; grenades: reticle_center_cross, pulsing with the cook timer)
       if (P.reticleCenter) {
-        const d = (P.reticleCenterSize || 4) * transScale;
-        this.center.visible = true;
-        this.center.position.set(0, cy, 0);
-        this.center.scale.set(d * px, d * px, 1);
+        let d = P.reticleCenterSize || 4;
+        if (P.weaponType === 'grenade' && P.cookOffHold && st.grenadeLeft) d += (st.grenadeLeft % 1000) / 100;
+        d *= transScale;
+        const tex = this.reticle(P.reticleCenter);
+        this.center.visible = !!tex.image;
+        this.center.material.map = tex;
+        place(this.center, -d / 2, -d / 2, d);
         this.center.material.color.setRGB(...color); this.center.material.opacity = alpha;
       }
       any = true;

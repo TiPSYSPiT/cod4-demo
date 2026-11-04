@@ -18,7 +18,7 @@ export const GRAPHICS = [
     values: [['all', 'All'], ['ambient', 'Map only'], ['demo', 'Demo only'], ['off', 'Off']] },
   { key: 'viewmodel', label: 'First-person weapon', live: true, title: 'In the first-person camera: the weapon the player holds, in their character\'s hands - the game\'s view models and animations as the demo drives them (shots, reloads, switches, aiming down the sights with the zoom and the sniper scope, the knife), drawn over the world',
     values: [['on', 'On'], ['off', 'Off']] },
-  { key: 'crosshair', label: 'Crosshair', live: true, title: 'In the first-person camera: the crosshair as in the game - its gap the weapon\'s spread (stance, movement, shots), hidden aiming down the sights and for the scoped rifles',
+  { key: 'crosshair', label: 'Crosshair', live: true, title: 'In the first-person camera: the crosshair with the game\'s images - its gap the weapon\'s spread (stance, movement, jumps, shots), hidden aiming down the sights, sprinting and for the scoped rifles',
     values: [['on', 'On'], ['off', 'Off']] }
 ];
 // the URL parameters' values in the settings' terms (?fx=on is not a value: ignored)

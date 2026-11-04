@@ -791,6 +791,8 @@ C4.define('build', function (C4) {
       })(),
       // cod4-demo3d: every player's weapon events [t, client, event, eventParm, weapon name] (collect.js weapEvents)
       weapEvents: (col.weapEvents || []).map(r => { const t = rel(r[0]); return [t, r[1], r[2], r[3], weaponName(r[4], t)]; }).filter(r => onMainMap(r[0])),
+      // cod4-demo3d: the followed player's shell shocks (collect.js shocks; relative times)
+      shocks: (col.shocks || []).map(h => Object.assign({}, h, { start: rel(h.start) })),
       // cod4-demo3d: the scripts' hit marker HUD element of the followed player on every change (collect.js hitMarks;
       // the server times relative as the rest)
       hitMarks: (col.hitMarks || []).map(h => Object.assign({}, h, { t: rel(h.t), fadeStart: h.fadeStart ? rel(h.fadeStart) : 0,
@@ -811,14 +813,14 @@ C4.define('build', function (C4) {
       // cod4-demo3d: the recorder's own aim per snapshot (relative time; collect.js psAim)
       psAim: (() => {
         // (breath: holdBreathScale - 0 while the sniper holds the breath, up to the gasp's scale after it)
-        const a = col.psAim || [], N = 10, n = Math.floor(a.length / N);
+        const a = col.psAim || [], N = 11, n = Math.floor(a.length / N);
         const o = { t: new Int32Array(n), client: new Uint8Array(n), aim: new Float32Array(n), ads: new Float32Array(n), vh: new Float32Array(n),
           lean: new Float32Array(n), perks: new Uint32Array(n), spreadOverride: new Uint8Array(n), spreadOverrideState: new Uint8Array(n),
-          breath: new Float32Array(n) };
+          breath: new Float32Array(n), grenadeLeft: new Int32Array(n) };
         for (let i = 0; i < n; i++) {
           const r = i * N;
           o.t[i] = rel(a[r]); o.client[i] = a[r + 1]; o.aim[i] = a[r + 2]; o.ads[i] = a[r + 3]; o.vh[i] = a[r + 4]; o.lean[i] = a[r + 5];
-          o.perks[i] = a[r + 6]; o.spreadOverride[i] = a[r + 7]; o.spreadOverrideState[i] = a[r + 8]; o.breath[i] = a[r + 9];
+          o.perks[i] = a[r + 6]; o.spreadOverride[i] = a[r + 7]; o.spreadOverrideState[i] = a[r + 8]; o.breath[i] = a[r + 9]; o.grenadeLeft[i] = a[r + 10];
         }
         return o;
       })(),
