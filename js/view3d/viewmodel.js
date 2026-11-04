@@ -11,8 +11,9 @@
  * whole offset). The hands' root tag_view is the eye: the rig hangs at the first-person camera with
  * its view axes (model space X forward, Y left, Z up), moved by the bob, sway and kick offsets.
  *
- * Drawn after the scene in a pass of its own with the depth buffer cleared and a near plane of
- * 0.5 units: on top of the world, never in a wall - the game draws its view model the same way. Lit
+ * Drawn after the scene in a pass of its own with the depth buffer cleared, with the world's fov and
+ * aspect and its own near plane (r_znear_depthhack): on top of the world, never in a wall - the game
+ * draws its view model the same way, cg_gun_x / y / z moving it along the view axes (pov.js). Lit
  * like the players: the light grid and reflection probe at the eye (lighting.js). The crosshair and
  * the scope overlay follow in an orthographic pass (also in the video export). A weapon without a
  * view model falls back to its world model (weapons.json) ahead of the camera. */
@@ -22,7 +23,7 @@ import { gridLit, objectLighting, setObjectLighting } from './lighting.js';
 import { weaponModelName, isPromod } from './actors.js';
 import { ViewAnimator } from './viewanim.js';
 import { loadTexture } from './mapLoader.js';
-import { CG_FOV, hFov43, vFov43 } from './cameras.js';
+import { CG_GUN_X, CG_GUN_Y, CG_GUN_Z, FP_FOV, R_ZNEAR_DEPTHHACK, verticalFov, viewFov } from './pov.js';
 
 const IDENTITY = new THREE.Matrix4();
 const D2R = Math.PI / 180;
@@ -47,12 +48,14 @@ const RETICLE_IMAGES = { reticle_side_small: 'side_small', reticle_center_cross:
 
 export { isPromod };
 
+const GUN_OFFSET = new THREE.Vector3(-CG_GUN_Y, CG_GUN_Z, -CG_GUN_X);
+
 export class ViewModel {
   /** library: the CharacterLibrary (models, viewmodels.json, the animation files) */
   constructor(library) {
     this.library = library;
     this.scene = new THREE.Scene();
-    this.camera = new THREE.PerspectiveCamera(60, 1, 0.5, 2000);
+    this.camera = new THREE.PerspectiveCamera(60, 1, R_ZNEAR_DEPTHHACK, 2000);
     this.root = new THREE.Group();
     this.root.name = 'viewmodel';
     this.scene.add(this.root);
@@ -203,18 +206,11 @@ export class ViewModel {
     return z <= 0.01 ? 0 : Math.min(1, z);
   }
 
-  /** the vertical field of view for the first-person camera (deg) at the base fov: the weapon's ADS
-   *  zoom (adsZoomFov, a horizontal fov on the game's 4:3 screen, scaled like the base) over the last
-   *  part of the sights' transition (adsZoomInFrac) */
-  fov(base) {
+  /** the first-person camera's vertical field of view (deg): pov.js, the weapon's zoom over the end of the sights' transition */
+  fov() {
     const st = this.state, P = st && st.entry && st.entry.params;
-    if (!this.enabled || !P || !P.adsZoomFov || !(st.ads > 0)) return base;
-    // CG_GetViewFov: linear in the 4:3 screen's horizontal fov, over the last adsZoomInFrac (aiming in) / OutFrac
-    // (out) of the ADS fraction; base = cg_fov x the viewer's fov scale, the weapon's zoom scaled with it
-    const hb = hFov43(base), zoomed = Math.min(hb, P.adsZoomFov * hb / CG_FOV);
-    if (st.ads >= 1) return vFov43(zoomed);
-    const f = (st.adsIn ? P.adsZoomInFrac : P.adsZoomOutFrac) || 0.5, z = (st.ads - (1 - f)) / f;
-    return z > 0 ? vFov43(hb - (hb - zoomed) * z) : base;
+    if (!this.enabled || !P || !P.adsZoomFov || !(st.ads > 0)) return FP_FOV;
+    return verticalFov(viewFov({ zoomFov: P.adsZoomFov, frac: Math.min(1, st.ads), zoomFrac: (st.adsIn ? P.adsZoomInFrac : P.adsZoomOutFrac) || 0.5 }));
   }
 
   /** the rig of gun + hands (+ knife) of a view model entry (built when its models are loaded) */
@@ -420,11 +416,17 @@ export class ViewModel {
     const rig = this.shown && this.current && this.current.userData.rig;
     const i = rig ? rig.index.get(name) : null;
     if (i == null) return null;
-    this.root.position.copy(camera.position);
-    this.root.quaternion.copy(camera.quaternion).multiply(MODEL_TO_CAMERA);
+    this.place(camera);
     this.root.updateMatrixWorld(true);
     const e = rig.bones[i].matrixWorld.elements, n = v => { const l = Math.hypot(...v) || 1; return v.map(x => x / l); };
     return { origin: [e[12], e[13], e[14]], axis: [n([e[0], e[1], e[2]]), n([e[4], e[5], e[6]]), n([e[8], e[9], e[10]])] };
+  }
+
+  /** the rig at the eye with the view's axes. CG_AddViewWeapon: cg_gun_x / y / z along the view's forward, left and up, whatever
+   *  the sights do (a camera looks down -z, right is +x) */
+  place(camera) {
+    this.root.position.copy(GUN_OFFSET).applyQuaternion(camera.quaternion).add(camera.position);
+    this.root.quaternion.copy(camera.quaternion).multiply(MODEL_TO_CAMERA);
   }
 
   /** draw over the finished frame of `camera` (the first-person camera at the eye): the gun, then the
@@ -436,8 +438,7 @@ export class ViewModel {
       C.quaternion.copy(camera.quaternion);
       C.fov = camera.fov; C.aspect = camera.aspect;
       C.updateProjectionMatrix();
-      this.root.position.copy(camera.position);
-      this.root.quaternion.copy(camera.quaternion).multiply(MODEL_TO_CAMERA);
+      this.place(camera);
       // lighting: the light grid and probe at the eye
       if (this.lg) {
         const p = camera.position, s = this.sample;

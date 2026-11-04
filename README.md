@@ -218,8 +218,9 @@ feed gives way to them in first person), "You killed" / "Killed by" under the ce
 (`promod_x-master/weapons/mp`, exported into `viewmodels.json` as the differences) - no crosshair colours, no muzzle
 flashes, no ADS sway, the snipers' smaller hip spread, Promod's damage; stock demos use the stock files.
 
-The first-person camera's field of view is 80° vertical (about the game's `cg_fov 80` with
-`cg_fovscale` 1.2); the gun uses the same projection, as in the game. Without a view model for a
+The first-person camera follows the engine (`js/view3d/pov.js`, all values in one place): `cg_fov` 80 x `cg_fovScale` 1.125 = 90, the
+horizontal fov of a 4:3 screen, so 73.74° vertical at every aspect ratio, 106.26° horizontal at 16:9; aiming multiplies the weapon's
+`adsZoomFov` by the same 1.125; the gun uses the same projection, as in the game. Without a view model for a
 weapon its world model is drawn ahead of the eye (none of the demos' 13 weapons needs it).
 
 **X-Ray** (Display popover or key `X`, remembered): *Off*, *Players* - the living players behind walls,
@@ -757,6 +758,7 @@ js/app/replay.js         Replay: the one playback state (time, range, selection,
                          player bar, timeline, Layers popover, drawer (teams, kill feed)
 js/c4/ui/killfeed.js     the game's kill feed and message windows: 3D view (HUD canvas), both video exports
 js/app/defaults.js       the defaults of the Display / Graphics options and their storage keys
+js/view3d/pov.js         the first-person view's dvars (cg_fov, cg_fovScale, cg_gun_x / y / z) and the engine's fov
                          (canvas), with C4.weapons.killIcons - the drawer's icon mapping
 js/view2d/view2d.js      2D view
 js/view3d/               view3d (scene, loop, Camera / Display / Graphics popovers), graphics

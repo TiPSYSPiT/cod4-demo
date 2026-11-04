@@ -218,7 +218,8 @@ export class ViewAnimator {
     if (key && ADS_VARIANT[key] && ads > 0.5 && has(ADS_VARIANT[key])) key = ADS_VARIANT[key];
     if (prevKey && ADS_VARIANT[prevKey] && ads > 0.5 && has(ADS_VARIANT[prevKey])) prevKey = ADS_VARIANT[prevKey];
     const actionOn = key && key !== 'idle' && !LOOPED.has(key) && (dur(key) == null || time <= dur(key) || HOLD_END.has(key));
-    if (actionOn && !FIRE_ANIMS.has(key) && !ADS_ANIMS.has(key) && key !== 'rechamber') ads = 0;
+    // (the recorder's fraction is the player state's: it falls by itself, the zoom going out at the game's pace)
+    if (!W && actionOn && !FIRE_ANIMS.has(key) && !ADS_ANIMS.has(key) && key !== 'rechamber') ads = 0;
     out.ads = ads;
     // ---- the sprint (the other players: the legs animation) ----
     if (!W && !actionOn) {
@@ -250,7 +251,12 @@ export class ViewAnimator {
         else if (!prevKey && w < 1 && idleKey) push(hip, 'idle', t / 1000, 1 - w);
         push(hip, key, time, prevKey || idleKey ? w : 1);
       }
-    } else push(hip, 'idle', t / 1000, 1);
+    } else {
+      // (an action cut short: the idle fades in over it, as after any other change of animation)
+      const w = prevKey && prevKey !== 'idle' ? clamp01(sinceStart / BLEND) : 1;
+      if (w < 1) push(hip, prevKey, prevTime, 1 - w);
+      push(hip, 'idle', t / 1000, w);
+    }
     // ADS: the weapon's adsUp animation moves only tag_ads (the parent of the hands' torso: back, and
     // aside so that the sights sit on the view axis); it plays at the sights' fraction (0 = hip, its
     // end = aimed) over the other animations, which keep moving the rest (an ADS shot: adsFire)

@@ -6,17 +6,10 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { forward } from './actors.js';
+import { FP_FOV } from './pov.js';
 
 export const MODES = [['orbit', 'Orbit'], ['free', 'Free fly'], ['follow', 'Follow player'], ['fp', 'First person']];
-/** the first-person camera's vertical field of view (deg; about the game's cg_fov 80 with cg_fovscale 1.2) -
- *  aiming down the sights zooms from it (viewmodel.js fov) */
-// cg_fov is the horizontal fov of the 4:3 screen (CG_UpdateFov: tanHalfFovY = tan(fov / 2) x 0.75, a wider screen sees
-// more at the sides); three's camera.fov is the vertical one
 const PINCH_FLY = 0.004;                // seconds of flight per pixel of a two-finger spread
-export const CG_FOV = 80;
-export const vFov43 = h => 2 * Math.atan(Math.tan(h * Math.PI / 360) * 0.75) * 180 / Math.PI;
-export const hFov43 = v => 2 * Math.atan(Math.tan(v * Math.PI / 360) / 0.75) * 180 / Math.PI;
-export const FP_FOV = vFov43(CG_FOV);
 const MOVE_KEYS = new Set(['KeyW', 'KeyA', 'KeyS', 'KeyD', 'KeyQ', 'KeyE', 'KeyR', 'KeyF', 'ShiftLeft', 'ShiftRight']);
 
 export class Cameras {

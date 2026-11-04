@@ -5,13 +5,14 @@ import '../c4/ui/killfeed.js';                     // C4.killfeed (a classic scr
 import { loadWorld, groundPlane, resolveMap, loadTexture } from './mapLoader.js';
 import { Actors, EYE, stanceOf, forward } from './actors.js';
 import { Effects } from './effects.js';
-import { Cameras, MODES, FP_FOV } from './cameras.js';
+import { Cameras, MODES } from './cameras.js';
 import { AuditView } from './audit.js';
 import { CharacterLibrary, AnimationLibrary } from './characters.js';
 import { SUN, PROBES, installGameFog } from './lighting.js';
 import { SunShadows, castShadows, STATIC_LAYER, DYNAMIC_LAYER } from './shadows.js';
 import { GRAPHICS, graphics, urlGraphics, setGraphics } from './graphics.js';
 import { DEFAULTS, DISPLAY_KEYS, displaySwitch, clearOptions } from '../app/defaults.js';
+import { R_ZNEAR } from './pov.js';
 import { XRay, XRAY_MODES } from './xray.js';
 import { Sky } from './sky.js';
 import { FxSystem, shotTracer } from './fx.js';
@@ -81,7 +82,7 @@ export class View3D {
 
     const scene = this.scene = new THREE.Scene();
     scene.background = new THREE.Color(0x0b0b0c);
-    this.camera = new THREE.PerspectiveCamera(60, 1, 4, 80000);
+    this.camera = new THREE.PerspectiveCamera(60, 1, R_ZNEAR, 80000);
     const hemi = new THREE.HemisphereLight(0xdde6f0, 0x3a3328, 1.6);
     hemi.position.set(0, 0, 1);
     this.sun = new THREE.DirectionalLight(0xffffff, 1.4);
@@ -726,7 +727,7 @@ export class View3D {
       this.viewmodel.aimTarget = target ? (st, range) => this.aimedPlayer(cl, this.t || 0, target, range) : null;
       this.viewmodel.update(cl, this.t || 0, mode === 'fp' && target ? this.M.sampleAt(cl, this.t || 0) : null, models && models.body);
       if (mode === 'fp') {
-        const fov = this.viewmodel.fov(FP_FOV);
+        const fov = this.viewmodel.fov();
         if (Math.abs(this.camera.fov - fov) > 1e-3) { this.camera.fov = fov; this.camera.updateProjectionMatrix(); this.needsRender = true; }
       }
       // the view's own motion: the scope's sway (viewanim.js viewSway, with the held breath) and the camera
