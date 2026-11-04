@@ -2375,6 +2375,18 @@
    ]
   },
   {
+   "name": "mc/mtl_weapon_parabolic_knife",
+   "texture": "_textures/weapon_parbolic_knife_col.webp",
+   "textureAlpha": false,
+   "color": "#4c4c4c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_parbolic_knife_spc-rg_20e5f788.specular.webp",
+   "textureFrom": "viewmodel_knife"
+  },
+  {
    "name": "mc/locker",
    "texture": "_textures/bunkerlocker_col.webp",
    "textureAlpha": false,
@@ -7460,7 +7472,7 @@
       {
        "indexStart": 0,
        "indexCount": 252,
-       "material": -1
+       "material": 106
       }
      ]
     },
@@ -7475,7 +7487,7 @@
       {
        "indexStart": 0,
        "indexCount": 36,
-       "material": -1
+       "material": 106
       }
      ]
     }
@@ -7507,7 +7519,7 @@
       {
        "indexStart": 0,
        "indexCount": 258,
-       "material": 106
+       "material": 107
       }
      ]
     },
@@ -7522,7 +7534,7 @@
       {
        "indexStart": 0,
        "indexCount": 72,
-       "material": 106
+       "material": 107
       }
      ]
     }
@@ -7553,7 +7565,7 @@
       {
        "indexStart": 0,
        "indexCount": 228,
-       "material": 106
+       "material": 107
       }
      ]
     },
@@ -7568,7 +7580,7 @@
       {
        "indexStart": 0,
        "indexCount": 36,
-       "material": 106
+       "material": 107
       }
      ]
     }
@@ -7599,7 +7611,7 @@
       {
        "indexStart": 0,
        "indexCount": 132,
-       "material": 106
+       "material": 107
       }
      ]
     },
@@ -7614,7 +7626,7 @@
       {
        "indexStart": 0,
        "indexCount": 36,
-       "material": 106
+       "material": 107
       }
      ]
     }
@@ -7645,12 +7657,12 @@
       {
        "indexStart": 0,
        "indexCount": 396,
-       "material": 107
+       "material": 108
       },
       {
        "indexStart": 396,
        "indexCount": 600,
-       "material": 108
+       "material": 109
       }
      ]
     },
@@ -7665,12 +7677,12 @@
       {
        "indexStart": 0,
        "indexCount": 72,
-       "material": 107
+       "material": 108
       },
       {
        "indexStart": 72,
        "indexCount": 186,
-       "material": 108
+       "material": 109
       }
      ]
     }
@@ -7701,12 +7713,12 @@
       {
        "indexStart": 0,
        "indexCount": 144,
-       "material": 109
+       "material": 110
       },
       {
        "indexStart": 144,
        "indexCount": 618,
-       "material": 110
+       "material": 111
       }
      ]
     },
@@ -7721,12 +7733,12 @@
       {
        "indexStart": 0,
        "indexCount": 84,
-       "material": 109
+       "material": 110
       },
       {
        "indexStart": 84,
        "indexCount": 228,
-       "material": 110
+       "material": 111
       }
      ]
     }
@@ -7835,9 +7847,9 @@
   "indices": 250392,
   "lod0InstanceTriangles": 788292,
   "lowInstanceTriangles": 417530,
-  "materials": 111,
+  "materials": 112,
   "materialsTextured": 110,
-  "lod0SurfacesWithoutMaterial": 1,
+  "lod0SurfacesWithoutMaterial": 0,
   "materialHandles": {
    "inline": 161,
    "resolved": 468,
@@ -7852,6 +7864,7 @@
    "windowedChains": 2,
    "selfPlaced": 18,
    "selfOverrides": 2,
+   "ordered": 0,
    "known": {
     "219360": "mc/mtl_sign_big_white01",
     "227240": "mc/locker",

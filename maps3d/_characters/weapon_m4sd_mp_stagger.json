@@ -117,20 +117,43 @@
   {
    "indexStart": 0,
    "indexCount": 90,
-   "material": -1
+   "material": 0
   },
   {
    "indexStart": 90,
    "indexCount": 300,
-   "material": 0
+   "material": 1
   },
   {
    "indexStart": 390,
    "indexCount": 2622,
-   "material": 0
+   "material": 1
   }
  ],
  "materials": [
+  {
+   "name": "mc/mtl_weapon_suppressor_b",
+   "texture": "_textures/weapon_suppressor_b_col.webp",
+   "textureAlpha": false,
+   "color": "#373734",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_suppressor_b_spc-r-59_afa8576d.specular.webp",
+   "envMapParms": [
+    0.8,
+    1.2,
+    1.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
   {
    "name": "mc/mtl_weapon_m4_m16_stagger",
    "texture": "_textures/weapon_m4_col.webp",

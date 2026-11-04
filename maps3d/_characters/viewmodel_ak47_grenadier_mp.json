@@ -197,12 +197,12 @@
   {
    "indexStart": 5046,
    "indexCount": 210,
-   "material": -1
+   "material": 2
   },
   {
    "indexStart": 5256,
    "indexCount": 792,
-   "material": 2
+   "material": 3
   }
  ],
  "materials": [
@@ -243,6 +243,29 @@
     1.2,
     3.2,
     1.3,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_m203_grenade",
+   "texture": "_textures/weapon_m203_grenade_col.webp",
+   "textureAlpha": false,
+   "color": "#565145",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_m203_grenade_spc-r65g_dad0da51.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
     0.625
    ],
    "colorTint": [

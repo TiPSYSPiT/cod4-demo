@@ -5868,6 +5868,111 @@
   }
  },
  "effects": [],
+ "fxMaterials": {
+  "gfx_smk_white_atlas": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_ash_fallout": {
+   "status": "missing-texture",
+   "issues": [
+    "no colour map exported (drawn as a soft round sprite)"
+   ]
+  },
+  "gfx_mist": {
+   "status": "ok",
+   "issues": []
+  },
+  "cloud_snowflake01": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_fog_wisp_afm": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_fog1_wisp_afm": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_spotlight_lensflare_glwz20": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_exp_igc": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_fire_roar_pm": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_fire_fuel": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_spark_field": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_explosion_flash": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_whisp_spiral": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_wind_hl_atlas": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_smk_white_atlas_add": {
+   "status": "missing-texture",
+   "issues": [
+    "blend one/one",
+    "no colour map exported (drawn as a soft round sprite)"
+   ]
+  },
+  "cloud_glass": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_debris_conc": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_snow_sheet": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_water_splash": {
+   "status": "ok",
+   "issues": []
+  },
+  "mc/gfx_bullethit_snow": {
+   "status": "ok",
+   "issues": [
+    "blend one/invsrcalpha"
+   ]
+  },
+  "wc/gfx_bullethit_snow": {
+   "status": "ok",
+   "issues": [
+    "blend one/invsrcalpha"
+   ]
+  }
+ },
  "summary": {
   "map": "mp_crash_snow",
   "props": 3966,
@@ -5888,6 +5993,6 @@
   "colourMapRefsUnresolved": 3,
   "normalMapsUnswizzled": 0,
   "alphaTexturesWithoutExact": 0,
-  "seconds": 10.5
+  "seconds": 20.9
  }
 }

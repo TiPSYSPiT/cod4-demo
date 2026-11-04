@@ -3437,6 +3437,50 @@
   }
  },
  "effects": [],
+ "fxMaterials": {
+  "gfx_water_noise": {
+   "status": "ok",
+   "issues": []
+  },
+  "cloud_snowflake01": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_wind_rain_atlas": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_water_gush_spill": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_lightning_atlas": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_lightning": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_smk_white_atlas": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_debris_drp": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_water_drip_base": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  }
+ },
  "summary": {
   "map": "mp_cargoship",
   "props": 1669,
@@ -3457,6 +3501,6 @@
   "colourMapRefsUnresolved": 4,
   "normalMapsUnswizzled": 0,
   "alphaTexturesWithoutExact": 0,
-  "seconds": 13.1
+  "seconds": 7.8
  }
 }

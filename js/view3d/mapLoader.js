@@ -139,7 +139,7 @@ export async function loadWorld(mapName, { onProgress, props = true, gameLightin
     const t = loadTexture(BASE + file, loader);
     t.flipY = false;                                        // D3D texture coordinates: v = 0 at the top
     t.colorSpace = THREE.NoColorSpace;                      // gamma-space math, like the game
-    if (repeat) { t.wrapS = t.wrapT = THREE.RepeatWrapping; t.anisotropy = 4; }
+    if (repeat) { t.wrapS = t.wrapT = THREE.RepeatWrapping; t.anisotropy = 8; }
     texCache.set(file, t);
     return t;
   };

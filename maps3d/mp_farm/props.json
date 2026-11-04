@@ -753,8 +753,7 @@
     1.0,
     1.0,
     1.0
-   ],
-   "textureFrom": "mp_carentan"
+   ]
   },
   {
    "name": "mc/mtl_tree_shadow_caster",
@@ -777,6 +776,7 @@
    "doubleSided": false,
    "depthWrite": true,
    "normalMap": "_textures/tree_river_birch_nml.normal.webp",
+   "specularMap": "_textures/dead_pine_spc-r-71g-71b-71_d_34842d41.specular.webp",
    "envMapParms": [
     0.0,
     6.8,
@@ -1048,6 +1048,7 @@
    "doubleSided": false,
    "depthWrite": true,
    "normalMap": "_textures/tree_destroyed_nml.normal.webp",
+   "specularMap": "_textures/dead_pine_spc-r-71g-71b-71_d_34842d41.specular.webp",
    "envMapParms": [
     0.0,
     6.4,
@@ -1303,6 +1304,7 @@
    "doubleSided": false,
    "depthWrite": true,
    "normalMap": "_textures/tree_pine_nml.normal.webp",
+   "specularMap": "_textures/dead_pine_spc-r-71g-71b-71_d_34842d41.specular.webp",
    "envMapParms": [
     0.0,
     6.0,
@@ -1421,6 +1423,7 @@
    "doubleSided": false,
    "depthWrite": true,
    "normalMap": "_textures/dead_pine_nml.normal.webp",
+   "specularMap": "_textures/dead_pine_spc-r-71g-71b-71_d_34842d41.specular.webp",
    "envMapParms": [
     0.0,
     6.4,
@@ -1524,6 +1527,7 @@
    "doubleSided": false,
    "depthWrite": true,
    "normalMap": "_textures/red_pine_nml.normal.webp",
+   "specularMap": "_textures/dead_pine_spc-r-71g-71b-71_d_34842d41.specular.webp",
    "envMapParms": [
     0.0,
     5.2,
@@ -10932,23 +10936,28 @@
   "lod0InstanceTriangles": 856330,
   "lowInstanceTriangles": 207934,
   "materials": 125,
-  "materialsTextured": 123,
+  "materialsTextured": 124,
   "lod0SurfacesWithoutMaterial": 2,
   "materialHandles": {
    "inline": 177,
-   "resolved": 721,
-   "unresolved": 45,
+   "resolved": 723,
+   "unresolved": 43,
    "null": 0,
    "chains": 22,
    "rules": {
-    "measured": 17,
+    "measured": 19,
     "cod4ff": 1
    },
    "shiftedModels": 9,
-   "windowedChains": 2,
-   "selfPlaced": 30,
+   "windowedChains": 4,
+   "selfPlaced": 29,
    "selfOverrides": 1,
+   "ordered": 2,
    "known": {
+    "15556": "mc/mtl_corrugated_metal",
+    "96668": "mc/mtl_grey_oak_canopy",
+    "96672": "mc/mtl_grey_oak",
+    "96676": "mc/mtl_tree_shadow_caster",
     "380952": "mc/mtl_river_birch",
     "380956": "mc/mtl_river_birch_canopy",
     "477756": "mc/mtl_desertshrubs",
@@ -11118,10 +11127,6 @@
     "22481100": "mc/mtl_opforce_gas_mask_lens_sp",
     "22481112": "mc/mtl_opforce_gas_mask_sp",
     "22552920": "mc/mtl_opforce_gear_sp",
-    "15556": "mc/mtl_corrugated_metal",
-    "96668": "mc/mtl_grey_oak_canopy",
-    "96672": "mc/mtl_grey_oak",
-    "96676": "mc/mtl_tree_shadow_caster",
     "2687600": "mc/mtl_transmitting_tower",
     "2687604": "mc/mtl_transmitting_tower2",
     "2720412": "mc/mtl_satellite_dish_big",
@@ -11134,7 +11139,9 @@
     "21935508": "mc/mtl_accessories_alpha_mp",
     "21935512": "mc/mtl_usmc_tactical_cap",
     "21935520": ",mc/lambert1",
-    "22342876": "mc/mtl_opforce_lod_sp"
+    "22342876": "mc/mtl_opforce_lod_sp",
+    "22577836": "mc/mtl_opforce_3hole_ski_mask_sp",
+    "22688376": "mc/mtl_opforce_ski_mask_sp"
    }
   },
   "materialsShared": 7

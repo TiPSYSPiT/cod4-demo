@@ -597,52 +597,52 @@
   {
    "indexStart": 4590,
    "indexCount": 372,
-   "material": -1
+   "material": 1
   },
   {
    "indexStart": 4962,
    "indexCount": 1572,
-   "material": 1
+   "material": 2
   },
   {
    "indexStart": 6534,
    "indexCount": 648,
-   "material": 1
+   "material": 2
   },
   {
    "indexStart": 7182,
    "indexCount": 858,
-   "material": 2
+   "material": 3
   },
   {
    "indexStart": 8040,
    "indexCount": 12,
-   "material": 3
+   "material": 4
   },
   {
    "indexStart": 8052,
    "indexCount": 12,
-   "material": 4
+   "material": 5
   },
   {
    "indexStart": 8064,
    "indexCount": 1818,
-   "material": 5
+   "material": 6
   },
   {
    "indexStart": 9882,
    "indexCount": 96,
-   "material": 6
+   "material": 7
   },
   {
    "indexStart": 9978,
    "indexCount": 24,
-   "material": 7
+   "material": 8
   },
   {
    "indexStart": 10002,
    "indexCount": 18,
-   "material": 8
+   "material": 9
   }
  ],
  "materials": [
@@ -656,6 +656,29 @@
    "doubleSided": false,
    "depthWrite": true,
    "specularMap": "_textures/weapon_saw_spc-r65g65b65_wea_fbd00e22.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_foregrip_a",
+   "texture": "_textures/weapon_foregrip_a_col.webp",
+   "textureAlpha": false,
+   "color": "#151514",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_foregrip_a_spec-r-59g_57ea3d12.specular.webp",
    "envMapParms": [
     0.8,
     2.0,

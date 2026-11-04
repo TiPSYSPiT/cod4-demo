@@ -57,10 +57,34 @@
   {
    "indexStart": 0,
    "indexCount": 252,
-   "material": -1
+   "material": 0
   }
  ],
- "materials": [],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_parabolic_knife",
+   "texture": "_textures/weapon_parbolic_knife_col.webp",
+   "textureAlpha": false,
+   "color": "#4c4c4c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_parbolic_knife_spc-rg_20e5f788.specular.webp",
+   "envMapParms": [
+    2.0,
+    8.0,
+    3.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
  "bounds": {
   "mins": [
    -3.43,

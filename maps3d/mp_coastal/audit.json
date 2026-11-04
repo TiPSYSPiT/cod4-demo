@@ -571,9 +571,10 @@
    ]
   },
   "fx_me_brick_01_piece02": {
-   "status": "no-material",
+   "status": "ok",
    "issues": [
-    "surface without material (unresolved handle)"
+    "mc/me_brick_01: material not in the zone extraction",
+    "mc/me_brick_01: technique set: none"
    ]
   },
   "p6_dig_brick_03_dark": {
@@ -581,9 +582,10 @@
    "issues": []
   },
   "fx_me_brick_01_piece01": {
-   "status": "no-material",
+   "status": "ok",
    "issues": [
-    "surface without material (unresolved handle)"
+    "mc/me_brick_01: material not in the zone extraction",
+    "mc/me_brick_01: technique set: none"
    ]
   },
   "fx_me_brick_01": {
@@ -5046,7 +5048,7 @@
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
-   "textureAlpha": false,
+   "textureAlpha": true,
    "status": "ok",
    "issues": []
   },
@@ -5058,7 +5060,7 @@
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
-   "textureAlpha": false,
+   "textureAlpha": true,
    "status": "ok",
    "issues": []
   },
@@ -6348,6 +6350,6 @@
   "colourMapRefsUnresolved": 4,
   "normalMapsUnswizzled": 0,
   "alphaTexturesWithoutExact": 0,
-  "seconds": 17.0
+  "seconds": 20.3
  }
 }

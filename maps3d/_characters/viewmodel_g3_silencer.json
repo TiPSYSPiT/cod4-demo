@@ -147,7 +147,7 @@
   {
    "indexStart": 4614,
    "indexCount": 120,
-   "material": -1
+   "material": 1
   }
  ],
  "materials": [
@@ -161,6 +161,29 @@
    "doubleSided": false,
    "depthWrite": true,
    "specularMap": "_textures/weapon_g3_spec-r-61g-61b-61__4f6b3aaf.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_suppressor_a",
+   "texture": "_textures/weapon_suppressor_a_col.webp",
+   "textureAlpha": false,
+   "color": "#2c2e31",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_suppressor_a_spec-r-5_7d745564.specular.webp",
    "envMapParms": [
     0.8,
     2.0,

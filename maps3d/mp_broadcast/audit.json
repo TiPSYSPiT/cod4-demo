@@ -508,10 +508,9 @@
    ]
   },
   "me_circular_ceiling_rail_large": {
-   "status": "no-material",
+   "status": "ok",
    "issues": [
-    "1 bones, 3 rigid vertex lists",
-    "surface without material (unresolved handle)"
+    "1 bones, 3 rigid vertex lists"
    ]
   },
   "ch_stagelight01_on": {
@@ -522,10 +521,9 @@
    ]
   },
   "me_circular_ceiling_rail_small": {
-   "status": "no-material",
+   "status": "ok",
    "issues": [
-    "1 bones, 3 rigid vertex lists",
-    "surface without material (unresolved handle)"
+    "1 bones, 3 rigid vertex lists"
    ]
   },
   "com_flower_pot02": {
@@ -3101,6 +3099,18 @@
    "status": "ok",
    "issues": []
   },
+  "mc/mtl_news_ticker_metal_rail": {
+   "name": "mc/mtl_news_ticker_metal_rail",
+   "class": "lit",
+   "texture": "news_ticker_metal_rails_col",
+   "format": "DXT1 512x32",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": []
+  },
   "mc/mtl_stage_lights01_on": {
    "name": "mc/mtl_stage_lights01_on",
    "class": "lit",
@@ -4193,18 +4203,6 @@
    "blend": null,
    "doubleSided": false,
    "textureAlpha": true,
-   "status": "ok",
-   "issues": []
-  },
-  "mc/mtl_news_ticker_metal_rail": {
-   "name": "mc/mtl_news_ticker_metal_rail",
-   "class": "lit",
-   "texture": "news_ticker_metal_rails_col",
-   "format": "DXT1 512x32",
-   "alphaTest": null,
-   "blend": null,
-   "doubleSided": false,
-   "textureAlpha": false,
    "status": "ok",
    "issues": []
   },
@@ -6757,6 +6755,109 @@
    ]
   }
  ],
+ "fxMaterials": {
+  "gfx_fog_wisp_afm": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_fog1_wisp_afm": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_car_light_round_red": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_spotlight_lensflare_glw_z20": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "cloud_dust_mote": {
+   "status": "ok",
+   "issues": [
+    "blend srcalpha/one"
+   ]
+  },
+  "gfx_mist": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_fallout_trash": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_wind_hl_atlas_z20_godray": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_smk_white_atlas": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_ash_fallout": {
+   "status": "missing-texture",
+   "issues": [
+    "no colour map exported (drawn as a soft round sprite)"
+   ]
+  },
+  "gfx_whisp_spiral": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_spotlight_lensflare_glwz20": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_exp_igc": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_fire_roar_pm": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_wind_hl_atlas": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_smk_white_atlas_add": {
+   "status": "missing-texture",
+   "issues": [
+    "blend one/one",
+    "no colour map exported (drawn as a soft round sprite)"
+   ]
+  },
+  "cloud_glass": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_spark_atlas": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_glow_hs": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_flare_clr_a": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  }
+ },
  "summary": {
   "map": "mp_broadcast",
   "props": 3473,
@@ -6777,6 +6878,6 @@
   "colourMapRefsUnresolved": 5,
   "normalMapsUnswizzled": 0,
   "alphaTexturesWithoutExact": 0,
-  "seconds": 16.8
+  "seconds": 12.1
  }
 }

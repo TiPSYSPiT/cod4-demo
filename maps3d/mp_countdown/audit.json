@@ -1422,11 +1422,10 @@
    "issues": []
   },
   "foliage_red_pine_med": {
-   "status": "no-material",
+   "status": "ok",
    "issues": [
     "mc/mtl_red_pine_canopy: image reference NOT resolved",
     "mc/mtl_tree_shadow_caster: shadow caster only (no colour pass); hidden",
-    "surface without material",
     "vertex colours (2751 of 9528 not white)"
    ]
   },
@@ -4892,6 +4891,34 @@
   }
  },
  "effects": [],
+ "fxMaterials": {
+  "gfx_dark_smoke_atlas_bg": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_smk_white_atlas": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_fog_wisp_afm": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_fog1_wisp_afm": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_car_light_round_red": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_spotlight_lensflare_glw_z20": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  }
+ },
  "summary": {
   "map": "mp_countdown",
   "props": 1569,
@@ -4912,6 +4939,6 @@
   "colourMapRefsUnresolved": 4,
   "normalMapsUnswizzled": 0,
   "alphaTexturesWithoutExact": 0,
-  "seconds": 9.5
+  "seconds": 12.6
  }
 }

@@ -3667,6 +3667,38 @@
   }
  },
  "effects": [],
+ "fxMaterials": {
+  "gfx_fog_wisp_afm": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_fog1_wisp_afm": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_fire_atlas": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_fog_smog_afm_add": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "cloud_dust_mote": {
+   "status": "ok",
+   "issues": [
+    "blend srcalpha/one"
+   ]
+  },
+  "gfx_fallout_trash": {
+   "status": "ok",
+   "issues": []
+  }
+ },
  "summary": {
   "map": "mp_killhouse",
   "props": 1168,
@@ -3687,6 +3719,6 @@
   "colourMapRefsUnresolved": 3,
   "normalMapsUnswizzled": 0,
   "alphaTexturesWithoutExact": 0,
-  "seconds": 9.3
+  "seconds": 10.4
  }
 }

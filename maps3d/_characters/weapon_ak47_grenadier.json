@@ -112,12 +112,12 @@
   {
    "indexStart": 2178,
    "indexCount": 516,
-   "material": -1
+   "material": 1
   },
   {
    "indexStart": 2694,
    "indexCount": 606,
-   "material": 1
+   "material": 2
   }
  ],
  "materials": [
@@ -135,6 +135,29 @@
     1.2,
     3.0,
     2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_weapon_ak47_grenadier",
+   "texture": "_textures/weapon_ak47_grenadier_col.webp",
+   "textureAlpha": false,
+   "color": "#1b1d1d",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_ak47_grenadier_spc-r6_e3b32d6a.specular.webp",
+   "envMapParms": [
+    1.2,
+    3.2,
+    1.3,
     0.625
    ],
    "colorTint": [

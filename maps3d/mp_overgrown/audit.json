@@ -131,9 +131,10 @@
    ]
   },
   "fx_me_brick_01_piece01": {
-   "status": "no-material",
+   "status": "ok",
    "issues": [
-    "surface without material (unresolved handle)"
+    "mc/me_brick_01: material not in the zone extraction",
+    "mc/me_brick_01: technique set: none"
    ]
   },
   "me_lightfluohang": {
@@ -330,9 +331,10 @@
    ]
   },
   "fx_me_brick_01_piece02": {
-   "status": "no-material",
+   "status": "ok",
    "issues": [
-    "surface without material (unresolved handle)"
+    "mc/me_brick_01: material not in the zone extraction",
+    "mc/me_brick_01: technique set: none"
    ]
   },
   "com_books3": {
@@ -4355,6 +4357,50 @@
   }
  },
  "effects": [],
+ "fxMaterials": {
+  "gfx_fog_wisp_afm": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_smk_white_atlas": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_fog1_wisp_afm": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_leaves": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_insect_fly": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_spotlight_lensflare_glwz20": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_exp_igc": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_fire_roar_pm": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_fire_fuel": {
+   "status": "ok",
+   "issues": []
+  }
+ },
  "summary": {
   "map": "mp_overgrown",
   "props": 13538,
@@ -4375,6 +4421,6 @@
   "colourMapRefsUnresolved": 3,
   "normalMapsUnswizzled": 0,
   "alphaTexturesWithoutExact": 0,
-  "seconds": 10.7
+  "seconds": 11.3
  }
 }

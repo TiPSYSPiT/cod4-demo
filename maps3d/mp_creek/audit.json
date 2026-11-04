@@ -4661,6 +4661,139 @@
    ]
   }
  ],
+ "fxMaterials": {
+  "gfx_fog_wisp_afm": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_flare_wtr": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_water_gush_spill": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_snow_sheet": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_water_floorsplash": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_falling_water": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_falling_water_02": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_leaves": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_insect_fly": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_moth": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_hawk": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_fog_smog_afm": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_fog_smog_afm_add": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "cloud_cave_particulates": {
+   "status": "ok",
+   "issues": [
+    "blend srcalpha/one"
+   ]
+  },
+  "gfx_spotlight_lensflare_eyeoffset": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_spotlight_beam": {
+   "status": "ok",
+   "issues": [
+    "blend invdestcolor/one"
+   ]
+  },
+  "gfx_smk_white_atlas_add": {
+   "status": "missing-texture",
+   "issues": [
+    "blend one/one",
+    "no colour map exported (drawn as a soft round sprite)"
+   ]
+  },
+  "gfx_water_splash": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_smk_white_atlas": {
+   "status": "ok",
+   "issues": []
+  },
+  "mc/gfx_impact_wood01": {
+   "status": "ok",
+   "issues": [
+    "blend one/invsrcalpha"
+   ]
+  },
+  "wc/gfx_impact_wood01": {
+   "status": "ok",
+   "issues": [
+    "blend one/invsrcalpha"
+   ]
+  },
+  "mc/gfx_impact_wood02": {
+   "status": "ok",
+   "issues": [
+    "blend one/invsrcalpha"
+   ]
+  },
+  "wc/gfx_impact_wood02": {
+   "status": "ok",
+   "issues": [
+    "blend one/invsrcalpha"
+   ]
+  },
+  "mc/gfx_impact_wood03": {
+   "status": "ok",
+   "issues": [
+    "blend one/invsrcalpha"
+   ]
+  },
+  "wc/gfx_impact_wood03": {
+   "status": "ok",
+   "issues": [
+    "blend one/invsrcalpha"
+   ]
+  },
+  "gfx_wood_splinter_atlas": {
+   "status": "ok",
+   "issues": []
+  }
+ },
  "summary": {
   "map": "mp_creek",
   "props": 22311,
@@ -4681,6 +4814,6 @@
   "colourMapRefsUnresolved": 4,
   "normalMapsUnswizzled": 0,
   "alphaTexturesWithoutExact": 0,
-  "seconds": 9.5
+  "seconds": 20.8
  }
 }

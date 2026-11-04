@@ -94,14 +94,14 @@ export class View3D {
     this.characters = new CharacterLibrary(mapTexture);
     this.animations = new AnimationLibrary();
     this.actors = new Actors(scene, this.labels, this.M, this.characters, failed => this.showPlayerNotice(failed), this.animations);
-    this.actors.onLoaded = () => { this.R.invalidate(); this.needsRender = true; };
+    this.actors.onLoaded = () => { this.R.invalidate(); this.needsRender = true; this.warmShaders(); };
     // the first-person weapon (viewmodel.js; graphics: First-person weapon)
     this.viewmodel = new ViewModel(this.characters);
     this.viewmodel.setSceneLights(hemi, this.sun);
     this.viewmodel.enabled = graphics().viewmodel !== 'off';
     this.viewmodel.crosshair = graphics().crosshair !== 'off';
     this.viewmodel.setMatch(this.M, this.animations);
-    this.viewmodel.onLoaded = () => { this.needsRender = true; };
+    this.viewmodel.onLoaded = () => { this.needsRender = true; this.warmShaders(); };
     this.playerNotice = el('div', { class: 'player-notice', hidden: true });
     this.stage.append(this.playerNotice);
     this.effects = new Effects(scene, this.labels, this.M);
@@ -269,7 +269,7 @@ export class View3D {
             }
             fx.setWorld(w);
             this.fxOpts = { ambient: fxOpt !== 'demo', demo: fxOpt !== 'ambient' };
-            this.fx = fx; this.scene.add(fx.group); this.needsRender = true;
+            this.fx = fx; this.scene.add(fx.group); this.needsRender = true; this.warmShaders();
             fx.casings = this.casingsOn !== false;
             if (this.sound) this.sound.setDemo(this.M, fx);
             this.effects.realFx = this.fxOpts.demo;     // no marker clouds where the real smoke is drawn
@@ -308,6 +308,20 @@ export class View3D {
     }
     this.needsRender = true;
     this.R.invalidate();
+    this.warmShaders();
+  }
+  /** the shaders of everything in the scene, also what is hidden now (a prop's coarse LOD, an effect's sprite), compiled in the
+   *  background shortly after something loaded: otherwise the first frame that shows it stops for up to 300 ms in mid-playback */
+  warmShaders() {
+    clearTimeout(this.warmTimer);
+    this.warmTimer = setTimeout(() => {
+      if (this.destroyed) return;
+      // (without KHR_parallel_shader_compile - Firefox - compileAsync only warns: the plain compile, still before the frame needs it)
+      const parallel = this.renderer.extensions.has('KHR_parallel_shader_compile');
+      for (const [scene, camera] of [[this.scene, this.camera], [this.viewmodel.scene, this.viewmodel.camera]]) {
+        if (parallel) this.renderer.compileAsync(scene, camera).catch(() => null); else this.renderer.compile(scene, camera);
+      }
+    }, 300);
   }
 
   fallback(text) {
@@ -604,7 +618,10 @@ export class View3D {
       xrayNames: this.xrayMode === 'names', ref: R.focus != null ? R.focus : this.M.followedAt(t),
       kills: R.recentKills(t, CFG.DEATH_MARKER_MS) });
     this.effects.update(t, R);
-    if (this.scriptModels) this.scriptModels.update(t);
+    if (this.scriptModels) {
+      this.scriptModels.update(t);
+      if (this.scriptModels.staticChanged && this.shadows) this.shadows.invalidate();
+    }
     if (this.worldWeapons) this.worldWeapons.update(t);
     this.needsRender = true;
   }
@@ -851,6 +868,8 @@ export class View3D {
   }
 
   destroy() {
+    this.destroyed = true;
+    clearTimeout(this.warmTimer);
     this.visible = false;
     this.offFocus();
     if (this.mapMarks) this.mapMarks.dispose();

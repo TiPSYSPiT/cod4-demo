@@ -321,9 +321,10 @@
    ]
   },
   "projectile_cbu97_clusterbomb": {
-   "status": "no-material",
+   "status": "ok",
    "issues": [
-    "surface without material (unresolved handle)"
+    "mc/mtl_cbu97_clusterbomb: material not in the zone extraction",
+    "mc/mtl_cbu97_clusterbomb: technique set: none"
    ]
   },
   "me_telegraphpole2": {
@@ -2337,6 +2338,21 @@
    "textureAlpha": false,
    "status": "ok",
    "issues": []
+  },
+  "mc/mtl_cbu97_clusterbomb": {
+   "name": "mc/mtl_cbu97_clusterbomb",
+   "class": "none",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "material not in the zone extraction",
+    "technique set: none"
+   ]
   },
   "mc/mtl_telegraph_pole": {
    "name": "mc/mtl_telegraph_pole",
@@ -5118,6 +5134,77 @@
    ]
   }
  ],
+ "fxMaterials": {
+  "gfx_smk_white_atlas": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_fog_wisp_afm": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_fog1_wisp_afm": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_fire_roar_pm": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_dark_smoke_atlas_bg": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_fire_fuel": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_spotlight_lensflare_glwz20": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_exp_igc": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_mist": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_fallout_trash": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_wind_hl_atlas_z20_godray": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_whisp_spiral": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_wind_hl_atlas": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_smk_white_atlas_add": {
+   "status": "missing-texture",
+   "issues": [
+    "blend one/one",
+    "no colour map exported (drawn as a soft round sprite)"
+   ]
+  },
+  "cloud_glass": {
+   "status": "ok",
+   "issues": []
+  }
+ },
  "summary": {
   "map": "mp_convoy",
   "props": 8118,
@@ -5138,6 +5225,6 @@
   "colourMapRefsUnresolved": 3,
   "normalMapsUnswizzled": 0,
   "alphaTexturesWithoutExact": 0,
-  "seconds": 10.7
+  "seconds": 13.8
  }
 }

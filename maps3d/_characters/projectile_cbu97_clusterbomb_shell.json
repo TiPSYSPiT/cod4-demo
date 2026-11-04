@@ -57,10 +57,35 @@
   {
    "indexStart": 0,
    "indexCount": 348,
-   "material": -1
+   "material": 0
   }
  ],
- "materials": [],
+ "materials": [
+  {
+   "name": "mc/mtl_cbu97_clusterbomb",
+   "texture": "_textures/cbu97_clusterbomb_col.webp",
+   "textureAlpha": false,
+   "color": "#404636",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/cbu97_clusterbomb_nml.normal.webp",
+   "specularMap": "_textures/cbu97_clusterbomb_spc-r-87g-_8fad2ddd.specular.webp",
+   "envMapParms": [
+    0.8,
+    4.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
  "bounds": {
   "mins": [
    -37.35,

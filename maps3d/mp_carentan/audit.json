@@ -602,16 +602,12 @@
    ]
   },
   "icbm_electricpanel1": {
-   "status": "no-material",
-   "issues": [
-    "surface without material (unresolved handle)"
-   ]
+   "status": "ok",
+   "issues": []
   },
   "icbm_electricpanel2": {
-   "status": "no-material",
-   "issues": [
-    "surface without material (unresolved handle)"
-   ]
+   "status": "ok",
+   "issues": []
   },
   "me_rebar02": {
    "status": "ok",
@@ -620,10 +616,8 @@
    ]
   },
   "icbm_electricpanel4": {
-   "status": "no-material",
-   "issues": [
-    "surface without material (unresolved handle)"
-   ]
+   "status": "ok",
+   "issues": []
   },
   "foliage_tree_grey_oak_xl_a": {
    "status": "ok",
@@ -5256,6 +5250,157 @@
    ]
   }
  ],
+ "fxMaterials": {
+  "gfx_fog_wisp_afm": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_smk_white_shadow": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_smk_white_atlas": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_moth": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_insect_fly": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_debris_drp": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_water_drip_base": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_spotlight_lensflare_rainbow_z10_eye20": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_chinese_lantern_glow_z10_eye20": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_whisp_spiral": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_spotlight_lensflare_glwz20": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_exp_igc": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_fire_roar_pm": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "mc/gfx_bullethit_mudsplash01": {
+   "status": "missing-texture",
+   "issues": [
+    "blend one/invsrcalpha",
+    "no colour map exported (drawn as a soft round sprite)"
+   ]
+  },
+  "wc/gfx_bullethit_mudsplash01": {
+   "status": "missing-texture",
+   "issues": [
+    "blend one/invsrcalpha",
+    "no colour map exported (drawn as a soft round sprite)"
+   ]
+  },
+  "mc/gfx_bullethit_mudsplash02": {
+   "status": "missing-texture",
+   "issues": [
+    "blend one/invsrcalpha",
+    "no colour map exported (drawn as a soft round sprite)"
+   ]
+  },
+  "wc/gfx_bullethit_mudsplash02": {
+   "status": "missing-texture",
+   "issues": [
+    "blend one/invsrcalpha",
+    "no colour map exported (drawn as a soft round sprite)"
+   ]
+  },
+  "cloud_snowflake01": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_mud_splash01": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_mud_splash02": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_fallout_trash": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_ash_fallout": {
+   "status": "missing-texture",
+   "issues": [
+    "no colour map exported (drawn as a soft round sprite)"
+   ]
+  },
+  "gfx_wind_hl_atlas": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_smk_white_atlas_add": {
+   "status": "missing-texture",
+   "issues": [
+    "blend one/one",
+    "no colour map exported (drawn as a soft round sprite)"
+   ]
+  },
+  "cloud_glass": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_spark_atlas": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_glow_hs": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_flare_clr_a": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  }
+ },
  "summary": {
   "map": "mp_carentan",
   "props": 5092,
@@ -5276,6 +5421,6 @@
   "colourMapRefsUnresolved": 4,
   "normalMapsUnswizzled": 0,
   "alphaTexturesWithoutExact": 0,
-  "seconds": 22.3
+  "seconds": 16.5
  }
 }

@@ -5490,6 +5490,73 @@
   }
  },
  "effects": [],
+ "fxMaterials": {
+  "gfx_hawk": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_seagull_fly": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_spotlight_lensflare_glwz20": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_smk_white_atlas": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_exp_igc": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_fire_roar_pm": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_fire_fuel": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_mist": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_fallout_trash": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_wind_hl_atlas_z20_godray": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_whisp_spiral": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_wind_hl_atlas": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_smk_white_atlas_add": {
+   "status": "missing-texture",
+   "issues": [
+    "blend one/one",
+    "no colour map exported (drawn as a soft round sprite)"
+   ]
+  },
+  "cloud_glass": {
+   "status": "ok",
+   "issues": []
+  }
+ },
  "summary": {
   "map": "mp_backlot",
   "props": 3619,
@@ -5510,6 +5577,6 @@
   "colourMapRefsUnresolved": 4,
   "normalMapsUnswizzled": 0,
   "alphaTexturesWithoutExact": 0,
-  "seconds": 10.9
+  "seconds": 12.7
  }
 }

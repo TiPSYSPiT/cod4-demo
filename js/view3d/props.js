@@ -115,7 +115,7 @@ export class Props {
         mats.push(propMaterial(m, this.texture, true, !!C));
         shadings.push(m ? materialShading(m, this.texture) : null);
       });
-      out = { name, geo, mats, shadings, triangles: lod.indexCount / 3 };
+      out = { name, geo, mats, shadings, matKeys: lod.surfaces.map(s => s.material), triangles: lod.indexCount / 3 };
     }
     this.single.set(name, out);
     return out;

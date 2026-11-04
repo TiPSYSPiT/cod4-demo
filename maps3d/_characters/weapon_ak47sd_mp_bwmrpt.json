@@ -112,12 +112,12 @@
   {
    "indexStart": 2304,
    "indexCount": 90,
-   "material": -1
+   "material": 1
   },
   {
    "indexStart": 2394,
    "indexCount": 606,
-   "material": 1
+   "material": 2
   }
  ],
  "materials": [
@@ -150,6 +150,29 @@
     1.0
    ],
    "detailMap": "_textures/weapon_camo_black_white_marpat.webp"
+  },
+  {
+   "name": "mc/mtl_weapon_suppressor_b",
+   "texture": "_textures/weapon_suppressor_b_col.webp",
+   "textureAlpha": false,
+   "color": "#373734",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_suppressor_b_spc-r-59_afa8576d.specular.webp",
+   "envMapParms": [
+    0.8,
+    1.2,
+    1.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
   },
   {
    "name": "mc/mtl_weapon_ak47_misc_nocamo",

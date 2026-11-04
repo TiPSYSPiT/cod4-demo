@@ -672,25 +672,48 @@
   {
    "indexStart": 0,
    "indexCount": 5634,
-   "material": 3
+   "material": 0
   },
   {
    "indexStart": 5634,
    "indexCount": 714,
-   "material": 0
+   "material": 1
   },
   {
    "indexStart": 6348,
    "indexCount": 480,
-   "material": 1
+   "material": 2
   },
   {
    "indexStart": 6828,
    "indexCount": 1632,
-   "material": 2
+   "material": 3
   }
  ],
  "materials": [
+  {
+   "name": "mc/mtl_80s_econdestroy_silv",
+   "texture": "_textures/80s_econdestroy_silv_col.webp",
+   "textureAlpha": false,
+   "color": "#494540",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/80s_econdestroy_nml.normal.webp",
+   "envMapParms": [
+    0.4,
+    2.0,
+    5.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
   {
    "name": "mc/mtl_engine",
    "texture": "_textures/car_engine_col.webp",
@@ -741,30 +764,6 @@
    "doubleSided": false,
    "depthWrite": true,
    "normalMap": "_textures/80s_econdestroy_nml.normal.webp",
-   "envMapParms": [
-    0.4,
-    2.0,
-    5.0,
-    0.625
-   ],
-   "colorTint": [
-    1.0,
-    1.0,
-    1.0,
-    1.0
-   ]
-  },
-  {
-   "name": "mc/mtl_80s_econdestroy_silv",
-   "texture": "_textures/80s_econdestroy_silv_col.webp",
-   "textureAlpha": false,
-   "color": "#494540",
-   "alphaTest": null,
-   "blend": null,
-   "doubleSided": false,
-   "depthWrite": true,
-   "normalMap": "_textures/80s_econdestroy_nml.normal.webp",
-   "specularMap": "_textures/80s_econdestroy_spc-rgb_80s__2838a1ce.specular.webp",
    "envMapParms": [
     0.4,
     2.0,

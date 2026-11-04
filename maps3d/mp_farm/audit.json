@@ -1027,7 +1027,7 @@
    ]
   },
   "ch_industrial_lamp_wall_on": {
-   "status": "missing-texture",
+   "status": "ok",
    "issues": [
     "1 bones, 14 rigid vertex lists",
     "mc/gfx_floodlight_beam_godray75: blend invdestcolor/one",
@@ -1037,7 +1037,6 @@
     "mc/gfx_floodlight_beam_godray85: technique set: emissive",
     "mc/gfx_spotlight_lensflare_eye15_godray50: blend one/one",
     "mc/gfx_spotlight_lensflare_eye15_godray50: image reference resolved",
-    "mc/gfx_spotlight_lensflare_eye15_godray50: no colour map exported",
     "mc/gfx_spotlight_lensflare_eye15_godray50: technique set: emissive",
     "vertex colours (100 of 738 not white, rgb down to 94, alpha down to 255)"
    ]
@@ -3087,11 +3086,10 @@
    "blend": "one/one",
    "doubleSided": false,
    "textureAlpha": false,
-   "status": "missing-texture",
+   "status": "ok",
    "issues": [
     "technique set: emissive",
     "image reference resolved",
-    "no colour map exported",
     "blend one/one"
    ]
   },
@@ -4717,6 +4715,50 @@
   }
  },
  "effects": [],
+ "fxMaterials": {
+  "cloud_snowflake01": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_wind_rain_atlas": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_lightning_atlas": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_lightning": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_smk_white_atlas": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_debris_drp": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_water_drip_base": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_water_noise": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_water_gush_spill": {
+   "status": "ok",
+   "issues": []
+  }
+ },
  "summary": {
   "map": "mp_farm",
   "props": 6659,
@@ -4737,6 +4779,6 @@
   "colourMapRefsUnresolved": 2,
   "normalMapsUnswizzled": 0,
   "alphaTexturesWithoutExact": 0,
-  "seconds": 9.3
+  "seconds": 18.5
  }
 }

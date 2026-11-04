@@ -1,7 +1,7 @@
 {
  "format": "cod4-demo3d-character/1",
  "name": "projectile_m203grenade",
- "kind": "viewmodel",
+ "kind": "fx",
  "faction": null,
  "file": "projectile_m203grenade.bin",
  "sections": {
@@ -65,11 +65,6 @@
     0.0,
     1.0,
     0.0
-   ],
-   "trans": [
-    -1.1578,
-    0.0,
-    0.0
    ]
   }
  ],
@@ -77,10 +72,34 @@
   {
    "indexStart": 0,
    "indexCount": 138,
-   "material": -1
+   "material": 0
   }
  ],
- "materials": [],
+ "materials": [
+  {
+   "name": "mc/mtl_weapon_m203_grenade",
+   "texture": "_textures/weapon_m203_grenade_col.webp",
+   "textureAlpha": false,
+   "color": "#565145",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "specularMap": "_textures/weapon_m203_grenade_spc-r65g_dad0da51.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
  "bounds": {
   "mins": [
    -0.93,

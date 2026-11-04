@@ -579,11 +579,10 @@
    ]
   },
   "mil_razorwire_long": {
-   "status": "no-material",
+   "status": "ok",
    "issues": [
     "4 skinned / deformed surfaces (drawn in the bind pose)",
-    "6 bones, 0 rigid vertex lists",
-    "surface without material (unresolved handle)"
+    "6 bones, 0 rigid vertex lists"
    ]
   },
   "ch_ferriswheel_structure": {
@@ -666,9 +665,10 @@
    ]
   },
   "weapon_parabolic_knife": {
-   "status": "no-material",
+   "status": "ok",
    "issues": [
-    "surface without material (unresolved handle)"
+    "mc/mtl_weapon_parabolic_knife: material not in the zone extraction",
+    "mc/mtl_weapon_parabolic_knife: technique set: none"
    ]
   },
   "com_locker_open": {
@@ -2758,6 +2758,21 @@
    "textureAlpha": true,
    "status": "ok",
    "issues": []
+  },
+  "mc/mtl_weapon_parabolic_knife": {
+   "name": "mc/mtl_weapon_parabolic_knife",
+   "class": "none",
+   "texture": null,
+   "format": null,
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "textureAlpha": false,
+   "status": "ok",
+   "issues": [
+    "material not in the zone extraction",
+    "technique set: none"
+   ]
   },
   "mc/locker": {
    "name": "mc/locker",
@@ -4858,6 +4873,46 @@
   }
  },
  "effects": [],
+ "fxMaterials": {
+  "gfx_mist": {
+   "status": "ok",
+   "issues": []
+  },
+  "cloud_snowflake01": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_fog_wisp_afm": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_fog1_wisp_afm": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_fire_roar_pm": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_spotlight_lensflare_glwz20": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  },
+  "gfx_smk_white_atlas": {
+   "status": "ok",
+   "issues": []
+  },
+  "gfx_exp_igc": {
+   "status": "ok",
+   "issues": [
+    "blend one/one"
+   ]
+  }
+ },
  "summary": {
   "map": "mp_bloc",
   "props": 9262,
@@ -4878,6 +4933,6 @@
   "colourMapRefsUnresolved": 4,
   "normalMapsUnswizzled": 0,
   "alphaTexturesWithoutExact": 0,
-  "seconds": 14.8
+  "seconds": 16.9
  }
 }

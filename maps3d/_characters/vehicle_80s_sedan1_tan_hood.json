@@ -57,32 +57,15 @@
   {
    "indexStart": 0,
    "indexCount": 150,
-   "material": 1
+   "material": 0
   },
   {
    "indexStart": 150,
    "indexCount": 90,
-   "material": 0
+   "material": 1
   }
  ],
  "materials": [
-  {
-   "name": "mc/mtl_engine",
-   "texture": "_textures/car_engine_col.webp",
-   "textureAlpha": false,
-   "color": "#433e3c",
-   "alphaTest": null,
-   "blend": null,
-   "doubleSided": false,
-   "depthWrite": true,
-   "normalMap": "_textures/car_engine_nml.normal.webp",
-   "colorTint": [
-    1.0,
-    1.0,
-    1.0,
-    1.0
-   ]
-  },
   {
    "name": "mc/mtl_80s_econ_tan",
    "texture": "_textures/80s_econ_tan_col.webp",
@@ -100,6 +83,23 @@
     5.0,
     0.625
    ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_engine",
+   "texture": "_textures/car_engine_col.webp",
+   "textureAlpha": false,
+   "color": "#433e3c",
+   "alphaTest": null,
+   "blend": null,
+   "doubleSided": false,
+   "depthWrite": true,
+   "normalMap": "_textures/car_engine_nml.normal.webp",
    "colorTint": [
     1.0,
     1.0,

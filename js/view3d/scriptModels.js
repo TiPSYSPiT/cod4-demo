@@ -12,7 +12,7 @@
  * stops the bullet and debris traces where the entity stands at that time (trace). */
 import * as THREE from 'three';
 import { objectLighting, setObjectLighting, gridLit } from './lighting.js';
-import { SHADOW_LAYER } from './shadows.js';
+import { SHADOW_LAYER, STATIC_LAYER } from './shadows.js';
 
 const LINK_DIST = 8;                 // units: a demo entity's first position vs. its map entity
 const EF_NODRAW = 0x20;              // CG_General / CG_ScriptMover draw nothing then
@@ -123,6 +123,27 @@ export function tracerAt(world, scripts, t) {
 
 const ALL_TIME = [-Infinity, Infinity], TR_INTERPOLATE = 1;      // (TR_STATIONARY 0)
 
+/** the model with one draw per material: a destructible car is 48 surfaces of 8 materials, and 23 of them were 1100 draws in each of
+ *  the frame's 6 passes. Same vertices, the indices ordered by material; cached on the model */
+function byMaterial(model) {
+  if (model.merged) return model.merged;
+  const keys = model.matKeys, src = model.geo, order = keys ? [...new Set(keys)] : [];
+  if (!keys || order.length === keys.length || !src.index) return (model.merged = model);
+  const old = src.index.array, index = new old.constructor(old.length), geo = new THREE.BufferGeometry();
+  for (const [n, a] of Object.entries(src.attributes)) geo.setAttribute(n, a);
+  const mats = [], shadings = [];
+  let at = 0;
+  order.forEach((key, m) => {
+    const first = keys.indexOf(key), start = at;
+    for (const g of src.groups) if (keys[g.materialIndex] === key) { index.set(old.subarray(g.start, g.start + g.count), at); at += g.count; }
+    geo.addGroup(start, at - start, m);
+    mats.push(model.mats[first]);
+    shadings.push(model.shadings ? model.shadings[first] : null);
+  });
+  geo.setIndex(new THREE.BufferAttribute(index.subarray(0, at), 1));
+  return (model.merged = { geo, mats, shadings });
+}
+
 export class ScriptModels {
   /** M: app/match.js Match, spawns: entities.json scriptModels, library: characters.js CharacterLibrary */
   constructor(M, spawns, library, lightGrid, onChange, props = null) {
@@ -207,12 +228,12 @@ export class ScriptModels {
       // solid: what is drawn (the entity state's solid field is the client's prediction box, 0 for the
       // cars, which the server's traces hit with their model's collision)
       const state = { model: stModel(pick), origin: o, angles: a, solid: true };
-      if (pick[3] <= TR_INTERPOLATE && pick[12] <= TR_INTERPOLATE) pick.still = state;       // (the base, whatever t)
+      if (pick[3] <= TR_INTERPOLATE && pick[12] <= TR_INTERPOLATE) { pick.still = state; state.fixed = true; }       // (the base, whatever t)
       return state;
     }
     return it.spawn ? this.spawnState(it.spawn) : null;
   }
-  spawnState(sp) { return sp.state || (sp.state = { model: sp.model, origin: sp.origin, angles: sp.angles, solid: true }); }
+  spawnState(sp) { return sp.state || (sp.state = { model: sp.model, origin: sp.origin, angles: sp.angles, solid: true, fixed: true }); }
 
   /** the collision triangles of the models (mapLoader scriptCollision: {models: {name: [first, count]},
    *  P: Float32Array 9 per triangle, S: surface types}) */
@@ -265,13 +286,18 @@ export class ScriptModels {
     return b;
   }
 
-  /** place every entity for time t (ms, relative to the demo start) */
+  /** place every entity for time t (ms, relative to the demo start). staticChanged: a model standing still came, went or was
+   *  replaced - the shadows' static maps (STATIC_LAYER) hold those, so they have to be drawn again */
   update(t) {
     let n = 0;
+    this.staticChanged = false;
     for (const it of this.items) {
       const st = this.stateAt(it, t);
       let entry = this.meshes.get(it);
-      if (!st) { if (entry) entry.mesh.visible = false; continue; }
+      if (!st) {
+        if (entry) { if (entry.mesh.visible && entry.state) this.staticChanged = true; entry.mesh.visible = false; entry.state = null; }
+        continue;
+      }
       if (!entry || entry.name !== st.model) {
         const model = this.library.loaded(st.model) || (this.props && this.props.modelFor(st.model));
         if (!model) {
@@ -279,11 +305,17 @@ export class ScriptModels {
           this.load(st.model);
           continue;
         }
-        if (entry) { this.group.remove(entry.mesh); }
+        if (entry) { this.group.remove(entry.mesh); if (entry.state) this.staticChanged = true; }
         entry = this.mesh(model, st.model);
         this.meshes.set(it, entry);
       }
       const mesh = entry.mesh;
+      if (entry.state !== st) {
+        // (a model at rest casts from the static maps; only what moves is drawn into the dynamic ones every frame)
+        if (entry.state || st.fixed) this.staticChanged = true;
+        entry.state = st.fixed ? st : null;
+        if (st.fixed) { mesh.layers.disable(SHADOW_LAYER); mesh.layers.enable(STATIC_LAYER); } else { mesh.layers.disable(STATIC_LAYER); mesh.layers.enable(SHADOW_LAYER); }
+      }
       mesh.matrix.copy(placement(st.angles, st.origin, this.tmpM));
       mesh.matrixWorldNeedsUpdate = true;
       mesh.visible = true;
@@ -307,14 +339,13 @@ export class ScriptModels {
   }
 
   mesh(model, name) {
-    const lg = objectLighting();
-    const mesh = new THREE.Mesh(model.geo, model.mats.map((m, k) => gridLit(m.clone(), lg, model.shadings && model.shadings[k])));
+    const lg = objectLighting(), M = byMaterial(model);
+    const mesh = new THREE.Mesh(M.geo, M.mats.map((m, k) => gridLit(m.clone(), lg, M.shadings && M.shadings[k])));
     mesh.name = 'script model ' + name;
     mesh.matrixAutoUpdate = false;
-    mesh.frustumCulled = false;
-    mesh.layers.enable(SHADOW_LAYER);           // casts the sun's shadow (moving: the dynamic map)
+    if (!M.geo.boundingSphere) M.geo.computeBoundingSphere();      // (culled in every pass by its placed sphere)
     this.group.add(mesh);
-    return { name, mesh, lg, at: null };
+    return { name, mesh, lg, at: null, state: null };
   }
 
   /** the models whose state the demo changes (destroyed cars ...) and the drawn count, for the hint */

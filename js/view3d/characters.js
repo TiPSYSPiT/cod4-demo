@@ -271,7 +271,8 @@ export class CharacterLibrary {
     const inverses = bind.map(w => new THREE.Matrix4().compose(w.p, w.q, new THREE.Vector3(1, 1, 1)).invert());
     const poses = {};
     if (meta.kind === 'body') for (const st of Object.keys(POSES)) poses[st] = toLocal(meta.bones, stancePose(meta.bones, st));
-    return { name, meta, geo, mats: lods[0].mats, shadings: lods[0].shadings, lods, bones: meta.bones, bind, inverses, poses, triangles: meta.triangleCount };
+    const matKeys = meta.surfaces.slice(lodInfo[0].surfaceStart, lodInfo[0].surfaceStart + lodInfo[0].surfaceCount).map(s => s.material);
+    return { name, meta, geo, mats: lods[0].mats, shadings: lods[0].shadings, matKeys, lods, bones: meta.bones, bind, inverses, poses, triangles: meta.triangleCount };
   }
 }
 
