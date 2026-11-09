@@ -254,10 +254,12 @@ above. *Models* draws each player's real character:
   direction with the game's tolerance and swing speed, the spine and neck turn the upper body back
   to the view; the torso pitches with the view pitch; lean (`leanf`) rolls and shifts the torso;
   prone players tilt with the slope (`fTorsoPitch` / `fWaistPitch`)
-- deaths: the demo's corpse entities play the death animation the server chose and stay until
-  the round ends (a body that was already lying when the recorder first saw it shows the end
-  pose, as in the game); a kill whose corpse the demo does not hold falls with a death clip chosen
-  from the movement for as long as the death markers are shown (5 s)
+- deaths: the demo's corpse entities play the death animation the server chose, where the demo puts
+  them (their trajectory: the drop with gravity, the server's movement by the animation's delta),
+  and stay until the round ends (a body that was already lying when the recorder first saw it
+  shows the end pose, as in the game); once the demo no longer sends a corpse, and for a kill whose
+  corpse the demo does not hold (the death the game picks for the victim's movetype), the server's
+  drop and movement are simulated against the map
 - the weapon in the hands: the world model the weapon file names for the variant the demo records
   (`worldModel` .. `worldModel16` by the entity's `weaponModel`: Promod's camouflages and the gold models; a Promod
   server's own weapon files for its demos), and during a knife melee the knife (`worldKnifeModel` on `tag_inhand`)

@@ -619,7 +619,7 @@ export class View3D {
     // (the reference of Enemy names: the player in first person / followed - the selected one, else the demo's own view)
     this.actors.update(t, { shown: R.shownPlayers(), focus: R.focus, hover: R.hover, labels: R.opts.labels || this.xrayMode === 'names', lastKnown: R.opts.lastKnown,
       xrayNames: this.xrayMode === 'names', ref: R.focus != null ? R.focus : this.M.followedAt(t),
-      kills: R.recentKills(t, CFG.DEATH_MARKER_MS) });
+      tracer: this.fx && this.fx.tracer, scripts: this.scriptModels });
     this.effects.fp = this.cams.mode === 'fp';
     this.effects.update(t, R);
     if (this.scriptModels) {

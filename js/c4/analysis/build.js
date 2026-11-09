@@ -739,7 +739,9 @@ C4.define('build', function (C4) {
       // cod4-demo3d: the players' weapon model variants (entity weaponModel: CG_Item / the DObj's worldModel[n],
       // Promod's camouflages) per client: [[t, variant], ...] on every change, times relative
       weaponModels: (() => { const out = {}; for (const [t, cl, v] of col.weaponModels || []) (out[cl] || (out[cl] = [])).push([rel(t), v]); return out; })(),
-      corpses: (col.corpses || []).map(c => Object.assign({}, c, { t0: c.t0 - t0, t1: c.t1 - t0 }))
+      // (states [t, trType, trTime, base xyz, delta xyz, yaw]: times relative, trTime too)
+      corpses: (col.corpses || []).map(c => Object.assign({}, c, { t0: c.t0 - t0, t1: c.t1 - t0,
+        states: (c.states || []).map(s => { const o = s.slice(); o[0] -= t0; o[2] -= t0; return o; }) }))
         .filter(c => c.t0 >= mapWindow.start && c.t0 < mapWindow.end),
       // damage statistics of the recording player (povDamage.js) and own-kill metrics
       // of the POV team (ownKills.js) - the sources of the POV tab

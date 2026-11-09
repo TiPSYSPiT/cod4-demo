@@ -403,12 +403,14 @@ export class Actors {
     if (list.length) ch.animate(list, pitch, stance); else ch.pose(stance, pitch);
   }
 
-  /** mode "models" with animations: the dead. The corpse entities of the demo play the death
-   *  animation the server chose until the round ends; a kill whose corpse the demo does not hold
-   *  falls with a death clip picked from the movement while the death markers are shown (opts.kills).
-   *  Corpse characters are reused through a pool per body + head. */
+  /** mode "models" with animations: the dead (animator.corpsesAt). The corpse entities of the demo where
+   *  the demo has them, playing the death animation the server chose; a kill whose corpse the demo does not
+   *  hold: the death the game picks for the victim's movement, dropped and moved like the server's against
+   *  the map (opts.tracer: fx.js) - every one until the round ends. Corpse characters are reused through a
+   *  pool per body + head. */
   updateCorpses(t, opts) {
-    const want = this.mode === 'models' && this.animReady ? this.animator.corpsesAt(t, opts.kills).filter(d => opts.shown.has(d.cl)) : [];
+    if (this.animator) this.animator.setTracer(opts.tracer, opts.scripts);
+    const want = this.mode === 'models' && this.animReady ? this.animator.corpsesAt(t).filter(d => opts.shown.has(d.cl)) : [];
     const ids = new Set(want.map(d => d.id));
     for (const [id, h] of this.corpses) {
       if (ids.has(id)) continue;

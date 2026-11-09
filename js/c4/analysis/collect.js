@@ -106,7 +106,7 @@ C4.define('collect', function (C4) {
       nameHistory: [],              // {t, client, name, clantag, source}
       teamTimeline: [],             // {t, client, team}
       modelTimeline: [],            // {t, client, model, attach: [model indices]} (cod4-demo3d)
-      corpses: [],                  // {client, t0, t1, x, y, z, yaw, legs, torso} player corpse entities (cod4-demo3d)
+      corpses: [],                  // {num, client, t0, t1, x, y, z, yaw, legs, torso, states} player corpse entities (cod4-demo3d)
       weaponModels: [],             // [t, client, weaponModel] on every change of a player's weapon model variant (cod4-demo3d)
       slotEvents: [],               // {t, client, kind: 'connected'|'disconnected'}
       kills: [],
@@ -550,13 +550,22 @@ C4.define('collect', function (C4) {
           if (lastWeaponModel.get(num) !== wm) { lastWeaponModel.set(num, wm); c.weaponModels.push([t, num, wm]); }
           lastPos.set(num, [t, x, y, z]);
         } else if (etype === K.ET.PLAYER_CORPSE) {
-          // a dead player's body with the death animation the server chose; one record per appearance
+          // a dead player's body with the death animation the server chose; one record per appearance.
+          // Its trajectory on every change, [t, trType, trTime, base xyz, delta xyz, yaw]: the server
+          // drops it with TR_GRAVITY from the feet (PlayerCmd_ClonePlayer), moves it by the death
+          // animation's delta while it lies (TR_INTERPOLATE, G_RunCorpseMove) and drops it again where
+          // that moves it off a ledge
           let rec = corpseRec.get(num);
+          const s2 = [t, st[E_POS_TRTYPE], st[E_POS_TRTIME], R(u2f(st[E_POS])), R(u2f(st[E_POS + 1])), R(u2f(st[E_POS + 2])),
+            R(u2f(st[E_VEL])), R(u2f(st[E_VEL + 1])), R(u2f(st[E_VEL + 2])), R(u2f(st[E_APOS + 1]))];
           if (!rec || !prev || prev[E_TYPE] !== etype || rec.client !== st[E_CLIENTNUM]) {
-            rec = { client: st[E_CLIENTNUM], t0: t, t1: t, x: R(u2f(st[E_POS])), y: R(u2f(st[E_POS + 1])), z: R(u2f(st[E_POS + 2])),
-              yaw: R(u2f(st[E_APOS + 1])), legs: st[E_LEGS], torso: st[E_TORSO] };
+            rec = { num, client: st[E_CLIENTNUM], t0: t, t1: t, x: R(u2f(st[E_POS])), y: R(u2f(st[E_POS + 1])), z: R(u2f(st[E_POS + 2])),
+              yaw: R(u2f(st[E_APOS + 1])), legs: st[E_LEGS], torso: st[E_TORSO], states: [s2] };
             corpseRec.set(num, rec);
             c.corpses.push(rec);
+          } else {
+            const last = rec.states[rec.states.length - 1];
+            for (let i = 1; i < s2.length; i++) if (last[i] !== s2[i]) { rec.states.push(s2); break; }
           }
           rec.t1 = t;
         } else if (etype === K.ET.MISSILE) {
