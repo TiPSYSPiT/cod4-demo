@@ -758,6 +758,7 @@ js/app/replay.js         Replay: the one playback state (time, range, selection,
                          player bar, timeline, Layers popover, drawer (teams, kill feed)
 js/c4/ui/killfeed.js     the game's kill feed and message windows: 3D view (HUD canvas), both video exports
 js/app/defaults.js       the defaults of the Display / Graphics options and their storage keys
+js/view3d/matinfo.js     ?matinfo=1: hover / click names the material and textures of a surface
 js/view3d/pov.js         the first-person view's dvars (cg_fov, cg_fovScale, cg_gun_x / y / z) and the engine's fov
                          (canvas), with C4.weapons.killIcons - the drawer's icon mapping
 js/view2d/view2d.js      2D view

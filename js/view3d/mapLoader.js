@@ -7,6 +7,7 @@ import { blendOptions, isMultiply, coverageOptions } from './blend.js';
 import { fetchJSON, fetchBinary, checkedView, dataUrl } from './data.js';
 import { Props } from './props.js';
 import { LightGrid, ProbeSet, materialShading, gameWorld, setLights } from './lighting.js';
+import { matInfo } from './matinfo.js';
 
 const C4 = window.C4;
 const BASE = 'maps3d/';
@@ -63,7 +64,7 @@ function makeMaterial(g, tex, lightmaps) {
   const lm = g.lightmap >= 0 ? lightmaps[g.lightmap] : null;
   const multiply = isMultiply(g.blend);
   if (lm && !multiply) { opts.lightMap = lm; opts.lightMapIntensity = LIGHTMAP_SCALE * Math.PI; }
-  if (g.alphaTest && g.textureAlpha && !g.vertexAlpha) {
+  if (g.alphaTest && g.textureAlpha && !worldAlpha(g)) {          // (else the shader's own test: worldAlpha)
     opts.alphaTest = g.alphaTest === 'gt0' ? 0.05 : 0.5;
     if (!g.blend) Object.assign(opts, coverageOptions());          // (the cut-out's edge antialiased: blend.js)
   }
@@ -74,6 +75,7 @@ function makeMaterial(g, tex, lightmaps) {
   if (g.decal || g.blend) { opts.polygonOffset = true; opts.polygonOffsetFactor = -1; opts.polygonOffsetUnits = -4; }
   const mat = new THREE.MeshBasicMaterial(opts);
   mat.name = g.material;
+  mat.userData.matinfo = matInfo(g.decal ? 'decal' : 'world', g, { alpha: worldAlpha(g) });
   // a shadow caster's material: only in the shadow maps (shadows.js draws it with a depth material)
   if (g.shadowOnly) mat.visible = false;
   // a material the game's colour pass never draws (no lit / emissive technique, e.g. wc/caulk_shadow): not
@@ -82,9 +84,20 @@ function makeMaterial(g, tex, lightmaps) {
   return mat;
 }
 
-/** the alpha-tested world shaders' cut (lm_*_t0*) for a material without the game's world shading:
- *  colour map alpha x vertex alpha >= 0.5, opaque there (lighting.js gameWorld does the same) */
-function vertexAlphaCut(mat) {
+/** how the game's world shaders draw a material's alpha (their pixel shaders, tools/export/d3dshader.py): the blended technique sets
+ *  (b0, defined in common_mp: lm_*_b0*; a blend state on the lit pass) output colour map alpha x vertex alpha and blend - the ground
+ *  layers (dirt, gravel, rubble, grass decals) fade out at their edges; the alpha-tested ones (t0: lm_*_t0*; an alpha test, no
+ *  blending) cut at colour map alpha x vertex alpha >= 0.5 and draw opaque. -> 'blend' | 'blend128' (blended, and the state's GE128
+ *  alpha test drops what is under 0.5) | 'cut' | null (opaque, or a multiply / additive blend, which the vertex alpha does not
+ *  enter). tools/audit/material_audit.py checks every map against this rule */
+export function worldAlpha(g) {
+  if (g.blend === 'one/invsrcalpha' || g.blend === 'srcalpha/invsrcalpha') return g.alphaTest === 'ge128' ? 'blend128' : 'blend';
+  if (g.blend) return null;
+  return g.alphaTest ? 'cut' : null;
+}
+
+/** the vertex alpha (worldAlpha) for a material without the game's world shading (lighting.js gameWorld does the same) */
+function vertexAlphaCut(mat, mode = 'cut') {
   mat.onBeforeCompile = shader => {
     shader.vertexShader = shader.vertexShader
       .replace('#include <common>', `#include <common>
@@ -95,7 +108,9 @@ vVa = color.a;`);
     shader.fragmentShader = shader.fragmentShader
       .replace('#include <common>', `#include <common>
 varying float vVa;`)
-      .replace('#include <opaque_fragment>', `if (diffuseColor.a * vVa < 0.5) discard;
+      .replace('#include <opaque_fragment>', mode.startsWith('blend') ? `diffuseColor.a *= vVa;
+if (diffuseColor.a ${mode === 'blend128' ? '< 0.5' : '<= 0.0'}) discard;
+#include <opaque_fragment>` : `if (diffuseColor.a * vVa < 0.5) discard;
 diffuseColor.a = 1.0;
 #include <opaque_fragment>`);
   };
@@ -164,9 +179,9 @@ export async function loadWorld(mapName, { onProgress, props = true, gameLightin
     // lightmap<N>.webp does not match the lightmap coordinates any more (black patches); multiply and
     // additive blends stay unlit
     const game = gameWorldOn && g.lightmap >= 0 && (!g.blend || g.blend === 'one/invsrcalpha') && !g.water && gameLms[g.lightmap];
-    const m = makeMaterial(g, texture(g.texture, true), game ? [] : lightmaps);
-    if (game) gameWorld(m, gameLms[g.lightmap], materialShading(g, f => texture(f, true)), !!g.vertexAlpha);
-    else if (g.vertexAlpha) vertexAlphaCut(m);
+    const m = makeMaterial(g, texture(g.texture, true), game ? [] : lightmaps), alpha = worldAlpha(g);
+    if (game) gameWorld(m, gameLms[g.lightmap], materialShading(g, f => texture(f, true)), alpha);
+    else if (alpha) vertexAlphaCut(m, alpha);
     // draw order: opaque, alpha tested, decals, blended
     m.userData.order = g.blend || g.water ? 3 : g.decal ? 2 : g.alphaTest ? 1 : 0;
     materials.push(m);

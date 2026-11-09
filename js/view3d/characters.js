@@ -9,6 +9,7 @@
  * the view pitch bends spine, neck and head. */
 import * as THREE from 'three';
 import { blendOptions, coverageOptions } from './blend.js';
+import { matInfo } from './matinfo.js';
 import { gridLit, objectLighting, materialShading } from './lighting.js';
 import { SHADOW_LAYER } from './shadows.js';
 import { loadDataManifest, dataUrl } from './data.js';
@@ -256,7 +257,9 @@ export class CharacterLibrary {
       if (m && m.shadowOnly) opts.visible = false;
       // no lit / emissive technique: the game never draws it - nor does it cast (shadows.js)
       if (m && m.noDraw) { opts.visible = false; opts.userData = { noDraw: true }; }
-      return new THREE.MeshLambertMaterial(opts);
+      const mat = new THREE.MeshLambertMaterial(opts);
+      mat.userData.matinfo = matInfo('model', m, { model: name });
+      return mat;
     });
     // normal / specular maps per surface, used with the game's lighting (gridLit)
     const allShadings = meta.surfaces.map(s => materialShading(s.material >= 0 ? meta.materials[s.material] : null, f => this.texture(f)));

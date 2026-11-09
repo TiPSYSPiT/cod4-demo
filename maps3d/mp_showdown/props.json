@@ -905,9 +905,9 @@
   },
   {
    "name": "mc/mtl_stone_column3",
-   "texture": null,
+   "texture": "_textures/me_brown_plaster.webp",
    "textureAlpha": false,
-   "color": null,
+   "color": "#857764",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
@@ -923,7 +923,10 @@
     1.0,
     1.0,
     1.0
-   ]
+   ],
+   "specularMap": "_textures/me_brown_plaster_spec-r-25g-_80c9dee2.specular.webp",
+   "normalMap": "_textures/me_brown_plaster_bump.normal.webp",
+   "textureFrom": "the image reference of wc/me_plaster_brown"
   },
   {
    "name": "mc/mtl_iron_gate",
@@ -2190,9 +2193,9 @@
   },
   {
    "name": "mc/mtl_stone_column2",
-   "texture": null,
+   "texture": "_textures/me_brown_plaster.webp",
    "textureAlpha": false,
-   "color": null,
+   "color": "#857764",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
@@ -2208,17 +2211,22 @@
     1.0,
     1.0,
     1.0
-   ]
+   ],
+   "specularMap": "_textures/me_brown_plaster_spec-r-25g-_80c9dee2.specular.webp",
+   "normalMap": "_textures/me_brown_plaster_bump.normal.webp",
+   "textureFrom": "the image reference of wc/me_plaster_brown"
   },
   {
    "name": "mc/mtl_flag_opfor",
-   "texture": null,
-   "textureAlpha": false,
-   "color": null,
+   "texture": "_textures/flag_arab.webp",
+   "textureAlpha": true,
+   "color": "#564d36",
    "alphaTest": "ge128",
    "blend": null,
    "doubleSided": true,
-   "depthWrite": true
+   "depthWrite": true,
+   "normalMap": "_textures/flag_arab_nml.normal.webp",
+   "specularMap": "_textures/flag_arab_spc-rgb_flag_ameri_df7592ad.specular.webp"
   },
   {
    "name": "mc/mtl_com_tower_crane",

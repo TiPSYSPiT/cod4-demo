@@ -13,6 +13,7 @@ import { SunShadows, castShadows, STATIC_LAYER, DYNAMIC_LAYER } from './shadows.
 import { GRAPHICS, graphics, urlGraphics, setGraphics } from './graphics.js';
 import { DEFAULTS, DISPLAY_KEYS, displaySwitch, clearOptions } from '../app/defaults.js';
 import { R_ZNEAR } from './pov.js';
+import { MatInfo } from './matinfo.js';
 import { XRay, XRAY_MODES } from './xray.js';
 import { Sky } from './sky.js';
 import { FxSystem, shotTracer } from './fx.js';
@@ -156,6 +157,8 @@ export class View3D {
       if (cl != null) this.R.setFocus(cl);
     });
     this.offFocus = replay.on(what => { if (what === 'focus') this.syncPlayerSelect(); });
+    // ?matinfo=1: the material and textures of the surface under the pointer (matinfo.js)
+    if (new URLSearchParams(location.search).get('matinfo')) this.matInfo = new MatInfo(this, this.renderer.domElement, () => [this.scene]);
     this.resizeObserver = new ResizeObserver(() => this.resize());
     this.resizeObserver.observe(this.stage);
     this.loop = this.loop.bind(this);
@@ -886,6 +889,7 @@ export class View3D {
     if (this.scriptModels) { this.scriptModels.dispose(); this.scriptModels = null; }
     if (this.worldWeapons) { this.worldWeapons.dispose(); this.worldWeapons = null; }
     if (this.auditTimer) { clearInterval(this.auditTimer); this.auditTimer = null; }
+    if (this.matInfo) { this.matInfo.dispose(); this.matInfo = null; }
     if (this.sound) { this.sound.dispose(); this.sound = null; }
     if (this.offArm) this.offArm();
     this.scene.traverse(o => { if (o.geometry) o.geometry.dispose(); });

@@ -5,6 +5,7 @@
 import * as THREE from 'three';
 import { gridLit, setInstanceLighting, materialShading, lightingAtlas } from './lighting.js';
 import { blendOptions, coverageOptions } from './blend.js';
+import { matInfo } from './matinfo.js';
 import { fetchData, fetchBinary, checkedView } from './data.js';
 
 const PROP_GAIN = 1.25;
@@ -37,6 +38,7 @@ function propMaterial(m, texture, gameLit, vertexColors = false) {
   Object.assign(opts, blendOptions(m.blend));
   const mat = new THREE.MeshLambertMaterial(opts);
   mat.name = m.name || '';
+  mat.userData.matinfo = matInfo('static model', m);
   // a shadow caster's material (e.g. mc/mtl_tree_shadow_caster): the game draws it only into the shadow
   // maps - hidden here, the shadow pass (shadows.js) swaps in a depth material that still casts
   if (m.shadowOnly) mat.visible = false;

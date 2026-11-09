@@ -609,11 +609,14 @@ export function materialShading(entry, texture) {
  *  texture's tangent space), N: the normal map (or (0, 0, 1)), both decoded like the game; the
  *  surface's primary light (attribute "light": the sun - lm_sun_* - or a lamp - lm_spot_* / lm_omni_*)
  *  with the primary lightmap as its visibility, the sun's through the shadow map. lm: {secondary,
- *  primary} textures. vertexAlpha: the alpha-tested shaders (lm_*_t0*) - drawn where colour map alpha x
- *  vertex alpha >= 0.5, opaque there (they write alpha 1 or 0): the decals fade by the vertex alpha. */
-export function gameWorld(material, lm, shading, vertexAlpha = false) {
+ *  primary} textures. alpha (mapLoader.js worldAlpha): 'cut' - the alpha-tested shaders (lm_*_t0*): drawn where colour map
+ *  alpha x vertex alpha >= 0.5, opaque there (they write alpha 1 or 0); 'blend' - the blended ones (lm_*_b0*, common_mp): alpha =
+ *  colour map alpha x vertex alpha, blended (the ground decals fade out at their edges); null: as the material says. */
+export function gameWorld(material, lm, shading, alpha = null) {
   const defs = { LG_WORLD: '' };
-  if (vertexAlpha) defs.LG_VERTEX_ALPHA = '';
+  if (alpha === 'cut') defs.LG_VERTEX_ALPHA = '';
+  if (alpha === 'blend' || alpha === 'blend128') defs.LG_VERTEX_ALPHA_BLEND = '';
+  if (alpha === 'blend128') defs.LG_ALPHA_GE128 = '';
   if (shading && shading.normalMap) defs.LG_NORMALMAP = '';
   if (shading && shading.specularMap) defs.LG_SPECULAR = '';
   if (shading && shading.detailMap) defs.LG_DETAIL = '';
@@ -678,6 +681,14 @@ ${SHADOW_HOOK.fragmentDecl}`)
 #ifdef LG_VERTEX_ALPHA
   if (diffuseColor.a * vLgAlpha < 0.5) discard;
   diffuseColor.a = 1.0;
+#endif
+#ifdef LG_VERTEX_ALPHA_BLEND
+  diffuseColor.a *= vLgAlpha;
+#ifdef LG_ALPHA_GE128
+  if (diffuseColor.a < 0.5) discard;            // (the GE128 alpha test of their state)
+#else
+  if (diffuseColor.a <= 0.0) discard;           // (the GT0 alpha test of their state)
+#endif
 #endif
   vec4 lmA = texture2D(uLmSecondary, vLgUv1 * vec2(1.0, 0.5));
   vec4 lmB = texture2D(uLmSecondary, vLgUv1 * vec2(1.0, 0.5) + vec2(0.0, 0.5));
