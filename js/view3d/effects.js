@@ -71,6 +71,7 @@ export class Effects {
     this.layer = labelLayer;
     this.siteLabels = [];
     this.markers = true;              // kill lines, death crosses and the bomb (the video export can hide them)
+    this.fp = false;                  // first person: none of the overlays - the view is the player's, as in the game
   }
 
   /** bomb-site letters from the map entities */
@@ -86,10 +87,10 @@ export class Effects {
   }
 
   update(t, R) {
-    const M = this.M, o = R.opts, shown = R.shownPlayers(), ep = M.epochStart(t);
+    const M = this.M, o = R.opts, shown = R.shownPlayers(), ep = M.epochStart(t), fp = this.fp;
     // trails
     this.trails.begin();
-    if (o.trails) {
+    if (o.trails && !fp) {
       for (const cl of shown) {
         const col = M.color(cl);
         for (const seg of M.trailOf(cl, t)) {
@@ -103,7 +104,7 @@ export class Effects {
     this.trails.end();
     // kill lines (eye of the killer -> chest of the victim), death crosses
     this.lines.begin();
-    for (const k of this.markers ? R.recentKills(t, CFG.DEATH_MARKER_MS) : []) {
+    for (const k of this.markers && !fp ? R.recentKills(t, CFG.DEATH_MARKER_MS) : []) {
       if (!shown.has(k.victim) && !shown.has(k.attacker)) continue;
       const fade = 1 - (t - k.t) / CFG.DEATH_MARKER_MS;
       const vp = M.deathPos(k);
@@ -126,6 +127,7 @@ export class Effects {
       if (!o.grenadeKinds.has(gr.g.kind) || t < gr.start || t > gr.end || gr.start < ep) continue;
       const det = gr.g.detonation;
       if (!det || t < det.t) {
+        if (fp) continue;                         // (the grenade's own model flies: worldWeapons.js)
         let last = null;
         for (const p of gr.pts) {
           if (p[0] > t) break;
@@ -166,7 +168,7 @@ export class Effects {
   updateBomb(t) {
     const M = this.M, e = M.bombAt(t), B = CFG.BOMB;
     this.bomb.visible = this.bombRing.visible = this.blast.visible = false;
-    if (!e || !this.markers) return;
+    if (!e || !this.markers || this.fp) return;
     let x, y, z;
     if (e.state === 'carried') {
       const s = M.sampleAt(e.carrier, t);

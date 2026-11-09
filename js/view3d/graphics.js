@@ -1,5 +1,5 @@
 /* The 3D view's graphics settings (the Graphics popover of the rail): the game's lighting, the sun
- * shadows, the reflections, the effects and the first-person weapon. They take effect when the 3D map
+ * shadows, the reflections, the effects and the POV weapon. They take effect when the 3D map
  * is loaded, so a change rebuilds the 3D view (main.js: app.reload3d) - except a "live" one, which the
  * view applies at once. Remembered in localStorage; a URL parameter (?lighting=scene, ?shadows=off,
  * ?reflections=on, ?fx=all|ambient|demo|off, ?viewmodel=off, ?crosshair=off) overrides it for that page. The defaults:
@@ -16,7 +16,7 @@ export const GRAPHICS = [
     values: [['on', 'On'], ['off', 'Off']] },
   { key: 'fx', label: 'Effects', title: 'The game\'s particle effects: the map\'s ambient effects (smoke, fire, dust) and the demo\'s own (explosions, smoke grenades, impacts, muzzle flashes)',
     values: [['all', 'All'], ['ambient', 'Map only'], ['demo', 'Demo only'], ['off', 'Off']] },
-  { key: 'viewmodel', label: 'First-person weapon', live: true, title: 'In the first-person camera: the weapon the player holds, in their character\'s hands - the game\'s view models and animations as the demo drives them (shots, reloads, switches, aiming down the sights with the zoom and the sniper scope, the knife), drawn over the world',
+  { key: 'viewmodel', label: 'POV weapon', live: true, title: 'In the first-person camera: the weapon the player holds, in their character\'s hands - the game\'s view models and animations as the demo drives them (shots, reloads, switches, aiming down the sights with the zoom and the sniper scope, the knife), drawn over the world',
     values: [['on', 'On'], ['off', 'Off']] },
   { key: 'crosshair', label: 'Crosshair', live: true, title: 'In the first-person camera: the crosshair with the game\'s images - its gap the weapon\'s spread (stance, movement, jumps, shots), hidden aiming down the sights, sprinting and for the scoped rifles',
     values: [['on', 'On'], ['off', 'Off']] }

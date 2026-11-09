@@ -95,7 +95,7 @@ export class View3D {
     this.animations = new AnimationLibrary();
     this.actors = new Actors(scene, this.labels, this.M, this.characters, failed => this.showPlayerNotice(failed), this.animations);
     this.actors.onLoaded = () => { this.R.invalidate(); this.needsRender = true; this.warmShaders(); };
-    // the first-person weapon (viewmodel.js; graphics: First-person weapon)
+    // the first-person weapon (viewmodel.js; graphics: POV weapon)
     this.viewmodel = new ViewModel(this.characters);
     this.viewmodel.setSceneLights(hemi, this.sun);
     this.viewmodel.enabled = graphics().viewmodel !== 'off';
@@ -410,7 +410,7 @@ export class View3D {
         this.soundRows, el('div', { class: 'grp' }, resetBtn())) },
       { key: 'graphics', title: 'Graphics', hint: 'reloads the 3D map', icon: 'sun', node: el('div', { class: 'pop-body' },
         el('div', { class: 'grp' }, ...gRows),
-        el('p', { class: 'pop-note' }, 'Lower settings help on slow graphics cards. A change reloads the 3D map (the first-person weapon switches at once); time, selection and the other options stay.'),
+        el('p', { class: 'pop-note' }, 'Lower settings help on slow graphics cards. A change reloads the 3D map (the POV weapon switches at once); time, selection and the other options stay.'),
         el('div', { class: 'grp' }, resetBtn())) }
     ];
   }
@@ -617,6 +617,7 @@ export class View3D {
     this.actors.update(t, { shown: R.shownPlayers(), focus: R.focus, hover: R.hover, labels: R.opts.labels || this.xrayMode === 'names', lastKnown: R.opts.lastKnown,
       xrayNames: this.xrayMode === 'names', ref: R.focus != null ? R.focus : this.M.followedAt(t),
       kills: R.recentKills(t, CFG.DEATH_MARKER_MS) });
+    this.effects.fp = this.cams.mode === 'fp';
     this.effects.update(t, R);
     if (this.scriptModels) {
       this.scriptModels.update(t);

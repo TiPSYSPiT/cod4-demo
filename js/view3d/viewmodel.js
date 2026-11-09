@@ -66,7 +66,7 @@ export class ViewModel {
     this.decoded = new Map();            // clip name -> decoded clip | null (failed)
     this.missing = new Set();            // weapons drawn with their world model or not at all
     this.current = null;                 // the shown rig / fallback mesh
-    this.enabled = true;                 // graphics: First-person weapon
+    this.enabled = true;                 // graphics: POV weapon
     this.crosshair = true;               // graphics: Crosshair
     this.shown = false;
     this.grid = null; this.probes = null;

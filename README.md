@@ -168,7 +168,7 @@ popover says so); nothing is reported as an error while it waits.
 | Follow player | Travels with the selected player (or the POV's followed player). Drag to turn around them |
 | First person | The selected player's eyes with their view angles, with their weapon in hand and the crosshair (below) |
 
-**First-person weapon** (Graphics popover: *First-person weapon* and *Crosshair*, on by default, switched
+**First-person weapon** (Graphics popover: *POV weapon* and *Crosshair*, on by default, switched
 at once; `?viewmodel=off`, `?crosshair=off`). The first-person camera shows the weapon the player holds
 as the game draws it: the weapon's view model (`gunModel` of its weapon file) in the hands of the
 player's character (the character script's `setViewmodel`: US Marines in desert and woodland kit, SAS, OpFor, Arab
@@ -277,8 +277,8 @@ above. *Models* draws each player's real character:
   shadows, as in the game. The **Graphics** popover (rail, 3D) switches the *Lighting* (Game /
   Simple: the plain scene lights), the *Sun shadows*, the *Reflections* and the *Effects*; a change
   reloads the 3D map (time, selection and the other options stay) and helps slow graphics cards.
-  *First-person weapon* and *Crosshair* (above) switch at once, without a reload.
-  The defaults: Game lighting, sun shadows on, reflections off, effects Demo only, first-person weapon and crosshair on
+  *POV weapon* and *Crosshair* (above) switch at once, without a reload.
+  The defaults: Game lighting, sun shadows on, reflections off, effects Demo only, POV weapon and crosshair on
   (`js/app/defaults.js`, with those of the Display popover; *Reset to defaults* in both popovers goes back to them).
   The same in the URL, which wins for that page: `?lighting=scene`, `?reflections=on`, `?shadows=off`, `?fx=all` (`ambient`, `demo`, `off`);
   `?maps=off` drops the normal / specular maps. `?shadows=off` drops the
