@@ -6,7 +6,7 @@ the **real map in 3D**. Toggle between the two at any time: the time, the select
 the filters stay as they are.
 
 The demo is parsed in your browser (a Web Worker). Nothing is uploaded. The site is plain
-HTML, CSS and JavaScript with no build step, and it runs on GitHub Pages. three.js (r170) comes
+HTML, CSS and JavaScript with no build step, and it runs on GitHub Pages. three.js (r187) comes
 with the project in `vendor/` (see [vendor/README.md](vendor/README.md)), so it also runs offline;
 nothing is loaded from other sites (the fonts, Inter and JetBrains Mono, are in `assets/fonts` too).
 The 3D maps are prebuilt once with a Python script from your own game files.
@@ -787,7 +787,7 @@ js/view3d/               view3d (scene, loop, Camera / Display / Graphics popove
                          (?audit=1: the assets coloured by the asset audit's status), blend (the
                          game's blend factors for every renderer)
 assets/maps/             compass images + calibration (maps.js);  assets/killfeed/  the kill icons (tools/export/killicons_export.py)
-vendor/three/            three.js r170 (three.module.js, OrbitControls) - see vendor/README.md
+vendor/three/            three.js r187 (three.module.js + three.core.js, OrbitControls) - see vendor/README.md
 tools/check_deploy.py    maps3d/manifest.json (sizes, hashes) and the check of the deployed site
 tools/check_imports.py   the module graph: missing files, case, exports, import map (--url: the site)
 tools/shoot.py           headless Edge / Chrome screenshots and test runs (Python stdlib only)

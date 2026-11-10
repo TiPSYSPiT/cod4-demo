@@ -6,18 +6,21 @@ The page loads its only external library from here, through the import map in `i
 
 | Library | Version | Files | Source | Licence |
 |---|---|---|---|---|
-| three.js | 0.170.0 (r170) | `three/build/three.module.js`, `three/examples/jsm/controls/OrbitControls.js` | npm package `three@0.170.0` (`https://registry.npmjs.org/three/-/three-0.170.0.tgz`) | MIT, `three/LICENSE` |
+| three.js | 0.187.0 (r187) | `three/build/three.module.js`, `three/build/three.core.js`, `three/examples/jsm/controls/OrbitControls.js` | npm package `three@0.187.0` (`https://registry.npmjs.org/three/-/three-0.187.0.tgz`, SHA-512 checked against the registry's `dist.integrity`) | MIT, `three/LICENSE` |
 
-SHA-256 of the files (identical to `https://cdn.jsdelivr.net/npm/three@0.170.0/...`):
+SHA-256 of the files (identical to `https://cdn.jsdelivr.net/npm/three@0.187.0/...`):
 
 ```
-ce1fa418de16a19495a9f72495580e3015d7745c296d3ce0485897f902ddedfb  three/build/three.module.js
-80efaadea4f8a636a65fb0bd08bfef62f3d93a0bb94e2e7500f23176c5c07f4e  three/examples/jsm/controls/OrbitControls.js
+104f56145899722094556490d787aae0617cc2fc3382f31df02d724ea1aee341  three/build/three.module.js
+613e370f76638fdef83926642bf256dc9615684922de1ce1f63a8583e5d78578  three/build/three.core.js
+e7fca2fe9e7670a828af9b28084669a5909445b7f36f1f26cee9bf8f2961c32c  three/examples/jsm/controls/OrbitControls.js
 ```
 
 The folders follow the npm package, so an addon's own `import ... from 'three'` resolves through
 the same import map entry: `'three'` and `'three/addons/'` always come from the same copy and
-version. `three.module.js` of r170 is a single file (no `three.core.js` yet). The only addon used
+version. Since r171 `three.module.js` (the WebGL renderer) imports the core from `./three.core.js` next to it;
+the import map names only `three.module.js`. The package has no minified builds any more (2.1 MB together, r170: 1.3 MB);
+GitHub Pages serves them compressed. The only addon used
 is `OrbitControls` (`js/view3d/cameras.js`); the MP4 writer and the GIF encoder are this
 project's own code (`js/c4/ui/map/mp4mux.js`, `gifenc.js`), the fonts are the system's.
 
