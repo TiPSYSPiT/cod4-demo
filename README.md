@@ -858,6 +858,25 @@ py tools/audit/leftovers.py
 Pages (manifest, exact case of references, sizes), `map_audit.py` every map's files and entities, `leftovers.py` looks for code left
 from CoD2.
 
+Player models and weapons: `model_inventory.mjs` lists what the demos use (bodies, heads, their combinations, weapons with their
+camouflage variants), `model_audit.py` checks every one of those models and the game's own combinations (from the character scripts
+the fast file extractor writes): surfaces and LODs, materials and colour maps, skin weights, normals, the head's bones against the
+body's, weapons' world models and tags. `--poses` adds a check in the browser: every head on its body in ten game animations,
+the helmet / cap bone against its place on the head. Report: `tools/audit/out/model-audit.md`.
+
+```bash
+node tools/audit/model_inventory.mjs
+```
+
+```bash
+py tools/audit/model_audit.py --poses
+```
+
+To look at the models themselves: `index.html?debug=models` (off by default) shows every character combination and every world
+weapon model on a turntable, with its model, material and texture names - a surface without a colour map in red - in a game
+animation, a stance or the bind pose, at each LOD (`&zoom=head`, `&filter=usmc`, `&list=weapons`, `&pose=bind`; with `&demo=` the
+demo's own combinations too).
+
 ### Performance and quality checks
 
 `tools/bench/` (its README has the details): a benchmark of page load, demo analysis, demo load, the 2D and 3D views, memory and

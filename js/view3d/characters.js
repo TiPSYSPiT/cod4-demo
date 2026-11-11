@@ -313,6 +313,9 @@ export class Character {
         return bone;
       });
       head.bones.forEach((b, i) => { if (!this.byName.has(b.name) && b.parent >= 0) hb[b.parent].add(hb[i]); });
+      // the head-only bones' rest positions too: the game's animations move j_head_end / j_helmet (the helmet's and
+      // cap's bone) - a translation track is an offset on the model's own position (DObjCalcSkel), as for the body
+      head.bones.forEach((b, i) => { if (!this.byName.has(b.name) && !this.restLocal.has(b.name)) this.restLocal.set(b.name, hl[i].p.clone()); });
       this.headMesh = new THREE.SkinnedMesh(head.geo, head.mats);
       this.headMesh.bind(new THREE.Skeleton(hb, head.inverses), IDENTITY);
       this.headMesh.boundingSphere = CHARACTER_SPHERE;
@@ -619,7 +622,7 @@ export class AnimationLibrary {
         tracks.push(new THREE.QuaternionKeyframeTrack(bone + '.quaternion', times, v));
       } else {
         const r0 = character.restLocal.get(bone);
-        if (!r0) continue;                                        // head-only bone: rotation only
+        if (!r0) continue;
         const raw = new Float32Array(bin, vOff, 3 * n), v = new Float32Array(3 * n);
         for (let i = 0; i < n; i++) { v[3 * i] = r0.x + raw[3 * i]; v[3 * i + 1] = r0.y + raw[3 * i + 1]; v[3 * i + 2] = r0.z + raw[3 * i + 2]; }
         tracks.push(new THREE.VectorKeyframeTrack(bone + '.position', times, v));

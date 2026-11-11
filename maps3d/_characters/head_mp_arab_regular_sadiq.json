@@ -1043,13 +1043,19 @@
  "materials": [
   {
    "name": ",mc/lambert1",
-   "texture": null,
+   "texture": "_textures/grey.webp",
    "textureAlpha": false,
-   "color": null,
+   "color": "#818081",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
-   "depthWrite": true
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
   },
   {
    "name": "mc/mtl_bodies_arab_regular",
@@ -1096,7 +1102,8 @@
     1.0,
     1.0,
     1.0
-   ]
+   ],
+   "specularMap": "_textures/arab_regular_asad_sp_spc-rgb_1dcbf64f.specular.webp"
   },
   {
    "name": "mc/mtl_arab_regular_helmet_hands_sp",

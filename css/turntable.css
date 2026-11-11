@@ -1,0 +1,14 @@
+/* the model debug view (js/view3d/turntable.js, index.html?debug=models) */
+.tt { position: fixed; inset: 0; z-index: 10000; background: #1d2228; color: #dde3ea; font: 12px/1.35 system-ui, sans-serif; }
+.tt canvas { position: absolute; inset: 40px 0 0 0; }
+.tt-bar { position: absolute; left: 0; right: 0; top: 0; height: 40px; display: flex; gap: 10px; align-items: center; padding: 0 12px;
+  background: #11151a; border-bottom: 1px solid #2c343d; }
+.tt-bar select, .tt-bar input, .tt-bar button { font: inherit; background: #252c34; color: inherit; border: 1px solid #3a444f; border-radius: 4px; padding: 3px 6px; }
+.tt-bar .sp { flex: 1; }
+.tt-slots { position: absolute; inset: 40px 0 0 0; pointer-events: none; }
+.tt-slot { position: absolute; overflow: hidden; border-right: 1px solid #2a3139; border-bottom: 1px solid #2a3139; padding: 6px 8px; box-sizing: border-box; }
+.tt-slot b { display: block; font-size: 12px; color: #fff; word-break: break-all; }
+.tt-slot .src { color: #8b98a6; font-size: 11px; }
+.tt-slot ul { position: absolute; left: 8px; right: 8px; top: 344px; bottom: 4px; overflow: hidden; margin: 0; padding: 0; list-style: none; font-size: 10.5px; color: #b8c2cc; }
+.tt-slot li.bad { color: #ff6b5e; font-weight: 600; }
+.tt-slot li.part { color: #e8d48a; margin-top: 2px; }

@@ -484,6 +484,11 @@ function init() {
   });
   // optional: index.html?demo=<path of a .dm_1 file on this site> (served over http). Only the site's own files: a link
   // must not open someone else's file under the site's name (the CSP's connect-src agrees)
+  // debug view, off by default: index.html?debug=models - every character combination and weapon model on a turntable with its
+  // model and material names (view3d/turntable.js; with ?demo= also the demo's combinations, once it is loaded)
+  if (new URLSearchParams(location.search).get('debug') === 'models') {
+    import('../view3d/turntable.js').then(m => m.openTurntable()).catch(err => { console.error(err); fail('The model debug view did not start: ' + err.message); });
+  }
   const demoUrl = new URLSearchParams(location.search).get('demo');
   if (demoUrl) {
     let url = null;

@@ -236,9 +236,9 @@
   },
   {
    "name": "mc/mtl_weapon_trinium_sight",
-   "texture": null,
-   "textureAlpha": false,
-   "color": null,
+   "texture": "_textures/weapon_trinium_site_c.webp",
+   "textureAlpha": true,
+   "color": "#1d5e28",
    "alphaTest": "gt0",
    "blend": "srcalpha/invsrcalpha",
    "doubleSided": false,
@@ -248,7 +248,8 @@
     1.0,
     1.0,
     1.0
-   ]
+   ],
+   "textureGuess": "variant material"
   },
   {
    "name": "mc/mtl_weapon_suppressor_b",
