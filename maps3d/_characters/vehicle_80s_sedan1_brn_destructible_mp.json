@@ -1074,13 +1074,27 @@
   },
   {
    "name": ",mc/com_glass_shattered_outside",
-   "texture": null,
-   "textureAlpha": false,
-   "color": null,
-   "alphaTest": null,
-   "blend": null,
+   "texture": "_textures/glass_shattered_col.webp",
+   "textureAlpha": true,
+   "color": "#687575",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
    "doubleSided": false,
-   "depthWrite": true
+   "depthWrite": true,
+   "normalMap": "_textures/glass_shattered_nml.normal.webp",
+   "specularMap": "_textures/glass_shattered_spc-rgb_glas_36dd5f9b.specular.webp",
+   "envMapParms": [
+    2.0,
+    12.0,
+    10.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
   },
   {
    "name": "mc/com_glass_shattered_inside",
@@ -1108,14 +1122,14 @@
   },
   {
    "name": "mc/mtl_80s_econ_glass_inside",
-   "texture": "_textures/ch_gas_pump_glass_col.webp",
+   "texture": "_textures/80s_econ_glass_col.webp",
    "textureAlpha": true,
-   "color": "#767c75",
+   "color": "#515856",
    "alphaTest": "gt0",
    "blend": "one/invsrcalpha",
    "doubleSided": false,
    "depthWrite": false,
-   "specularMap": "_textures/ch_gas_pump_glass_spc-r-61g-_8f20da0c.specular.webp",
+   "specularMap": "_textures/80s_econ_glass_spc-rgb_80s_e_29444396.specular.webp",
    "envMapParms": [
     1.4,
     4.0,

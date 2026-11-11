@@ -1074,13 +1074,27 @@
   },
   {
    "name": ",mc/com_glass_shattered_outside",
-   "texture": null,
-   "textureAlpha": false,
-   "color": null,
-   "alphaTest": null,
-   "blend": null,
+   "texture": "_textures/glass_shattered_col.webp",
+   "textureAlpha": true,
+   "color": "#687575",
+   "alphaTest": "gt0",
+   "blend": "one/invsrcalpha",
    "doubleSided": false,
-   "depthWrite": true
+   "depthWrite": true,
+   "normalMap": "_textures/glass_shattered_nml.normal.webp",
+   "specularMap": "_textures/glass_shattered_spc-rgb_glas_36dd5f9b.specular.webp",
+   "envMapParms": [
+    2.0,
+    12.0,
+    10.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
   },
   {
    "name": "mc/com_glass_shattered_inside",

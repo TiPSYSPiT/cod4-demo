@@ -63,13 +63,27 @@
  "materials": [
   {
    "name": "mc/mtl_tntbomb",
-   "texture": null,
-   "textureAlpha": false,
-   "color": null,
+   "texture": "_textures/tntblock_and_timer_col.webp",
+   "textureAlpha": true,
+   "color": "#8d7e41",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
-   "depthWrite": true
+   "depthWrite": true,
+   "normalMap": "_textures/tntblock_and_timer_nml.normal.webp",
+   "specularMap": "_textures/tntblock_and_timer_spc-rgb_t_618168e4.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
   }
  ],
  "bounds": {

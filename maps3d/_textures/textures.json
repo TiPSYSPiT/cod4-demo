@@ -11757,6 +11757,23 @@
   "source": "flag_neutral",
   "w": 512
  },
+ "flag_neutral_nml.normal": {
+  "alpha": false,
+  "color": "#828280",
+  "h": 256,
+  "kind": "normal",
+  "source": "flag_neutral_nml",
+  "w": 256
+ },
+ "flag_neutral_spc-r-17g-17b-17l-11.specular": {
+  "alpha": true,
+  "color": "#020202",
+  "exact": 2,
+  "h": 256,
+  "kind": "specular",
+  "source": "~flag_neutral_spc-r-17g-17b-17l-11",
+  "w": 256
+ },
  "flare_a": {
   "alpha": false,
   "color": "#161412",
@@ -20248,6 +20265,22 @@
   "source": "mi24p_hind_window_desert_destroy_nml",
   "w": 256
  },
+ "mig29_col_desert": {
+  "alpha": false,
+  "color": "#7f7b75",
+  "h": 256,
+  "source": "mig29_col_desert",
+  "w": 256
+ },
+ "mig29_spc_desert-rgb_mig29_c_da27f8cb.specular": {
+  "alpha": true,
+  "color": "#6f7376",
+  "exact": 2,
+  "h": 256,
+  "kind": "specular",
+  "source": "~mig29_spc_desert-rgb&mig29_c~da27f8cb",
+  "w": 256
+ },
  "militarytentceilinglight_col_0": {
   "alpha": false,
   "color": "#b1b1ad",
@@ -27677,6 +27710,31 @@
   "h": 256,
   "kind": "specular",
   "source": "~tires_spc-r29g29b29&tires_cos-l-19",
+  "w": 256
+ },
+ "tntblock_and_timer_col": {
+  "alpha": true,
+  "color": "#8d7e41",
+  "exact": 2,
+  "h": 256,
+  "source": "tntblock_and_timer_col",
+  "w": 256
+ },
+ "tntblock_and_timer_nml.normal": {
+  "alpha": false,
+  "color": "#828280",
+  "h": 256,
+  "kind": "normal",
+  "source": "tntblock_and_timer_nml",
+  "w": 256
+ },
+ "tntblock_and_timer_spc-rgb_t_618168e4.specular": {
+  "alpha": true,
+  "color": "#1b1c1f",
+  "exact": 2,
+  "h": 256,
+  "kind": "specular",
+  "source": "~tntblock_and_timer_spc-rgb&t~618168e4",
   "w": 256
  },
  "tomatoes": {

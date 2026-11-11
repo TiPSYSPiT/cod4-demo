@@ -288,13 +288,26 @@
  "materials": [
   {
    "name": "mc/mtl_mig29_desert",
-   "texture": null,
+   "texture": "_textures/mig29_col_desert.webp",
    "textureAlpha": false,
-   "color": null,
+   "color": "#7f7b75",
    "alphaTest": "ge128",
    "blend": null,
    "doubleSided": false,
-   "depthWrite": true
+   "depthWrite": true,
+   "specularMap": "_textures/mig29_spc_desert-rgb_mig29_c_da27f8cb.specular.webp",
+   "envMapParms": [
+    0.8,
+    2.0,
+    2.5,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
   }
  ],
  "bounds": {
