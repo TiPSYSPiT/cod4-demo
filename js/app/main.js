@@ -125,6 +125,10 @@ async function load(file) {
   let buffer;
   try { buffer = await file.arrayBuffer(); }
   catch (err) { return fail('The file could not be read: ' + err.message); }
+  // (a viewer script the browser did not load: loaded again first - the worker is built from the loaded modules)
+  try { await C4.scriptsReady(); }
+  catch (err) { return fail('The demo could not be analysed: ' + err.message + '.'); }
+  if (loadId !== state.loadId) return;
   $('progress-label').textContent = 'Parsing ' + file.name + ' (' + (file.size / 1e6).toFixed(1) + ' MB) …';
   if (state.worker) { state.worker.terminate(); state.worker = null; }
   const worker = C4.createParserWorker();

@@ -24,12 +24,10 @@ import { isPromod } from './viewmodel.js';
 import { configStrings, loadHudText } from './hudtext.js';
 import { fetchJSON } from './data.js';
 import { loadImage } from '../app/retry.js';
+import { DVARS, PING_HOLD_MS, COMPASS_MENU } from './hudConfig.js';
 
 const BASE = 'maps3d/';
 const D2R = Math.PI / 180;
-const MAX_RANGE = 2500;                  // compassMaxRange (the client's default)
-const MINIMAP = { x: 6, y: 6, size: 120, inset: 9 };
-const FIRE_PING_MS = 1000;
 const HUD_ALPHA = 0.65;
 const LOW = [0.89, 0.18, 0.01];             // the low ammo colour of the client code
 const WHITE = [1, 1, 1];
@@ -169,6 +167,7 @@ export class GameHud {
    *  safe area) - the hit marker is centred on it */
   draw(g, w, h, t, cl, view, weaponName, full = null) {
     if (!this.enabled || cl == null) return;
+    if (this.debug) this.drawn = [];
     const M = this.M, s = h / 480, R = x => w - (640 - x) * s;
     const row = this.hudRow(cl, t), H = M.d.psHud;
     g.save();
@@ -176,7 +175,7 @@ export class GameHud {
     const Fv = full || { x: 0, y: 0, w, h };
     this.drawMessages(g, w, h, s, Fv, t, cl);
     if (!view) { if (row >= 0) this.drawElems(g, w, h, s, Fv, t, row); g.restore(); return; }
-    this.drawMinimap(g, s, t, cl, view);
+    this.drawCompass(g, w, h, t, cl, view);
     if (row >= 0) {
       const F = full || { x: 0, y: 0, w, h };
       g.save(); g.translate(F.x, F.y);
@@ -190,60 +189,115 @@ export class GameHud {
     g.restore();
   }
 
-  drawMinimap(g, s, t, cl, view) {
-    const M = this.M, me = M.sampleAt(cl, t), map = this.img('map'), rect = M.rect;
-    if (!me) return;
-    const S = MINIMAP.size * s, x0 = MINIMAP.x * s, y0 = MINIMAP.y * s, cx = x0 + S / 2, cy = y0 + S / 2;
+  /** the compass (Promod's / the stock "Compass_old" menu; cg_compass.cpp, cg_compassfriendlies_mp.cpp) in the HUD area w x h:
+   *  the items' virtual rects (hudConfig.js COMPASS_MENU) aligned left / top, their width / height times compassSize
+   *  (CG_CompassCalcDimensions), virtual -> device by ScrPlace's scaleVirtualToReal. The map turned with the view
+   *  (compassRotation), compassMaxRange world units across its height; the friendlies (compassping_friendly_mp, their firing
+   *  ping over it), the enemies' firing pings at the place they fired from, the objectives, the player in the centre. The menu
+   *  hides it while flashbanged or scoped */
+  drawCompass(g, w, h, t, cl, view) {
+    const M = this.M, D = DVARS, me = M.sampleAt(cl, t);
+    if (!me || view.flashed || view.scoped) return;
+    const sx = Math.min(h * 4 / 3, w) / 640, sy = h / 480;
+    const R = COMPASS_MENU[this.promod ? 'promod' : 'stock'];
+    // (device rect of an item: CG_CompassCalcDimensions, then ScrPlace_ApplyRect for HORIZONTAL_ALIGN_LEFT / VERTICAL_ALIGN_TOP)
+    const rect = r => ({ x: r[0] * sx, y: r[1] * sy, w: r[2] * D.compassSize * sx, h: r[3] * D.compassSize * sy, vh: r[3] * D.compassSize });
+    const back = rect(R.back), border = rect(R.tickerBorder), tape = rect(R.ticker), mr = rect(R.map);
     const bg = this.img('minimap_background');
-    const inner = S - 2 * MINIMAP.inset * s, k = inner / 2 / MAX_RANGE;
-    g.globalAlpha = 0.6; g.fillStyle = '#000';
-    g.fillRect(cx - inner / 2, cy - inner / 2, inner, inner);
-    g.globalAlpha = 1;
-    if (bg) g.drawImage(bg, x0 - 4 * s, y0 - 4 * s, S + 8 * s, S + 8 * s);
-    const sy = Math.sin(view.yaw * D2R), cyw = Math.cos(view.yaw * D2R);
-    // world (x, y) -> screen: the view's forward up, its right to the right
-    const toScreen = (x, y) => { const dx = x - me.x, dy = y - me.y; return [cx + k * (dx * sy - dy * cyw), cy - k * (dx * cyw + dy * sy)]; };
-    g.save();
-    g.beginPath(); g.rect(cx - inner / 2, cy - inner / 2, inner, inner); g.clip();
-    if (map && rect) {
-      const ax = (rect.maxX - rect.minX) / map.naturalWidth, ay = (rect.maxY - rect.minY) / map.naturalHeight;
-      const ox = rect.minX - me.x, oy = rect.maxY - me.y;
+    if (bg) g.drawImage(bg, back.x, back.y, back.w, back.h);
+    const tb = this.img('minimap_tickertape_background');
+    if (tb) g.drawImage(tb, border.x, border.y, border.w, border.h);
+    this.drawTickertape(g, tape, view.yaw);
+    // CG_WorldPosToCompass: pixPerInch = the map rect's height / compassMaxRange, the view's yaw vector up
+    const cx = mr.x + mr.w / 2, cy = mr.y + mr.h / 2, ppi = mr.vh / D.compassMaxRange, kx = ppi * sx, ky = ppi * sy;
+    const fs = Math.sin(view.yaw * D2R), fc = Math.cos(view.yaw * D2R);
+    const half = [mr.w / 2, mr.h / 2];
+    /** world (x, y) -> [device x, y, clipped] (clipped to the map rect's edge: CG_WorldPosToCompass outClipped) */
+    const toCompass = (x, y) => {
+      const dx = x - me.x, dy = y - me.y;
+      let ox = kx * (fs * dx - fc * dy), oy = ky * (-fs * dy - fc * dx), clipped = false;
+      if (ox > half[0] || ox < -half[0]) { const k = half[0] / Math.abs(ox); ox *= k; oy *= k; clipped = true; }
+      if (oy > half[1] || oy < -half[1]) { const k = half[1] / Math.abs(oy); ox *= k; oy *= k; clipped = true; }
+      return [cx + ox, cy + oy, clipped];
+    };
+    const map = this.img('map'), wr = M.rect;
+    if (map && wr) {
+      // CG_CompassDrawPlayerMap: the compass map image under the rect, turned with the view (the image's own alpha)
+      const ax = (wr.maxX - wr.minX) / map.naturalWidth, ay = (wr.maxY - wr.minY) / map.naturalHeight;
+      const ox = wr.minX - me.x, oy = wr.maxY - me.y;
       g.save();
-      g.transform(k * sy * ax, -k * cyw * ax, k * cyw * ay, k * sy * ay, cx + k * (sy * ox - cyw * oy), cy - k * (cyw * ox + sy * oy));
-      g.globalAlpha = 0.9;
+      g.beginPath(); g.rect(mr.x, mr.y, mr.w, mr.h); g.clip();
+      g.transform(kx * fs * ax, -ky * fc * ax, kx * fc * ay, ky * fs * ay, cx + kx * (fs * ox - fc * oy), cy - ky * (fc * ox + fs * oy));
       g.drawImage(map, 0, 0);
       g.restore();
     }
-    // teammates (arrows by their yaw) and enemies firing
-    const team = (M.player(cl) || {}).team;
-    const friend = this.img('compassping_green_mp'), enemy = this.img('compassping_enemyfiring');
+    // CG_CompassDrawPlayerPointers_MP: the objectives (icons clipped to the edge)
+    this.drawObjectives(g, t, cl, sx, sy, toCompass);
+    // CG_CompassDrawFriendlies: the teammates seen in the last 1500 ms, turned by the view's yaw minus theirs; a firing ping over
+    // the arrow, fading out over compassSoundPingFadeTime (the arrow is left out while the ping is at full alpha)
+    const fw = D.compassFriendlyWidth * D.compassSize * sx, fh = D.compassFriendlyHeight * D.compassSize * sy;
+    const team = (M.player(cl) || {}).team, fade = D.compassSoundPingFadeTime * 1000;
+    const arrow = this.img('compassping_green_hollow_mp') || this.img('compassping_green_mp'), firing = this.img('compassping_green_mp');
+    const enemyPing = this.img('compassping_enemyfiring');
     for (const p of M.d.players) {
       if (p.client === cl || (p.team !== 'A' && p.team !== 'B')) continue;
-      const o = M.sampleAt(p.client, t);
-      if (!o || o.age > 1000) continue;
-      const [px, py] = toScreen(o.x, o.y);
       if (p.team === team) {
-        const sz = 12 * s;
-        g.save(); g.translate(px, py); g.rotate((view.yaw - o.yaw) * D2R); g.globalAlpha = 1;
-        if (friend) g.drawImage(friend, -sz / 2, -sz / 2, sz, sz);
-        else { g.fillStyle = '#7fe07f'; g.beginPath(); g.moveTo(0, -sz / 2); g.lineTo(sz / 3, sz / 2); g.lineTo(-sz / 3, sz / 2); g.closePath(); g.fill(); }
+        const o = M.sampleAt(p.client, t);
+        if (!o || o.age > 1500) continue;
+        const [px, py, clipped] = toCompass(o.x, o.y);
+        if (clipped && !D.compassClampIcons) continue;
+        const shot = this.lastPing(p.client, t, fade);
+        const ping = shot ? Math.min(1, 1 - (t - shot.t - PING_HOLD_MS) / fade) : 0;
+        g.save(); g.translate(px, py); g.rotate((view.yaw - o.yaw) * D2R);
+        if (arrow && !(shot && ping >= 1)) g.drawImage(arrow, -fw / 2, -fh / 2, fw, fh);
+        if (firing && shot) { g.globalAlpha = Math.max(0, ping); g.drawImage(firing, -fw / 2, -fh / 2, fw, fh); }
         g.restore();
       } else {
-        const a = this.shots.get(p.client);
-        const i = a ? lower(a, t) : -1;
-        if (i < 0 || t - a[i] > FIRE_PING_MS) continue;
-        const sz = 14 * s;
-        g.globalAlpha = 1 - (t - a[i]) / FIRE_PING_MS;
-        if (enemy) g.drawImage(enemy, px - sz / 2, py - sz / 2, sz, sz);
-        else { g.fillStyle = '#e04040'; g.beginPath(); g.arc(px, py, sz / 3, 0, Math.PI * 2); g.fill(); }
+        // CG_CompassDrawEnemies (g_compassShowEnemies 0): only a firing ping, at the place of the shot, friendly-sized
+        const shot = this.lastPing(p.client, t, fade);
+        if (!shot || !enemyPing) continue;
+        const [px, py, clipped] = toCompass(shot.x, shot.y);
+        if (clipped && !D.compassClampIcons) continue;
+        g.globalAlpha = Math.max(0, Math.min(1, 1 - (t - shot.t - PING_HOLD_MS) / fade));
+        g.drawImage(enemyPing, px - fw / 2, py - fh / 2, fw, fh);
+        g.globalAlpha = 1;
       }
     }
-    this.drawObjectives(g, t, cl, s, toScreen, cx, cy, inner / 2);
-    g.restore();
-    // the player
-    const pl = this.img('compassping_player'), sz = 16 * s;
-    g.globalAlpha = 1;
-    if (pl) g.drawImage(pl, cx - sz / 2, cy - sz / 2, sz, sz);
+    // CG_CompassDrawPlayer: the player in the centre (compassRotation: not turned)
+    const pl = this.img('compassping_player'), pw = D.compassPlayerWidth * D.compassSize * sx, ph = D.compassPlayerHeight * D.compassSize * sy;
+    if (pl) g.drawImage(pl, cx - pw / 2, cy - ph / 2, pw, ph);
+  }
+
+  /** CG_CompassDrawTickertape (CG_PLAYER_COMPASS_TICKERTAPE_NO_OBJ): the tape image of minimap_tickertape_mp over the rect, its
+   *  texture from tapeCenter -/+ compassTickertapeStretch / 2 (tapeCenter = -(view yaw - north yaw) / 360; the image repeats) */
+  drawTickertape(g, r, yaw) {
+    const img = this.img('minimap_tickertape_256x16');
+    if (!img) return;
+    const D = DVARS, north = (this.M.d.meta && this.M.d.meta.northYaw) || 0;
+    const center = -(yaw - north) / 360, left = center - D.compassTickertapeStretch / 2;
+    const iw = img.naturalWidth, ih = img.naturalHeight, span = D.compassTickertapeStretch * iw;     // image pixels shown
+    let u = (((left % 1) + 1) % 1) * iw, x = r.x, rest = span;
+    // (the shown span in pieces at the image's wrap)
+    while (rest > 0.01) {
+      const n = Math.min(rest, iw - u), dw = n / span * r.w;
+      g.drawImage(img, u, 0, n, ih, x, r.y, dw, r.h);
+      x += dw; rest -= n; u = 0;
+    }
+  }
+
+  /** the last firing ping of client cl before t within ms: an unsilenced shot of a weapon that is no grenade (CG_FireWeapon:
+   *  CG_CompassAddWeaponPingInfo) -> {t, x, y} (where he fired) or null */
+  lastPing(cl, t, ms) {
+    const a = this.shots.get(cl);
+    if (!a) return null;
+    for (let i = lower(a, t); i >= 0 && t - a[i] <= ms + PING_HOLD_MS; i--) {
+      const o = this.M.sampleAt(cl, a[i]);
+      if (!o) continue;
+      const name = o.weapon ? this.M.weaponName(o.weapon, a[i]) : null, n = String(name || '').toLowerCase();
+      if (n.includes('silencer') || /grenade|^c4|claymore/.test(n)) continue;
+      return { t: a[i], x: o.x, y: o.y };
+    }
+    return null;
   }
 
   /** the hit marker (the scripts' HUD element, _damagefeedback.gsc: damage_feedback 24 x 48 at -12 / -12 from the
@@ -460,47 +514,93 @@ export class GameHud {
     return color.map((c, i) => from[i] + (c - from[i]) * f);
   }
 
-  /** DrawOffscreenViewableWaypoint: a script's world icon that stays on the screen (the bomb, its carrier for his team ...):
-   *  36 x 36 at the world position, smaller with the distance, held at the screen's edge with an arrow to where it is. The
+  /** DrawOffscreenViewableWaypoint (cg_hudelem.cpp 1322): a script's world icon that stays on the screen (the bomb for the
+   *  attackers, "defend" over its carrier ...). Sizes in virtual units times ScrPlace's scaleVirtualToReal of the whole view
+   *  (x: min(h * 4 / 3, w) / 640, y: h / 480); WorldPosToScreenPos in the whole view, waypointTweakY, ClampScreenPosToEdges
+   *  inside the HUD area (the engine's realViewableMin / Max - here the part of the view the viewer's controls leave), the
+   *  off-screen arrow, then GetScaleForDistance. The icon on whole device pixels (sharp at any size and pixel ratio). The
    *  waypoints without an off-screen image are sprites in the world; the scripts' are never visible (objpoint_default,
    *  alpha 0), so they are not drawn */
   drawWaypoint(e, S) {
-    const T = this.txt, cam = this.camera, { g, s, F, now, t, w, h } = S;
+    const T = this.txt, cam = this.camera, D = DVARS, { g, F, now, t, w, h } = S;
     const mat = e.offscreenMaterialIdx ? this.csAt(C4.constants.CS.SERVER_MATERIALS + e.offscreenMaterialIdx, t).toLowerCase() : '';
     if (!mat || !cam || S.flashed) return;
     const color = this.elemColor(e, now);
     if (color[3] <= 0.002) return;
+    const sx = Math.min(F.h * 4 / 3, F.w) / 640, sy = F.h / 480, avg = (sx + sy) / 2;
+    let iconW = D.waypointIconWidth * sx, iconH = D.waypointIconHeight * sy;
+    const pointerW = D.waypointOffscreenPointerWidth * sx, pointerH = D.waypointOffscreenPointerHeight * sy;
+    const pointerDist = D.waypointOffscreenPointerDistance * avg;
+    const thresholdAlpha = Math.max(0.1, D.waypointOffscreenDistanceThresholdAlpha * avg);
+    const padding = pointerH * 0.5 + pointerDist;
+    const padL = D.waypointOffscreenPadLeft * sx + padding, padR = D.waypointOffscreenPadRight * sx + padding;
+    const padT = D.waypointOffscreenPadTop * sy + padding, padB = D.waypointOffscreenPadBottom * sy + padding;
     let { x, y, z } = e;
     if (e.targetEntNum !== NO_ENTITY) {
       const o = e.targetEntNum === S.cl ? null : this.M.sampleAt(e.targetEntNum, t);
       if (!o || o.age > 1000) return;
-      x = o.x; y = o.y; z = o.z + (o.prone ? 30 : o.crouch ? 56 : 74);        // waypointPlayerOffsetProne / Crouch / Stand
+      x = o.x; y = o.y;
+      z = o.z + (o.prone ? D.waypointPlayerOffsetProne : o.crouch ? D.waypointPlayerOffsetCrouch : D.waypointPlayerOffsetStand);
     }
-    // WorldPosToScreenPos (behind the view: far out in its direction), in the full view
-    const m = cam.matrixWorldInverse.elements, P = cam.projectionMatrix.elements;
+    // WorldPosToScreenPos (in the whole view; x / y from its top left): behind the eye the left / up projections, pushed out
+    // past the view's size
+    const m = cam.matrixWorldInverse.elements, P = cam.projectionMatrix.elements, VW = F.w, VH = F.h;
     const vx = m[0] * x + m[4] * y + m[8] * z + m[12], vy = m[1] * x + m[5] * y + m[9] * z + m[13], depth = -(m[2] * x + m[6] * y + m[10] * z + m[14]);
-    let sx, sy;
-    if (depth > 0.01) { sx = F.x + F.w / 2 * (1 + P[0] * vx / depth); sy = F.y + F.h / 2 * (1 - P[5] * vy / depth); } else {
-      const k = 4 * Math.max(F.w, F.h) / Math.max(Math.abs(vx), Math.abs(vy), 0.001);
-      sx = F.x + F.w / 2 + vx * k; sy = F.y + F.h / 2 - vy * k;
+    let px, py;
+    if (depth >= 0 && depth > 1e-6) { px = VW / 2 * (1 + P[0] * vx / depth); py = VH / 2 * (1 - P[5] * vy / depth); } else {
+      px = vx; py = -vy;
+      if (Math.abs(px) >= 1e-6 || Math.abs(py) >= 1e-6) {
+        if (Math.abs(px) < 1e-6) px = 0.001;
+        if (Math.abs(py) < 1e-6) py = 0.001;
+        while (Math.abs(px) < VW) { px *= VW; py *= VW; }
+        while (Math.abs(py) < VH) { px *= VH; py *= VH; }
+      } else py = VH * 2;
     }
-    sy -= 17 * s;                                                                // waypointTweakY
-    // ClampScreenPosToEdges: waypointOffscreenPadLeft 103, Bottom 30, the arrow's room everywhere - in the safe area
-    const pad = (6 + 30) * s, x0 = 103 * s + pad, x1 = w - pad, y0 = pad, y1 = h - 30 * s - pad;
-    const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2, dx = sx - cx, dy = sy - cy;
-    const f = Math.min(1, (x1 - x0) / 2 / Math.max(Math.abs(dx), 0.001), (y1 - y0) / 2 / Math.max(Math.abs(dy), 0.001));
-    const px = cx + dx * f, py = cy + dy * f, dist = Math.hypot(sx - px, sy - py), col = color.slice(0, 3);
-    if (dist > 0) {
-      const ux = (sx - px) / dist, uy = (sy - py) / dist, aw = 25 * s, ah = 12 * s;
-      g.save();
-      g.translate(px + ux * 30 * s, py + uy * 30 * s);
-      g.rotate(Math.atan2(ux, -uy));
-      T.pic(g, 'offscreenobjectivepointer', -aw / 2, -ah / 2, aw, ah, col, color[3] * Math.min(1, dist / (30 * s)));
-      g.restore();
+    py += D.waypointTweakY * sy;
+    // ClampScreenPosToEdges: about the view's centre, the borders from the HUD area (realViewableMin / Max) and the pads
+    const halfW = VW / 2, halfH = VH / 2, vMinX = -F.x, vMinY = -F.y, vMaxX = -F.x + w, vMaxY = -F.y + h;
+    const bl = vMinX + padL - halfW, br = halfW - (VW - vMaxX + padR), bt = vMinY + padT - halfH, bb = halfH - (VH - vMaxY + padB);
+    let qx = px - halfW, qy = py - halfH, clamped = false;
+    if (qx < bl) { const k = bl / qx; qx *= k; qy *= k; clamped = true; } else if (qx > br) { const k = br / qx; qx *= k; qy *= k; clamped = true; }
+    if (qy < bt) { const k = bt / qy; qx *= k; qy *= k; clamped = true; } else if (qy > bb) { const k = bb / qy; qx *= k; qy *= k; clamped = true; }
+    if (D.waypointOffscreenRoundedCorners) {
+      const radius = avg * D.waypointOffscreenCornerRadius, left = qx < 0, top = qy < 0;
+      const fx = left ? bl + radius : br - radius, fy = top ? bt + radius : bb - radius;
+      let dx = qx - fx, dy = qy - fy;
+      const len = Math.hypot(dx, dy) || 1;
+      dx /= len; dy /= len;
+      if (((left && dx < 0) || (!left && dx > 0)) && ((top && dy < 0) || (!top && dy > 0)) && radius < Math.hypot(qx - fx, qy - fy)) {
+        qx = radius * dx + fx; qy = radius * dy + fy; clamped = true;
+      }
     }
-    // GetScaleForDistance: waypointDistScaleRangeMin 1000, Max 3000, Smallest 0.8
-    const d3 = Math.hypot(x - cam.position.x, y - cam.position.y, z - cam.position.z), r = clamp01((d3 - 1000) / 2000), size = 36 * s * (1 - 0.2 * r);
-    T.pic(g, mat, px - size / 2, py - size / 2, size, size, col, color[3]);
+    const sxp = qx + halfW, syp = qy + halfH, col = color.slice(0, 3);
+    if (clamped) {
+      const dist = Math.hypot(px - sxp, py - syp);
+      if (dist > 0) {
+        const ux = (px - sxp) / dist, uy = (py - syp) / dist;
+        const shrink = D.waypointOffscreenScaleLength * avg;
+        const k = shrink <= dist ? D.waypointOffscreenScaleSmallest : (dist / shrink) * D.waypointOffscreenScaleSmallest + (1 - dist / shrink);
+        iconW *= k; iconH *= k;
+        g.save();
+        g.translate(F.x + sxp + pointerDist * ux, F.y + syp + pointerDist * uy);
+        g.rotate(Math.atan2(ux, -uy));
+        T.pic(g, 'offscreenobjectivepointer', -pointerW / 2, -pointerH / 2, pointerW, pointerH, col, color[3] * Math.min(1, dist / thresholdAlpha));
+        g.restore();
+      }
+    }
+    // GetScaleForDistance (from the eye), then the icon centred on its place - on whole device pixels
+    const d3 = Math.hypot(x - cam.position.x, y - cam.position.y, z - cam.position.z);
+    const r = d3 <= D.waypointDistScaleRangeMin ? 0 : d3 >= D.waypointDistScaleRangeMax ? 1
+      : (d3 - D.waypointDistScaleRangeMin) / Math.max(1, D.waypointDistScaleRangeMax - D.waypointDistScaleRangeMin);
+    const ds = r * D.waypointDistScaleSmallest + (1 - r);
+    iconW *= ds; iconH *= ds;
+    const iw = Math.max(1, Math.round(iconW)), ih = Math.max(1, Math.round(iconH));
+    g.save();
+    g.imageSmoothingQuality = 'high';
+    T.pic(g, mat, Math.round(F.x + sxp - iw / 2), Math.round(F.y + syp - ih / 2), iw, ih, col, color[3]);
+    g.restore();
+    // (a check's record of the drawn waypoints - hud.debug, off by default)
+    if (this.debug) (this.drawn || (this.drawn = [])).push({ mat, clamped, x: Math.round(F.x + sxp - iw / 2), y: Math.round(F.y + syp - ih / 2), w: iw, h: ih, alpha: color[3], dist: Math.round(d3) });
   }
 
   /** the side number of client cl at t (team numbers: 1 axis, 2 allies) or 0 */
@@ -511,19 +611,27 @@ export class GameHud {
     return (role === 'attack' ? attack : attack === 'axis' ? 'allies' : 'axis') === 'axis' ? 1 : 2;
   }
 
-  /** CG_CompassDrawPlayerObjectives: the objectives of the player state at t for cl's team, an objective on a player at
-   *  that player, one out of range at the map's edge. toScreen: world -> the minimap; half: the map's half size */
-  drawObjectives(g, t, cl, s, toScreen, cx, cy, half) {
-    const H = this.M.d.psHud, T = this.txt;
-    if (!T || !H.objs || !H.objs.length) return;
-    const i = lower(H.t, t), list = i >= 0 ? H.objs[H.objRef[i]] : null, mine = this.teamNum(cl, t), size = 16 * s;
+  /** CG_CompassDrawPlayerPointers_MP: the objectives of the player state at t (OBJST_ACTIVE / CURRENT; for cl's team), an
+   *  objective on a player at that player, compassObjectiveWidth / Height times compassSize, centred on its place clipped to the
+   *  map's edge; beyond compassMaxRange its alpha goes down to compassObjectiveMinAlpha at compassObjectiveMaxRange. (The lines
+   *  to an OBJST_CURRENT objective are not drawn: the MP scripts' objectives are "active" ones - _gameobjects.gsc) */
+  drawObjectives(g, t, cl, sx, sy, toCompass) {
+    const H = this.M.d.psHud, T = this.txt, D = DVARS, me = this.M.sampleAt(cl, t);
+    if (!T || !me || !H.objs || !H.objs.length) return;
+    const i = lower(H.t, t), list = i >= 0 ? H.objs[H.objRef[i]] : null, mine = this.teamNum(cl, t);
+    const w = D.compassObjectiveWidth * D.compassSize * sx, h = D.compassObjectiveHeight * D.compassSize * sy;
     for (const [ox, oy, , icon, ent, team] of list || []) {
       if (team && team !== mine) continue;
       let x = ox, y = oy;
       if (ent < 64) { const o = this.M.sampleAt(ent, t); if (o) { x = o.x; y = o.y; } }
-      const [px, py] = toScreen(x, y), dx = px - cx, dy = py - cy, room = half - size / 2;
-      const f = Math.min(1, room / Math.max(Math.abs(dx), Math.abs(dy), 0.001));
-      T.pic(g, this.csAt(C4.constants.CS.SERVER_MATERIALS + icon, t).toLowerCase(), cx + dx * f - size / 2, cy + dy * f - size / 2, size, size, WHITE, 1);
+      const dist = Math.hypot(x - me.x, y - me.y);
+      let alpha = 1;
+      if (dist > D.compassMaxRange) {
+        const span = D.compassObjectiveMaxRange - D.compassMaxRange;
+        alpha = dist >= D.compassObjectiveMaxRange ? D.compassObjectiveMinAlpha : 1 - (1 - D.compassObjectiveMinAlpha) * (span ? (dist - D.compassMaxRange) / span : 0);
+      }
+      const [px, py] = toCompass(x, y);
+      T.pic(g, this.csAt(C4.constants.CS.SERVER_MATERIALS + icon, t).toLowerCase(), px - w / 2, py - h / 2, w, h, WHITE, alpha);
     }
   }
 

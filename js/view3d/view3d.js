@@ -855,7 +855,7 @@ export class View3D {
     const s = this.M.sampleAt(cl, this.t || 0);
     const st = this.viewmodel.state;
     // (the whole view in the safe area's coordinates: the hit marker centred on the screen as the game draws it)
-    this.hud.draw(g, w - ins.l - ins.r, h - ins.t - ins.b, this.t || 0, cl, s ? { yaw: s.yaw, pitch: s.pitch, flashed: !!(st && st.flashed) } : null, st && st.weapon ? String(st.weapon).toLowerCase() : null,
+    this.hud.draw(g, w - ins.l - ins.r, h - ins.t - ins.b, this.t || 0, cl, s ? { yaw: s.yaw, pitch: s.pitch, flashed: !!(st && st.flashed), scoped: !!(this.viewmodel.scoped && this.viewmodel.scoped()) } : null, st && st.weapon ? String(st.weapon).toLowerCase() : null,
       { x: -ins.l, y: -ins.t, w, h });
     g.restore();
   }
