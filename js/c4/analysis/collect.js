@@ -466,6 +466,12 @@ C4.define('collect', function (C4) {
       st[E_EFLAGS], st[E_SOLID]];
     function onScriptEntity(t, num, st, prev) {
       let rec = scriptRec.get(num);
+      // (the decoder keeps an unchanged entity's state object from snapshot to snapshot: the same object as before -> the same
+      // state as the record's last one, but for the model name, which comes from the config strings)
+      if (rec && prev === st) {
+        const last = rec.states[rec.states.length - 1];
+        if (st[E_SOLID] === SOLID_BMODEL || (c.cs.get(K.CS.MODELS + st[E_INDEX]) || null) === last[2]) { rec.t1 = t; return; }
+      }
       const s2 = scriptState(t, st);
       if (!rec || !prev || prev[E_TYPE] !== st[E_TYPE]) {
         rec = { num, t0: t, t1: t, states: [s2] };
@@ -482,6 +488,9 @@ C4.define('collect', function (C4) {
     // on every change
     const itemRec = new Map();
     function onItem(t, num, st, prev) {
+      // (an unchanged state object: its state is the record's last one - see onScriptEntity)
+      const known = itemRec.get(num);
+      if (known && prev === st && !(known.t1 < t - 1000)) { known.t1 = t; return; }
       const s2 = [t, st[E_INDEX] | 0, st[E_POS_TRTYPE], st[E_POS_TRTIME], R(u2f(st[E_POS])), R(u2f(st[E_POS + 1])), R(u2f(st[E_POS + 2])),
         R(u2f(st[E_VEL])), R(u2f(st[E_VEL + 1])), R(u2f(st[E_VEL + 2])), R(u2f(st[E_APOS])), R(u2f(st[E_APOS + 1])), R(u2f(st[E_APOS + 2])), st[E_EFLAGS]];
       let rec = itemRec.get(num);
@@ -556,6 +565,8 @@ C4.define('collect', function (C4) {
           // animation's delta while it lies (TR_INTERPOLATE, G_RunCorpseMove) and drops it again where
           // that moves it off a ledge
           let rec = corpseRec.get(num);
+          // (an unchanged state object: the corpse's state is its last one - see onScriptEntity)
+          if (rec && prev === st && rec.client === st[E_CLIENTNUM]) { rec.t1 = t; continue; }
           const s2 = [t, st[E_POS_TRTYPE], st[E_POS_TRTIME], R(u2f(st[E_POS])), R(u2f(st[E_POS + 1])), R(u2f(st[E_POS + 2])),
             R(u2f(st[E_VEL])), R(u2f(st[E_VEL + 1])), R(u2f(st[E_VEL + 2])), R(u2f(st[E_APOS + 1]))];
           if (!rec || !prev || prev[E_TYPE] !== etype || rec.client !== st[E_CLIENTNUM]) {

@@ -2,6 +2,9 @@
  * strings and the materials of the server's HUD elements - maps3d/_hud/hud.json (tools/export/hud_export.py), loaded once
  * for all demos. Without them (no export) the callers keep to the browser's font. */
 
+import { fetchJSON } from './data.js';
+import { loadImage } from '../app/retry.js';
+
 const BASE = 'maps3d/';
 const FONT_SMALL = 0.25, FONT_BIG = 0.4, FONT_EXTRABIG = 0.55;      // ui_smallFont, ui_bigFont, ui_extraBigFont
 // g_color_table ^0 .. ^7; ^8, ^9 the viewer's team and the other's (CL_LookupColor): the caller's, else white
@@ -12,7 +15,7 @@ const DEFAULT_KEYS = { melee: 'V', activate: 'F', attack: 'MOUSE1', gostand: 'SP
 const clamp01 = x => (x < 0 ? 0 : x > 1 ? 1 : x);
 const canvas = (w, h) => (typeof OffscreenCanvas !== 'undefined' ? new OffscreenCanvas(w, h) : Object.assign(document.createElement('canvas'), { width: w, height: h }));
 const rgb = c => 'rgb(' + c.map(v => Math.round(clamp01(v) * 255)).join(',') + ')';
-const image = src => new Promise((ok, no) => { const i = new Image(); i.onload = () => ok(i); i.onerror = () => no(new Error('no image ' + src)); i.src = src; });
+const image = src => loadImage(src);
 
 class Fonts {
   constructor(info, atlas) {
@@ -183,8 +186,7 @@ export function loadHudText() {
   if (!loading) {
     loading = (async () => {
       try {
-        const r = await fetch(BASE + '_hud/hud.json');
-        const d = r.ok ? await r.json() : null;
+        const d = await fetchJSON(BASE + '_hud/hud.json').catch(() => null);
         if (!d || !d.fonts || !d.images[d.fontImage]) return null;
         const atlas = await image(BASE + d.images[d.fontImage].file), images = new Map();
         await Promise.all(Object.values(d.materials).filter(Boolean).map(async n => {

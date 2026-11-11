@@ -463,8 +463,7 @@ export class Replay {
   }
 
   destroy() {
-    this.pb.active = false;
-    this.pb.playing = false;
+    this.pb.stop();
     this.pb.onFrame = () => {};
     C4.mapStats.close();
     for (const v of Object.values(this.views)) if (v.destroy) v.destroy();

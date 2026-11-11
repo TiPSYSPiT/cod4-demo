@@ -3,6 +3,7 @@
  * modules (js/c4/ui/map). */
 import '../c4/ui/killfeed.js';                     // C4.killfeed (the dropped weapons' icons)
 import { InfoHint, fadeHint } from '../app/infoHint.js';
+import { fetchRetry, loadImage } from '../app/retry.js';
 
 const C4 = window.C4;
 const { el, icon } = C4.ui;
@@ -50,10 +51,8 @@ export class View2D {
     this.panels = [{ key: 'heat', title: 'Heatmap', icon: 'flame', custom: this.heatUi }];
     const img = M.mapEntry && M.mapEntry.image;
     if (img && M.calibrated) {
-      const im = new Image();
-      im.onload = () => { this.renderer.setImage(im, M.rect); replay.invalidate(); };
-      im.onerror = () => { this.info.set('Background image ' + img + ' could not be loaded - neutral grid.', { warn: true }); };
-      im.src = C4.maps.IMAGE_DIR + img;
+      loadImage(C4.maps.IMAGE_DIR + img).then(im => { this.renderer.setImage(im, M.rect); replay.invalidate(); })
+        .catch(() => { this.info.set('Background image ' + img + ' could not be loaded - neutral grid.', { warn: true }); });
       this.info.set('Background: ' + img + ' (' + M.rectSource + ').');
     } else {
       this.info.set((img ? 'Background ' + img + ' not shown: no calibration for this demo' : 'No background image for ' + (d.meta.map || 'this map')) +
@@ -151,7 +150,7 @@ export class View2D {
     if (this.mapEnts === undefined) {
       this.mapEnts = null;
       const raw = String(this.M.d.meta.map || '').toLowerCase(), key = (C4.maps && C4.maps.resolve(raw)) || raw;
-      if (key) fetch('maps3d/' + key + '/entities.json').then(r => (r.ok ? r.json() : null)).then(j => { this.mapEnts = j; this.R.invalidate(); }).catch(() => {});
+      if (key) fetchRetry('maps3d/' + key + '/entities.json').then(r => (r.ok ? r.json() : null)).then(j => { this.mapEnts = j; this.R.invalidate(); }).catch(() => {});
       return;
     }
     const E = this.mapEnts;

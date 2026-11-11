@@ -163,6 +163,9 @@ export class SunShadows {
   /** the static casters changed (props mode): render them again with the next frame */
   invalidate() { this.near.staticDirty = true; this.far.staticDirty = true; this.spots.invalidate(); }
 
+  /** a lamp's shadow is fading in or out (the next frames change it) */
+  animating() { return this.spots.history.some(h => (h.out ? h.fade > 0 : h.fade < 1)); }
+
   dispose() { this.near.dispose(); this.far.dispose(); this.spots.dispose(); SHADOW.params.value.x = 0; SPOT.lights.value.set(-1, -1, -1, -1); }
 }
 

@@ -256,6 +256,8 @@ export class Props {
     this.counts.boxes.tris = this.instanceCount * 12;
     this.fallbackBoxes = boxes(fallback, 0xd8d0c2, 0.45);
     this.group.add(this.high, this.low, this.boxes, this.fallbackBoxes);
+    // (the props never move - their places are the instances' matrices: no matrix of their own recomputed every frame)
+    this.group.traverse(o => { o.updateMatrix(); o.matrixAutoUpdate = false; });
     this.buildMs = performance.now() - t0;
     this.setMode(this.modelCount ? 'high' : 'boxes');
   }

@@ -6,6 +6,12 @@ import * as THREE from 'three';
 const C4 = window.C4;
 const CFG = C4.mapConfig;
 const MAX_LINE_VERTS = 20000;
+/** the first `count` values of a dynamic attribute to the GPU (three.js uploads the whole array without a range) */
+export function upload(attr, count) {
+  attr.clearUpdateRanges();
+  attr.addUpdateRange(0, count);
+  attr.needsUpdate = true;
+}
 
 /** a dynamic LineSegments with per-vertex RGBA colours, refilled every frame */
 class LineBatch {
@@ -33,8 +39,10 @@ class LineBatch {
   end() {
     const g = this.mesh.geometry;
     g.setDrawRange(0, this.n);
-    g.attributes.position.needsUpdate = true;
-    g.attributes.color.needsUpdate = true;
+    // (only the vertices drawn go to the GPU - not the whole 20,000-vertex buffers every frame; nothing when there are none)
+    if (!this.n) return;
+    upload(g.attributes.position, this.n * 3);
+    upload(g.attributes.color, this.n * 4);
   }
 }
 

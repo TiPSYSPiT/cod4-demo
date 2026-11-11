@@ -10,6 +10,8 @@
  *    Pages gzips (Content-Encoding) - a buffer sized from it cut world.bin short ("Invalid typed array
  *    length"). The progress uses the expected size from the manifest or the caller. */
 
+import { fetchRetry } from '../app/retry.js';
+
 const BASE = 'maps3d/';
 let manifest = null, manifestLoading = null;
 
@@ -18,7 +20,7 @@ export class DataError extends Error {}
 /** maps3d/manifest.json, once (revalidated: no-cache) -> manifest or null */
 export function loadDataManifest() {
   if (!manifestLoading) {
-    manifestLoading = fetch(BASE + 'manifest.json', { cache: 'no-cache' })
+    manifestLoading = fetchRetry(BASE + 'manifest.json', { cache: 'no-cache' })
       .then(r => (r.ok ? r.json() : null)).then(m => (manifest = m && m.files ? m : null))
       .catch(() => null);
   }

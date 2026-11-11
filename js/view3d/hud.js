@@ -22,6 +22,8 @@
  * player state: the ammo, hit marker, names, hints and the server's elements are his; for another player the minimap. */
 import { isPromod } from './viewmodel.js';
 import { configStrings, loadHudText } from './hudtext.js';
+import { fetchJSON } from './data.js';
+import { loadImage } from '../app/retry.js';
 
 const BASE = 'maps3d/';
 const D2R = Math.PI / 180;
@@ -69,7 +71,7 @@ export class GameHud {
     this.enabled = true;
     this.images = new Map();
     this.imgList = null;
-    fetch(BASE + '_hud/hud.json').then(r => (r.ok ? r.json() : null)).then(h => {
+    fetchJSON(BASE + '_hud/hud.json').catch(() => null).then(h => {
       this.imgList = (h && h.images) || {};
       for (const [k, v] of Object.entries(this.imgList)) this.image(k, BASE + v.file);
     }).catch(() => { this.imgList = {}; });
@@ -88,11 +90,11 @@ export class GameHud {
 
   image(key, src) {
     if (this.images.has(key)) return this.images.get(key);
-    const img = new Image();
-    img.onload = () => { img.ready = true; if (this.onChange) this.onChange(); };
-    img.src = src;
-    this.images.set(key, img);
-    return img;
+    // (a placeholder until the image is in - tried again on a failed load: retry.js)
+    const slot = { ready: false };
+    this.images.set(key, slot);
+    loadImage(src).then(img => { img.ready = true; this.images.set(key, img); if (this.onChange) this.onChange(); }).catch(() => { slot.failed = true; });
+    return slot;
   }
   img(key) { const i = this.images.get(key); return i && i.ready ? i : null; }
 

@@ -6,14 +6,23 @@
   /* killfeed icons: the visible content of every icon is scaled to ICON_H (C4.weapons.ICONS has
    * the content box), the aspect ratio is kept; tooltip = readable weapon name */
   const ICON_H = 18;
+  const RETRY_MS = [400, 1200, 2400];
   function iconNode(ic, fallbackText) {
     const s = ICON_H / ic.box[3];
     const px = v => (v * s).toFixed(2) + 'px';
-    const img = el('img', { src: ic.src, alt: ic.title, draggable: 'false',
-      style: { width: px(ic.size[0]), height: px(ic.size[1]), marginLeft: px(-ic.box[0]), marginTop: px(-ic.box[1]) } });
-    const wrap = el('span', { class: 'kf-icon' + (ic.flip ? ' flip' : ''), title: ic.title, style: { width: px(ic.box[2]) } }, img);
-    // missing file: the name as text, as for weapons without an icon
-    img.addEventListener('error', () => wrap.replaceWith(el('span', { class: 'weapon' }, fallbackText || ic.title)));
+    const wrap = el('span', { class: 'kf-icon' + (ic.flip ? ' flip' : ''), title: ic.title, style: { width: px(ic.box[2]) } });
+    // a failed load is tried again with a new element (the browser cancels a request now and then: js/app/retry.js); a
+    // missing file then shows the name as text, as for weapons without an icon
+    const attempt = k => {
+      const img = el('img', { src: ic.src, alt: ic.title, draggable: 'false',
+        style: { width: px(ic.size[0]), height: px(ic.size[1]), marginLeft: px(-ic.box[0]), marginTop: px(-ic.box[1]) } });
+      img.addEventListener('error', () => {
+        if (k < RETRY_MS.length) setTimeout(() => { if (wrap.isConnected || !wrap.parentNode) attempt(k + 1); }, RETRY_MS[k]);
+        else wrap.replaceWith(el('span', { class: 'weapon' }, fallbackText || ic.title));
+      });
+      wrap.replaceChildren(img);
+    };
+    attempt(0);
     return wrap;
   }
   C4.ui.iconNode = iconNode;

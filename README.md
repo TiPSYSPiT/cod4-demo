@@ -858,6 +858,20 @@ py tools/audit/leftovers.py
 Pages (manifest, exact case of references, sizes), `map_audit.py` every map's files and entities, `leftovers.py` looks for code left
 from CoD2.
 
+### Performance and quality checks
+
+`tools/bench/` (its README has the details): a benchmark of page load, demo analysis, demo load, the 2D and 3D views, memory and
+a 4x slower CPU (`bench.py`), a quality reference - the JSON exports with hashes of all data, 2D and 3D pictures at fixed times
+and cameras, the panels' text - and its comparison (`quality.py`), the parser over every local demo (`corpus.py`), and A/B runs
+of two versions back to back (`ab.py`, `abframes.py`: the machine's own speed varies too much between separate runs).
+
+```bash
+py tools/bench/check.py <tag> --bench 3d
+```
+
+The performance work of November 2026 and its numbers: `docs/performance-analysis.md`, `docs/changes-perf.md`,
+`docs/performance-report.md`.
+
 ## Credits and licence
 
 GPL-3.0 (see `LICENSE`). The demo parser, analysis and 2D UI are taken from **cod4-demo**,

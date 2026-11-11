@@ -158,15 +158,26 @@ export class Cameras {
       this.orbit.target.copy(look);
       this.followLast = look.clone();
       this.orbit.update();
-      return true;
+      return false;                     // (view3d.js renderFrame: drawn when the camera moved - this.moved())
     }
     if (this.mode === 'fp') {
       cam.position.copy(target.eye);
       cam.lookAt(target.eye.clone().add(forward(target.yaw, target.pitch)));
       if (target.roll) cam.rotateZ(target.roll * Math.PI / 180);         // (the flinch's roll)
-      return true;
+      return false;                     // (view3d.js renderFrame: drawn when the camera moved - this.moved())
     }
     return false;
+  }
+
+  /** did the camera's pose (place, direction, fov) change since the last call? view3d.js renderFrame asks after all of the
+   *  frame's camera work (the follow / first-person camera, the scope's sway, a shake): the follow and first-person cameras are
+   *  placed every frame, and a frame is only drawn again when that moved them - nothing is drawn while the playback stands */
+  moved() {
+    const p = this.camera.position, q = this.camera.quaternion, L = this.lastPose || (this.lastPose = new Float64Array(8).fill(NaN));
+    const now = [p.x, p.y, p.z, q.x, q.y, q.z, q.w, this.camera.fov];
+    let changed = false;
+    for (let i = 0; i < 8; i++) if (now[i] !== L[i]) { L[i] = now[i]; changed = true; }
+    return changed;
   }
 
   dispose() {

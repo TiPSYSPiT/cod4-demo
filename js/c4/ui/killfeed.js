@@ -6,6 +6,7 @@
  * An ES module (`import '../c4/ui/killfeed.js'`), so a view module never depends on the page's script list. It needs the
  * classic scripts C4.weapons and C4.events, which the page loads before any module. */
 import { loadHudText } from '../../view3d/hudtext.js';
+import { loadImage } from '../../app/retry.js';
 
 const C4 = window.C4;
 // ui_mp/hud.menu "gamemessages", "boldgamemessages" (rect, textscale); con_gameMsgWindow0 / 1 MsgTime, LineCount, ScrollTime,
@@ -148,12 +149,9 @@ let loading = null;
 /** all icon images, loaded once -> Promise<Map file -> HTMLImageElement> (a file that fails to load is left out) */
 function images() {
   if (!loading) {
-    loading = Promise.all(Object.keys(C4.weapons.ICONS).map(file => new Promise(res => {
-      const img = new Image();
-      img.onload = () => res([file, img]);
-      img.onerror = () => { console.warn('kill feed icon not loaded:', file); res(null); };
-      img.src = C4.weapons.ICON_DIR + file;
-    }))).then(list => new Map(list.filter(Boolean)));
+    // (tried again on a failed load: retry.js)
+    loading = Promise.all(Object.keys(C4.weapons.ICONS).map(file => loadImage(C4.weapons.ICON_DIR + file).then(img => [file, img])
+      .catch(() => { console.warn('kill feed icon not loaded:', file); return null; }))).then(list => new Map(list.filter(Boolean)));
   }
   return loading;
 }

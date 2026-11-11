@@ -38,7 +38,10 @@
       this.dirty = true;
     }
     invalidate() { this.dirty = true; }
+    /** the demo was closed: the clock's animation-frame loop ends (it ran on for every demo opened before) */
+    stop() { this.stopped = true; this.active = false; this.playing = false; }
     loop(now) {
+      if (this.stopped) return;
       // schedule first: an error in one frame must never stop the playback loop
       requestAnimationFrame(this.loop);
       try { this.step(now); } catch (err) { console.error('Map frame failed:', err); }

@@ -27,10 +27,15 @@
 import * as THREE from 'three';
 import { blendOptions, blendFactors, premultiplies } from './blend.js';
 import { loadTexture } from './mapLoader.js';
+import { upload } from './effects.js';
 import { DLIGHTS, DL_MAX, objectLighting, setObjectLighting, gridLit } from './lighting.js';
 import { WorldTracer } from './trace.js';
 import { HitBoxes, modelsAt } from './hitboxes.js';
 import { fetchJSON } from './data.js';
+
+/** a pause for the page's other work between slices of a long job: a message to itself (a chain of setTimeout(0) is clamped to
+ *  >= 4 ms a pause by the browser: every shot traced after 5.1 s instead of 2.9 s with the message) */
+const yieldTask = () => new Promise(r => { const c = new MessageChannel(); c.port1.onmessage = () => { c.port1.close(); r(); }; c.port2.postMessage(0); });
 
 /* fx_randomTable (fx_random.cpp): 479 seeds + 28 keys */
 const RAND = new Float32Array([
@@ -955,13 +960,19 @@ void main() {
       if (this.hitBoxLoad) await this.hitBoxLoad;                     // the players' boxes first
       if (this.animLoad) await Promise.race([this.animLoad, new Promise(r => setTimeout(r, 20000))]);   // and their animations
       if (!this.tracer || !this.shots) return;
-      this.tracer.build();
+      const tracer = this.tracer;
+      tracer.build();
+      // every shot once, in slices of ~8 ms (the page stays responsive; a shot a frame needs first is traced there, as before)
+      let t0 = performance.now();
       for (const { cl, times } of this.shots) for (const ts of times) {
+        if (this.tracer !== tracer) return;                            // (another world, or disposed)
         const key = cl * 1e7 + ts;
         if (this.impactCache.has(key)) continue;
         const hits = this.traceShot(cl, ts);
         this.impactCache.set(key, hits);
         for (const h of hits || []) this.addMarks(h);
+        this.marksSorted = false;
+        if (performance.now() - t0 > 8) { await yieldTask(); t0 = performance.now(); }
       }
       this.marksSorted = false;
       this.ready = true;
@@ -1742,7 +1753,8 @@ void main() {
       for (let v = 0, w = 16 * i; v < 4; v++, w += 4) { C[w] = col[0]; C[w + 1] = col[1]; C[w + 2] = col[2]; C[w + 3] = col[3]; }
     }
     geo.setDrawRange(0, n * 6);
-    geo.attributes.position.needsUpdate = true; geo.attributes.uv.needsUpdate = true; geo.attributes.color.needsUpdate = true;
+    // (only the quads drawn go to the GPU, not the batch's whole capacity)
+    upload(geo.attributes.position, n * 12); upload(geo.attributes.uv, n * 8); upload(geo.attributes.color, n * 16);
   }
 
   dispose() {

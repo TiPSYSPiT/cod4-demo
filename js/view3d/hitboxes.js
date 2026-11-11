@@ -11,7 +11,7 @@
 import * as THREE from 'three';
 import { stancePose, rigModel, Character } from './characters.js';
 import { weaponModelName, isPromod } from './actors.js';
-import { dataUrl } from './data.js';
+import { dataUrl, fetchJSON } from './data.js';
 
 const NEAR = 80;                              // a ray farther than this from the player's centre misses it
 const POSE_CACHE = 4000;                      // posed box sets kept (client + time)
@@ -146,9 +146,9 @@ export class HitBoxes {
       for (const n of [e.body, ...(e.attach || [])]) if (n && (n.startsWith('body_') || n.startsWith('head_'))) names.add(n);
     }
     this.ready = (async () => {
-      try { this.index = await (await fetch(dataUrl(this.dir + 'index.json'))).json(); } catch (err) { this.index = {}; }
+      try { this.index = await fetchJSON(this.dir + 'index.json'); } catch (err) { this.index = {}; }
       // the weapons the players hold (their tag_flash: where the client starts another player's shot)
-      try { const j = await (await fetch(dataUrl(this.dir + 'weapons.json'))).json(); this.weaponTable = j && j.weapons ? Object.assign(j, { usePromod: isPromod(M) }) : null; } catch (err) { this.weaponTable = null; }
+      try { const j = await fetchJSON(this.dir + 'weapons.json'); this.weaponTable = j && j.weapons ? Object.assign(j, { usePromod: isPromod(M) }) : null; } catch (err) { this.weaponTable = null; }
       this.M = M;
       if (this.weaponTable && M.weaponName) {
         for (const P of Object.values(M.d.positions || {})) {

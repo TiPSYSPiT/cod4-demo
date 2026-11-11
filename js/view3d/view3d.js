@@ -311,7 +311,30 @@ export class View3D {
     }
     this.needsRender = true;
     this.R.invalidate();
+    // (the map's shaders ready before its first frame: no frame of the map has been drawn yet - nothing above awaits)
+    if (this.world) await this.prewarm();
     this.warmShaders();
+  }
+
+  /** the map's first frame with its shaders compiled beforehand: ~80 programs, compiled in parallel by the browser (compileAsync,
+   *  KHR_parallel_shader_compile) while the view shows its loading hint, instead of one after the other inside the first frame
+   *  (a task of 2-6 s). Nothing else is drawn before the first frame. (Drawing the scene off-screen as well - ANGLE finishes
+   *  part of the D3D shaders only at their first draw - made the first frame quicker still, but changed some pictures
+   *  afterwards in the tools/bench quality check: not used.) Without the extension (Firefox): as before. */
+  async prewarm() {
+    const r = this.renderer;
+    if (!r.extensions.has('KHR_parallel_shader_compile')) return;
+    this.warming = true;
+    this.info.set('Preparing the 3D view (shaders) …', { open: true });
+    try {
+      await r.compileAsync(this.scene, this.camera);
+    } catch (err) {
+      console.warn('shader warm-up:', err);
+    } finally {
+      this.warming = false;
+      this.needsRender = true;
+      if (!this.destroyed) this.updateHint();
+    }
   }
   /** the shaders of everything in the scene, also what is hidden now (a prop's coarse LOD, an effect's sprite), compiled in the
    *  background shortly after something loaded: otherwise the first frame that shows it stops for up to 300 ms in mid-playback */
@@ -713,7 +736,10 @@ export class View3D {
     const dt = this.last == null ? 0 : Math.min(0.1, (now - this.last) / 1000);
     this.last = now;
     if (this.xrayMode === 'names' && this.xray.poll()) this.needsRender = true;     // (a name badge changed)
-    if (this.renderFrame(dt, this.lastShadowT == null ? 0 : (now - this.lastShadowT) / 1000)) this.lastShadowT = now;
+    // (the shadow fades' clock: the time since the last frame drawn - in the follow and first-person cameras since the last
+    // animation frame, as when they drew every frame: a frame not drawn because nothing changed does not pile up fade time)
+    const drawn = this.renderFrame(dt, this.lastShadowT == null ? 0 : (now - this.lastShadowT) / 1000);
+    if (drawn || ((this.cams.mode === 'fp' || this.cams.mode === 'follow') && this.camTargeted)) this.lastShadowT = now;
     // the sounds at the camera; the first-person camera's player hears his own (the "_plr" aliases)
     if (this.sound && this.sound.enabled) {
       const fp = this.cams.mode === 'fp' ? this.cameraTarget().cl : null;
@@ -725,10 +751,12 @@ export class View3D {
    *  fades advance by shadowDt (s). -> the client hidden for the first-person view, or false when
    *  nothing was rendered */
   renderFrame(dt, shadowDt, force = false) {
+    if (this.warming && !force) return false;       // (prewarm: the map's shaders first, the loading hint shows)
     const mode = this.cams.mode;
     let hideClient = null, hudClient = null;       // (the HUD also while the player seen in first person is dead)
     if (mode === 'follow' || mode === 'fp') {
       const { cl, target } = this.cameraTarget();
+      this.camTargeted = !!target;               // (the camera had a player to place it: loop's shadow clock)
       if (mode === 'fp') hudClient = cl;
       if (this.cams.tick(dt, target)) this.needsRender = true;
       const name = cl != null ? this.M.name(cl) : null;
@@ -759,13 +787,15 @@ export class View3D {
           const p = (sw ? sw[0] : 0) + (sh ? sh[0] : 0), y = (sw ? sw[1] : 0) + (sh ? sh[1] : 0);
           this.camera.lookAt(target.eye.clone().add(forward(target.yaw + y, target.pitch + p)));
           if (sh) this.camera.rotateZ(-sh[2] * Math.PI / 180);
-          this.needsRender = true;
         }
       }
     } else {
       this.viewmodel.update(-1, 0, null);
       if (this.cams.tick(dt, null)) this.needsRender = true;
     }
+    // (the camera's place, direction or fov changed: a new frame - the follow and first-person cameras are placed every frame,
+    // and drawn again only when that moved them)
+    if (this.cams.moved()) this.needsRender = true;
     if (!this.needsRender && !force) return false;
     this.needsRender = false;
     // the game's LODs by the eye's distance: the props' (props.js updateLods) and the player models' (characters.js)
@@ -773,7 +803,13 @@ export class View3D {
     this.actors.updateLods(this.camera);
     if (this.shadows) {
       this.camera.updateMatrixWorld();
-      this.shadows.update(this.scene, this.shadowCenter(), SUN.dir.value, this.camera, this.world && this.world.info.lights, shadowDt);
+      // the scene graph's matrices once for all shadow passes (three.js updates the whole graph in each render() - the near, far
+      // and lamp passes would each do it again, with nothing moved in between); the main pass updates it again after the effects
+      this.scene.updateMatrixWorld();
+      this.scene.matrixWorldAutoUpdate = false;
+      try {
+        this.shadows.update(this.scene, this.shadowCenter(), SUN.dir.value, this.camera, this.world && this.world.info.lights, shadowDt);
+      } finally { this.scene.matrixWorldAutoUpdate = true; }
     }
     if (this.fx) {
       // the player seen in first person: the view flash and casings at the view model's tags (fx.js)
@@ -798,6 +834,9 @@ export class View3D {
       this.actors.projectLabels(this.camera, this.w, this.h, hideClient);
       this.effects.projectLabels(this.camera, this.w, this.h);
     }
+    // work that goes on over several frames: the effects' collision simulations past this frame's budget (fx.js), a lamp's
+    // shadow fading in or out (shadows.js) - the next frame is drawn too, also while the playback stands
+    if ((this.fx && this.fx.sims > this.fx.simPerFrame) || (this.shadows && this.shadows.animating())) this.needsRender = true;
     return { hideClient, hudClient };
   }
 
