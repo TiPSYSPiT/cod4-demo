@@ -9,6 +9,7 @@ import { explainImportError, resolveSpecifier } from './moduleCheck.js';
 import { armAudio } from './audioUnlock.js';
 import { ScoresOverlay } from './scoresOverlay.js';
 import { migrateSettings } from './settings.js';
+import { demoLinkParams, checkDemoUrl, demoName, downloadDemo } from './demoUrl.js';
 import '../c4/ui/killfeed.js';           // C4.killfeed: the game's kill feed of the 3D view and of both video exports
 
 const C4 = window.C4;
@@ -21,7 +22,10 @@ const VIEW_KEY = 'cod4demo3d.view2';
 migrateSettings();
 const DRAWER_KEY = 'cod4demo3d.drawer';      // 'open' / 'closed' and '.teams' / '.feed' ('closed': section folded)
 
-const state = { data: null, fileInfo: null, worker: null, loadId: 0, replay: null, view: '3d', rendered: new Set(), detailsTab: 'scoreboard' };
+// source: the demo link the shown demo came from ({url, name, autoplay}; demoUrl.js), null for a file; download: the
+// AbortController of a link's download in progress
+const state = { data: null, fileInfo: null, worker: null, loadId: 0, replay: null, view: '3d', rendered: new Set(), detailsTab: 'scoreboard',
+  source: null, download: null };
 try { const v = localStorage.getItem(VIEW_KEY); if (v === '2d' || v === '3d') state.view = v; } catch (err) { /* storage blocked */ }
 
 const cssVar = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
@@ -101,7 +105,12 @@ function applyTeamColors(data) {
 }
 
 /* ---- loading ---- */
-async function load(file) {
+/** source: the demo link the file was downloaded from (loadFromLink), else null */
+async function load(file, source = null) {
+  if (state.download) { state.download.abort(); state.download = null; }       // (a file opened while a link downloads)
+  state.source = source;
+  $('copy-link-btn').hidden = true;
+  progressMode(false);
   $('error').hidden = true;
   clear($('warnings'));
   closePop();
@@ -179,16 +188,88 @@ function failDemo(message, invalid, stack) {
   fail(errorText(message, invalid), invalid ? null : stack);
 }
 
-function fail(message, stack) {
+/** hint: a line with what to do; openButton: "Open demo" in the box (the fallback of a demo link); title: the bold start */
+function fail(message, stack, { hint = null, openButton = false, title = 'Error: ' } = {}) {
   if (stack) console.error(stack);
+  progressMode(false);
   $('progress').hidden = true;
   $('dropzone').hidden = false;
   const box = $('error');
-  clear(box).append(el('strong', null, 'Error: '), message);
+  // (all text nodes: a demo link's address and name are never read as HTML)
+  clear(box).append(el('strong', null, title), message);
+  if (hint) box.append(el('p', { class: 'error-hint' }, hint));
+  if (openButton) box.append(el('p', { class: 'error-actions' }, el('button', { class: 'tb pri', type: 'button', onclick: () => $('file-input').click() }, 'Open demo')));
+  box.classList.toggle('banner-note', title !== 'Error: ');
   box.hidden = false;
 }
 
 function setProgress(v) { $('progress-fill').style.width = Math.round(v * 100) + '%'; }
+/** the progress section while a demo link downloads: the Cancel button, the bar running without a known size */
+function progressMode(download, indeterminate = false) {
+  $('progress-cancel').hidden = !download;
+  $('progress').classList.toggle('indeterminate', download && indeterminate);
+}
+
+/* ---- a demo link: ?demoUrl=<https URL>[&name=][&autoplay=1], also after # (demoUrl.js) ---- */
+async function loadFromLink(p) {
+  let url;
+  try { url = checkDemoUrl(p.demoUrl); }
+  catch (err) { return failLink(err); }
+  const name = demoName(p.name, url);
+  closePop();
+  $('error').hidden = true;
+  $('dropzone').hidden = true;
+  $('progress').hidden = false;
+  $('file-name').textContent = name;
+  const label = 'Downloading ' + name + ' from ' + url.hostname + ' …';
+  $('progress-label').textContent = label;
+  setProgress(0);
+  progressMode(true, true);
+  const ctrl = new AbortController();
+  state.download = ctrl;
+  const mb = n => (n / 1e6).toFixed(1) + ' MB';
+  let file;
+  try {
+    file = await downloadDemo(url, name, {
+      signal: ctrl.signal,
+      onProgress: (f, n) => {
+        if (state.download !== ctrl) return;
+        progressMode(true, f == null);
+        if (f != null) setProgress(f);
+        $('progress-label').textContent = label + ' ' + (f != null ? Math.round(f * 100) + ' % (' + mb(n) + ')' : mb(n));
+      }
+    });
+  } catch (err) {
+    if (state.download !== ctrl) return;               // (replaced: a file was opened meanwhile)
+    state.download = null;
+    return failLink(err);
+  }
+  if (state.download !== ctrl) return;
+  state.download = null;
+  load(file, { url: url.href, name, autoplay: p.autoplay });
+}
+
+/** a demo link that did not load: the message, the hint and "Open demo"; a cancel is a note, not an error */
+function failLink(err) {
+  if (!err.hint) console.error(err);
+  fail(err.message, null, { hint: err.hint || 'Open a demo file instead.', openButton: true, title: err.kind === 'cancelled' ? '' : 'Error: ' });
+}
+
+/** "Copy link": the viewer's address as it is (with the demo link's parameters) to the clipboard */
+async function copyLink() {
+  const btn = $('copy-link-btn'), text = location.href;
+  let ok = false;
+  try { await navigator.clipboard.writeText(text); ok = true; } catch (err) {
+    // (no clipboard API: an http page, an old browser) - a selected field and the copy command
+    const f = el('textarea', { readonly: true, style: { position: 'fixed', opacity: '0' } });
+    f.value = text; document.body.append(f); f.select();
+    try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+    f.remove();
+  }
+  btn.textContent = ok ? 'Copied' : 'Copy failed';
+  clearTimeout(copyLink.timer);
+  copyLink.timer = setTimeout(() => { btn.textContent = 'Copy link'; }, 1600);
+}
 
 /* ---- showing a demo ---- */
 function show(data) {
@@ -224,7 +305,12 @@ function show(data) {
   const q = new URLSearchParams(location.search);
   if (q.get('t') != null) replay.seek(Number(q.get('t')) * 1000);
   if (q.get('focus')) { const p = data.players.find(x => x.cleanName.toLowerCase().includes(q.get('focus').toLowerCase())); if (p) replay.setFocus(p.client); }
-  setView(q.get('view') === '3d' || q.get('view') === '2d' ? q.get('view') : state.view);
+  const viewSet = setView(q.get('view') === '3d' || q.get('view') === '2d' ? q.get('view') : state.view);
+  // a demo link: "Copy link", and with autoplay=1 the playback starts once the view is there
+  $('copy-link-btn').hidden = !state.source;
+  if (state.source && state.source.autoplay) {
+    viewSet.then(() => { if (state.replay === replay && !replay.pb.playing) replay.pb.toggle(); });
+  }
 }
 
 /* ---- 2D / 3D toggle (the 3D module and three.js load on first use) ---- */
@@ -428,6 +514,8 @@ function init() {
   $('file-input').addEventListener('change', e => { onFiles(e.target.files); e.target.value = ''; });
   $('file-input-2').addEventListener('change', e => { onFiles(e.target.files); e.target.value = ''; });
   $('export-btn').addEventListener('click', exportJson);
+  $('copy-link-btn').addEventListener('click', copyLink);
+  $('progress-cancel').addEventListener('click', () => { if (state.download) state.download.abort(); });
   $('details-btn').addEventListener('click', () => showDetails($('details').hidden));
   $('details-close').addEventListener('click', () => showDetails(false));
   for (const b of document.querySelectorAll('#tabs button')) b.addEventListener('click', () => showTab(b.dataset.tab));
@@ -481,15 +569,19 @@ function init() {
     // (F in the free camera flies down: cameras.js takes it first)
     else if (e.code === 'KeyF' && !e.shiftKey) { e.preventDefault(); toggleFullscreen(); }
   });
-  // optional: index.html?demo=<path of a .dm_1 file on this site> (served over http). Only the site's own files: a link
-  // must not open someone else's file under the site's name (the CSP's connect-src agrees)
+  // optional: index.html?demo=<path of a .dm_1 file on this site> (served over http). Only the site's own files - a demo
+  // of another site comes with ?demoUrl= (below), with its checks
   // debug view, off by default: index.html?debug=models - every character combination and weapon model on a turntable with its
   // model and material names (view3d/turntable.js; with ?demo= also the demo's combinations, once it is loaded)
   if (new URLSearchParams(location.search).get('debug') === 'models') {
     import('../view3d/turntable.js').then(m => m.openTurntable()).catch(err => { console.error(err); fail('The model debug view did not start: ' + err.message); });
   }
-  const demoUrl = new URLSearchParams(location.search).get('demo');
-  if (demoUrl) {
+  // a demo link from another site: ?demoUrl=<https URL of a .dm_1>[&name=][&autoplay=1], or the same after # (demoUrl.js;
+  // README "Opening a demo from a link") - without it the start is as before
+  const link = demoLinkParams();
+  const demoUrl = link ? null : new URLSearchParams(location.search).get('demo');
+  if (link) loadFromLink(link);
+  else if (demoUrl) {
     let url = null;
     try { url = new URL(demoUrl, location.href); } catch (err) { /* not a URL */ }
     if (!url || url.origin !== location.origin) fail('?demo= opens only a demo file on this site (a path such as demos/my.dm_1).');

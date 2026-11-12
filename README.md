@@ -367,6 +367,88 @@ Speed on an NVIDIA T400: 27-55 ms per frame at 720p (Chrome / Edge), 45-85 ms in
 a 36 s round at 1280 × 720, 30 fps takes 40-55 s. Test results:
 [docs/validation.md](docs/validation.md#video-export-3d).
 
+## Opening a demo from a link
+
+Another website can link or redirect to the viewer so that it downloads a demo and opens it - the same as choosing the
+file with **Open demo** (`js/app/demoUrl.js`, wired in `js/app/main.js`).
+
+```
+https://tipsyspit.github.io/cod4-demo/?demoUrl=https%3A%2F%2Fexample.com%2Fdemos%2Fmatch.dm_1
+```
+
+| Parameter | | |
+|---|---|---|
+| `demoUrl` | required | The full `https://` address of the `.dm_1` file, **URL-encoded** (`encodeURIComponent`) |
+| `name` | optional | The name shown in the top bar and used for exports; default: the file name of the address |
+| `autoplay` | optional | `1`: the playback starts once the demo is loaded; default `0` (paused, as after Open demo) |
+
+The parameters work after `#` as well (`…/cod4-demo/#demoUrl=…&autoplay=1`), for redirects that drop the query; if
+both are there, the query's wins. They stay in the address bar, so the page can be bookmarked or shared, and
+**Copy link** (next to Open demo, shown only for a demo that came from a link) copies it. The deep-link parameters
+work alongside: `view=2d|3d`, `t=<match time in s>`, `focus=<player name>`. Without `demoUrl` the viewer starts as
+always.
+
+Example links (the demo is a public test file of the [CoD4-DM1](https://github.com/Iswenzz/CoD4-DM1) project):
+
+```
+https://tipsyspit.github.io/cod4-demo/?demoUrl=https%3A%2F%2Fraw.githubusercontent.com%2FIswenzz%2FCoD4-DM1%2Fmaster%2Ffixtures%2F1.7.dm_1
+https://tipsyspit.github.io/cod4-demo/?demoUrl=https%3A%2F%2Fraw.githubusercontent.com%2FIswenzz%2FCoD4-DM1%2Fmaster%2Ffixtures%2F1.7.dm_1&name=Deathrun%20test&autoplay=1&view=2d
+https://tipsyspit.github.io/cod4-demo/#demoUrl=https%3A%2F%2Fraw.githubusercontent.com%2FIswenzz%2FCoD4-DM1%2Fmaster%2Ffixtures%2F1.7.dm_1
+```
+
+**URL encoding.** `demoUrl` (and `name`) must be encoded: the demo's own `?`, `&`, `#` and `=` would otherwise
+end the parameter or start the viewer's next one. `encodeURIComponent` does it (`https://` becomes
+`https%3A%2F%2F`).
+
+**CORS - the server hosting the demo must allow it.** The browser lets the viewer read a file from another site only
+if that site's answer carries `Access-Control-Allow-Origin` for `https://tipsyspit.github.io` (or `*`). Without the
+header the viewer shows *"Download blocked by CORS"* and offers Open demo instead. Examples:
+
+- GitHub: files in a public repository (`raw.githubusercontent.com`) and GitHub Pages sites send `*` already.
+- nginx: `location ~* \.dm_1$ { add_header Access-Control-Allow-Origin "https://tipsyspit.github.io" always; }`
+- Apache (`.htaccess`): `<FilesMatch "\.dm_1$">Header set Access-Control-Allow-Origin "https://tipsyspit.github.io"</FilesMatch>`
+- S3 / R2 / other buckets: a CORS rule with `AllowedOrigins: https://tipsyspit.github.io`, `AllowedMethods: GET, HEAD`.
+
+The download sends no cookies and no referrer. A file that needs a login, or a download page (HTML) instead of the
+file itself, cannot be opened - the link must point at the `.dm_1` file.
+
+**Checks** (settings in `DEMO_URL_CONFIG`, `js/app/demoUrl.js`): `https://` only, no user name / password in the
+address; an optional list of allowed hosts (empty: every host - then also narrow `connect-src` in `index.html`'s
+Content-Security-Policy, which allows `https:` for the links); at most 200 MB (the `Content-Length`, and the bytes as
+they arrive); a 120 s timeout; the first bytes must be a CoD4 / CoD4X demo record, so a web page or an image stops at
+once (*"Not a valid CoD4 demo (.dm_1) file."*). The download shows its percentage (or a running bar when the server
+sends no size) and can be cancelled. The address and the name are shown as plain text only.
+
+**On the other website:**
+
+A plain link:
+
+```html
+<a href="https://tipsyspit.github.io/cod4-demo/?demoUrl=https%3A%2F%2Fexample.com%2Fdemos%2Fmatch.dm_1"
+   target="_blank" rel="noopener">Watch the demo</a>
+```
+
+A redirect (server side, e.g. PHP, or any HTTP 302 with this `Location`):
+
+```php
+<?php
+$demo = 'https://example.com/demos/' . rawurlencode($file);
+header('Location: https://tipsyspit.github.io/cod4-demo/?demoUrl=' . rawurlencode($demo), true, 302);
+```
+
+The link built in JavaScript:
+
+```js
+function viewerLink(demoUrl, { name, autoplay } = {}) {
+  const p = new URLSearchParams({ demoUrl });            // (URLSearchParams encodes like encodeURIComponent)
+  if (name) p.set('name', name);
+  if (autoplay) p.set('autoplay', '1');
+  return 'https://tipsyspit.github.io/cod4-demo/?' + p.toString();
+}
+// or by hand: 'https://tipsyspit.github.io/cod4-demo/?demoUrl=' + encodeURIComponent(demoUrl)
+document.querySelector('#watch').href = viewerLink('https://example.com/demos/match.dm_1', { name: 'Final, map 2' });
+```
+
 ## What a demo contains (and does not)
 
 A client demo is the recording player's network view. Other players only exist while the
@@ -713,8 +795,8 @@ py tools/check_deploy.py check --url https://<user>.github.io/<repo>/
    names every file that is missing, different, an HTML page (a 404) or an LFS pointer.
 5. Open `https://<user>.github.io/<repo>/`.
 
-**Content-Security-Policy** (meta tag in `index.html`): only the site's own files; `blob:` is for the parser and GIF
-workers. Its `sha256-…` is the hash of the inline import map: after changing the import map (the CDN alternative also
+**Content-Security-Policy** (meta tag in `index.html`): only the site's own files, except `connect-src https:` - the
+downloads of demo links (above); `blob:` is for the parser and GIF workers. Its `sha256-…` is the hash of the inline import map: after changing the import map (the CDN alternative also
 needs its host in `script-src`) compute the new hash, or the page stops loading three.js.
 
 **Loading** (`js/view3d/data.js`): every data file is requested as `file?v=<hash>` from the

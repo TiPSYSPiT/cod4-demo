@@ -224,6 +224,14 @@ body.loaded.dragging .dropzone { display: flex; position: fixed; inset: calc(var
 .progress-label { margin-bottom: 10px; color: var(--muted); }
 .progress-bar { height: 4px; background: var(--switch-off); border-radius: 4px; overflow: hidden; }
 .progress-fill { height: 100%; width: 0; background: var(--text); border-radius: 4px; transition: width .1s; }
+.progress-actions { margin-top: 14px; text-align: center; }
+/* a demo link's download of unknown size: a sliding bar */
+.progress.indeterminate .progress-fill { width: 30% !important; animation: progress-slide 1.2s ease-in-out infinite; transition: none; }
+@keyframes progress-slide { from { transform: translateX(-100%); } to { transform: translateX(340%); } }
+@media (prefers-reduced-motion: reduce) { .progress.indeterminate .progress-fill { animation: none; width: 100% !important; opacity: .5; } }
+.banner .error-hint { margin: 6px 0 0; color: var(--muted); }
+.banner .error-actions { margin: 10px 0 0; }
+.banner-error.banner-note { background: var(--raise); border-color: var(--line-2); color: var(--text); }
 .banner { padding: 10px 14px; border-radius: var(--r-s); border: 1px solid; }
 .banner-error { margin: 16px auto; width: min(760px, calc(100% - 32px)); background: rgba(255, 107, 107, .1); border-color: rgba(255, 107, 107, .45); color: #ffd0d0; }
 .banner-warn { background: var(--warn-soft); border-color: var(--warn-line); color: #f6e2ae; }
