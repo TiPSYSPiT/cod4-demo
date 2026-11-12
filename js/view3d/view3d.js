@@ -178,6 +178,7 @@ export class View3D {
         const gameLighting = gfx.lighting !== 'scene';
         const w = await loadWorld(name, { gameLighting, onProgress: f => { this.info.set('Loading the 3D map ' + name + ' … ' + Math.round(f * 100) + ' %', { open: true }); } });
         this.world = w;
+        this.applyGraphics('decals', gfx.decals);
         this.scene.add(w.group);
         this.scene.background = new THREE.Color(0x8ea2b4);
         // the map's sky (sky.js; the flat colour until it is loaded / without one)
@@ -259,6 +260,7 @@ export class View3D {
           Promise.all([FxSystem.load('maps3d/' + name + '/', w.lightGrid, w.info.lights, w.info.sun && w.info.sun.index != null ? w.info.sun.index : 1),
             isPromod(this.M) ? this.characters.viewModels() : null]).then(([fx, vmt]) => {
             if (!fx || this.world !== w) return;
+            fx.marksShown = graphics().marks !== 'off';
             if (vmt && vmt.promod) fx.setWeaponOverrides(vmt.promod.weapons);
             fx.setModels(this.characters, () => { this.needsRender = true; });   // a debris model loaded
             fx.setDemo(this.M);
@@ -435,7 +437,7 @@ export class View3D {
         this.soundRows, el('div', { class: 'grp' }, resetBtn())) },
       { key: 'graphics', title: 'Graphics', hint: 'reloads the 3D map', icon: 'sun', node: el('div', { class: 'pop-body' },
         el('div', { class: 'grp' }, ...gRows),
-        el('p', { class: 'pop-note' }, 'Lower settings help on slow graphics cards. A change reloads the 3D map (the POV weapon switches at once); time, selection and the other options stay.'),
+        el('p', { class: 'pop-note' }, 'Lower settings help on slow graphics cards. A change reloads the 3D map (the POV weapon, crosshair, world decals and impact marks switch at once); time, selection and the other options stay.'),
         el('div', { class: 'grp' }, resetBtn())) }
     ];
   }
@@ -469,6 +471,17 @@ export class View3D {
   applyGraphics(key, value) {
     if (key === 'viewmodel') this.viewmodel.enabled = value !== 'off';
     if (key === 'crosshair') this.viewmodel.crosshair = value !== 'off';
+    if (key === 'decals' && this.world) {
+      // r_drawDecals: the world's decal groups (mapLoader.js, matinfo kind 'decal'); a material the view never draws stays hidden
+      this.world.group.traverse(o => {
+        for (const m of !o.material ? [] : Array.isArray(o.material) ? o.material : [o.material]) {
+          if (!m.userData.matinfo || m.userData.matinfo.kind !== 'decal') continue;
+          if (m.userData.drawn === undefined) m.userData.drawn = m.visible;
+          m.visible = m.userData.drawn && value !== 'off';
+        }
+      });
+    }
+    if (key === 'marks' && this.fx) this.fx.marksShown = value !== 'off';     // fx_marks (fx.js drawMarks)
     this.needsRender = true;
   }
   /** every Display, Sound and Graphics option back to app/defaults.js: the saved choices forgotten, the live ones applied at

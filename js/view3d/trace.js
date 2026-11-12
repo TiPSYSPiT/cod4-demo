@@ -69,6 +69,31 @@ export class WorldTracer {
     this.built = true;
   }
 
+  /** every triangle whose bounds overlap the box [mins, maxs] (world units): fn(triangle index) - the impact
+   *  marks' fragments (fx.js clipMark, as R_BoxSurfaces finds the surfaces of a mark's box) */
+  boxTriangles(mins, maxs, fn) {
+    this.build();
+    const P = this.P, I = this.I, tris = this.tris, bmin = this.bmin, bmax = this.bmax, child = this.child;
+    if (!this.nodes || !(I.length)) return;
+    const stack = [0];
+    while (stack.length) {
+      const node = stack.pop(), b = 3 * node;
+      if (bmin[b] > maxs[0] || bmax[b] < mins[0] || bmin[b + 1] > maxs[1] || bmax[b + 1] < mins[1] || bmin[b + 2] > maxs[2] || bmax[b + 2] < mins[2]) continue;
+      const c0 = child[2 * node];
+      if (c0 >= 0) { stack.push(child[2 * node + 1], c0); continue; }
+      const start = -1 - c0, count = child[2 * node + 1];
+      for (let k = start; k < start + count; k++) {
+        const t = tris[k], o0 = 3 * I[3 * t], o1 = 3 * I[3 * t + 1], o2 = 3 * I[3 * t + 2];
+        let out = false;
+        for (let a = 0; a < 3 && !out; a++) {
+          const p0 = P[o0 + a], p1 = P[o1 + a], p2 = P[o2 + a];
+          out = (p0 > maxs[a] && p1 > maxs[a] && p2 > maxs[a]) || (p0 < mins[a] && p1 < mins[a] && p2 < mins[a]);
+        }
+        if (!out) fn(t);
+      }
+    }
+  }
+
   /** the first triangle hit from a towards b -> {frac, point, normal (facing a), surface} or null */
   trace(a, b) {
     this.build();

@@ -19,6 +19,13 @@ export const GRAPHICS = [
   { key: 'viewmodel', label: 'POV weapon', live: true, title: 'In the first-person camera: the weapon the player holds, in their character\'s hands - the game\'s view models and animations as the demo drives them (shots, reloads, switches, aiming down the sights with the zoom and the sniper scope, the knife), drawn over the world',
     values: [['on', 'On'], ['off', 'Off']] },
   { key: 'crosshair', label: 'Crosshair', live: true, title: 'In the first-person camera: the crosshair with the game\'s images - its gap the weapon\'s spread (stance, movement, jumps, shots), hidden aiming down the sights, sprinting and for the scoped rifles',
+    values: [['on', 'On'], ['off', 'Off']] },
+  // the game's r_drawDecals: the map's decal layers - the world surfaces that lie on another surface (GfxSurface flag 2: signs,
+  // graffiti, posters, dirt, stains, cracks; world.json groups "decal"). Off: fewer draw calls and blended layers
+  { key: 'decals', label: 'World decals', live: true, url: false, title: 'The map\'s decal layers (the game\'s r_drawDecals): signs, graffiti, posters, dirt, stains and cracks painted over the walls and floors. Off: the plain surfaces underneath, and a faster view (fewer draw calls and blended layers)',
+    values: [['on', 'On'], ['off', 'Off']] },
+  // the game's fx_marks: the marks effects leave (fx.js addMarks / drawMarks)
+  { key: 'marks', label: 'Impact marks', live: true, url: false, title: 'The marks shots and explosions leave for the round (the game\'s fx_marks): bullet holes, blood and grenade craters',
     values: [['on', 'On'], ['off', 'Off']] }
 ];
 const known = (key, v) => GRAPHICS.find(g => g.key === key).values.some(x => x[0] === v);
@@ -29,6 +36,7 @@ function stored() {
 
 /** the setting given by the page's URL, or null */
 export function urlGraphics(key) {
+  if (GRAPHICS.find(g => g.key === key).url === false) return null;    // (an option without a URL parameter)
   const v = new URLSearchParams(location.search).get(key);
   return v != null && known(key, v) ? v : null;       // (?fx=on is not a value: ignored)
 }

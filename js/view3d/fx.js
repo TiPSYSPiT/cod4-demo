@@ -103,6 +103,8 @@ const F = { SPAWN_RELATIVE: 2, OFFSET_MASK: 0x30, OFFSET_SPHERE: 0x10, OFFSET_CY
   NONUNIFORM: 0x10000000, COLLIDE: 0x100, DIE_ON_TOUCH: 0x200 };
 const MAX_PARTICLES = 8192;
 const IMPACT_MS = 3000;
+const MARK_CLIP_MIN = 10;                   // marks this large (craters) are clipped onto the surfaces in their box (clipMark)
+const SURF_WATER = 20;                      // the water surface type (its materials take no marks)
 const MAX_MARKS = 400;                      // marks drawn at once (the game recycles its mark pool)                     // bullet impacts on the world: shots of the last 3 s
 const EYE_HEIGHT = { stand: 60, crouch: 40, prone: 11 };
 const PEN_MIN_FX_DIST = 30;                 // bullet_penetrationMinFxDist: exit effects of a longer passage only
@@ -937,7 +939,7 @@ void main() {
       for (let i = lo; i < D.length && D[i].begin <= t; i++) if (t - D[i].begin <= D[i].dur) this.effect(D[i], t, 0);
       if (muzzle && this.shots) this.flashes(t, muzzle);
       if (this.tracer && this.shots && opts.impacts !== false) this.worldImpacts(t);
-      this.drawMarks(t);
+      if (this.marksShown !== false) this.drawMarks(t);               // (graphics: Impact marks - the game's fx_marks)
     }
     for (const b of this.batches.values()) this.upload(b);
     this.drawModels();
@@ -953,6 +955,7 @@ void main() {
     const tracer = worldTracer(geo.attributes.position.array, geo.index.array, world.info.groups, world.props ? world.props.collision() : null);
     this.propTriangles = tracer.propTriangles;
     this.tracer = tracer;
+    for (const m of this.marks || []) m.frags = null;                  // (clipped again against this world)
     this.impactCache = new Map();
     // the hierarchy is built when the browser is idle, not on the first shot; then every shot is traced
     // once (the bullet holes stay for the round)
@@ -1158,7 +1161,9 @@ void main() {
         for (let ch = 0; ch < 3; ch++) col[2 - ch] = Math.min(255, Math.round(col[2 - ch] * 2 * L[ch] / 255));
         const rt = [0, 1, 2].map(j => c * A[1][j] + sn * A[2][j]), rb = [0, 1, 2].map(j => sn * A[1][j] - c * A[2][j]);
         this.marks.push({ begin, batch, q: { p: [o[0] + A[0][0] * 0.5, o[1] + A[0][1] * 0.5, o[2] + A[0][2] * 0.5], rt, rb, s0: size, s1: size,
-          uv: [0, 0, 1, 1], col: [col[2] / 255, col[1] / 255, col[0] / 255, col[3] / 255], d2: 0 } });
+          uv: [0, 0, 1, 1], col: [col[2] / 255, col[1] / 255, col[0] / 255, col[3] / 255], d2: 0 },
+          // a large mark (a crater) is clipped onto the surfaces in its box when first drawn (clipMark); a bullet hole stays one quad
+          clip: size >= MARK_CLIP_MIN ? { o: o.slice(0, 3), n: A[0].slice(0, 3) } : null, frags: null });
       }
     }
   }
@@ -1173,7 +1178,69 @@ void main() {
     const M = this.marks;
     let hi = M.length;
     { let lo = 0, h = M.length; while (lo < h) { const k = (lo + h) >> 1; if (M[k].begin <= t) lo = k + 1; else h = k; } hi = lo; }
-    for (let i = hi - 1, n = 0; i >= 0 && n < MAX_MARKS && M[i].begin >= from; i--, n++) M[i].batch.list.push(M[i].q);
+    for (let i = hi - 1, n = 0; i >= 0 && n < MAX_MARKS && M[i].begin >= from; i--, n++) {
+      const m = M[i];
+      if (m.clip && this.tracer) {
+        // (not before the trace world's hierarchy is built - in the idle time after setWorld: building it here stalled a frame)
+        if (!this.tracer.built) continue;
+        if (!m.frags) m.frags = this.clipMark(m);
+        for (const f of m.frags) m.batch.list.push(f);
+      } else m.batch.list.push(m.q);
+    }
+  }
+
+  /** FX_ImpactMark -> R_MarkFragments_WorldBrushes / _BrushSurface (r_marks.cpp): the game never draws a mark as a free quad.
+   *  The mark's box - the effect's origin +- the mark's size along its normal (frame axis 0) and its two rotated in-plane
+   *  axes - is clipped against the surfaces in it: the trace world's triangles (render world without decals, prop collision),
+   *  without those facing away from the normal or more than 60 degrees off it (R_MarkFragment_IsTriangleRejected) and water
+   *  (its materials take no marks), each cut by the box's 6 planes. Texture coordinates: the projection onto the in-plane axes,
+   *  0.5 + d.axis / (2 size), as the quad's (FX_GenerateMarkVertsForMark_FinishAnimated: 0.5 / radius). Where no surface is in
+   *  the box - a grenade bursting in the air, high above the ground - nothing is drawn. -> quads of the batch (a fan of the
+   *  clipped polygon, two triangles a quad), pulled 0.25 units off their surface */
+  clipMark(m) {
+    const T = this.tracer, P = T.P, I = T.I, S = T.S, nw = T.worldTriangles != null ? T.worldTriangles : Infinity;
+    const { o, n } = m.clip, q = m.q, rt = q.rt, rb = q.rb, s = q.s0, col = q.col;
+    const axes = [n, rt, rb], mins = [0, 0, 0], maxs = [0, 0, 0];
+    for (let k = 0; k < 3; k++) {
+      const e = (Math.abs(n[k]) + Math.abs(rt[k]) + Math.abs(rb[k])) * s;
+      mins[k] = o[k] - e; maxs[k] = o[k] + e;
+    }
+    const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+    const out = [];
+    T.boxTriangles(mins, maxs, t => {
+      if (S && S[t] === SURF_WATER) return;
+      const o0 = 3 * I[3 * t], o1 = 3 * I[3 * t + 1], o2 = 3 * I[3 * t + 2];
+      const a = [P[o0], P[o0 + 1], P[o0 + 2]], b = [P[o1], P[o1 + 1], P[o1 + 2]], c = [P[o2], P[o2 + 1], P[o2 + 2]];
+      const e1 = [b[0] - a[0], b[1] - a[1], b[2] - a[2]], e2 = [c[0] - a[0], c[1] - a[1], c[2] - a[2]];
+      // the outward normal: the render world is wound counter-clockwise (three.js), the props' collision clockwise (the game's)
+      const sg = t < nw ? 1 : -1;
+      const tn = [sg * (e1[1] * e2[2] - e1[2] * e2[1]), sg * (e1[2] * e2[0] - e1[0] * e2[2]), sg * (e1[0] * e2[1] - e1[1] * e2[0])];
+      const d = dot(tn, n), l2 = dot(tn, tn);
+      if (d < 0 || l2 * 0.25 > d * d || !l2) return;                // facing away, or more than 60 degrees off the normal
+      // Sutherland-Hodgman against the 6 planes |(p - o).axis| <= s
+      let poly = [a, b, c];
+      for (let k = 0; k < 6 && poly.length; k++) {
+        const ax = axes[k >> 1], sgn = k & 1 ? -1 : 1, lim = sgn * dot(ax, o) + s;
+        const next = [];
+        for (let i = 0; i < poly.length; i++) {
+          const p = poly[i], r = poly[(i + 1) % poly.length];
+          const dp = sgn * dot(ax, p) - lim, dr = sgn * dot(ax, r) - lim;
+          if (dp <= 0) next.push(p);
+          if ((dp <= 0) !== (dr <= 0)) { const f = dp / (dp - dr); next.push([p[0] + (r[0] - p[0]) * f, p[1] + (r[1] - p[1]) * f, p[2] + (r[2] - p[2]) * f]); }
+        }
+        poly = next;
+      }
+      if (poly.length < 3) return;
+      const il = 0.25 / Math.sqrt(l2), off = [tn[0] * il, tn[1] * il, tn[2] * il];
+      const pts = poly.map(p => [p[0] + off[0], p[1] + off[1], p[2] + off[2]]);
+      const uv = pts.map(p => { const d0 = [p[0] - o[0], p[1] - o[1], p[2] - o[2]]; return [0.5 + dot(d0, rt) / (2 * s), 0.5 + dot(d0, rb) / (2 * s)]; });
+      // the fan (0, i, i+1, i+2) as quads: triangles (0, i, i+1) and (i+1, i+2, 0) - a convex polygon, so convex quads
+      for (let i = 1; i + 1 < pts.length; i += 2) {
+        const j = Math.min(i + 2, pts.length - 1), idx = [0, i, i + 1, j];
+        out.push({ quad: idx.map(x => pts[x]), uvq: idx.flatMap(x => uv[x]), colq: [col, col, col, col], d2: 0 });
+      }
+    });
+    return out;
   }
 
   /** the strongest lights of the effects -> DLIGHTS (lighting.js) */

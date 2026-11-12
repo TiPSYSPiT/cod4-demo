@@ -23,7 +23,9 @@ export const DEFAULTS = {
     reflections: 'off',      // 'on' / 'off'
     fx: 'demo',              // 'all' / 'ambient' / 'demo' / 'off'
     viewmodel: 'on',         // 'on' / 'off'
-    crosshair: 'on'          // 'on' / 'off'
+    crosshair: 'on',         // 'on' / 'off'
+    decals: 'off',           // 'on' / 'off' (World decals: the game's r_drawDecals)
+    marks: 'on'              // 'on' / 'off' (Impact marks: the game's fx_marks)
   }
 };
 
