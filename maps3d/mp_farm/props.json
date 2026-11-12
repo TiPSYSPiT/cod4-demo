@@ -9485,12 +9485,12 @@
       {
        "indexStart": 0,
        "indexCount": 132,
-       "material": -1
+       "material": 94
       },
       {
        "indexStart": 132,
        "indexCount": 576,
-       "material": -1
+       "material": 95
       }
      ]
     },
@@ -9505,12 +9505,12 @@
       {
        "indexStart": 0,
        "indexCount": 12,
-       "material": -1
+       "material": 94
       },
       {
        "indexStart": 12,
        "indexCount": 48,
-       "material": -1
+       "material": 95
       }
      ]
     }
@@ -10937,11 +10937,11 @@
   "lowInstanceTriangles": 207934,
   "materials": 125,
   "materialsTextured": 124,
-  "lod0SurfacesWithoutMaterial": 2,
+  "lod0SurfacesWithoutMaterial": 0,
   "materialHandles": {
    "inline": 177,
-   "resolved": 723,
-   "unresolved": 43,
+   "resolved": 766,
+   "unresolved": 0,
    "null": 0,
    "chains": 22,
    "rules": {
@@ -10953,6 +10953,7 @@
    "selfPlaced": 29,
    "selfOverrides": 1,
    "ordered": 2,
+   "ownSlot": 5,
    "known": {
     "15556": "mc/mtl_corrugated_metal",
     "96668": "mc/mtl_grey_oak_canopy",
@@ -11141,10 +11142,14 @@
     "21935520": ",mc/lambert1",
     "22342876": "mc/mtl_opforce_lod_sp",
     "22577836": "mc/mtl_opforce_3hole_ski_mask_sp",
-    "22688376": "mc/mtl_opforce_ski_mask_sp"
+    "22688376": "mc/mtl_opforce_ski_mask_sp",
+    "3058428": "mc/mtl_chechnya_trunk",
+    "3108992": "mc/mtl_chechnya_log",
+    "22027588": "mc/mtl_usmc_shaved_head",
+    "22114968": "mc/mtl_ghillie_mesh_mp",
+    "22139532": "mc/mtl_usmc_body_mp"
    }
-  },
-  "materialsShared": 7
+  }
  },
  "note": "Activision's models, extracted from the game files (see maps3d/NOTICE.md). Models without lods are drawn as boxes of their bounds.",
  "collision": {

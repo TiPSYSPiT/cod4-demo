@@ -612,9 +612,9 @@ stored once and drawn with `THREE.InstancedMesh` for all its placements.
 | Materials | colour, normal and specular map (WebP, shared with the world), alpha test, blending, culling; lit like the game's static models (light grid at the centre of each placement + sun) with the reflection probe of each placement | |
 | Fallback | a model that cannot be read is drawn as a box and listed in the export summary (`props drawn as boxes: …`) and in `index.json → propFallback` | |
 
-On the 23 maps of a German retail install, every placed model gets real geometry except one
-placement on mp_creek, whose model name is unknown. 0–33 LOD 0 surfaces per map have no
-resolved material and are drawn grey. Cost on the six maps with demos: +3.1 to +5.8 MB of
+On all 26 maps every placed model gets real geometry (mp_creek's last one too: a shrub group whose
+name the zone stores as a reference to an earlier string) and every prop surface has its
+material (docs/asset-audit.md, section 18). Cost on the six maps with demos: +3.1 to +5.8 MB of
 download (props.bin/json), 70-120 ms to load and build locally, and 0.6-1.3 million triangles
 in under 1.3 ms per frame on an NVIDIA T400. The *low detail* option halves the triangles. Full
 table: [docs/validation.md](docs/validation.md#performance-before-and-after-real-props).
@@ -674,10 +674,10 @@ models. Details:
 
 ## Possible next steps
 
-- `com_barrel_benzin`'s label (mp_citystreets, 8 triangles): its image reference stays unresolved in
-  every zone (docs/asset-audit.md, "Not supported / left").
-- 34 prop surfaces on the 17 other maps without a material and without a geometric twin
-  (docs/asset-audit.md, section 13).
+- Two lamp materials of mp_manorhouse (`mc/mtl_bi_command_center_panel_1_lit`, `mc/mtl_lights_tinhathood_on`):
+  their colour map is an image reference no rule places; drawn in the material's colour.
+- Water (`wc/*water*`, the game's own water shader) is drawn as a flat translucent colour.
+- The props use LOD 0 and the coarsest LOD; the game's LODs in between are not exported.
 
 ## Hosting on GitHub Pages
 

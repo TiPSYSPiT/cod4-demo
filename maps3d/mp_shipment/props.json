@@ -997,13 +997,19 @@
   },
   {
    "name": ",mc/lambert1",
-   "texture": null,
+   "texture": "_textures/grey.webp",
    "textureAlpha": false,
-   "color": null,
+   "color": "#818081",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
-   "depthWrite": true
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
   },
   {
    "name": "mc/ch_concretewall09",
@@ -5608,12 +5614,12 @@
   "lod0InstanceTriangles": 538330,
   "lowInstanceTriangles": 98370,
   "materials": 97,
-  "materialsTextured": 96,
+  "materialsTextured": 97,
   "lod0SurfacesWithoutMaterial": 0,
   "materialHandles": {
    "inline": 132,
-   "resolved": 525,
-   "unresolved": 5,
+   "resolved": 530,
+   "unresolved": 0,
    "null": 0,
    "chains": 14,
    "rules": {
@@ -5624,6 +5630,7 @@
    "selfPlaced": 23,
    "selfOverrides": 1,
    "ordered": 0,
+   "ownSlot": 3,
    "known": {
     "37232": "mc/mtl_cargocontainerlockingbar",
     "37236": "mc/mtl_cargocontainerdoorhinge_blue",
@@ -5760,7 +5767,10 @@
     "10815396": "mc/mtl_opforce_justin_beanie_sp",
     "10815404": "mc/mtl_opforce_hands_sp",
     "11131516": "mc/mtl_opforce_gas_mask_lens_sp",
-    "11131528": "mc/mtl_opforce_gas_mask_sp"
+    "11131528": "mc/mtl_opforce_gas_mask_sp",
+    "10914256": "mc/mtl_opforce_gear_sp",
+    "10939164": "mc/mtl_opforce_3hole_ski_mask_sp",
+    "11035184": "mc/mtl_opforce_fullwrap_sp"
    }
   }
  },

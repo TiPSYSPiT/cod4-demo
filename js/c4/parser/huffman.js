@@ -6,6 +6,7 @@ C4.define('huffman', function (C4) {
   'use strict';
   let lut = null;
   let lutBits = 0;
+  let scratch = null;                     // the decoded bytes of the message being read (decompress)
 
   function init() {
     const codes = C4.tables.HUFFMAN_CODES;
@@ -23,12 +24,16 @@ C4.define('huffman', function (C4) {
 
   /**
    * Decode `length` bytes of `data` (Uint8Array) starting at `start`.
-   * Returns a Uint8Array view of the decoded bytes. Mirrors MSG_ReadBitsCompress:
-   * stops when the input bits run out or `maxOut` bytes were produced.
+   * Returns a Uint8Array view of the decoded bytes, valid until the next call (the buffer is reused).
+   * Mirrors MSG_ReadBitsCompress: stops when the input bits run out or `maxOut` bytes were produced.
    */
   function decompress(data, start, length, maxOut) {
     if (!lut) init();
-    const out = new Uint8Array(Math.min(maxOut, length * 8 + 16));
+    // (one buffer for every message: the caller reads the bytes before it asks for the next message's - a new, zeroed
+    // array per message was 8 x the message's size each time)
+    const want = Math.min(maxOut, length * 8 + 16);
+    if (!scratch || scratch.length < want) scratch = new Uint8Array(Math.max(want, 1 << 16));
+    const out = scratch.subarray(0, want);
     const mask = (1 << lutBits) - 1;
     const end = start + length;
     const totalBits = length * 8;

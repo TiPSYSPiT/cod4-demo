@@ -2129,13 +2129,19 @@
   },
   {
    "name": ",mc/lambert1",
-   "texture": null,
+   "texture": "_textures/grey.webp",
    "textureAlpha": false,
-   "color": null,
+   "color": "#818081",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
-   "depthWrite": true
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
   },
   {
    "name": "mc/mtl_t72_tank_d",
@@ -9662,12 +9668,12 @@
   "lod0InstanceTriangles": 676564,
   "lowInstanceTriangles": 145110,
   "materials": 132,
-  "materialsTextured": 131,
+  "materialsTextured": 132,
   "lod0SurfacesWithoutMaterial": 0,
   "materialHandles": {
    "inline": 196,
-   "resolved": 871,
-   "unresolved": 2,
+   "resolved": 873,
+   "unresolved": 0,
    "null": 0,
    "chains": 30,
    "rules": {
@@ -9679,6 +9685,7 @@
    "selfPlaced": 27,
    "selfOverrides": 1,
    "ordered": 3,
+   "ownSlot": 1,
    "known": {
     "15476": "mc/mtl_electric_box3",
     "36072": "mc/mtl_lightbox_on",
@@ -9866,7 +9873,8 @@
     "15538204": "mc/mtl_arab_regular_helmet_hands_sp",
     "15180180": "mc/mtl_usmc_tactical_mich",
     "15250284": "mc/mtl_usmc_tactical_baseball_cap",
-    "15424620": "mc/mtl_arab_regular_mowrap_sp"
+    "15424620": "mc/mtl_arab_regular_mowrap_sp",
+    "15815700": "mc/mtl_arab_regular_sadiq_sp"
    }
   }
  },

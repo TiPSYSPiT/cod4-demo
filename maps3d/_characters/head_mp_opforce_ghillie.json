@@ -957,7 +957,7 @@
   {
    "indexStart": 6060,
    "indexCount": 1428,
-   "material": -1
+   "material": 3
   },
   {
    "indexStart": 7488,
@@ -972,27 +972,27 @@
   {
    "indexStart": 10524,
    "indexCount": 1230,
-   "material": -1
+   "material": 3
   },
   {
    "indexStart": 11754,
    "indexCount": 1680,
-   "material": 3
+   "material": 4
   },
   {
    "indexStart": 13434,
    "indexCount": 894,
-   "material": -1
+   "material": 3
   },
   {
    "indexStart": 14328,
    "indexCount": 516,
-   "material": 3
+   "material": 4
   },
   {
    "indexStart": 14844,
    "indexCount": 198,
-   "material": -1
+   "material": 3
   }
  ],
  "materials": [
@@ -1058,6 +1058,30 @@
     0.8,
     4.0,
     1.0,
+    0.625
+   ],
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "mc/mtl_ghillie_mesh_mp",
+   "texture": "_textures/ghillie_mesh_mp_col.webp",
+   "textureAlpha": true,
+   "color": "#4e4a34",
+   "alphaTest": "ge128",
+   "blend": null,
+   "doubleSided": true,
+   "depthWrite": true,
+   "normalMap": "_textures/usmc_ghillie_mesh_nml.normal.webp",
+   "specularMap": "_textures/usmc_ghillie_mesh_spc-rgb_us_c0c547ae.specular.webp",
+   "envMapParms": [
+    0.0,
+    2.0,
+    0.05,
     0.625
    ],
    "colorTint": [

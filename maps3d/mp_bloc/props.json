@@ -1492,13 +1492,19 @@
   },
   {
    "name": ",mc/lambert1",
-   "texture": null,
+   "texture": "_textures/grey.webp",
    "textureAlpha": false,
-   "color": null,
+   "color": "#818081",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
-   "depthWrite": true
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
   },
   {
    "name": "mc/ch_concretewall09",
@@ -7848,12 +7854,12 @@
   "lod0InstanceTriangles": 788292,
   "lowInstanceTriangles": 417530,
   "materials": 112,
-  "materialsTextured": 110,
+  "materialsTextured": 111,
   "lod0SurfacesWithoutMaterial": 0,
   "materialHandles": {
    "inline": 161,
-   "resolved": 468,
-   "unresolved": 33,
+   "resolved": 487,
+   "unresolved": 14,
    "null": 0,
    "chains": 18,
    "rules": {
@@ -7865,6 +7871,7 @@
    "selfPlaced": 18,
    "selfOverrides": 2,
    "ordered": 0,
+   "ownSlot": 3,
    "known": {
     "219360": "mc/mtl_sign_big_white01",
     "227240": "mc/locker",
@@ -7992,7 +7999,10 @@
     "26720260": "mc/mtl_usmc_tactical_mich",
     "26720276": "mc/mtl_accessories_alpha_mp",
     "26720280": "mc/mtl_usmc_tactical_cap",
-    "27127628": "mc/mtl_opforce_lod_sp"
+    "27127628": "mc/mtl_opforce_lod_sp",
+    "26812340": "mc/mtl_usmc_shaved_head",
+    "26899720": "mc/mtl_ghillie_mesh_mp",
+    "26924284": "mc/mtl_usmc_body_mp"
    }
   },
   "materialsShared": 10

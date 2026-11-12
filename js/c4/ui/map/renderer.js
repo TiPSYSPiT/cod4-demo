@@ -32,7 +32,10 @@
       this.dpr = 1;
       this.resize();
       if (!opts.noInput) {
-        new ResizeObserver(() => { this.resize(); if (this.onChange) this.onChange(); }).observe(stage);
+        // (disconnected when the view is closed - View2D.destroy: a live observer keeps the renderer and, through
+        // onChange, the closed demo's replay)
+        this.resizeObs = new ResizeObserver(() => { this.resize(); if (this.onChange) this.onChange(); });
+        this.resizeObs.observe(stage);
         this.bindInput();
       }
     }

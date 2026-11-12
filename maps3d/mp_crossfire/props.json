@@ -2994,13 +2994,19 @@
   },
   {
    "name": ",mc/lambert1",
-   "texture": null,
+   "texture": "_textures/grey.webp",
    "textureAlpha": false,
-   "color": null,
+   "color": "#818081",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
-   "depthWrite": true
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
   },
   {
    "name": "mc/mtl_steel_ladder",
@@ -11669,12 +11675,12 @@
   "lod0InstanceTriangles": 875990,
   "lowInstanceTriangles": 241120,
   "materials": 149,
-  "materialsTextured": 148,
+  "materialsTextured": 149,
   "lod0SurfacesWithoutMaterial": 0,
   "materialHandles": {
    "inline": 218,
-   "resolved": 1305,
-   "unresolved": 2,
+   "resolved": 1307,
+   "unresolved": 0,
    "null": 0,
    "chains": 36,
    "rules": {
@@ -11686,6 +11692,7 @@
    "selfPlaced": 26,
    "selfOverrides": 1,
    "ordered": 4,
+   "ownSlot": 1,
    "known": {
     "17996": "mc/mtl_telegraph_pole",
     "261408": "mc/mtl_palmtree_fronds",
@@ -11899,7 +11906,8 @@
     "25676772": "mc/mtl_usmc_tactical_mich",
     "25746876": "mc/mtl_usmc_tactical_baseball_cap",
     "25921212": "mc/mtl_arab_regular_mowrap_sp",
-    "26800840": "mc/mtl_80s_econdestroy_silv"
+    "26800840": "mc/mtl_80s_econdestroy_silv",
+    "26312292": "mc/mtl_arab_regular_sadiq_sp"
    }
   }
  },

@@ -1,7 +1,7 @@
 /* Tab 4 - Chat. */
 (function (C4) {
   'use strict';
-  const { el, clear, fmtTime, fmtRoundTime, approx, virtualList } = C4.ui;
+  const { el, clear, fmtTime, approx, virtualList } = C4.ui;
   const { stripColors } = C4.text;
 
   function render(root, app) {

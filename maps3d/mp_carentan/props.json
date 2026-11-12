@@ -745,13 +745,19 @@
   },
   {
    "name": ",mc/lambert1",
-   "texture": null,
+   "texture": "_textures/grey.webp",
    "textureAlpha": false,
-   "color": null,
+   "color": "#818081",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
-   "depthWrite": true
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
   },
   {
    "name": "mc/mtl_wallfan1",
@@ -8099,12 +8105,12 @@
   "lod0InstanceTriangles": 658356,
   "lowInstanceTriangles": 258378,
   "materials": 103,
-  "materialsTextured": 102,
+  "materialsTextured": 103,
   "lod0SurfacesWithoutMaterial": 0,
   "materialHandles": {
    "inline": 170,
-   "resolved": 945,
-   "unresolved": 5,
+   "resolved": 950,
+   "unresolved": 0,
    "null": 0,
    "chains": 29,
    "rules": {
@@ -8115,6 +8121,7 @@
    "selfPlaced": 24,
    "selfOverrides": 1,
    "ordered": 5,
+   "ownSlot": 3,
    "known": {
     "17036": "mc/mtl_ch_couch01",
     "36576": "mc/mtl_corkboards",
@@ -8288,7 +8295,10 @@
     "511400": "mc/mtl_cardboardbox_decal",
     "533656": "mc/mtl_icbm_electricpanels",
     "543864": "mc/mtl_electric_box1",
-    "42627456": "mc/mtl_80s_econdestroy_brn"
+    "42627456": "mc/mtl_80s_econdestroy_brn",
+    "42026640": "mc/mtl_opforce_gear_sp",
+    "42051548": "mc/mtl_opforce_3hole_ski_mask_sp",
+    "42147568": "mc/mtl_opforce_fullwrap_sp"
    }
   }
  },

@@ -23,7 +23,7 @@ export class View2D {
     container.append(this.stage);
     // the background's details (the rail's info popover; a missing background shown as a warning); the
     // controls hint fades after a few seconds (infoHint.js)
-    this.info = new InfoHint(this.stage, 'Map image details');
+    this.info = new InfoHint(this.stage);
     this.hint = this.info.box;
     this.ctrlHint = el('div', { class: 'cam-hint' }, 'Wheel: zoom · drag: pan · double-click: reset · Q / E: rotate');
     this.renderer = new C4.MapRenderer(this.stage, M.rect);
@@ -75,6 +75,7 @@ export class View2D {
   destroy() {
     window.removeEventListener('keydown', this.onKey);
     if (this.renderer.offWindow) this.renderer.offWindow();
+    if (this.renderer.resizeObs) { this.renderer.resizeObs.disconnect(); this.renderer.resizeObs = null; }
     if (this.heatUi.close) this.heatUi.close();
     this.stage.remove();
   }

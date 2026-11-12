@@ -1,7 +1,7 @@
 /* Tab 6 - Events: chronological list with search, type chips and player filter. */
 (function (C4) {
   'use strict';
-  const { el, clear, fmtTime, fmtRoundTime, approx, virtualList } = C4.ui;
+  const { el, clear, fmtTime, approx, virtualList } = C4.ui;
 
   const COLORS = {
     ready: '#58d68d', connected: '#7fd1b9', disconnected: '#a3a3ab', joined: '#3ea8ff', left: '#ff8f8f',

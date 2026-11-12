@@ -8,7 +8,6 @@ C4.define('msg', function (C4) {
   'use strict';
   const f32 = new Float32Array(1);
   const u32 = new Uint32Array(f32.buffer);
-  const i32 = new Int32Array(f32.buffer);
 
   /** Reinterpret a 32-bit pattern as float. */
   function u2f(u) { u32[0] = u; return f32[0]; }
@@ -21,7 +20,6 @@ C4.define('msg', function (C4) {
     if (!(f > -2147483648 && f < 2147483648)) return 0;
     return f < 0 ? Math.ceil(f) : Math.floor(f);
   }
-  function s32(u) { return u | 0; }
 
   class Msg {
     constructor(data) {
@@ -121,9 +119,7 @@ C4.define('msg', function (C4) {
       else this.lastEntity += this.readBits(4);
       return this.lastEntity;
     }
-
-    get remaining() { return this.cursize - this.readcount; }
   }
 
-  C4.msg = { Msg, u2f, f2u, f2i, s32 };
+  C4.msg = { Msg, u2f, f2u, f2i };
 });

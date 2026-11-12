@@ -9,27 +9,27 @@
   },
   "position": {
    "offset": 1249416,
-   "length": 1858236
+   "length": 1879860
   },
   "normal": {
-   "offset": 3107652,
-   "length": 619412
+   "offset": 3129276,
+   "length": 626620
   },
   "uv": {
-   "offset": 3727064,
-   "length": 1238824
+   "offset": 3755896,
+   "length": 1253240
   },
   "index": {
-   "offset": 4965888,
-   "length": 651828
+   "offset": 5009136,
+   "length": 657516
   },
   "probe": {
-   "offset": 5617716,
+   "offset": 5666652,
    "length": 22311
   },
   "color": {
-   "offset": 5640028,
-   "length": 619412
+   "offset": 5688964,
+   "length": 626620
   }
  },
  "fields": "instances: model index, origin xyz, axis rows (forward xyz, left xyz, up xyz), scale",
@@ -6171,12 +6171,50 @@
    ]
   },
   {
-   "name": "unknown",
+   "name": "jeepride_shrubgroup_02",
    "count": 1,
-   "mins": null,
-   "maxs": null,
-   "lods": [],
-   "fallback": "model name unknown"
+   "mins": [
+    -101.7,
+    -141.11,
+    -7.87
+   ],
+   "maxs": [
+    112.42,
+    133.15,
+    123.05
+   ],
+   "lods": [
+    {
+     "lod": 0,
+     "dist": 4000.0,
+     "vertexStart": 94306,
+     "vertexCount": 1423,
+     "indexStart": 197196,
+     "indexCount": 2214,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 2214,
+       "material": 44
+      }
+     ]
+    },
+    {
+     "lod": 1,
+     "dist": 7000.0,
+     "vertexStart": 95729,
+     "vertexCount": 379,
+     "indexStart": 199410,
+     "indexCount": 630,
+     "surfaces": [
+      {
+       "indexStart": 0,
+       "indexCount": 630,
+       "material": 44
+      }
+     ]
+    }
+   ]
   },
   {
    "name": "foliage_red_pine_stump_lg",
@@ -6195,9 +6233,9 @@
     {
      "lod": 0,
      "dist": 1000.0,
-     "vertexStart": 94306,
+     "vertexStart": 96108,
      "vertexCount": 358,
-     "indexStart": 197196,
+     "indexStart": 200040,
      "indexCount": 1038,
      "surfaces": [
       {
@@ -6215,9 +6253,9 @@
     {
      "lod": 3,
      "dist": 1000000.0,
-     "vertexStart": 94664,
+     "vertexStart": 96466,
      "vertexCount": 20,
-     "indexStart": 198234,
+     "indexStart": 201078,
      "indexCount": 30,
      "surfaces": [
       {
@@ -6251,9 +6289,9 @@
     {
      "lod": 0,
      "dist": 300.0,
-     "vertexStart": 94684,
+     "vertexStart": 96486,
      "vertexCount": 800,
-     "indexStart": 198264,
+     "indexStart": 201108,
      "indexCount": 1806,
      "surfaces": [
       {
@@ -6266,9 +6304,9 @@
     {
      "lod": 2,
      "dist": 6000.0,
-     "vertexStart": 95484,
+     "vertexStart": 97286,
      "vertexCount": 198,
-     "indexStart": 200070,
+     "indexStart": 202914,
      "indexCount": 318,
      "surfaces": [
       {
@@ -6297,9 +6335,9 @@
     {
      "lod": 0,
      "dist": 800.0,
-     "vertexStart": 95682,
+     "vertexStart": 97484,
      "vertexCount": 1704,
-     "indexStart": 200388,
+     "indexStart": 203232,
      "indexCount": 3312,
      "surfaces": [
       {
@@ -6317,9 +6355,9 @@
     {
      "lod": 3,
      "dist": 1000000.0,
-     "vertexStart": 97386,
+     "vertexStart": 99188,
      "vertexCount": 718,
-     "indexStart": 203700,
+     "indexStart": 206544,
      "indexCount": 1062,
      "surfaces": [
       {
@@ -6353,9 +6391,9 @@
     {
      "lod": 0,
      "dist": 700.0,
-     "vertexStart": 98104,
+     "vertexStart": 99906,
      "vertexCount": 1358,
-     "indexStart": 204762,
+     "indexStart": 207606,
      "indexCount": 2988,
      "surfaces": [
       {
@@ -6373,9 +6411,9 @@
     {
      "lod": 1,
      "dist": 2700.0,
-     "vertexStart": 99462,
+     "vertexStart": 101264,
      "vertexCount": 631,
-     "indexStart": 207750,
+     "indexStart": 210594,
      "indexCount": 1320,
      "surfaces": [
       {
@@ -6404,9 +6442,9 @@
     {
      "lod": 0,
      "dist": 700.0,
-     "vertexStart": 100093,
+     "vertexStart": 101895,
      "vertexCount": 328,
-     "indexStart": 209070,
+     "indexStart": 211914,
      "indexCount": 744,
      "surfaces": [
       {
@@ -6424,9 +6462,9 @@
     {
      "lod": 1,
      "dist": 2700.0,
-     "vertexStart": 100421,
+     "vertexStart": 102223,
      "vertexCount": 139,
-     "indexStart": 209814,
+     "indexStart": 212658,
      "indexCount": 300,
      "surfaces": [
       {
@@ -6455,9 +6493,9 @@
     {
      "lod": 0,
      "dist": 700.0,
-     "vertexStart": 100560,
+     "vertexStart": 102362,
      "vertexCount": 331,
-     "indexStart": 210114,
+     "indexStart": 212958,
      "indexCount": 732,
      "surfaces": [
       {
@@ -6475,9 +6513,9 @@
     {
      "lod": 1,
      "dist": 2700.0,
-     "vertexStart": 100891,
+     "vertexStart": 102693,
      "vertexCount": 160,
-     "indexStart": 210846,
+     "indexStart": 213690,
      "indexCount": 336,
      "surfaces": [
       {
@@ -6506,9 +6544,9 @@
     {
      "lod": 0,
      "dist": 800.0,
-     "vertexStart": 101051,
+     "vertexStart": 102853,
      "vertexCount": 5502,
-     "indexStart": 211182,
+     "indexStart": 214026,
      "indexCount": 12810,
      "surfaces": [
       {
@@ -6531,9 +6569,9 @@
     {
      "lod": 2,
      "dist": 1000000.0,
-     "vertexStart": 106553,
+     "vertexStart": 108355,
      "vertexCount": 861,
-     "indexStart": 223992,
+     "indexStart": 226836,
      "indexCount": 1722,
      "surfaces": [
       {
@@ -6572,9 +6610,9 @@
     {
      "lod": 0,
      "dist": 800.0,
-     "vertexStart": 107414,
+     "vertexStart": 109216,
      "vertexCount": 2577,
-     "indexStart": 225714,
+     "indexStart": 228558,
      "indexCount": 3756,
      "surfaces": [
       {
@@ -6597,9 +6635,9 @@
     {
      "lod": 3,
      "dist": 1000000.0,
-     "vertexStart": 109991,
+     "vertexStart": 111793,
      "vertexCount": 582,
-     "indexStart": 229470,
+     "indexStart": 232314,
      "indexCount": 930,
      "surfaces": [
       {
@@ -6633,9 +6671,9 @@
     {
      "lod": 0,
      "dist": 1000000.0,
-     "vertexStart": 110573,
+     "vertexStart": 112375,
      "vertexCount": 168,
-     "indexStart": 230400,
+     "indexStart": 233244,
      "indexCount": 252,
      "surfaces": [
       {
@@ -6664,9 +6702,9 @@
     {
      "lod": 0,
      "dist": 1000000.0,
-     "vertexStart": 110741,
+     "vertexStart": 112543,
      "vertexCount": 192,
-     "indexStart": 230652,
+     "indexStart": 233496,
      "indexCount": 288,
      "surfaces": [
       {
@@ -6695,9 +6733,9 @@
     {
      "lod": 0,
      "dist": 1000000.0,
-     "vertexStart": 110933,
+     "vertexStart": 112735,
      "vertexCount": 264,
-     "indexStart": 230940,
+     "indexStart": 233784,
      "indexCount": 396,
      "surfaces": [
       {
@@ -6726,9 +6764,9 @@
     {
      "lod": 0,
      "dist": 2000.0,
-     "vertexStart": 111197,
+     "vertexStart": 112999,
      "vertexCount": 30,
-     "indexStart": 231336,
+     "indexStart": 234180,
      "indexCount": 30,
      "surfaces": [
       {
@@ -6757,9 +6795,9 @@
     {
      "lod": 0,
      "dist": 1200.0,
-     "vertexStart": 111227,
+     "vertexStart": 113029,
      "vertexCount": 3367,
-     "indexStart": 231366,
+     "indexStart": 234210,
      "indexCount": 5970,
      "surfaces": [
       {
@@ -6782,9 +6820,9 @@
     {
      "lod": 3,
      "dist": 1000000.0,
-     "vertexStart": 114594,
+     "vertexStart": 116396,
      "vertexCount": 913,
-     "indexStart": 237336,
+     "indexStart": 240180,
      "indexCount": 1548,
      "surfaces": [
       {
@@ -6823,9 +6861,9 @@
     {
      "lod": 0,
      "dist": 300.0,
-     "vertexStart": 115507,
+     "vertexStart": 117309,
      "vertexCount": 1374,
-     "indexStart": 238884,
+     "indexStart": 241728,
      "indexCount": 5106,
      "surfaces": [
       {
@@ -6838,9 +6876,9 @@
     {
      "lod": 2,
      "dist": 1000000.0,
-     "vertexStart": 116881,
+     "vertexStart": 118683,
      "vertexCount": 503,
-     "indexStart": 243990,
+     "indexStart": 246834,
      "indexCount": 1572,
      "surfaces": [
       {
@@ -6869,9 +6907,9 @@
     {
      "lod": 0,
      "dist": 750.0,
-     "vertexStart": 117384,
+     "vertexStart": 119186,
      "vertexCount": 285,
-     "indexStart": 245562,
+     "indexStart": 248406,
      "indexCount": 846,
      "surfaces": [
       {
@@ -6884,9 +6922,9 @@
     {
      "lod": 2,
      "dist": 1000000.0,
-     "vertexStart": 117669,
+     "vertexStart": 119471,
      "vertexCount": 91,
-     "indexStart": 246408,
+     "indexStart": 249252,
      "indexCount": 156,
      "surfaces": [
       {
@@ -6915,9 +6953,9 @@
     {
      "lod": 0,
      "dist": 400.0,
-     "vertexStart": 117760,
+     "vertexStart": 119562,
      "vertexCount": 648,
-     "indexStart": 246564,
+     "indexStart": 249408,
      "indexCount": 1212,
      "surfaces": [
       {
@@ -6930,9 +6968,9 @@
     {
      "lod": 2,
      "dist": 1000000.0,
-     "vertexStart": 118408,
+     "vertexStart": 120210,
      "vertexCount": 221,
-     "indexStart": 247776,
+     "indexStart": 250620,
      "indexCount": 318,
      "surfaces": [
       {
@@ -6961,9 +6999,9 @@
     {
      "lod": 0,
      "dist": 1000000.0,
-     "vertexStart": 118629,
+     "vertexStart": 120431,
      "vertexCount": 48,
-     "indexStart": 248094,
+     "indexStart": 250938,
      "indexCount": 84,
      "surfaces": [
       {
@@ -6992,9 +7030,9 @@
     {
      "lod": 0,
      "dist": 1000000.0,
-     "vertexStart": 118677,
+     "vertexStart": 120479,
      "vertexCount": 40,
-     "indexStart": 248178,
+     "indexStart": 251022,
      "indexCount": 60,
      "surfaces": [
       {
@@ -7023,9 +7061,9 @@
     {
      "lod": 0,
      "dist": 800.0,
-     "vertexStart": 118717,
+     "vertexStart": 120519,
      "vertexCount": 9575,
-     "indexStart": 248238,
+     "indexStart": 251082,
      "indexCount": 19290,
      "surfaces": [
       {
@@ -7053,9 +7091,9 @@
     {
      "lod": 3,
      "dist": 1000000.0,
-     "vertexStart": 128292,
+     "vertexStart": 130094,
      "vertexCount": 999,
-     "indexStart": 267528,
+     "indexStart": 270372,
      "indexCount": 1926,
      "surfaces": [
       {
@@ -7094,9 +7132,9 @@
     {
      "lod": 0,
      "dist": 250.0,
-     "vertexStart": 129291,
+     "vertexStart": 131093,
      "vertexCount": 146,
-     "indexStart": 269454,
+     "indexStart": 272298,
      "indexCount": 444,
      "surfaces": [
       {
@@ -7109,9 +7147,9 @@
     {
      "lod": 2,
      "dist": 2500.0,
-     "vertexStart": 129437,
+     "vertexStart": 131239,
      "vertexCount": 43,
-     "indexStart": 269898,
+     "indexStart": 272742,
      "indexCount": 66,
      "surfaces": [
       {
@@ -7140,9 +7178,9 @@
     {
      "lod": 0,
      "dist": 400.0,
-     "vertexStart": 129480,
+     "vertexStart": 131282,
      "vertexCount": 830,
-     "indexStart": 269964,
+     "indexStart": 272808,
      "indexCount": 2442,
      "surfaces": [
       {
@@ -7155,9 +7193,9 @@
     {
      "lod": 2,
      "dist": 10000.0,
-     "vertexStart": 130310,
+     "vertexStart": 132112,
      "vertexCount": 75,
-     "indexStart": 272406,
+     "indexStart": 275250,
      "indexCount": 180,
      "surfaces": [
       {
@@ -7186,9 +7224,9 @@
     {
      "lod": 0,
      "dist": 400.0,
-     "vertexStart": 130385,
+     "vertexStart": 132187,
      "vertexCount": 716,
-     "indexStart": 272586,
+     "indexStart": 275430,
      "indexCount": 2208,
      "surfaces": [
       {
@@ -7206,9 +7244,9 @@
     {
      "lod": 3,
      "dist": 1300.0,
-     "vertexStart": 131101,
+     "vertexStart": 132903,
      "vertexCount": 105,
-     "indexStart": 274794,
+     "indexStart": 277638,
      "indexCount": 210,
      "surfaces": [
       {
@@ -7237,9 +7275,9 @@
     {
      "lod": 0,
      "dist": 300.0,
-     "vertexStart": 131206,
+     "vertexStart": 133008,
      "vertexCount": 382,
-     "indexStart": 275004,
+     "indexStart": 277848,
      "indexCount": 1194,
      "surfaces": [
       {
@@ -7252,9 +7290,9 @@
     {
      "lod": 2,
      "dist": 1000000.0,
-     "vertexStart": 131588,
+     "vertexStart": 133390,
      "vertexCount": 118,
-     "indexStart": 276198,
+     "indexStart": 279042,
      "indexCount": 222,
      "surfaces": [
       {
@@ -7283,9 +7321,9 @@
     {
      "lod": 0,
      "dist": 500.0,
-     "vertexStart": 131706,
+     "vertexStart": 133508,
      "vertexCount": 990,
-     "indexStart": 276420,
+     "indexStart": 279264,
      "indexCount": 1950,
      "surfaces": [
       {
@@ -7298,9 +7336,9 @@
     {
      "lod": 2,
      "dist": 1000000.0,
-     "vertexStart": 132696,
+     "vertexStart": 134498,
      "vertexCount": 185,
-     "indexStart": 278370,
+     "indexStart": 281214,
      "indexCount": 348,
      "surfaces": [
       {
@@ -7329,9 +7367,9 @@
     {
      "lod": 0,
      "dist": 600.0,
-     "vertexStart": 132881,
+     "vertexStart": 134683,
      "vertexCount": 250,
-     "indexStart": 278718,
+     "indexStart": 281562,
      "indexCount": 522,
      "surfaces": [
       {
@@ -7344,9 +7382,9 @@
     {
      "lod": 1,
      "dist": 1000000.0,
-     "vertexStart": 133131,
+     "vertexStart": 134933,
      "vertexCount": 62,
-     "indexStart": 279240,
+     "indexStart": 282084,
      "indexCount": 96,
      "surfaces": [
       {
@@ -7375,9 +7413,9 @@
     {
      "lod": 0,
      "dist": 400.0,
-     "vertexStart": 133193,
+     "vertexStart": 134995,
      "vertexCount": 176,
-     "indexStart": 279336,
+     "indexStart": 282180,
      "indexCount": 492,
      "surfaces": [
       {
@@ -7390,9 +7428,9 @@
     {
      "lod": 2,
      "dist": 1200.0,
-     "vertexStart": 133369,
+     "vertexStart": 135171,
      "vertexCount": 58,
-     "indexStart": 279828,
+     "indexStart": 282672,
      "indexCount": 156,
      "surfaces": [
       {
@@ -7421,9 +7459,9 @@
     {
      "lod": 0,
      "dist": 300.0,
-     "vertexStart": 133427,
+     "vertexStart": 135229,
      "vertexCount": 999,
-     "indexStart": 279984,
+     "indexStart": 282828,
      "indexCount": 3228,
      "surfaces": [
       {
@@ -7441,9 +7479,9 @@
     {
      "lod": 2,
      "dist": 1000000.0,
-     "vertexStart": 134426,
+     "vertexStart": 136228,
      "vertexCount": 255,
-     "indexStart": 283212,
+     "indexStart": 286056,
      "indexCount": 504,
      "surfaces": [
       {
@@ -7477,9 +7515,9 @@
     {
      "lod": 0,
      "dist": 900.0,
-     "vertexStart": 134681,
+     "vertexStart": 136483,
      "vertexCount": 1920,
-     "indexStart": 283716,
+     "indexStart": 286560,
      "indexCount": 2880,
      "surfaces": [
       {
@@ -7492,9 +7530,9 @@
     {
      "lod": 2,
      "dist": 1000000.0,
-     "vertexStart": 136601,
+     "vertexStart": 138403,
      "vertexCount": 1396,
-     "indexStart": 286596,
+     "indexStart": 289440,
      "indexCount": 2064,
      "surfaces": [
       {
@@ -7523,9 +7561,9 @@
     {
      "lod": 0,
      "dist": 900.0,
-     "vertexStart": 137997,
+     "vertexStart": 139799,
      "vertexCount": 496,
-     "indexStart": 288660,
+     "indexStart": 291504,
      "indexCount": 780,
      "surfaces": [
       {
@@ -7538,9 +7576,9 @@
     {
      "lod": 2,
      "dist": 1000000.0,
-     "vertexStart": 138493,
+     "vertexStart": 140295,
      "vertexCount": 112,
-     "indexStart": 289440,
+     "indexStart": 292284,
      "indexCount": 168,
      "surfaces": [
       {
@@ -7569,9 +7607,9 @@
     {
      "lod": 0,
      "dist": 2000.0,
-     "vertexStart": 138605,
+     "vertexStart": 140407,
      "vertexCount": 2965,
-     "indexStart": 289608,
+     "indexStart": 292452,
      "indexCount": 4122,
      "surfaces": [
       {
@@ -7594,9 +7632,9 @@
     {
      "lod": 3,
      "dist": 1000000.0,
-     "vertexStart": 141570,
+     "vertexStart": 143372,
      "vertexCount": 837,
-     "indexStart": 293730,
+     "indexStart": 296574,
      "indexCount": 918,
      "surfaces": [
       {
@@ -7635,9 +7673,9 @@
     {
      "lod": 0,
      "dist": 256.0,
-     "vertexStart": 142407,
+     "vertexStart": 144209,
      "vertexCount": 408,
-     "indexStart": 294648,
+     "indexStart": 297492,
      "indexCount": 1524,
      "surfaces": [
       {
@@ -7650,9 +7688,9 @@
     {
      "lod": 3,
      "dist": 1000000.0,
-     "vertexStart": 142815,
+     "vertexStart": 144617,
      "vertexCount": 26,
-     "indexStart": 296172,
+     "indexStart": 299016,
      "indexCount": 60,
      "surfaces": [
       {
@@ -7681,9 +7719,9 @@
     {
      "lod": 0,
      "dist": 256.0,
-     "vertexStart": 142841,
+     "vertexStart": 144643,
      "vertexCount": 408,
-     "indexStart": 296232,
+     "indexStart": 299076,
      "indexCount": 1524,
      "surfaces": [
       {
@@ -7696,9 +7734,9 @@
     {
      "lod": 3,
      "dist": 1000000.0,
-     "vertexStart": 143249,
+     "vertexStart": 145051,
      "vertexCount": 26,
-     "indexStart": 297756,
+     "indexStart": 300600,
      "indexCount": 60,
      "surfaces": [
       {
@@ -7727,9 +7765,9 @@
     {
      "lod": 0,
      "dist": 256.0,
-     "vertexStart": 143275,
+     "vertexStart": 145077,
      "vertexCount": 363,
-     "indexStart": 297816,
+     "indexStart": 300660,
      "indexCount": 1092,
      "surfaces": [
       {
@@ -7742,9 +7780,9 @@
     {
      "lod": 2,
      "dist": 15000.0,
-     "vertexStart": 143638,
+     "vertexStart": 145440,
      "vertexCount": 66,
-     "indexStart": 298908,
+     "indexStart": 301752,
      "indexCount": 144,
      "surfaces": [
       {
@@ -7773,9 +7811,9 @@
     {
      "lod": 0,
      "dist": 400.0,
-     "vertexStart": 143704,
+     "vertexStart": 145506,
      "vertexCount": 191,
-     "indexStart": 299052,
+     "indexStart": 301896,
      "indexCount": 342,
      "surfaces": [
       {
@@ -7788,9 +7826,9 @@
     {
      "lod": 1,
      "dist": 3000.0,
-     "vertexStart": 143895,
+     "vertexStart": 145697,
      "vertexCount": 70,
-     "indexStart": 299394,
+     "indexStart": 302238,
      "indexCount": 108,
      "surfaces": [
       {
@@ -7819,9 +7857,9 @@
     {
      "lod": 0,
      "dist": 400.0,
-     "vertexStart": 143965,
+     "vertexStart": 145767,
      "vertexCount": 228,
-     "indexStart": 299502,
+     "indexStart": 302346,
      "indexCount": 636,
      "surfaces": [
       {
@@ -7834,9 +7872,9 @@
     {
      "lod": 2,
      "dist": 30000.0,
-     "vertexStart": 144193,
+     "vertexStart": 145995,
      "vertexCount": 8,
-     "indexStart": 300138,
+     "indexStart": 302982,
      "indexCount": 12,
      "surfaces": [
       {
@@ -7865,9 +7903,9 @@
     {
      "lod": 0,
      "dist": 500.0,
-     "vertexStart": 144201,
+     "vertexStart": 146003,
      "vertexCount": 696,
-     "indexStart": 300150,
+     "indexStart": 302994,
      "indexCount": 1044,
      "surfaces": [
       {
@@ -7880,9 +7918,9 @@
     {
      "lod": 3,
      "dist": 1000000.0,
-     "vertexStart": 144897,
+     "vertexStart": 146699,
      "vertexCount": 126,
-     "indexStart": 301194,
+     "indexStart": 304038,
      "indexCount": 180,
      "surfaces": [
       {
@@ -7911,9 +7949,9 @@
     {
      "lod": 0,
      "dist": 750.0,
-     "vertexStart": 145023,
+     "vertexStart": 146825,
      "vertexCount": 473,
-     "indexStart": 301374,
+     "indexStart": 304218,
      "indexCount": 702,
      "surfaces": [
       {
@@ -7926,9 +7964,9 @@
     {
      "lod": 2,
      "dist": 1000000.0,
-     "vertexStart": 145496,
+     "vertexStart": 147298,
      "vertexCount": 121,
-     "indexStart": 302076,
+     "indexStart": 304920,
      "indexCount": 174,
      "surfaces": [
       {
@@ -7957,9 +7995,9 @@
     {
      "lod": 0,
      "dist": 500.0,
-     "vertexStart": 145617,
+     "vertexStart": 147419,
      "vertexCount": 1325,
-     "indexStart": 302250,
+     "indexStart": 305094,
      "indexCount": 3222,
      "surfaces": [
       {
@@ -7972,9 +8010,9 @@
     {
      "lod": 2,
      "dist": 5000.0,
-     "vertexStart": 146942,
+     "vertexStart": 148744,
      "vertexCount": 195,
-     "indexStart": 305472,
+     "indexStart": 308316,
      "indexCount": 324,
      "surfaces": [
       {
@@ -8003,9 +8041,9 @@
     {
      "lod": 0,
      "dist": 500.0,
-     "vertexStart": 147137,
+     "vertexStart": 148939,
      "vertexCount": 6143,
-     "indexStart": 305796,
+     "indexStart": 308640,
      "indexCount": 17802,
      "surfaces": [
       {
@@ -8043,9 +8081,9 @@
     {
      "lod": 3,
      "dist": 1000000.0,
-     "vertexStart": 153280,
+     "vertexStart": 155082,
      "vertexCount": 401,
-     "indexStart": 323598,
+     "indexStart": 326442,
      "indexCount": 888,
      "surfaces": [
       {
@@ -8084,9 +8122,9 @@
     {
      "lod": 0,
      "dist": 1000.0,
-     "vertexStart": 153681,
+     "vertexStart": 155483,
      "vertexCount": 680,
-     "indexStart": 324486,
+     "indexStart": 327330,
      "indexCount": 888,
      "surfaces": [
       {
@@ -8109,9 +8147,9 @@
     {
      "lod": 2,
      "dist": 1000000.0,
-     "vertexStart": 154361,
+     "vertexStart": 156163,
      "vertexCount": 492,
-     "indexStart": 325374,
+     "indexStart": 328218,
      "indexCount": 540,
      "surfaces": [
       {
@@ -8137,21 +8175,19 @@
  "stats": {
   "instances": 22311,
   "models": 123,
-  "modelsWithGeometry": 122,
-  "instancesWithGeometry": 22310,
-  "fallbackModels": {
-   "unknown": "model name unknown"
-  },
-  "vertices": 154853,
-  "indices": 325914,
-  "lod0InstanceTriangles": 2538706,
-  "lowInstanceTriangles": 819222,
+  "modelsWithGeometry": 123,
+  "instancesWithGeometry": 22311,
+  "fallbackModels": {},
+  "vertices": 156655,
+  "indices": 328758,
+  "lod0InstanceTriangles": 2539444,
+  "lowInstanceTriangles": 819432,
   "materials": 104,
   "materialsTextured": 104,
   "lod0SurfacesWithoutMaterial": 0,
   "materialHandles": {
    "inline": 150,
-   "resolved": 567,
+   "resolved": 569,
    "unresolved": 27,
    "null": 0,
    "chains": 18,
@@ -8159,7 +8195,7 @@
     "measured": 15
    },
    "shiftedModels": 9,
-   "windowedChains": 2,
+   "windowedChains": 3,
    "selfPlaced": 22,
    "selfOverrides": 0,
    "ordered": 0,
@@ -8303,7 +8339,10 @@
     "29946148": "mc/mtl_opforce_lod_sp",
     "29969912": "mc/mtl_opforce_ski_mask_sp",
     "29969916": "mc/mtl_opforce_hands_sp"
-   }
+   },
+   "namedByReference": [
+    "jeepride_shrubgroup_02"
+   ]
   }
  },
  "note": "Activision's models, extracted from the game files (see maps3d/NOTICE.md). Models without lods are drawn as boxes of their bounds.",

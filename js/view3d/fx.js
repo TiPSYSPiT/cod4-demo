@@ -1767,5 +1767,3 @@ void main() {
     }
   }
 }
-
-export { FxSystem as AmbientFx };

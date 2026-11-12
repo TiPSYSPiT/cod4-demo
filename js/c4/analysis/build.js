@@ -560,9 +560,14 @@ C4.define('build', function (C4) {
       const keep = [];
       for (let i = 0; i < tr.t.length; i++) { const t = tr.t[i] - t0; if (t >= mapWindow.start && t < mapWindow.end) keep.push(i); }
       if (!keep.length) continue;
-      const pick = (arr, Type) => Type.from(keep, i => arr[i]);
+      // (plain loops: TypedArray.from with a mapping function goes through the iterator and a call per element -
+      // 12 % of the analysis of a 19 MB demo; the same values and the same conversion per element)
+      const n = keep.length;
+      const pick = (arr, Type) => { const out = new Type(n); for (let k = 0; k < n; k++) out[k] = arr[keep[k]]; return out; };
+      const ts = new Int32Array(n);
+      for (let k = 0; k < n; k++) ts[k] = tr.t[keep[k]] - t0;
       positions[cl] = {
-        t: Int32Array.from(keep, i => tr.t[i] - t0),
+        t: ts,
         x: pick(tr.x, Float32Array), y: pick(tr.y, Float32Array), z: pick(tr.z, Float32Array),
         yaw: pick(tr.yaw, Float32Array), pitch: pick(tr.pitch, Float32Array),
         flags: pick(tr.flags, Uint8Array), weapon: pick(tr.weapon, Uint8Array),

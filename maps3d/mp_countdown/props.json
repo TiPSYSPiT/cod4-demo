@@ -1347,9 +1347,9 @@
   },
   {
    "name": "mc/mtl_tanker_truck_chrome_d",
-   "texture": "_textures/industrial_light_bulb_01_on_col.webp",
+   "texture": "_textures/tanker_truck_col_d.webp",
    "textureAlpha": false,
-   "color": "#b48d5c",
+   "color": "#3f3e39",
    "alphaTest": "ge128",
    "blend": null,
    "doubleSided": false,
@@ -1395,9 +1395,9 @@
   },
   {
    "name": "mc/mtl_tanker_rubber_d",
-   "texture": "_textures/industrial_light_bulb_01_on_col.webp",
+   "texture": "_textures/tanker_truck_col_d.webp",
    "textureAlpha": false,
-   "color": "#b48d5c",
+   "color": "#3f3e39",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
@@ -1419,15 +1419,15 @@
   },
   {
    "name": "mc/mtl_tanker_truck_alpha_d",
-   "texture": "_textures/industrial_light_01_col.webp",
-   "textureAlpha": false,
-   "color": "#2f2a25",
+   "texture": "_textures/tanker_truck_glass_col_d.webp",
+   "textureAlpha": true,
+   "color": "#444843",
    "alphaTest": "gt0",
    "blend": "one/invsrcalpha",
    "doubleSided": false,
    "depthWrite": false,
    "normalMap": "_textures/tanker_truck_glass_nml.normal.webp",
-   "specularMap": "_textures/industrial_light_01_spc-r-61_d834fc91.specular.webp",
+   "specularMap": "_textures/tanker_truck_glass_spc_d-rgb_0114144a.specular.webp",
    "envMapParms": [
     4.0,
     12.0,
@@ -6426,8 +6426,8 @@
   "lod0SurfacesWithoutMaterial": 0,
   "materialHandles": {
    "inline": 134,
-   "resolved": 537,
-   "unresolved": 19,
+   "resolved": 556,
+   "unresolved": 0,
    "null": 0,
    "chains": 14,
    "rules": {
@@ -6439,6 +6439,7 @@
    "selfPlaced": 29,
    "selfOverrides": 4,
    "ordered": 3,
+   "ownSlot": 3,
    "known": {
     "232720": "mc/mtl_transmitting_tower2",
     "232724": "mc/mtl_transmitting_tower",
@@ -6587,7 +6588,10 @@
     "24839644": "mc/mtl_opforce_lod_sp",
     "700348": "mc/mtl_pallet",
     "25074604": "mc/mtl_opforce_3hole_ski_mask_sp",
-    "25185144": "mc/mtl_opforce_ski_mask_sp"
+    "25185144": "mc/mtl_opforce_ski_mask_sp",
+    "24524356": "mc/mtl_usmc_shaved_head",
+    "24611736": "mc/mtl_ghillie_mesh_mp",
+    "24636300": "mc/mtl_usmc_body_mp"
    }
   }
  },

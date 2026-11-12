@@ -3963,13 +3963,19 @@
   },
   {
    "name": ",mc/lambert1",
-   "texture": null,
+   "texture": "_textures/grey.webp",
    "textureAlpha": false,
-   "color": null,
+   "color": "#818081",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
-   "depthWrite": true
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
   },
   {
    "name": "mc/mtl_bus_c",
@@ -14220,7 +14226,7 @@
   "lod0InstanceTriangles": 513120,
   "lowInstanceTriangles": 147182,
   "materials": 192,
-  "materialsTextured": 191,
+  "materialsTextured": 192,
   "lod0SurfacesWithoutMaterial": 0,
   "materialHandles": {
    "inline": 231,

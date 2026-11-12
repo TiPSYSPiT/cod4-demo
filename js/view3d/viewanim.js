@@ -17,7 +17,6 @@
  *     collect.js weapEvents), the knife kills, the legs animation (ADS: a walk movetype as the game's
  *     BG_IsAds; sprint), the stance and the positions (speed, jumps). */
 
-const D2R = Math.PI / 180;
 // weapAnimNumber_t (bg_public.h), matched against the demos: fire_weapon -> 2 / 5 (ADS), reload -> 13,
 // reload_from_empty -> 14, reload_start / end -> 15 / 16, put away -> 10 / 19 (quick), raise -> 11 /
 // 20 (quick), first raise -> 12, melee -> 8, rechamber -> 4 / 7, sprint -> 23 .. 25, offhand hold -> 26

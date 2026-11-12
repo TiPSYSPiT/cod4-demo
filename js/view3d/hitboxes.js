@@ -280,5 +280,3 @@ export class HitBoxes {
     return { frac: best, point: [0, 1, 2].map(k => a[k] + (b[k] - a[k]) * best), normal: hit, posed: !s };
   }
 }
-
-export function setHitBoxBase(dir) { BASE.dir = dir; }

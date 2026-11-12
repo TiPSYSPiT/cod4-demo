@@ -28,7 +28,6 @@ import { InfoHint, fadeHint, holdHint } from '../app/infoHint.js';
 
 const C4 = window.C4;
 const { el, icon, switchRow, selectRow } = C4.ui;
-const CFG = C4.mapConfig;
 const CAM_KEY = 'cod4demo3d.camera2';          // the camera mode, stored only by the viewer's own choice (default: first person)
 /** shared colour maps of the exported data (maps3d/_textures), D3D texture coordinates - the players', weapons' and
  *  script models' textures: mipmapped (three's default) and filtered anisotropically (no shimmer at grazing angles) */
@@ -75,7 +74,7 @@ export class View3D {
     this.stage.append(this.labels);
     // the map's details (the rail's info popover; loading and warnings shown on the view: infoHint.js);
     // `hint` is its box (the export and the test tools check its "warn" class); the camera hint fades
-    this.info = new InfoHint(this.stage, 'Map and data details');
+    this.info = new InfoHint(this.stage);
     this.hint = this.info.box;
     this.info.set('Loading the 3D map …', { open: true });
     this.camHint = el('div', { class: 'cam-hint', hidden: true });

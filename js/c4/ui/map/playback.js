@@ -116,12 +116,20 @@
         if (down) { this.onSeek(t, Math.sign(t - lastAt)); lastAt = t; }
         this.canvas.title = C4.ui.fmtTime(t - this.base);
       });
-      this.canvas.addEventListener('pointerup', () => { down = false; });
+      const release = () => { down = false; };
+      this.canvas.addEventListener('pointerup', release);
+      // (a drag the browser cancels - a touch taken over, the capture lost - ends too: the bar must not go on seeking with
+      // every move of the pointer over it)
+      this.canvas.addEventListener('pointercancel', release);
+      this.canvas.addEventListener('lostpointercapture', release);
       this.lane.addEventListener('pointermove', e => this.showMarkTip(e));
       this.lane.addEventListener('pointerleave', () => { this.markTip.hidden = true; });
       this.lane.addEventListener('click', e => { const m = this.markAt(e); if (m) this.onSeek(m.jump, 1); });
       // (disconnected by dispose: a live observer keeps the timeline and its replay in memory)
-      this.resizeObs = new ResizeObserver(() => { this.layoutMarks(); this.draw(); });
+      // (the bar's size is measured again only here: a getBoundingClientRect in every frame forces a layout whenever the
+      // page changed - 250 ms of the main thread while a demo loads in 3D)
+      this.size = null;
+      this.resizeObs = new ResizeObserver(() => { this.size = null; this.layoutMarks(); this.draw(); });
       this.resizeObs.observe(container);
     }
     /** the closed replay's timeline: its resize observer off */
@@ -223,19 +231,15 @@
       const r = this.lane.getBoundingClientRect();
       tip.style.left = Math.round(Math.max(0, Math.min(r.width - tip.offsetWidth, e.clientX - r.left - tip.offsetWidth / 2))) + 'px';
     }
-    /** the range of a video export [a, b] (marked on the bar), or null */
-    setBand(band) { this.band = band; this.draw(); }
-    /** the user's export selection {a, b} (start / end markers, either may be null), or null */
-    setSelection(sel) { this.selection = sel; this.draw(); }
     setTime(t) { this.t = t; this.draw(); }
     /** the range of a video export [a, b] (marked on the bar), or null */
     setBand(band) { this.band = band; this.draw(); }
     /** the user's export selection {a, b} (start / end markers, either may be null), or null */
     setSelection(sel) { this.selection = sel; this.draw(); }
     draw() {
-      const r = this.box.getBoundingClientRect();
+      if (!this.size) { const r = this.box.getBoundingClientRect(); this.size = [Math.max(1, r.width), Math.max(1, r.height)]; }
       const dpr = Math.min(3, window.devicePixelRatio || 1);
-      const W = Math.max(1, r.width), H = Math.max(1, r.height);
+      const W = this.size[0], H = this.size[1];
       if (this.canvas.width !== Math.round(W * dpr) || this.canvas.height !== Math.round(H * dpr)) { this.canvas.width = Math.round(W * dpr); this.canvas.height = Math.round(H * dpr); }
       const g = this.canvas.getContext('2d'), P = this.pal;
       g.setTransform(dpr, 0, 0, dpr, 0, 0);

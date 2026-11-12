@@ -2008,13 +2008,19 @@
   },
   {
    "name": ",mc/lambert1",
-   "texture": null,
+   "texture": "_textures/grey.webp",
    "textureAlpha": false,
-   "color": null,
+   "color": "#818081",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
-   "depthWrite": true
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
   },
   {
    "name": "mc/ch_concretewall09",
@@ -9923,7 +9929,7 @@
   "lod0InstanceTriangles": 822116,
   "lowInstanceTriangles": 261194,
   "materials": 156,
-  "materialsTextured": 155,
+  "materialsTextured": 156,
   "lod0SurfacesWithoutMaterial": 0,
   "materialHandles": {
    "inline": 229,

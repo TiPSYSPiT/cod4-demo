@@ -1032,6 +1032,7 @@
    "blend": "one/invsrcalpha",
    "doubleSided": false,
    "depthWrite": false,
+   "specularMap": "_textures/80s_econ_glass_spc-rgb_80s_e_29444396.specular.webp",
    "envMapParms": [
     1.4,
     4.0,
@@ -1043,9 +1044,7 @@
     1.0,
     1.0,
     1.0
-   ],
-   "specularMap": "_textures/80s_econ_glass_spc-rgb_80s_e_29444396.specular.webp",
-   "textureFrom": "mp_cluster"
+   ]
   },
   {
    "name": "mc/mtl_80s_econ_green_rubber",
@@ -1056,6 +1055,7 @@
    "blend": null,
    "doubleSided": false,
    "depthWrite": true,
+   "normalMap": "_textures/80s_econ_nml.normal.webp",
    "specularMap": "_textures/80s_econ_spc-rgb_80s_econ_cos-l-11.specular.webp",
    "envMapParms": [
     0.6,
@@ -1161,13 +1161,19 @@
   },
   {
    "name": ",mc/mtl_cinderblock",
-   "texture": null,
+   "texture": "_textures/cinderblocks_col.webp",
    "textureAlpha": false,
-   "color": null,
+   "color": "#807f7e",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
-   "depthWrite": true
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
   },
   {
    "name": "mc/mtl_dumpster",
@@ -8574,12 +8580,12 @@
   "lod0InstanceTriangles": 441320,
   "lowInstanceTriangles": 149676,
   "materials": 108,
-  "materialsTextured": 103,
+  "materialsTextured": 105,
   "lod0SurfacesWithoutMaterial": 0,
   "materialHandles": {
    "inline": 151,
-   "resolved": 627,
-   "unresolved": 2,
+   "resolved": 629,
+   "unresolved": 0,
    "null": 0,
    "chains": 21,
    "rules": {
@@ -8591,6 +8597,7 @@
    "selfPlaced": 21,
    "selfOverrides": 3,
    "ordered": 2,
+   "ownSlot": 1,
    "known": {
     "14132": "mc/mtl_scaffold_red",
     "24308": "mc/mtl_barrel_white_rust",
@@ -8742,7 +8749,8 @@
     "21513408": "mc/mtl_arab_regular_asad_sp",
     "21513420": "mc/mtl_arab_regular_helmet_hands_sp",
     "21225500": "mc/mtl_usmc_tactical_baseball_cap",
-    "21399836": "mc/mtl_arab_regular_mowrap_sp"
+    "21399836": "mc/mtl_arab_regular_mowrap_sp",
+    "21790916": "mc/mtl_arab_regular_sadiq_sp"
    }
   }
  },

@@ -3645,13 +3645,19 @@
   },
   {
    "name": ",mc/mtl_cinderblock",
-   "texture": null,
+   "texture": "_textures/cinderblocks_col.webp",
    "textureAlpha": false,
-   "color": null,
+   "color": "#807f7e",
    "alphaTest": null,
    "blend": null,
    "doubleSided": false,
-   "depthWrite": true
+   "depthWrite": true,
+   "colorTint": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
   },
   {
    "name": "mc/mtl_barrel_russian_fuel",
@@ -27091,12 +27097,12 @@
   "lod0InstanceTriangles": 2214656,
   "lowInstanceTriangles": 942450,
   "materials": 374,
-  "materialsTextured": 371,
+  "materialsTextured": 372,
   "lod0SurfacesWithoutMaterial": 0,
   "materialHandles": {
    "inline": 432,
-   "resolved": 2187,
-   "unresolved": 237,
+   "resolved": 2409,
+   "unresolved": 15,
    "null": 0,
    "chains": 52,
    "rules": {
@@ -27107,6 +27113,7 @@
    "selfPlaced": 36,
    "selfOverrides": 3,
    "ordered": 1,
+   "ownSlot": 2,
    "known": {
     "24348": "mc/mtl_p6_dig_wood_barrel",
     "61540": "mc/mtl_paint_can",
@@ -27532,7 +27539,9 @@
     "56738564": "mc/mtl_80s_econdestroy_red",
     "56738572": "mc/mtl_80s_econdestroy_green_rubber",
     "56738576": "mc/mtl_80s_econdestroy_green_metal",
-    "57484160": "mc/mtl_80s_econdestroy_silv"
+    "57484160": "mc/mtl_80s_econdestroy_silv",
+    "14566168": "mc/mtl_80s_econ_red",
+    "56171376": "mc/mtl_head_suren"
    }
   }
  },

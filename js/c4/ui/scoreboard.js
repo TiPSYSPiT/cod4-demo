@@ -1,7 +1,7 @@
 /* Tab 1 - Scoreboard: per team, sortable, totals; spectators below. */
 (function (C4) {
   'use strict';
-  const { el, fmtTime, na, approx, sortableTable, teamClass } = C4.ui;
+  const { el, fmtTime, na, approx, sortableTable } = C4.ui;
 
   const kd = p => (p.kills == null || p.deaths == null ? null : p.deaths === 0 ? p.kills : p.kills / p.deaths);
   const fmtPct = v => Math.round(v) + ' %';

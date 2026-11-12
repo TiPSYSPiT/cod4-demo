@@ -62,10 +62,6 @@ const app = {
     if (key !== 'A' && key !== 'B') return cssVar('--spec');
     return cssVar(key === state.blueTeam ? '--team-blue' : '--team-red');
   },
-  teamRgb(key) {
-    const m = /^#?([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i.exec(app.teamColor(key));
-    return m ? [parseInt(m[1], 16), parseInt(m[2], 16), parseInt(m[3], 16)] : [154, 164, 178];
-  },
   get blueTeam() { return state.blueTeam; },
   /** the team's shape next to its colour (colour-blind safe): ▲ the blue team, ◆ the red one (css: .tmark) */
   teamMark(key) {
@@ -101,7 +97,6 @@ function applyTeamColors(data) {
   for (const key of ['A', 'B']) {
     const c = key === blue ? 'blue' : 'red', k = key.toLowerCase();
     root.setProperty('--team-' + k, 'var(--team-' + c + ')');
-    root.setProperty('--team-' + k + '-soft', 'var(--team-' + c + '-soft)');
   }
 }
 

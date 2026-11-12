@@ -6,8 +6,7 @@ const { el } = C4.ui;
 
 export class InfoHint {
   /** parent: the view's stage; the box on the view is `box` (class map-hint; "warn" for a warning) */
-  constructor(parent, title = 'Map and data details') {
-    this.title = title;
+  constructor(parent) {
     this.text = '';
     this.warn = false;
     this.box = el('div', { class: 'map-hint', role: 'status', hidden: true });
