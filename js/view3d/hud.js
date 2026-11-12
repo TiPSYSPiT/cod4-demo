@@ -7,9 +7,9 @@
  *                (compassping_enemyfiring, ~1 s), the objectives of the player state (bomb sites, the bomb and its
  *                carrier: CG_CompassDrawPlayerObjectives, at the edge when out of range) and the player
  *                (compassping_player) - Promod's top left square
- *   ammo         CG_PLAYER_AMMO_VALUE: the clip (red below a third) and the reserve, the weapon's name and icon;
- *                the frag and special grenades with their counts (the player state's ammo / clip slots:
- *                BG_SetupAmmoIndexes / ClipIndexes - the n-th ammo / clip name in the weapon list's order)
+ *   ammo         CG_PLAYER_AMMO_VALUE: the clip and the reserve of the player state's weapon (the low colour at the weapon
+ *                file's threshold), the weapon's name; the frag and special grenades with their counts - the player state's
+ *                ammo / clip slots as the engine numbers them, checked against the demo (ammo.js AmmoBook)
  *   hit marker   the scripts' damage_feedback HUD element (_damagefeedback.gsc; collect.js hitMarks) on every hit
  *   messages     the bold game messages over the centre (the lower left window of the obituaries is the kill feed: killfeed.js,
  *                in every camera); "You killed" / "Killed by" for the player seen (CG_PriorityCenterPrint, 180 under the centre)
@@ -25,6 +25,7 @@ import { configStrings, loadHudText } from './hudtext.js';
 import { fetchJSON } from './data.js';
 import { loadImage } from '../app/retry.js';
 import { DVARS, PING_HOLD_MS, COMPASS_MENU } from './hudConfig.js';
+import { AmmoBook } from './ammo.js';
 
 const BASE = 'maps3d/';
 const D2R = Math.PI / 180;
@@ -96,15 +97,9 @@ export class GameHud {
   }
   img(key) { const i = this.images.get(key); return i && i.ready ? i : null; }
 
-  /** the recorder's ammo / clip slots over time, the hit marker's states */
+  /** the hit marker's states, the enemies' shots */
   prepare() {
     const d = this.M.d;
-    this.slots = [new Map(), new Map()];
-    for (const [t, kind, slot, v] of d.psAmmo || []) {
-      let s = this.slots[kind].get(slot);
-      if (!s) this.slots[kind].set(slot, s = { t: [], v: [] });
-      s.t.push(t); s.v.push(v);
-    }
     // the scripts' hit marker element per client and slot (collect.js hitMarks): its states in time order
     this.marks = new Map();
     for (const m of d.hitMarks || []) {
@@ -129,29 +124,11 @@ export class GameHud {
     return P;
   }
 
-  /** the ammo / clip slot of a weapon (BG_SetupAmmoIndexes / ClipIndexes): the n-th different ammo / clip name
-   *  (strcmp: case kept, trimmed; none -> the weapon's own name) in the weapon list's order, from weapon 1 on */
-  slotOf(list, name) {
-    if (!this.table || !list) return null;
-    if (this.slotList !== list) {
-      this.slotList = list;
-      const ammo = [], clip = [], map = new Map();
-      for (const raw of list) {
-        const n = String(raw).toLowerCase(), P = this.params(n);
-        const an = (P && P.ammoName) || n, cn = (P && P.clipName) || n;
-        let a = ammo.indexOf(an); if (a < 0) { a = ammo.length; ammo.push(an); }
-        let c = clip.indexOf(cn); if (c < 0) { c = clip.length; clip.push(cn); }
-        map.set(n, [a, c]);
-      }
-      this.slotMap = map;
-    }
-    return this.slotMap.get(String(name).toLowerCase()) || null;
-  }
-  slotAt(kind, slot, t) {
-    const s = this.slots[kind].get(slot);
-    if (!s) return 0;
-    const i = lower(s.t, t);
-    return i >= 0 ? s.v[i] : 0;
+  /** the recorder's ammo (ammo.js), built once the weapon table is there */
+  ammo() {
+    if (!this.table) return null;
+    if (!this.book || this.book.table !== this.table) this.book = new AmmoBook(this.M.d, this.table, this.promod);
+    return this.book;
   }
 
   /** the recorder's HUD row at t (psHud) or -1 */
@@ -181,7 +158,7 @@ export class GameHud {
       g.save(); g.translate(F.x, F.y);
       this.drawHitMarker(g, F.w, F.h, F.h / 480, t, cl);
       g.restore();
-      this.drawAmmo(g, s, R, t, cl, weaponName);
+      this.drawAmmo(g, s, R, t, cl);
       this.drawNames(g, w, h, s, row);
       this.drawElems(g, w, h, s, full || { x: 0, y: 0, w, h }, t, row, view.flashed);
       this.drawHints(g, s, Fv, t, row);
@@ -344,35 +321,34 @@ export class GameHud {
     }
   }
 
-  drawAmmo(g, s, R, t, cl, weaponName) {
-    const M = this.M;
-    let list = null;
-    for (const wl of M.d.weaponLists || []) { if (wl.t <= t) list = wl.list; else break; }
-    if (!weaponName || !list) return;
-    const P = this.params(weaponName);
-    const slots = this.slotOf(list, weaponName);
-    if (P && slots && (P.clipSize || 0) > 0 && P.inventoryType !== 'offhand') {
-      const clip = this.slotAt(1, slots[1], t), ammo = this.slotAt(0, slots[0], t);
-      const lowClip = clip <= Math.floor((P.clipSize || 0) / 3), lowAmmo = ammo <= Math.floor((P.maxAmmo || 0) / 5);
-      // the clip, then "| reserve" after it (CG_DrawPlayerAmmoValue)
-      const res = '| ' + ammo, yb = 462 * s, rw = this.say(g, res, R(632), yb, 0.36, s, lowAmmo ? LOW : WHITE, 0.85, 2);
-      this.say(g, String(clip), R(632) - rw - 4 * s, yb, 0.5, s, lowClip ? LOW : WHITE, 1, 2);
+  /** CG_DrawPlayerAmmoValue and the offhand counts (ammo.js): the player state's weapon at t - the clip, "| reserve" after
+   *  it (the low colour at the weapon file's thresholds), the weapon's name; the frag and special grenades. Nothing without
+   *  the player state of cl, no numbers for a weapon whose slots are unknown */
+  drawAmmo(g, s, R, t, cl) {
+    const book = this.ammo(), a = book && book.at(cl, t);
+    if (!a) return;
+    // (a check's record of the drawn numbers - hud.debug, off by default)
+    if (this.debug) (this.drawn || (this.drawn = [])).push({ ammo: { t, cl, weapon: a.weapon, clip: a.clip, reserve: a.reserve, lowClip: a.lowClip,
+      lowAmmo: a.lowAmmo, offhand: a.offhand.map(o => o.cls + ':' + o.n).join(' ') } });
+    if (a.weapon && a.reserve != null && !(a.P && a.P.offhandClass)) {
+      const yb = 462 * s;
+      const rw = a.P && a.P.suppressAmmoReserveDisplay ? 0 : this.say(g, '| ' + a.reserve, R(632), yb, 0.36, s, a.lowAmmo ? LOW : WHITE, 0.85, 2);
+      if (a.clip != null) this.say(g, String(a.clip), R(632) - rw - 4 * s, yb, 0.5, s, a.lowClip ? LOW : WHITE, 1, 2);
     }
     // the weapon's name
-    this.say(g, C4.weapons.label(weaponName), R(632), 436 * s, 0.25, s, WHITE, HUD_ALPHA, 2);
-    // the grenades
+    if (a.weapon) this.say(g, C4.weapons.label(a.weapon), R(632), 436 * s, 0.25, s, WHITE, HUD_ALPHA, 2);
+    // the grenades: the frag class always, the others while the player has one (CG_DrawOffHandAmmo: 0 in the low colour)
     let x = R(632);
-    for (const [gn, icon] of Object.entries(GRENADES)) {
-      if (!list.some(n => String(n).toLowerCase() === gn)) continue;
-      const sl = this.slotOf(list, gn);
-      const n = sl ? this.slotAt(0, sl[0], t) + this.slotAt(1, sl[1], t) : 0;
-      if (!n && gn !== 'frag_grenade_mp') continue;
-      const img = this.img(icon) || this.img(FALLBACK_ICON[gn]), sz = 22 * s;
+    for (const o of a.offhand) {
+      if (!o.n && o.cls !== 'Frag Grenade') continue;
+      const gn = o.weapon in GRENADES ? o.weapon : Object.keys(GRENADES).find(k => k.startsWith(o.weapon.split('_')[0])) || 'frag_grenade_mp';
+      const img = this.img(GRENADES[gn]) || this.img(FALLBACK_ICON[gn]), sz = 22 * s;
       x -= sz + 20 * s;
-      g.globalAlpha = n ? 1 : 0.35;
+      g.globalAlpha = o.n ? 1 : 0.35;
       if (img) g.drawImage(img, x, 386 * s, sz, sz);
-      this.say(g, String(n), x + sz + 2 * s, 404 * s, 0.25, s, n ? WHITE : LOW, n ? 1 : 0.35, 0);
+      this.say(g, String(o.n), x + sz + 2 * s, 404 * s, 0.25, s, o.n ? WHITE : LOW, o.n ? 1 : 0.35, 0);
     }
+    g.globalAlpha = 1;
   }
 
   /** a line of the HUD at a device position (y: the baseline; align 0 left, 1 centre, 2 right) in the game's font, else the

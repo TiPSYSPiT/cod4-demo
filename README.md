@@ -927,6 +927,14 @@ node tools/audit/demo_audit.mjs
 ```
 
 ```bash
+node tools/audit/ammo_audit.mjs
+```
+
+The first-person HUD's ammo (`js/view3d/ammo.js`) over every demo: per snapshot of the recording player the clip never over
+the clip size, every drop of the clip a shot, every reload taken from the reserve, valid numbers right after a switch; each
+violation with time and weapon (`tools/audit/out/ammo_audit.json`).
+
+```bash
 py tools/audit/site_audit.py
 ```
 
