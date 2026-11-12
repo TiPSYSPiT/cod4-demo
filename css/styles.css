@@ -728,7 +728,7 @@ table.data.scoreboard tbody tr.team-head:hover td { background: var(--hover); }
 /* Tab's scoreboard (js/app/scoresOverlay.js): over the 2D / 3D view and its HUD, under the panels */
 .scores-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 8; pointer-events: none; }
 
-/* ---- cod4-demo3d: team shapes, notices of the 3D view ---- */
+/* ---- cod4-demo: team shapes, notices of the 3D view ---- */
 /* the team's shape next to its colour, so the teams read without telling the colours apart (main.js teamMark) */
 .tmark { display: inline-block; width: 9px; height: 9px; flex: none; margin-right: 5px; vertical-align: 0; background: currentColor; }
 .tmark.blue { color: var(--team-blue); clip-path: polygon(50% 0, 100% 100%, 0 100%); }

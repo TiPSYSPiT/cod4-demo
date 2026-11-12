@@ -15,7 +15,7 @@ C4.define('collect', function (C4) {
     E_INDEX = 34,                       // model index (config string MODELS + index)
     E_WEAPONMODEL = 50,                 // the world model variant of the weapon (worldModel[n]: camouflage)
     E_SOLID = 38;
-  // cod4-demo3d: an entity whose solid is SOLID_BMODEL (0xFFFFFF) is a brush model - its index is the
+  // cod4-demo: an entity whose solid is SOLID_BMODEL (0xFFFFFF) is a brush model - its index is the
   // map's inline brush model, not a config string model (CG_ScriptMover: R_GetBrushModel(index)); named
   // '*index' like the map's entity string, never looked up among the XModels
   const SOLID_BMODEL = 0xFFFFFF;
@@ -33,7 +33,7 @@ C4.define('collect', function (C4) {
   const SOUND_EVENTS = new Set([9, 15, 16, 17, 18, 19, 20, 21, 23, 26, 27, 28, 30, 31, 32, 33, 35, 36, 37, 38,
     72, 73, 74, 75, 76]);                                    // item pickup, reload, weapon raise / put away, shots,
   const isSoundEvent = ev => SOUND_EVENTS.has(ev) || (ev >= 77 && ev < 135);   // melee, grenade, footsteps, jump; landing (+ pain)
-  // cod4-demo3d (the 3D view's sounds, CG_EntityEvent): the player events that play a sound - foliage,
+  // cod4-demo (the 3D view's sounds, CG_EntityEvent): the player events that play a sound - foliage,
   // sound alias, reload / raise / put away / pull back, shots, rechamber, melee, footsteps, jump, landings
   // (+ item / ammo pickup, the dry fire of no ammo, the recorder's offhand prepare / use: pin pull and throw)
   const SND_PLAYER_EVENTS = new Set([1, 3, 4, 9, 10, 11, 15, 16, 17, 18, 21, 22, 23, 24, 25, 26, 27, 28, 30, 32, 33, 35, 36, 38]);
@@ -50,21 +50,21 @@ C4.define('collect', function (C4) {
     spreadOverride: PS_INDEX['spreadOverride'], spreadOverrideState: PS_INDEX['spreadOverrideState'],
     legsAnim: PS_INDEX['legsAnim'], torsoAnim: PS_INDEX['torsoAnim'],
     moveDir: PS_INDEX['movementDir'], lean: PS_INDEX['leanf'], torsoPitch: PS_INDEX['fTorsoPitch'], waistPitch: PS_INDEX['fWaistPitch'],
-    // cod4-demo3d (the first-person view model): the weapon's animation and state, the movement
+    // cod4-demo (the first-person view model): the weapon's animation and state, the movement
     weapAnim: PS_INDEX['weapAnim'], weaponState: PS_INDEX['weaponstate'], weaponTime: PS_INDEX['weaponTime'], weaponDelay: PS_INDEX['weaponDelay'],
     bobCycle: PS_INDEX['bobCycle'], vx: PS_INDEX['velocity[0]'], vy: PS_INDEX['velocity[1]'], vz: PS_INDEX['velocity[2]'],
     groundEnt: PS_INDEX['groundEntityNum'], pmFlags: PS_INDEX['pm_flags'], weapFlags: PS_INDEX['weapFlags'], shotCount: PS_INDEX['weaponShotCount'],
     offhand: PS_INDEX['offHandIndex'], holdBreath: PS_INDEX['holdBreathScale'], grenadeTimeLeft: PS_INDEX['grenadeTimeLeft'],
     shockIndex: PS_INDEX['shellshockIndex'], shockTime: PS_INDEX['shellshockTime'], shockDuration: PS_INDEX['shellshockDuration'],
-    // cod4-demo3d (the first-person HUD): the damage state, the cursor hints, the equipped special grenade
+    // cod4-demo (the first-person HUD): the damage state, the cursor hints, the equipped special grenade
     damageEvent: PS_INDEX['damageEvent'], damageYaw: PS_INDEX['damageYaw'], damagePitch: PS_INDEX['damagePitch'],
     damageCount: PS_INDEX['damageCount'], damageDuration: PS_INDEX['damageDuration'], flinch: PS_INDEX['flinchYawAnim'],
     mantle: PS_INDEX['mantleState.flags'], cursorHint: PS_INDEX['cursorHint'], cursorHintString: PS_INDEX['cursorHintString'], offhandSecondary: PS_INDEX['offhandSecondary']
   };
-  // cod4-demo3d: the player events of the weapon (the first-person view model): item pickup .. fire_weapon_mg42
+  // cod4-demo: the player events of the weapon (the first-person view model): item pickup .. fire_weapon_mg42
   // (reload, raise / put away, shots, rechamber, melee swipe / hit / miss, offhand) - every player
   const WEAP_EVENTS_FIRST = 9, WEAP_EVENTS_LAST = 38;
-  // cod4-demo3d: the player's animations (indices into the game's "multiplayer" anim tree, bit 0x200
+  // cod4-demo: the player's animations (indices into the game's "multiplayer" anim tree, bit 0x200
   // toggles on a restart of the same animation), entity state fields legsAnim / torsoAnim
   const E_LEGS = 51, E_TORSO = 52;
   // ... and what the game's angle controllers use (bg_animation_mp.cpp BG_PlayerAngles): the movement
@@ -72,7 +72,7 @@ C4.define('collect', function (C4) {
   // body / waist pitch; player entities only (the lerp union of a player)
   const E_LEAN = 21, E_MOVEDIR = 22, E_TORSOPITCH = 55, E_WAISTPITCH = 56;
   const CSI_TEAM = CS_INDEX['team'];
-  // cod4-demo3d: the character of a player = body model + attached models (head, gear), indices into the model config strings
+  // cod4-demo: the character of a player = body model + attached models (head, gear), indices into the model config strings
   const CSI_MODEL = CS_INDEX['modelindex'];
   const CSI_ATTACH = [0, 1, 2, 3, 4, 5].map(i => CS_INDEX['attachModelIndex[' + i + ']']);
   const R = v => Math.round(v * 10) / 10;
@@ -105,9 +105,9 @@ C4.define('collect', function (C4) {
       names: new Map(),             // client -> {name, clantag}
       nameHistory: [],              // {t, client, name, clantag, source}
       teamTimeline: [],             // {t, client, team}
-      modelTimeline: [],            // {t, client, model, attach: [model indices]} (cod4-demo3d)
-      corpses: [],                  // {num, client, t0, t1, x, y, z, yaw, legs, torso, states} player corpse entities (cod4-demo3d)
-      weaponModels: [],             // [t, client, weaponModel] on every change of a player's weapon model variant (cod4-demo3d)
+      modelTimeline: [],            // {t, client, model, attach: [model indices]} (cod4-demo)
+      corpses: [],                  // {num, client, t0, t1, x, y, z, yaw, legs, torso, states} player corpse entities (cod4-demo)
+      weaponModels: [],             // [t, client, weaponModel] on every change of a player's weapon model variant (cod4-demo)
       slotEvents: [],               // {t, client, kind: 'connected'|'disconnected'}
       kills: [],
       tracks: new Map(),            // client -> PosTrack
@@ -122,34 +122,34 @@ C4.define('collect', function (C4) {
       // player state of the followed client whenever health / damage counter / client / pm type /
       // weapon changes: {t, client, health (stats[0]), damageEvent, damageYaw, damageCount, pmType, weapon}
       povStates: [],
-      // cod4-demo3d: the recorder's player state commandTime per snapshot [t, commandTime] - the seed of
+      // cod4-demo: the recorder's player state commandTime per snapshot [t, commandTime] - the seed of
       // the bullet spread the client guesses for other players' shots (CG_BulletEndpos)
       psCommandTimes: [],
-      // cod4-demo3d: the recorder's weapon per snapshot: [t, client, weapAnim, weaponstate, weaponTime,
+      // cod4-demo: the recorder's weapon per snapshot: [t, client, weapAnim, weaponstate, weaponTime,
       // weaponDelay, bobCycle, vx, vy, vz, groundEntityNum, pm_flags, weapFlags, weaponShotCount, weapon, offHandIndex]
       psWeapon: [],
       // ... and every player's weapon events [t, client, event, eventParm, weapon]
       weapEvents: [],
-      // cod4-demo3d: what the recorder's client fires its own shots with (DrawBulletImpacts for the
+      // cod4-demo: what the recorder's client fires its own shots with (DrawBulletImpacts for the
       // player state's client): [t, client, aimSpreadScale, fWeaponPosFrac, viewHeightCurrent, leanf,
       // perks, spreadOverride, spreadOverrideState] per snapshot
       psAim: [],
-      psHud: [],                    // cod4-demo3d: the recorder's HUD state per snapshot (see doPlayerState)
-      psHudRef: [],                 // cod4-demo3d: per psHud row its entry of hudStates
-      psObjRef: [],                 // cod4-demo3d: per psHud row its entry of objStates
-      objStates: [],                // cod4-demo3d: the compass objectives: [[x, y, z, icon, entNum, teamNum], ...]
-      hudElems: [],                 // cod4-demo3d: the distinct HUD elements (arrays by C4.delta.HUD_INDEX)
-      hudStates: [],                // cod4-demo3d: the element lists (indices into hudElems) in the game's order
-      psAmmo: [],                   // cod4-demo3d: [t, 0 ammo / 1 clip, slot, value] on every change
-      hitMarks: [],                 // cod4-demo3d: the scripts' hit marker HUD element on every change (see doHitMarks)
-      shocks: [],                   // cod4-demo3d: the followed client's shell shocks {client, start, duration, name}
+      psHud: [],                    // cod4-demo: the recorder's HUD state per snapshot (see doPlayerState)
+      psHudRef: [],                 // cod4-demo: per psHud row its entry of hudStates
+      psObjRef: [],                 // cod4-demo: per psHud row its entry of objStates
+      objStates: [],                // cod4-demo: the compass objectives: [[x, y, z, icon, entNum, teamNum], ...]
+      hudElems: [],                 // cod4-demo: the distinct HUD elements (arrays by C4.delta.HUD_INDEX)
+      hudStates: [],                // cod4-demo: the element lists (indices into hudElems) in the game's order
+      psAmmo: [],                   // cod4-demo: [t, 0 ammo / 1 clip, slot, value] on every change
+      hitMarks: [],                 // cod4-demo: the scripts' hit marker HUD element on every change (see doHitMarks)
+      shocks: [],                   // cod4-demo: the followed client's shell shocks {client, start, duration, name}
       hitsTaken: [],                // EV_BULLET_HIT_CLIENT_*: {t, victim, attacker, weapon}
-      // cod4-demo3d (the 3D view's effects): every bullet impact the POV received (EV_BULLET_HIT temp
+      // cod4-demo (the 3D view's effects): every bullet impact the POV received (EV_BULLET_HIT temp
       // entities): [t, x, y, z, normal (DirToByte), surface type, weapon, impact flags (un1), shooter], and
       // every scripted effect (EV_PLAY_FX): [t, x, y, z, pitch, yaw, roll, effect id (CS_EFFECT_NAMES + id)]
       impacts: [], playFx: [], scriptEnts: [],
-      items: [],                    // cod4-demo3d: the weapons lying on the ground (ET_ITEM), as scriptEnts
-      quakes: [],                   // cod4-demo3d: EV_EARTHQUAKE [t, x, y, z, scale, radius, duration ms]
+      items: [],                    // cod4-demo: the weapons lying on the ground (ET_ITEM), as scriptEnts
+      quakes: [],                   // cod4-demo: EV_EARTHQUAKE [t, x, y, z, scale, radius, duration ms]
       // the sounds (sound.js): player events [t, client, event, eventParm, weapon, quiet (specialty_quieter, POV
       // only)]; the other entities' sound events (sound alias, grenade bounce) [t, entity, event, eventParm,
       // weapon, x, y, z, surfType]; looping entity sounds {num, index (CS_SOUNDALIASES + index), t0, t1, x, y, z}
@@ -178,7 +178,7 @@ C4.define('collect', function (C4) {
       if (isSndPlayerEvent(ev)) c.sndEvents.push([t, cl, ev, parm | 0, weapon | 0, quiet ? 1 : 0]);
       if (ev >= WEAP_EVENTS_FIRST && ev <= WEAP_EVENTS_LAST) c.weapEvents.push([t, cl, ev, parm | 0, weapon | 0]);
     };
-    const loopRec = new Map();           // entity number -> current loop sound record (cod4-demo3d)
+    const loopRec = new Map();           // entity number -> current loop sound record (cod4-demo)
     let prevPsSeq = null, prevPsEvClient = -1;
     const bigCs = new BigConfigString();
     let prevEntities = new Map();
@@ -306,7 +306,7 @@ C4.define('collect', function (C4) {
       }
     }
 
-    // cod4-demo3d (the hit marker): the scripts' damage feedback HUD element (_damagefeedback.gsc - stock and Promod: a
+    // cod4-demo (the hit marker): the scripts' damage feedback HUD element (_damagefeedback.gsc - stock and Promod: a
     // material element "damage_feedback", archived, its alpha set to 1 and faded out on every hit) - its state on
     // every change: {t, client, slot, fadeStart, fadeTime, color, fromColor (RGBA packed), x, y, w, h, alignOrg,
     // alignScreen, scaleStart, scaleTime, fromW, fromH}
@@ -337,7 +337,7 @@ C4.define('collect', function (C4) {
       }
     }
 
-    // cod4-demo3d (the server's HUD): the player state's elements on every change - the distinct elements once, a state a
+    // cod4-demo (the server's HUD): the player state's elements on every change - the distinct elements once, a state a
     // list of them (GetSortedHudElems: the current ones, then the archived, each up to the first free slot). The
     // world's waypoints (13) are kept for hud.js too
     const hudIds = new Map(), hudSlots = [[], []];
@@ -361,7 +361,7 @@ C4.define('collect', function (C4) {
       return c.hudStates.length - 1;
     }
 
-    // cod4-demo3d (the HUD's objectives): the active ones of the player state on every change (OBJST_ACTIVE, OBJST_CURRENT)
+    // cod4-demo (the HUD's objectives): the active ones of the player state on every change (OBJST_ACTIVE, OBJST_CURRENT)
     let objLast = null;
     function doObjState(ps) {
       const list = [];
@@ -376,7 +376,7 @@ C4.define('collect', function (C4) {
     function doPlayerState(snap, t) {
       const f = snap.ps.fields;
       c.psCommandTimes.push(t, f[PSI.commandTime] | 0);
-      // cod4-demo3d (the first-person HUD): health, max health, the player under the crosshair (stats 0 / 2 / 3),
+      // cod4-demo (the first-person HUD): health, max health, the player under the crosshair (stats 0 / 2 / 3),
       // the damage state, flinch, cursor hint, the special grenade equipped; the ammo / clip slots that changed
       const S = snap.ps.stats;
       c.psHud.push(t, f[PSI.client], S[0] | 0, S[2] | 0, S[3] | 0, f[PSI.damageEvent] | 0, f[PSI.damageYaw] | 0, f[PSI.damagePitch] | 0,
@@ -454,9 +454,9 @@ C4.define('collect', function (C4) {
       lastPos.set(client, [t, x, y, z]);
     }
 
-    const corpseRec = new Map();         // corpse entity number -> current record (cod4-demo3d)
-    const lastWeaponModel = new Map();   // client -> its last weaponModel (cod4-demo3d)
-    // cod4-demo3d: the map's script entities (script models / brush models, turrets, helicopters, planes,
+    const corpseRec = new Map();         // corpse entity number -> current record (cod4-demo)
+    const lastWeaponModel = new Map();   // client -> its last weaponModel (cod4-demo)
+    // cod4-demo: the map's script entities (script models / brush models, turrets, helicopters, planes,
     // vehicles): one record per appearance with every change of model, trajectory, angles, flags and solid
     const SCRIPT_TYPES = new Set([0, 6, 11, 12, 13, 14, 15, 16]);
     const scriptRec = new Map();
@@ -483,7 +483,7 @@ C4.define('collect', function (C4) {
       const last = rec.states[rec.states.length - 1];
       for (let i = 1; i < s2.length; i++) if (last[i] !== s2[i]) { rec.states.push(s2); return; }
     }
-    // cod4-demo3d: a dropped weapon (CG_Item: index = weapon + 128 x world model; EF 0x20 = not drawn): one
+    // cod4-demo: a dropped weapon (CG_Item: index = weapon + 128 x world model; EF 0x20 = not drawn): one
     // record per appearance, a state [t, index, pos trType, trTime, base xyz, delta xyz, angles xyz, eFlags]
     // on every change
     const itemRec = new Map();
@@ -633,7 +633,7 @@ C4.define('collect', function (C4) {
       } else if (ev === EV_SOUND_ALIAS || ev === EV_SOUND_ALIAS_AS_MASTER || ev === K.EV.GRENADE_BOUNCE) {
         sndEntEvent(t, num, st, ev, st[E_EVENTPARM]);
       } else if (ev === K.EV.EARTHQUAKE) {
-        // cod4-demo3d: a script's earthquake() (CG_StartShakeCamera): lerp.u.earthquake {scale, radius, duration}
+        // cod4-demo: a script's earthquake() (CG_StartShakeCamera): lerp.u.earthquake {scale, radius, duration}
         c.quakes.push([t, R(u2f(st[E_POS])), R(u2f(st[E_POS + 1])), R(u2f(st[E_POS + 2])), u2f(st[E_U0]), u2f(st[E_U0 + 1]), st[E_U0 + 2] | 0]);
       } else if (ev === K.EV.PLAY_FX) {
         c.playFx.push([t, R(u2f(st[E_POS])), R(u2f(st[E_POS + 1])), R(u2f(st[E_POS + 2])),
@@ -674,7 +674,7 @@ C4.define('collect', function (C4) {
       const weapon = st[E_WEAPON];
       const key = num + ':' + launch + ':' + weapon;
       let g = c.grenades.get(key);
-      // (cod4-demo3d: + the spin - apos trType, trTime, base pitch / yaw / roll, delta: G_FireGrenade's TR_LINEAR)
+      // (cod4-demo: + the spin - apos trType, trTime, base pitch / yaw / roll, delta: G_FireGrenade's TR_LINEAR)
       const seg = [st[E_POS_TRTIME] | 0, st[E_POS_TRTYPE],
         R(u2f(st[E_POS])), R(u2f(st[E_POS + 1])), R(u2f(st[E_POS + 2])),
         R(u2f(st[E_VEL])), R(u2f(st[E_VEL + 1])), R(u2f(st[E_VEL + 2])),
@@ -693,7 +693,7 @@ C4.define('collect', function (C4) {
 
     function onDetonation(t, num, st, ev, parm) {
       const pos = [R(u2f(st[E_POS])), R(u2f(st[E_POS + 1])), R(u2f(st[E_POS + 2]))];
-      // cod4-demo3d: the surface hit and its normal (eventParm: DirToByte) choose the explosion's effect;
+      // cod4-demo: the surface hit and its normal (eventParm: DirToByte) choose the explosion's effect;
       // a smoke grenade's cloud starts at customExplode.startTime (lerp union word 0, server time)
       const det = { t, x: pos[0], y: pos[1], z: pos[2], event: ev, weapon: st[E_WEAPON], surf: st[E_SURFTYPE], dir: parm | 0,
         start: ev === K.EV.CUSTOM_EXPLODE || ev === K.EV.CUSTOM_EXPLODE_NOMARKS ? st[E_U0] | 0 : null };

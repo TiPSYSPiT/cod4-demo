@@ -11,7 +11,8 @@
  * Grid points the game checks with a sight trace are traced against the map's collision model
  * (SightModel, maps3d/<map>/sight.bin). Materials with a normal / specular map are lit per pixel and
  * reflect the map's reflection probes (ProbeSet, maps3d/<map>/probes.webp); the world gets the same
- * reflections, all after the game's own shaders (gameWorld). URL options: ?maps=off, ?reflections=off. */
+ * reflections, all after the game's own shaders (gameWorld); Specular Lighting (SPECULAR, the game's r_specular) switches the
+ * whole specular part - the probe and the highlights. URL option: ?maps=off. */
 import * as THREE from 'three';
 import { fetchData, fetchBinary, dataUrl } from './data.js';
 
@@ -344,8 +345,17 @@ async function loadColors(url, meta) {
 export const SUN = { color: { value: new THREE.Color(1, 1, 1) }, dir: { value: new THREE.Vector3(0, 0, 1) }, shadow: { value: 0 } };
 
 /** the reflection probes of the current map (ProbeSet): an atlas of their cube faces; shared by all
- *  materials with a specular map. on: 0 = no reflections (no probes, or switched off) */
+ *  materials with a specular map. on: 0 = no probes (the map has none, or not loaded yet) - Specular Lighting (SPECULAR)
+ *  switches them with the highlights */
 export const PROBES = { atlas: { value: null }, count: { value: 1 }, on: { value: 0 } };
+
+/** the game's r_specular (graphics: Specular Lighting), shared by every material with a specular map - the world's
+ *  (gameWorld) and the models' (gridLit: props, players, weapons, script models, debris). Off (0): the game's techniques
+ *  without the "s" feature (KisakCOD r_material_override.cpp: Material_GetRemappedFeatures_RunTime masks it, the
+ *  technique set's name loses its s0..s4 token) - their pixel shaders (e.g. lm_hsm_sun_r0c0n0 against
+ *  lm_hsm_sun_r0c0n0s0, lp_hsm_sun_r0c0d0n0 against ..._s0) sample neither the specular map nor the reflection probe
+ *  and add no sun / light highlight: colour x light only. A uniform: switched at once, no shader compiled again */
+export const SPECULAR = { on: { value: 0 } };
 
 /** The map's reflection probes (tools/export/export_maps.py -> maps3d/<map>/probes.webp): per probe
  *  one row of its six 64 x 64 cube faces in the game's order (+X, -X, +Y, -Y, +Z, -Z), read with the
@@ -543,6 +553,7 @@ export const SURFACE_GLSL = `
 uniform sampler2D uProbeAtlas;
 uniform float uProbeCount;
 uniform float uProbeOn;
+uniform float uSpecOn;
 ${LIGHTS_GLSL}
 // a probe's cube read with the D3D face conventions (s right, t down) and the world direction; the
 // game's value: rgb x alpha of its RGBM texels = the decoded colour / 4 (probes.webp holds colour / 2)
@@ -575,6 +586,7 @@ vec3 lgWorldNormal(vec3 n, vec3 p, vec2 uv, vec2 nm) {
 // fresnel (lrp(pow(1 - |N.V|, envMapParms.z), envMapParms.y, envMapParms.x)); V from the eye to the
 // point, L / C the primary light (direction, colour x attenuation), vis its visibility
 vec3 lgSpecular(vec3 N, vec3 V, vec4 spec, vec4 env, float probe, vec3 L, vec3 C, float vis) {
+  if (uSpecOn < 0.5) return vec3(0.0);                            // (r_specular 0: the technique without the specular map)
   float nv = dot(V, N);
   vec3 R = V - 2.0 * nv * N;
   vec3 s = vec3(0.0);
@@ -626,6 +638,7 @@ export function gameWorld(material, lm, shading, alpha = null) {
     shader.uniforms.uProbeAtlas = PROBES.atlas;
     shader.uniforms.uProbeCount = PROBES.count;
     shader.uniforms.uProbeOn = PROBES.on;
+    shader.uniforms.uSpecOn = SPECULAR.on;
     lightUniforms(shader);
     shader.uniforms.uLmSecondary = { value: lm.secondary };
     shader.uniforms.uLmPrimary = { value: lm.primary };
@@ -931,6 +944,7 @@ export function gridLit(material, objectUniforms, shading = null, atlas = null) 
     shader.uniforms.uProbeAtlas = PROBES.atlas;
     shader.uniforms.uProbeCount = PROBES.count;
     shader.uniforms.uProbeOn = PROBES.on;
+    shader.uniforms.uSpecOn = SPECULAR.on;
     shader.uniforms.uLgSpecMap = { value: shading && shading.specularMap };
     shader.uniforms.uLgNormalMap = { value: shading && shading.normalMap };
     shader.uniforms.uLgDetailMap = { value: shading && shading.detailMap };

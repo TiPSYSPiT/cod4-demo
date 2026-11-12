@@ -8,10 +8,10 @@ import { Effects } from './effects.js';
 import { Cameras, MODES } from './cameras.js';
 import { AuditView } from './audit.js';
 import { CharacterLibrary, AnimationLibrary } from './characters.js';
-import { SUN, PROBES, installGameFog } from './lighting.js';
+import { SUN, PROBES, SPECULAR, installGameFog } from './lighting.js';
 import { SunShadows, castShadows, STATIC_LAYER, DYNAMIC_LAYER } from './shadows.js';
 import { GRAPHICS, graphics, urlGraphics, setGraphics } from './graphics.js';
-import { DEFAULTS, DISPLAY_KEYS, displaySwitch, clearOptions } from '../app/defaults.js';
+import { DEFAULTS, DISPLAY_KEYS, CAMERA_KEY, displaySwitch, clearOptions } from '../app/defaults.js';
 import { R_ZNEAR } from './pov.js';
 import { MatInfo } from './matinfo.js';
 import { XRay, XRAY_MODES } from './xray.js';
@@ -28,7 +28,7 @@ import { InfoHint, fadeHint, holdHint } from '../app/infoHint.js';
 
 const C4 = window.C4;
 const { el, icon, switchRow, selectRow } = C4.ui;
-const CAM_KEY = 'cod4demo3d.camera2';          // the camera mode, stored only by the viewer's own choice (default: first person)
+const CAM_KEY = CAMERA_KEY;                    // the camera mode, stored only by the viewer's own choice (default: defaults.js)
 /** shared colour maps of the exported data (maps3d/_textures), D3D texture coordinates - the players', weapons' and
  *  script models' textures: mipmapped (three's default) and filtered anisotropically (no shimmer at grazing angles) */
 const texCache = new Map();
@@ -100,6 +100,7 @@ export class View3D {
     this.viewmodel.setSceneLights(hemi, this.sun);
     this.viewmodel.enabled = graphics().viewmodel !== 'off';
     this.viewmodel.crosshair = graphics().crosshair !== 'off';
+    this.applyGraphics('specular', graphics().specular);
     this.viewmodel.setMatch(this.M, this.animations);
     this.viewmodel.onLoaded = () => { this.needsRender = true; this.warmShaders(); };
     this.playerNotice = el('div', { class: 'player-notice', hidden: true });
@@ -129,11 +130,11 @@ export class View3D {
     this.hudCanvas = el('canvas', { class: 'hud-canvas', 'aria-hidden': 'true' });
     this.stage.append(this.hudCanvas);
     this.setHud(displaySwitch('hud'));
-    // the start: first person without a selected player - the demo's own view (the recorder's eyes, or the player he
-    // followed then); the viewer's own choice wins
-    let mode = 'fp';
+    // the start: the camera of defaults.js (POV: first person without a selected player - the demo's own view, the
+    // recorder's eyes or the player they followed then); the viewer's own choice wins
+    let mode = null;
     try { const v = localStorage.getItem(CAM_KEY); if (MODES.some(m => m[0] === v)) mode = v; } catch (err) { /* default */ }
-    this.setMode(mode);
+    this.setMode(this.startMode(mode));
     // the players: the character models by default (their cost is in the noise of the map's: docs/validation.md),
     // the capsules when chosen
     this.setPlayersMode(stored(K.players) || DISPLAY.players);
@@ -172,7 +173,7 @@ export class View3D {
     try { name = await resolveMap(map); } catch (err) { name = null; }
     if (name) {
       try {
-        // the graphics settings (graphics.js; ?lighting / ?fx / ?reflections / ?shadows override them)
+        // the graphics settings (graphics.js; ?lighting / ?fx / ?shadows override them)
         const gfx = graphics();
         // lighting 'scene': players and props lit by the scene lights instead of the game's light grid
         const gameLighting = gfx.lighting !== 'scene';
@@ -280,9 +281,10 @@ export class View3D {
             this.actors.realFlash = this.fxOpts.demo;   // no marker sphere where the muzzle flash is drawn
           }).catch(err => console.warn('effects not loaded:', err));
         }
-        // the reflection probes of the specular maps (graphics: reflections)
+        // the reflection probes of the specular maps: part of the specular term, which Specular Lighting switches at once
+        // (lighting.js SPECULAR - the game's r_specular takes both, the probes and the highlights)
         PROBES.on.value = 0;
-        if (w.probes) w.probes.activate(gfx.reflections !== 'off');
+        if (w.probes) w.probes.activate(true);
         this.actors.setProbes(w.probes);
         if (gameLighting) this.viewmodel.setLighting(w.lightGrid, w.probes);
         // the game's sun shadow map (shadows.js): world, props and players cast (graphics: sun shadows)
@@ -415,7 +417,7 @@ export class View3D {
       this.gSelects[g.key] = sel;
       gRows.push(selectRow(g.label, sel, g.title + (fixed ? ' - set by the page address (?' + g.key + '=)' : '')));
     }
-    const resetBtn = () => el('button', { class: 'tb wide', title: 'All Display, Sound and Graphics options back to their defaults (forgets your choices; the camera stays)', onclick: () => this.resetDefaults() }, icon('reset', 's'), 'Reset to defaults');
+    const resetBtn = () => el('button', { class: 'tb wide', title: 'All Display, Sound and Graphics options back to their defaults and the camera back to POV (forgets your choices)', onclick: () => this.resetDefaults() }, icon('reset', 's'), 'Reset to defaults');
     this.panels = [
       { key: 'camera', title: 'Camera', hint: 'C cycles', icon: 'camera', node: el('div', { class: 'pop-body' },
         el('div', { class: 'grp' }, this.modeSel,
@@ -437,7 +439,7 @@ export class View3D {
         this.soundRows, el('div', { class: 'grp' }, resetBtn())) },
       { key: 'graphics', title: 'Graphics', hint: 'reloads the 3D map', icon: 'sun', node: el('div', { class: 'pop-body' },
         el('div', { class: 'grp' }, ...gRows),
-        el('p', { class: 'pop-note' }, 'Lower settings help on slow graphics cards. A change reloads the 3D map (the POV weapon, crosshair, world decals and impact marks switch at once); time, selection and the other options stay.'),
+        el('p', { class: 'pop-note' }, 'Lower settings help on slow graphics cards. A change reloads the 3D map (the POV weapon, crosshair, specular lighting, world decals and impact marks switch at once); time, selection and the other options stay.'),
         el('div', { class: 'grp' }, resetBtn())) }
     ];
   }
@@ -482,6 +484,7 @@ export class View3D {
       });
     }
     if (key === 'marks' && this.fx) this.fx.marksShown = value !== 'off';     // fx_marks (fx.js drawMarks)
+    if (key === 'specular') SPECULAR.on.value = value === 'on' ? 1 : 0;       // r_specular (lighting.js: a uniform)
     this.needsRender = true;
   }
   /** every Display, Sound and Graphics option back to app/defaults.js: the saved choices forgotten, the live ones applied at
@@ -490,6 +493,7 @@ export class View3D {
     const before = graphics();
     clearOptions();
     const now = graphics(), reload = GRAPHICS.some(g => !g.live && before[g.key] !== now[g.key]);
+    this.setMode(this.startMode(null));                 // (the camera of defaults.js, not remembered as a choice)
     this.setXray(DISPLAY.xray);
     this.setKillfeed(DISPLAY.killfeed);
     this.setItems(DISPLAY.items);
@@ -614,6 +618,21 @@ export class View3D {
     if (this.actors.mode !== 'models' || !failed.length) return;
     this.playerNotice.textContent = 'Player models not available: ' + failed.join(', ') + ' - those players are shown as capsules.';
     this.playerNotice.hidden = false;
+  }
+  /** the camera to start in: the saved choice, else the default (defaults.js) - first person (POV) only when the demo has
+   *  someone to look through (a player state: the recorder, or a player they followed), else the fallback, silently */
+  startMode(saved) {
+    const mode = saved || DEFAULTS.camera.mode;
+    return mode === 'fp' && !this.hasPov() ? DEFAULTS.camera.fallback : mode;
+  }
+  /** the demo has a POV: a position sample from the recorder's player state (collect.js PF.FROM_PS) - the first-person
+   *  camera follows it when no player is selected */
+  hasPov() {
+    if (this.povKnown === undefined) {
+      const PF = C4.collect.PF;
+      this.povKnown = Object.values(this.M.d.positions || {}).some(P => P && P.flags && P.flags.some(f => f & PF.FROM_PS));
+    }
+    return this.povKnown;
   }
   resetView() {
     const M = this.M, b = M.bbox;

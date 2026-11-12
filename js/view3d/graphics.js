@@ -1,8 +1,8 @@
 /* The 3D view's graphics settings (the Graphics popover of the rail): the game's lighting, the sun
- * shadows, the reflections, the effects and the POV weapon. They take effect when the 3D map
+ * shadows, the specular lighting, the effects and the POV weapon. They take effect when the 3D map
  * is loaded, so a change rebuilds the 3D view (main.js: app.reload3d) - except a "live" one, which the
  * view applies at once. Remembered in localStorage; a URL parameter (?lighting=scene, ?shadows=off,
- * ?reflections=on, ?fx=all|ambient|demo|off, ?viewmodel=off, ?crosshair=off) overrides it for that page. The defaults:
+ * ?fx=all|ambient|demo|off, ?viewmodel=off, ?crosshair=off) overrides it for that page. The defaults:
  * app/defaults.js. */
 import { DEFAULTS, GRAPHICS_KEY as KEY } from '../app/defaults.js';
 
@@ -12,7 +12,10 @@ export const GRAPHICS = [
     values: [['game', 'Game'], ['scene', 'Simple']] },
   { key: 'shadows', label: 'Sun shadows', title: 'The sun\'s shadow map: world, props and players cast shadows (needs the game lighting)',
     values: [['on', 'On'], ['off', 'Off']] },
-  { key: 'reflections', label: 'Reflections', title: 'The reflection probes of the specular maps (shiny surfaces reflect the map around them)',
+  // the game's r_specular (KisakCOD r_material_override.cpp Material_GetRemappedFeatures_RunTime): off, every material is
+  // drawn with its technique without the specular map - no highlights of the sun and the lights, no reflection probes;
+  // on, both (the reflection probes are part of it, as in the game: no option of their own)
+  { key: 'specular', label: 'Specular Lighting', live: true, url: false, title: 'Specular highlights (r_specular)',
     values: [['on', 'On'], ['off', 'Off']] },
   { key: 'fx', label: 'Effects', title: 'The game\'s particle effects: the map\'s ambient effects (smoke, fire, dust) and the demo\'s own (explosions, smoke grenades, impacts, muzzle flashes)',
     values: [['all', 'All'], ['ambient', 'Map only'], ['demo', 'Demo only'], ['off', 'Off']] },

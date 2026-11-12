@@ -25,7 +25,7 @@ and the [UI before the redesign](docs/screenshots/redesign/before/).
 ES modules (needed for three.js) do not work from `file://`, so serve the folder:
 
 ```
-cd cod4-demo3d
+cd cod4-demo
 py tools/serve.py
 ```
 
@@ -277,12 +277,14 @@ above. *Models* draws each player's real character:
   formulas of the game's own shaders, read from the compiled shaders in the fast files
   (`tools/export/d3dshader.py`). The sun's shadow map: players, the world and the props cast
   shadows, as in the game. The **Graphics** popover (rail, 3D) switches the *Lighting* (Game /
-  Simple: the plain scene lights), the *Sun shadows*, the *Reflections* and the *Effects*; a change
+  Simple: the plain scene lights), the *Sun shadows* and the *Effects*; a change
   reloads the 3D map (time, selection and the other options stay) and helps slow graphics cards.
-  *POV weapon* and *Crosshair* (above) switch at once, without a reload.
-  The defaults: Game lighting, sun shadows on, reflections off, effects Demo only, POV weapon and crosshair on
+  *Specular Lighting* (the game's `r_specular`: the highlights of the sun and the lamps and the reflection probes of the
+  specular maps - off, the surfaces are drawn as the game draws them with `r_specular 0`), *POV weapon*, *Crosshair*,
+  *World decals* and *Impact marks* switch at once, without a reload.
+  The defaults: Game lighting, sun shadows on, specular lighting off, effects Demo only, POV weapon and crosshair on
   (`js/app/defaults.js`, with those of the Display popover; *Reset to defaults* in both popovers goes back to them).
-  The same in the URL, which wins for that page: `?lighting=scene`, `?reflections=on`, `?shadows=off`, `?fx=all` (`ambient`, `demo`, `off`);
+  The same in the URL, which wins for that page: `?lighting=scene`, `?shadows=off`, `?fx=all` (`ambient`, `demo`, `off`);
   `?maps=off` drops the normal / specular maps. `?shadows=off` drops the
   shadow maps (the sun's near and far partition, and the lamps' maps: the 4 lamps the game would
   pick, faded in and out like the game). The light grid is read as the game reads it: its full 56-colour block per grid

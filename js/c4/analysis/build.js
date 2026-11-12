@@ -122,7 +122,7 @@ C4.define('build', function (C4) {
     // the main map as a time window: before / after it the recording shows another map
     const mapName = cfg => (parseInfostring(cfg.get(K.CS.SERVERINFO) || '').mapname || '');
     const mapWindow = { start: main.start, end: main.end < endTime ? main.end : endTime + 1 };
-    // cod4-demo3d: one entry per change of the map - a reconnect sends the same gamestate several
+    // cod4-demo: one entry per change of the map - a reconnect sends the same gamestate several
     // times (Match_mp_cluster_jOZum75b: 4 gamestates of mp_backlot_fix at 13:23, reported 4 times)
     const mapChanges = [];
     for (let i = 1; i < sections.length; i++) {
@@ -571,7 +571,7 @@ C4.define('build', function (C4) {
         x: pick(tr.x, Float32Array), y: pick(tr.y, Float32Array), z: pick(tr.z, Float32Array),
         yaw: pick(tr.yaw, Float32Array), pitch: pick(tr.pitch, Float32Array),
         flags: pick(tr.flags, Uint8Array), weapon: pick(tr.weapon, Uint8Array),
-        // cod4-demo3d: animation indices of the "multiplayer" anim tree (bit 0x200 = restart toggle)
+        // cod4-demo: animation indices of the "multiplayer" anim tree (bit 0x200 = restart toggle)
         legs: pick(tr.legs, Uint16Array), torso: pick(tr.torso, Uint16Array),
         // ... and the angle controllers' inputs: movement direction (degrees relative to the view),
         // lean (-1 .. 1), prone body / waist pitch (degrees)
@@ -681,7 +681,7 @@ C4.define('build', function (C4) {
       minimap = { material: mm[0], corners: mm.slice(1, 5).map(parseFloat) };
     }
 
-    // cod4-demo3d: the fog the server sent (config string 9, written by setExpFog: start, density =
+    // cod4-demo: the fog the server sent (config string 9, written by setExpFog: start, density =
     // ln 2 / halfway distance, colour 0..1, transition ms; R_SetFrameFog: visibility = exp(-density x
     // (distance - start)))
     let fog = null;
@@ -730,7 +730,7 @@ C4.define('build', function (C4) {
       kills, events, chat, console: consoleLines,
       eventTypes: C4.events.EVENT_TYPES,
       positions, grenades,
-      // cod4-demo3d: body + attached models (head ...) per client over time, from the client states
+      // cod4-demo: body + attached models (head ...) per client over time, from the client states
       playerModels: (() => {
         const name = i => (i ? cs.get(K.CS.MODELS + i) || null : null);
         const out = {};
@@ -739,9 +739,9 @@ C4.define('build', function (C4) {
         }
         return out;
       })(),
-      // cod4-demo3d: player corpses (entity type 2) with the server's death animation (legs / torso:
+      // cod4-demo: player corpses (entity type 2) with the server's death animation (legs / torso:
       // anim tree indices), only on the main map
-      // cod4-demo3d: the players' weapon model variants (entity weaponModel: CG_Item / the DObj's worldModel[n],
+      // cod4-demo: the players' weapon model variants (entity weaponModel: CG_Item / the DObj's worldModel[n],
       // Promod's camouflages) per client: [[t, variant], ...] on every change, times relative
       weaponModels: (() => { const out = {}; for (const [t, cl, v] of col.weaponModels || []) (out[cl] || (out[cl] = [])).push([rel(t), v]); return out; })(),
       // (states [t, trType, trTime, base xyz, delta xyz, yaw]: times relative, trTime too)
@@ -756,30 +756,30 @@ C4.define('build', function (C4) {
       // fire events seen per client (the POV / followed player: player state ring; others: while in the
       // POV's snapshots) - "shots fired (seen)": {client: [t, ...]}
       shotsSeen: Object.fromEntries([...relTimes(col.shots)].map(([cl, a]) => [cl, a])),
-      // cod4-demo3d: the effects the demo records for the 3D view (fx.js): bullet impacts and scripted
+      // cod4-demo: the effects the demo records for the 3D view (fx.js): bullet impacts and scripted
       // effects (rows as in collect.js, t relative) and the effect names (CS_EFFECT_NAMES + id) of the main map
-      // cod4-demo3d: the map's script entities (collect.js onScriptEntity): one record per appearance,
+      // cod4-demo: the map's script entities (collect.js onScriptEntity): one record per appearance,
       // states [t, eType, model, pos trType, trTime, trDuration, base xyz, delta xyz, apos trType, trTime,
       // trDuration, base xyz, delta xyz, eFlags, solid], times relative (trTime too)
-      // cod4-demo3d: the dropped weapons (collect.js items): {num, t0, t1, weapon (name), states [t, index, pos trType,
+      // cod4-demo: the dropped weapons (collect.js items): {num, t0, t1, weapon (name), states [t, index, pos trType,
       // trTime, base xyz, delta xyz, angles xyz, eFlags]} - times relative, on the main map
       items: (col.items || []).filter(r => onMainMap(rel(r.t0))).map(r => ({ num: r.num, t0: rel(r.t0), t1: rel(r.t1),
         weapon: weaponName(r.states[0][1] % 128, rel(r.t0)),
         states: r.states.map(s => { const o = s.slice(); o[0] = rel(o[0]); o[3] = o[3] - t0; return o; }) })),
       scriptEnts: (col.scriptEnts || []).filter(r => onMainMap(rel(r.t0))).map(r => ({ num: r.num, t0: rel(r.t0), t1: rel(r.t1),
         states: r.states.map(s => { const o = s.slice(); o[0] = rel(o[0]); o[4] = rel(o[4]); o[13] = rel(o[13]); return o; }) })),
-      // cod4-demo3d: the sounds the replay plays (js/view3d/sound.js), times relative, on the main map:
+      // cod4-demo: the sounds the replay plays (js/view3d/sound.js), times relative, on the main map:
       // player events [t, client, event, eventParm, weapon name, quiet]; the other entities' events [t,
       // entity, event, eventParm, weapon name, x, y, z, surfType, alias (sound alias events)]; the
       // entities' loop sounds {num, alias, t0, t1, x, y, z}; the POV's local sounds {t, name} (announcer,
       // hit marker); alias names from the config strings valid at that time
-      // cod4-demo3d: the recorder's player state commandTime per snapshot (relative time, absolute command time)
+      // cod4-demo: the recorder's player state commandTime per snapshot (relative time, absolute command time)
       psCommandTime: (() => {
         const a = col.psCommandTimes || [], n = a.length >> 1, t = new Int32Array(n), ct = new Int32Array(n);
         for (let i = 0; i < n; i++) { t[i] = rel(a[2 * i]); ct[i] = a[2 * i + 1]; }
         return { t, ct };
       })(),
-      // cod4-demo3d: the recorder's weapon per snapshot (relative time; collect.js psWeapon): the view
+      // cod4-demo: the recorder's weapon per snapshot (relative time; collect.js psWeapon): the view
       // model's animation (weapAnim: the WeapAnimFiles index, bit 0x200 toggles on a restart), state and
       // its timers, the bob cycle, the velocity and ground entity (the view model's movement)
       psWeapon: (() => {
@@ -796,15 +796,15 @@ C4.define('build', function (C4) {
         }
         return o;
       })(),
-      // cod4-demo3d: every player's weapon events [t, client, event, eventParm, weapon name] (collect.js weapEvents)
+      // cod4-demo: every player's weapon events [t, client, event, eventParm, weapon name] (collect.js weapEvents)
       weapEvents: (col.weapEvents || []).map(r => { const t = rel(r[0]); return [t, r[1], r[2], r[3], weaponName(r[4], t)]; }).filter(r => onMainMap(r[0])),
-      // cod4-demo3d: the followed player's shell shocks (collect.js shocks; relative times)
+      // cod4-demo: the followed player's shell shocks (collect.js shocks; relative times)
       shocks: (col.shocks || []).map(h => Object.assign({}, h, { start: rel(h.start) })),
-      // cod4-demo3d: the scripts' hit marker HUD element of the followed player on every change (collect.js hitMarks;
+      // cod4-demo: the scripts' hit marker HUD element of the followed player on every change (collect.js hitMarks;
       // the server times relative as the rest)
       hitMarks: (col.hitMarks || []).map(h => Object.assign({}, h, { t: rel(h.t), fadeStart: h.fadeStart ? rel(h.fadeStart) : 0,
         scaleStart: h.scaleStart ? rel(h.scaleStart) : 0 })),
-      // cod4-demo3d: the recorder's HUD state per snapshot (collect.js psHud): health, maxHealth, ident (the player
+      // cod4-demo: the recorder's HUD state per snapshot (collect.js psHud): health, maxHealth, ident (the player
       // under the crosshair), damage event / yaw / pitch / count / duration, flinch, cursor hint + string, offhandSecondary
       psHud: (() => {
         const a = col.psHud || [], N = 15, n = Math.floor(a.length / N);
@@ -834,9 +834,9 @@ C4.define('build', function (C4) {
           changes: csChanges.filter(x => want(x.index) && x.t >= main.start && x.t < main.end).map(x => [x.t, x.index, x.value]) } };
         return o;
       })(),
-      // cod4-demo3d: the scores the server sent ("b": only while the recorder looked at the scoreboard): the game's scoreboard
+      // cod4-demo: the scores the server sent ("b": only while the recorder looked at the scoreboard): the game's scoreboard
       scoreboards: col.scoreboards.map(sb => ({ t: rel(sb.t), axis: sb.axis, allies: sb.allies, limit: sb.limit, entries: sb.entries })),
-      // cod4-demo3d: the same scores per client: the ping over time (the stats popup) on every change
+      // cod4-demo: the same scores per client: the ping over time (the stats popup) on every change
       scoreboardTrack: (() => {
         const tr = {};
         for (const sb of col.scoreboards) {
@@ -851,9 +851,9 @@ C4.define('build', function (C4) {
         for (const o of Object.values(tr)) { o.t = Int32Array.from(o.t); o.ping = Uint16Array.from(o.ping); }
         return tr;
       })(),
-      // cod4-demo3d: the recorder's ammo (kind 0) and clip (kind 1) slots on every change: [t, kind, slot, value]
+      // cod4-demo: the recorder's ammo (kind 0) and clip (kind 1) slots on every change: [t, kind, slot, value]
       psAmmo: (() => { const a = col.psAmmo || [], out = []; for (let i = 0; i + 3 < a.length; i += 4) out.push([rel(a[i]), a[i + 1], a[i + 2], a[i + 3]]); return out; })(),
-      // cod4-demo3d: the recorder's own aim per snapshot (relative time; collect.js psAim)
+      // cod4-demo: the recorder's own aim per snapshot (relative time; collect.js psAim)
       psAim: (() => {
         // (breath: holdBreathScale - 0 while the sniper holds the breath, up to the gasp's scale after it)
         const a = col.psAim || [], N = 11, n = Math.floor(a.length / N);
